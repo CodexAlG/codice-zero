@@ -12,8 +12,4 @@ A diferencia de las wikis tradicionales que solo listan datos, este proyecto se 
 * Sinergias y composiciones de equipo detalladas.
 * Estrategias específicas contra jefes y contenido de alto nivel.
 
-## 💻 Stack Tecnológico
-
-Este es un proyecto **puramente frontend** (no utiliza una base de datos externa). Toda la información de los Agentes, W-Engines y Bangboos se gestiona a través de archivos estáticos (JSON o objetos de JavaScript) dentro del propio código, asegurando la máxima velocidad de carga.
-
 ---
