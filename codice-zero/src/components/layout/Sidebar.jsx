@@ -2,7 +2,8 @@
 
 import { useState } from 'react';
 import Image from 'next/image';
-import { BookOpen } from 'lucide-react';
+import { BookOpen, Home } from 'lucide-react';
+import Link from 'next/link';
 
 export default function Sidebar() {
   const [isExpanded, setIsExpanded] = useState(false);
@@ -25,13 +26,22 @@ export default function Sidebar() {
       <nav>
         <ul className="space-y-2">
           <li>
-            <a href="#" onClick={() => setActiveItem(0)} className={`relative flex items-center h-12 py-2 px-2 rounded-md text-gray-300 transition-all ${activeItem === 0 ? 'text-yellow-400' : 'hover:bg-white/5 hover:text-yellow-400'}`}>
+            <Link href="/" onClick={() => setActiveItem(-1)} className={`relative flex items-center h-12 py-2 px-2 rounded-md text-gray-300 transition-all ${activeItem === -1 ? 'text-yellow-400' : 'hover:bg-white/5 hover:text-yellow-400'}`}>
+              {activeItem === -1 && <div className="absolute left-0 top-0 bottom-0 w-[3px] bg-[#F5E02A]"></div>}
+              <Home size={36} className="text-gray-300 opacity-75 hover:opacity-100 transition-opacity" />
+              <span className={`ml-4 ${!isExpanded && 'hidden'} transition-opacity`}>
+                Inicio
+              </span>
+            </Link>
+          </li>
+          <li>
+            <Link href="/personajes" onClick={() => setActiveItem(0)} className={`relative flex items-center h-12 py-2 px-2 rounded-md text-gray-300 transition-all ${activeItem === 0 ? 'text-yellow-400' : 'hover:bg-white/5 hover:text-yellow-400'}`}>
               {activeItem === 0 && <div className="absolute left-0 top-0 bottom-0 w-[3px] bg-[#F5E02A]"></div>}
               <Image src="/CodiceZero/Agentes/Icon_Agents.webp" alt="Icono Personajes" width={36} height={36} className={`opacity-75 hover:opacity-100 transition-opacity saturate-200 contrast-200 ${activeItem === 0 ? 'drop-shadow-lg shadow-yellow-500/50' : ''}`} />
               <span className={`ml-4 ${!isExpanded && 'hidden'} transition-opacity`}>
                 Personajes
               </span>
-            </a>
+            </Link>
           </li>
           <li>
             <a href="#" onClick={() => setActiveItem(1)} className={`relative flex items-center h-12 py-2 px-2 rounded-md text-gray-300 transition-all ${activeItem === 1 ? 'text-yellow-400' : 'hover:bg-white/5 hover:text-yellow-400'}`}>
@@ -61,13 +71,13 @@ export default function Sidebar() {
             </a>
           </li>
           <li>
-            <a href="#" onClick={() => setActiveItem(4)} className={`relative flex items-center h-12 py-2 px-2 rounded-md text-gray-300 transition-all ${activeItem === 4 ? 'text-yellow-400' : 'hover:bg-white/5 hover:text-yellow-400'}`}>
+            <Link href="/discos" onClick={() => setActiveItem(4)} className={`relative flex items-center h-12 py-2 px-2 rounded-md text-gray-300 transition-all ${activeItem === 4 ? 'text-yellow-400' : 'hover:bg-white/5 hover:text-yellow-400'}`}>
               {activeItem === 4 && <div className="absolute left-0 top-0 bottom-0 w-[3px] bg-[#F5E02A]"></div>}
               <Image src="/CodiceZero/Discos/Icon_Storage_Drive_Disc.webp" alt="Icono Discos" width={36} height={36} className={`opacity-75 hover:opacity-100 transition-opacity saturate-200 contrast-200 ${activeItem === 4 ? 'drop-shadow-lg shadow-yellow-500/50' : ''}`} />
               <span className={`ml-4 ${!isExpanded && 'hidden'} transition-opacity`}>
                 Discos
               </span>
-            </a>
+            </Link>
           </li>
         </ul>
       </nav>
