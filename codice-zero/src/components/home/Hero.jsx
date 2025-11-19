@@ -1,7 +1,10 @@
 export default function Hero() {
   return (
-    <div className="min-h-screen flex flex-col justify-center items-center bg-zinc-900 hero-background">
-      <div className="text-center px-4">
+    <div className="min-h-screen flex flex-col justify-center items-center bg-zinc-900 hero-background relative">
+      <div className="absolute inset-0 flex items-center justify-center z-[-1]">
+        <span className="text-[15rem] opacity-5 font-tech" style={{ WebkitTextStroke: '2px white', color: 'transparent' }}>HOLLOW</span>
+      </div>
+      <div className="text-center px-4 relative z-10">
         <h1 className="text-6xl font-extrabold text-center">
           <span className="text-4xl font-thin text-gray-400">Bienvenido a</span><br />
           <span className="text-6xl font-bold text-yellow-400">CodiceZero</span>

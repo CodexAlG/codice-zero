@@ -1,26 +1,27 @@
-import { Geist, Geist_Mono } from "next/font/google";
+import { Rajdhani, Inter } from "next/font/google";
 import "./globals.css";
 import Sidebar from '@/components/layout/Sidebar';
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const inter = Inter({
+  variable: "--font-inter",
   subsets: ["latin"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const techFont = Rajdhani({
+  variable: "--font-tech",
   subsets: ["latin"],
+  weight: ["400", "600", "700"],
 });
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${inter.variable} ${techFont.variable} antialiased`}
       >
-        <div className="flex h-screen bg-gray-950 text-white">
+        <div className="flex h-screen bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-gray-900 via-[#0a0a0a] to-black text-white relative z-10">
           <Sidebar />
-          <main className="flex-1 overflow-y-auto">
+          <main className="flex-1 overflow-y-auto relative z-10">
             {children}
           </main>
         </div>
