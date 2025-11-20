@@ -3,44 +3,38 @@
 import { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { motion, AnimatePresence } from "framer-motion";
 import { agents } from '@/data/agents';
 import AgentCard from '@/components/agents/AgentCard';
 
 export default function PersonajesPage() {
-  const [activeFilters, setActiveFilters] = useState(['Todos']);
+  const [activeFilters, setActiveFilters] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
 
-  const toggleFilter = (filterName) => {
-    if (filterName === 'Todos') {
-      setActiveFilters(['Todos']);
+  const toggleFilter = (newFilter) => {
+    if (newFilter === "Todos") {
+      setActiveFilters([]); // Limpiar todo
       return;
     }
-
     setActiveFilters(prev => {
-      if (prev.includes('Todos')) {
-        return [filterName];
-      }
-      
-      if (prev.includes(filterName)) {
-        const newFilters = prev.filter(f => f !== filterName);
-        return newFilters.length === 0 ? ['Todos'] : newFilters;
-      } else {
-        return [...prev, filterName];
-      }
+      // Si ya está, lo quita. Si no, lo agrega.
+      if (prev.includes(newFilter)) return prev.filter(f => f !== newFilter);
+      return [...prev, newFilter];
     });
   };
 
-  const clearAllFilters = () => {
-    setActiveFilters(['Todos']);
-  };
-
-  const filters = [
-    "Fuego", "Hielo", "Electrico", "Fisico", "Etereo", // Elementos
-    "S", "A", // Rangos
-    "Ataque", "Aturdidor", "Anomalia", "Soporte", "Defensa", "Ruptura" // Roles
+  const elementFilters = ["Fuego", "Hielo", "Electrico", "Fisico", "Etereo"];
+  const rankFilters = ["S", "A"];
+  const roleFilters = ["Ataque", "Aturdidor", "Anomalia", "Soporte", "Defensa", "Ruptura"];
+  const factionFilters = [
+    "Victoria Housekeeping", "Belobog Heavy Industries", "Cunning Hares", 
+    "N.E.P.S.", "Obol Squad", "Section 6", "Sons of Calydon", 
+    "Spook Shack", "Mookingbird", "Yunkui Summit", 
+    "Defense Force - Silver Squad"
   ];
 
   const elementIcons = {
-    // Elementos existentes
+    // Elementos
     Fuego: "/CodiceZero/Agentes/Elemento/Fuego.webp",
     Hielo: "/CodiceZero/Agentes/Elemento/Hielo.webp",
     Electrico: "/CodiceZero/Agentes/Elemento/Electrico.webp",
@@ -48,8 +42,8 @@ export default function PersonajesPage() {
     Etereo: "/CodiceZero/Agentes/Elemento/Etéreo.webp",
 
     // Rangos
-    "S": "/CodiceZero/Rango/S.webp",
-    "A": "/CodiceZero/Rango/A.webp",
+    "S": "/CodiceZero/Rango/Icon_Item_Rank_S.webp",
+    "A": "/CodiceZero/Rango/Icon_Item_Rank_A.webp",
 
     // Roles
     Ataque: "/CodiceZero/Agentes/Rol/Ataque.webp",
@@ -57,135 +51,156 @@ export default function PersonajesPage() {
     Anomalia: "/CodiceZero/Agentes/Rol/Anomalia.webp",
     Soporte: "/CodiceZero/Agentes/Rol/Soporte.webp",
     Defensa: "/CodiceZero/Agentes/Rol/Defensa.webp",
-    Ruptura: "/CodiceZero/Agentes/Rol/Ruptura.webp"
+    Ruptura: "/CodiceZero/Agentes/Rol/Ruptura.webp",
+
+    // Facciones
+    "Victoria Housekeeping": "/CodiceZero/Agentes/Faction/Faction_Victoria_Housekeeping_Co._Icon.webp",
+    "Belobog Heavy Industries": "/CodiceZero/Agentes/Faction/Faction_Belobog_Heavy_Industries_Icon.webp",
+    "Cunning Hares": "/CodiceZero/Agentes/Faction/Faction_Gentle_House_Icon.webp",
+    "N.E.P.S.": "/CodiceZero/Agentes/Faction/Faction_Criminal_Investigation_Special_Response_Team_Icon.webp",
+    "Obol Squad": "/CodiceZero/Agentes/Faction/Faction_Obol_Squad_Icon.webp",
+    "Section 6": "/CodiceZero/Agentes/Faction/Faction_Hollow_Special_Operations_Section_6_Icon.webp",
+    "Sons of Calydon": "/CodiceZero/Agentes/Faction/Faction_Sons_of_Calydon_Icon.webp",
+    "Spook Shack": "/CodiceZero/Agentes/Faction/Faction_Spook_Shack_Icon.webp",
+    "Mookingbird": "/CodiceZero/Agentes/Faction/Faction_Mockingbird_Icon.webp",
+    "Yunkui Summit": "/CodiceZero/Agentes/Faction/Faction_Yunkui_Summit_Icon.webp",
+    "Defense Force - Silver Squad": "/CodiceZero/Agentes/Faction/Faction_Defense_Force_-_Silver_Squad_Icon.webp"
   };
 
   const filteredAgents = agents.filter((agent) => {
-    if (activeFilters.includes('Todos')) return true;
-    
-    // Separar filtros por categoría
-    const elementFilters = activeFilters.filter(f => ["Fuego", "Hielo", "Electrico", "Fisico", "Etereo"].includes(f));
-    const rankFilters = activeFilters.filter(f => ["S", "A"].includes(f));
-    const roleFilters = activeFilters.filter(f => ["Ataque", "Aturdidor", "Anomalia", "Soporte", "Defensa", "Ruptura"].includes(f));
-    
-    // Si hay filtros de una categoría, el agente debe cumplir al menos uno de esa categoría
-    const matchesElement = elementFilters.length === 0 || elementFilters.includes(agent.element);
-    const matchesRank = rankFilters.length === 0 || rankFilters.includes(agent.rank);
-    const matchesRole = roleFilters.length === 0 || roleFilters.includes(agent.rol);
-    
-    // El agente debe cumplir todas las categorías que tengan filtros activos
-    return matchesElement && matchesRank && matchesRole;
+    // 1. Filtro de Búsqueda (Texto)
+    const matchesSearch = agent.name.toLowerCase().includes(searchTerm.toLowerCase());
+
+    // 2. Separar filtros activos por categoría
+    const activeElements = activeFilters.filter(f => elementFilters.includes(f));
+    const activeRanks = activeFilters.filter(f => rankFilters.includes(f));
+    const activeRoles = activeFilters.filter(f => roleFilters.includes(f));
+    const activeFactions = activeFilters.filter(f => factionFilters.includes(f));
+
+    // 3. Verificación por Categoría (Si la categoría tiene filtros activos, debe coincidir con uno)
+    const matchElement = activeElements.length === 0 || activeElements.includes(agent.element);
+    const matchRank = activeRanks.length === 0 || activeRanks.includes(agent.rank);
+    const matchRole = activeRoles.length === 0 || activeRoles.includes(agent.rol);
+    const matchFaction = activeFactions.length === 0 || activeFactions.includes(agent.faction);
+
+    // Lógica Final: Debe cumplir Búsqueda Y (Elemento Y Rango Y Rol Y Facción)
+    return matchesSearch && matchElement && matchRank && matchRole && matchFaction;
   });
 
-  const getButtonClasses = (filterName) => {
-    const isActive = activeFilters.includes(filterName);
-    const base = 'px-4 py-2 rounded-md transition-all font-tech';
-
-    if (filterName === 'Todos') {
-      return `${base} ${isActive ? 'bg-yellow-500 text-black' : 'bg-gray-800 text-white hover:bg-gray-700'}`;
-    }
-
-    const colorMap = {
-      // Elementos
-      Fuego: isActive ? 'bg-red-500 text-white' : 'bg-red-900/50 text-red-300 hover:bg-red-800',
-      Hielo: isActive ? 'bg-cyan-400 text-white' : 'bg-cyan-900/50 text-cyan-300 hover:bg-cyan-800',
-      Electrico: isActive ? 'bg-blue-500 text-white' : 'bg-blue-900/50 text-blue-300 hover:bg-blue-800',
-      Fisico: isActive ? 'bg-yellow-600 text-white' : 'bg-yellow-900/50 text-yellow-300 hover:bg-yellow-800',
-      Etereo: isActive ? 'bg-pink-500 text-white' : 'bg-pink-900/50 text-pink-300 hover:bg-pink-800',
-    };
-
-    // Rangos
-    const rankColorMap = {
-      S: isActive ? 'bg-amber-500 text-white' : 'bg-amber-900/50 text-amber-300 hover:bg-amber-800',
-      A: isActive ? 'bg-purple-500 text-white' : 'bg-purple-900/50 text-purple-300 hover:bg-purple-800',
-    };
-
-    // Roles sin color - solo grises neutrales
-    const roleColorMap = {
-      Ataque: isActive ? 'bg-gray-400 text-white' : 'bg-gray-600 text-gray-300 hover:bg-gray-500',
-      Aturdidor: isActive ? 'bg-gray-400 text-white' : 'bg-gray-600 text-gray-300 hover:bg-gray-500',
-      Anomalia: isActive ? 'bg-gray-400 text-white' : 'bg-gray-600 text-gray-300 hover:bg-gray-500',
-      Soporte: isActive ? 'bg-gray-400 text-white' : 'bg-gray-600 text-gray-300 hover:bg-gray-500',
-      Defensa: isActive ? 'bg-gray-400 text-white' : 'bg-gray-600 text-gray-300 hover:bg-gray-500',
-      Ruptura: isActive ? 'bg-gray-400 text-white' : 'bg-gray-600 text-gray-300 hover:bg-gray-500',
-    };
-
-    // Usar colorMap para elementos, rankColorMap para rangos y roleColorMap para roles
-    if (["Fuego", "Hielo", "Electrico", "Fisico", "Etereo"].includes(filterName)) {
-      return `${base} ${colorMap[filterName]}`;
-    } else if (["S", "A"].includes(filterName)) {
-      return `${base} ${rankColorMap[filterName]}`;
-    } else {
-      return `${base} ${roleColorMap[filterName]}`;
-    }
-  };
-
   return (
-    <div className="p-8">
-      {/* Filtros en fila con separación uniforme */}
-      <div className="mb-8 flex flex-wrap gap-8">
-        {/* Sección de Elementos */}
-        <div>
-          <h3 className="text-lg font-bold mb-3 text-white">Elementos</h3>
-          <div className="flex flex-wrap gap-3">
+    <div className="min-h-screen bg-gray-950 text-white p-8 ml-20">
+      {/* --- PANEL DE FILTROS --- */}
+      <div className="w-full mb-8 p-6 bg-gray-950/80 border-y border-white/10 backdrop-blur-md shadow-2xl flex flex-col gap-6">
+        
+        {/* FILA 1: Filtros Principales + Búsqueda */}
+        <div className="flex flex-col xl:flex-row items-start xl:items-center justify-between gap-4">
+          
+          {/* Grupo Izquierdo: Botones y Cápsulas */}
+          <div className="flex flex-wrap items-center gap-4">
             <button
-              onClick={() => toggleFilter('Todos')}
-              className={getButtonClasses('Todos')}
+              onClick={() => toggleFilter("Todos")}
+              className={`h-10 px-6 rounded-lg font-bold font-display text-sm tracking-wider border transition-all ${
+                activeFilters.length === 0
+                  ? "bg-yellow-400 text-black border-yellow-400 shadow-[0_0_15px_#facc15]" 
+                  : "bg-gray-900 text-gray-400 border-gray-700 hover:border-gray-500 hover:text-white"
+              }`}
             >
-              Todos
+              TODOS
             </button>
-            {["Fuego", "Hielo", "Electrico", "Fisico", "Etereo"].map(element => (
-              <button
-                key={element}
-                onClick={() => toggleFilter(element)}
-                className={getButtonClasses(element)}
-              >
-                <Image src={elementIcons[element]} alt={element} width={24} height={24} />
-              </button>
-            ))}
+
+            {/* Cápsulas (Elementos, Rangos, Roles) */}
+            <div className="flex flex-wrap gap-2">
+              <div className="flex items-center gap-1 p-2 bg-black/40 border border-white/5 rounded-lg shadow-inner">
+                {elementFilters.map((el) => (
+                  <FilterIcon key={el} name={el} icon={elementIcons[el]} activeFilters={activeFilters} toggleFilter={toggleFilter} />
+                ))}
+              </div>
+              <div className="flex items-center gap-1 p-2 bg-black/40 border border-white/5 rounded-lg shadow-inner">
+                {rankFilters.map((r) => (
+                  <FilterIcon key={r} name={r} icon={elementIcons[r]} activeFilters={activeFilters} toggleFilter={toggleFilter} size={28} />
+                ))}
+              </div>
+              <div className="flex items-center gap-1 p-2 bg-black/40 border border-white/5 rounded-lg shadow-inner">
+                {roleFilters.map((rol) => (
+                  <FilterIcon key={rol} name={rol} icon={elementIcons[rol]} activeFilters={activeFilters} toggleFilter={toggleFilter} />
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {/* Grupo Derecho: Búsqueda (Ahora aquí arriba) */}
+          <div className="relative w-full xl:w-64">
+            <input
+              type="text"
+              placeholder="Buscar Agente..."
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              className="w-full bg-black/50 border border-white/10 rounded-lg py-2.5 pl-10 pr-4 text-sm text-white focus:outline-none focus:border-yellow-500 focus:shadow-[0_0_15px_rgba(234,179,8,0.2)] transition-all"
+            />
+            <svg className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+            </svg>
           </div>
         </div>
 
-        {/* Sección de Rangos */}
-        <div>
-          <h3 className="text-lg font-bold mb-3 text-white">Rangos</h3>
-          <div className="flex flex-wrap gap-3">
-            {["S", "A"].map(rank => (
-              <button
-                key={rank}
-                onClick={() => toggleFilter(rank)}
-                className={getButtonClasses(rank)}
-              >
-                <Image src={elementIcons[rank]} alt={rank} width={24} height={24} />
-              </button>
-            ))}
-          </div>
+        {/* FILA 2: FACCIONES (Limpia, solo iconos) */}
+        <div className="flex flex-wrap items-center gap-1 p-2 bg-black/40 border border-white/5 rounded-lg shadow-inner">
+          {factionFilters.map((fac) => (
+            <FilterIcon key={fac} name={fac} icon={elementIcons[fac]} activeFilters={activeFilters} toggleFilter={toggleFilter} size={32} />
+          ))}
         </div>
 
-        {/* Sección de Roles */}
-        <div>
-          <h3 className="text-lg font-bold mb-3 text-white">Roles</h3>
-          <div className="flex flex-wrap gap-3">
-            {["Ataque", "Aturdidor", "Anomalia", "Soporte", "Defensa", "Ruptura"].map(role => (
-              <button
-                key={role}
-                onClick={() => toggleFilter(role)}
-                className={getButtonClasses(role)}
-              >
-                <Image src={elementIcons[role]} alt={role} width={24} height={24} />
-              </button>
-            ))}
-          </div>
-        </div>
       </div>
 
-      <div className="grid grid-cols-3 md:grid-cols-5 lg:grid-cols-7 gap-3">
-        {filteredAgents.map(agent => (
-          <Link key={agent.id} href={`/personajes/${agent.id}`}>
-            <AgentCard agent={agent} />
-          </Link>
-        ))}
-      </div>
+      {/* GRID DE PERSONAJES ANIMADO */}
+      <motion.div 
+        layout 
+        className="grid grid-cols-3 md:grid-cols-5 lg:grid-cols-7 gap-3 w-full"
+      >
+        <AnimatePresence mode="popLayout">
+          {filteredAgents.map((agent) => (
+            <motion.div
+              key={agent.id}
+              layout // ¡Magia! Esto hace que se muevan suavemente a su nueva posición
+              initial={{ opacity: 0, scale: 0.8 }} // Estado inicial (invisible y pequeño)
+              animate={{ opacity: 1, scale: 1 }}   // Estado visible (normal)
+              exit={{ opacity: 0, scale: 0.5 }}    // Al filtrarse (se encoge y desaparece)
+              transition={{ duration: 0.3, type: "spring", stiffness: 100 }} // Suavidad
+            >
+              <Link href={`/personajes/${agent.id}`}>
+                <AgentCard agent={agent} />
+              </Link>
+            </motion.div>
+          ))}
+        </AnimatePresence>
+      </motion.div>
     </div>
+  );
+}
+
+function FilterIcon({ name, icon, activeFilters, toggleFilter, size = 24 }) {
+  const isActive = activeFilters.includes(name);
+  
+  return (
+    <button
+      onClick={() => toggleFilter(name)}
+      title={name}
+      // Clases base: Borde transparente, transición suave
+      className={`relative p-2 rounded-lg border-2 transition-all duration-300 group ${
+        isActive
+          ? "border-yellow-500 bg-yellow-500/10 shadow-[0_0_15px_rgba(234,179,8,0.4)] scale-110 z-10 opacity-100"
+          : "border-transparent hover:bg-white/5 opacity-40 hover:opacity-100 hover:scale-105"
+      }`}
+    >
+      <Image 
+        src={icon} 
+        alt={name} 
+        width={size} 
+        height={size} 
+        // Quitamos 'brightness-0' para que el icono mantenga su color original
+        // Solo aplicamos grayscale cuando está inactivo para efecto de "apagado"
+        className={`object-contain transition-all ${isActive ? "grayscale-0 drop-shadow-md" : "grayscale group-hover:grayscale-0"}`} 
+      />
+    </button>
   );
 }

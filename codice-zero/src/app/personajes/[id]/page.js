@@ -8,6 +8,7 @@ import { ArrowLeft } from 'lucide-react';
 import { agents } from '@/data/agents';
 import { agentDetails } from '@/data/agentDetails';
 import { calculateStat, calculateStatsWithCore } from '@/utils/statCalculator';
+import SkillsModule from '@/components/agents/SkillsModule';
 
 export default function AgentDetailPage() {
   const params = useParams();
@@ -37,18 +38,23 @@ export default function AgentDetailPage() {
     "etereo": "#d946ef",   // Rosa/Magenta
   };
 
-  // Mapa de iconos por elemento (nombres exactos de archivos)
-  const elementIconMap = {
-    "Fuego": "/CodiceZero/Agentes/Elemento/Fuego.webp",
-    "Hielo": "/CodiceZero/Agentes/Elemento/Hielo.webp",
-    "Electrico": "/CodiceZero/Agentes/Elemento/Electrico.webp",
-    "Fisico": "/CodiceZero/Agentes/Elemento/Fisico.webp",
-    "Etéreo": "/CodiceZero/Agentes/Elemento/Etéreo.webp", // Con acento
-    "Etereo": "/CodiceZero/Agentes/Elemento/Etéreo.webp"  // Sin acento (fallback)
-  };
-
-  // Obtener icono del elemento
-  const elementIcon = elementIconMap[agent?.element] || elementIconMap[normalize(agent?.element)] || "/CodiceZero/Agentes/Elemento/Fuego.webp";
+  // Lógica para determinar el icono del elemento
+  let elementIconPath = "";
+  
+  if (agent?.name?.includes("Miyabi")) {
+     elementIconPath = "/CodiceZero/Agentes/Elemento/Icon_Frost.png";
+  } else if (agent?.name?.includes("Yixuan")) {
+     elementIconPath = "/CodiceZero/Agentes/Elemento/Icon_Auric_Ink.webp";
+  } else {
+     const iconMap = {
+       "fuego": "Fuego.webp",
+       "hielo": "Hielo.webp",
+       "electrico": "Electrico.webp",
+       "fisico": "Fisico.webp",
+       "etereo": "Etéreo.webp" // Nombre exacto del archivo
+     };
+     elementIconPath = `/CodiceZero/Agentes/Elemento/${iconMap[normalize(agent?.element)] || "Fisico.webp"}`;
+  }
 
   // Mapa de iconos de discos
   const discIcons = {
@@ -190,7 +196,7 @@ export default function AgentDetailPage() {
               {/* 2. Elemento */}
               <div className="relative group">
                 <Image
-                  src={elementIcon}
+                  src={elementIconPath}
                   alt={agent.element}
                   width={40}
                   height={40}
@@ -485,6 +491,12 @@ export default function AgentDetailPage() {
             ))}
           </div>
         </div>
+      </div>
+
+      {/* SECCIÓN 3: HABILIDADES */}
+      <div className="max-w-7xl mx-auto p-6">
+        <h2 className="text-3xl font-orbitron text-yellow-400 mb-6">Habilidades</h2>
+        <SkillsModule skills={details?.skills} color={themeColor} />
       </div>
     </div>
   );

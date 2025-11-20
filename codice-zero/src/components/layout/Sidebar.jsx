@@ -11,7 +11,7 @@ export default function Sidebar() {
 
   return (
     <aside
-      className={`h-screen bg-black/60 backdrop-blur-md text-white p-4 flex flex-col transition-all duration-300 ease-in-out border-r border-white/5 ${
+      className={`h-screen bg-gray-900 backdrop-blur-md text-white p-4 flex flex-col transition-all duration-300 ease-in-out border-r border-white/5 ${
         isExpanded ? 'w-64' : 'w-20'
       }`}
       onMouseEnter={() => setIsExpanded(true)}
@@ -44,13 +44,13 @@ export default function Sidebar() {
             </Link>
           </li>
           <li>
-            <a href="#" onClick={() => setActiveItem(1)} className={`relative flex items-center h-12 py-2 px-2 rounded-md text-gray-300 transition-all ${activeItem === 1 ? 'text-yellow-400' : 'hover:bg-white/5 hover:text-yellow-400'}`}>
+            <Link href="/armas" onClick={() => setActiveItem(1)} className={`relative flex items-center h-12 py-2 px-2 rounded-md text-gray-300 transition-all ${activeItem === 1 ? 'text-yellow-400' : 'hover:bg-white/5 hover:text-yellow-400'}`}>
               {activeItem === 1 && <div className="absolute left-0 top-0 bottom-0 w-[3px] bg-[#F5E02A]"></div>}
               <Image src="/CodiceZero/Armas/Icon_Storage_W-Engine.webp" alt="Icono Armas" width={36} height={36} className={`opacity-75 hover:opacity-100 transition-opacity saturate-200 contrast-200 ${activeItem === 1 ? 'drop-shadow-lg shadow-yellow-500/50' : ''}`} />
               <span className={`ml-4 ${!isExpanded && 'hidden'} transition-opacity`}>
                 Armas
               </span>
-            </a>
+            </Link>
           </li>
           <li>
             <a href="#" onClick={() => setActiveItem(2)} className={`relative flex items-center h-12 py-2 px-2 rounded-md text-gray-300 transition-all ${activeItem === 2 ? 'text-yellow-400' : 'hover:bg-white/5 hover:text-yellow-400'}`}>

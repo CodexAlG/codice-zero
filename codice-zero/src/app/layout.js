@@ -19,7 +19,7 @@ export default function RootLayout({ children }) {
       <body
         className={`${inter.variable} ${techFont.variable} antialiased`}
       >
-        <div className="flex h-screen bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-gray-900 via-[#0a0a0a] to-black text-white relative z-10">
+        <div className="flex h-screen bg-gray-950 text-white relative z-10">
           <Sidebar />
           <main className="flex-1 overflow-y-auto relative z-10">
             {children}
