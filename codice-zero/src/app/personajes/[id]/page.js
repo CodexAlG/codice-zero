@@ -113,7 +113,7 @@ export default function AgentDetailPage() {
 
   // 5. QUINTO: Return del JSX
   return (
-    <div className="fixed inset-0 bg-gray-950 text-white flex pl-20 overflow-hidden">
+    <div className="fixed inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-gray-800 via-gray-950 to-black text-white flex pl-20 overflow-hidden">
       
       {/* BOTÓN VOLVER - POSICION ABSOLUTA */}
       <Link 
@@ -185,168 +185,89 @@ export default function AgentDetailPage() {
           </div>
 
           {/* Nombre */}
-          <h1 className="text-6xl font-display font-black italic text-white drop-shadow-lg mb-3 leading-none transform -skew-x-6">
+          <h1 className="font-display text-6xl uppercase italic tracking-tighter text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-400 drop-shadow-[0_0_10px_rgba(255,255,255,0.5)] mb-3 leading-none">
             {agent.name}
           </h1>
 
-          {/* Metadata Chips */}
+          {/* Metadata Chips - Neon Border Style */}
           <div className="flex gap-3">
              {/* Chip: Rango */}
-             <div className="flex items-center bg-black/60 border border-white/10 px-3 py-1 rounded skew-x-[-10deg]">
-                <div className="skew-x-[10deg] flex items-center gap-2">
+             <div className="flex items-center bg-black border border-yellow-500/50 px-3 py-1 rounded">
+                <div className="flex items-center gap-2">
                    <Image src={`/CodiceZero/Rango/Icon_Item_Rank_${agent.rank}.webp`} alt={agent.rank} width={24} height={24} />
-                   <span className={`font-bold text-lg ${agent.rank === 'S' ? 'text-orange-400' : 'text-purple-400'}`}>{agent.rank} RANK</span>
+                   <span className={`font-bold text-xs uppercase tracking-wider ${agent.rank === 'S' ? 'text-orange-400' : 'text-purple-400'}`}>{agent.rank} RANK</span>
                 </div>
              </div>
 
              {/* Chip: Elemento */}
-             <div className="flex items-center bg-black/60 border border-white/10 px-3 py-1 rounded skew-x-[-10deg]" style={{ borderColor: themeColor }}>
-                <div className="skew-x-[10deg] flex items-center gap-2">
+             <div className="flex items-center bg-black border px-3 py-1 rounded" style={{ borderColor: themeColor }}>
+                <div className="flex items-center gap-2">
                    <Image src={elementIconPath} alt={agent.element} width={20} height={20} />
-                   <span className="font-bold text-sm uppercase" style={{ color: themeColor }}>{agent.element}</span>
+                   <span className="font-bold text-xs uppercase tracking-wider" style={{ color: themeColor }}>{agent.element}</span>
                 </div>
              </div>
 
              {/* Chip: Rol */}
-             <div className="flex items-center bg-black/60 border border-white/10 px-3 py-1 rounded skew-x-[-10deg]">
-                <div className="skew-x-[10deg] flex items-center gap-2">
+             <div className="flex items-center bg-black border border-cyan-500/50 px-3 py-1 rounded">
+                <div className="flex items-center gap-2">
                    <Image src={`/CodiceZero/Agentes/Rol/${normalize(agent.rol)}.webp`} alt={agent.rol} width={18} height={18} className="invert" />
-                   <span className="font-bold text-sm uppercase text-gray-300">{agent.rol}</span>
+                   <span className="font-bold text-xs uppercase tracking-wider text-cyan-400">{agent.rol}</span>
                 </div>
              </div>
           </div>
         </div>
 
-        {/* --- PANEL DE CONTENIDO (Caja de Cristal) --- */}
-        <div className="flex-1 bg-gray-900/70 border border-white/10 rounded-tr-3xl rounded-bl-3xl p-8 backdrop-blur-xl shadow-2xl overflow-hidden flex flex-col relative">
+        {/* DERECHA: PANEL GRANDE CON ESPACIO */}
+        <div className="flex-1 flex flex-col justify-center pr-12 pl-12 z-20 h-full">
           
-          {/* Decoración de esquinas */}
-          <div className="absolute top-0 right-0 w-16 h-16 border-t-2 border-r-2 border-yellow-500/50 rounded-tr-3xl pointer-events-none"></div>
-          <div className="absolute bottom-0 left-0 w-16 h-16 border-b-2 border-l-2 border-yellow-500/50 rounded-bl-3xl pointer-events-none"></div>
-
-          {/* Header del Panel (Título de Pestaña) */}
-          <div className="flex justify-between items-end mb-6 border-b border-white/5 pb-4">
-            <h2 className="text-3xl font-display text-white uppercase italic tracking-wide flex items-center gap-3">
-              <span className="w-3 h-3 bg-yellow-500 rotate-45"></span>
-              {activeTab === 'stats' && "Atributos"}
-              {activeTab === 'skills' && "Habilidades"}
-              {activeTab === 'equip' && "Equipamiento"}
-            </h2>
+          {/* Contenedor Principal - Tech HUD Style */}
+          <div className="relative w-full bg-gray-950/80 border border-white/10 rounded-xl overflow-hidden shadow-[0_0_30px_rgba(0,0,0,0.5)] backdrop-blur-xl group hover:border-yellow-500/50 transition-all duration-300 p-8 flex flex-col gap-6 max-h-[85vh]">
             
-            {/* Slider de Nivel Integrado (Solo en Stats) */}
-            {activeTab === 'stats' && (
-              <div className="flex flex-col items-end">
-                <span className="text-xs font-mono text-gray-400 mb-1">NIVEL DE AGENTE</span>
-                <div className="flex items-center gap-3">
-                  <input 
-                    type="range" min="1" max="60" value={level} 
-                    onChange={(e) => setLevel(Number(e.target.value))}
-                    className="w-48 h-1.5 bg-gray-700 rounded-lg appearance-none cursor-pointer accent-yellow-400"
-                  />
-                  <span className="font-mono font-bold text-yellow-400 text-lg w-12 text-right">Nv.{level}</span>
-                </div>
+            {/* Header + Slider */}
+            <div className="flex justify-between items-center border-b border-white/10 pb-4">
+              <h2 className="text-2xl font-display text-yellow-400 uppercase italic">Atributos Base</h2>
+              <div className="flex items-center gap-3">
+                <span className="text-sm font-mono text-gray-400">Nv.{level}/60</span>
+                <input 
+                  type="range" 
+                  min="1" 
+                  max="60" 
+                  value={level} 
+                  onChange={(e) => setLevel(Number(e.target.value))}
+                  className="w-48 h-1.5 bg-gray-700 rounded-lg appearance-none cursor-pointer accent-yellow-400" 
+                />
               </div>
-            )}
+            </div>
+
+            {/* Contenido - Stats Table Compact */}
+            <div className="grid grid-cols-2 gap-x-16 gap-y-1 text-sm overflow-y-auto pr-2 scrollbar-hide font-mono">
+              <StatsTable details={details} level={level} />
+            </div>
+
           </div>
 
-          {/* ÁREA DE SCROLL DEL CONTENIDO */}
-          <div className="flex-1 overflow-y-auto scrollbar-hide pr-2">
-             {/* Aquí se renderiza el contenido condicional (Stats, Skills, etc.) */}
-             {activeTab === 'stats' && (
-                <div className="grid grid-cols-2 gap-x-12 gap-y-4 animate-fadeIn">
-                   {/* Stats Grid */}
-                   <AttributeRow label="PV Base" value={currentStats.hp} />
-                   <AttributeRow label="Ataque Base" value={currentStats.atk} />
-                   <AttributeRow label="Defensa Base" value={currentStats.def} />
-                   <AttributeRow label="Impacto Base" value={currentStats.impact} />
-                   <AttributeRow label="Prob. Crítico" value={details?.baseStats?.crit} />
-                   <AttributeRow label="Daño Crítico" value={details?.baseStats?.critDmg} />
-                   <AttributeRow label="Tasa de Anomalía" value={details?.baseStats?.anomalyRate} />
-                   <AttributeRow label="Maestría de Anomalía" value={details?.baseStats?.anomalyMastery} />
-                   <AttributeRow label="Tasa de Perforación" value={details?.baseStats?.penRatio} />
-                   <AttributeRow label="Recup. de Energía" value={details?.baseStats?.energyRegen} />
-                </div>
-             )}
-             {activeTab === 'skills' && (
-                <div className="flex flex-col justify-center items-center gap-8 animate-fadeIn">
-                   {/* Título */}
-                   <h2 className="text-xl font-mono text-gray-400 uppercase tracking-widest">Selecciona una Habilidad</h2>
-                   
-                   {/* Grid de Iconos de Habilidades */}
-                   <div className="flex gap-4 flex-wrap justify-center">
-                      {details?.skills?.map((skill, index) => (
-                        <button 
-                          key={index}
-                          onClick={() => setSelectedSkill(skill)}
-                          className={`w-20 h-20 rounded-xl border-2 flex items-center justify-center transition-all duration-300 group ${
-                            selectedSkill === skill 
-                              ? "border-yellow-400 bg-yellow-400/20 shadow-[0_0_20px_rgba(250,204,21,0.4)] scale-110" 
-                              : "border-white/20 bg-black/40 hover:border-white/50 hover:bg-white/5"
-                          }`}
-                        >
-                          {/* Icono de la habilidad */}
-                          <Image 
-                            src={skillIcons[skill.type] || "/CodiceZero/Habilidades/Icon_Basic_Attack.webp"} 
-                            alt={skill.type} 
-                            width={48} height={48} 
-                            className={`object-contain transition-transform ${selectedSkill === skill ? "scale-110" : "group-hover:scale-110"}`}
-                          />
-                        </button>
-                      ))}
-                   </div>
-                   
-                   {/* Nodos de Core (A-F) */}
-                   <div className="flex gap-2 mt-8">
-                      {['A', 'B', 'C', 'D', 'E', 'F'].map((node) => (
-                        <div key={node} className="w-12 h-12 rounded-full border-2 border-white/20 bg-black/40 flex items-center justify-center text-white font-bold">
-                          {node}
-                        </div>
-                      ))}
-                   </div>
-                </div>
-             )}
-             {activeTab === 'equip' && (
-                <div className="animate-fadeIn">
-                   {/* Armas Recomendadas */}
-                   <div className="mb-6">
-                     <h3 className="text-lg font-bold text-white mb-4">Armas Recomendadas</h3>
-                     <div className="p-4 bg-black/40 rounded border border-white/10">
-                       <p className="text-gray-400">Próximamente: Sistema de armas recomendadas</p>
-                     </div>
-                   </div>
-
-                   {/* Discos */}
-                   <div>
-                     <h3 className="text-lg font-bold text-white mb-4">Discos</h3>
-                     <div className="p-4 bg-black/40 rounded border border-white/10">
-                       <p className="text-gray-400">Próximamente: Sistema de discos</p>
-                     </div>
-                   </div>
-                </div>
-             )}
+          {/* Navegación Centrada */}
+          <div className="mt-4 flex justify-center gap-6">
+            {['stats', 'skills', 'equip'].map((tab) => (
+              <button
+                key={tab}
+                onClick={() => {
+                  setActiveTab(tab);
+                  if (tab !== 'skills') setSelectedSkill(null);
+                }}
+                className={`px-6 py-2 uppercase font-display tracking-widest border-b-2 transition-all ${
+                  activeTab === tab 
+                    ? "border-yellow-400 text-yellow-400" 
+                    : "border-transparent text-gray-500 hover:border-yellow-400 hover:text-yellow-400"
+                }`}
+              >
+                {tab === 'stats' ? "Atributos" : tab === 'skills' ? "Habilidades" : "Equipo"}
+              </button>
+            ))}
           </div>
         </div>
 
-        {/* --- BARRA DE NAVEGACIÓN (Tabs Abajo) --- */}
-        <div className="mt-4 flex justify-center gap-6 w-full">
-          {['stats', 'skills', 'equip'].map((tab) => (
-            <button
-              key={tab}
-              onClick={() => {
-                setActiveTab(tab);
-                if (tab !== 'skills') setSelectedSkill(null); // Clear skill selection when switching tabs
-              }}
-              className={`
-                px-8 py-2 rounded-sm font-display font-bold italic uppercase tracking-wider transition-all duration-200
-                ${activeTab === tab 
-                  ? "bg-yellow-400 text-black border-b-4 border-yellow-600 translate-y-[-2px]" 
-                  : "bg-black/40 text-gray-500 border border-white/10 hover:bg-white/10 hover:text-white"}
-              `}
-            >
-              {tab === 'stats' ? "Atributos" : tab === 'skills' ? "Habilidades" : "Equipo"}
-            </button>
-          ))}
-        </div>
+
 
       </div>
     </div>

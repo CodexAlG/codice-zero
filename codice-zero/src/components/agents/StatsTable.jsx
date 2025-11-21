@@ -1,11 +1,11 @@
 import { calculateStatsWithCore } from '@/utils/statCalculator';
 
 export default function StatsTable({ details, level }) {
-  // Componente de Fila de Atributo
+  // Componente de Fila de Atributo - Tech Style
   const AttributeRow = ({ label, value }) => (
-    <div className="flex justify-between items-center py-2 border-b border-white/5 last:border-0">
-      <span className="text-gray-400 text-sm font-medium">{label}</span>
-      <span className="text-white text-sm font-bold font-mono">{value}</span>
+    <div className="flex justify-between items-center py-1 border-b border-dashed border-white/10 last:border-0">
+      <span className="text-gray-400 text-sm font-medium font-mono">{label}</span>
+      <span className="text-yellow-400 text-sm font-bold font-mono">{value}</span>
     </div>
   );
 
@@ -13,7 +13,7 @@ export default function StatsTable({ details, level }) {
   const currentStats = details ? calculateStatsWithCore(details.baseStats, level, details.coreStats) : {};
 
   return (
-    <div className="grid grid-cols-2 gap-x-12 gap-y-4 animate-fadeIn">
+    <>
       <AttributeRow label="PV Base" value={currentStats.hp} />
       <AttributeRow label="Ataque Base" value={currentStats.atk} />
       <AttributeRow label="Defensa Base" value={currentStats.def} />
@@ -24,6 +24,6 @@ export default function StatsTable({ details, level }) {
       <AttributeRow label="Maestría de Anomalía" value={details?.baseStats?.anomalyMastery} />
       <AttributeRow label="Tasa de Perforación" value={details?.baseStats?.penRatio} />
       <AttributeRow label="Recup. de Energía" value={details?.baseStats?.energyRegen} />
-    </div>
+    </>
   );
 }

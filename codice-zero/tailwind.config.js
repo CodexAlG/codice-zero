@@ -8,6 +8,8 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
+        display: ['var(--font-orbitron)', 'sans-serif'],
+        mono: ['var(--font-oxanium)', 'monospace'],
         tech: ['var(--font-tech)', 'sans-serif'],
         sans: ['var(--font-inter)', 'sans-serif'],
       },
