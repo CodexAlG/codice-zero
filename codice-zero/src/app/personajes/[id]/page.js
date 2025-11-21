@@ -64,8 +64,12 @@ export default function AgentDetailPage() {
       const mappedKey = keyMap[iconName] || iconName;
       const src = skillTypeIcons[mappedKey] || skillTypeIcons["Ataque Básico"]; // Fallback
 
-      // ESTILO CORREGIDO: Usamos 'h-[1.3em]' para que sea proporcional al texto y 'w-auto'
-      return `<img src="${src}" alt="${iconName}" class="inline-block h-[1.3em] w-auto align-text-bottom mx-1 opacity-90" style="vertical-align: -0.2em;" />`;
+      // DETECCIÓN DE ICONOS PROBLEMÁTICOS
+      // Evasión y Asistencia suelen ser más grandes, los forzamos a ser un poco más pequeños
+      const isLargeIcon = mappedKey === "Evasión" || mappedKey === "Asistencia";
+      const sizeClass = isLargeIcon ? "h-[1.1em] w-auto" : "h-[1.3em] w-auto";
+      
+      return `<img src="${src}" alt="${iconName}" class="inline-block ${sizeClass} align-middle mx-0.5 opacity-90" style="transform: translateY(-1px);" />`;
     });
 
     // PASO 2: Habilidades Completas (Tipo + Nombre)
@@ -458,7 +462,7 @@ export default function AgentDetailPage() {
                 </div>
                 
                 {/* Contenido del Modal */}
-                <div className="text-sm text-gray-300 leading-relaxed font-sans">
+                <div className="text-sm text-white-300 leading-relaxed font-sans">
                   
                   {/* CASO A: Habilidad Agrupada (Array de Sub-Skills) */}
                   {selectedSkill.subSkills ? (
@@ -471,13 +475,13 @@ export default function AgentDetailPage() {
                             <span className="text-xs font-bold uppercase tracking-wider" style={{ color: themeColor }}>
                               {sub.name}
                             </span>
-                            <span className="text-[10px] text-gray-500 font-mono uppercase bg-white/5 px-1.5 py-0.5 rounded">
+                            <span className="text-[10px] text-white-500 font-mono uppercase bg-white/5 px-1.5 py-0.5 rounded">
                               {sub.type}
                             </span>
                           </div>
                           
                           {/* Descripción */}
-                          <p className="text-gray-300 leading-snug opacity-90" dangerouslySetInnerHTML={{ __html: processDescription(sub.description) }}></p>
+                          <p className="text-white leading-snug opacity-90" dangerouslySetInnerHTML={{ __html: processDescription(sub.description) }}></p>
 
                           {/* Línea separadora (excepto último) */}
                           {idx < selectedSkill.subSkills.length - 1 && (
@@ -488,7 +492,24 @@ export default function AgentDetailPage() {
                     </div>
                   ) : (
                     /* CASO B: Habilidad Simple (Core) - Texto con Procesamiento */
-                    <div dangerouslySetInnerHTML={{ __html: processDescription(selectedSkill.description) }} />
+                    <>
+                      <div dangerouslySetInnerHTML={{ __html: processDescription(selectedSkill.description) }} />
+                      
+                      {/* Habilidad Adicional (si existe) */}
+                      {selectedSkill.additionalSkill && (
+                        <div className="mt-6 pt-4 border-t border-white/10">
+                          <h4 className="text-xs font-bold uppercase tracking-wider text-yellow-400 mb-2">
+                            HABILIDAD ADICIONAL
+                          </h4>
+                          <div className="flex flex-col gap-1">
+                            <span className="text-sm font-semibold text-white">
+                              {selectedSkill.additionalSkill.name}
+                            </span>
+                            <p className="text-sm text-gray-300 leading-relaxed" dangerouslySetInnerHTML={{ __html: processDescription(selectedSkill.additionalSkill.description) }} />
+                          </div>
+                        </div>
+                      )}
+                    </>
                   )}
                   
                 </div>
@@ -585,7 +606,7 @@ export default function AgentDetailPage() {
                 
                 {/* --- TAREA 5: TÍTULO SECCIÓN CORE --- */}
                 <div className="w-full">
-                  <h4 className="text-xs font-mono text-gray-500 uppercase mb-4 tracking-widest ml-1 border-l-2 border-yellow-500 pl-2">
+                  <h4 className="text-xs font-mono text-white-500 uppercase mb-4 tracking-widest ml-1 border-l-2 border-yellow-500 pl-2">
                     Mejora de Habilidad Core
                   </h4>
                   
@@ -608,7 +629,11 @@ export default function AgentDetailPage() {
                           ...passive,
                           name: `${passive.name} (Nivel Base)`,
                           type: "Core",
-                          description: desc + (additional ? `\n\n[HABILIDAD ADICIONAL]\n${additional.name}: ${additional.description}` : "")
+                          description: desc,
+                          additionalSkill: additional ? {
+                            name: additional.name,
+                            description: additional.description
+                          } : null
                         });
                       }}
                       className={`w-12 h-12 rounded-full border-2 flex items-center justify-center transition-all active:scale-95
@@ -651,7 +676,11 @@ export default function AgentDetailPage() {
                               ...passive,
                               name: `${passive.name} (Nodo ${letter})`,
                               type: "Core",
-                              description: desc + (additional ? `\n\n[HABILIDAD ADICIONAL]\n${additional.name}: ${additional.description}` : "")
+                              description: desc,
+                              additionalSkill: additional ? {
+                                name: additional.name,
+                                description: additional.description
+                              } : null
                             });
                           }}
                           className={`
@@ -678,7 +707,7 @@ export default function AgentDetailPage() {
 
                 {/* --- SECCIÓN 2: HABILIDADES DE COMBATE (GRUPOS) --- */}
                 <div className="w-full">
-                  <h4 className="text-xs font-mono text-gray-500 uppercase mb-4 tracking-widest ml-1 border-l-2 border-white/20 pl-2">
+                  <h4 className="text-xs font-mono text-white-500 uppercase mb-4 tracking-widest ml-1 border-l-2 border-white/20 pl-2">
                     HABILIDADES DE COMBATE
                   </h4>
                   
