@@ -80,7 +80,7 @@ export const agentDetails = {
         {
           type: "Técnica Especial",
           name: "Cese de Pensamientos",
-          description: "Presiona [Icono Non] para activar: Lanza a los enemigos frente a ella por el aire, infligiendo Daño Glacial. El nivel de Anti-interrupción aumenta mientras se usa esta habilidad.",
+          description: "Presiona [Icono Especial] para activar: Lanza a los enemigos frente a ella por el aire, infligiendo Daño Glacial. El nivel de Anti-interrupción aumenta mientras se usa esta habilidad.",
           tags: ["AoE", "Interrupción"]
         },
         {
@@ -92,7 +92,7 @@ export const agentDetails = {
         {
           type: "Técnica Especial",
           name: "Frío Creciente, Persecución Aplastante",
-          description: "Presiona [Icono Especial] o [Icono EspecialEX] mientras cargas o giras durante el Ataque Básico: Abrazo de Escarcha, o presiona [Icono Arriba] mientras mantienes [Icono Ataque] para activar: Lanza a los enemigos frente a ella por el aire, infligiendo Daño Glacial. Cuando el ataque de la habilidad choca con el ataque de un enemigo, activa Frío Creciente. Si la habilidad golpea a un enemigo Aturdido, y con suficiente Adrenalina, activa Persecución Aplastante. Activar Frío Creciente o Persecución Aplastante eleva instantáneamente el nivel de carga al máximo. Durante esta habilidad, presiona [Icono Ataque] y Yidhari desatará inmediatamente el golpe final del Ataque Básico: Abrazo de Escarcha basado en el nivel de carga actual. El nivel de Anti-interrupción aumenta mientras se usa esta habilidad.",
+          description: "Presiona [Icono Especial] o [Icono Especial EX] mientras cargas o giras durante el Ataque Básico: Abrazo de Escarcha, o presiona [Icono Arriba] mientras mantienes [Icono Ataque] para activar: Lanza a los enemigos frente a ella por el aire, infligiendo Daño Glacial. Cuando el ataque de la habilidad choca con el ataque de un enemigo, activa Frío Creciente. Si la habilidad golpea a un enemigo Aturdido, y con suficiente Adrenalina, activa Persecución Aplastante. Activar Frío Creciente o Persecución Aplastante eleva instantáneamente el nivel de carga al máximo. Durante esta habilidad, presiona [Icono Ataque] y Yidhari desatará inmediatamente el golpe final del Ataque Básico: Abrazo de Escarcha basado en el nivel de carga actual. El nivel de Anti-interrupción aumenta mientras se usa esta habilidad.",
           tags: ["AoE", "Interrupción"]
         },
         {

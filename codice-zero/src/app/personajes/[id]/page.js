@@ -35,8 +35,8 @@ export default function AgentDetailPage() {
   const inlineIcons = {
     "Ataque": "/CodiceZero/Habilidades/ZZZ-Icon-System-Skill-Basic-Attack-White-Alt-01.webp",
     "Dodges": "/CodiceZero/Habilidades/ZZZ-Icon-System-Skill-Dodge-02.webp",
-    "Especial": "/CodiceZero/Habilidades/ZZZ-Icon-System-Skill-Special-02-691x675.webp",
-    "EspecialEx": "/CodiceZero/Habilidades/ZZZ-Icon-System-Skill-Special-01-675x675.webp",
+    "Especial": "/CodiceZero/Habilidades/ZZZ-Icon-System-Skill-Special-02-691x675.webp", // Blanco y Negro (Normal)
+    "Especial EX": "/CodiceZero/Habilidades/ZZZ-Icon-System-Skill-Special-01-675x675.webp", // Brilloso (EX)
     "Definitiva": "/CodiceZero/Habilidades/ZZZ-Icon-System-Skill-QTE-Ultimate-Colored-Inverted-01-691x675.webp",
     "Assist": "/CodiceZero/Habilidades/ZZZ-Icon-System-Skill-Assist-01-675x675.webp"
   };
@@ -49,20 +49,17 @@ export default function AgentDetailPage() {
 
     // PASO 1: Iconos con Estilo Inline Forzado
     processed = processed.replace(/\[Icono (.*?)\]/g, (match, iconName) => {
-      const keyMap = { "Ataque": "Ataque Básico", "Dodges": "Evasión", "Assist": "Asistencia", "Especial": "Técnica Especial", "EspecialEx": "Técnica Especial Ex","Definitiva": "Técnica Definitiva" };
-      const mappedKey = keyMap[iconName] ;
-      const src = skillTypeIcons[mappedKey] || skillTypeIcons["Ataque Básico"];
+      // Buscar directamente en el mapa de iconos inline
+      // Esto arregla el problema de Especial vs Especial EX
+      const src = inlineIcons[iconName.trim()]; 
+      
+      if (!src) return match; // Si no existe (ej. typo), no reemplaza
 
-      // DETECCIÓN DE ICONOS VOLUMINOSOS (Círculos/Cuadrados)
-      // Evasión y Asistencia son muy grandes visualmente, los bajamos a 0.9em
-      const isBulkyIcon = mappedKey === "Evasión" || mappedKey === "Asistencia" || mappedKey === "Ataque Básico" || mappedKey === " Técnica Especial" || mappedKey === " Técnica Especial Ex"|| mappedKey === "Técnica Definitiva";
+      // Ajuste de tamaño (igual para todos o específico si quieres)
+      const heightStyle = "1.3em"; 
+      const verticalAlign = "-0.3em";
       
-      // Ajuste fino de tamaño y alineación
-      const heightStyle = isBulkyIcon ? "1.5em" : "1.2em"; // Bajamos Evasión/Asistencia a 0.9em
-      const verticalAlign = isBulkyIcon ? "-0.15em" : "-0.25em"; // Ajuste de posición vertical
-      
-      // Retornamos HTML con estilos inline estrictos
-      return `<img src="${src}" alt="${iconName}" style="display:inline-block; height:${heightStyle}; width:${heightStyle}; vertical-align:${verticalAlign}; opacity:0.9; margin:0 1px;" />`;
+      return `<img src="${src}" alt="${iconName}" style="display:inline-block; height:${heightStyle}; width:auto; vertical-align:${verticalAlign}; margin:0 2px;" />`;
     });
 
     // PASO 2: Habilidades Completas (Tipo + Nombre)
@@ -317,12 +314,14 @@ export default function AgentDetailPage() {
     "Evasión / Contraataque": "/CodiceZero/Habilidades/ZZZ-Icon-System-Skill-Dodge-02.webp",
 
     // --- ESPECIALES (Special-01 y 02) ---
-    "Habilidad Especial": "/CodiceZero/Habilidades/ZZZ-Icon-System-Skill-Special-01-675x675.webp",
-    "Técnica Especial": "/CodiceZero/Habilidades/ZZZ-Icon-System-Skill-Special-01-675x675.webp",
-    "Habilidad Especial EX": "/CodiceZero/Habilidades/ZZZ-Icon-System-Skill-Special-02-691x675.webp",
-    "Técnica Especial EX": "/CodiceZero/Habilidades/ZZZ-Icon-System-Skill-Special-02-691x675.webp",
+    "Especial": "/CodiceZero/Habilidades/ZZZ-Icon-System-Skill-Special-01-675x675.webp",
+    "Habilidad Especial": "/CodiceZero/Habilidades/ZZZ-Icon-System-Skill-Special-02-691x675.webp",
+    "Técnica Especial": "/CodiceZero/Habilidades/ZZZ-Icon-System-Skill-Special-02-691x675.webp",
+    "Habilidad Especial EX": "/CodiceZero/Habilidades/ZZZ-Icon-System-Skill-Special-01-675x675.webp",
+    "Técnica Especial EX": "/CodiceZero/Habilidades/ZZZ-Icon-System-Skill-Special-01-675x675.webp",
 
     // --- ULTIMATE (QTE-Ultimate) ---
+    "Definitiva": "/CodiceZero/Habilidades/ZZZ-Icon-System-Skill-QTE-Ultimate-Colored-Inverted-01-691x675.webp",
     "Técnica Definitiva": "/CodiceZero/Habilidades/ZZZ-Icon-System-Skill-QTE-Ultimate-Colored-Inverted-01-691x675.webp",
     "Movimiento Final": "/CodiceZero/Habilidades/ZZZ-Icon-System-Skill-QTE-Ultimate-Colored-Inverted-01-691x675.webp",
     "Técnica en Cadena": "/CodiceZero/Habilidades/ZZZ-Icon-System-Skill-QTE-Ultimate-Colored-Inverted-01-691x675.webp",
