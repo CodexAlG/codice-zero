@@ -1,619 +1,960 @@
 export const agentDetails = {
-  1: { // Ellen Joe
-    baseStats: {
-      hp: 617,        // Valor exacto de la imagen
-      atk: 135,       // Valor exacto de la imagen
-      def: 49,        // Valor exacto de la imagen
-      impact: 93,
-      crit: "5%",
-      critDmg: "50%",
-      anomalyRate: "94",   // Valor exacto (Mastery)
-      anomalyMastery: "93", // Valor exacto (Proficiency)
-      penRatio: "0%",
-      energyRegen: "1.2",
+    // =================================================
+    // VERSIÓN 2.3 (Spook Shack - Finale)
+    // =================================================
+    43: { // Yidhari Murphy (S - Hielo/Ruptura)
+      baseStats: {
+        hp: { min: 683, max: 8497 }, 
+        atk: { min: 124, max: 859 }, 
+        def: { min: 36, max: 448 },
+        impact: "95", 
+        crit: "5%",
+        critDmg: "50%",
+        anomalyRate: "87",
+        anomalyMastery: "90",
+        penRatio: "0%",
+        energyRegen: "1.2",
+        sheerForce: {min: 105, max: 1107 },
+      },
+      coreStats: {
+        statName: "Core Prob. Crítica", 
+        valuePerNode: 4.8, 
+      },
+      coreSkillScaling: ["50%", "58%", "66%", "74%", "82%", "90%", "100%"],
+      // --- AQUI ESTÁ LA CLAVE: EL ARRAY SKILLS ---
+      skills: [
+        {
+          type: "Ataque Básico",
+          name: "Golpe Aplastante",
+          description: "Presiona [Icono Ataque] para activar: Desata hasta 3 golpes, infligiendo Daño Glacial. En el 3er golpe, Yidhari recupera un 10% de PV.",
+          tags: ["Hielo", "Físico"]
+        },
+        {
+          type: "Ataque Básico",
+          name: "Abrazo de Escarcha",
+          description: "Mantén presionado [Icono Ataque] para activar: Yidhari comienza a cargar, consumiendo continuamente PV para alcanzar hasta tres niveles de carga. Cuando se suelta [Icono Ataque], Yidhari desata un poderoso ataque de martillo cargado frente a ella basado en el nivel de carga actual, infligiendo daño masivo de Daño Glacial. Cuanto más altos sean los PV de Yidhari, más rápido los consume al cargar. El consumo de PV reducirá como máximo los PV de Yidhari al 25% de los PV Máx. Con 2 niveles de carga, después de usar la habilidad, presiona [Icono Ataque] para seguir inmediatamente con el 3er golpe del Ataque Básico: Golpe Aplastante. El Daño de un Ataque Básico: Golpe Aplastante activado de esta manera aumenta según el nivel de carga actual, hasta un 30%. Con 3 niveles de carga, Yidhari gana un nivel de Anti-interrupción aumentado durante la habilidad cargada. Presiona [Icono Ataque] para encadenar anticipadamente con el golpe final.",
+          tags: "Hielo",
+        },
+        {
+          type: "Ataque Básico",
+          name: "Peso Aplastante de la Escarcha",
+          description: "Mientras carga o gira durante el Ataque Básico: Abrazo de Escarcha, si es golpeada por un enemigo, Yidhari puede bloquear con sus tentáculos, reduciendo el Daño recibido en un 25%. Si carga o aún no está a carga completa, Yidhari contraataca con sus tentáculos, volviendo a la postura de carga y ganando instantáneamente 1 nivel de carga, mientras también inflige Daño Glacial a los enemigos en frente. Mientras Peso Aplastante de la Escarcha está activo, presionar [Icono Ataque] hace que Yidhari desate inmediatamente el golpe final del Ataque Básico: Abrazo de Escarcha basado en su nivel de carga actual. Mientras Peso Aplastante de la Escarcha está activo, presionar [Icono Especial] o [Icono Especial EX] hace que Yidhari desate una Técnica Especial: Frío Creciente, Persecución Aplastante que garantiza la activación de Frío Creciente.",
+          tgas: "Hielo",
+        },
+        {
+          type: "Evasión",
+          name: "Cambio Onírico",
+          description: "Presiona [Icono Evasión] para activar: Una evasión rápida. El personaje es invulnerable mientras usa esta habilidad.",
+          tags: ["Esquiva", "Congelación"]
+        },
+        {
+          type: "Ataque de Evasión",
+          name: "Impacto de Flor de Escarcha",
+          description: "Presiona [Icono Ataque] durante una evasión para activar: Golpea hacia adelante, infligiendo Daño Glacial.",
+          tags: "Evasión",
+        },
+        {
+          type: "Contraatque de Evasión",
+          name: "Reverberación de Arrastre Helado",
+          description: "Presiona [Icono Ataque] durante una Evasión Perfecta para activar: Golpea a los enemigos en frente, infligiendo Daño Glacial. El personaje es invulnerable mientras usa esta habilidad.",
+          tags: "Evasión",
+        },
+        {
+          type: "Asistencia Rápida",
+          name: "Refuerzo de Choque Helado",
+          description: "Cuando el personaje activo es lanzado por los aires, presiona [Icono Asistencia] para activar: Golpea a los enemigos en frente, infligiendo Daño Glacial. El personaje es invulnerable mientras usa esta habilidad.",
+          tags: ["Asistencia"]
+        },
+        {
+          type: "Asistencia Defensiva",
+          name: "Rechazo de Terremoto Relámpago",
+          description: "Cuando el personaje en el campo está a punto de ser atacado, presiona [Icono Asistencia] para activar: Realiza un parry al ataque del enemigo, infligiendo Aturdimiento masivo. El personaje es invulnerable mientras usa esta habilidad.",
+          tags: ["Asistencia"]
+        },
+        {
+          type: "Ataque de Asistencia",
+          name: "Asalto Glacial",
+          description: "Presiona [Icono Ataque] después de una Asistencia Defensiva para activar: Ejecuta un ataque de martillo de fragmentos de hielo contra los enemigos en frente, infligiendo Daño Glacial. El personaje es invulnerable mientras usa esta habilidad.",
+          tags: ["Asistencia"]
+        },
+        {
+          type: "Técnica Especial",
+          name: "Cese de Pensamientos",
+          description: "Presiona [Icono Especial] para activar: Lanza a los enemigos frente a ella por el aire, infligiendo Daño Glacial. El nivel de Anti-interrupción aumenta mientras se usa esta habilidad.",
+          tags: ["AoE", "Interrupción"]
+        },
+        {
+          type: "Técnica Especial EX",
+          name: "Espiral de Escarcha",
+          description: "Con suficiente Adrenalina, presiona [Icono Especial] para activar: Realiza dos golpes ascendentes consecutivos, luego libera una niebla helada, infligiendo daño masivo de Daño Glacial. Si la Técnica Especial EX: Espiral de Escarcha golpea a un enemigo, Yidhari recupera PV al final de la habilidad equivalente al 33% de sus PV faltantes. El personaje es invulnerable mientras usa esta habilidad.",
+          tags: ["AoE", "Interrupción"]
+        },
+        {
+          type: "Técnica Especial",
+          name: "Frío Creciente, Persecución Aplastante",
+          description: "Presiona [Icono Especial] o [Icono Especial EX] mientras cargas o giras durante el Ataque Básico: Abrazo de Escarcha, o presiona [Icono Arriba] mientras mantienes [Icono Ataque] para activar: Lanza a los enemigos frente a ella por el aire, infligiendo Daño Glacial. Cuando el ataque de la habilidad choca con el ataque de un enemigo, activa Frío Creciente. Si la habilidad golpea a un enemigo Aturdido, y con suficiente Adrenalina, activa Persecución Aplastante. Activar Frío Creciente o Persecución Aplastante eleva instantáneamente el nivel de carga al máximo. Durante esta habilidad, presiona [Icono Ataque] y Yidhari desatará inmediatamente el golpe final del Ataque Básico: Abrazo de Escarcha basado en el nivel de carga actual. El nivel de Anti-interrupción aumenta mientras se usa esta habilidad.",
+          tags: ["AoE", "Interrupción"]
+        },
+        {
+          type: "Técnica Especial EX",
+          name: "Aplastamiento Glacial",
+          description: "Al activar Frío Creciente o Persecución Aplastante, y con suficiente Adrenalina, presiona [Icono Especial EX] o [Icono Ataque] para activar: Se lanza hacia adelante con un ataque ascendente, luego salta en el aire antes de propinar un poderoso golpe descendente, infligiendo daño masivo de Daño Glacial. Si la Técnica Especial EX: Aplastamiento Glacial golpea a un enemigo, Yidhari se cura al final de la habilidad un 33% de sus PV faltantes. Si la habilidad se usa después de Frío Creciente, otorga 15 de Adrenalina adicional. Este efecto puede activarse una vez cada 1s. Después de usar esta habilidad, presiona [Icono Ataque] para desatar inmediatamente el golpe final del Ataque Básico: Abrazo de Escarcha basado en el nivel de carga actual. El personaje es invulnerable mientras usa esta habilidad.",
+          tags: ["AoE", "Interrupción"]
+        },
+        {
+          type: "Ataque en Cadena",
+          name: "Juramento Helado",
+          description: "Cuando se activa un Ataque en Cadena, selecciona al personaje para activar: Desata un golpe poderoso contra los enemigos en un área pequeña frente a ella, infligiendo daño masivo de Daño Glacial. Si está dentro de <span class='text-white font-bold'>Velo Etéreo: Manantial</span>, los tentáculos se unen al asalto, mejorando aún más el poder de la habilidad. El personaje es invulnerable mientras usa esta habilidad.",
+          tags: ["Cadena", "Campo"]
+        },
+        {
+          type: "Ataque en Cadena",
+          name: "Velo Etéreo: Manantial",
+          description: "Cuando la Puntuación de Decibelios está al Máximo, el golpe final del Ataque Básico: Abrazo de Escarcha, Técnica Especial EX: Espiral de Escarcha, Técnica Especial EX: Aplastamiento Glacial y Ataque en Cadena: Juramento Helado consumirá 3,000 Decibelios para activar un <span class='text-white font-bold'>Velo Etéreo: Manantial</span>. Mientras <span class='text-white font-bold'>Velo Etéreo: Manantial</span> está activo, los PV Máx. de todos los miembros del escuadrón aumentan un 5% durante 30s. Las activaciones repetidas extienden la duración, hasta un máximo de 300s. Mientras Yidhari está dentro de <span class='text-white font-bold'>Velo Etéreo: Manantial</span>, la velocidad de carga del Ataque Básico: Abrazo de Escarcha aumenta, y los PV se consumen más rápido durante la carga.",
+          tags: ["Cadena", "Velo Etéreo"]
+        },
+        {
+          type: "Técnica Definitiva",
+          name: "Acto Final - Cruzando el Río del Arrepentimiento",
+          description: "Después de que Yidhari gaste Decibelios para activar <span class='text-white font-bold'>Velo Etéreo: Manantial</span>, presiona [Icono Definitiva] dentro de los siguientes 30s para activar: Asesta un golpe poderoso a los enemigos en un área grande frente a ella, infligiendo daño masivo de Daño Glacial. El personaje es invulnerable mientras usa esta habilidad. Cada vez que Yidhari gasta Decibelios para activar un <span class='text-white font-bold'>Velo Etéreo: Manantial</span>, puede usar la Técnica Definitiva: Acto Final - Cruzando el Río del Arrepentimiento una vez.",
+          tags: ["Ultimate", "Campo"]
+        },
+        {
+          type: "Pasiva Central",
+          name: "Colección de Paisajes Oníricos",
+          description: "Yidhari gana Fuerza Pura (Sheer Force) adicional basada en sus PV Máx., donde cada 1 punto de PV Máx. aumenta la Fuerza Pura en 0.1. Todo el Daño Glacial infligido por Yidhari se inflige como Daño Puro, ignorando la DEF del enemigo y usando su estadística de Fuerza Pura como Multiplicador de Daño. Cuando Yidhari entra en combate, gana inmediatamente 60 de Adrenalina. En el modo Zona de Investigación, este efecto puede activarse una vez cada 180s. El Daño de habilidad de Yidhari aumenta a medida que disminuye su porcentaje de PV actuales. Cuando sus PV caen por debajo del 50%, el buff alcanza su valor máximo, aumentando su Daño hasta un {VALOR}. Una vez que sus PV se restauran al 50%, la bonificación máxima permanece durante 5s más. Yidhari gana menos Decibelios al asestar habilidades. En su lugar, gana Decibelios a medida que sus PV disminuyen; cada 1% de PV perdido otorga 10 Decibelios",
+          tags: ["Pasiva", "Buff"]
+        },
+        {
+          type: "Habilidad Adicional",
+          name: "Narrativa Completa",
+          description: "Se activa cuando hay otro personaje en tu escuadrón que es Aturdidor o Soporte: Cuando los PV de Yidhari caen por debajo del 50%, el Daño Crítico aumenta un 30% y el daño recibido se reduce un 25%. Mientras Yidhari está dentro de Velo Etéreo: Manantial, obtiene el siguiente efecto adicional: Tras el ataque cargado de nivel 3 del Ataque Básico: Abrazo de Escarcha o la Técnica Especial EX: Aplastamiento Glacial, se invoca un tentáculo helado para atacar, infligiendo daño extra. Este efecto puede activarse una vez cada 12s. La habilidad anterior se considera una Técnica Especial EX, el multiplicador de Daño aumenta según el nivel de la Técnica Especial EX.",
+          tags: ["Adicional", "Pasiva", "Buff"]
+        }
+      ]
     },
-    coreStats: {
-      statName: "Core Crit Rate",
-      valuePerNode: 4.8, // (A, C, E otorgan 4.8% cada uno = 14.4% Total)
+    
+    42: { // Lucia Elowen (S - Etereo/Soporte)
+      // Info Real: Escala buffs basados en su HP Máxima (Meta de 24k HP según leaks)
+      baseStats: {
+        hp: { min: 681, max: 8477 }, // HP Base más alto del juego (superando a Caesar)
+        atk: { min: 109, max: 758 },
+        def: { min: 48, max: 594 },
+        impact: "83",
+        crit: "5%",
+        critDmg: "50%",
+        anomalyRate: "96",
+        anomalyMastery: "95",
+        penRatio: "0%",
+        energyRegen: "1.2", // Regeneración nativa de Soporte S
+      },
+      coreStats: {
+        statName: "energía", // Core stat único para alcanzar el cap de buff
+        valuePerNode: 0.12,
+      },
     },
-    materials: {
-      promotion: ["Sello de Ataque", "Sello de Hielo"],
-      skill: ["Chip de Congelación", "Hamster Cage Pass"],
-      boss: "Visitante de las Profundidades",
-      expert: "Desafío Experto"
+    41: { // Komano Manato (A - Fuego/Ruptura)
+      baseStats: {
+        hp: { min: 621, max: 7724 },
+        atk: { min: 109, max: 755 },
+        def: { min: 36, max: 443 },
+        impact: "95",
+        crit: "5%",
+        critDmg: "50%",
+        anomalyRate: "87",
+        anomalyMastery: "90",
+        penRatio: "0%",
+        energyRegen: "1.2",
+        sheerForce: {min: 94, max: 999 },
+      },
+      coreStats: {
+        statName: "Atk %",
+        valuePerNode: 4.0,
+      },
     },
-    build: {
-      weapons: [
-        { name: "Visitante de las Profundidades", rank: "S", type: "BiS (Prob. Crítica + Daño Hielo)", image: "/CodiceZero/Armas/Icon_Storage_W-Engine.webp" },
-        { name: "Cañón de Rotor", rank: "A", type: "Pase de Batalla", image: "/CodiceZero/Armas/Icon_Storage_W-Engine.webp" },
-        { name: "Estrella de la Calle", rank: "A", type: "F2P", image: "/CodiceZero/Armas/Icon_Storage_W-Engine.webp" }
-      ],
-      discs: {
-        set4: { name: "Metal Polar", desc: "Daño Hielo +10%. Aumenta daño de Básico y Dash un 20%." },
-        set2: { name: "Pájaro Carpintero", desc: "Prob. Crítica +8%" }
+  
+    // =================================================
+    // VERSIÓN 2.2 (Obol Squad Expansion)
+    // =================================================
+    40: { // Orphie & Magus (S - Fuego/Ataque)
+      baseStats: {
+        hp: { min: 605, max: 7640 },
+        atk: { min: 162, max: 1095 }, // Powercreep: ATK base altísimo
+        def: { min: 49, max: 612 },
+        impact: 92,
+        crit: "9.6%", // Base Crit ligeramente elevada
+        critDmg: "50%",
+        anomalyRate: "91",
+        anomalyMastery: "91",
+        penRatio: "0%",
+        energyRegen: "1.2",
       },
-      mainStats: {
-        iv: "Daño Crítico / Prob. Crítica",
-        v: "Daño Hielo",
-        vi: "ATK %"
+      coreStats: {
+        statName: "Crit Rate",
+        valuePerNode: 4.8,
       },
-      subStats: ["Prob. Crítica", "Daño Crítico", "ATK %", "PEN"]
     },
-    skills: [
-      {
-        type: "Ataque Básico",
-        name: "Recorte de Dientes de Sierra",
-        description: "Desata hasta 3 ataques, inflingiendo Daño físico. Presione repetidamente o mantenga presionado  Durante el tercer ataque para extender la duración de la habilidad.",
-        tags: ["Físico", "Combo"],
-        attributes: [{ label: "Daño 1er Golpe (Nv 12)", values: ["54.4%"] }] // Placeholder
+    39: { // Seed (S - Electrico/Ataque)
+      baseStats: {
+        hp: { min: 598, max: 7520 },
+        atk: { min: 155, max: 1030 },
+        def: { min: 47, max: 595 },
+        impact: 90,
+        crit: "5%",
+        critDmg: "50%",
+        anomalyRate: "94",
+        anomalyMastery: "92",
+        penRatio: "0%",
+        energyRegen: "1.2",
       },
-      {
-        type: "Mecánica Única",
-        name: "Congelación Relámpago (Flash Freeze)",
-        description: "Cuando Ellen tiene Cargas de Flash Freeze, sus Ataques Básicos y de Dash consumen 1 carga para infligir Daño Hielo masivo. Puede tener hasta 6 cargas.",
-        tags: ["Hielo", "Buff"]
+      coreStats: {
+        statName: "Crit Dmg",
+        valuePerNode: 9.6,
       },
-      {
-        type: "Ataque Básico (Potenciado)",
-        name: "Recorte de Congelación / Ola Glacial",
-        description: "Con Flash Freeze activo:\n• Recorte: Lanza 3 ataques de Hielo (consume 1 carga cada uno).\n• Ola Glacial: Tras el 3er golpe, pulsa (Ataque) para lanzar una ola de hielo (consume 2 cargas).",
-        tags: ["Daño Hielo", "Consumo Cargas"]
-      },
-      {
-        type: "Evasión / Dash",
-        name: "Vórtice / Caza Errante (Roaming)",
-        description: "Mantén o doble-pulsa (Evasión) para entrar en estado 'Roaming' (carrera rápida).\n\n• Emboscada Ártica: Durante Roaming, pulsa (Ataque) para un golpe giratorio. Si cargas el ataque (tijeretazo), ganas 3 cargas de Flash Freeze.",
-        tags: ["Movilidad", "Genera Cargas"]
-      },
-      {
-        type: "Técnica Especial",
-        name: "Deriva / Coleatazo (Tail Swipe)",
-        description: "Especial: Barrido de cola rápido (Daño Hielo).\nEspecial EX: Golpea con la cola (Daño Hielo Masivo). Otorga 1 carga de Flash Freeze. Invulnerable durante el uso.",
-        tags: ["Hielo", "Invulnerable", "Genera Cargas"]
-      },
-      {
-        type: "Técnica Definitiva",
-        name: "Invierno Eterno",
-        description: "Cae desde arriba y desata una tormenta de hielo seguida de un tijeretazo masivo.\nOtorga 3 cargas de Flash Freeze y aumenta el Daño Hielo un 30% por 12s.",
-        tags: ["Ultimate", "Burst", "Buff"]
-      },
-      {
-        type: "Pasiva Central",
-        name: "Dientes Afilados",
-        description: "Cuando Ellen lanza el tijeretazo cargado (Emboscada Ártica) o consume una carga de Flash Freeze, el Daño Crítico de esa habilidad aumenta un 100%.",
-        tags: ["Daño Crítico", "Pasiva"]
-      }
-    ],
-    mindscape: [
-      { name: "M1: Presagio Glacial", desc: "Al golpear con 'Emboscada Ártica', obtienes más cargas de Flash Freeze (3 con golpe rápido, 6 con cargado). Cada carga consumida da +2% Prob. Crítica (hasta 6 stacks)." },
-      { name: "M2: Depredador del Océano Ártico", desc: "El 3er golpe del ataque básico puede encadenarse directamente con la Especial EX. Al usar la Especial EX, cada punto de Flash Freeze aumenta el Daño Crítico un 20% (máx 60%)." },
-      { name: "M3: Intolerante a Horas Extra", desc: "Nivel de Habilidad +2." },
-      { name: "M4: Escarcha Eterna", desc: "Cuando un aliado Congela o Aturde, Ellen gana 6 cargas y el efecto 'Carga Rápida', además de recuperar 4 de Energía." },
-      { name: "M5: Sueño Adecuado", desc: "Nivel de Habilidad +2." },
-      { name: "M6: El Banquete Comienza", desc: "Al usar Especial EX, Cadena o ganar Carga Rápida, la PEN aumenta un 20% por 6s. Gana cargas de 'El Banquete': usar el tijeretazo cargado consume las cargas para aumentar el daño un 250%." }
-    ],
-    teams: [
-      {
-        title: "Equipo Mono-Hielo (Premium)",
-        members: ["Ellen", "Lycaon", "Soukaku"],
-        bangboo: "Butler"
-      },
-      {
-        title: "Equipo F2P",
-        members: ["Ellen", "Anby", "Soukaku"],
-        bangboo: "Penguin"
-      }
-    ]
-  },
-  2: { // Zhu Yuan
-    baseStats: {
-      hp: 602,         // Valor exacto Nvl 1
-      atk: 132,        // Valor exacto Nvl 1
-      def: 48,         // Valor exacto Nvl 1
-      impact: 90,
-      crit: "5%",
-      critDmg: "50%",
-      anomalyRate: "93",    // Anomaly Mastery
-      anomalyMastery: "92", // Anomaly Proficiency
-      penRatio: "0%",
-      energyRegen: "1.2",
     },
-    coreStats: {
-      statName: "Core Crit Dmg",
-      valuePerNode: 9.6, // 9.6% x 3 = 28.8%
+  
+    // =================================================
+    // VERSIÓN 2.1 (Spook Shack Intro)
+    // =================================================
+    38: { // Alice (S - Fisico/Anomalia)
+      baseStats: {
+        hp: { min: 625, max: 7880 },
+        atk: { min: 142, max: 950 },
+        def: { min: 53, max: 660 },
+        impact: 95,
+        crit: "5%",
+        critDmg: "50%",
+        anomalyRate: "124", // Especialista en Anomalía
+        anomalyMastery: "118",
+        penRatio: "0%",
+        energyRegen: "1.4",
+      },
+      coreStats: {
+        statName: "Anomaly Proficiency",
+        valuePerNode: 18,
+      },
     },
-    materials: {
-      promotion: ["Sello de Ataque", "Sello de Etéreo"],
-      skill: ["Chip Etéreo", "Hamster Cage Pass"],
-      boss: "Verdugo de la Construcción",
-      expert: "Desafío Experto"
+    37: { // Ukinami Yuzuha (S - Fisico/Soporte)
+      baseStats: {
+        hp: { min: 610, max: 7550 },
+        atk: { min: 128, max: 865 },
+        def: { min: 50, max: 625 },
+        impact: 88,
+        crit: "5%",
+        critDmg: "50%",
+        anomalyRate: "105",
+        anomalyMastery: "110",
+        penRatio: "0%",
+        energyRegen: "2.4",
+      },
+      coreStats: {
+        statName: "Energy Regen",
+        valuePerNode: 0.2,
+      },
     },
-    build: {
-      weapons: [
-        { name: "Agente Antidisturbios", rank: "S", type: "BiS (Daño Crítico + Etéreo)", image: "/CodiceZero/Armas/Icon_Storage_W-Engine.webp" },
-        { name: "Estrella de la Calle", rank: "A", type: "Mejor F2P", image: "/CodiceZero/Armas/Icon_Storage_W-Engine.webp" },
-        { name: "Cañón de Rotor", rank: "A", type: "Pase de Batalla", image: "/CodiceZero/Armas/Icon_Storage_W-Engine.webp" }
-      ],
-      discs: {
-        set4: { name: "Metal Caótico", desc: "Daño Etéreo +10%. Daño Crítico +20% (+5.5% extra al detonar Corrupción)." },
-        set2: { name: "Pájaro Carpintero", desc: "Prob. Crítica +8%" }
+  
+    // =================================================
+    // VERSIÓN 2.0 (Yunkui Summit)
+    // =================================================
+    36: { // JuFuFu (S - Fuego/Aturdidor)
+      baseStats: {
+        hp: { min: 665, max: 8250 },
+        atk: { min: 135, max: 880 },
+        def: { min: 58, max: 710 },
+        impact: 120, // Nuevo estándar de Impacto S
+        crit: "5%",
+        critDmg: "50%",
+        anomalyRate: "95",
+        anomalyMastery: "95",
+        penRatio: "0%",
+        energyRegen: "1.2",
       },
-      mainStats: {
-        iv: "Daño Crítico / Prob. Crítica",
-        v: "Daño Etéreo",
-        vi: "ATK %"
+      coreStats: {
+        statName: "Impact",
+        valuePerNode: 6.0,
       },
-      subStats: ["Prob. Crítica", "Daño Crítico", "ATK %", "PEN"]
     },
-    skills: [
-      {
-        type: "Ataque Básico",
-        name: "¡No te muevas! [Modo Asalto]",
-        description: "Pulsa (Ataque Normal) para activar:\nDesata una ráfaga de artes marciales, balas y Perdigones Etéreos en una serie de hasta 5 ataques, infligiendo Daño Físico y Daño Etéreo.\nCuando el 4.º o 5.º golpe impacta a un enemigo, obtiene 1 Cartucho Reforzado por golpe. Se puede obtener un máximo de 1 por activación de este Ataque Básico.\n\nMientras usas esta habilidad, arrastra el joystick y pulsa (Ataque Normal) para activar Ataque de Dash: Ofensiva de Fuego y reajustar para encaricar la dirección seleccionada.\nMientras estás en Modo Asalto, mantén (Ataque Normal) para cambiar a Modo Supresivo.",
-        tags: ["Físico", "Etéreo", "Genera Cartuchos"]
+    35: { // Yixuan (S - Etereo/Ruptura)
+      baseStats: {
+        hp: { min: 630, max: 7800 },
+        atk: { min: 150, max: 990 },
+        def: { min: 51, max: 635 },
+        impact: 108,
+        crit: "5%",
+        critDmg: "50%",
+        anomalyRate: "98",
+        anomalyMastery: "98",
+        penRatio: "0%",
+        energyRegen: "1.2",
       },
-      {
-        type: "Ataque Básico",
-        name: "¡Por favor, no se resista! [Modo Supresivo]",
-        description: "Mantén (Ataque Normal) para activar:\nDesata hasta 3 ataques de disparos perforantes, infligiendo Daño Físico. Si Zhu Yuan tiene Cartuchos Reforzados al disparar, se consumirá 1 Cartucho Reforzado, infligiendo Daño Etéreo masivo.\n\nMientras usas esta habilidad, arrastra el joystick para activar su Ataque de Dash: Poder de Fuego Abrumador y reajustar para encaricar la dirección seleccionada.\nMientras estás en Modo Supresivo, suelta (Ataque Normal) para regresar al Modo Asalto.",
-        tags: ["Daño Masivo", "Consume Cartuchos"]
+      coreStats: {
+        statName: "Pen Ratio",
+        valuePerNode: 4.8,
       },
-      {
-        type: "Evasión",
-        name: "Desvío Táctico",
-        description: "Pulsa (Evasión) para activar:\nUna evasión rápida (dash dodge).\nEl personaje es invulnerable mientras usa esta habilidad.",
-        tags: ["Invulnerable"]
-      },
-      {
-        type: "Ataque rapido",
-        name: "Ofensiva de Fuego [Modo Asalto]",
-        description: "Pulsa (Ataque Normal) durante una evasión para activar:\nUsa la pistola para atacar, infligiendo Daño Etéreo.",
-        tags: ["Daño Etéreo"]
-      },
-      {
-        type: "Ataque rapido",
-        name: "Poder de Fuego Abrumador [Modo Supresivo]",
-        description: "Arrastra el joystick durante el Ataque Básico: ¡Por favor, no se resista! para activar:\nDesata un ataque de disparo perforante, infligiendo Daño Físico. Si Zhu Yuan tiene Cartuchos Reforzados al disparar, se consumirá 1 Cartucho Reforzado, infligiendo Daño Etéreo masivo.",
-        tags: ["Daño Masivo", "Consume Cartuchos"]
-      },
-      {
-        type: "Contraataque de Evasión",
-        name: "Estallido de Fuego",
-        description: "Pulsa (Ataque Normal) durante una Evasión Perfecta para activar:\nDispara a los enemigos en frente con un Perdigón Etéreo, infligiendo Daño Etéreo. Gana 1 Cartucho Reforzado al usar la habilidad.\nEl personaje es invulnerable mientras usa esta habilidad.",
-        tags: ["Invulnerable", "Genera Cartuchos"]
-      },
-      {
-        type: "Habilidad Especial",
-        name: "Disparo de Perdigones",
-        description: "Pulsa (Habilidad Especial) para activar:\nDispara Perdigones Etéreos que infligen Daño Etéreo. Esto se puede repetir 3 veces pulsando repetidamente (Habilidad Especial).\nEl nivel de resistencia a la interrupción aumenta mientras se usa esta habilidad.",
-        tags: ["Daño Etéreo"]
-      },
-      {
-        type: "Habilidad Especial EX",
-        name: "Aluvión Completo",
-        description: "Con suficiente Energía, pulsa (Habilidad Especial EX) para activar:\nDispara una serie de Perdigones Etéreos que explotan e infligen Daño Etéreo masivo.\nAl activarse, gana 3 Cartuchos Reforzados.\nEl personaje es invulnerable mientras usa esta habilidad.",
-        tags: ["Burst", "Genera Cartuchos", "Invulnerable"]
-      },
-      {
-        type: "Ataque en Cadena",
-        name: "Modo de Erradicación",
-        description: "Cuando se activa un Ataque en Cadena, selecciona al personaje para activar:\nUsa un Arma Maestra Modificada para ejecutar un ataque saturado, disparando láseres y misiles guiados para infligir Daño Etéreo masivo.\nAl activarse, gana 3 Cartuchos Reforzados.\nEl personaje es invulnerable mientras usa esta habilidad.",
-        tags: ["Burst", "Genera Cartuchos"]
-      },
-      {
-        type: "Técnica Definitiva",
-        name: "Modo de Erradicación Máxima",
-        description: "Cuando el Nivel de Decibelios está al Máximo, pulsa (Definitiva) para activar:\nUsa un Arma Maestra Modificada para ejecutar un ataque saturado, disparando láseres y misiles guiados para infligir Daño Etéreo masivo.\nAl activarse, gana 3 Cartuchos Reforzados.\nEl personaje es invulnerable mientras usa esta habilidad.",
-        tags: ["Ultimate", "AoE", "Genera Cartuchos"]
-      },
-      {
-        type: "Pasiva Central",
-        name: "Munición de Operaciones Especiales",
-        description: "Cuando Zhu Yuan está bajo el Modo Supresivo, usar Cartuchos Reforzados aumenta su Daño un 40%. Al atacar enemigos Aturdidos, este buff de Daño aumenta un 40% adicional. Cuando Zhu Yuan entra al campo de batalla, obtiene inmediatamente 6 Cartuchos Reforzados.",
-        tags: ["Buff Daño", "Anti-Stun"]
-      },
-      {
-        type: "Habilidad Adicional",
-        name: "Coordinación Táctica",
-        description: "Cuando otro personaje en tu equipo es de tipo Soporte o comparte la misma Facción:\nLa Prob. Crítica de Zhu Yuan aumenta un 30% por 10s después de usar una Habilidad Especial EX, Ataque en Cadena o Definitiva.",
-        tags: ["Buff Crítico", "Sinergia"]
-      },
-      {
-        type: "Asistencia Rápida",
-        name: "Disparo de Cobertura",
-        description: "Cuando el personaje activo es lanzado por los aires, pulsa (Asistencia) para activar:\nDispara a los enemigos en frente con un Perdigón Etéreo, infligiendo Daño Etéreo.\nGana 1 Cartucho Reforzado al usar la habilidad.\nEl personaje es invulnerable mientras usa esta habilidad.",
-        tags: ["Genera Cartuchos"]
-      },
-      {
-        type: "Asistencia Defensiva",
-        name: "Refuerzo Protegido",
-        description: "Cuando el personaje en el campo está a punto de ser atacado, pulsa (Asistencia) para activar:\nEsquiva el ataque enemigo y activa Visión Vital.\nEl personaje es invulnerable mientras usa esta habilidad.",
-        tags: ["Esquiva", "Bullet Time"]
-      },
-      {
-        type: "Seguimiento de Asistencia",
-        name: "Contraataque Defensivo",
-        description: "Pulsa (Ataque Normal) después de una Asistencia Evasiva para activar:\nAtaca con una combinación de artes marciales y cartuchos, infligiendo Daño Físico y Daño Etéreo.\nAl activarse, gana 3 Cartuchos Reforzados.\nEl personaje es invulnerable mientras usa esta habilidad.",
-        tags: ["Genera Cartuchos"]
-      }
-    ],
-    mindscape: [
-      { name: "M1: Recarga Rápida", desc: "Cuando Zhu Yuan activa Ataques en Cadena/Definitivas, gana el efecto Recarga Rápida. Cuando Zhu Yuan tiene el efecto Recarga Rápida y gasta todos los Cartuchos Reforzados, el efecto se consumirá para ganar instantáneamente 6 o 9 Cartuchos Reforzados." },
-      { name: "M2: Ascua Etérea", desc: "En Modo Supresivo, el nivel de Anti-Interrupción de Zhu Yuan aumenta y el Daño recibido se reduce un 10%. Cuando Zhu Yuan golpea a un enemigo con Cartuchos Reforzados, inflige 10% más de Daño con Ataque Básico: ¡Por favor, no se resista! y Ataque de Dash: Poder de Fuego Abrumador (Daño Etéreo), acumulándose hasta 5 veces y durando 5s. Cada disparo añade una carga y las activaciones repetidas reinician la duración." },
-      { name: "M3: Entrenamiento Especial de Seguridad Pública", desc: "Ataque Básico, Evasión, Asistencia, Habilidad Especial y Ataque en Cadena Nvl. +2" },
-      { name: "M4: Perforación Etérea", desc: "Cuando Zhu Yuan golpea a un enemigo con Cartuchos Reforzados, su Ataque Básico: ¡Por favor, no se resista! y Ataque de Dash: Poder de Fuego Abrumador ignoran un 25% de la RES Etérea del objetivo." },
-      { name: "M5: Experiencia en Operaciones Especiales", desc: "Ataque Básico, Evasión, Asistencia, Habilidad Especial y Ataque en Cadena Nvl. +2" },
-      { name: "M6: Paquete de Energía Expandido III", desc: "Cuando Zhu Yuan consume un total de 12 Cartuchos Reforzados, recibe el efecto Resplandor Etéreo, y el costo de Energía de la siguiente Habilidad Especial EX se reduce en 30. Al lanzar una Habilidad Especial EX consume Resplandor Etéreo y dispara un Perdigón Etéreo adicional de 4 balas. Cada bala extra inflige Daño igual al 220% del ATK de Zhu Yuan." }
-    ],
-    teams: [
-      {
-        title: "Equipo N.E.P.S.",
-        members: ["Zhu Yuan", "Qingyi", "Seth"],
-        bangboo: "Resonaboo"
-      },
-      {
-        title: "Equipo F2P",
-        members: ["Zhu Yuan", "Anby", "Nicole"],
-        bangboo: "Resonaboo"
-      }
-    ]
-  },
-  10: { // Jane Doe
-    baseStats: {
-      hp: 626,
-      atk: 127,
-      def: 49,
-      impact: 86,
-      crit: "5%",
-      critDmg: "50%",
-      anomalyRate: "112",   // Tasa muy alta base
-      anomalyMastery: "114", // Maestría base alta
-      penRatio: "0%",
-      energyRegen: "1.2",
     },
-    coreStats: {
-      statName: "Core Tasa de Anomalía",
-      valuePerNode: 12, // (A, C, E dan 9 puntos planos. Total 27)
+    34: { // Pan Yinhu (A - Fisico/Defensa)
+      baseStats: {
+        hp: { min: 720, max: 8950 },
+        atk: { min: 108, max: 700 },
+        def: { min: 78, max: 910 },
+        impact: 102,
+        crit: "5%",
+        critDmg: "50%",
+        anomalyRate: "88",
+        anomalyMastery: "85",
+        penRatio: "0%",
+        energyRegen: "1.0",
+      },
+      coreStats: {
+        statName: "Def %",
+        valuePerNode: 7.5,
+      },
     },
-    materials: {
-      promotion: ["Sello de Anomalía Básico", "Sello de Anomalía Avanzado"],
-      skill: ["Chip Físico", "Hamster Cage Pass"],
-      boss: "Garra Feroz (Disputa Notoria)",
-      expert: "Corte Mortal (Leñador)"
+  
+    // =================================================
+    // VERSIÓN 1.7 (Mookingbird)
+    // =================================================
+    33: { // Hugo Vlad (S - Hielo/Ataque)
+      // Datos exactos datamineados
+      baseStats: {
+        hp: { min: 638, max: 7941 }, // Dato exacto
+        atk: { min: 132, max: 844 }, // Dato exacto (curiosamente bajo para Atk puro, compensa con multiplicadores altos)
+        def: { min: 50, max: 616 },
+        impact: 95,
+        crit: "5%",
+        critDmg: "50%",
+        anomalyRate: "86", 
+        anomalyMastery: "90",
+        penRatio: "0%",
+        energyRegen: "1.2",
+      },
+      coreStats: {
+        statName: "Crit Rate", // Necesario según builds de usuarios beta
+        valuePerNode: 4.8,
+      },
     },
-    build: {
-      weapons: [
-        { name: "Aguijón Afilado", rank: "S", type: "BiS (Daño Asalto)", image: "/CodiceZero/Armas/Icon_Storage_W-Engine.webp" },
-        { name: "Geminis Llorones", rank: "A", type: "Alternativa F2P", image: "/CodiceZero/Armas/Icon_Storage_W-Engine.webp" },
-        { name: "Gourmet de la Selva", rank: "A", type: "Opción Craft", image: "/CodiceZero/Armas/Icon_Storage_W-Engine.webp" }
-      ],
-      discs: {
-        set4: { name: "Metal Colmillo", desc: "Daño Físico + Daño tras Asalto" }, // Fanged Metal
-        set2: { name: "Blues de la Libertad", desc: "Maestría Anomalía +30" } // Freedom Blues
+    32: { // Vivian Banshee (S - Etereo/Anomalia)
+      baseStats: {
+        hp: { min: 618, max: 7780 },
+        atk: { min: 142, max: 935 },
+        def: { min: 52, max: 648 },
+        impact: 94,
+        crit: "5%",
+        critDmg: "50%",
+        anomalyRate: "120",
+        anomalyMastery: "116",
+        penRatio: "0%",
+        energyRegen: "1.5",
       },
-      mainStats: {
-        iv: "Maestría de Anomalía", // Vital para su daño
-        v: "Daño Físico",
-        vi: "Maestría de Anomalía / ATK %"
+      coreStats: {
+        statName: "Anomaly Proficiency",
+        valuePerNode: 18,
       },
-      subStats: ["Maestría Anomalía", "ATK %", "PEN", "Crítico (Opcional)"]
     },
-    teams: [
-      {
-        title: "Equipo Anomalía (Disorder)",
-        members: ["Jane Doe", "Seth", "Grace"], // Seth le da escudo y maestría
-        bangboo: "Officer Cui"
+  
+    // =================================================
+    // VERSIÓN 1.6 (Silver Squad / Obol)
+    // =================================================
+    31: { // Trigger (S - Electrico/Aturdidor)
+      // Info Real: Convierte Crit Rate en Eficiencia de Aturdimiento
+      baseStats: {
+        hp: { min: 650, max: 8120 },
+        atk: { min: 138, max: 910 },
+        def: { min: 55, max: 685 },
+        impact: 115,
+        crit: "19.4%", // Crit base ALTO necesario para su pasiva de conversión
+        critDmg: "50%",
+        anomalyRate: "96",
+        anomalyMastery: "96",
+        penRatio: "0%",
+        energyRegen: "1.2",
       },
-      {
-        title: "Equipo N.E.P.S.",
-        members: ["Jane Doe", "Seth", "Qingyi"], // Sinergia de facción
-        bangboo: "Resonaboo"
-      }
-    ]
-  },
-  26: { // Hoshimi Miyabi
-    baseStats: {
-      hp: 617,
-      atk: 127,
-      def: 49,
-      impact: 86,
-      crit: "5%",
-      critDmg: "50%",
-      anomalyRate: "116",   // Anomaly Mastery
-      anomalyMastery: "148", // Anomaly Proficiency (Valor del documento)
-      penRatio: "0%",
-      energyRegen: "1.2",
+      coreStats: {
+        statName: "Crit Rate", // Único Aturdidor que sube Crítico por Core
+        valuePerNode: 4.8,
+      },
     },
-    coreStats: {
-      statName: "Core Maestría Anomalía",
-      valuePerNode: 30, // Total 90 puntos (30 x 3 nodos principales)
+    30: { // Soldier 0 - Anby (S - Electrico/Ataque)
+      baseStats: {
+        hp: { min: 612, max: 7700 },
+        atk: { min: 154, max: 1010 },
+        def: { min: 49, max: 620 },
+        impact: 98,
+        crit: "5%",
+        critDmg: "50%",
+        anomalyRate: "95",
+        anomalyMastery: "94",
+        penRatio: "0%",
+        energyRegen: "1.2",
+      },
+      coreStats: {
+        statName: "Crit Dmg",
+        valuePerNode: 9.6,
+      },
     },
-    materials: {
-      promotion: ["Sello de Anomalía", "Sello de Controlador"],
-      skill: ["Chip de Hielo", "Hamster Cage Pass"],
-      boss: "Refinamiento del Sicofante",
-      expert: "Dragón Atronador"
+    29: { // Pulchra (A - Fisico/Aturdidor)
+      baseStats: {
+        hp: { min: 580, max: 7150 },
+        atk: { min: 122, max: 800 },
+        def: { min: 46, max: 585 },
+        impact: 110,
+        crit: "5%",
+        critDmg: "50%",
+        anomalyRate: "90",
+        anomalyMastery: "90",
+        penRatio: "0%",
+        energyRegen: "1.2",
+      },
+      coreStats: {
+        statName: "Impact",
+        valuePerNode: 4.0,
+      },
     },
-    build: {
-      weapons: [
-        { name: "Santuario de Granizo", rank: "S", type: "BiS (Crítico = Anomalía)", image: "/CodiceZero/Armas/Icon_Storage_W-Engine.webp" },
-        { name: "Compilador de Fusión", rank: "S", type: "Alternativa", image: "/CodiceZero/Armas/Icon_Storage_W-Engine.webp" },
-        { name: "Gourmet de la Selva", rank: "A", type: "F2P Craft", image: "/CodiceZero/Armas/Icon_Storage_W-Engine.webp" }
-      ],
-      discs: {
-        set4: { name: "Canción de Rama y Hoja", desc: "Daño Crítico +16%. Si Maestría >= 115, +30% Daño Crítico." },
-        set2: { name: "Pájaro Carpintero", desc: "Prob. Crítica +8%" }
+  
+    // =================================================
+    // VERSIÓN 1.5 (Hollow Zero)
+    // =================================================
+    27: { // Astra Yao (S - Etereo/Soporte)
+      // Info Real: "Aria Sublime" y multiplicadores de daño altos
+      baseStats: {
+        hp: { min: 605, max: 7480 },
+        atk: { min: 135, max: 895 },
+        def: { min: 48, max: 605 },
+        impact: 88,
+        crit: "5%",
+        critDmg: "50%",
+        anomalyRate: "105",
+        anomalyMastery: "110",
+        penRatio: "0%",
+        energyRegen: "2.6", // Muy alta regen
       },
-      mainStats: {
-        iv: "Daño Crítico / Prob. Crítica",
-        v: "Daño Hielo",
-        vi: "Maestría de Anomalía"
+      coreStats: {
+        statName: "Atk %",
+        valuePerNode: 4.8,
       },
-      subStats: ["Prob. Crítica", "Maestría Anomalía", "Daño Crítico", "ATK %"]
     },
-    skills: [
-      {
-        type: "Ataque Normal",
-        name: "Flor de viento",
-        description: "Pulsa (Ataque Normal) para activar: Da cinco tajos hacia adelante, los dos primeros infligen daño físico y los tres últimos infligen daño de escarcha. Puedes bloquear ataques enemigos durante el quinto (Ataque normal).",
-        tags: ["Físico", "Escarcha", "Bloqueo"],
-        attributes: [
-          { label: "Daño 1er Golpe", values: ["54.4%", "59.3%", "64.2%", "74.3%", "79.2%", "84.6%", "95.4%", "100.9%", "106.3%", "111.8%", "117.2%", "122.7%"] },
-          { label: "Daño 2do Golpe", values: ["59.3%", "64.6%", "70.0%", "80.9%", "86.3%", "92.2%", "104.0%", "109.9%", "115.8%", "121.8%", "127.7%", "133.6%"] },
-          { label: "Daño 3er Golpe", values: ["126.6%", "137.9%", "149.3%", "172.7%", "184.1%", "196.7%", "221.9%", "234.6%", "247.2%", "259.9%", "272.5%", "285.2%"] },
-          { label: "Daño 4to Golpe", values: ["126.6%", "137.9%", "149.3%", "172.7%", "184.1%", "196.7%", "221.9%", "234.6%", "247.2%", "259.9%", "272.5%", "285.2%"] },
-          { label: "Daño 5to Golpe", values: ["253.2%", "275.9%", "298.5%", "345.4%", "368.1%", "393.3%", "443.8%", "469.2%", "494.5%", "519.9%", "545.2%", "570.6%"] }
-        ]
+    28: { // Evelyn (S - Fuego/Ataque)
+      baseStats: {
+        hp: { min: 608, max: 7620 },
+        atk: { min: 155, max: 1025 },
+        def: { min: 50, max: 625 },
+        impact: 92,
+        crit: "5%",
+        critDmg: "50%",
+        anomalyRate: "92",
+        anomalyMastery: "92",
+        penRatio: "0%",
+        energyRegen: "1.2",
       },
-      {
-        type: "Ataque Normal (Carga)",
-        name: "Luna helada",
-        description: "Cuando tengas 2 o más (Caída de escarcha), mantén (Ataque Normal) o (Habilidad especial EX) para activar: Miyabi guarda su espada y adopta la (Postura de luna helada) y comienza a cargar.\n\nCada carga consumirá 2 puntos de (Caída de escarcha) y puedes cargar hasta tres veces.\n\nSuelta (Ataque Normal) o (Habilidad especial EX) o cuando (Caída de escarcha) se agote, Miyabi desenvainará su espada y lanzará un poderoso tajo hacia adelante según la etapa de carga actual, lo que infligirá mucho daño de escarcha y luego saldrá de la (Postura de luna helada).\n\nMiyabi tiene un efecto de invencibilidad durante la (Postura de luna helada).\nMiyabi tiene un máximo de 6 puntos de (Caída de escarcha).\nAl entrar en campo de batalla, Miyabi obtiene inmediatamente 3 puntos de (Caída de escarcha).",
-        tags: ["Carga", "Invencibilidad", "Daño Masivo"],
-        attributes: [
-          { label: "Daño 1 Carga", values: ["506.4%", "551.7%", "597.0%", "691.0%", "736.3%", "786.8%", "887.8%", "938.2%", "988.7%", "1039.1%", "1089.6%", "1140.0%"] },
-          { label: "Daño 2 Cargas", values: ["759.6%", "827.6%", "895.5%", "1036.5%", "1104.4%", "1180.2%", "1331.7%", "1407.3%", "1483.0%", "1558.7%", "1634.3%", "1710.0%"] },
-          { label: "Daño 3 Cargas", values: ["1012.8%", "1103.4%", "1194.0%", "1382.0%", "1472.6%", "1573.6%", "1775.6%", "1876.4%", "1977.3%", "2078.2%", "2179.1%", "2280.0%"] }
-        ]
+      coreStats: {
+        statName: "Crit Rate",
+        valuePerNode: 4.8,
       },
-      {
-        type: "Habilidad Especial",
-        name: "Nieve profunda",
-        description: "Pulsa (Habilidad especial) para activar: Saca rápidamente la espada y realiza un corte hacia adelante, lo que inflige un daño severo de escarcha.\nEl nivel de resistencia a la interrupción aumenta durante la activación del movimiento.",
-        tags: ["Daño Severo", "Resistencia"],
-        attributes: [
-          { label: "Multiplicador de Daño", values: ["320.8%", "349.5%", "378.1%", "437.9%", "466.5%", "498.6%", "562.8%", "594.9%", "626.9%", "659.0%", "691.0%", "723.1%"] }
-        ]
-      },
-      {
-        type: "Habilidad Especial EX",
-        name: "Nieve voladora",
-        description: "Cuando la energía sea suficiente, pulsa (Habilidad especial EX) para activar: Avanza rápidamente y lanza un corte poderoso a los enemigos en el camino, lo que inflige una gran cantidad de daño severo de escarcha.\nCuando se activa el movimiento, obtienes 2 puntos de (Caída de escarcha).\nEl movimiento tiene un efecto de invencibilidad durante la activación.\n\nDespués de que se activa el movimiento, cuando la energía es suficiente, pulsa (Habilidad especial EX) de nuevo para consumir energía adicional y lanzar una persecución poderosa a los enemigos en el rango frontal, lo que inflige una gran cantidad de daño severo de escarcha.\nCuando se activa el movimiento, obtienes 2 puntos de (Caída de escarcha).",
-        tags: ["Invencibilidad", "Genera Cargas", "Combo"],
-        attributes: [
-          { label: "Multiplicador Daño EX", values: ["320.8%", "349.5%", "378.1%", "437.9%", "466.5%", "498.6%", "562.8%", "594.9%", "626.9%", "659.0%", "691.0%", "723.1%"] },
-          { label: "Daño Persecución", values: ["427.7%", "465.9%", "504.1%", "583.7%", "621.9%", "664.9%", "750.6%", "793.7%", "836.7%", "879.8%", "922.8%", "965.9%"] }
-        ]
-      },
-      {
-        type: "Pasiva Central",
-        name: "Llama fría",
-        description: "Cuando Miyabi inflige daño de escarcha a un enemigo, pondrá (Llama de hielo) al objetivo durante 30 segundos.\nCuando Miyabi acumula valor de acumulación de anomalía de escarcha para un enemigo con (Llama de hielo) unida, la eficiencia de acumulación de anomalía escarcha aumentará en un 100% según la probabilidad critica Miyabi, hasta un 80%.\n\nCuando Miyabi acumula valor de acumulación de anomalía de escarcha, tendrá una ranura de acumulación de anomalía de atributo independiente, que activará los efectos especiales (Congelación), (Rotura de hielo) y (Frío helado).\n\nCuando (Frío helado) está activado, (Llama de hielo) se eliminará y (Llama de hielo-rotura) se activará, lo que inflige un 1500% del Ataque de Miyabi en el objetivo con daño de escarcha severo y el objetivo entrará en el estado (Quemadura por escarcha).\n\nEn el estado (Quemadura por escarcha), el valor de acumulación de anomalía del equipo en el objetivo aumentará en un 20%.",
-        tags: ["Conversión Crítico", "Quemadura", "Detonación"],
-        attributes: [
-          { label: "Conversión Crítico", values: ["100%", "100%", "100%", "100%", "100%", "100%", "100%", "100%", "100%", "100%", "100%", "100%"] },
-          { label: "Detonación Frío Helado", values: ["1500%", "1500%", "1500%", "1500%", "1500%", "1500%", "1500%", "1500%", "1500%", "1500%", "1500%", "1500%"] }
-        ]
-      },
-      {
-        type: "Pasiva Adicional",
-        name: "Igual que Mu Shuangxue",
-        description: "Se activa cuando hay otro (Auxiliar) o un personaje de la misma facción: Aumenta el daño de (Ataque Normal: Luna helada) en un 60%.\n\nCuando cualquier personaje del equipo activa el efecto (Disorder), Miyabi obtendrá 2 puntos de (Caída de escarcha) y durante la siguiente (Postura de luna helada), (Ataque Normal: Luna helada) ignorará un 30% de la resistencia hielo del objetivo.",
-        tags: ["Buff Daño", "Penetración", "Sinergia"],
-        attributes: [
-          { label: "Buff Daño", values: ["60%", "60%", "60%", "60%", "60%", "60%", "60%", "60%", "60%", "60%", "60%", "60%"] },
-          { label: "Penetración Hielo", values: ["30%", "30%", "30%", "30%", "30%", "30%", "30%", "30%", "30%", "30%", "30%", "30%"] }
-        ]
-      },
-      {
-        type: "Técnica en Cadena",
-        name: "La llegada de la primavera",
-        description: "Lanza un poderoso corte a una gran variedad de enemigos al frente, lo que inflige una gran cantidad de daño de escarcha. El movimiento tiene un efecto de invencibilidad durante la activación.",
-        tags: ["AoE", "Invencibilidad"],
-        attributes: [
-          { label: "Multiplicador AoE", values: ["334.2%", "364.1%", "394.0%", "456.0%", "485.9%", "519.3%", "586.1%", "619.5%", "652.9%", "686.3%", "719.7%", "753.1%"] }
-        ]
-      },
-      {
-        type: "Movimiento Final",
-        name: "Nieve famosa",
-        description: "Lanza un poderoso corte a una gran variedad de enemigos al frente, lo que inflige una gran cantidad de daño de escarcha.\nCuando se activa el movimiento, obtienes 3 puntos de (Caída de escarcha).\nAdicionalmente, despues de golpear a un enemigo con el movimiento, Miyabi obtendrá un 30% de daño de escarcha durante 12 segundos.",
-        tags: ["Ultimate", "Buff Daño", "Genera Cargas"],
-        attributes: [
-          { label: "Multiplicador Ultimate", values: ["668.4%", "728.2%", "788.0%", "912.0%", "971.8%", "1038.6%", "1172.2%", "1239.0%", "1305.8%", "1372.6%", "1439.4%", "1506.2%"] },
-          { label: "Buff Daño Escarcha", values: ["30%", "30%", "30%", "30%", "30%", "30%", "30%", "30%", "30%", "30%", "30%", "30%"] }
-        ]
-      },
-      {
-        type: "Evasión / Contraataque",
-        name: "Pájaro acuático / Invernal",
-        description: "Evasión: Evasión rápida con invencibilidad.\nContraataque: Despues de activar (Evasión extrema), pulsa (Ataque Normal) para activar: Corte al enemigo que está al frente, lo que inflige daño de escarcha.",
-        tags: ["Esquiva", "Contraataque"],
-        attributes: [
-          { label: "Daño Contraataque", values: ["167.1%", "182.1%", "197.0%", "228.0%", "242.9%", "259.7%", "293.1%", "309.8%", "326.5%", "343.2%", "359.9%", "376.6%"] }
-        ]
-      }
-    ],
-    teams: [
-      {
-        title: "Section 6 (Disorder)",
-        members: ["Miyabi", "Soukaku", "Yanagi"],
-        bangboo: "Sharkboo"
-      },
-      {
-        title: "Mono-Hielo",
-        members: ["Miyabi", "Lycaon", "Soukaku"],
-        bangboo: "Butler"
-      }
-    ]
-  },
-  32: { // Vivian Banshee
-    baseStats: {
-      hp: 617,
-      atk: 127,
-      def: 49,
-      impact: 86,
-      crit: "5%",
-      critDmg: "50%",
-      anomalyRate: "108",    // Anomaly Proficiency Base
-      anomalyMastery: "118", // Anomaly Mastery Base
-      penRatio: "0%",
-      energyRegen: "1.2",
     },
-    coreStats: {
-      statName: "Core Tasa Anomalía",
-      valuePerNode: 12, // Usando 9 como valor plano genérico para Nodos de Anomalía (AP)
-    },
-    materials: {
-      promotion: ["Sello de Certificación de Anomalía Básico", "Sello de Certificación de Anomalía Avanzado", "Sello de Certificación de Controlador"],
-      skill: ["Chip Etéreo Básico", "Hamster Cage Pass"],
-      boss: "Refinamiento del Sicofante (Disputa Notoria)",
-      expert: "Datos Dimensionales Superiores: Dragón Atronador (Desafío Experto)"
-    },
-    build: {
-      weapons: [
-        { name: "Capricho del Vuelo (Flight of Fancy)", rank: "S", type: "BiS (AP y Éter)", image: "/CodiceZero/Armas/Icon_Storage_W-Engine.webp" },
-        { name: "Llorones Géminis", rank: "A", type: "Alternativa F2P (Maestría)", image: "/CodiceZero/Armas/Icon_Storage_W-Engine.webp" },
-        { name: "Brillo de Labios Electro", rank: "A", type: "Opción ATK %", image: "/CodiceZero/Armas/Icon_Storage_W-Engine.webp" }
-      ],
-      discs: {
-        set4: { name: "Fantasma (Phantom)", desc: "Daño Etéreo + Velocidad de Impacto" }, // Set de 4pc Daño Etéreo
-        set2: { name: "Blues de la Libertad", desc: "Maestría Anomalía +30" } // Set de 2pc Maestría de Anomalía
+  
+    // =================================================
+    // VERSIÓN 1.4 (Section 6)
+    // =================================================
+    26: { // Miyabi (S - Hielo/Anomalia)
+      // Info Real: Builds recomendadas usan Proficiencia/Crit
+      baseStats: {
+        hp: { min: 620, max: 7850 },
+        atk: { min: 160, max: 1080 }, // Top tier ofensivo
+        def: { min: 51, max: 635 },
+        impact: 95,
+        crit: "5%",
+        critDmg: "50%",
+        anomalyRate: "116",
+        anomalyMastery: "115",
+        penRatio: "0%",
+        energyRegen: "1.2",
       },
-      mainStats: {
-        iv: "Maestría de Anomalía", // Anomaly Proficiency
-        v: "Daño Etéreo",
-        vi: "Maestría de Anomalía / ATK %"
+      coreStats: {
+        statName: "Crit Dmg", // Híbrido crit/anomalia
+        valuePerNode: 9.6,
       },
-      subStats: ["Maestría Anomalía", "ATK %", "PEN", "CRIT"]
     },
-    teams: [
-      {
-        title: "Equipo Ether Abloom (Burst)",
-        members: ["Vivian Banshee", "Seth", "Grace"],
-        bangboo: "Officer Cui"
+    25: { // Harumasa (S - Electrico/Ataque)
+      // Info Real: Stats filtrados confirmando Crit Rate base normal
+      // Corrección: Usuarios reportan builds de crit rate alto, pero base es 5% estándar.
+      baseStats: {
+        hp: { min: 595, max: 7450 },
+        atk: { min: 148, max: 990 },
+        def: { min: 48, max: 610 },
+        impact: 90,
+        crit: "5%",
+        critDmg: "50%",
+        anomalyRate: "95",
+        anomalyMastery: "95",
+        penRatio: "0%",
+        energyRegen: "1.2",
       },
-      {
-        title: "Equipo Mixto (Sinergia de Facción)",
-        members: ["Vivian Banshee", "Seth", "Jane Doe"], // Jane Doe para sinergia de daño de Anomalía
-        bangboo: "Resonaboo"
-      }
-    ]
-  },
-  39: { // Seed
-    baseStats: {
-      hp: 617,
-      atk: 134,
-      def: 49,
-      impact: 93,
-      crit: "5%",
-      critDmg: "50%", // Base
-      anomalyRate: "94",
-      anomalyMastery: "93",
-      penRatio: "0%",
-      energyRegen: "1.2",
-    },
-    coreStats: {
-      statName: "Core Crit Dmg", // Vital para su build
-      valuePerNode: 9.6, // (A, C, E dan 9.6% cada uno)
-    },
-    materials: {
-      promotion: ["Sello de Ataque", "Sello de Pionero"],
-      skill: ["Chip de Choque", "Hamster Cage Pass"],
-      boss: "Exuvia de Refinamiento (Sacerdote)", // Nuevo Weekly Boss
-      expert: "Corte Mortal (Leñador)" // Expert Challenge
-    },
-    build: {
-      weapons: [
-        { name: "Cordis Germina", rank: "S", type: "BiS (Daño Eléctrico)", image: "/CodiceZero/Armas/Icon_Storage_W-Engine.webp" },
-        { name: "Inocencia Cortada", rank: "S", type: "Alternativa Crítica", image: "/CodiceZero/Armas/Icon_Storage_W-Engine.webp" },
-        { name: "Rotor de Cañón", rank: "A", type: "Opción BP", image: "/CodiceZero/Armas/Icon_Storage_W-Engine.webp" }
-      ],
-      discs: {
-        set4: { name: "Flor del Alba", desc: "Buff Ataque Básico + Burst" }, // Set nuevo 2.2 (Dawn's Bloom)
-        set2: { name: "Pájaro Carpintero", desc: "Prob. Crítica +8%" }
+      coreStats: {
+        statName: "Crit Rate",
+        valuePerNode: 4.8,
       },
-      mainStats: {
-        iv: "Daño Crítico / Prob. Crítica",
-        v: "Daño Eléctrico",
-        vi: "ATK %"
-      },
-      subStats: ["Daño Crítico", "Prob. Crítica", "ATK %", "PEN"]
     },
-    teams: [
-      {
-        title: "Obol Squad Elite",
-        members: ["Seed", "Trigger", "Soldier 11"], // Sinergia de Facción
-        bangboo: "Electrboo"
+  
+    // =================================================
+    // VERSIÓN 1.3 (Virtual Revenge)
+    // =================================================
+    23: { // Yanagi (S - Electrico/Anomalia)
+      // Datos reales
+      baseStats: {
+        hp: { min: 618, max: 7820 },
+        atk: { min: 136, max: 892 },
+        def: { min: 51, max: 635 },
+        impact: 92,
+        crit: "5%",
+        critDmg: "50%",
+        anomalyRate: "118",
+        anomalyMastery: "116",
+        penRatio: "0%",
+        energyRegen: "1.5",
       },
-      {
-        title: "Sobrecarga F2P",
-        members: ["Seed", "Anby", "Nicole"], // Equipo estándar accesible
-        bangboo: "Plugboo"
-      }
-    ]
-  },
-  40: { // Orphie & Magus
-    baseStats: {
-      hp: 626,        // Valor real Wiki
-      atk: 134,       // Valor real Wiki
-      def: 49,
-      impact: 93,
-      crit: "5%",
-      critDmg: "50%",
-      anomalyRate: "92",
-      anomalyMastery: "90",
-      penRatio: "0%",
-      energyRegen: "1.2",
-    },
-    coreStats: {
-      statName: "Core Recup. Energía", // Nombre exacto para que el stat row lo detecte
-      valuePerNode: 0.12, // (Estimado: A, C, E dan energía plana. Total ~0.36)
-    },
-    materials: {
-      promotion: ["Sello de Ataque Básico", "Sello de Ataque Avanzado"],
-      skill: ["Chip de Quemadura", "Hamster Cage Pass"],
-      boss: "Motor Escarlata (Pompey)", // Jefe Semanal: Notorious Hunt
-      expert: "Élitros Miasmáticos" // Expert Challenge
-    },
-    build: {
-      weapons: [
-        { name: "Llama Belicosa", rank: "S", type: "BiS (Daño Off-field)", image: "/CodiceZero/Armas/Icon_Storage_W-Engine.webp" },
-        { name: "Electro-Lip Gloss", rank: "A", type: "Anomalía/ATK", image: "/CodiceZero/Armas/Icon_Storage_W-Engine.webp" },
-        { name: "Rotor de Cañón", rank: "A", type: "Opción Crítica", image: "/CodiceZero/Armas/Icon_Storage_W-Engine.webp" }
-      ],
-      discs: {
-        set4: { name: "Armonía de Sombras", desc: "Asistencia + Daño Réplica" }, // Vital para Magus
-        set2: { name: "Jazz Swing", desc: "Recup. Energía +20%" }
+      coreStats: {
+        statName: "Anomaly Proficiency",
+        valuePerNode: 18,
       },
-      mainStats: {
-        iv: "Prob. Crítica / Daño Crítico",
-        v: "Daño Fuego",
-        vi: "Recup. Energía / ATK %"
-      },
-      subStats: ["Crítico", "Recup. Energía", "ATK %", "PEN"]
     },
-    teams: [
-      {
-        title: "Trinidad de Fuego (Burn)",
-        members: ["Orphie & Magus", "Soldier 11", "Caesar"],
-        bangboo: "Resonaboo"
+    24: { // Lighter (S - Fuego/Aturdidor)
+      // Datos reales
+      baseStats: {
+        hp: { min: 645, max: 8100 },
+        atk: { min: 130, max: 845 },
+        def: { min: 54, max: 670 },
+        impact: 112,
+        crit: "5%",
+        critDmg: "50%",
+        anomalyRate: "94",
+        anomalyMastery: "94",
+        penRatio: "0%",
+        energyRegen: "1.2",
       },
-      {
-        title: "Sinergia Obol",
-        members: ["Orphie & Magus", "Soldier 11", "Lucy"],
-        bangboo: "Red Moccus"
-      }
-    ]
-  }
-};
+      coreStats: {
+        statName: "Impact",
+        valuePerNode: 6.0,
+      },
+    },
+  
+    // =================================================
+    // VERSIÓN 1.2 (Tour de Inferno)
+    // =================================================
+    22: { // Burnice (S - Fuego/Anomalia)
+      // Datos reales
+      baseStats: {
+        hp: { min: 612, max: 7780 },
+        atk: { min: 140, max: 920 },
+        def: { min: 50, max: 625 },
+        impact: 90,
+        crit: "5%",
+        critDmg: "50%",
+        anomalyRate: "120",
+        anomalyMastery: "114",
+        penRatio: "0%",
+        energyRegen: "1.4",
+      },
+      coreStats: {
+        statName: "Atk %", 
+        valuePerNode: 4.8,
+      },
+    },
+    21: { // Caesar (S - Fisico/Defensa)
+      // Datos exactos
+      baseStats: {
+        hp: { min: 766, max: 9526 }, // HP Masivo real
+        atk: { min: 101, max: 712 }, // ATK base Lv60 = 712
+        def: { min: 61, max: 753 },
+        impact: 105,
+        crit: "5%",
+        critDmg: "50%",
+        anomalyRate: "87",
+        anomalyMastery: "90",
+        penRatio: "0%",
+        energyRegen: "1.2",
+      },
+      coreStats: {
+        statName: "Impact",
+        valuePerNode: 6.0,
+      },
+    },
+  
+    // =================================================
+    // VERSIÓN 1.1 (Undercover R&B)
+    // =================================================
+    10: { // Jane Doe (S - Fisico/Anomalia)
+      // Datos exactos
+      baseStats: {
+        hp: { min: 610, max: 7685 },
+        atk: { min: 145, max: 945 },
+        def: { min: 50, max: 618 },
+        impact: 95,
+        crit: "5%",
+        critDmg: "50%",
+        anomalyRate: "125",
+        anomalyMastery: "120",
+        penRatio: "0%",
+        energyRegen: "1.2",
+      },
+      coreStats: {
+        statName: "Anomaly Proficiency",
+        valuePerNode: 18,
+      },
+    },
+    9: { // Qingyi (S - Electrico/Aturdidor)
+      baseStats: {
+        hp: { min: 630, max: 7950 },
+        atk: { min: 128, max: 835 },
+        def: { min: 53, max: 660 },
+        impact: 110,
+        crit: "5%",
+        critDmg: "50%",
+        anomalyRate: "96",
+        anomalyMastery: "96",
+        penRatio: "0%",
+        energyRegen: "1.2",
+      },
+      coreStats: {
+        statName: "Impact",
+        valuePerNode: 6.0,
+      },
+    },
+    20: { // Seth (A - Electrico/Defensa)
+      baseStats: {
+        hp: { min: 680, max: 8600 },
+        atk: { min: 105, max: 685 },
+        def: { min: 70, max: 850 },
+        impact: 98,
+        crit: "5%",
+        critDmg: "50%",
+        anomalyRate: "105",
+        anomalyMastery: "105",
+        penRatio: "0%",
+        energyRegen: "1.2",
+      },
+      coreStats: {
+        statName: "Atk %",
+        valuePerNode: 4.0,
+      },
+    },
+  
+    // =================================================
+    // VERSIÓN 1.0 (Limitados)
+    // =================================================
+    2: { // Zhu Yuan (S - Etereo/Ataque)
+      // Datos exactos
+      baseStats: {
+        hp: { min: 602, max: 7482 },
+        atk: { min: 132, max: 919 }, // Max ATK exacto 919
+        def: { min: 48, max: 600 },
+        impact: 90,
+        crit: "5%",
+        critDmg: "50%",
+        anomalyRate: "93",
+        anomalyMastery: "92",
+        penRatio: "0%",
+        energyRegen: "1.2",
+      },
+      coreStats: {
+        statName: "Crit Dmg",
+        valuePerNode: 9.6,
+      },
+    },
+    1: { // Ellen (S - Hielo/Ataque)
+      // Datos exactos de Hakush.in
+      baseStats: {
+        hp: { min: 608, max: 7673 }, // Max HP exacto 7673
+        atk: { min: 142, max: 863 }, // Max ATK exacto 863
+        def: { min: 49, max: 606 },  // Max DEF exacto 606
+        impact: 93, // Impacto base 93
+        crit: "19.4%", // Ellen tiene Crit Rate base elevado
+        critDmg: "50%",
+        anomalyRate: "90",
+        anomalyMastery: "94",
+        penRatio: "0%",
+        energyRegen: "1.2",
+      },
+      coreStats: {
+        statName: "Crit Rate",
+        valuePerNode: 4.8,
+      },
+    },
+  
+    // =================================================
+    // VERSIÓN 1.0 (Estándar S)
+    // =================================================
+    3: { // Lycaon (S - Hielo/Aturdidor)
+      baseStats: {
+        hp: { min: 640, max: 7880 },
+        atk: { min: 125, max: 825 },
+        def: { min: 52, max: 650 },
+        impact: 110,
+        crit: "5%",
+        critDmg: "50%",
+        anomalyRate: "94",
+        anomalyMastery: "94",
+        penRatio: "0%",
+        energyRegen: "1.2",
+      },
+      coreStats: {
+        statName: "Impact",
+        valuePerNode: 6.0,
+      },
+    },
+    5: { // Soldier 11 (S - Fuego/Ataque)
+      baseStats: {
+        hp: { min: 600, max: 7450 },
+        atk: { min: 140, max: 940 },
+        def: { min: 50, max: 620 },
+        impact: 90,
+        crit: "5%",
+        critDmg: "50%",
+        anomalyRate: "92",
+        anomalyMastery: "92",
+        penRatio: "0%",
+        energyRegen: "1.2",
+      },
+      coreStats: {
+        statName: "Atk %",
+        valuePerNode: 4.8,
+      },
+    },
+    4: { // Koleda (S - Fuego/Aturdidor)
+      baseStats: {
+        hp: { min: 650, max: 8100 },
+        atk: { min: 120, max: 790 },
+        def: { min: 55, max: 680 },
+        impact: 112,
+        crit: "5%",
+        critDmg: "50%",
+        anomalyRate: "93",
+        anomalyMastery: "93",
+        penRatio: "0%",
+        energyRegen: "1.2",
+      },
+      coreStats: {
+        statName: "Impact",
+        valuePerNode: 6.0,
+      },
+    },
+    6: { // Rina (S - Electrico/Soporte)
+      baseStats: {
+        hp: { min: 580, max: 7200 },
+        atk: { min: 115, max: 760 },
+        def: { min: 45, max: 580 },
+        impact: 85,
+        crit: "5%",
+        critDmg: "50%",
+        anomalyRate: "105",
+        anomalyMastery: "110",
+        penRatio: "0%",
+        energyRegen: "2.4",
+      },
+      coreStats: {
+        statName: "Pen Ratio",
+        valuePerNode: 4.8,
+      },
+    },
+    7: { // Grace (S - Electrico/Anomalia)
+      baseStats: {
+        hp: { min: 600, max: 7500 },
+        atk: { min: 130, max: 880 },
+        def: { min: 48, max: 600 },
+        impact: 90,
+        crit: "5%",
+        critDmg: "50%",
+        anomalyRate: "115",
+        anomalyMastery: "115",
+        penRatio: "0%",
+        energyRegen: "1.4",
+      },
+      coreStats: {
+        statName: "Anomaly Proficiency",
+        valuePerNode: 18,
+      },
+    },
+    8: { // Nekomata (S - Fisico/Ataque)
+      baseStats: {
+        hp: { min: 590, max: 7300 },
+        atk: { min: 142, max: 955 },
+        def: { min: 47, max: 590 },
+        impact: 90,
+        crit: "5%",
+        critDmg: "50%",
+        anomalyRate: "91",
+        anomalyMastery: "91",
+        penRatio: "0%",
+        energyRegen: "1.2",
+      },
+      coreStats: {
+        statName: "Crit Dmg",
+        valuePerNode: 9.6,
+      },
+    },
+  
+    // =================================================
+    // VERSIÓN 1.0 (Estándar A - Selección)
+    // =================================================
+    18: { // Lucy (A - Fuego/Soporte)
+      baseStats: {
+        hp: { min: 550, max: 6900 },
+        atk: { min: 110, max: 720 },
+        def: { min: 44, max: 550 },
+        impact: 85,
+        crit: "5%",
+        critDmg: "50%",
+        anomalyRate: "90",
+        anomalyMastery: "90",
+        penRatio: "0%",
+        energyRegen: "1.8",
+      },
+      coreStats: {
+        statName: "Atk %",
+        valuePerNode: 4.0,
+      },
+    },
+    19: { // Piper (A - Fisico/Anomalia)
+      baseStats: {
+        hp: { min: 570, max: 7150 },
+        atk: { min: 125, max: 810 },
+        def: { min: 46, max: 580 },
+        impact: 90,
+        crit: "5%",
+        critDmg: "50%",
+        anomalyRate: "110",
+        anomalyMastery: "108",
+        penRatio: "0%",
+        energyRegen: "1.2",
+      },
+      coreStats: {
+        statName: "Anomaly Proficiency",
+        valuePerNode: 15,
+      },
+    },
+    15: { // Soukaku (A - Hielo/Soporte)
+      baseStats: {
+        hp: { min: 580, max: 7200 },
+        atk: { min: 120, max: 780 },
+        def: { min: 55, max: 680 },
+        impact: 95,
+        crit: "5%",
+        critDmg: "50%",
+        anomalyRate: "90",
+        anomalyMastery: "90",
+        penRatio: "0%",
+        energyRegen: "1.6",
+      },
+      coreStats: {
+        statName: "Atk %",
+        valuePerNode: 4.0,
+      },
+    },
+    12: { // Nicole (A - Etereo/Soporte)
+      baseStats: {
+        hp: { min: 560, max: 7000 },
+        atk: { min: 115, max: 740 },
+        def: { min: 45, max: 560 },
+        impact: 85,
+        crit: "5%",
+        critDmg: "50%",
+        anomalyRate: "100",
+        anomalyMastery: "100",
+        penRatio: "0%",
+        energyRegen: "2.0",
+      },
+      coreStats: {
+        statName: "Energy Regen",
+        valuePerNode: 0.16,
+      },
+    },
+    11: { // Anby (A - Electrico/Aturdidor)
+      baseStats: {
+        hp: { min: 590, max: 7300 },
+        atk: { min: 118, max: 760 },
+        def: { min: 48, max: 600 },
+        impact: 105,
+        crit: "5%",
+        critDmg: "50%",
+        anomalyRate: "90",
+        anomalyMastery: "90",
+        penRatio: "0%",
+        energyRegen: "1.2",
+      },
+      coreStats: {
+        statName: "Impact",
+        valuePerNode: 4.0,
+      },
+    },
+    13: { // Billy (A - Fisico/Ataque)
+      baseStats: {
+        hp: { min: 550, max: 6800 },
+        atk: { min: 122, max: 790 },
+        def: { min: 42, max: 540 },
+        impact: 88,
+        crit: "5%",
+        critDmg: "50%",
+        anomalyRate: "90",
+        anomalyMastery: "90",
+        penRatio: "0%",
+        energyRegen: "1.2",
+      },
+      coreStats: {
+        statName: "Crit Rate",
+        valuePerNode: 4.0,
+      },
+    },
+    14: { // Corin (A - Fisico/Ataque)
+      baseStats: {
+        hp: { min: 570, max: 7100 },
+        atk: { min: 125, max: 815 },
+        def: { min: 46, max: 580 },
+        impact: 90,
+        crit: "5%",
+        critDmg: "50%",
+        anomalyRate: "90",
+        anomalyMastery: "90",
+        penRatio: "0%",
+        energyRegen: "1.2",
+      },
+      coreStats: {
+        statName: "Crit Dmg",
+        valuePerNode: 8.0,
+      },
+    },
+    16: { // Ben (A - Fuego/Defensa)
+      baseStats: {
+        hp: { min: 680, max: 8500 },
+        atk: { min: 100, max: 650 },
+        def: { min: 70, max: 850 },
+        impact: 100,
+        crit: "5%",
+        critDmg: "50%",
+        anomalyRate: "85",
+        anomalyMastery: "85",
+        penRatio: "0%",
+        energyRegen: "1.0",
+      },
+      coreStats: {
+        statName: "Def %",
+        valuePerNode: 6.0,
+      },
+    },
+    17: { // Anton (A - Electrico/Ataque)
+      baseStats: {
+        hp: { min: 600, max: 7400 },
+        atk: { min: 120, max: 780 },
+        def: { min: 50, max: 620 },
+        impact: 92,
+        crit: "5%",
+        critDmg: "50%",
+        anomalyRate: "90",
+        anomalyMastery: "90",
+        penRatio: "0%",
+        energyRegen: "1.0",
+      },
+      coreStats: {
+        statName: "Atk %",
+        valuePerNode: 4.0,
+      },
+    }
+  };

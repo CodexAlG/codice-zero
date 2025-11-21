@@ -34,7 +34,7 @@ const CORE_THRESHOLDS = [
  * @param {object} baseStats - Objeto con { hp, atk, def } a nivel 1
  * @param {number} level - Nivel del personaje (1-60)
  * @param {object} coreConfig - Configuración del core { statName, valuePerNode }
- * @returns {object} - Stats calculados con bonus de core
+ * @returns {object} - Stats calculados con bonus de core sumados
  */
 export const calculateStatsWithCore = (baseStats, level, coreConfig) => {
   // 1. Buscar multiplicadores
@@ -44,7 +44,7 @@ export const calculateStatsWithCore = (baseStats, level, coreConfig) => {
     .find(k => k <= level) || 1;
 
   const multHP = GROWTH_HP_DEF[growthKey];
-  const multATK = GROWTH_ATK[growthKey]; // Usamos la curva correcta para ATK
+  const multATK = GROWTH_ATK[growthKey];
 
   // 2. Calcular Bonus de Core
   let addedAtk = 0;
@@ -57,19 +57,57 @@ export const calculateStatsWithCore = (baseStats, level, coreConfig) => {
     }
   });
 
-  // Lógica de formato condicional
-  const isPercentage = !coreConfig?.statName?.includes("Energía");
+  // 3. Helper para sumar porcentajes
+  const addPercentage = (baseStr, bonus) => {
+    if (!baseStr || bonus === 0) return baseStr;
+    const baseNum = parseFloat(baseStr);
+    if (isNaN(baseNum)) return baseStr;
+    // Sumamos y formateamos (ej: 50 + 28.8 = 78.8)
+    return `${(baseNum + bonus).toFixed(1)}%`;
+  };
 
-  // 3. Retornar
+  // 4. Identificar qué stat recibe el bonus especial
+  let critRate = baseStats.crit;
+  let critDmg = baseStats.critDmg;
+  let anomalyMastery = baseStats.anomalyMastery;
+  let anomalyRate = baseStats.anomalyRate;
+  let energyRegen = baseStats.energyRegen;
+  let impact = baseStats.impact;
+
+  const statName = coreConfig?.statName?.toLowerCase() || "";
+
+  if (statName.includes("prob") || statName.includes("crit rate")) {
+    critRate = addPercentage(baseStats.crit, addedSpecial);
+  } else if (statName.includes("daño") || statName.includes("crit dmg")) {
+    critDmg = addPercentage(baseStats.critDmg, addedSpecial);
+  } else if (statName.includes("maestría") || statName.includes("mastery")) {
+    // Si es plano (no %), sumamos directo
+    anomalyMastery = (parseInt(baseStats.anomalyMastery) + Math.floor(addedSpecial)).toString();
+  } else if (statName.includes("energía") || statName.includes("energy")) {
+    energyRegen = (parseFloat(baseStats.energyRegen) + addedSpecial).toFixed(2);
+  } else if (statName.inclueds("impacto") || statName.includes("Impact")) {
+    impact = (parseFloat(baseStats.impact) + addedSpecial);
+  }
+
+  // 5. Retornar objeto con valores YA SUMADOS
   return {
     hp: Math.floor(baseStats.hp * multHP).toLocaleString(),
     def: Math.floor(baseStats.def * multHP).toLocaleString(),
     atk: Math.floor((baseStats.atk * multATK) + addedAtk).toLocaleString(),
-    // Nuevo cálculo para Impacto:
-    impact: baseStats.impact ? Math.floor(baseStats.impact * multATK).toLocaleString() : "-",
-    specialStatName: coreConfig?.statName || "",
-    specialStatValue: addedSpecial > 0
-      ? `+${addedSpecial.toFixed(2)}${isPercentage ? "%" : ""}`
-      : "-"
+    // Impacto NO se multiplica
+    impact: baseStats.impact ? baseStats.impact.toLocaleString() : "-",
+
+    // Valores sumados con Core bonus
+    crit: critRate,
+    critDmg: critDmg,
+    anomalyMastery: anomalyMastery,
+    anomalyRate: anomalyRate,
+    penRatio: baseStats.penRatio,
+    energyRegen: energyRegen,
+    impact: baseStats.impact,
+
+    // Info para pintar de amarillo el stat con buff
+    hasBuff: addedSpecial > 0,
+    buffType: statName
   };
 };
