@@ -25,7 +25,7 @@ export default function AgentDetailPage() {
   // Grupos de Habilidades Maestros
   const skillGroups = [
     { id: "basic", label: "Ataque Básico", icon: "/CodiceZero/Habilidades/ZZZ-Icon-System-Skill-Basic-Attack-White-Alt-01.webp", match: ["Ataque Básico", "Ataque Normal", "Básico"] },
-    { id: "dodge", label: "Evasión", icon: "/CodiceZero/Habilidades/ZZZ-Icon-System-Skill-Dodge-02.webp", match: ["Evasión", "Dash", "Contraataque"] },
+    { id: "Dodge", label: "Evasión", icon: "/CodiceZero/Habilidades/ZZZ-Icon-System-Skill-Dodge-02.webp", match: ["Evasión", "Dash", "Contraataque"] },
     { id: "assist", label: "Asistencia", icon: "/CodiceZero/Habilidades/ZZZ-Icon-System-Skill-Assist-01-675x675.webp", match: ["Asistencia"] },
     { id: "special", label: "Especial", icon: "/CodiceZero/Habilidades/ZZZ-Icon-System-Skill-Special-01-675x675.webp", match: ["Especial"] },
     { id: "ultimate", label: "Definitiva", icon: "/CodiceZero/Habilidades/ZZZ-Icon-System-Skill-QTE-Ultimate-Colored-Inverted-01-691x675.webp", match: ["Definitiva", "Cadena"] }
@@ -34,11 +34,11 @@ export default function AgentDetailPage() {
   // Mapa de Iconos Inline para Texto
   const inlineIcons = {
     "Ataque": "/CodiceZero/Habilidades/ZZZ-Icon-System-Skill-Basic-Attack-White-Alt-01.webp",
-    "Evasión": "/CodiceZero/Habilidades/ZZZ-Icon-System-Skill-Dodge-02.webp",
+    "Dodges": "/CodiceZero/Habilidades/ZZZ-Icon-System-Skill-Dodge-02.webp",
     "Especial": "/CodiceZero/Habilidades/ZZZ-Icon-System-Skill-Special-02-691x675.webp",
-    "Especial EX": "/CodiceZero/Habilidades/ZZZ-Icon-System-Skill-Special-01-675x675.webp",
+    "EspecialEx": "/CodiceZero/Habilidades/ZZZ-Icon-System-Skill-Special-01-675x675.webp",
     "Definitiva": "/CodiceZero/Habilidades/ZZZ-Icon-System-Skill-QTE-Ultimate-Colored-Inverted-01-691x675.webp",
-    "Asistencia": "/CodiceZero/Habilidades/ZZZ-Icon-System-Skill-Assist-01-675x675.webp"
+    "Assist": "/CodiceZero/Habilidades/ZZZ-Icon-System-Skill-Assist-01-675x675.webp"
   };
 
   // Función de Procesamiento de Texto Mejorada
@@ -47,29 +47,22 @@ export default function AgentDetailPage() {
 
     let processed = text;
 
-    // PASO 1: Reemplazar [Icono X] por imágenes controladas
+    // PASO 1: Iconos con Estilo Inline Forzado
     processed = processed.replace(/\[Icono (.*?)\]/g, (match, iconName) => {
-      // Normalizar nombre para buscar en el mapa (Quitar espacios extra, minúsculas si es necesario)
-      // Mapeo manual rápido para asegurar coincidencias
-      const keyMap = {
-        "Ataque": "Ataque Básico",
-        "Ataque Normal": "Ataque Básico",
-        "Evasión": "Evasión",
-        "Especial": "Técnica Especial",
-        "Especial EX": "Técnica Especial EX",
-        "Definitiva": "Técnica Definitiva",
-        "Asistencia": "Asistencia"
-      };
-      
-      const mappedKey = keyMap[iconName] || iconName;
-      const src = skillTypeIcons[mappedKey] || skillTypeIcons["Ataque Básico"]; // Fallback
+      const keyMap = { "Ataque": "Ataque Básico", "Dodges": "Evasión", "Assist": "Asistencia", "Especial": "Técnica Especial", "EspecialEx": "Técnica Especial Ex","Definitiva": "Técnica Definitiva" };
+      const mappedKey = keyMap[iconName] ;
+      const src = skillTypeIcons[mappedKey] || skillTypeIcons["Ataque Básico"];
 
-      // DETECCIÓN DE ICONOS PROBLEMÁTICOS
-      // Evasión y Asistencia suelen ser más grandes, los forzamos a ser un poco más pequeños
-      const isLargeIcon = mappedKey === "Evasión" || mappedKey === "Asistencia";
-      const sizeClass = isLargeIcon ? "h-[1.1em] w-auto" : "h-[1.3em] w-auto";
+      // DETECCIÓN DE ICONOS VOLUMINOSOS (Círculos/Cuadrados)
+      // Evasión y Asistencia son muy grandes visualmente, los bajamos a 0.9em
+      const isBulkyIcon = mappedKey === "Evasión" || mappedKey === "Asistencia" || mappedKey === "Ataque Básico" || mappedKey === " Técnica Especial" || mappedKey === " Técnica Especial Ex"|| mappedKey === "Técnica Definitiva";
       
-      return `<img src="${src}" alt="${iconName}" class="inline-block ${sizeClass} align-middle mx-0.5 opacity-90" style="transform: translateY(-1px);" />`;
+      // Ajuste fino de tamaño y alineación
+      const heightStyle = isBulkyIcon ? "1.5em" : "1.2em"; // Bajamos Evasión/Asistencia a 0.9em
+      const verticalAlign = isBulkyIcon ? "-0.15em" : "-0.25em"; // Ajuste de posición vertical
+      
+      // Retornamos HTML con estilos inline estrictos
+      return `<img src="${src}" alt="${iconName}" style="display:inline-block; height:${heightStyle}; width:${heightStyle}; vertical-align:${verticalAlign}; opacity:0.9; margin:0 1px;" />`;
     });
 
     // PASO 2: Habilidades Completas (Tipo + Nombre)

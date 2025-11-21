@@ -38,13 +38,13 @@ export const agentDetails = {
         {
           type: "Ataque Básico",
           name: "Peso Aplastante de la Escarcha",
-          description: "Mientras carga o gira durante el Ataque Básico: Abrazo de Escarcha, si es golpeada por un enemigo, Yidhari puede bloquear con sus tentáculos, reduciendo el Daño recibido en un 25%. Si carga o aún no está a carga completa, Yidhari contraataca con sus tentáculos, volviendo a la postura de carga y ganando instantáneamente 1 nivel de carga, mientras también inflige Daño Glacial a los enemigos en frente. Mientras Peso Aplastante de la Escarcha está activo, presionar [Icono Ataque] hace que Yidhari desate inmediatamente el golpe final del Ataque Básico: Abrazo de Escarcha basado en su nivel de carga actual. Mientras Peso Aplastante de la Escarcha está activo, presionar [Icono Especial] o [Icono Especial EX] hace que Yidhari desate una Técnica Especial: Frío Creciente, Persecución Aplastante que garantiza la activación de Frío Creciente.",
+          description: "Mientras carga o gira durante el Ataque Básico: Abrazo de Escarcha, si es golpeada por un enemigo, Yidhari puede bloquear con sus tentáculos, reduciendo el Daño recibido en un 25%. Si carga o aún no está a carga completa, Yidhari contraataca con sus tentáculos, volviendo a la postura de carga y ganando instantáneamente 1 nivel de carga, mientras también inflige Daño Glacial a los enemigos en frente. Mientras Peso Aplastante de la Escarcha está activo, presionar [Icono Ataque] hace que Yidhari desate inmediatamente el golpe final del Ataque Básico: Abrazo de Escarcha basado en su nivel de carga actual. Mientras Peso Aplastante de la Escarcha está activo, presionar [Icono SpecialBasico] o [Icono SpecialEx] hace que Yidhari desate una Técnica Especial: Frío Creciente, Persecución Aplastante que garantiza la activación de Frío Creciente.",
           tgas: "Hielo",
         },
         {
           type: "Evasión",
           name: "Cambio Onírico",
-          description: "Presiona [Icono Evasión] para activar: Una evasión rápida. El personaje es invulnerable mientras usa esta habilidad.",
+          description: "Presiona [Icono Dodges] para activar: Una evasión rápida. El personaje es invulnerable mientras usa esta habilidad.",
           tags: ["Esquiva", "Congelación"]
         },
         {
@@ -62,13 +62,13 @@ export const agentDetails = {
         {
           type: "Asistencia Rápida",
           name: "Refuerzo de Choque Helado",
-          description: "Cuando el personaje activo es lanzado por los aires, presiona [Icono Asistencia] para activar: Golpea a los enemigos en frente, infligiendo Daño Glacial. El personaje es invulnerable mientras usa esta habilidad.",
+          description: "Cuando el personaje activo es lanzado por los aires, presiona [Icono Assist] para activar: Golpea a los enemigos en frente, infligiendo Daño Glacial. El personaje es invulnerable mientras usa esta habilidad.",
           tags: ["Asistencia"]
         },
         {
           type: "Asistencia Defensiva",
           name: "Rechazo de Terremoto Relámpago",
-          description: "Cuando el personaje en el campo está a punto de ser atacado, presiona [Icono Asistencia] para activar: Realiza un parry al ataque del enemigo, infligiendo Aturdimiento masivo. El personaje es invulnerable mientras usa esta habilidad.",
+          description: "Cuando el personaje en el campo está a punto de ser atacado, presiona [Icono Assist] para activar: Realiza un parry al ataque del enemigo, infligiendo Aturdimiento masivo. El personaje es invulnerable mientras usa esta habilidad.",
           tags: ["Asistencia"]
         },
         {
@@ -80,7 +80,7 @@ export const agentDetails = {
         {
           type: "Técnica Especial",
           name: "Cese de Pensamientos",
-          description: "Presiona [Icono Especial] para activar: Lanza a los enemigos frente a ella por el aire, infligiendo Daño Glacial. El nivel de Anti-interrupción aumenta mientras se usa esta habilidad.",
+          description: "Presiona [Icono Non] para activar: Lanza a los enemigos frente a ella por el aire, infligiendo Daño Glacial. El nivel de Anti-interrupción aumenta mientras se usa esta habilidad.",
           tags: ["AoE", "Interrupción"]
         },
         {
@@ -92,7 +92,7 @@ export const agentDetails = {
         {
           type: "Técnica Especial",
           name: "Frío Creciente, Persecución Aplastante",
-          description: "Presiona [Icono Especial] o [Icono Especial EX] mientras cargas o giras durante el Ataque Básico: Abrazo de Escarcha, o presiona [Icono Arriba] mientras mantienes [Icono Ataque] para activar: Lanza a los enemigos frente a ella por el aire, infligiendo Daño Glacial. Cuando el ataque de la habilidad choca con el ataque de un enemigo, activa Frío Creciente. Si la habilidad golpea a un enemigo Aturdido, y con suficiente Adrenalina, activa Persecución Aplastante. Activar Frío Creciente o Persecución Aplastante eleva instantáneamente el nivel de carga al máximo. Durante esta habilidad, presiona [Icono Ataque] y Yidhari desatará inmediatamente el golpe final del Ataque Básico: Abrazo de Escarcha basado en el nivel de carga actual. El nivel de Anti-interrupción aumenta mientras se usa esta habilidad.",
+          description: "Presiona [Icono Especial] o [Icono EspecialEX] mientras cargas o giras durante el Ataque Básico: Abrazo de Escarcha, o presiona [Icono Arriba] mientras mantienes [Icono Ataque] para activar: Lanza a los enemigos frente a ella por el aire, infligiendo Daño Glacial. Cuando el ataque de la habilidad choca con el ataque de un enemigo, activa Frío Creciente. Si la habilidad golpea a un enemigo Aturdido, y con suficiente Adrenalina, activa Persecución Aplastante. Activar Frío Creciente o Persecución Aplastante eleva instantáneamente el nivel de carga al máximo. Durante esta habilidad, presiona [Icono Ataque] y Yidhari desatará inmediatamente el golpe final del Ataque Básico: Abrazo de Escarcha basado en el nivel de carga actual. El nivel de Anti-interrupción aumenta mientras se usa esta habilidad.",
           tags: ["AoE", "Interrupción"]
         },
         {
