@@ -38,3 +38,18 @@ body {
   mix-blend-mode: overlay;
 }
 
+/* --- CUSTOM SCROLLBAR (Webkit) --- */
+::-webkit-scrollbar {
+  width: 8px; /* Ancho vertical */
+  height: 8px; /* Alto horizontal */
+}
+
+::-webkit-scrollbar-track { background: #0f172a; /* Color del carril (Gris muy oscuro/Azul) */ }
+
+::-webkit-scrollbar-thumb { background: #334155; /* Color de la barra (Gris medio) */ border-radius: 4px; }
+
+::-webkit-scrollbar-thumb:hover { background: #475569; /* Color al pasar el mouse (Un poco más claro) */ }
+
+/* Para Firefox (Estándar moderno) */
+* { scrollbar-width: thin; scrollbar-color: #334155 #0f172a; }
+

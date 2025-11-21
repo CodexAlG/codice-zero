@@ -5,13 +5,12 @@ import Image from 'next/image';
 import { BookOpen, Home } from 'lucide-react';
 import Link from 'next/link';
 
-export default function Sidebar() {
-  const [isExpanded, setIsExpanded] = useState(false);
+export default function Sidebar({ isExpanded, setIsExpanded }) {
   const [activeItem, setActiveItem] = useState(0);
 
   return (
-    <aside
-      className={`h-screen bg-gray-900 backdrop-blur-md text-white p-4 flex flex-col transition-all duration-300 ease-in-out border-r border-white/5 ${
+    <aside 
+      className={`fixed top-0 left-0 h-screen bg-gray-900 backdrop-blur-md text-white p-4 flex flex-col transition-all duration-300 ease-in-out border-r border-white/5 z-50 ${
         isExpanded ? 'w-64' : 'w-20'
       }`}
       onMouseEnter={() => setIsExpanded(true)}

@@ -1,6 +1,6 @@
 import { Rajdhani, Inter } from "next/font/google";
 import "./globals.css";
-import Sidebar from '@/components/layout/Sidebar';
+import LayoutWrapper from '@/components/layout/LayoutWrapper';
 
 const inter = Inter({
   variable: "--font-inter",
@@ -19,12 +19,7 @@ export default function RootLayout({ children }) {
       <body
         className={`${inter.variable} ${techFont.variable} antialiased`}
       >
-        <div className="flex h-screen bg-gray-950 text-white relative z-10">
-          <Sidebar />
-          <main className="flex-1 overflow-y-auto relative z-10">
-            {children}
-          </main>
-        </div>
+        <LayoutWrapper>{children}</LayoutWrapper>
       </body>
     </html>
   );

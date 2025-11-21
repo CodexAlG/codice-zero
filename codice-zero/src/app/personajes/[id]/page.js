@@ -7,29 +7,37 @@ import Link from 'next/link';
 import { ArrowLeft } from 'lucide-react';
 import { agents } from '@/data/agents';
 import { agentDetails } from '@/data/agentDetails';
-import { calculateStat, calculateStatsWithCore } from '@/utils/statCalculator';
+import { calculateStatsWithCore } from '@/utils/statCalculator';
 import SkillsModule from '@/components/agents/SkillsModule';
+import StatsTable from '@/components/agents/StatsTable';
 
 export default function AgentDetailPage() {
+  // 1. PRIMERO: Definir params y encontrar el agente
   const params = useParams();
   const agentId = parseInt(params.id);
-  
-  // Definir los niveles escalonados
-  const LEVELS = [1, 10, 20, 30, 40, 50, 60];
-  const [levelIndex, setLevelIndex] = useState(6); // 6 es el índice de "60"
-  const level = LEVELS[levelIndex];
-  
-  // Función para limpiar texto (quitar tildes y mayúsculas)
-  const normalize = (str) => str ? str.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "") : "";
-  
-  // Buscar agente básico (Fix: convertir params.id a Número)
-  const agent = agents.find(a => a.id === Number(params.id));
-  const details = agentDetails[Number(params.id)];
-  
-  // Calcular stats con Core
-  const currentStats = details ? calculateStatsWithCore(details.baseStats, level, details.coreStats) : {};
+  const agent = agents.find(a => a.id === agentId);
 
-  // Mapa de colores por elemento
+  // 2. SEGUNDO: Hooks de estado
+  const [activeTab, setActiveTab] = useState("stats"); // Pestañas: 'stats', 'skills', 'equip'
+  const [level, setLevel] = useState(1); // Nivel del personaje
+  const [selectedSkill, setSelectedSkill] = useState(null); // Habilidad seleccionada
+
+  // 3. TERCERO: Validar si existe (Return temprano)
+  if (!agent) {
+    return (
+      <div className="fixed inset-0 bg-gray-950 text-white flex items-center justify-center pl-20">
+        <p className="text-2xl">Agente no encontrado</p>
+      </div>
+    );
+  }
+
+  // 4. CUARTO: Lógica que depende de 'agent' (Colores, Iconos)
+  const details = agentDetails[agentId];
+
+  // Helper de normalización
+  const normalize = (str) => str ? str.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "") : "";
+
+  // Mapa de Colores
   const elementColors = {
     "fuego": "#ef4444",    // Rojo
     "hielo": "#22d3ee",    // Cian
@@ -37,13 +45,28 @@ export default function AgentDetailPage() {
     "fisico": "#eab308",   // Amarillo Dorado
     "etereo": "#d946ef",   // Rosa/Magenta
   };
+  const themeColor = elementColors[normalize(agent.element)] || "#facc15";
 
-  // Lógica para determinar el icono del elemento
+  // Mapeo de Iconos de Facción
+  const factionIcons = {
+    "Victoria Housekeeping": "/CodiceZero/Agentes/Faction/Faction_Victoria_Housekeeping_Co._Icon.webp",
+    "Belobog Heavy Industries": "/CodiceZero/Agentes/Faction/Faction_Belobog_Heavy_Industries_Icon.webp",
+    "Cunning Hares": "/CodiceZero/Agentes/Faction/Faction_Gentle_House_Icon.webp",
+    "N.E.P.S.": "/CodiceZero/Agentes/Faction/Faction_Criminal_Investigation_Special_Response_Team_Icon.webp",
+    "Section 6": "/CodiceZero/Agentes/Faction/Faction_Hollow_Special_Operations_Section_6_Icon.webp",
+    "Obol Squad": "/CodiceZero/Agentes/Faction/Faction_Obol_Squad_Icon.webp",
+    "Sons of Calydon": "/CodiceZero/Agentes/Faction/Faction_Sons_of_Calydon_Icon.webp",
+    "Spook Shack": "/CodiceZero/Agentes/Faction/Faction_Spook_Shack_Icon.webp",
+    "Mockingbird": "/CodiceZero/Agentes/Faction/Faction_Mockingbird_Icon.webp",
+    "Yunkui Summit": "/CodiceZero/Agentes/Faction/Faction_Yunkui_Summit_Icon.webp"
+  };
+  const factionIconPath = factionIcons[agent.faction] || ""; // Fallback vacío si no encuentra
+
+  // Lógica de Icono Especial (Miyabi/Yixuan/Etéreo)
   let elementIconPath = "";
-  
-  if (agent?.name?.includes("Miyabi")) {
+  if (agent.name.includes("Miyabi")) {
      elementIconPath = "/CodiceZero/Agentes/Elemento/Icon_Frost.png";
-  } else if (agent?.name?.includes("Yixuan")) {
+  } else if (agent.name.includes("Yixuan")) {
      elementIconPath = "/CodiceZero/Agentes/Elemento/Icon_Auric_Ink.webp";
   } else {
      const iconMap = {
@@ -51,81 +74,35 @@ export default function AgentDetailPage() {
        "hielo": "Hielo.webp",
        "electrico": "Electrico.webp",
        "fisico": "Fisico.webp",
-       "etereo": "Etéreo.webp" // Nombre exacto del archivo
+       "etereo": "Etéreo.webp"
      };
-     elementIconPath = `/CodiceZero/Agentes/Elemento/${iconMap[normalize(agent?.element)] || "Fisico.webp"}`;
+     elementIconPath = `/CodiceZero/Agentes/Elemento/${iconMap[normalize(agent.element)] || "Fisico.webp"}`;
   }
 
-  // Mapa de iconos de discos
-  const discIcons = {
-    "Flor del Alba": "/CodiceZero/Discos/Drive_Disc_Dawn's_Bloom.webp",
-    "Jazz Caótico": "/CodiceZero/Discos/Drive_Disc_Chaos_Jazz.webp",
-    "Proto Punk": "/CodiceZero/Discos/Drive_Disc_Proto_Punk.webp",
-    "Canción de Rama y Hoja": "/CodiceZero/Discos/Drive_Disc_Branch_&_Blade_Song.webp",
-    "Metal Inferno": "/CodiceZero/Discos/Drive_Disc_Inferno_Metal.webp",
-    "Metal Polar": "/CodiceZero/Discos/Drive_Disc_Polar_Metal.webp",
-    "Metal Trueno": "/CodiceZero/Discos/Drive_Disc_Thunder_Metal.webp",
-    "Metal Caótico": "/CodiceZero/Discos/Drive_Disc_Chaotic_Metal.webp",
-    "Metal Colmillo": "/CodiceZero/Discos/Drive_Disc_Fanged_Metal.webp",
-    "Pájaro Carpintero": "/CodiceZero/Discos/Drive_Disc_Woodpecker_Electro.webp",
-    "Punk Hormonal": "/CodiceZero/Discos/Drive_Disc_Hormone_Punk.webp",
-    "Jazz Swing": "/CodiceZero/Discos/Drive_Disc_Swing_Jazz.webp",
-    "Disco de Choque": "/CodiceZero/Discos/Drive_Disc_Shockstar_Disco.webp",
-    "Blues de la Libertad": "/CodiceZero/Discos/Drive_Disc_Freedom_Blues.webp",
-    "Electro Puffer": "/CodiceZero/Discos/Drive_Disc_Puffer_Electro.webp",
-    "Rock del Alma": "/CodiceZero/Discos/Drive_Disc_Soul_Rock.webp",
-    "Armonía de Sombras": "/CodiceZero/Discos/Drive_Disc_Shadow_Harmony.webp",
-    "Nana de Luna": "/CodiceZero/Discos/Drive_Disc_Moonlight_Lullaby.webp",
-    "Cuentos de Yunkui": "/CodiceZero/Discos/Drive_Disc_Yunkui_Tales.webp",
-    "Voz Astral": "/CodiceZero/Discos/Astral.webp",
-    "Melodía de Faetón": "/CodiceZero/Discos/Drive_Disc_Phaethon's_Melody.webp",
-    "Rey de la Cima": "/CodiceZero/Discos/Drive_Disc_King_of_the_Summit.webp"
+  // Calcular stats con Core
+  const currentStats = details ? calculateStatsWithCore(details.baseStats, level, details.coreStats) : {};
+
+  // Mapeo de iconos de habilidades
+  const skillIcons = {
+    "Basic": "/CodiceZero/Habilidades/Icon_Basic_Attack.webp",
+    "Skill": "/CodiceZero/Habilidades/Icon_Special_Attack.webp",
+    "Ultimate": "/CodiceZero/Habilidades/Icon_Ultimate_Colored.webp",
+    "Assist": "/CodiceZero/Habilidades/Icon_Assist_Attack.png",
+    "Chain": "/CodiceZero/Habilidades/Icon_Chain_Attack.webp",
+    "Dodge": "/CodiceZero/Habilidades/Icon_Dodge.webp"
   };
 
-  // Función helper para buscar el icono (por si el nombre en details varía un poco)
-  const getDiscIcon = (name) => {
-    const key = Object.keys(discIcons).find(k => name.includes(k));
-    return key ? discIcons[key] : "/CodiceZero/Discos/Icon_Storage_Drive_Disc.webp"; // Placeholder
-  };
-
-  // Obtener color actual (o default cian)
-  const themeColor = elementColors[normalize(agent?.element)] || "#22d3ee";
-
-  // Componente Helper para filas limpias
-  const StatRow = ({ label, value, bonus, isCoreAtk, color }) => {
-    return (
-      <div className="flex justify-between items-center border-b border-dashed border-white/10 pb-1 group hover:border-white/30 transition-colors">
-        <span className="text-gray-400 group-hover:text-gray-200 transition-colors">{label}</span>
-        <div className="flex items-center gap-2">
-          {/* Valor Base */}
-          <span className={`font-bold ${isCoreAtk ? '' : 'text-white'}`} style={isCoreAtk ? { color: color } : {}}>
-            {value || "-"}
-          </span>
-          {/* Bonus Visual (Si existe) */}
-          {bonus && bonus !== "-" && (
-            <span
-              className="text-xs px-1 rounded border bg-black/50"
-              style={{ color: color, borderColor: color }}
-            >
-              {bonus}
-            </span>
-          )}
-        </div>
-      </div>
-    );
-  };
-
-  if (!agent) {
-    return (
-      <div className="min-h-screen bg-gray-950 text-white flex items-center justify-center">
-        <p className="text-2xl">Agente no encontrado</p>
-      </div>
-    );
-  }
+  // Componente de Fila de Atributo
+  const AttributeRow = ({ label, value }) => (
+    <div className="flex justify-between items-center py-2 border-b border-white/5 last:border-0">
+      <span className="text-gray-400 text-sm font-medium">{label}</span>
+      <span className="text-white text-sm font-bold font-mono">{value}</span>
+    </div>
+  );
 
   if (!details) {
     return (
-      <div className="min-h-screen bg-gray-950 text-white flex items-center justify-center">
+      <div className="fixed inset-0 bg-gray-950 text-white flex items-center justify-center pl-20">
         <div className="text-center">
           <h1 className="text-4xl font-orbitron mb-4">{agent.name}</h1>
           <p className="text-xl text-yellow-400">Próximamente</p>
@@ -134,369 +111,243 @@ export default function AgentDetailPage() {
     );
   }
 
-  // Gradientes por elemento (Maneja ambos formatos con/sin acento)
-  const elementGradients = {
-    "Fuego": 'from-red-900/50 to-gray-950',
-    "Hielo": 'from-cyan-900/50 to-gray-950',
-    "Electrico": 'from-blue-900/50 to-gray-950',
-    "Fisico": 'from-yellow-900/50 to-gray-950',
-    "Etéreo": 'from-pink-900/50 to-gray-950',  // Con acento
-    "Etereo": 'from-pink-900/50 to-gray-950'   // Sin acento
-  };
-
-  const gradient = elementGradients[agent.element] || 'from-gray-900 to-gray-950';
-
+  // 5. QUINTO: Return del JSX
   return (
-    <div className="min-h-screen bg-gray-950 text-white relative">
-      {/* Sección 1: Header de Identidad */}
-      <div className={`bg-gradient-to-b ${gradient} p-8 relative`}>
-        {/* Botón de Regreso Flotante */}
-        <Link
-          href="/personajes"
-          className="absolute top-8 left-8 z-50 inline-flex items-center text-gray-300 hover:text-yellow-400 transition-colors group"
-        >
-          <ArrowLeft className="w-6 h-6 mr-2 group-hover:-translate-x-1 transition-transform" />
-          <span className="font-bold text-lg shadow-black drop-shadow-md"></span>
-        </Link>
+    <div className="fixed inset-0 bg-gray-950 text-white flex pl-20 overflow-hidden">
+      
+      {/* BOTÓN VOLVER - POSICION ABSOLUTA */}
+      <Link 
+        href="/personajes" 
+        className="absolute top-4 left-20 z-50 inline-flex items-center text-gray-400 hover:text-white transition-colors bg-black/40 px-4 py-2 rounded-lg border border-white/10"
+      >
+        <ArrowLeft className="w-4 h-4 mr-2" />
+        Volver
+      </Link>
 
-        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
-          {/* Imagen del personaje */}
-          <div className="relative h-96 lg:h-[500px]">
-            <Image
-              src={agent.image}
-              alt={agent.name}
-              fill
-              className="object-contain object-top"
-              priority
-            />
-          </div>
-
-          {/* Información del personaje */}
-          <div className="space-y-4">
-            <h1 className="text-6xl lg:text-7xl font-orbitron font-bold">{agent.name}</h1>
-            
-            {/* Bloque de Iconos de Identidad */}
-            <div className="flex items-center gap-4 mt-2 mb-4">
-              
-              {/* 1. Rango (S/A) */}
-              <div className="relative group">
-                <Image
-                  src={`/CodiceZero/Rango/${agent.rank}.webp`}
-                  alt={`Rango ${agent.rank}`}
-                  width={40}
-                  height={40}
-                  className="object-contain drop-shadow-md"
-                />
-                {/* Tooltip */}
-                <span className="absolute -top-8 left-1/2 -translate-x-1/2 bg-black/80 text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none whitespace-nowrap">
-                  Rango {agent.rank}
-                </span>
-              </div>
-
-              {/* 2. Elemento */}
-              <div className="relative group">
-                <Image
-                  src={elementIconPath}
-                  alt={agent.element}
-                  width={40}
-                  height={40}
-                  className="object-contain drop-shadow-md"
-                />
-                {/* Tooltip */}
-                <span className="absolute -top-8 left-1/2 -translate-x-1/2 bg-black/80 text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none whitespace-nowrap">
-                  {agent.element}
-                </span>
-              </div>
-
-              {/* 3. Rol */}
-              <div className="relative group">
-                <Image
-                  src={`/CodiceZero/Agentes/Rol/${normalize(agent.rol)}.webp`}
-                  alt={agent.rol}
-                  width={40}
-                  height={40}
-                  className="object-contain drop-shadow-md"
-                />
-                {/* Tooltip */}
-                <span className="absolute -top-8 left-1/2 -translate-x-1/2 bg-black/80 text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none whitespace-nowrap">
-                  {agent.rol}
-                </span>
-              </div>
-            </div>
-
-            <p className="text-xl text-gray-300">{agent.faction}</p>
-
-            {/* --- PANEL DE ESTADO Y MATERIALES --- */}
-            <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-6 max-w-2xl">
-              
-              {/* --- PANEL DE ESTADÍSTICAS (DISEÑO CLEAN HUD) --- */}
-              <div className="bg-gray-950/50 border border-white/10 rounded-xl overflow-hidden backdrop-blur-md max-w-3xl shadow-2xl">
-                
-                {/* HEADER: Título y Nivel */}
-                <div className="bg-white/5 p-6 border-b border-white/5 flex justify-between items-center">
-                  <div>
-                    <h3 className="font-display text-xl text-white italic tracking-widest">STATS</h3>
-                    <p className="text-xs text-gray-500 font-mono mt-1">CORE SKILL ENHANCEMENT</p>
-                  </div>
-                  
-                {/* --- SLIDER DE NIVEL --- */}
-                <div className="flex flex-col items-end w-1/2">
-                  <div className="flex justify-between w-full text-xs font-mono mb-2 font-bold" style={{ color: themeColor }}>
-                    
-                    <span className="text-lg">Lv.{level}/60</span>
-                  </div>
-                  
-                  <div className="relative w-full h-2 bg-gray-800 rounded-full">
-                    {/* Barra de Progreso con Color Dinámico */}
-                    <div
-                      className="absolute top-0 left-0 h-full rounded-full transition-all duration-300"
-                      style={{
-                        width: `${(levelIndex / 6) * 100}%`,
-                        backgroundColor: themeColor,
-                        boxShadow: `0 0 10px ${themeColor}`
-                      }}
-                    />
-                    
-                    <input
-                      type="range" min="0" max="6" step="1"
-                      value={levelIndex}
-                      onChange={(e) => setLevelIndex(Number(e.target.value))}
-                      className="absolute top-[-10px] left-0 w-full h-6 opacity-0 cursor-pointer z-20"
-                    />
-                    
-                    {/* Puntos de control */}
-                    <div className="absolute w-full flex justify-between top-[-3px] px-0 pointer-events-none">
-                      {LEVELS.map((l, i) => (
-                        <div
-                          key={l}
-                          className={`w-4 h-4 rounded-full border-2 transition-all ${
-                            i <= levelIndex ? "scale-110 bg-gray-950" : "bg-gray-800 border-gray-600"
-                          }`}
-                          style={i <= levelIndex ? { borderColor: themeColor, backgroundColor: themeColor } : {}}
-                        />
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              </div> {/* Cierre del Header interno */}
-
-              {/* --- NODOS CORE (A-F) --- */}
-              <div className="px-6 py-4 flex justify-between gap-2 border-b border-white/5 bg-black/20">
-                {['A', 'B', 'C', 'D', 'E', 'F'].map((letter, idx) => {
-                  const reqLevel = idx === 5 ? 60 : 15 + (idx * 10);
-                  const isActive = level >= reqLevel;
-                  
-                  return (
-                    <div
-                      key={letter}
-                      className={`flex-1 h-10 flex items-center justify-center rounded skew-x-[-10deg] font-display font-bold text-lg transition-all duration-300 border
-                        ${isActive ? "" : "bg-gray-900/50 text-gray-700 border-gray-800"}
-                      `}
-                      // AQUI ESTA LA MAGIA: Aplicamos el color directo al estilo
-                      style={isActive ? {
-                        borderColor: themeColor,      // Borde del color
-                        color: themeColor,            // Texto del color
-                        backgroundColor: `${themeColor}20`, // Fondo al 20% de opacidad (Truco Hex)
-                        boxShadow: `0 0 15px ${themeColor}40` // Brillo
-                      } : {}}
-                    >
-                      <span className="skew-x-[10deg]">{letter}</span>
-                    </div>
-                  );
-                })}
-              </div>
-
-                {/* DATA GRID (TABLA) */}
-                <div className="p-6 grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-3 font-mono text-sm">
-                  
-                  <StatRow label="PV Base" value={currentStats.hp} color={themeColor} />
-                  <StatRow label="Ataque Base" value={currentStats.atk} isCoreAtk={level >= 25} color={themeColor} />
-                  <StatRow label="Defensa Base" value={currentStats.def} color={themeColor} />
-                  <StatRow label="Impacto Base" value={currentStats.impact} color={themeColor} />
-                  
-                  <StatRow
-                    label="Prob. Crítico"
-                    value={details?.baseStats?.crit}
-                    bonus={currentStats.specialStatName?.includes("Crit Rate") || currentStats.specialStatName?.includes("Crítico") ? currentStats.specialStatValue : null}
-                    color={themeColor}
-                  />
-                  <StatRow
-                    label="Daño Crítico"
-                    value={details?.baseStats?.critDmg}
-                    bonus={currentStats.specialStatName?.includes("Crit Dmg") ? currentStats.specialStatValue : null}
-                    color={themeColor}
-                  />
-                  
-                  <StatRow
-                    label="Tasa de Anomalía"
-                    value={details?.baseStats?.anomalyRate}
-                    bonus={currentStats.specialStatName?.includes("Anomalía") ? currentStats.specialStatValue : null}
-                    color={themeColor}
-                  />
-                  <StatRow
-                    label="Maestría Anomalía"
-                    value={details?.baseStats?.anomalyMastery}
-                    bonus={currentStats.specialStatName?.includes("Maestría") ? currentStats.specialStatValue : null}
-                    color={themeColor}
-                  />
-                  
-                  <StatRow label="Tasa Perforación" value={details?.baseStats?.penRatio} color={themeColor} />
-                  <StatRow
-                    label="Recup. Energía"
-                    value={details?.baseStats?.energyRegen}
-                    // Detectar si el stat especial es de Energía
-                    bonus={currentStats.specialStatName?.includes("Energía") ? currentStats.specialStatValue : null}
-                    color={themeColor}
-                  />
-
-                </div>
-              </div>
-
-              {/* 2. Materiales de Ascensión (Estilo Lista) */}
-              <div className="bg-black/40 border border-white/10 rounded-lg p-4 backdrop-blur-sm">
-                <h3 className="text-yellow-400 font-display text-sm mb-3 uppercase tracking-wider flex items-center">
-                  <span className="w-2 h-2 bg-yellow-400 rounded-full mr-2"></span>
-                  Materiales
-                </h3>
-                <div className="space-y-2 text-sm">
-                  <div>
-                    <p className="text-gray-400 text-xs mb-1">Promoción:</p>
-                    <div className="flex flex-wrap gap-1">
-                      {details?.materials?.promotion?.map((mat, idx) => (
-                        <span key={idx} className="bg-gray-700/50 px-2 py-1 rounded text-xs">
-                          {mat}
-                        </span>
-                      )) || <span className="text-gray-500">Unknown</span>}
-                    </div>
-                  </div>
-                  <div>
-                    <p className="text-gray-400 text-xs mb-1">Habilidades:</p>
-                    <div className="flex flex-wrap gap-1">
-                      {details?.materials?.skill?.map((mat, idx) => (
-                        <span key={idx} className="bg-gray-700/50 px-2 py-1 rounded text-xs">
-                          {mat}
-                        </span>
-                      )) || <span className="text-gray-500">Unknown</span>}
-                    </div>
-                  </div>
-                  <div>
-                    <p className="text-gray-400 text-xs mb-1">Boss:</p>
-                    <span className="text-white text-xs">{details?.materials?.boss || "Unknown"}</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+      {/* IZQUIERDA: 450px Fijos (Solo Imagen de Fondo) */}
+      <div className="relative w-[450px] h-full border-r border-white/10 bg-black/20 flex-shrink-0">
+        {/* Imagen de Fondo Limpia */}
+        <div className="absolute inset-0 z-0">
+          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-black/20 to-gray-950 z-10"></div>
+          <Image
+            src={agent.image}
+            alt={agent.name}
+            fill
+            className="object-contain object-top opacity-90"
+            priority
+          />
         </div>
+        
+        {/* TARJETA DE DETALLE DE HABILIDAD (Solo si hay una seleccionada) */}
+        {activeTab === 'skills' && selectedSkill && (
+          <div className="absolute bottom-0 left-0 w-full p-6 bg-black/80 backdrop-blur-xl border-t border-white/20 animate-slideUp z-30 max-h-[60%] overflow-y-auto scrollbar-hide">
+             <h3 className="text-2xl font-display text-yellow-400 mb-2">{selectedSkill.name}</h3>
+             <div className="flex flex-wrap gap-2 mb-4">
+                {selectedSkill.tags && selectedSkill.tags.map(tag => (
+                  <span key={tag} className="text-xs bg-white/10 px-2 py-1 rounded uppercase">{tag}</span>
+                ))}
+             </div>
+             <p className="text-sm text-gray-300 leading-relaxed whitespace-pre-wrap">{selectedSkill.description}</p>
+             
+             {/* Tabla de Multiplicadores (Si existe) */}
+             {selectedSkill.attributes && (
+                <div className="mt-4 pt-4 border-t border-white/10">
+                   <div className="grid grid-cols-2 gap-2 text-sm">
+                     {Object.entries(selectedSkill.attributes).map(([key, value]) => (
+                       <div key={key} className="flex justify-between">
+                         <span className="text-gray-400">{key}:</span>
+                         <span className="text-white font-mono">{value}</span>
+                       </div>
+                     ))}
+                   </div>
+                </div>
+             )}
+          </div>
+        )}
       </div>
 
-      {/* Sección 2: Panel Táctico */}
-      <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-6 p-6">
-        {/* Columna 1: Armas */}
-        <div className="bg-gray-900 border border-white/10 rounded-md p-6">
-          <h2 className="text-2xl font-orbitron text-yellow-400 mb-4">Armas Recomendadas</h2>
-          <div className="space-y-4">
-            {details.build.weapons.map((weapon, index) => (
-              <div key={index} className="bg-gray-800/50 p-4 rounded-md border border-white/5">
-                <div className="flex items-center gap-3 mb-2">
-                  <Image src={weapon.image} alt={weapon.name} width={40} height={40} />
-                  <div>
-                    <h3 className="font-bold">{weapon.name}</h3>
-                    <p className="text-sm text-gray-400">Rango {weapon.rank}</p>
-                  </div>
-                </div>
-                <span className="text-xs bg-yellow-500/20 text-yellow-400 px-2 py-1 rounded">
-                  {weapon.type}
-                </span>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* --- INICIO BLOQUE DISCOS Y STATS MODULAR --- */}
-        <div className="bg-gray-900/60 p-5 rounded-xl border border-white/10 shadow-lg">
-          <h3 className="text-xl font-display text-yellow-400 mb-4 uppercase">Discos y Stats</h3>
+      {/* ZONA DERECHA (Panel HUD) */}
+      <div className="flex-1 flex flex-col h-full pt-12 pr-12 pb-8 relative z-20">
+        
+        {/* --- BLOQUE 1: HEADER INFO (Compacto) --- */}
+        <div className="mb-4 flex flex-col items-start max-w-xl animate-slideInRight">
           
-          {/* 1. Sets Recomendados (Con Iconos) */}
-          <div className="space-y-4 pb-4 border-b border-white/10">
-            <h4 className="text-xs text-gray-500 font-mono uppercase mb-3">Sets Recomendados</h4>
-            
-            {/* Set 4-Piece */}
-            <div className="flex items-start gap-3">
-              <Image src={getDiscIcon(details?.build?.discs?.set4?.name)} alt="4pc" width={48} height={48} className="rounded-full object-cover shadow-xl" />
-              <div className="flex-1">
-                <span className="text-sm font-bold text-cyan-400 mr-2">4 Piezas</span>
-                <span className="text-gray-300">{details?.build?.discs?.set4?.name}</span>
-                <p className="text-xs text-gray-500 mt-1">{details?.build?.discs?.set4?.desc}</p>
+          {/* Facción con Icono */}
+          <div className="flex items-center gap-2 mb-1 opacity-80">
+            {factionIconPath && (
+              <div className="relative w-6 h-6">
+                <Image src={factionIconPath} alt={agent.faction} fill className="object-contain" />
               </div>
-            </div>
-
-            {/* Set 2-Piece */}
-            <div className="flex items-start gap-3">
-              <Image src={getDiscIcon(details?.build?.discs?.set2?.name)} alt="2pc" width={48} height={48} className="rounded-full object-cover shadow-xl" />
-              <div className="flex-1">
-                <span className="text-sm font-bold text-pink-400 mr-2">2 Piezas</span>
-                <span className="text-gray-300">{details?.build?.discs?.set2?.name}</span>
-                <p className="text-xs text-gray-500 mt-1">{details?.build?.discs?.set2?.desc}</p>
-              </div>
-            </div>
+            )}
+            <span className="text-xs font-mono uppercase tracking-[0.15em] text-yellow-500">
+              {agent.faction}
+            </span>
           </div>
 
-          {/* 2. Stats Principales y Sub-Stats */}
+          {/* Nombre */}
+          <h1 className="text-6xl font-display font-black italic text-white drop-shadow-lg mb-3 leading-none transform -skew-x-6">
+            {agent.name}
+          </h1>
 
-          {/* Stats Principales (Grid: Slot/Value) */}
-          <div className="grid grid-cols-2 gap-y-1 mb-4 font-mono">
-            {Object.entries(details?.build?.mainStats || {}).map(([slot, stat]) => (
-              <div key={slot} className="flex justify-between items-center text-sm border-b border-dashed border-white/5 pb-1">
-                <span className="text-yellow-400">{slot}</span>
-                <span className="text-white">{stat}</span>
-              </div>
-            ))}
-          </div>
+          {/* Metadata Chips */}
+          <div className="flex gap-3">
+             {/* Chip: Rango */}
+             <div className="flex items-center bg-black/60 border border-white/10 px-3 py-1 rounded skew-x-[-10deg]">
+                <div className="skew-x-[10deg] flex items-center gap-2">
+                   <Image src={`/CodiceZero/Rango/Icon_Item_Rank_${agent.rank}.webp`} alt={agent.rank} width={24} height={24} />
+                   <span className={`font-bold text-lg ${agent.rank === 'S' ? 'text-orange-400' : 'text-purple-400'}`}>{agent.rank} RANK</span>
+                </div>
+             </div>
 
-          {/* Prioridad Sub-Stats (Chips) */}
-          <h5 className="text-xs text-gray-500 font-mono uppercase mb-2 mt-4">Prioridad Sub-Stats</h5>
-          <div className="flex flex-wrap gap-2">
-            {(details?.build?.subStats || []).map((stat, index) => (
-              <span key={index} className="px-3 py-1 bg-yellow-600/20 text-yellow-400 text-xs font-mono rounded-full border border-yellow-600/50">
-                {stat}
-              </span>
-            ))}
+             {/* Chip: Elemento */}
+             <div className="flex items-center bg-black/60 border border-white/10 px-3 py-1 rounded skew-x-[-10deg]" style={{ borderColor: themeColor }}>
+                <div className="skew-x-[10deg] flex items-center gap-2">
+                   <Image src={elementIconPath} alt={agent.element} width={20} height={20} />
+                   <span className="font-bold text-sm uppercase" style={{ color: themeColor }}>{agent.element}</span>
+                </div>
+             </div>
+
+             {/* Chip: Rol */}
+             <div className="flex items-center bg-black/60 border border-white/10 px-3 py-1 rounded skew-x-[-10deg]">
+                <div className="skew-x-[10deg] flex items-center gap-2">
+                   <Image src={`/CodiceZero/Agentes/Rol/${normalize(agent.rol)}.webp`} alt={agent.rol} width={18} height={18} className="invert" />
+                   <span className="font-bold text-sm uppercase text-gray-300">{agent.rol}</span>
+                </div>
+             </div>
           </div>
         </div>
 
-        {/* Columna 3: Equipos */}
-        <div className="bg-gray-900 border border-white/10 rounded-md p-6">
-          <h2 className="text-2xl font-orbitron text-yellow-400 mb-4">Equipos Sugeridos</h2>
-          <div className="space-y-4">
-            {details.teams.map((team, index) => (
-              <div key={index} className="bg-gray-800/50 p-4 rounded-md border border-white/5">
-                <h3 className="font-bold text-lg mb-3">{team.title}</h3>
-                <div className="space-y-2">
-                  <div>
-                    <p className="text-sm text-gray-400 mb-1">Miembros:</p>
-                    <div className="flex flex-wrap gap-2">
-                      {team.members.map((member, idx) => (
-                        <span key={idx} className="bg-gray-700 px-2 py-1 rounded text-sm">
-                          {member}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                  <div>
-                    <p className="text-sm text-gray-400">Bangboo: <span className="text-white">{team.bangboo}</span></p>
-                  </div>
+        {/* --- PANEL DE CONTENIDO (Caja de Cristal) --- */}
+        <div className="flex-1 bg-gray-900/70 border border-white/10 rounded-tr-3xl rounded-bl-3xl p-8 backdrop-blur-xl shadow-2xl overflow-hidden flex flex-col relative">
+          
+          {/* Decoración de esquinas */}
+          <div className="absolute top-0 right-0 w-16 h-16 border-t-2 border-r-2 border-yellow-500/50 rounded-tr-3xl pointer-events-none"></div>
+          <div className="absolute bottom-0 left-0 w-16 h-16 border-b-2 border-l-2 border-yellow-500/50 rounded-bl-3xl pointer-events-none"></div>
+
+          {/* Header del Panel (Título de Pestaña) */}
+          <div className="flex justify-between items-end mb-6 border-b border-white/5 pb-4">
+            <h2 className="text-3xl font-display text-white uppercase italic tracking-wide flex items-center gap-3">
+              <span className="w-3 h-3 bg-yellow-500 rotate-45"></span>
+              {activeTab === 'stats' && "Atributos"}
+              {activeTab === 'skills' && "Habilidades"}
+              {activeTab === 'equip' && "Equipamiento"}
+            </h2>
+            
+            {/* Slider de Nivel Integrado (Solo en Stats) */}
+            {activeTab === 'stats' && (
+              <div className="flex flex-col items-end">
+                <span className="text-xs font-mono text-gray-400 mb-1">NIVEL DE AGENTE</span>
+                <div className="flex items-center gap-3">
+                  <input 
+                    type="range" min="1" max="60" value={level} 
+                    onChange={(e) => setLevel(Number(e.target.value))}
+                    className="w-48 h-1.5 bg-gray-700 rounded-lg appearance-none cursor-pointer accent-yellow-400"
+                  />
+                  <span className="font-mono font-bold text-yellow-400 text-lg w-12 text-right">Nv.{level}</span>
                 </div>
               </div>
-            ))}
+            )}
+          </div>
+
+          {/* ÁREA DE SCROLL DEL CONTENIDO */}
+          <div className="flex-1 overflow-y-auto scrollbar-hide pr-2">
+             {/* Aquí se renderiza el contenido condicional (Stats, Skills, etc.) */}
+             {activeTab === 'stats' && (
+                <div className="grid grid-cols-2 gap-x-12 gap-y-4 animate-fadeIn">
+                   {/* Stats Grid */}
+                   <AttributeRow label="PV Base" value={currentStats.hp} />
+                   <AttributeRow label="Ataque Base" value={currentStats.atk} />
+                   <AttributeRow label="Defensa Base" value={currentStats.def} />
+                   <AttributeRow label="Impacto Base" value={currentStats.impact} />
+                   <AttributeRow label="Prob. Crítico" value={details?.baseStats?.crit} />
+                   <AttributeRow label="Daño Crítico" value={details?.baseStats?.critDmg} />
+                   <AttributeRow label="Tasa de Anomalía" value={details?.baseStats?.anomalyRate} />
+                   <AttributeRow label="Maestría de Anomalía" value={details?.baseStats?.anomalyMastery} />
+                   <AttributeRow label="Tasa de Perforación" value={details?.baseStats?.penRatio} />
+                   <AttributeRow label="Recup. de Energía" value={details?.baseStats?.energyRegen} />
+                </div>
+             )}
+             {activeTab === 'skills' && (
+                <div className="flex flex-col justify-center items-center gap-8 animate-fadeIn">
+                   {/* Título */}
+                   <h2 className="text-xl font-mono text-gray-400 uppercase tracking-widest">Selecciona una Habilidad</h2>
+                   
+                   {/* Grid de Iconos de Habilidades */}
+                   <div className="flex gap-4 flex-wrap justify-center">
+                      {details?.skills?.map((skill, index) => (
+                        <button 
+                          key={index}
+                          onClick={() => setSelectedSkill(skill)}
+                          className={`w-20 h-20 rounded-xl border-2 flex items-center justify-center transition-all duration-300 group ${
+                            selectedSkill === skill 
+                              ? "border-yellow-400 bg-yellow-400/20 shadow-[0_0_20px_rgba(250,204,21,0.4)] scale-110" 
+                              : "border-white/20 bg-black/40 hover:border-white/50 hover:bg-white/5"
+                          }`}
+                        >
+                          {/* Icono de la habilidad */}
+                          <Image 
+                            src={skillIcons[skill.type] || "/CodiceZero/Habilidades/Icon_Basic_Attack.webp"} 
+                            alt={skill.type} 
+                            width={48} height={48} 
+                            className={`object-contain transition-transform ${selectedSkill === skill ? "scale-110" : "group-hover:scale-110"}`}
+                          />
+                        </button>
+                      ))}
+                   </div>
+                   
+                   {/* Nodos de Core (A-F) */}
+                   <div className="flex gap-2 mt-8">
+                      {['A', 'B', 'C', 'D', 'E', 'F'].map((node) => (
+                        <div key={node} className="w-12 h-12 rounded-full border-2 border-white/20 bg-black/40 flex items-center justify-center text-white font-bold">
+                          {node}
+                        </div>
+                      ))}
+                   </div>
+                </div>
+             )}
+             {activeTab === 'equip' && (
+                <div className="animate-fadeIn">
+                   {/* Armas Recomendadas */}
+                   <div className="mb-6">
+                     <h3 className="text-lg font-bold text-white mb-4">Armas Recomendadas</h3>
+                     <div className="p-4 bg-black/40 rounded border border-white/10">
+                       <p className="text-gray-400">Próximamente: Sistema de armas recomendadas</p>
+                     </div>
+                   </div>
+
+                   {/* Discos */}
+                   <div>
+                     <h3 className="text-lg font-bold text-white mb-4">Discos</h3>
+                     <div className="p-4 bg-black/40 rounded border border-white/10">
+                       <p className="text-gray-400">Próximamente: Sistema de discos</p>
+                     </div>
+                   </div>
+                </div>
+             )}
           </div>
         </div>
-      </div>
 
-      {/* SECCIÓN 3: HABILIDADES */}
-      <div className="max-w-7xl mx-auto p-6">
-        <h2 className="text-3xl font-orbitron text-yellow-400 mb-6">Habilidades</h2>
-        <SkillsModule skills={details?.skills} color={themeColor} />
+        {/* --- BARRA DE NAVEGACIÓN (Tabs Abajo) --- */}
+        <div className="mt-4 flex justify-center gap-6 w-full">
+          {['stats', 'skills', 'equip'].map((tab) => (
+            <button
+              key={tab}
+              onClick={() => {
+                setActiveTab(tab);
+                if (tab !== 'skills') setSelectedSkill(null); // Clear skill selection when switching tabs
+              }}
+              className={`
+                px-8 py-2 rounded-sm font-display font-bold italic uppercase tracking-wider transition-all duration-200
+                ${activeTab === tab 
+                  ? "bg-yellow-400 text-black border-b-4 border-yellow-600 translate-y-[-2px]" 
+                  : "bg-black/40 text-gray-500 border border-white/10 hover:bg-white/10 hover:text-white"}
+              `}
+            >
+              {tab === 'stats' ? "Atributos" : tab === 'skills' ? "Habilidades" : "Equipo"}
+            </button>
+          ))}
+        </div>
+
       </div>
     </div>
   );

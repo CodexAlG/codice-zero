@@ -1,58 +1,29 @@
-import { getPromotionStats } from '@/utils/statCalculator';
+import { calculateStatsWithCore } from '@/utils/statCalculator';
 
-export default function StatsTable({ baseStats }) {
-  if (!baseStats) {
-    return (
-      <div className="text-center text-gray-400 p-4">
-        No hay datos de estadísticas disponibles
-      </div>
-    );
-  }
+export default function StatsTable({ details, level }) {
+  // Componente de Fila de Atributo
+  const AttributeRow = ({ label, value }) => (
+    <div className="flex justify-between items-center py-2 border-b border-white/5 last:border-0">
+      <span className="text-gray-400 text-sm font-medium">{label}</span>
+      <span className="text-white text-sm font-bold font-mono">{value}</span>
+    </div>
+  );
 
-  const rows = getPromotionStats(baseStats);
-
-  // Agrupar filas por nivel de promoción (2 filas por nivel)
-  const groupedRows = [];
-  for (let i = 0; i < rows.length; i += 2) {
-    groupedRows.push({
-      promo: rows[i].promo,
-      rows: [rows[i], rows[i + 1]].filter(Boolean)
-    });
-  }
+  // Calcular stats con Core
+  const currentStats = details ? calculateStatsWithCore(details.baseStats, level, details.coreStats) : {};
 
   return (
-    <div className="overflow-x-auto">
-      <table className="w-full border-collapse border border-yellow-400/50 text-sm text-center">
-        <thead className="bg-yellow-400 text-black font-bold uppercase">
-          <tr>
-            <th className="p-2 border border-yellow-400/50">Nivel Promoción</th>
-            <th className="p-2 border border-yellow-400/50">Nivel</th>
-            <th className="p-2 border border-yellow-400/50">Base HP</th>
-            <th className="p-2 border border-yellow-400/50">Base ATK</th>
-            <th className="p-2 border border-yellow-400/50">Base DEF</th>
-          </tr>
-        </thead>
-        <tbody className="text-gray-300 bg-gray-900/80">
-          {groupedRows.map((group, groupIdx) => (
-            group.rows.map((row, rowIdx) => (
-              <tr key={`${groupIdx}-${rowIdx}`} className="border-b border-gray-700/50 hover:bg-gray-800/50 transition-colors">
-                {rowIdx === 0 && (
-                  <td 
-                    className="p-2 border border-yellow-400/30 bg-yellow-400/10 font-bold text-yellow-400" 
-                    rowSpan={group.rows.length}
-                  >
-                    {group.promo}
-                  </td>
-                )}
-                <td className="p-2 border border-gray-700/30 font-mono">{row.level}</td>
-                <td className="p-2 border border-gray-700/30 font-mono text-green-400">{row.hp}</td>
-                <td className="p-2 border border-gray-700/30 font-mono text-red-400">{row.atk}</td>
-                <td className="p-2 border border-gray-700/30 font-mono text-blue-400">{row.def}</td>
-              </tr>
-            ))
-          ))}
-        </tbody>
-      </table>
+    <div className="grid grid-cols-2 gap-x-12 gap-y-4 animate-fadeIn">
+      <AttributeRow label="PV Base" value={currentStats.hp} />
+      <AttributeRow label="Ataque Base" value={currentStats.atk} />
+      <AttributeRow label="Defensa Base" value={currentStats.def} />
+      <AttributeRow label="Impacto Base" value={currentStats.impact} />
+      <AttributeRow label="Prob. Crítico" value={details?.baseStats?.crit} />
+      <AttributeRow label="Daño Crítico" value={details?.baseStats?.critDmg} />
+      <AttributeRow label="Tasa de Anomalía" value={details?.baseStats?.anomalyRate} />
+      <AttributeRow label="Maestría de Anomalía" value={details?.baseStats?.anomalyMastery} />
+      <AttributeRow label="Tasa de Perforación" value={details?.baseStats?.penRatio} />
+      <AttributeRow label="Recup. de Energía" value={details?.baseStats?.energyRegen} />
     </div>
   );
 }

@@ -67,7 +67,7 @@ export default function ArmasPage() {
   });
 
   return (
-    <div className="min-h-screen bg-gray-950 text-white p-8 ml-20">
+    <div className="min-h-screen bg-gray-950 text-white p-8">
       {/* --- PANEL DE FILTROS --- */}
       <div className="w-full mb-8 p-6 bg-gray-950/80 border-y border-white/10 backdrop-blur-md shadow-2xl flex flex-col gap-6">
         
