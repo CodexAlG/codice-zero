@@ -146,9 +146,7 @@ export default function AgentDetailPage() {
   let elementIconPath = "";
   if (agent.name.includes("Ye Shunguang")){
     elementIconPath = "/CodiceZero/Agentes/Elemento/Icon_TBA.webp";
-
-  }
-  if (agent.name.includes("Miyabi")) {
+  } else  if (agent.name.includes("Miyabi")) {
      elementIconPath = "/CodiceZero/Agentes/Elemento/Icon_Frost.png";
   } else if (agent.name.includes("Yixuan")) {
      elementIconPath = "/CodiceZero/Agentes/Elemento/Icon_Auric_Ink.webp";

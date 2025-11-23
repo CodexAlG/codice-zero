@@ -28,7 +28,7 @@ export default function PersonajesPage() {
   const roleFilters = ["Ataque", "Aturdidor", "Anomalia", "Soporte", "Defensa", "Ruptura"];
   const factionFilters = [
     "Victoria Housekeeping", "Belobog Heavy Industries", "Cunning Hares", 
-    "N.E.P.S.", "Obol Squad", "Section 6", "Sons of Calydon", 
+    "N.E.P.S.", "Obol Squad", "Section 6","Stars of Lyra", "Sons of Calydon", 
     "Spook Shack", "Mookingbird", "Yunkui Summit", 
     "Defense Force - Silver Squad", "Krampus Compliance Authority"
   ];
