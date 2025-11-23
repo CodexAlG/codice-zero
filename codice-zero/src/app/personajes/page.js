@@ -127,7 +127,7 @@ export default function PersonajesPage() {
       {isLoading && <LoadingSpinner />}
       
       {/* Contenido Normal de la Página (Solo visible cuando NO está cargando) */}
-      <div className={`min-h-screen bg-gray-950 text-white p-8 transition-opacity duration-300 ${isLoading ? 'opacity-0' : 'opacity-100'}`}>
+      <div className={`min-h-screen text-white p-8 transition-opacity duration-300 ${isLoading ? 'opacity-0' : 'opacity-100'}`}>
       {/* --- PANEL DE FILTROS --- */}
       <div className="w-full mb-8 p-6 bg-gray-950/80 border-y border-white/10 backdrop-blur-md shadow-2xl flex flex-col gap-6">
         

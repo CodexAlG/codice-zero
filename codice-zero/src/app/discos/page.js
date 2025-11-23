@@ -38,7 +38,7 @@ export default function DiscsPage() {
       {isLoading && <LoadingSpinner />}
       
       {/* Contenido Normal de la Página (Solo visible cuando NO está cargando) */}
-      <div className={`min-h-screen bg-gray-950 text-white p-6 transition-opacity duration-300 ${isLoading ? 'opacity-0' : 'opacity-100'}`}>
+      <div className={`min-h-screen text-white p-6 transition-opacity duration-300 ${isLoading ? 'opacity-0' : 'opacity-100'}`}>
       <div className="max-w-7xl mx-auto">
         <SectionTitle
           title="Base de Datos de Discos"

@@ -311,7 +311,7 @@ export default function AgentDetailPage() {
 
   // 5. QUINTO: Return del JSX
   return (
-    <div className="fixed inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-gray-800 via-gray-950 to-black text-white flex pl-20 overflow-hidden">
+    <div className="fixed inset-0 text-white flex pl-20 overflow-hidden">
        
       {/* BOTÓN VOLVER - POSICION ABSOLUTA */}
       <Link 
@@ -323,7 +323,7 @@ export default function AgentDetailPage() {
       </Link>
 
       {/* IZQUIERDA: 550px Fijos o W-1/2 (Aumento de Tamaño) */}
-      <div className="relative w-[550px] xl:w-[600px] h-full border-r border-white/10 bg-black/20 flex-shrink-0">
+      <div className="relative w-[550px] xl:w-[600px] h-full border-r border-white/10 bg-transparent flex-shrink-0">
         {/* Imagen de Fondo Limpia */}
         <div className="absolute inset-0 z-0">
           <div className="absolute inset-0 bg-gradient-to-r from-transparent via-black/10 to-gray-950 z-10"></div>
