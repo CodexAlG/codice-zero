@@ -15,7 +15,11 @@ export default function LayoutWrapper({ children }) {
       />
       
       {/* Contenido con margen fijo, no se empuja */}
-      <main className="flex-1 ml-20 relative z-10 transition-all duration-300">
+      <main 
+        className={`flex-1 h-full overflow-y-auto overflow-x-hidden relative transition-all duration-300 ease-in-out ${
+          isExpanded ? "pl-64" : "pl-20"
+        }`}
+      >
         {/* Capa oscura opcional cuando el menú se abre */}
         <div 
           className={`fixed inset-0 bg-black/50 z-40 transition-opacity duration-300 ${
