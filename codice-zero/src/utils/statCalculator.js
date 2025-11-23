@@ -115,6 +115,7 @@ export const calculateStatsWithCore = (baseStats, level, coreConfig) => {
     def: Math.floor(baseStats.def * multHP).toLocaleString(),
     atk: Math.floor((baseStats.atk * multATK) + addedAtk).toLocaleString(),
     impact: impact ? impact.toLocaleString() : baseStats.impact,
+    sheerForce: sheerForce ? sheerForce.toLocaleString() : null,
     crit: critRate,
     critDmg: critDmg,
     anomalyMastery: anomalyMastery,
