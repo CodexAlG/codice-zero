@@ -125,7 +125,7 @@ export default function AgentDetailPage() {
     "Fisico": "#eab308",   // Amarillo Dorado
     "Etereo": "#d946ef",   // Rosa/Magenta
   };
-  const themeColor = elementColors[normalize(agent.element).toLowerCase()] || "#facc15";
+  const themeColor = elementColors[normalize(agent.element).toLowerCase()] || elementColors;
 
   // Mapeo de Iconos de Facción
   const factionIcons = {
