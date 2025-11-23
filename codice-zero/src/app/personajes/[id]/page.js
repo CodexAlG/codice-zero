@@ -81,7 +81,7 @@ export default function AgentDetailPage() {
       { pattern: /Daño (Eléctrico)/gi, color: "text-[#3b82f6] font-bold" },
       { pattern: /Daño (Etéreo)/gi, color: "text-[#d946ef] font-bold" },
       // REGLA CLAVE: Usar el color del elemento del personaje para daño masivo/severo
-      { pattern: /(Daño\s+Masivo|Daño\s+Severo)/gi, color: `text-[${themeColor}] font-bold` },
+      
       
       // Estados y Mecánicas (Estos sí se colorean siempre)
       { pattern: /(Congelación)/gi, color: "text-[#22d3ee] font-bold" },
@@ -413,8 +413,8 @@ export default function AgentDetailPage() {
                             <span className="text-xs font-bold uppercase tracking-wider text-white">
                               {sub.name}
                             </span>
-                            <span className="text-[10px] text-yellow-400 font-mono uppercase bg-white/5 px-1.5 py-0.5 rounded">
-                              Nivel {idx + 1}
+                            <span className="text-[10px] text-white-400 font-mono uppercase bg-white/5 px-1.5 py-0.5 rounded">
+                              M {idx + 1}
                             </span>
                           </div>
                           
