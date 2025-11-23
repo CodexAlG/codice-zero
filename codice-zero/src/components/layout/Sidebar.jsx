@@ -25,7 +25,7 @@ export default function Sidebar({ isExpanded, setIsExpanded }) {
 
   return (
     <aside 
-      className={`fixed top-0 left-0 h-screen w-full bg-gray-950/80 border-r border-white/5 flex flex-col overflow-hidden backdrop-blur-md text-white p-4 transition-all duration-300 ease-in-out z-50 ${
+      className={`fixed top-0 left-0 h-screen w-full border-r border-white/5 flex flex-col overflow-hidden backdrop-blur-sm text-white p-4 transition-all duration-300 ease-in-out z-50 ${
         isExpanded ? 'w-64' : 'w-20'
       }`}
       onMouseEnter={() => setIsExpanded(true)}
