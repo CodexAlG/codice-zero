@@ -6,7 +6,18 @@ export default function LayoutWrapper({ children }) {
   const [isExpanded, setIsExpanded] = useState(false);
 
   return (
-    <div className="flex h-screen bg-gray-950">
+    <div 
+      className="flex h-screen relative"
+      style={{
+        backgroundImage: 'url("/assets/background/codicezero-texture.jpeg")',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat'
+      }}
+    >
+      {/* Capa oscura para contraste */}
+      <div className="absolute inset-0 bg-black/70 z-0"></div>
+      
       {/* Sidebar */}
       <Sidebar 
         isExpanded={isExpanded} 
@@ -22,7 +33,7 @@ export default function LayoutWrapper({ children }) {
           }`}
           onClick={() => setIsExpanded(false)}
         />
-        <div className="w-full h-full">
+        <div className="w-full h-full relative z-10">
           {children}
         </div>
       </main>
