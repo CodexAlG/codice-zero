@@ -4,17 +4,23 @@ import SectionTitle from "@/components/ui/SectionTitle";
 import HighlightText from "@/components/ui/HighlightText";
 import { driveDiscs } from "@/data/discs";
 
-// Función robusta para generar nombres de archivo PascalCase
-const toPascalCase = (str) => {
-  if (!str) return '';
-  // Extraer solo la parte antes de los paréntesis (si los hay)
-  const cleanName = str.split('(')[0].trim();
-  return cleanName
-    .toLowerCase()
-    .replace(/[^a-z0-9]+/g, ' ') // Reemplaza cualquier carácter no alfanumérico por espacio
-    .split(' ') // Divide por espacios
-    .map(word => word.charAt(0).toUpperCase() + word.slice(1)) // Capitaliza cada palabra
-    .join(''); // Une sin espacios
+// Función para generar nombres de archivo estrictamente limpios (PascalCase)
+const generateCleanName = (name) => {
+    if (!name) return '';
+    
+    // Paso 1: Remover texto dentro de paréntesis (e.g., "(Moonlight Lullaby)")
+    let cleanName = name.replace(/\s*\([^)]*\)/g, '').trim(); 
+    
+    // Paso 2: Normalizar y remover acentos
+    cleanName = cleanName.normalize("NFD").replace(/[\u0300-\u036f]/g, '');
+    
+    // Paso 3: Capitalizar la primera letra de cada palabra y eliminar espacios
+    cleanName = cleanName.replace(/(^|\s)\S/g, (t) => t.toUpperCase()).replace(/\s/g, '');
+    
+    // Paso 4: Remover cualquier guión o carácter especial que pueda quedar
+    cleanName = cleanName.replace(/[^a-zA-Z0-9]/g, '');
+
+    return cleanName;
 };
 
 export default function DiscsPage() {
@@ -41,7 +47,7 @@ export default function DiscsPage() {
               <div className="flex-shrink-0 mt-2">
                 <div className="relative w-28 h-28 group-hover:scale-110 transition-transform duration-500 filter drop-shadow-[0_0_15px_rgba(0,0,0,0.5)]">
                   <Image 
-                    src={`/CodiceZero/Discos/DriveDisc_${toPascalCase(disc.name)}_Icon.webp`} 
+                    src={`/CodiceZero/Discos/DriveDisc_${generateCleanName(disc.name)}Icon.webp`} 
                     alt={disc.name} 
                     fill 
                     className="object-contain"
