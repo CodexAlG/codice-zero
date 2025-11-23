@@ -5,9 +5,9 @@ export const agentDetails = {
     47: { // Ye Shunguang
       // 
       baseStats: {
-        hp: { min: 617, max: 8477 }, 
-        atk: { min: 135, max: 758 },
-        def: { min: 49, max: 594 },
+        hp: { min: 617, max: 7673 }, 
+        atk: { min: 135, max: 938 },
+        def: { min: 49, max: 606 },
         impact: "93",
         crit: "5%",
         critDmg: "50%",

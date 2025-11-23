@@ -402,24 +402,27 @@ export default function AgentDetailPage() {
                 {/* Contenido del Modal */}
                 <div className="text-sm text-white-300 leading-relaxed font-sans">
                   
-                  {/* CASO A: Habilidad Agrupada (Array de Sub-Skills) */}
+                  {/* CASO A: Habilidad Agrupada (Array de Sub-Skills) - Ahora incluye Mindscape */}
                   {selectedSkill.subSkills ? (
-                    <div className="flex flex-col gap-4"> {/* Control total del espaciado aquí */}
+                    <div className="flex flex-col gap-4">
                       {selectedSkill.subSkills.map((sub, idx) => (
                         <div key={idx} className="flex flex-col gap-1">
                           
-                          {/* Título de Variante */}
+                          {/* Título de la variante (Nivel de Dupe) */}
                           <div className="flex items-baseline justify-between">
-                            <span className="text-xs font-bold uppercase tracking-wider" style={{ color: themeColor }}>
+                            <span className="text-xs font-bold uppercase tracking-wider text-white">
                               {sub.name}
                             </span>
-                            <span className="text-[10px] text-white-500 font-mono uppercase bg-white/5 px-1.5 py-0.5 rounded">
-                              {sub.type}
+                            <span className="text-[10px] text-yellow-400 font-mono uppercase bg-white/5 px-1.5 py-0.5 rounded">
+                              Nivel {idx + 1}
                             </span>
                           </div>
                           
-                          {/* Descripción */}
-                          <p className="text-white leading-snug opacity-90" dangerouslySetInnerHTML={{ __html: processDescription(sub.description) }}></p>
+                          {/* Descripción con Resaltado (Asegura que 'Daño Glacial' se vea azul) */}
+                          <p 
+                            className="text-gray-300 text-sm leading-snug opacity-90" 
+                            dangerouslySetInnerHTML={{ __html: processDescription(sub.description) }}
+                          />
 
                           {/* Línea separadora (excepto último) */}
                           {idx < selectedSkill.subSkills.length - 1 && (
@@ -716,11 +719,17 @@ export default function AgentDetailPage() {
                   {/* --- TRACKER MINDSCAPE (Diseño Neon Ring) --- */}
                   <button
                     onClick={() => {
+                      // Filtrar habilidades que contengan "Mindscape" en el tipo
+                      const mindscapeSkills = details?.skills?.filter(skill => 
+                        skill.type && skill.type.includes("Mindscape")
+                      ) || [];
+
                       // Al hacer click, muestra los niveles de dupe/Mindscape
                       handleSelect({
                         type: "Mindscape",
                         name: "Mindscape (Cinema) Niveles de Dupe",
                         description: "Aquí va el detalle de los 6 niveles del Mindscape y sus efectos. Nivel actual: 6/6",
+                        subSkills: mindscapeSkills,
                         tags: ["Dupe", "Niveles"]
                       });
                     }}
