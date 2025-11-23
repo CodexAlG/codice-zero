@@ -169,16 +169,13 @@ export default function AgentDetailPage() {
   const calculateCurrentStats = () => {
     if (!details?.baseStats) return {};
     
-    // Preparar baseStats para el calculador
-    // El calculador espera valores min, no objetos {min, max}
+    // Preparar baseStats para el calculador - CORREGIDO para pasar objetos completos
     const baseStatsForCalc = {
-      hp: typeof details.baseStats.hp === 'object' ? details.baseStats.hp.min : details.baseStats.hp,
-      atk: typeof details.baseStats.atk === 'object' ? details.baseStats.atk.min : details.baseStats.atk,
-      def: typeof details.baseStats.def === 'object' ? details.baseStats.def.min : details.baseStats.def,
+      hp: details.baseStats.hp, // Pasar el objeto completo {min, max}
+      atk: details.baseStats.atk, // Pasar el objeto completo {min, max}
+      def: details.baseStats.def, // Pasar el objeto completo {min, max}
       impact: details.baseStats.impact,
-      sheerForce: details.baseStats.sheerForce 
-        ? (typeof details.baseStats.sheerForce === 'object' ? details.baseStats.sheerForce.min : details.baseStats.sheerForce)
-        : null,
+      sheerForce: details.baseStats.sheerForce || null, // Pasar el objeto completo o null
       crit: details.baseStats.crit,
       critDmg: details.baseStats.critDmg,
       anomalyRate: details.baseStats.anomalyRate,
