@@ -74,7 +74,7 @@ export const calculateStatsWithCore = (baseStats, level, coreConfig) => {
   let anomalyRate = baseStats.anomalyRate;
   let energyRegen = baseStats.energyRegen;
   let impact = baseStats.impact;
-  let sheerForce = baseStats.sheerForce ? Math.floor(baseStats.sheerForce * multHP) : null;
+  
 
   const statName = coreConfig?.statName?.toLowerCase() || "";
   const originalStatName = coreConfig?.statName || "";
@@ -115,7 +115,6 @@ export const calculateStatsWithCore = (baseStats, level, coreConfig) => {
     def: Math.floor(baseStats.def * multHP).toLocaleString(),
     atk: Math.floor((baseStats.atk * multATK) + addedAtk).toLocaleString(),
     impact: impact ? impact.toLocaleString() : baseStats.impact,
-    sheerForce: sheerForce ? sheerForce.toLocaleString() : null,
     crit: critRate,
     critDmg: critDmg,
     anomalyMastery: anomalyMastery,
