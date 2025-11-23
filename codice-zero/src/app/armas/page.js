@@ -123,10 +123,11 @@ export default function ArmasPage() {
       </div>
 
       {/* GRID DE ARMAS ANIMADO */}
-      <motion.div 
-        layout 
-        className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4 w-full"
-      >
+      <div className="w-full max-w-7xl mx-auto">
+        <motion.div 
+          layout 
+          className="grid grid-cols-4 md:grid-cols-6 lg:grid-cols-8 xl:grid-cols-9 gap-3 justify-center"
+        >
         <AnimatePresence mode="popLayout">
           {filteredWeapons.map((weapon) => (
             <Link key={weapon.id} href={`/armas/${weapon.id}`}>
@@ -142,7 +143,8 @@ export default function ArmasPage() {
             </Link>
           ))}
         </AnimatePresence>
-      </motion.div>
+        </motion.div>
+      </div>
     </div>
   );
 }

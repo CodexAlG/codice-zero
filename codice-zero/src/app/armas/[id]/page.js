@@ -88,9 +88,10 @@ export default function WeaponDetail({ params }) {
           <Image 
             src={weapon.image} 
             alt={weapon.name} 
-            width={300} 
-            height={300} 
+            fill
             className="object-contain drop-shadow-2xl z-10"
+            sizes="(max-width: 768px) 50vw, 400px"
+            unoptimized
           />
           {/* Icono de Rango Flotante */}
           <Image 

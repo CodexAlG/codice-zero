@@ -338,7 +338,9 @@ export default function AgentDetailPage() {
             alt={agent.name}
             fill
             className="object-contain object-top opacity-100 brightness-110"
+            sizes="(max-width: 768px) 50vw, 450px"
             priority
+            unoptimized
           />
         </div>
         
@@ -357,6 +359,7 @@ export default function AgentDetailPage() {
                       alt={selectedGroup.label} 
                       width={24} height={24} 
                       className="object-contain" 
+                      unoptimized
                     />
                   </div>
                   <div>
@@ -390,6 +393,7 @@ export default function AgentDetailPage() {
                      <Image 
                        src={skillTypeIcons[selectedSkill.type] || skillTypeIcons["Core"]} 
                        alt="Icon" width={30} height={30} className="object-contain" 
+                       unoptimized
                      />
                   </div>
                   <div>

@@ -26,7 +26,7 @@ export default function AgentCard({ agent }) {
   };
 
   return (
-    <div className="group relative w-full aspect-[3/4] bg-gray-900 overflow-hidden transition-all duration-300 hover:scale-[1.02] hover:shadow-xl" style={{ clipPath: 'polygon(0 0, 100% 0, 100% 85%, 85% 100%, 0 100%)' }}>
+    <div className="group relative w-full max-w-[280px] mx-auto aspect-[3/4] bg-gray-900 overflow-hidden transition-all duration-300 hover:scale-[1.02] hover:shadow-xl" style={{ clipPath: 'polygon(0 0, 100% 0, 100% 85%, 85% 100%, 0 100%)' }}>
 
       {/* 1. IMAGEN DEL PERSONAJE */}
       <Image

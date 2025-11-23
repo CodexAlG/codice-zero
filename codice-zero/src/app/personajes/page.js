@@ -155,10 +155,11 @@ export default function PersonajesPage() {
       </div>
 
       {/* GRID DE PERSONAJES ANIMADO */}
-      <motion.div 
-        layout 
-        className="grid grid-cols-3 md:grid-cols-5 lg:grid-cols-7 gap-3 w-full"
-      >
+      <div className="w-full max-w-7xl mx-auto">
+        <motion.div 
+          layout 
+          className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 2xl:grid-cols-7 gap-4 justify-center"
+        >
         <AnimatePresence mode="popLayout">
           {filteredAgents.map((agent) => (
             <motion.div
@@ -175,7 +176,8 @@ export default function PersonajesPage() {
             </motion.div>
           ))}
         </AnimatePresence>
-      </motion.div>
+        </motion.div>
+      </div>
     </div>
   );
 }
