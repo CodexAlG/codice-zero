@@ -6,8 +6,8 @@ export default function StatsTable({ currentStats, themeColor, agentRole }) {
         {label}
       </span>
       <span 
-        className="text-sm font-bold font-mono drop-shadow-sm"
-        style={{ color: highlight ? themeColor : 'white' }}
+        className={`text-sm font-bold font-mono drop-shadow-sm transition-colors ${highlight ? '' : 'text-white'}`}
+        style={highlight ? { color: themeColor } : {}}
       >
         {value}
       </span>
