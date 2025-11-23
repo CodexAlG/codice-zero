@@ -1,5 +1,88 @@
 export const agentDetails = {
     // =================================================
+    // VERSIÓN 2.5 (VOID HUNTER)
+    // =================================================
+    47: { // Ye Shunguang
+      // 
+      baseStats: {
+        hp: { min: 617, max: 8477 }, 
+        atk: { min: 135, max: 758 },
+        def: { min: 49, max: 594 },
+        impact: "93",
+        crit: "5%",
+        critDmg: "50%",
+        anomalyRate: "94",
+        anomalyMastery: "93",
+        penRatio: "0%",
+        energyRegen: "1.2", 
+      },
+      coreStats: {
+        statName: "Core Prob. Crítica", // Core stat único para alcanzar el cap de buff
+        valuePerNode: 4.8,
+      },
+    },
+    46: { // Zhao
+      // 
+      baseStats: {
+        hp: { min: 733, max: 8986 }, 
+        atk: { min: 110, max: 765 },
+        def: { min: 56, max: 701 },
+        impact: "93",
+        crit: "5%",
+        critDmg: "50%",
+        anomalyRate: "93",
+        anomalyMastery: "96",
+        penRatio: "0%",
+        energyRegen: "1.2", // Regeneración nativa de Soporte S
+      },
+      coreStats: {
+        statName: "hp%", // Core stat único para alcanzar el cap de buff
+        valuePerNode: 6,
+      },
+    },
+    // =================================================
+    // VERSIÓN 2.4 (Krampus Compliance Authority)
+    // =================================================
+    45: { // Banyue
+      // 
+      baseStats: {
+        hp: { min: 683, max: 8497 }, 
+        atk: { min: 124, max: 859 },
+        def: { min: 36, max: 445 },
+        impact: "95",
+        crit: "5%",
+        critDmg: "50%",
+        anomalyRate: "93",
+        anomalyMastery: "96",
+        penRatio: "0%",
+        energyRegen: "1.2", // Regeneración nativa de Soporte S
+        sheerForce: {min: 105, max: 1107 },
+      },
+      coreStats: {
+        statName: "Core Prob. Crítica", // Core stat único para alcanzar el cap de buff
+        valuePerNode: 4.8,
+      },
+    },
+    44: { // Banyue
+      // 
+      baseStats: {
+        hp: { min: 663, max: 8250 }, 
+        atk: { min: 109, max: 758 },
+        def: { min: 49, max: 612 },
+        impact: "110",
+        crit: "5%",
+        critDmg: "50%",
+        anomalyRate: "94",
+        anomalyMastery: "93",
+        penRatio: "0%",
+        energyRegen: "1.2", // Regeneración nativa de Soporte S
+      },
+      coreStats: {
+        statName: "Core Prob. Crítica", // Core stat único para alcanzar el cap de buff
+        valuePerNode: 4.8,
+      },
+    },
+    // =================================================
     // VERSIÓN 2.3 (Spook Shack - Finale)
     // =================================================
     43: { // Yidhari Murphy (S - Hielo/Ruptura)

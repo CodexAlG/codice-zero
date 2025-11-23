@@ -214,7 +214,20 @@ export default function AgentDetailPage() {
     };
 
     // Aplicar Bonus al stat correspondiente
-    if (statName.includes("critica") || statName.includes("crit rate")) {
+    const originalStatName = details.coreStats?.statName || "";
+    if (originalStatName.includes("hp%")) {
+       // Para HP%, calcular como HP min × porcentaje
+       const baseHpMin = typeof details.baseStats.hp === 'object' ? details.baseStats.hp.min : parseInt(details.baseStats.hp);
+       const bonusValue = Math.floor(baseHpMin * (specialBonus / 100));
+       const currentHp = parseInt(stats.hp.replace(/,/g, ''));
+       stats.hp = (currentHp + bonusValue).toLocaleString();
+       stats.buffedStat = "hp";
+    } else if (statName.includes("hp") && !originalStatName.includes("hp%")) {
+       // Para HP plano, sumar el valor directo
+       const currentHp = parseInt(stats.hp.replace(/,/g, ''));
+       stats.hp = Math.floor(currentHp + specialBonus).toLocaleString();
+       stats.buffedStat = "hp";
+    } else if (statName.includes("critica") || statName.includes("crit rate")) {
        stats.crit = addBonus(stats.crit, specialBonus);
        stats.buffedStat = "crit";
     } else if (statName.includes("dano") || statName.includes("crit dmg")) {
@@ -560,6 +573,15 @@ export default function AgentDetailPage() {
               <Image src={`/CodiceZero/Agentes/Rol/${normalize(agent.rol)}.webp`} alt={agent.rol} width={18} height={18} className="invert" />
               <span className="font-bold text-gray-300 uppercase">{agent.rol}</span>
             </div>
+            {/* Chip Advertencia Beta */}
+            {agent.leak && agent.leak.includes("Beta") && (
+              <div className="flex items-center gap-2 bg-red-500/20 px-4 py-1 rounded border border-red-500/50 backdrop-blur-sm">
+                <svg className="w-4 h-4 text-red-400" fill="currentColor" viewBox="0 0 20 20">
+                  <path fillRule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clipRule="evenodd" />
+                </svg>
+                <span className="font-bold text-red-400 uppercase text-xs">BETA</span>
+              </div>
+            )}
           </div>
         </div>
 

@@ -66,7 +66,8 @@ export const calculateStatsWithCore = (baseStats, level, coreConfig) => {
     return `${(baseNum + bonus).toFixed(1)}%`;
   };
 
-  // 4. Identificar qué stat recibe el bonus especial
+  // 4. Calcular stats base primero
+  let hp = Math.floor(baseStats.hp * multHP);
   let critRate = baseStats.crit;
   let critDmg = baseStats.critDmg;
   let anomalyMastery = baseStats.anomalyMastery;
@@ -75,8 +76,18 @@ export const calculateStatsWithCore = (baseStats, level, coreConfig) => {
   let impact = baseStats.impact;
 
   const statName = coreConfig?.statName?.toLowerCase() || "";
-
-  if (statName.includes("prob") || statName.includes("crit rate")) {
+  const originalStatName = coreConfig?.statName || "";
+  
+  // 5. Aplicar bonus especial según el stat
+  if (originalStatName.includes("hp%")) {
+    // Para HP%, calcular como HP min × porcentaje
+    const baseHpMin = typeof baseStats.hp === 'object' ? baseStats.hp.min : baseStats.hp;
+    const bonusValue = Math.floor(baseHpMin * (addedSpecial / 100));
+    hp = hp + bonusValue;
+  } else if (statName.includes("hp") && !originalStatName.includes("hp%")) {
+    // Para HP plano, sumar el valor directo
+    hp = hp + addedSpecial;
+  } else if (statName.includes("prob") || statName.includes("crit rate")) {
     critRate = addPercentage(baseStats.crit, addedSpecial);
   } else if (statName.includes("daño") || statName.includes("crit dmg")) {
     critDmg = addPercentage(baseStats.critDmg, addedSpecial);
@@ -85,26 +96,22 @@ export const calculateStatsWithCore = (baseStats, level, coreConfig) => {
     anomalyMastery = (parseInt(baseStats.anomalyMastery) + Math.floor(addedSpecial)).toString();
   } else if (statName.includes("energía") || statName.includes("energy")) {
     energyRegen = (parseFloat(baseStats.energyRegen) + addedSpecial).toFixed(2);
-  } else if (statName.inclueds("impacto") || statName.includes("Impact")) {
+  } else if (statName.includes("impacto") || statName.includes("impact")) {
     impact = (parseFloat(baseStats.impact) + addedSpecial);
   }
 
   // 5. Retornar objeto con valores YA SUMADOS
   return {
-    hp: Math.floor(baseStats.hp * multHP).toLocaleString(),
+    hp: hp.toLocaleString(),
     def: Math.floor(baseStats.def * multHP).toLocaleString(),
     atk: Math.floor((baseStats.atk * multATK) + addedAtk).toLocaleString(),
-    // Impacto NO se multiplica
-    impact: baseStats.impact ? baseStats.impact.toLocaleString() : "-",
-
-    // Valores sumados con Core bonus
     crit: critRate,
     critDmg: critDmg,
     anomalyMastery: anomalyMastery,
     anomalyRate: anomalyRate,
     penRatio: baseStats.penRatio,
     energyRegen: energyRegen,
-    impact: baseStats.impact,
+    impact: impact ? impact.toLocaleString() : "-",
 
     // Info para pintar de amarillo el stat con buff
     hasBuff: addedSpecial > 0,

@@ -1,5 +1,54 @@
 
 export const agents = [
+  // --- VERSIÓN 2.5 ---
+  {
+    id: 47,
+    name: "Ye Shunguang",
+    rank: "S",
+    element: "Fisico",
+    rol: "Ataque",
+    faction: "Yunkui Summit",
+    version: "2.5",
+    leak: "Beta",
+    image: "/CodiceZero/Agentes/YeShunguang.webp",
+    customStyle: "scale-[1.00] group-hover:scale-[1.10] object-[center_top]",
+  },
+  {
+    id: 46,
+    name: "Zhao",
+    rank: "S",
+    element: "Hielo",
+    rol: "Defensa",
+    faction: "Krampus Compliance Authority",
+    version: "2.5",
+    leak: "Beta",
+    image: "/CodiceZero/Agentes/Zhao.webp",
+    customStyle: "scale-[1.00] group-hover:scale-[1.10] object-[center_top]",
+  },
+  // --- VERSIÓN 2.4 ---
+  {
+    id: 45,
+    name: "Banyue",
+    rank: "S",
+    element: "Fuego",
+    rol: "Ruptura",
+    faction: "Krampus Compliance Authority",
+    version: "2.4",
+    image: "/CodiceZero/Agentes/Banyue.webp",
+    customStyle: "scale-[1.00] group-hover:scale-[1.10] object-[center_top]",
+  },
+  {
+    id: 44,
+    name: "Dialyn",
+    rank: "S",
+    element: "Fisico",
+    rol: "Aturdidor",
+    faction: "Krampus Compliance Authority",
+    version: "2.4",
+    image: "/CodiceZero/Agentes/Dialyn.webp",
+    customStyle: "scale-[1.00] group-hover:scale-[1.10] object-[center_top]",
+
+  },
   // --- VERSIÓN 2.3 ---
   {
     id: 43,
