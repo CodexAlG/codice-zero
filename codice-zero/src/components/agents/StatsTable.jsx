@@ -30,10 +30,11 @@ export default function StatsTable({ currentStats, themeColor, agentRole }) {
                 {value}
               </span>
               <span 
-                className="text-xs font-extrabold animate-pulse"
+                className="text-xs font-extrabold"
                 style={{ 
                   color: themeColor,
-                  textShadow: `0 0 4px ${themeColor}`
+                  textShadow: `0 0 4px ${themeColor}`,
+                  filter: 'brightness(1.2)'
                 }}
               >
                 +{bonusNum % 1 !== 0 ? bonusNum.toFixed(1) : Math.floor(bonusNum).toLocaleString()}
