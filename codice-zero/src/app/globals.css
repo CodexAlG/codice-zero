@@ -20,6 +20,19 @@
 }
 
 body {
+  /* Base de color oscuro (Para blend mode) */
+  background-color: #0f172a; 
+  
+  /* Aplicar la imagen */
+  background-image: url('/assets/background/codicezero-texture.jpeg');
+  background-size: cover; 
+  background-position: center; 
+  background-attachment: fixed; /* Crucial para mantener la imagen quieta */
+  background-blend-mode: overlay; 
+  
+  /* Altura completa */
+  min-height: 100vh;
+  
   color: #ededed;
   font-family: Arial, Helvetica, sans-serif;
 }
