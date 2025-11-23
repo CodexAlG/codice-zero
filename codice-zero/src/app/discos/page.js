@@ -32,6 +32,7 @@ export default function DiscsPage() {
                     alt={disc.name} 
                     fill 
                     className="object-contain"
+                    unoptimized
                   />
                 </div>
               </div>
