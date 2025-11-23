@@ -166,10 +166,10 @@ export default function ArmasPage() {
             <Link key={weapon.id} href={`/armas/${weapon.id}`}>
               <motion.div
                 layout // Animación suave de movimiento
-                initial={{ opacity: 0, scale: 0.8 }} // Estado inicial
-                animate={{ opacity: 1, scale: 1 }}   // Estado visible
-                exit={{ opacity: 0, scale: 0.5 }}    // Al filtrarse
-                transition={{ duration: 0.3, type: "spring", stiffness: 100 }}
+                initial={{ opacity: 0 }} 
+                animate={{ opacity: 1 }}   
+                exit={{ opacity: 0 }}    
+                transition={{ duration: 0 }}
               >
                 <WeaponCard weapon={weapon} />
               </motion.div>
