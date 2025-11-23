@@ -119,11 +119,11 @@ export default function AgentDetailPage() {
 
   // Mapa de Colores
   const elementColors = {
-    "Fuego": "#ef4444",    // Rojo
-    "Hielo": "#22d3ee",    // Cian
-    "Electrico": "#3b82f6", // Azul Puro
-    "Fisico": "#eab308",   // Amarillo Dorado
-    "Etereo": "#d946ef",   // Rosa/Magenta
+    "fuego": "#ef4444",    // Rojo
+    "hielo": "#22d3ee",    // Cian
+    "electrico": "#3b82f6", // Azul Puro
+    "fisico": "#eab308",   // Amarillo Dorado
+    "etereo": "#d946ef",   // Rosa/Magenta
   };
   const themeColor = elementColors[normalize(agent.element).toLowerCase()] || elementColors;
 
