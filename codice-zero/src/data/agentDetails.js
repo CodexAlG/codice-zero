@@ -213,6 +213,42 @@ export const agentDetails = {
           name: "Narrativa Completa",
           description: "Se activa cuando hay otro personaje en tu escuadrón que es Aturdidor o Soporte: Cuando los PV de Yidhari caen por debajo del 50%, el Daño Crítico aumenta un 30% y el daño recibido se reduce un 25%. Mientras Yidhari está dentro de Velo Etéreo: Manantial, obtiene el siguiente efecto adicional: Tras el ataque cargado de nivel 3 del Ataque Básico: Abrazo de Escarcha o la Técnica Especial EX: Aplastamiento Glacial, se invoca un tentáculo helado para atacar, infligiendo daño extra. Este efecto puede activarse una vez cada 12s. La habilidad anterior se considera una Técnica Especial EX, el multiplicador de Daño aumenta según el nivel de la Técnica Especial EX.",
           tags: ["Adicional", "Pasiva", "Buff"]
+        },
+        {
+          type: "Mindscape 1",
+          name: "El Pasado Perdido bajo el Abismo",
+          description: "El coste de Adrenalina para activar la Técnica Especial EX de Yidhari se reduce en 10. Tras usar Técnica Especial EX: Espiral de Escarcha o Técnica Especial EX: Aplastamiento Glacial, mantener presionado el botón de Ataque Básico o Técnica Especial consume 35 de Adrenalina para renunciar a la curación e inmediatamente encadenar otra Técnica Especial EX: Aplastamiento Glacial. Los PV restaurados por esta Técnica Especial EX: Aplastamiento Glacial aumentan en un 100% del valor original. Los Ataques Básicos y Técnicas Especiales EX de Yidhari ignoran un 20% de la RES a Glacial del objetivo.",
+          type: ["Mindscape", "Dupe", ]
+        },
+        {
+          type: "Mindscape 2",
+          name: "¿Quién Mora Aquí, Perdido en sus Pensamientos?",
+          description: "El Daño Crítico de Yidhari aumenta en un 40%. Activar Frío Creciente o Persecución Aplastante otorga una regeneración de Adrenalina de 0.5/s durante hasta 30s. Las activaciones repetidas reinician la duración.",
+          type: ["Mindscape", "Dupe", ]
+        },
+        {
+          type: "Mindscape 3",
+          name: "Una Historia Sin Audiencia",
+          description: "Nivel de Ataque Básico, Evasión, Asistencia, Técnica Especial y Ataque en Cadena +2.",
+          type: ["Mindscape", "Dupe", ]
+        },
+        {
+          type: "Mindscape 4",
+          name: "Floreciendo en Silencio",
+          description: "Yidhari gana un 10% más de Decibelios al perder PV por la Pasiva Principal: Colección de Paisajes Oníricos. Mientras está en <span class='text-white font-bold'>Velo Etéreo: Manantial</span>, los PV Máx. de Yidhari aumentan adicionalmente un 5%.",
+          type: ["Mindscape", "Dupe", ]
+        },
+        {
+          type: "Mindscape 5",
+          name: "Este Consuelo Es Real",
+          description: "Nivel de Ataque Básico, Evasión, Asistencia, Técnica Especial y Ataque en Cadena +2.",
+          type: ["Mindscape", "Dupe", ]
+        },
+        {
+          type: "Mindscape 6",
+          name: "Al Fin, un Sueño Pacífico",
+          description: "Después de que Yidhari gaste Decibelios para activar o extender <span class='text-white font-bold'>Velo Etéreo: Manantial</span>, gana <span class='text-white font-bold'>Erudición</span> durante 30s. Mientras <span class='text-white font-bold'>Erudición</span> está activa, su Daño Puro (Sheer DMG) aumenta un 25%. Además, al recibir daño fatal por primera vez, sus PV se reducen como máximo a 1, y durante los siguientes 5s, no puede ser derrotada y restaurará un 25% de sus PV con el tiempo.",
+          type: ["Mindscape", "Dupe", ]
         }
       ]
     },
