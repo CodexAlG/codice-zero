@@ -1,9 +1,14 @@
 // Función para calcular valor por interpolación lineal (Garantiza Nv1 = Min, Nv60 = Max)
 const getInterpolatedValue = (min, max, level) => {
-    if (level <= 1) return min;
-    if (level >= 60) return max;
+    // CRUCIAL FIX: Parsear a flotante si son strings
+    const numMin = typeof min === 'string' ? parseFloat(min) : min;
+    const numMax = typeof max === 'string' ? parseFloat(max) : max;
+    
+    if (level <= 1) return numMin;
+    if (level >= 60) return numMax;
+    
     const percent = (level - 1) / 59;
-    return min + (max - min) * percent;
+    return numMin + (numMax - numMin) * percent;
 };
 
 // Bonus de Core Skills (B, D, F son ignorados en ATK, solo para special) 

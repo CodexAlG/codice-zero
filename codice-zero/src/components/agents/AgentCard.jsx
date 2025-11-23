@@ -12,7 +12,7 @@ const AgentCard = memo(({ agent }) => {
   const getElementIcon = (agent) => {
     if (agent.name.includes("Miyabi")) return "/CodiceZero/Agentes/Elemento/Icon_Frost.png";
     if (agent.name.includes("Yixuan")) return "/CodiceZero/Agentes/Elemento/Icon_Auric_Ink.webp";
-    if (agent.name.includes("Ye Shunguang")) return "/CodiceZero/Agentes/Elemento/Icon_TBA.webp";
+    if (agent.name.includes("Ye Shunguang")) return "/CodiceZero/Agentes/Elemento/IconHonedEdge.webp";
 
     const iconMap = {
       "fuego": "Fuego.webp",
