@@ -32,10 +32,10 @@ export default function Sidebar({ isExpanded, setIsExpanded }) {
       onMouseLeave={() => setIsExpanded(false)}
     >
       {/* Logo CZ - Insignia Premium con Efecto de Botón Activado */}
-      <Link href="/" className="flex-shrink-0 flex items-center justify-center h-20 w-full relative group bg-black/80 border-4 border-yellow-500/60 shadow-2xl shadow-yellow-500/20 border-t-4 border-t-yellow-400/80 border-l-4 border-l-yellow-400/60 border-r-4 border-r-yellow-400/60">
+      <Link href="/" className="flex-shrink-0 flex items-center justify-center h-20 w-full relative group bg-black/70 shadow-inner">
         {/* Insignia CZ */}
         <div 
-          className={`text-transparent bg-clip-text bg-gradient-to-br from-yellow-200 via-yellow-400 to-yellow-700 drop-shadow-[0_0_20px_rgba(234,179,8,1.0)] drop-shadow-[0_0_30px_rgba(234,179,8,0.8)] tracking-tighter transition-all duration-300 group-hover:scale-110 font-display font-black italic relative z-10 ${
+          className={`text-transparent bg-clip-text bg-gradient-to-br from-yellow-300 to-yellow-600 drop-shadow-[0_0_10px_rgba(234,179,8,0.9)] tracking-tighter transition-all duration-300 group-hover:scale-105 font-display font-black italic ${
             isExpanded ? 'text-3xl' : 'text-xl'
           }`}
         >
@@ -43,13 +43,7 @@ export default function Sidebar({ isExpanded, setIsExpanded }) {
         </div>
         
         {/* Overlay de Brillo para el hover */}
-        <div className="absolute inset-0 bg-gradient-to-br from-yellow-500/0 via-yellow-400/5 to-yellow-600/0 group-hover:from-yellow-500/15 group-hover:via-yellow-400/20 group-hover:to-yellow-600/15 transition-all duration-300"></div>
-        
-        {/* Efecto de Energía Externa */}
-        <div className="absolute -inset-1 bg-gradient-to-br from-yellow-400/0 via-yellow-500/10 to-yellow-600/0 group-hover:from-yellow-400/20 group-hover:via-yellow-500/30 group-hover:to-yellow-600/20 rounded-lg blur-sm group-hover:blur-md transition-all duration-300 -z-10"></div>
-        
-        {/* Brillo Interno */}
-        <div className="absolute inset-1 bg-gradient-to-br from-transparent via-white/5 to-transparent rounded-md"></div>
+        <div className="absolute inset-0 bg-yellow-500/0 group-hover:bg-yellow-500/10 transition-colors duration-200"></div>
       </Link>
 
       {/* Navigation */}
