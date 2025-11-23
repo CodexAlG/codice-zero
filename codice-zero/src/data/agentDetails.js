@@ -121,25 +121,25 @@ export const agentDetails = {
         {
           type: "Ataque Básico",
           name: "Peso Aplastante de la Escarcha",
-          description: "Mientras carga o gira durante el (Ataque Básico: Abrazo de Escarcha) si es golpeada por un enemigo, Yidhari puede bloquear con sus tentáculos, reduciendo el Daño recibido en un 25%. Si carga o aún no está a carga completa, Yidhari contraataca con sus tentáculos, volviendo a la postura de carga y ganando instantáneamente 1 nivel de carga, mientras también inflige Daño Glacial a los enemigos en frente. Mientras (Peso Aplastante de la Escarcha) está activo, presionar [Icono Ataque] hace que Yidhari desate inmediatamente el golpe final del (Ataque Básico: Abrazo de Escarcha) basado en su nivel de carga actual. Mientras (Peso Aplastante de la Escarcha) está activo, presionar [Icono Especial] o [Icono Especial Ex] hace que Yidhari desate una (Técnica Especial: Frío Creciente) (Persecución Aplastante) que garantiza la activación de (Frío Creciente).",
+          description: "Mientras carga o gira durante el (Ataque Básico: Abrazo de Escarcha) si es golpeada por un enemigo, Yidhari puede bloquear con sus tentáculos, reduciendo el Daño recibido en un 25%. Si carga o aún no está a carga completa, Yidhari contraataca con sus tentáculos, volviendo a la postura de carga y ganando instantáneamente 1 nivel de carga, mientras también inflige Daño Glacial a los enemigos en frente. Mientras (Peso Aplastante de la Escarcha) está activo, presionar [Icono Ataque] hace que Yidhari desate inmediatamente el golpe final del (Ataque Básico: Abrazo de Escarcha) basado en su nivel de carga actual. Mientras (Peso Aplastante de la Escarcha) está activo, presionar [Icono Especial] o [Icono Especial EX] hace que Yidhari desate una (Técnica Especial: Frío Creciente) (Persecución Aplastante) que garantiza la activación de (Frío Creciente).",
           tgas: "Hielo",
         },
         {
           type: "Evasión",
           name: "Cambio Onírico",
-          description: "Presiona [Icono Dodges] para activar: Una evasión rápida. El personaje es invulnerable mientras usa esta habilidad.",
+          description: "Presiona [Icono Dodges] para activar: Una (evasión rápida). El personaje es invulnerable mientras usa esta habilidad.",
           tags: ["Esquiva", "Congelación"]
         },
         {
           type: "Ataque de Evasión",
           name: "Impacto de Flor de Escarcha",
-          description: "Presiona [Icono Ataque] durante una evasión para activar: Golpea hacia adelante, infligiendo Daño Glacial.",
+          description: "Presiona [Icono Ataque] durante una (evasión) para activar: Golpea hacia adelante, infligiendo Daño Glacial.",
           tags: "Evasión",
         },
         {
           type: "Contraatque de Evasión",
           name: "Reverberación de Arrastre Helado",
-          description: "Presiona [Icono Ataque] durante una Evasión Perfecta para activar: Golpea a los enemigos en frente, infligiendo Daño Glacial. El personaje es invulnerable mientras usa esta habilidad.",
+          description: "Presiona [Icono Ataque] durante una (Evasión Perfecta) para activar: Golpea a los enemigos en frente, infligiendo Daño Glacial. El personaje es invulnerable mientras usa esta habilidad.",
           tags: "Evasión",
         },
         {
@@ -157,7 +157,7 @@ export const agentDetails = {
         {
           type: "Ataque de Asistencia",
           name: "Asalto Glacial",
-          description: "Presiona [Icono Ataque] después de una Asistencia Defensiva para activar: Ejecuta un ataque de martillo de fragmentos de hielo contra los enemigos en frente, infligiendo Daño Glacial. El personaje es invulnerable mientras usa esta habilidad.",
+          description: "Presiona [Icono Ataque] después de una (Asistencia Defensiva) para activar: Ejecuta un ataque de martillo de fragmentos de hielo contra los enemigos en frente, infligiendo Daño Glacial. El personaje es invulnerable mientras usa esta habilidad.",
           tags: ["Asistencia"]
         },
         {
@@ -187,7 +187,7 @@ export const agentDetails = {
         {
           type: "Ataque en Cadena",
           name: "Juramento Helado",
-          description: "Cuando se activa un Ataque en Cadena, selecciona al personaje para activar: Desata un golpe poderoso contra los enemigos en un área pequeña frente a ella, infligiendo daño masivo de Daño Glacial. Si está dentro de (Velo Etéreo: Manantial), los tentáculos se unen al asalto, mejorando aún más el poder de la habilidad. El personaje es invulnerable mientras usa esta habilidad.",
+          description: "Cuando se activa un (Ataque en Cadena), selecciona al personaje para activar: Desata un golpe poderoso contra los enemigos en un área pequeña frente a ella, infligiendo daño masivo de Daño Glacial. Si está dentro de (Velo Etéreo: Manantial), los tentáculos se unen al asalto, mejorando aún más el poder de la habilidad. El personaje es invulnerable mientras usa esta habilidad.",
           tags: ["Cadena", "Campo"]
         },
         {
@@ -211,13 +211,13 @@ export const agentDetails = {
         {
           type: "Habilidad Adicional",
           name: "Narrativa Completa",
-          description: "Se activa cuando hay otro personaje en tu escuadrón que es (Aturdidor) o (Soporte): Cuando los PV de Yidhari caen por debajo del 50%, el Daño Crítico aumenta un 30% y el daño recibido se reduce un 25%. Mientras Yidhari está dentro de (Velo Etéreo: Manantial), obtiene el siguiente efecto adicional: Tras el ataque cargado de nivel 3 del (Ataque Básico: Abrazo de Escarcha) o la (Técnica Especial EX: Aplastamiento Glacial), se invoca un tentáculo helado para atacar, infligiendo daño extra. Este efecto puede activarse una vez cada 12s. La habilidad anterior se considera una Técnica Especial EX, el multiplicador de Daño aumenta según el nivel de la Técnica Especial EX.",
+          description: "Se activa cuando hay otro personaje en tu escuadrón que es (Aturdidor) o (Soporte): Cuando los PV de Yidhari caen por debajo del 50%, el Daño Crítico aumenta un 30% y el daño recibido se reduce un 25%. Mientras Yidhari está dentro de (Velo Etéreo: Manantial), obtiene el siguiente efecto adicional: Tras el ataque cargado de nivel 3 del (Ataque Básico: Abrazo de Escarcha) o la (Técnica Especial EX: Aplastamiento Glacial), se invoca un tentáculo helado para atacar, infligiendo daño extra. Este efecto puede activarse una vez cada 12s. La habilidad anterior se considera una (Técnica Especial EX), el multiplicador de Daño aumenta según el nivel de la (Técnica Especial EX).",
           tags: ["Adicional", "Pasiva", "Buff"]
         },
         {
           type: "Mindscape 1",
           name: "El Pasado Perdido bajo el Abismo",
-          description: "El coste de Adrenalina para activar la Técnica Especial EX de Yidhari se reduce en 10. Tras usar (Técnica Especial EX: Espiral de Escarcha) o (Técnica Especial EX: Aplastamiento Glacial), mantener presionado el botón de Ataque Básico o Técnica Especial consume 35 de Adrenalina para renunciar a la curación e inmediatamente encadenar otra (Técnica Especial EX: Aplastamiento Glacial). Los PV restaurados por esta (Técnica Especial EX: Aplastamiento Glacial), aumentan en un 100% del valor original. Los Ataques Básicos y Técnicas Especiales EX de Yidhari ignoran un 20% de la RES a Glacial del objetivo.",
+          description: "El coste de Adrenalina para activar la (Técnica Especial EX) de Yidhari se reduce en 10. Tras usar (Técnica Especial EX: Espiral de Escarcha) o (Técnica Especial EX: Aplastamiento Glacial), mantener presionado el botón de (Ataque Básico) o (Técnica Especial) consume 35 de Adrenalina para renunciar a la curación e inmediatamente encadenar otra (Técnica Especial EX: Aplastamiento Glacial). Los PV restaurados por esta (Técnica Especial EX: Aplastamiento Glacial), aumentan en un 100% del valor original. Los (Ataques Básicos) y (Técnicas Especiales EX) de Yidhari ignoran un 20% de la RES a Glacial del objetivo.",
           type: ["Mindscape", "Dupe", ]
         },
         {
