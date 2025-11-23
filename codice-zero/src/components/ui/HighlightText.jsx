@@ -1,5 +1,5 @@
-// Configuración de reglas de resaltado (Regex -> Clases/Color)
-const highlightRules = [
+// Función para crear reglas de resaltado dinámicas basadas en el elemento del personaje
+const createHighlightRules = (elementColor = "#facc15") => [
   // --- ELEMENTOS Y REACCIONES (Con brillo y negrita normal) ---
   {
     pattern: /(Daño\s+Fuego|Quemadura|Quemados?)/gi,
@@ -21,15 +21,16 @@ const highlightRules = [
     pattern: /(Daño\s+Etéreo|Daño\s+Etereo|Corrupción)/gi,
     color: "text-[#d946ef] font-bold"
   },
+  // REGLA CLAVE: Usar el color del elemento del personaje para daño masivo/severo
   {
     pattern: /(Daño\s+Masivo|Daño\s+Severo)/gi,
-    color: "text-[#06b6d4] font-bold"
+    color: `text-[${elementColor}] font-bold`
   },
   {
     pattern: /(¡No te muevas! \[Modo Asalto\]|¡Por favor, no se resista! \[Modo Supresivo\]|Flash Freeze|Congelación Relámpago|Recorte de Dientes de Sierra|Invierno Eterno|Dientes Afilados|Emboscada Ártica|Barrido de Cola|Coleatazo|Ofensiva de Fuego|Poder de Fuego Abrumador|Disparo de Perdigones|Aluvión Completo|Modo de Erradicación|Modo de Erradicación Máxima|Recarga Rápida|Ascua Etérea|Perforación Etérea|Paquete de Energía Expandido III)/gi,
     color: "text-white font-bold"
   },
-  
+   
   // --- HABILIDADES Y MECÁNICAS (Blanco Puro + Negrita) ---
   {
     pattern: /((?:Técnica )?Especial(?: EX)?|Definitiva|Ataque(?:s)? (?:en )?Cadena|Cadena|Asistencia(?: Rápida|Defensiva|Evasiva)?|Ataque(?:s)? Básico(?:s)?|Básico|Basico|Dash|Contraataque|Réplica|Astral|Aturdir|Evadir|Evasión|Evasion|Aturdimiento)/gi,
@@ -38,7 +39,7 @@ const highlightRules = [
 ];
 
 // Función para procesar iconos y texto con resaltado
-const processTextWithIconsAndHighlight = (text, skillIcons = {}, skills = []) => {
+const processTextWithIconsAndHighlight = (text, skillIcons = {}, skills = [], elementColor = "#facc15") => {
   if (!text) return [];
 
   // Crear patrones dinámicos para todos los skill names completos
@@ -53,7 +54,8 @@ const processTextWithIconsAndHighlight = (text, skillIcons = {}, skills = []) =>
     return escapedFull === escapedPartial ? escapedFull : `${escapedFull}|${escapedPartial}`;
   }).join('|');
 
-  const dynamicRules = [...highlightRules];
+  // Usar reglas dinámicas basadas en el elemento del personaje
+  const dynamicRules = [...createHighlightRules(elementColor)];
   
   if (skillPatterns) {
     dynamicRules.unshift({
@@ -157,10 +159,10 @@ const processHighlightRules = (text, rules) => {
 };
 
 // Componente que procesa el texto
-const HighlightText = ({ text, skills = [], skillIcons = {} }) => {
+const HighlightText = ({ text, skills = [], skillIcons = {}, elementColor = "#facc15" }) => {
   if (!text) return null;
 
-  const segments = processTextWithIconsAndHighlight(text, skillIcons, skills);
+  const segments = processTextWithIconsAndHighlight(text, skillIcons, skills, elementColor);
 
   return (
     <>

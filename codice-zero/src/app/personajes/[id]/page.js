@@ -80,6 +80,8 @@ export default function AgentDetailPage() {
       { pattern: /Daño (Fuego)/gi, color: "text-[#ef4444] font-bold" },
       { pattern: /Daño (Eléctrico)/gi, color: "text-[#3b82f6] font-bold" },
       { pattern: /Daño (Etéreo)/gi, color: "text-[#d946ef] font-bold" },
+      // REGLA CLAVE: Usar el color del elemento del personaje para daño masivo/severo
+      { pattern: /(Daño\s+Masivo|Daño\s+Severo)/gi, color: `text-[${themeColor}] font-bold` },
       
       // Estados y Mecánicas (Estos sí se colorean siempre)
       { pattern: /(Congelación)/gi, color: "text-[#22d3ee] font-bold" },

@@ -193,6 +193,7 @@ export default function SkillsModule({ skills, color }) {
                   text={processSkillDescription(skill.description)} 
                   skills={skills} 
                   skillIcons={skillIcons}
+                  elementColor={color}
                 />
               </div>
             </div>
