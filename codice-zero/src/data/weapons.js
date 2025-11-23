@@ -807,7 +807,7 @@ export const weapons = [
   },
   {
     id: 5537, //arma Banyue
-    name: "Yesterday Calls",
+    name: "Wrathful Vajra",
     rank: "S",
     rol: "Ruptura",
     // Info para la Tarjeta (Vista rápida)
@@ -818,7 +818,7 @@ export const weapons = [
       baseAtk: { min: 55, max: 713 },     // Nvl 1 -> 60
       subStat: { name: "hp", min: "12%", max: "30%" } // Nvl 1 -> 60
     },
-    image: "/CodiceZero/Armas/Aturdidor/Weapon_S_1471.webp"
+    image: "/CodiceZero/Armas/Ruptura/Weapon_S_1471.webp"
   },
   {
     id: 5538, //arma Zhao
@@ -833,7 +833,7 @@ export const weapons = [
       baseAtk: { min: 55, max: 713 },     // Nvl 1 -> 60
       subStat: { name: "hp", min: "12%", max: "30%" } // Nvl 1 -> 60
     },
-    image: "/CodiceZero/Armas/Aturdidor/Weapon_S_1341Big.webp"
+    image: "/CodiceZero/Armas/Defensa/Weapon_S_1341Big.png"
   },
   {
     id: 5539, //arma Ye Shunguang
