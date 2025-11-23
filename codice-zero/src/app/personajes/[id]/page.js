@@ -315,7 +315,7 @@ export default function AgentDetailPage() {
   // 5. QUINTO: Return del JSX
   return (
     <div className="fixed inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-gray-800 via-gray-950 to-black text-white flex pl-20 overflow-hidden">
-      
+       
       {/* BOTÓN VOLVER - POSICION ABSOLUTA */}
       <Link 
         href="/personajes" 
@@ -344,7 +344,7 @@ export default function AgentDetailPage() {
         {/* --- MODAL DE DETALLE DE HABILIDAD (Sobre el Personaje) --- */}
         {activeTab === 'skills' && (selectedSkill || selectedGroup) && (
           <div className="absolute bottom-4 left-4 w-full max-w-[95%] p-6 bg-gray-900 border-2 border-white/10 rounded-xl shadow-2xl backdrop-blur-md z-50 max-h-[60%] overflow-y-auto animate-slideUp">
-            
+             
             {/* Si hay un grupo seleccionado, mostrar habilidades del grupo */}
             {selectedGroup ? (
               <>
@@ -470,7 +470,7 @@ export default function AgentDetailPage() {
 
       {/* ZONA DERECHA (Panel HUD) */}
       <div className="flex-1 flex flex-col h-full pt-12 pr-12 pb-8 relative z-20">
-        
+         
         {/* --- NUEVO HEADER INFO (Reubicado y Centrado) --- */}
         <div className="mb-8 w-full flex flex-col items-center text-center">
           {/* Facción */}
@@ -520,10 +520,10 @@ export default function AgentDetailPage() {
 
         {/* PANEL GRANDE CON ESPACIO */}
         <div className="flex-1 flex flex-col justify-center pr-12 pl-12 z-20 h-full">
-          
+           
           {/* Contenedor Principal - Tech HUD Style */}
           <div className="relative w-full bg-gray-950/80 border border-white/10 rounded-xl overflow-hidden shadow-[0_0_30px_rgba(0,0,0,0.5)] backdrop-blur-xl group hover:border-yellow-500/50 transition-all duration-300 p-8 flex flex-col gap-6 max-h-[85vh]">
-            
+             
             {/* Header + Slider - SOLO en Stats */}
             {activeTab === 'stats' && (
               <div className="flex justify-between items-center border-b border-white/10 pb-4">
@@ -553,185 +553,186 @@ export default function AgentDetailPage() {
                 />
               </div>
             ) : activeTab === 'skills' ? (
-              <div className="animate-fadeIn flex flex-col gap-8 justify-center h-full">
+              <div className="animate-fadeIn h-full flex items-center justify-between gap-6 px-4 py-8">
                 
-                {/* --- TAREA 5: TÍTULO SECCIÓN CORE --- */}
-                <div className="w-full">
-                  <h4 className="text-xs font-mono text-white-500 uppercase mb-4 tracking-widest ml-1 border-l-2 border-yellow-500 pl-2">
-                    Mejora de Habilidad Core
-                  </h4>
-                  
-          {/* Contenedor Flex que ALINEA IZQUIERDA los botones y DERECHA el Mindscape */}
-          <div className="flex justify-between items-center px-4">
-            
-            {/* GRUPO DE LETRAS A-F (Se agrupan y se alinean a la izquierda) */}
-            <div className="flex flex-wrap gap-3">
-              
-              {/* Botón Base (Icono Core) */}
-              <button
-                onClick={() => {
-                  // Buscamos las pasivas
-                  const passive = details?.skills?.find(s => s.type === "Pasiva Central");
-                  const additional = details?.skills?.find(s => s.type.includes("Adicional"));
-                  
-                  // VALOR BASE (Índice 0)
-                  const val = details?.coreSkillScaling ? details.coreSkillScaling[0] : "??%";
-                  
-                  // Inyectar valor en la descripción
-                  const desc = passive?.description.replace("{VALOR}", `<span class='text-cyan-400 font-bold '>${val}</span>`) || "";
-                  
-                  handleSelect({
-                    ...passive,
-                    name: `${passive.name} (Nivel Base)`,
-                    type: "Core",
-                    description: desc,
-                    additionalSkill: additional ? {
-                      name: additional.name,
-                      description: additional.description
-                    } : null
-                  });
-                }}
-                className={`w-12 h-12 rounded-full border-2 flex items-center justify-center transition-all active:scale-95
-                  ${selectedSkill?.name.includes("(Base)") 
-                    ? `border-[${themeColor}] bg-[${themeColor}]/20 shadow-[0_0_15px_${themeColor}40] scale-110` 
-                    : "border-gray-700 bg-gray-900 hover:border-gray-500"}
-                `}
-              >
-                <Image 
-                  src="/CodiceZero/Habilidades/Icon_Core_Skill.webp" 
-                  alt="Core Base" width={28} height={28} className="object-contain" 
-                />
-              </button>
+                {/* --- COLUMNA IZQUIERDA (Contenido / Flexible) --- */}
+                {/* Esta columna contiene Títulos y Botones de Habilidad, ocupando la mayor parte del espacio */}
+                <div className="flex-1 flex flex-col gap-6">
 
-              {/* Letras A-F */}
-              {['A', 'B', 'C', 'D', 'E', 'F'].map((letter, idx) => {
-                const reqLevel = idx === 5 ? 60 : 15 + (idx * 10);
-                const isActive = level >= reqLevel;
-                const isSelected = selectedSkill?.name?.includes(`Nodo ${letter}`);
-                
-                // CÁLCULO: 50% base + 8.33% por nivel (aprox para llegar a 100 en 6 pasos)
-                // 50 -> 58 -> 66 -> 75 -> 83 -> 91 -> 100
-                const val = Math.min(100, Math.floor(50 + ((idx + 1) * 8.33)));
-                
-                return (
+                  {/* BLOQUE CORE (A-F) */}
+                  <div className="w-full">
+                    <h4 className="text-xs font-mono text-gray-500 uppercase mb-4 tracking-widest ml-1 border-l-2 border-yellow-500 pl-2">
+                      Mejora de Habilidad Core
+                    </h4>
+                    <div className="flex flex-wrap gap-3">
+                      {/* Botón Base (Icono Core) */}
+                      <button
+                        onClick={() => {
+                          // Buscamos las pasivas
+                          const passive = details?.skills?.find(s => s.type === "Pasiva Central");
+                          const additional = details?.skills?.find(s => s.type.includes("Adicional"));
+                          
+                          // VALOR BASE (Índice 0)
+                          const val = details?.coreSkillScaling ? details.coreSkillScaling[0] : "??%";
+                          
+                          // Inyectar valor en la descripción
+                          const desc = passive?.description.replace("{VALOR}", `<span class='text-cyan-400 font-bold '>${val}</span>`) || "";
+                          
+                          handleSelect({
+                            ...passive,
+                            name: `${passive.name} (Nivel Base)`,
+                            type: "Core",
+                            description: desc,
+                            additionalSkill: additional ? {
+                              name: additional.name,
+                              description: additional.description
+                            } : null
+                          });
+                        }}
+                        className={`w-12 h-12 rounded-full border-2 flex items-center justify-center transition-all active:scale-95
+                          ${selectedSkill?.name.includes("(Base)") 
+                            ? `border-[${themeColor}] bg-[${themeColor}]/20 shadow-[0_0_15px_${themeColor}40] scale-110` 
+                            : "border-gray-700 bg-gray-900 hover:border-gray-500"}
+                        `}
+                      >
+                        <Image 
+                          src="/CodiceZero/Habilidades/Icon_Core_Skill.webp" 
+                          alt="Core Base" width={28} height={28} className="object-contain" 
+                        />
+                      </button>
+
+                      {/* Letras A-F */}
+                      {['A', 'B', 'C', 'D', 'E', 'F'].map((letter, idx) => {
+                        const reqLevel = idx === 5 ? 60 : 15 + (idx * 10);
+                        const isActive = level >= reqLevel;
+                        const isSelected = selectedSkill?.name?.includes(`Nodo ${letter}`);
+                        
+                        // CÁLCULO: 50% base + 8.33% por nivel (aprox para llegar a 100 en 6 pasos)
+                        // 50 -> 58 -> 66 -> 75 -> 83 -> 91 -> 100
+                        const val = Math.min(100, Math.floor(50 + ((idx + 1) * 8.33)));
+                        
+                        return (
+                          <button
+                            key={letter}
+                            onClick={() => {
+                              const passive = details?.skills?.find(s => s.type === "Pasiva Central");
+                              const additional = details?.skills?.find(s => s.type.includes("Adicional"));
+                              
+                              // VALOR ESCALADO (Índice idx + 1)
+                              // A=1, B=2, ..., F=6
+                              const val = details?.coreSkillScaling ? details.coreSkillScaling[idx + 1] : "??%";
+                              
+                              // Inyectar valor
+                              const desc = passive?.description.replace("{VALOR}", `<span class='text-cyan-400 font-bold'>${val}</span>`) || "";
+
+                              handleSelect({
+                                ...passive,
+                                name: `${passive.name} (Nodo ${letter})`,
+                                type: "Core",
+                                description: desc,
+                                additionalSkill: additional ? {
+                                  name: additional.name,
+                                  description: additional.description
+                                } : null
+                              });
+                            }}
+                            className={`
+                              w-12 h-12 rounded-full flex items-center justify-center transition-all duration-200 active:scale-95 border-2
+                              ${isSelected ? "scale-110" : "hover:scale-105"}
+                            `}
+                            style={{
+                              borderColor: isSelected ? themeColor : (isActive ? `${themeColor}60` : '#374151'),
+                              backgroundColor: isSelected ? `${themeColor}20` : 'transparent',
+                              boxShadow: isSelected ? `0 0 15px ${themeColor}` : 'none'
+                            }}
+                          >
+                            {/* Usar Imagen de Letra si existe, o Texto si no */}
+                            <Image 
+                               src={`/CodiceZero/Habilidades/Icon_Core_Skill_${letter}.webp`} 
+                               alt={letter} width={48} height={48} 
+                               className={`object-contain ${isActive ? "opacity-100" : "opacity-30 grayscale"}`}
+                            />
+                          </button>
+                        );
+                      })}
+                    </div>
+                  </div>
+
+                  {/* BLOQUE HABILIDADES DE COMBATE */}
+                  <div className="w-full">
+                    <h4 className="text-xs font-mono text-gray-500 uppercase mb-4 tracking-widest ml-1 border-l-2 border-white/20 pl-2">
+                      Habilidades de Combate
+                    </h4>
+                    <div className="flex flex-wrap gap-6 justify-start">
+                      {skillGroups.map((group) => {
+                        // Verificar si está seleccionado
+                        const isSelected = selectedSkill?.type === group.label;
+
+                        return (
+                          <button
+                            key={group.id}
+                            onClick={() => {
+                              // 1. Filtrar habilidades del grupo
+                              const skillsInGroup = details?.skills?.filter(s => 
+                                group.match.some(m => s.type.includes(m))
+                              ) || [];
+
+                              if (skillsInGroup.length === 0) return;
+
+                              // 2. Activar Modal con DATOS (No HTML)
+                              handleSelect({
+                                type: group.label,
+                                name: group.label,
+                                // Pasamos el array de sub-habilidades en una propiedad especial
+                                subSkills: skillsInGroup, 
+                                // Description se usa solo para habilidades simples (Core), aquí la dejamos vacía o nula
+                                description: null 
+                              });
+                            }}
+                            className={`
+                              w-16 h-16 rounded-full border-2 flex items-center justify-center transition-all duration-300 group relative active:scale-95
+                              ${isSelected
+                                ? `border-[${themeColor}] bg-[${themeColor}]/20 shadow-[0_0_20px_${themeColor}40] scale-110` 
+                                : "border-gray-700 bg-gray-900 hover:border-white hover:bg-white/10"}
+                            `}
+                          >
+                            <Image 
+                              src={group.icon} 
+                              alt={group.label} 
+                              width={40} height={40} 
+                              className={`object-contain transition-transform ${isSelected ? "scale-110" : "group-hover:scale-110"}`}
+                            />
+                          </button>
+                        );
+                      })}
+                    </div>
+                  </div>
+
+                </div>
+
+                {/* --- COLUMNA DERECHA (Mindscape / Fijo) --- */}
+                {/* Este contenedor es pequeño y el contenedor padre lo centrará verticalmente */}
+                <div className="flex-none w-24">
+                  {/* BOTÓN MINDSCAPE (M) */}
                   <button
-                    key={letter}
                     onClick={() => {
-                      const passive = details?.skills?.find(s => s.type === "Pasiva Central");
-                      const additional = details?.skills?.find(s => s.type.includes("Adicional"));
-                      
-                      // VALOR ESCALADO (Índice idx + 1)
-                      // A=1, B=2, ..., F=6
-                      const val = details?.coreSkillScaling ? details.coreSkillScaling[idx + 1] : "??%";
-                      
-                      // Inyectar valor
-                      const desc = passive?.description.replace("{VALOR}", `<span class='text-cyan-400 font-bold'>${val}</span>`) || "";
-
+                      // Al hacer click, muestra los niveles de dupe/Mindscape
                       handleSelect({
-                        ...passive,
-                        name: `${passive.name} (Nodo ${letter})`,
-                        type: "Core",
-                        description: desc,
-                        additionalSkill: additional ? {
-                          name: additional.name,
-                          description: additional.description
-                        } : null
+                        type: "Mindscape",
+                        name: "Mindscape (Cinema) Niveles de Dupe",
+                        description: "Aquí va el detalle de los 6 niveles del Mindscape y sus efectos. Nivel actual: 0/6",
+                        tags: ["Dupe", "Niveles"]
                       });
                     }}
-                    className={`
-                      w-12 h-12 rounded-full flex items-center justify-center transition-all duration-200 active:scale-95 border-2
-                      ${isSelected ? "scale-110" : "hover:scale-105"}
-                    `}
-                    style={{
-                      borderColor: isSelected ? themeColor : (isActive ? `${themeColor}60` : '#374151'),
-                      backgroundColor: isSelected ? `${themeColor}20` : 'transparent',
-                      boxShadow: isSelected ? `0 0 15px ${themeColor}` : 'none'
-                    }}
+                    className="w-24 h-24 relative rounded-full border-2 border-gray-600 bg-gray-800 flex items-center justify-center shadow-2xl hover:border-cyan-400 group transition-transform hover:scale-105"
+                    title="Mindscape Levels"
                   >
-                    {/* Usar Imagen de Letra si existe, o Texto si no */}
-                    <Image 
-                       src={`/CodiceZero/Habilidades/Icon_Core_Skill_${letter}.webp`} 
-                       alt={letter} width={48} height={48} 
-                       className={`object-contain ${isActive ? "opacity-100" : "opacity-30 grayscale"}`}
-                    />
+                    {/* Código CSS para el Badge M 0/6 */}
+                    <span className="text-cyan-400 text-4xl font-black font-display leading-none">M</span> 
+                    <div className="absolute bottom-2 text-sm text-white font-mono bg-black/50 px-2 rounded-sm border border-cyan-400/50">0/6</div>
                   </button>
-                );
-              })}
-            </div>
-
-            {/* --- TRACKER MINDSCAPE (NUEVO BOTÓN) --- */}
-            <button
-              onClick={() => {
-                // Al hacer click, muestra los niveles de dupe/Mindscape
-                handleSelect({
-                  type: "Mindscape",
-                  name: "Mindscape (Cinema) Niveles de Dupe",
-                  description: "Aquí va el detalle de los 6 niveles del Mindscape y sus efectos. Nivel actual: 0/6",
-                  tags: ["Dupe", "Niveles"]
-                });
-              }}
-              // Estilo que imita el badge circular "CINEMA"
-              className="w-24 h-24 relative rounded-full border-2 border-gray-600 bg-gray-800 flex items-center justify-center shadow-2xl hover:border-cyan-400 group transition-transform hover:scale-105"
-              title="Mindscape Levels"
-            >
-              {/* Texto o Placeholders */}
-              <span className="text-cyan-400 text-3xl font-black font-display leading-none">M</span> 
-              <div className="absolute bottom-2 text-xs text-white font-mono bg-black/50 px-2 rounded-sm border border-cyan-400/50">0/6</div>
-            </button>
-            
-          </div>
                 </div>
 
-                {/* --- SECCIÓN 2: HABILIDADES DE COMBATE (GRUPOS) --- */}
-                <div className="w-full">
-                  <h4 className="text-xs font-mono text-white-500 uppercase mb-4 tracking-widest ml-1 border-l-2 border-white/20 pl-2">
-                    HABILIDADES DE COMBATE
-                  </h4>
-                  
-                  <div className="flex flex-wrap justify-center gap-6">
-                    {skillGroups.map((group) => {
-                      // Verificar si está seleccionado
-                      const isSelected = selectedSkill?.type === group.label;
-
-                      return (
-                        <button
-                          key={group.id}
-                          onClick={() => {
-                            // 1. Filtrar habilidades del grupo
-                            const skillsInGroup = details?.skills?.filter(s => 
-                              group.match.some(m => s.type.includes(m))
-                            ) || [];
-
-                            if (skillsInGroup.length === 0) return;
-
-                            // 2. Activar Modal con DATOS (No HTML)
-                            handleSelect({
-                              type: group.label,
-                              name: group.label,
-                              // Pasamos el array de sub-habilidades en una propiedad especial
-                              subSkills: skillsInGroup, 
-                              // Description se usa solo para habilidades simples (Core), aquí la dejamos vacía o nula
-                              description: null 
-                            });
-                          }}
-                          className={`
-                            w-16 h-16 rounded-full border-2 flex items-center justify-center transition-all duration-300 group relative active:scale-95
-                            ${isSelected
-                              ? `border-[${themeColor}] bg-[${themeColor}]/20 shadow-[0_0_20px_${themeColor}40] scale-110` 
-                              : "border-gray-700 bg-gray-900 hover:border-white hover:bg-white/10"}
-                          `}
-                        >
-                          <Image 
-                            src={group.icon} 
-                            alt={group.label} 
-                            width={40} height={40} 
-                            className={`object-contain transition-transform ${isSelected ? "scale-110" : "group-hover:scale-110"}`}
-                          />
-                        </button>
-                      );
-                    })}
-                  </div>
-                </div>
               </div>
             ) : (
               /* Equip Content (placeholder) */
