@@ -547,9 +547,59 @@ export default function AgentDetailPage() {
 
             {/* Contenido Condicional - Stats o Skills */}
             {activeTab === 'stats' ? (
-              /* Stats Table Compact */
+              /* Stats Table Compact - Inline Rows */
               <div className="grid grid-cols-2 gap-x-16 gap-y-1 text-sm overflow-y-auto pr-2 scrollbar-hide font-mono">
-                <StatsTable currentStats={currentStats} themeColor={themeColor} agentRole={agent.rol} />
+                {/* Base Stats */}
+                <div className="flex justify-between items-center py-1 border-b border-white/5 last:border-0 group hover:bg-white/5 px-2 rounded transition-colors">
+                  <span className="text-gray-300 text-xs font-mono uppercase tracking-wide group-hover:text-white transition-colors">PV Base</span>
+                  <span className="text-sm font-bold font-mono drop-shadow-sm text-white">{currentStats.hp}</span>
+                </div>
+                <div className="flex justify-between items-center py-1 border-b border-white/5 last:border-0 group hover:bg-white/5 px-2 rounded transition-colors">
+                  <span className="text-gray-300 text-xs font-mono uppercase tracking-wide group-hover:text-white transition-colors">Ataque Base</span>
+                  <span className="text-sm font-bold font-mono drop-shadow-sm text-white">{currentStats.atk}</span>
+                </div>
+                <div className="flex justify-between items-center py-1 border-b border-white/5 last:border-0 group hover:bg-white/5 px-2 rounded transition-colors">
+                  <span className="text-gray-300 text-xs font-mono uppercase tracking-wide group-hover:text-white transition-colors">Defensa Base</span>
+                  <span className="text-sm font-bold font-mono drop-shadow-sm text-white">{currentStats.def}</span>
+                </div>
+                <div className="flex justify-between items-center py-1 border-b border-white/5 last:border-0 group hover:bg-white/5 px-2 rounded transition-colors">
+                  <span className="text-gray-300 text-xs font-mono uppercase tracking-wide group-hover:text-white transition-colors">Impacto Base</span>
+                  <span className="text-sm font-bold font-mono drop-shadow-sm text-white">{currentStats.impact}</span>
+                </div>
+                
+                {/* Sheer Force - Only for Ruptura characters */}
+                {agent.rol === "Ruptura" && currentStats.sheerForce && (
+                  <div className="flex justify-between items-center py-1 border-b border-white/5 last:border-0 group hover:bg-white/5 px-2 rounded transition-colors">
+                    <span className="text-gray-300 text-xs font-mono uppercase tracking-wide group-hover:text-white transition-colors">Fuerza Bruta</span>
+                    <span className="text-sm font-bold font-mono drop-shadow-sm text-white">{currentStats.sheerForce}</span>
+                  </div>
+                )}
+                
+                {/* Other Stats */}
+                <div className="flex justify-between items-center py-1 border-b border-white/5 last:border-0 group hover:bg-white/5 px-2 rounded transition-colors">
+                  <span className="text-gray-300 text-xs font-mono uppercase tracking-wide group-hover:text-white transition-colors">Prob. Crítico</span>
+                  <span className="text-sm font-bold font-mono drop-shadow-sm text-white">{currentStats.crit}</span>
+                </div>
+                <div className="flex justify-between items-center py-1 border-b border-white/5 last:border-0 group hover:bg-white/5 px-2 rounded transition-colors">
+                  <span className="text-gray-300 text-xs font-mono uppercase tracking-wide group-hover:text-white transition-colors">Daño Crítico</span>
+                  <span className="text-sm font-bold font-mono drop-shadow-sm text-white">{currentStats.critDmg}</span>
+                </div>
+                <div className="flex justify-between items-center py-1 border-b border-white/5 last:border-0 group hover:bg-white/5 px-2 rounded transition-colors">
+                  <span className="text-gray-300 text-xs font-mono uppercase tracking-wide group-hover:text-white transition-colors">Tasa de Anomalía</span>
+                  <span className="text-sm font-bold font-mono drop-shadow-sm text-white">{currentStats.anomalyRate}</span>
+                </div>
+                <div className="flex justify-between items-center py-1 border-b border-white/5 last:border-0 group hover:bg-white/5 px-2 rounded transition-colors">
+                  <span className="text-gray-300 text-xs font-mono uppercase tracking-wide group-hover:text-white transition-colors">Maestría de Anomalía</span>
+                  <span className="text-sm font-bold font-mono drop-shadow-sm text-white">{currentStats.anomalyMastery}</span>
+                </div>
+                <div className="flex justify-between items-center py-1 border-b border-white/5 last:border-0 group hover:bg-white/5 px-2 rounded transition-colors">
+                  <span className="text-gray-300 text-xs font-mono uppercase tracking-wide group-hover:text-white transition-colors">Tasa de Perforación</span>
+                  <span className="text-sm font-bold font-mono drop-shadow-sm text-white">{currentStats.penRatio}</span>
+                </div>
+                <div className="flex justify-between items-center py-1 border-b border-white/5 last:border-0 group hover:bg-white/5 px-2 rounded transition-colors">
+                  <span className="text-gray-300 text-xs font-mono uppercase tracking-wide group-hover:text-white transition-colors">Recup. de Energía</span>
+                  <span className="text-sm font-bold font-mono drop-shadow-sm text-white">{currentStats.energyRegen}</span>
+                </div>
               </div>
             ) : activeTab === 'skills' ? (
               <div className="animate-fadeIn flex flex-col gap-8 justify-center h-full">

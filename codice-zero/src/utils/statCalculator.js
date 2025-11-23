@@ -1,12 +1,14 @@
-// Función para calcular valor por interpolación lineal (Garantiza Nv1 = Min, Nv60 = Max)
+// Función para calcular valor por interpolación lineal
 const getInterpolatedValue = (min, max, level) => {
-    // CRUCIAL FIX: Parsear a flotante si son strings
-    const numMin = typeof min === 'string' ? parseFloat(min) : min;
-    const numMax = typeof max === 'string' ? parseFloat(max) : max;
+    // FIX CRUCIAL: Usamos Number() para una conversión segura a número
+    const numMin = Number(min);
+    const numMax = Number(max);
     
     if (level <= 1) return numMin;
     if (level >= 60) return numMax;
     
+    // (Si por alguna razón numMin/numMax siguen siendo inválidos, Math.floor(NaN) es NaN. 
+    // Pero esto cubre el caso de conversión).
     const percent = (level - 1) / 59;
     return numMin + (numMax - numMin) * percent;
 };
