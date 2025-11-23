@@ -325,8 +325,8 @@ export default function AgentDetailPage() {
         Volver
       </Link>
 
-      {/* IZQUIERDA: 450px Fijos (Solo Imagen de Fondo) */}
-      <div className="relative w-[450px] h-full border-r border-white/10 bg-black/20 flex-shrink-0">
+      {/* IZQUIERDA: 550px Fijos o W-1/2 (Aumento de Tamaño) */}
+      <div className="relative w-[550px] xl:w-[600px] h-full border-r border-white/10 bg-black/20 flex-shrink-0">
         {/* Imagen de Fondo Limpia */}
         <div className="absolute inset-0 z-0">
           <div className="absolute inset-0 bg-gradient-to-r from-transparent via-black/10 to-gray-950 z-10"></div>
