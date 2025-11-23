@@ -397,7 +397,7 @@ export default function AgentDetailPage() {
                 </div>
                 
                 {/* Contenido del Modal */}
-                <div className="text-sm text-white-300 leading-relaxed font-sans">
+                <div className="text-sm text-white leading-relaxed font-sans">
                   
                   {/* CASO A: Habilidad Agrupada (Array de Sub-Skills) - Ahora incluye Mindscape */}
                   {selectedSkill.subSkills ? (
@@ -446,7 +446,7 @@ export default function AgentDetailPage() {
                             <span className="text-sm font-semibold text-white">
                               {selectedSkill.additionalSkill.name}
                             </span>
-                            <p className="text-sm text-gray-300 leading-relaxed" dangerouslySetInnerHTML={{ __html: processDescription(selectedSkill.additionalSkill.description) }} />
+                            <p className="text-sm text-white leading-relaxed" dangerouslySetInnerHTML={{ __html: processDescription(selectedSkill.additionalSkill.description) }} />
                           </div>
                         </div>
                       )}
@@ -579,7 +579,7 @@ export default function AgentDetailPage() {
                           const val = details?.coreSkillScaling ? details.coreSkillScaling[0] : "??%";
                           
                           // Inyectar valor en la descripción
-                          const desc = passive?.description.replace("{VALOR}", `<span class='text-cyan-400 font-bold '>${val}</span>`) || "";
+                          const desc = passive?.description.replace("{VALOR}", `<span class='text-green-400 font-bold '>${val}</span>`) || "";
                           
                           handleSelect({
                             ...passive,
@@ -626,7 +626,7 @@ export default function AgentDetailPage() {
                               const val = details?.coreSkillScaling ? details.coreSkillScaling[idx + 1] : "??%";
                               
                               // Inyectar valor
-                              const desc = passive?.description.replace("{VALOR}", `<span class='text-cyan-400 font-bold'>${val}</span>`) || "";
+                              const desc = passive?.description.replace("{VALOR}", `<span class='text-green-400 font-bold'>${val}</span>`) || "";
 
                               handleSelect({
                                 ...passive,
@@ -663,7 +663,7 @@ export default function AgentDetailPage() {
 
                   {/* BLOQUE HABILIDADES DE COMBATE */}
                   <div className="w-full">
-                    <h4 className="text-xs font-mono text-gray-500 uppercase mb-4 tracking-widest ml-1 border-l-2 border-white/20 pl-2">
+                    <h4 className="text-xs font-mono text-white uppercase mb-4 tracking-widest ml-1 border-l-2 border-white/20 pl-2">
                       Habilidades de Combate
                     </h4>
                     <div className="flex flex-wrap gap-6 justify-start">
