@@ -133,19 +133,22 @@ export default function AgentDetailPage() {
     "Belobog Heavy Industries": "/CodiceZero/Agentes/Faction/Faction_Belobog_Heavy_Industries_Icon.webp",
     "Cunning Hares": "/CodiceZero/Agentes/Faction/Faction_Gentle_House_Icon.webp",
     "N.E.P.S.": "/CodiceZero/Agentes/Faction/Faction_Criminal_Investigation_Special_Response_Team_Icon.webp",
-    "Section 6": "/CodiceZero/Agentes/Faction/Faction_Hollow_Special_Operations_Section_6_Icon.webp",
     "Obol Squad": "/CodiceZero/Agentes/Faction/Faction_Obol_Squad_Icon.webp",
+    "Section 6": "/CodiceZero/Agentes/Faction/Faction_Hollow_Special_Operations_Section_6_Icon.webp",
     "Sons of Calydon": "/CodiceZero/Agentes/Faction/Faction_Sons_of_Calydon_Icon.webp",
     "Spook Shack": "/CodiceZero/Agentes/Faction/Faction_Spook_Shack_Icon.webp",
-    "Mockingbird": "/CodiceZero/Agentes/Faction/Faction_Mockingbird_Icon.webp",
-    "Yunkui Summit": "/CodiceZero/Agentes/Faction/Faction_Yunkui_Summit_Icon.webp"
+    "Stars of Lyra": "/CodiceZero/Agentes/Faction/Faction_Stars_of_Lyra_Icon.webp",
+    "Mookingbird": "/CodiceZero/Agentes/Faction/Faction_Mockingbird_Icon.webp",
+    "Yunkui Summit": "/CodiceZero/Agentes/Faction/Faction_Yunkui_Summit_Icon.webp",
+    "Defense Force - Silver Squad": "/CodiceZero/Agentes/Faction/Faction_Defense_Force_-_Silver_Squad_Icon.webp",
+    "Krampus Compliance Authority": "/CodiceZero/Agentes/Faction/Faction_Krampus_Compliance_Authority_Icon.png"
   };
   const factionIconPath = factionIcons[agent.faction] || ""; // Fallback vacío si no encuentra
 
   // Lógica de Icono Especial (Miyabi/Yixuan/Etéreo)
   let elementIconPath = "";
   if (agent.name.includes("Ye Shunguang")){
-    elementIconPath = "/CodiceZero/Agentes/Elemento/Icon_TBA.webp";
+    elementIconPath = "/CodiceZero/Agentes/Elemento/IconHonedEdge.webp";
   } else  if (agent.name.includes("Miyabi")) {
      elementIconPath = "/CodiceZero/Agentes/Elemento/Icon_Frost.png";
   } else if (agent.name.includes("Yixuan")) {
