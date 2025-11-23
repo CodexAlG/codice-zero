@@ -1,12 +1,29 @@
 "use client";
+import { useState, useEffect } from 'react';
 import Image from "next/image";
 import SectionTitle from "@/components/ui/SectionTitle";
 import HighlightText from "@/components/ui/HighlightText";
 import { driveDiscs } from "@/data/discs";
+import LoadingSpinner from '@/components/ui/LoadingSpinner';
 
 export default function DiscsPage() {
+  const [isLoading, setIsLoading] = useState(true);
+
+  // Simular tiempo de carga (para asegurar que el spinner se vea)
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 500); // Mínimo 500ms de carga
+
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
-    <div className="min-h-screen bg-gray-950 text-white p-6">
+    <>
+      {isLoading && <LoadingSpinner />}
+      
+      {/* Contenido Normal de la Página (Solo visible cuando NO está cargando) */}
+      <div className={`min-h-screen bg-gray-950 text-white p-6 transition-opacity duration-300 ${isLoading ? 'opacity-0' : 'opacity-100'}`}>
       <div className="max-w-7xl mx-auto">
         <SectionTitle
           title="Base de Datos de Discos"
@@ -66,5 +83,6 @@ export default function DiscsPage() {
         </div>
       </div>
     </div>
+    </>
   );
 }
