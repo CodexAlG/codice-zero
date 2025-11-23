@@ -5,7 +5,7 @@ import HighlightText from '@/components/ui/HighlightText';
 const DiscCard = memo(({ disc }) => {
   return (
     <div 
-      className="group relative flex items-start gap-6 p-6 bg-black/40 hover:bg-black/60 transition-all duration-300 border-t-2 border-white/10"
+      className="group relative flex items-start gap-6 p-6 bg-black/40 hover:bg-black/60 border-t-2 border-white/10"
       style={{ clipPath: 'polygon(0 0, 100% 0, 100% 85%, 95% 100%, 0 100%)' }}
     >
       {/* Borde Decorativo Superior */}
@@ -13,7 +13,7 @@ const DiscCard = memo(({ disc }) => {
 
       {/* COLUMNA IZQUIERDA: ICONO FLOTANTE */}
       <div className="flex-shrink-0 mt-2">
-        <div className="relative w-28 h-28 group-hover:scale-110 transition-transform duration-500 filter drop-shadow-[0_0_15px_rgba(0,0,0,0.5)]">
+        <div className="relative w-28 h-28 group-hover:scale-110 filter drop-shadow-[0_0_15px_rgba(0,0,0,0.5)]">
           <Image 
             src={disc.image} 
             alt={disc.name} 
