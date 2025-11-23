@@ -1,6 +1,7 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
+import { memo } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { motion, AnimatePresence } from "framer-motion";
@@ -68,28 +69,30 @@ export default function ArmasPage() {
   // Mapa de prioridad para ordenamiento
   const rankPriority = { "S": 1, "A": 2, "B": 3 };
 
-  const filteredWeapons = (activeFilters.length === 0
-    ? weapons
-    : weapons.filter(w => {
-        // Separar filtros activos por categoría
-        const rankFilters = activeFilters.filter(f => ["S", "A", "B"].includes(f));
-        const roleFilters = activeFilters.filter(f => !["S", "A", "B"].includes(f));
+  const filteredWeapons = useMemo(() => {
+    return (activeFilters.length === 0
+      ? weapons
+      : weapons.filter(w => {
+          // Separar filtros activos por categoría
+          const rankFilters = activeFilters.filter(f => ["S", "A", "B"].includes(f));
+          const roleFilters = activeFilters.filter(f => !["S", "A", "B"].includes(f));
 
-        // Verificar Rango (Si hay filtros de rango, debe coincidir con uno de ellos)
-        const matchRank = rankFilters.length === 0 || rankFilters.includes(w.rank);
+          // Verificar Rango (Si hay filtros de rango, debe coincidir con uno de ellos)
+          const matchRank = rankFilters.length === 0 || rankFilters.includes(w.rank);
 
-        // Verificar Rol (Si hay filtros de rol, debe coincidir con uno de ellos)
-        const matchRole = roleFilters.length === 0 || roleFilters.includes(w.rol);
+          // Verificar Rol (Si hay filtros de rol, debe coincidir con uno de ellos)
+          const matchRole = roleFilters.length === 0 || roleFilters.includes(w.rol);
 
-        // Lógica AND entre categorías (Rango Y Rol)
-        return matchRank && matchRole;
-      })
-  ).sort((a, b) => {
-    // Ordenar por Rango (S < A < B)
-    const rankDiff = rankPriority[a.rank] - rankPriority[b.rank];
-    if (rankDiff !== 0) return rankDiff;
-    return b.id - a.id;
-  });
+          // Lógica AND entre categorías (Rango Y Rol)
+          return matchRank && matchRole;
+        })
+    ).sort((a, b) => {
+      // Ordenar por Rango (S < A < B)
+      const rankDiff = rankPriority[a.rank] - rankPriority[b.rank];
+      if (rankDiff !== 0) return rankDiff;
+      return b.id - a.id;
+    });
+  }, [weapons, activeFilters, rankPriority]);
 
   return (
     <>
@@ -179,7 +182,7 @@ export default function ArmasPage() {
   );
 }
 
-function FilterIcon({ name, icon, activeFilters, toggleFilter, size = 24 }) {
+const FilterIcon = memo(({ name, icon, activeFilters, toggleFilter, size = 24 }) => {
   const isActive = activeFilters.includes(name);
   
   return (
@@ -201,4 +204,6 @@ function FilterIcon({ name, icon, activeFilters, toggleFilter, size = 24 }) {
       />
     </button>
   );
-}
+});
+
+FilterIcon.displayName = 'FilterIcon';

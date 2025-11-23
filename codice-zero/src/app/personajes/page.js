@@ -1,6 +1,7 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
+import { memo } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { motion, AnimatePresence } from "framer-motion";
@@ -35,6 +36,8 @@ export default function PersonajesPage() {
       setIsLoading(false);
     }
   }, []);
+
+
 
   const toggleFilter = (newFilter) => {
     if (newFilter === "Todos") {
@@ -94,25 +97,27 @@ export default function PersonajesPage() {
     "Krampus Compliance Authority": "/CodiceZero/Agentes/Faction/Faction_Krampus_Compliance_Authority_Icon.png"
   };
 
-  const filteredAgents = agents.filter((agent) => {
-    // 1. Filtro de Búsqueda (Texto)
-    const matchesSearch = agent.name.toLowerCase().includes(searchTerm.toLowerCase());
+  const filteredAgents = useMemo(() => {
+    return agents.filter((agent) => {
+      // 1. Filtro de Búsqueda (Texto)
+      const matchesSearch = agent.name.toLowerCase().includes(searchTerm.toLowerCase());
 
-    // 2. Separar filtros activos por categoría
-    const activeElements = activeFilters.filter(f => elementFilters.includes(f));
-    const activeRanks = activeFilters.filter(f => rankFilters.includes(f));
-    const activeRoles = activeFilters.filter(f => roleFilters.includes(f));
-    const activeFactions = activeFilters.filter(f => factionFilters.includes(f));
+      // 2. Separar filtros activos por categoría
+      const activeElements = activeFilters.filter(f => elementFilters.includes(f));
+      const activeRanks = activeFilters.filter(f => rankFilters.includes(f));
+      const activeRoles = activeFilters.filter(f => roleFilters.includes(f));
+      const activeFactions = activeFilters.filter(f => factionFilters.includes(f));
 
-    // 3. Verificación por Categoría (Si la categoría tiene filtros activos, debe coincidir con uno)
-    const matchElement = activeElements.length === 0 || activeElements.includes(agent.element);
-    const matchRank = activeRanks.length === 0 || activeRanks.includes(agent.rank);
-    const matchRole = activeRoles.length === 0 || activeRoles.includes(agent.rol);
-    const matchFaction = activeFactions.length === 0 || activeFactions.includes(agent.faction);
+      // 3. Verificación por Categoría (Si la categoría tiene filtros activos, debe coincidir con uno)
+      const matchElement = activeElements.length === 0 || activeElements.includes(agent.element);
+      const matchRank = activeRanks.length === 0 || activeRanks.includes(agent.rank);
+      const matchRole = activeRoles.length === 0 || activeRoles.includes(agent.rol);
+      const matchFaction = activeFactions.length === 0 || activeFactions.includes(agent.faction);
 
-    // Lógica Final: Debe cumplir Búsqueda Y (Elemento Y Rango Y Rol Y Facción)
-    return matchesSearch && matchElement && matchRank && matchRole && matchFaction;
-  });
+      // Lógica Final: Debe cumplir Búsqueda Y (Elemento Y Rango Y Rol Y Facción)
+      return matchesSearch && matchElement && matchRank && matchRole && matchFaction;
+    });
+  }, [agents, activeFilters, searchTerm]);
 
   // ----------------------------------------------------
   
@@ -186,36 +191,22 @@ export default function PersonajesPage() {
 
       </div>
 
-      {/* GRID DE PERSONAJES ANIMADO */}
+      {/* GRID DE PERSONAJES OPTIMIZADO */}
       <div className="w-full max-w-7xl mx-auto">
-        <motion.div 
-          layout 
-          className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 2xl:grid-cols-7 gap-4 justify-center"
-        >
-        <AnimatePresence mode="popLayout">
+        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 2xl:grid-cols-7 gap-4 justify-center">
           {filteredAgents.map((agent) => (
-            <motion.div
-              key={agent.id}
-              layout // ¡Magia! Esto hace que se muevan suavemente a su nueva posición
-              initial={{ opacity: 0, scale: 0.8 }} // Estado inicial (invisible y pequeño)
-              animate={{ opacity: 1, scale: 1 }}   // Estado visible (normal)
-              exit={{ opacity: 0, scale: 0.5 }}    // Al filtrarse (se encoge y desaparece)
-              transition={{ duration: 0.3, type: "spring", stiffness: 100 }} // Suavidad
-            >
-              <Link href={`/personajes/${agent.id}`}>
-                <AgentCard agent={agent} />
-              </Link>
-            </motion.div>
+            <Link key={agent.id} href={`/personajes/${agent.id}`}>
+              <AgentCard agent={agent} />
+            </Link>
           ))}
-        </AnimatePresence>
-        </motion.div>
+        </div>
       </div>
     </div>
     </>
   );
 }
 
-function FilterIcon({ name, icon, activeFilters, toggleFilter, size = 24 }) {
+const FilterIcon = memo(({ name, icon, activeFilters, toggleFilter, size = 24 }) => {
   const isActive = activeFilters.includes(name);
   
   return (
@@ -240,4 +231,6 @@ function FilterIcon({ name, icon, activeFilters, toggleFilter, size = 24 }) {
       />
     </button>
   );
-}
+});
+
+FilterIcon.displayName = 'FilterIcon';

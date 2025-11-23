@@ -1,9 +1,10 @@
 import Image from "next/image";
+import { memo } from 'react';
 
 // Helper para normalizar nombres de archivos (quitar tildes, mantener capitalización)
 const normalize = (str) => str ? str.normalize("NFD").replace(/[\u0300-\u036f]/g, "") : "";
 
-export default function AgentCard({ agent }) {
+const AgentCard = memo(({ agent }) => {
   // Ruta del nuevo icono de rango (Igual que en armas)
   const rankIconPath = `/CodiceZero/Rango/Icon_Item_Rank_${agent.rank}.webp`;
 
@@ -118,4 +119,8 @@ export default function AgentCard({ agent }) {
     </div>
 
   );
-}
+});
+
+AgentCard.displayName = 'AgentCard';
+
+export default AgentCard;
