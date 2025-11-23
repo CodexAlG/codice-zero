@@ -713,23 +713,39 @@ export default function AgentDetailPage() {
                 {/* --- COLUMNA DERECHA (Mindscape / Fijo) --- */}
                 {/* Este contenedor es pequeño y el contenedor padre lo centrará verticalmente */}
                 <div className="flex-none w-24">
-                  {/* BOTÓN MINDSCAPE (M) */}
+                  {/* --- TRACKER MINDSCAPE (Diseño Neon Ring) --- */}
                   <button
                     onClick={() => {
                       // Al hacer click, muestra los niveles de dupe/Mindscape
                       handleSelect({
                         type: "Mindscape",
                         name: "Mindscape (Cinema) Niveles de Dupe",
-                        description: "Aquí va el detalle de los 6 niveles del Mindscape y sus efectos. Nivel actual: 0/6",
+                        description: "Aquí va el detalle de los 6 niveles del Mindscape y sus efectos. Nivel actual: 6/6",
                         tags: ["Dupe", "Niveles"]
                       });
                     }}
-                    className="w-24 h-24 relative rounded-full border-2 border-gray-600 bg-gray-800 flex items-center justify-center shadow-2xl hover:border-cyan-400 group transition-transform hover:scale-105"
+                    // Clases para el efecto de borde y fondo
+                    className="w-24 h-24 relative rounded-full border-2 border-gray-700 bg-gray-900/50 flex items-center justify-center shadow-2xl hover:border-white/50 group transition-transform hover:scale-105"
                     title="Mindscape Levels"
                   >
-                    {/* Código CSS para el Badge M 0/6 */}
-                    <span className="text-cyan-400 text-4xl font-black font-display leading-none">M</span> 
-                    <div className="absolute bottom-2 text-sm text-white font-mono bg-black/50 px-2 rounded-sm border border-cyan-400/50">0/6</div>
+                    {/* Anillo de Glow Dinámico */}
+                    <div 
+                      className="absolute inset-0 rounded-full" 
+                      style={{ boxShadow: `0 0 15px 5px ${themeColor}40`, borderColor: themeColor }}
+                    />
+
+                    {/* Texto "M" (Color del Elemento) */}
+                    <span 
+                      className="text-4xl font-black font-display leading-none z-10" 
+                      style={{ color: themeColor }}
+                    >
+                      M
+                    </span>
+
+                    {/* Contador 6/6 (Texto Monospaced) */}
+                    <div className="absolute bottom-2 text-xs text-white font-mono bg-black/60 px-1.5 py-0.5 rounded border" style={{ borderColor: `${themeColor}60` }}>
+                      6/6
+                    </div>
                   </button>
                 </div>
 
