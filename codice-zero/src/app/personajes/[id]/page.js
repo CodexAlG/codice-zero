@@ -10,7 +10,7 @@ import { agentDetails } from '@/data/agentDetails';
 import { calculateStatsWithCore } from '@/utils/statCalculator';
 import SkillsModule from '@/components/agents/SkillsModule';
 import StatsTable from '@/components/agents/StatsTable';
-
+//coment
 export default function AgentDetailPage() {
   // 1. PRIMERO: Definir params y encontrar el agente
   const params = useParams();
