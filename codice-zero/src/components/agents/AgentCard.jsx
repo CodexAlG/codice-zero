@@ -1,7 +1,7 @@
 import Image from "next/image";
 
-// Helper para normalizar nombres de archivos (quitar tildes, etc.)
-const normalize = (str) => str ? str.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "") : "";
+// Helper para normalizar nombres de archivos (quitar tildes, mantener capitalización)
+const normalize = (str) => str ? str.normalize("NFD").replace(/[\u0300-\u036f]/g, "") : "";
 
 export default function AgentCard({ agent }) {
   // Ruta del nuevo icono de rango (Igual que en armas)

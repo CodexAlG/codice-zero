@@ -6,7 +6,7 @@ import { weapons } from "@/data/weapons"; // Usamos la base de datos única
 import { ArrowLeft } from "lucide-react"; // O tu icono de regreso
 
 // Helper para normalizar strings
-const normalize = (str) => str ? str.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "") : "";
+const normalize = (str) => str ? str.normalize("NFD").replace(/[\u0300-\u036f]/g, "") : "";
 
 export default function WeaponDetail({ params }) {
   // Desempaquetar params de forma segura (compatible con Next.js 13/14/15)

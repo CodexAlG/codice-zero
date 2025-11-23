@@ -112,7 +112,7 @@ export default function AgentDetailPage() {
   const details = agentDetails[agentId];
 
   // Helper de normalización
-  const normalize = (str) => str ? str.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "") : "";
+  const normalize = (str) => str ? str.normalize("NFD").replace(/[\u0300-\u036f]/g, "") : "";
 
   // Mapa de Colores
   const elementColors = {
