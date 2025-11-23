@@ -107,11 +107,6 @@ export const calculateStatsWithCore = (baseStats, level, coreConfig) => {
   } else if (statName.includes("impacto") || statName.includes("impact")) {
     impact = (parseFloat(baseStats.impact) + addedSpecial).toString();
     buffedStat = "impact";
-  } else if (statName.includes("fuerza") || statName.includes("sheer")) {
-    if (sheerForce) {
-      sheerForce = sheerForce + Math.floor(addedSpecial);
-      buffedStat = "sheerForce";
-    }
   }
 
   // 5. Retornar objeto con valores YA SUMADOS
