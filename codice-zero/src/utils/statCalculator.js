@@ -74,9 +74,11 @@ export const calculateStatsWithCore = (baseStats, level, coreConfig) => {
   let anomalyRate = baseStats.anomalyRate;
   let energyRegen = baseStats.energyRegen;
   let impact = baseStats.impact;
+  let sheerForce = baseStats.sheerForce ? Math.floor(baseStats.sheerForce * multHP) : null;
 
   const statName = coreConfig?.statName?.toLowerCase() || "";
   const originalStatName = coreConfig?.statName || "";
+  let buffedStat = "";
   
   // 5. Aplicar bonus especial según el stat
   if (originalStatName.includes("hp%")) {
@@ -84,20 +86,35 @@ export const calculateStatsWithCore = (baseStats, level, coreConfig) => {
     const baseHpMin = typeof baseStats.hp === 'object' ? baseStats.hp.min : baseStats.hp;
     const bonusValue = Math.floor(baseHpMin * (addedSpecial / 100));
     hp = hp + bonusValue;
+    buffedStat = "hp";
   } else if (statName.includes("hp") && !originalStatName.includes("hp%")) {
     // Para HP plano, sumar el valor directo
     hp = hp + addedSpecial;
-  } else if (statName.includes("prob") || statName.includes("crit rate")) {
+    buffedStat = "hp";
+  } else if (statName.includes("prob") || statName.includes("crit rate") || statName.includes("crítica")) {
     critRate = addPercentage(baseStats.crit, addedSpecial);
-  } else if (statName.includes("daño") || statName.includes("crit dmg")) {
+    buffedStat = "crit";
+  } else if (statName.includes("daño") || statName.includes("crit dmg") || statName.includes("dano")) {
     critDmg = addPercentage(baseStats.critDmg, addedSpecial);
-  } else if (statName.includes("maestría") || statName.includes("mastery")) {
+    buffedStat = "critDmg";
+  } else if (statName.includes("maestría") || statName.includes("maestria") || statName.includes("mastery")) {
     // Si es plano (no %), sumamos directo
     anomalyMastery = (parseInt(baseStats.anomalyMastery) + Math.floor(addedSpecial)).toString();
-  } else if (statName.includes("energía") || statName.includes("energy")) {
+    buffedStat = "anomalyMastery";
+  } else if (statName.includes("tasa") || statName.includes("anomaly rate")) {
+    anomalyRate = (parseInt(baseStats.anomalyRate) + Math.floor(addedSpecial)).toString();
+    buffedStat = "anomalyRate";
+  } else if (statName.includes("energía") || statName.includes("energia") || statName.includes("energy")) {
     energyRegen = (parseFloat(baseStats.energyRegen) + addedSpecial).toFixed(2);
+    buffedStat = "energyRegen";
   } else if (statName.includes("impacto") || statName.includes("impact")) {
-    impact = (parseFloat(baseStats.impact) + addedSpecial);
+    impact = (parseFloat(baseStats.impact) + addedSpecial).toString();
+    buffedStat = "impact";
+  } else if (statName.includes("fuerza") || statName.includes("sheer")) {
+    if (sheerForce) {
+      sheerForce = sheerForce + Math.floor(addedSpecial);
+      buffedStat = "sheerForce";
+    }
   }
 
   // 5. Retornar objeto con valores YA SUMADOS
@@ -105,16 +122,17 @@ export const calculateStatsWithCore = (baseStats, level, coreConfig) => {
     hp: hp.toLocaleString(),
     def: Math.floor(baseStats.def * multHP).toLocaleString(),
     atk: Math.floor((baseStats.atk * multATK) + addedAtk).toLocaleString(),
+    impact: impact ? impact.toLocaleString() : baseStats.impact,
+    sheerForce: sheerForce ? sheerForce.toLocaleString() : null,
     crit: critRate,
     critDmg: critDmg,
     anomalyMastery: anomalyMastery,
     anomalyRate: anomalyRate,
     penRatio: baseStats.penRatio,
     energyRegen: energyRegen,
-    impact: impact ? impact.toLocaleString() : "-",
 
-    // Info para pintar de amarillo el stat con buff
-    hasBuff: addedSpecial > 0,
-    buffType: statName
+    // Info para pintar de color el stat con buff
+    buffedStat: buffedStat,
+    bonusValue: addedSpecial // Valor del bonus para mostrar coloreado
   };
 };

@@ -7,6 +7,7 @@ import Link from 'next/link';
 import { ArrowLeft } from 'lucide-react';
 import { agents } from '@/data/agents';
 import { agentDetails } from '@/data/agentDetails';
+import { calculateStatsWithCore } from '@/utils/statCalculator';
 import SkillsModule from '@/components/agents/SkillsModule';
 import StatsTable from '@/components/agents/StatsTable';
 
@@ -116,13 +117,13 @@ export default function AgentDetailPage() {
 
   // Mapa de Colores
   const elementColors = {
-    "fuego": "#ef4444",    // Rojo
-    "hielo": "#22d3ee",    // Cian
-    "electrico": "#3b82f6", // Azul Puro
-    "fisico": "#eab308",   // Amarillo Dorado
-    "etereo": "#d946ef",   // Rosa/Magenta
+    "Fuego": "#ef4444",    // Rojo
+    "Hielo": "#22d3ee",    // Cian
+    "Electrico": "#3b82f6", // Azul Puro
+    "Fisico": "#eab308",   // Amarillo Dorado
+    "Etereo": "#d946ef",   // Rosa/Magenta
   };
-  const themeColor = elementColors[normalize(agent.element)] || "#facc15";
+  const themeColor = elementColors[normalize(agent.element).toLowerCase()] || "#facc15";
 
   // Mapeo de Iconos de Facción
   const factionIcons = {
@@ -153,56 +154,23 @@ export default function AgentDetailPage() {
        "fisico": "Fisico.webp",
        "etereo": "Etéreo.webp"
      };
-     elementIconPath = `/CodiceZero/Agentes/Elemento/${iconMap[normalize(agent.element)] || "Fisico.webp"}`;
+     const normalizedElement = normalize(agent.element).toLowerCase();
+     elementIconPath = `/CodiceZero/Agentes/Elemento/${iconMap[normalizedElement] || "Fisico.webp"}`;
   }
 
-  // Lógica de Cálculo Min-Max + Core (Interpolación en tiempo real)
+  // Lógica de Cálculo usando statCalculator
   const calculateCurrentStats = () => {
     if (!details?.baseStats) return {};
     
-    const percent = (level - 1) / 59; 
-    
-    const getVal = (stat) => {
-      if (typeof stat === 'object' && stat.min !== undefined) {
-        return Math.floor(stat.min + (stat.max - stat.min) * percent);
-      }
-      // Si es string, convertir a número
-      if (typeof stat === 'string') {
-        return parseInt(stat) || stat;
-      }
-      return stat;
-    };
-
-    // Calcular Bonus del Core (Solo Stats Especiales)
-    let specialBonus = 0;
-    if (level >= 15) specialBonus += (details.coreStats?.valuePerNode || 0); // A
-    if (level >= 35) specialBonus += (details.coreStats?.valuePerNode || 0); // C
-    if (level >= 55) specialBonus += (details.coreStats?.valuePerNode || 0); // E
-
-    // Helper para sumar bonus (Maneja % y planos)
-    const addBonus = (base, bonus) => {
-       if (!bonus) return base;
-       const isPercent = base.toString().includes("%");
-       const val = parseFloat(base);
-       if (isNaN(val)) return base;
-       
-       // Si es Energía (decimal pequeño), usar toFixed(2)
-       if (base.toString().includes(".")) return (val + bonus).toFixed(2);
-       // Si es porcentaje o entero
-       return isPercent ? `${(val + bonus).toFixed(1)}%` : Math.floor(val + bonus);
-    };
-
-    // Identificar qué stat recibe el buff (Normalizado)
-    const statName = normalize(details.coreStats?.statName || "");
-
-    // Objeto base
-    const stats = {
-      hp: getVal(details.baseStats.hp).toLocaleString(),
-      def: getVal(details.baseStats.def).toLocaleString(),
-      atk: getVal(details.baseStats.atk).toLocaleString(),
-      impact: getVal(details.baseStats.impact).toLocaleString(),
+    // Preparar baseStats para el calculador
+    // El calculador espera valores min, no objetos {min, max}
+    const baseStatsForCalc = {
+      hp: typeof details.baseStats.hp === 'object' ? details.baseStats.hp.min : details.baseStats.hp,
+      atk: typeof details.baseStats.atk === 'object' ? details.baseStats.atk.min : details.baseStats.atk,
+      def: typeof details.baseStats.def === 'object' ? details.baseStats.def.min : details.baseStats.def,
+      impact: details.baseStats.impact,
       sheerForce: details.baseStats.sheerForce 
-        ? getVal(details.baseStats.sheerForce).toLocaleString() 
+        ? (typeof details.baseStats.sheerForce === 'object' ? details.baseStats.sheerForce.min : details.baseStats.sheerForce)
         : null,
       crit: details.baseStats.crit,
       critDmg: details.baseStats.critDmg,
@@ -210,53 +178,10 @@ export default function AgentDetailPage() {
       anomalyMastery: details.baseStats.anomalyMastery,
       penRatio: details.baseStats.penRatio,
       energyRegen: details.baseStats.energyRegen,
-      buffedStat: ""
     };
 
-    // Aplicar Bonus al stat correspondiente
-    const originalStatName = details.coreStats?.statName || "";
-    if (originalStatName.includes("hp%")) {
-       // Para HP%, calcular como HP min × porcentaje
-       const baseHpMin = typeof details.baseStats.hp === 'object' ? details.baseStats.hp.min : parseInt(details.baseStats.hp);
-       const bonusValue = Math.floor(baseHpMin * (specialBonus / 100));
-       const currentHp = parseInt(stats.hp.replace(/,/g, ''));
-       stats.hp = (currentHp + bonusValue).toLocaleString();
-       stats.buffedStat = "hp";
-    } else if (statName.includes("hp") && !originalStatName.includes("hp%")) {
-       // Para HP plano, sumar el valor directo
-       const currentHp = parseInt(stats.hp.replace(/,/g, ''));
-       stats.hp = Math.floor(currentHp + specialBonus).toLocaleString();
-       stats.buffedStat = "hp";
-    } else if (statName.includes("critica") || statName.includes("crit rate")) {
-       stats.crit = addBonus(stats.crit, specialBonus);
-       stats.buffedStat = "crit";
-    } else if (statName.includes("dano") || statName.includes("crit dmg")) {
-       stats.critDmg = addBonus(stats.critDmg, specialBonus);
-       stats.buffedStat = "critDmg";
-    } else if (statName.includes("tasa") || statName.includes("mastery")) {
-       stats.anomalyRate = addBonus(stats.anomalyRate, specialBonus);
-       stats.buffedStat = "anomalyRate";
-    } else if (statName.includes("maestria") || statName.includes("proficiency")) {
-       stats.anomalyMastery = addBonus(stats.anomalyMastery, specialBonus);
-       stats.buffedStat = "anomalyMastery";
-    } else if (statName.includes("energia")) {
-       stats.energyRegen = addBonus(stats.energyRegen, specialBonus);
-       stats.buffedStat = "energyRegen";
-    } else if (statName.includes("impacto") || statName.includes("impact")) {
-       // Impacto es un valor entero, se suma directamente
-       const currentImpact = parseInt(stats.impact.replace(/,/g, ''));
-       stats.impact = Math.floor(currentImpact + specialBonus).toLocaleString();
-       stats.buffedStat = "impact";
-    } else if (statName.includes("fuerza") || statName.includes("sheer")) {
-       // Fuerza Bruta es un valor entero, se suma directamente
-       if (stats.sheerForce) {
-         const currentSheer = parseInt(stats.sheerForce.replace(/,/g, ''));
-         stats.sheerForce = Math.floor(currentSheer + specialBonus).toLocaleString();
-       }
-       stats.buffedStat = "sheerForce";
-    }
-
-    return stats;
+    // Usar el calculador
+    return calculateStatsWithCore(baseStatsForCalc, level, details.coreStats);
   };
 
   // Función de Selección Inteligente (Toggle) - Actualizada para Grupos
