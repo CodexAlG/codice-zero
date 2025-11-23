@@ -12,13 +12,27 @@ export default function ArmasPage() {
   const [activeFilters, setActiveFilters] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
-  // Simular tiempo de carga (para asegurar que el spinner se vea)
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setIsLoading(false);
-    }, 500); // Mínimo 500ms de carga
+  // Lógica de tiempo de gracia con sessionStorage
+  const GRACE_PERIOD = 300000; // 5 minutos en milisegundos
 
-    return () => clearTimeout(timer);
+  useEffect(() => {
+    const lastLoadTime = sessionStorage.getItem('lastLoadTime');
+    const currentTime = new Date().getTime();
+
+    // Comprobar si el tiempo de gracia ha expirado (o si es la primera vez)
+    if (!lastLoadTime || (currentTime - lastLoadTime) > GRACE_PERIOD) {
+      // Mostrar spinner solo la primera vez o si el tiempo expiró
+      const timer = setTimeout(() => {
+        setIsLoading(false);
+        // Actualizar el timestamp
+        sessionStorage.setItem('lastLoadTime', new Date().getTime());
+      }, 500); // 500ms de carga mínima simulada
+      
+      return () => clearTimeout(timer);
+    } else {
+      // Si está dentro del tiempo de gracia, cargamos al instante
+      setIsLoading(false);
+    }
   }, []);
 
   const toggleFilter = (newFilter) => {
