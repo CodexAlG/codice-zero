@@ -123,7 +123,7 @@ export default function AgentDetailPage() {
     "Fisico": "#eab308",   // Amarillo Dorado
     "Etereo": "#d946ef",   // Rosa/Magenta
   };
-  const themeColor = elementColors[normalize(agent.element).toLowerCase()] || "#facc15";
+  const themeColor = elementColors[normalize(agent.element).toLowerCase()];
 
   // Mapeo de Iconos de Facción
   const factionIcons = {
@@ -148,11 +148,11 @@ export default function AgentDetailPage() {
      elementIconPath = "/CodiceZero/Agentes/Elemento/Icon_Auric_Ink.webp";
   } else {
      const iconMap = {
-       "fuego": "Fuego.webp",
-       "hielo": "Hielo.webp",
-       "electrico": "Electrico.webp",
-       "fisico": "Fisico.webp",
-       "etereo": "Etéreo.webp"
+       "Fuego": "Fuego.webp",
+       "Hielo": "Hielo.webp",
+       "Electrico": "Electrico.webp",
+       "Fisico": "Fisico.webp",
+       "Etereo": "Etéreo.webp"
      };
      const normalizedElement = normalize(agent.element).toLowerCase();
      elementIconPath = `/CodiceZero/Agentes/Elemento/${iconMap[normalizedElement] || "Fisico.webp"}`;
