@@ -1,151 +1,120 @@
-// Curva para HP y DEFENSA (Crecen ~12.4x)
-const GROWTH_HP_DEF = {
-  1: 1.00, 10: 2.22, 20: 4.26, 30: 6.31, 40: 8.35, 50: 10.40, 60: 12.44
+// Función para calcular valor por interpolación lineal (Garantiza Nv1 = Min, Nv60 = Max)
+const getInterpolatedValue = (min, max, level) => {
+    if (level <= 1) return min;
+    if (level >= 60) return max;
+    const percent = (level - 1) / 59;
+    return min + (max - min) * percent;
 };
 
-// Multiplicadores para ATAQUE (Precisión basada en tu tabla 127 -> 805)
-const GROWTH_ATK = {
-  1: 1.000,
-  10: 1.543,   // Multiplicador de 196 / 127
-  "10+": 2.496,   // Multiplicador de 317 / 127
-  20: 3.456,   // Multiplicador de 439 / 127
-  "20+": 4.425,   // Multiplicador de 562 / 127
-  30: 5.378,   // Multiplicador de 683 / 127
-  "30+": 6.338,   // Multiplicador de 805 / 127 (Max Level sin más promos)
-  40: 6.338,
-  "40+": 6.338,
-  50: 6.338,
-  "50+": 6.338,
-  60: 6.338  // Multiplicador final
-};
-
-// Bonus de Core Skills (A-F)
+// Bonus de Core Skills (B, D, F son ignorados en ATK, solo para special) 
 const CORE_THRESHOLDS = [
-  { level: 15, type: 'special' }, // A
-  { level: 25, type: 'atk' },     // B (+25 ATK)
-  { level: 35, type: 'special' }, // C
-  { level: 45, type: 'atk' },     // D (+25 ATK)
-  { level: 55, type: 'special' }, // E
-  { level: 60, type: 'atk' }      // F (+25 ATK)
+    { level: 15, type: 'special' }, // A
+    { level: 25, type: 'atk_ignored' }, // B (+25 ATK - Ignorado para cálculo de ATK total)
+    { level: 35, type: 'special' }, // C
+    { level: 45, type: 'atk_ignored' }, // D (+25 ATK - Ignorado)
+    { level: 55, type: 'special' }, // E
+    { level: 60, type: 'atk_ignored' } // F (+25 ATK - Ignorado)
 ];
 
 /**
  * Calcula estadísticas incluyendo bonus de Core Skills
- * @param {object} baseStats - Objeto con { hp, atk, def } a nivel 1
+ * @param {object} baseStats - Objeto con { min, max }
  * @param {number} level - Nivel del personaje (1-60)
  * @param {object} coreConfig - Configuración del core { statName, valuePerNode }
  * @returns {object} - Stats calculados con bonus de core sumados
  */
 export const calculateStatsWithCore = (baseStats, level, coreConfig) => {
-  // 1. Buscar multiplicadores
-  const growthKey = Object.keys(GROWTH_HP_DEF)
-    .map(Number)
-    .sort((a, b) => b - a)
-    .find(k => k <= level) || 1;
+    // 1. Calcular Bonus de Core
+    let addedSpecial = 0;
+    CORE_THRESHOLDS.forEach(threshold => {
+        if (level >= threshold.level && threshold.type === 'special') {
+            addedSpecial += (coreConfig?.valuePerNode || 0);
+        }
+    });
 
-  const multHP = GROWTH_HP_DEF[growthKey];
-  const multATK = GROWTH_ATK[growthKey];
+    // 2. Interpolación Lineal de Stats Base
+    let hp = getInterpolatedValue(baseStats.hp.min, baseStats.hp.max, level);
+    let atk = getInterpolatedValue(baseStats.atk.min, baseStats.atk.max, level);
+    let def = getInterpolatedValue(baseStats.def.min, baseStats.def.max, level);
+    let sheerForce = baseStats.sheerForce ? getInterpolatedValue(baseStats.sheerForce.min, baseStats.sheerForce.max, level) : null;
 
-  // 2. Calcular Bonus de Core
-  let addedAtk = 0;
-  let addedSpecial = 0;
+    let critRate = baseStats.crit;
+    let critDmg = baseStats.critDmg;
+    let anomalyMastery = baseStats.anomalyMastery;
+    let anomalyRate = baseStats.anomalyRate;
+    let energyRegen = baseStats.energyRegen;
+    let impact = baseStats.impact;
 
-  CORE_THRESHOLDS.forEach(threshold => {
-    if (level >= threshold.level) {
-      if (threshold.type === 'atk') addedAtk += 25;
-      if (threshold.type === 'special') addedSpecial += (coreConfig?.valuePerNode || 0);
+    // 3. Helper para sumar porcentajes/valores planos
+    const addPercentage = (baseStr, bonus) => {
+        if (!baseStr || bonus === 0) return baseStr;
+        const baseNum = parseFloat(baseStr);
+        if (isNaN(baseNum)) return baseStr;
+        return `${(baseNum + bonus).toFixed(1)}%`;
+    };
+
+    // 4. Aplicar Core Special Bonus (Reglas de Aplicación)
+    const statName = coreConfig?.statName?.toLowerCase() || "";
+    const originalStatName = coreConfig?.statName || "";
+    let buffedStat = "";
+    let bonusValue = 0;
+
+    if (originalStatName.includes("hp%")) {
+        // REGLA CLAVE: MIN_Stat * % + Interpolated_Stat
+        const baseHpMin = baseStats.hp.min;
+        bonusValue = baseHpMin * (addedSpecial / 100);
+        hp = hp + bonusValue;
+        buffedStat = "hp";
+    
+    } else if (originalStatName.includes("atk%")) {
+        const baseAtkMin = baseStats.atk.min;
+        bonusValue = baseAtkMin * (addedSpecial / 100);
+        atk = atk + bonusValue;
+        buffedStat = "atk";
+    
+    } else if (originalStatName.includes("def%")) {
+        const baseDefMin = baseStats.def.min;
+        bonusValue = baseDefMin * (addedSpecial / 100);
+        def = def + bonusValue;
+        buffedStat = "def";
+    
+    } else if (statName.includes("prob") || statName.includes("crit rate") || statName.includes("crítica")) {
+        critRate = addPercentage(baseStats.crit, addedSpecial);
+        buffedStat = "crit";
+    } else if (statName.includes("daño") || statName.includes("crit dmg") || statName.includes("dano")) {
+        critDmg = addPercentage(baseStats.critDmg, addedSpecial);
+        buffedStat = "critDmg";
+    } else if (statName.includes("maestría") || statName.includes("maestria") || statName.includes("mastery")) {
+        // Si es plano (no %), sumamos directo
+        anomalyMastery = (parseInt(baseStats.anomalyMastery) + Math.floor(addedSpecial)).toString();
+        buffedStat = "anomalyMastery";
+    } else if (statName.includes("tasa") || statName.includes("anomaly rate")) {
+        anomalyRate = (parseInt(baseStats.anomalyRate) + Math.floor(addedSpecial)).toString();
+        buffedStat = "anomalyRate";
+    } else if (statName.includes("energía") || statName.includes("energia") || statName.includes("energy")) {
+        energyRegen = (parseFloat(baseStats.energyRegen) + addedSpecial).toFixed(2);
+        buffedStat = "energyRegen";
+    } else if (statName.includes("impacto") || statName.includes("impact")) {
+        impact = (parseFloat(baseStats.impact) + addedSpecial).toString();
+        buffedStat = "impact";
     }
-  });
+    // SheerForce no longer has special handling - it's calculated separately above with interpolation
 
-  // 3. Helper para sumar porcentajes
-  const addPercentage = (baseStr, bonus) => {
-    if (!baseStr || bonus === 0) return baseStr;
-    const baseNum = parseFloat(baseStr);
-    if (isNaN(baseNum)) return baseStr;
-    // Sumamos y formateamos (ej: 50 + 28.8 = 78.8)
-    return `${(baseNum + bonus).toFixed(1)}%`;
-  };
+    // 5. Retornar objeto con valores FINALIZADOS (formateados)
+    return {
+        hp: Math.floor(hp).toLocaleString(),
+        def: Math.floor(def).toLocaleString(),
+        atk: Math.floor(atk).toLocaleString(),
+        impact: baseStats.impact, // Valor fijo o base
+        sheerForce: sheerForce ? Math.floor(sheerForce).toLocaleString() : null, // Solo interpolado
+        crit: critRate,
+        critDmg: critDmg,
+        anomalyMastery: anomalyMastery,
+        anomalyRate: anomalyRate,
+        penRatio: baseStats.penRatio,
+        energyRegen: energyRegen,
 
-  // 4. Calcular stats base primero
-  let hp = Math.floor(baseStats.hp * multHP);
-  let atk = Math.floor((baseStats.atk * multATK) + addedAtk);
-  let def = Math.floor(baseStats.def * multHP);
-  let critRate = baseStats.crit;
-  let critDmg = baseStats.critDmg;
-  let anomalyMastery = baseStats.anomalyMastery;
-  let anomalyRate = baseStats.anomalyRate;
-  let energyRegen = baseStats.energyRegen;
-  let impact = baseStats.impact;
-  let sheerForce = baseStats.sheerForce ? Math.floor(baseStats.sheerForce * multHP) : null;
-
-  const statName = coreConfig?.statName?.toLowerCase() || "";
-  const originalStatName = coreConfig?.statName || "";
-  let buffedStat = "";
-  
-  // 5. Aplicar bonus especial según el stat
-  if (originalStatName.includes("hp%")) {
-    // Para HP%, calcular como HP min × porcentaje
-    const baseHpMin = typeof baseStats.hp === 'object' ? baseStats.hp.min : baseStats.hp;
-    const bonusValue = Math.floor(baseHpMin * (addedSpecial / 100));
-    hp = hp + bonusValue;
-    buffedStat = "hp";
-  
-  } else if (originalStatName.includes("atk%")) {
-    // Para ATK%, calcular como ATK min × porcentaje
-    const baseAtkMin = typeof baseStats.atk === 'object' ? baseStats.atk.min : baseStats.atk;
-    const bonusValue = Math.floor(baseAtkMin * (addedSpecial / 100));
-    atk = atk + bonusValue;
-    buffedStat = "atk";
-  
-  } else if (originalStatName.includes("def%")) {
-    // Para DEF%, calcular como DEF min × porcentaje
-    const baseDefMin = typeof baseStats.def === 'object' ? baseStats.def.min : baseStats.def;
-    const bonusValue = Math.floor(baseDefMin * (addedSpecial / 100));
-    def = def + bonusValue;
-    buffedStat = "def";
-  
-  } else if (statName.includes("prob") || statName.includes("crit rate") || statName.includes("crítica")) {
-    critRate = addPercentage(baseStats.crit, addedSpecial);
-    buffedStat = "crit";
-  } else if (statName.includes("daño") || statName.includes("crit dmg") || statName.includes("dano")) {
-    critDmg = addPercentage(baseStats.critDmg, addedSpecial);
-    buffedStat = "critDmg";
-  } else if (statName.includes("maestría") || statName.includes("maestria") || statName.includes("mastery")) {
-    // Si es plano (no %), sumamos directo
-    anomalyMastery = (parseInt(baseStats.anomalyMastery) + Math.floor(addedSpecial)).toString();
-    buffedStat = "anomalyMastery";
-  } else if (statName.includes("tasa") || statName.includes("anomaly rate")) {
-    anomalyRate = (parseInt(baseStats.anomalyRate) + Math.floor(addedSpecial)).toString();
-    buffedStat = "anomalyRate";
-  } else if (statName.includes("energía") || statName.includes("energia") || statName.includes("energy")) {
-    energyRegen = (parseFloat(baseStats.energyRegen) + addedSpecial).toFixed(2);
-    buffedStat = "energyRegen";
-  } else if (statName.includes("impacto") || statName.includes("impact")) {
-    impact = (parseFloat(baseStats.impact) + addedSpecial).toString();
-    buffedStat = "impact";
-  } else if (statName.includes("fuerza") || statName.includes("sheer")) {
-    if (sheerForce) {
-      sheerForce = sheerForce + Math.floor(addedSpecial);
-      buffedStat = "sheerForce";
-    }
-  }
-
-  // 5. Retornar objeto con valores YA SUMADOS
-  return {
-    hp: hp.toLocaleString(),
-    def: def.toLocaleString(),
-    atk: atk.toLocaleString(),
-    impact: impact ? impact.toLocaleString() : baseStats.impact,
-    sheerForce: sheerForce ? sheerForce.toLocaleString() : null,
-    crit: critRate,
-    critDmg: critDmg,
-    anomalyMastery: anomalyMastery,
-    anomalyRate: anomalyRate,
-    penRatio: baseStats.penRatio,
-    energyRegen: energyRegen,
-
-    // Info para pintar de color el stat con buff
-    buffedStat: buffedStat,
-    bonusValue: addedSpecial // Valor del bonus para mostrar coloreado
-  };
+        buffedStat: buffedStat,
+        bonusValue: bonusValue.toFixed(2) // Para mostrar en el tooltip si es necesario
+    };
 };
