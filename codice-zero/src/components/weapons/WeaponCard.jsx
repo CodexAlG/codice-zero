@@ -18,6 +18,7 @@ export default function WeaponCard({ weapon }) {
             width={24} 
             height={24} 
             className="invert" 
+            unoptimized
           />
         </div>
       </div>
@@ -28,6 +29,7 @@ export default function WeaponCard({ weapon }) {
           width={32} 
           height={32} 
           className="drop-shadow-md" 
+          unoptimized
         />
       </div>
 
@@ -39,6 +41,7 @@ export default function WeaponCard({ weapon }) {
           width={160} 
           height={160} 
           className="object-contain" 
+          unoptimized
         />
       </div>
 

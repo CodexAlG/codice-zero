@@ -35,6 +35,7 @@ export default function AgentCard({ agent }) {
         fill
         className={`object-cover transition-transform duration-500 ease-out z-0 ${agent.customStyle || "object-top group-hover:scale-110"}`}
         sizes="(max-width: 768px) 50vw, 20vw"
+        unoptimized
       />
       <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-transparent z-10 pointer-events-none" />
 
@@ -45,6 +46,7 @@ export default function AgentCard({ agent }) {
           alt={`Rango ${agent.rank}`} 
           width={40} height={40} 
           className="object-contain"
+          unoptimized
         />
       </div>
 
@@ -76,6 +78,7 @@ export default function AgentCard({ agent }) {
               alt={agent.element} 
               width={36} height={36} 
               className="object-contain"
+              unoptimized
             />
           </div>
         </div>
@@ -90,6 +93,7 @@ export default function AgentCard({ agent }) {
             alt={agent.rol} 
             width={24} height={24} 
             className="object-contain invert opacity-100" 
+            unoptimized
           />
         </div>
       </div>

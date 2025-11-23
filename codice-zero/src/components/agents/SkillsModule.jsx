@@ -141,6 +141,7 @@ export default function SkillsModule({ skills, color }) {
                 width={20} 
                 height={20} 
                 className="w-5 h-5 mr-2 inline-block object-contain"
+                unoptimized
               />
             )}
             {cat}
