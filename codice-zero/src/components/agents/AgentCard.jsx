@@ -27,14 +27,14 @@ const AgentCard = memo(({ agent }) => {
   };
 
   return (
-    <div className="group relative w-full max-w-[280px] mx-auto aspect-[3/4] bg-gray-900 overflow-hidden transition-all duration-300 hover:scale-[1.02] hover:shadow-xl" style={{ clipPath: 'polygon(0 0, 100% 0, 100% 85%, 85% 100%, 0 100%)' }}>
+    <div className="group relative w-full max-w-[280px] mx-auto aspect-[3/4] bg-gray-900 overflow-hidden transition-none hover:scale-[1.02] hover:shadow-xl" style={{ clipPath: 'polygon(0 0, 100% 0, 100% 85%, 85% 100%, 0 100%)' }}>
 
       {/* 1. IMAGEN DEL PERSONAJE */}
       <Image
         src={agent.image}
         alt={agent.name}
         fill
-        className={`object-cover transition-transform duration-500 ease-out z-0 ${agent.customStyle || "object-top group-hover:scale-110"}`}
+        className={`object-cover z-0 ${agent.customStyle || "object-top group-hover:scale-110"}`}
         sizes="(max-width: 768px) 50vw, 20vw"
         unoptimized
       />
