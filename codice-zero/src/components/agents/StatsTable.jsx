@@ -1,31 +1,48 @@
 export default function StatsTable({ currentStats, themeColor, agentRole }) {
-  // Componente de Fila de Atributo - Tech Style con mejor legibilidad
+  // Componente de Fila de Atributo - Mejorado para mostrar bonus inmediatamente
   const AttributeRow = ({ label, value, highlight, bonusValue }) => {
-    // Calcular el valor base (sin el bonus)
-    const displayValue = value;
     const hasBonus = highlight && bonusValue > 0;
     
+    // Extraer el valor numérico para mostrar el bonus inmediatamente
+    const baseValue = value?.toString().replace(/[,+]/g, '');
+    const bonusNum = parseFloat(bonusValue || 0);
+    
     return (
-      <div className="flex justify-between items-center py-1 border-b border-white/5 last:border-0 group hover:bg-white/5 px-2 rounded transition-colors">
-        <span className="text-gray-300 text-xs font-mono uppercase tracking-wide group-hover:text-white transition-colors">
+      <div className="flex justify-between items-center py-1 border-b border-white/5 last:border-0 group hover:bg-white/5 px-2 rounded transition-all duration-200">
+        <span className={`text-xs font-mono uppercase tracking-wide transition-colors ${
+          hasBonus ? 'group-hover:text-white' : 'text-gray-300 group-hover:text-white'
+        }`} style={{
+          color: hasBonus ? themeColor : undefined
+        }}>
           {label}
+          {hasBonus && <span className="ml-1" style={{ color: themeColor }}>★</span>}
         </span>
-        <span className="text-sm font-bold font-mono drop-shadow-sm text-white">
-          {displayValue}
-          {hasBonus && (
-            <span 
-              className="ml-1 font-bold"
-              style={{ color: themeColor }}
-            >
-              {/* Mostrar el bonus con formato apropiado */}
-              {` (+${
-                typeof bonusValue === 'string' && bonusValue.includes('%') 
-                  ? `${parseFloat(bonusValue).toFixed(1)}%` 
-                  : typeof bonusValue === 'number' && bonusValue % 1 !== 0 
-                    ? bonusValue.toFixed(2)
-                    : Math.floor(bonusValue).toLocaleString()
-              })`}
+        <span className="text-sm font-bold font-mono drop-shadow-sm">
+          {hasBonus ? (
+            // Mostrar valor total destacado cuando hay bonus
+            <span className="flex items-center gap-1">
+              <span 
+                className="text-white transition-colors"
+                style={{ 
+                  textShadow: `0 0 8px ${themeColor}40`
+                }}
+              >
+                {value}
+              </span>
+              <span 
+                className="text-xs font-extrabold animate-pulse"
+                style={{ 
+                  color: themeColor,
+                  textShadow: `0 0 4px ${themeColor}`
+                }}
+              >
+                +{bonusNum % 1 !== 0 ? bonusNum.toFixed(1) : Math.floor(bonusNum).toLocaleString()}
+                {typeof bonusValue === 'string' && bonusValue.includes('%') ? '%' : ''}
+              </span>
             </span>
+          ) : (
+            // Valor normal sin bonus
+            <span className="text-white">{value}</span>
           )}
         </span>
       </div>
