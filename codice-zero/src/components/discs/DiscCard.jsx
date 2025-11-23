@@ -5,7 +5,7 @@ import HighlightText from '@/components/ui/HighlightText';
 const DiscCard = memo(({ disc }) => {
   return (
     <div 
-      className="group relative flex items-start gap-6 p-6 bg-black/40 hover:bg-black/60 border-t-2 border-white/10"
+      className="group relative flex items-start gap-6 p-6 bg-black/40 hover:bg-black/60 border-t-2 border-white/10 transition-none"
       style={{ clipPath: 'polygon(0 0, 100% 0, 100% 85%, 95% 100%, 0 100%)' }}
     >
       {/* Borde Decorativo Superior */}

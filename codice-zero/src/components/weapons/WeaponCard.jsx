@@ -8,7 +8,7 @@ const WeaponCard = memo(({ weapon }) => {
   const rankIcon = `/CodiceZero/Rango/Icon_Item_Rank_${weapon.rank}.webp`;
 
   return (
-    <div className={`relative w-full max-w-[160px] mx-auto aspect-[4/5] bg-gray-900/80 rounded-lg border-b-4 ${rankColor} overflow-hidden group hover:scale-[1.02] hover:shadow-xl`}>
+    <div className={`relative w-full max-w-[160px] mx-auto aspect-[4/5] bg-gray-900/80 rounded-lg border-b-4 ${rankColor} overflow-hidden group hover:scale-[1.02] hover:shadow-xl transition-none`}>
 
       {/* Iconos Superiores */}
       <div className="absolute top-2 left-2 z-20">

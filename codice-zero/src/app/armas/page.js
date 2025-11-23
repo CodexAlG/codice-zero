@@ -158,7 +158,7 @@ export default function ArmasPage() {
       <div className="w-full max-w-7xl mx-auto">
         <motion.div 
           layout 
-          className="grid grid-cols-4 md:grid-cols-6 lg:grid-cols-8 xl:grid-cols-9 gap-3 justify-center"
+          className="grid grid-cols-4 md:grid-cols-6 lg:grid-cols-8 xl:grid-cols-9 gap-3 justify-center transition-none"
           style={{ minHeight: '80vh' }}
         >
         <AnimatePresence mode="popLayout">
