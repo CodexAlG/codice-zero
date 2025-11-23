@@ -63,13 +63,10 @@ export default function AgentDetailPage() {
       return `<img src="${src}" alt="${iconName}" style="display:inline-block; height:${heightStyle}; width:auto; vertical-align:${verticalAlign}; margin:0 2px;" />`;
     });
 
-    // PASO 2: Habilidades Completas (Tipo + Nombre)
-    // Busca palabras clave de tipo, opcionalmente seguidas de ": " y el nombre de la habilidad
-    // Se detiene ante un punto, coma, salto de línea o cierre de HTML
-    const skillPattern = /((?:Ataque (?:Básico|Normal|de Dash|en Cadena)|Técnica (?:Especial|Definitiva)(?: EX)?|Habilidad (?:Especial|Adicional)(?: EX)?|Evasión|Asistencia(?: \w+)?|Contraataque(?: de Evasión)?|Pasiva (?:Central|Principal|Adicional)|Movimiento Final)(?::\s+[^.,\n<]+)?)/gi;
-    
-    processed = processed.replace(skillPattern, (match) => 
-      `<span class="text-white font-bold border-b border-white/20">${match}</span>`
+    // PASO 2: Resaltado EXPLICITO por Paréntesis (Prioridad Alta)
+    // Busca \(.*?\) y reemplaza por span sin los paréntesis.
+    processed = processed.replace(/\((.*?)\)/g, (match, content) => 
+      `<span class="text-white font-bold border-b border-white/20">${content}</span>`
     );
 
     // PASO 3: Palabras Clave (Elementos y Estados)
