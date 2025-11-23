@@ -3,7 +3,7 @@ export const driveDiscs = [
   {
     id: 9926,
     name: "Balada de Agua Blanca",
-    twopiece: "Daño Físico +10%",
+    twoPiece: "Daño Físico +10%",
     fourPiece: "Cuando el portador se encuentra en cualquier (Velo Ether), su Probabilidad de CRIT aumenta en 12%. Después de salir de la (Velo Ether), este bono se mantiene durante 15 segundos. Si el portador es un personaje de Atacante, al activar o extender la duración del (Velo Ether), su Probabilidad de CRIT aumenta 12% adicional durante 30 segundos, y la duración se restablece si se vuelve a activar repetidamente",
     image: "/CodiceZero/Discos/SuitWhiteWaterBallad.png",
     leak: "Beta"
