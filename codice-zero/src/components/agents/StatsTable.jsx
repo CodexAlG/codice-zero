@@ -8,7 +8,7 @@ export default function StatsTable({ currentStats, themeColor, agentRole }) {
     const bonusNum = parseFloat(bonusValue || 0);
     
     return (
-      <div className="flex justify-between items-center py-1 border-b border-white/5 last:border-0 group hover:bg-white/5 px-2 rounded transition-all duration-200">
+      <div className="flex justify-between items-center py-0.5 border-b border-white/5 last:border-0 group hover:bg-white/5 px-1 rounded transition-all duration-200">
         <span className={`text-xs font-mono uppercase tracking-wide transition-colors ${
           hasBonus ? 'group-hover:text-white' : 'text-gray-300 group-hover:text-white'
         }`} style={{
