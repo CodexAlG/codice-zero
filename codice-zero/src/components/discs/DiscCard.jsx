@@ -26,7 +26,7 @@ const DiscCard = memo(({ disc }) => {
 
       {/* COLUMNA DERECHA: INFO */}
       <div className="flex-1">
-        <h2 className="text-xl font-display text-white group-hover:text-yellow-400 transition-colors mb-4 tracking-wide">
+        <h2 className="text-xl font-display text-white group-hover:text-yellow-400 mb-4 tracking-wide">
           {disc.name.split('(')[0]}
         </h2>
         

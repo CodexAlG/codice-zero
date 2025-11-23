@@ -48,7 +48,7 @@ const WeaponCard = memo(({ weapon }) => {
 
       {/* Nombre */}
       <div className="absolute bottom-0 w-full p-2 bg-gradient-to-t from-black via-black/80 to-transparent pt-6">
-        <h3 className="text-white font-bold text-xs text-center leading-tight group-hover:text-yellow-400 transition-colors">
+        <h3 className="text-white font-bold text-xs text-center leading-tight group-hover:text-yellow-400">
           {weapon.name}
         </h3>
       </div>
