@@ -4,6 +4,19 @@ import SectionTitle from "@/components/ui/SectionTitle";
 import HighlightText from "@/components/ui/HighlightText";
 import { driveDiscs } from "@/data/discs";
 
+// Función robusta para generar nombres de archivo PascalCase
+const toPascalCase = (str) => {
+  if (!str) return '';
+  // Extraer solo la parte antes de los paréntesis (si los hay)
+  const cleanName = str.split('(')[0].trim();
+  return cleanName
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, ' ') // Reemplaza cualquier carácter no alfanumérico por espacio
+    .split(' ') // Divide por espacios
+    .map(word => word.charAt(0).toUpperCase() + word.slice(1)) // Capitaliza cada palabra
+    .join(''); // Une sin espacios
+};
+
 export default function DiscsPage() {
   return (
     <div className="min-h-screen bg-gray-950 text-white p-6">
@@ -28,7 +41,7 @@ export default function DiscsPage() {
               <div className="flex-shrink-0 mt-2">
                 <div className="relative w-28 h-28 group-hover:scale-110 transition-transform duration-500 filter drop-shadow-[0_0_15px_rgba(0,0,0,0.5)]">
                   <Image 
-                    src={disc.image} 
+                    src={`/CodiceZero/Discos/DriveDisc_${toPascalCase(disc.name)}_Icon.webp`} 
                     alt={disc.name} 
                     fill 
                     className="object-contain"
