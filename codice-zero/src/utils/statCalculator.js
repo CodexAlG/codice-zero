@@ -68,13 +68,15 @@ export const calculateStatsWithCore = (baseStats, level, coreConfig) => {
 
   // 4. Calcular stats base primero
   let hp = Math.floor(baseStats.hp * multHP);
+  let atk = Math.floor((baseStats.atk * multATK) + addedAtk);
+  let def = Math.floor(baseStats.def * multHP);
   let critRate = baseStats.crit;
   let critDmg = baseStats.critDmg;
   let anomalyMastery = baseStats.anomalyMastery;
   let anomalyRate = baseStats.anomalyRate;
   let energyRegen = baseStats.energyRegen;
   let impact = baseStats.impact;
-  
+  let sheerForce = baseStats.sheerForce ? Math.floor(baseStats.sheerForce * multHP) : null;
 
   const statName = coreConfig?.statName?.toLowerCase() || "";
   const originalStatName = coreConfig?.statName || "";
@@ -87,6 +89,20 @@ export const calculateStatsWithCore = (baseStats, level, coreConfig) => {
     const bonusValue = Math.floor(baseHpMin * (addedSpecial / 100));
     hp = hp + bonusValue;
     buffedStat = "hp";
+  
+  } else if (originalStatName.includes("atk%")) {
+    // Para ATK%, calcular como ATK min × porcentaje
+    const baseAtkMin = typeof baseStats.atk === 'object' ? baseStats.atk.min : baseStats.atk;
+    const bonusValue = Math.floor(baseAtkMin * (addedSpecial / 100));
+    atk = atk + bonusValue;
+    buffedStat = "atk";
+  
+  } else if (originalStatName.includes("def%")) {
+    // Para DEF%, calcular como DEF min × porcentaje
+    const baseDefMin = typeof baseStats.def === 'object' ? baseStats.def.min : baseStats.def;
+    const bonusValue = Math.floor(baseDefMin * (addedSpecial / 100));
+    def = def + bonusValue;
+    buffedStat = "def";
   
   } else if (statName.includes("prob") || statName.includes("crit rate") || statName.includes("crítica")) {
     critRate = addPercentage(baseStats.crit, addedSpecial);
@@ -107,13 +123,18 @@ export const calculateStatsWithCore = (baseStats, level, coreConfig) => {
   } else if (statName.includes("impacto") || statName.includes("impact")) {
     impact = (parseFloat(baseStats.impact) + addedSpecial).toString();
     buffedStat = "impact";
+  } else if (statName.includes("fuerza") || statName.includes("sheer")) {
+    if (sheerForce) {
+      sheerForce = sheerForce + Math.floor(addedSpecial);
+      buffedStat = "sheerForce";
+    }
   }
 
   // 5. Retornar objeto con valores YA SUMADOS
   return {
     hp: hp.toLocaleString(),
-    def: Math.floor(baseStats.def * multHP).toLocaleString(),
-    atk: Math.floor((baseStats.atk * multATK) + addedAtk).toLocaleString(),
+    def: def.toLocaleString(),
+    atk: atk.toLocaleString(),
     impact: impact ? impact.toLocaleString() : baseStats.impact,
     sheerForce: sheerForce ? sheerForce.toLocaleString() : null,
     crit: critRate,
