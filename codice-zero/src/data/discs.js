@@ -3,8 +3,8 @@ export const driveDiscs = [
   {
     id: 9926,
     name: "Balada de Agua Blanca",
-    twopiece: " ?",
-    fourPiece: " ?",
+    twopiece: "Daño Físico +10%",
+    fourPiece: "Cuando el portador se encuentra en cualquier (Velo Ether), su Probabilidad de CRIT aumenta en 12%. Después de salir de la (Velo Ether), este bono se mantiene durante 15 segundos. Si el portador es un personaje de Atacante, al activar o extender la duración del (Velo Ether), su Probabilidad de CRIT aumenta 12% adicional durante 30 segundos, y la duración se restablece si se vuelve a activar repetidamente",
     image: "/CodiceZero/Discos/SuitWhiteWaterBallad.png",
     leak: "Beta"
   },
@@ -12,7 +12,7 @@ export const driveDiscs = [
     id: 9925,
     name: "Brillando Aria",
     twoPiece: "Daño Etereo +10%",
-    fourPiece: "Cuando el equipo golpea a un enemigo con Ataque básico, su dominio de anomalías aumenta en 36 puntos durante 8 segundos, los disparadores repetidos restablecen la duración; cuando los enemigos en el campo se aturden, el DMG del equipo aumenta en un 25% durante 18 segundos, los desencadenantes repetidos restablecen la duración.",
+    fourPiece: "Cuando el portador realiza un Ataque Basico y golpea a un enemigo, su Maestría de anomalía aumenta en 36 puntos, con una duración de 8 segundos. La duración se restablece si se activa repetidamente. Cuando un enemigo en el campo entra en estado aturdido, el daño infligido por el portador aumenta en 25%, con una duración de 18 segundos. La duración se restablece si se activa repetidamente.",
     image: "/CodiceZero/Discos/SuitShiningAria.png",
     leak: "Beta"
   },
