@@ -87,10 +87,7 @@ export const calculateStatsWithCore = (baseStats, level, coreConfig) => {
     const bonusValue = Math.floor(baseHpMin * (addedSpecial / 100));
     hp = hp + bonusValue;
     buffedStat = "hp";
-  } else if (statName.includes("hp") && !originalStatName.includes("hp%")) {
-    // Para HP plano, sumar el valor directo
-    hp = hp + addedSpecial;
-    buffedStat = "hp";
+  
   } else if (statName.includes("prob") || statName.includes("crit rate") || statName.includes("crítica")) {
     critRate = addPercentage(baseStats.crit, addedSpecial);
     buffedStat = "crit";

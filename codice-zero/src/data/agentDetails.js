@@ -17,14 +17,14 @@ export const agentDetails = {
         energyRegen: "1.2", 
       },
       coreStats: {
-        statName: "Core Prob. Crítica", // Core stat único para alcanzar el cap de buff
+        statName: "prob", // Core stat único para alcanzar el cap de buff
         valuePerNode: 4.8,
       },
     },
     46: { // Zhao
       // 
       baseStats: {
-        hp: { min: 733, max: 8986 }, 
+        hp: { min: 733, max: 8985 }, 
         atk: { min: 110, max: 765 },
         def: { min: 56, max: 701 },
         impact: "93",

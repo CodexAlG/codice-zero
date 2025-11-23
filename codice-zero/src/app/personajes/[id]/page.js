@@ -148,11 +148,11 @@ export default function AgentDetailPage() {
      elementIconPath = "/CodiceZero/Agentes/Elemento/Icon_Auric_Ink.webp";
   } else {
      const iconMap = {
-       "Fuego": "Fuego.webp",
-       "Hielo": "Hielo.webp",
-       "Electrico": "Electrico.webp",
-       "Fisico": "Fisico.webp",
-       "Etereo": "Etéreo.webp"
+       "fuego": "Fuego.webp",
+       "hielo": "Hielo.webp",
+       "electrico": "Electrico.webp",
+       "fisico": "Fisico.webp",
+       "etereo": "Etéreo.webp"
      };
      const normalizedElement = normalize(agent.element).toLowerCase();
      elementIconPath = `/CodiceZero/Agentes/Elemento/${iconMap[normalizedElement] || "Fisico.webp"}`;
