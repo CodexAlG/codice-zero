@@ -1,3 +1,5 @@
+import { Leaf } from "lucide-react";
+
 // Base de Datos de Armas (W-Engines) - Datos Reales
 export const weapons = [
   // ========================================================================
@@ -820,31 +822,31 @@ export const weapons = [
   },
   {
     id: 5538, //arma Zhao
-    name: "Yesterday Calls",
+    name: "Hal-Sugar Hail",
     rank: "S",
-    rol: "Aturdidor",
+    rol: "Defensa",
     // Info para la Tarjeta (Vista rápida)
     stats: { main: "Ataque", value: "713" }, 
-    
+    leak: "Beta",
     // Info para el Detalle (Vista completa)
     detailStats: {
-      baseAtk: { min: 48, max: 713 },     // Nvl 1 -> 60
-      subStat: { name: "Porb. Critica", min: "9.6%", max: "24%" } // Nvl 1 -> 60
+      baseAtk: { min: 55, max: 713 },     // Nvl 1 -> 60
+      subStat: { name: "hp", min: "12%", max: "30%" } // Nvl 1 -> 60
     },
-    image: "/CodiceZero/Armas/Aturdidor/W-Engine_Yesterday_Calls.webp"
+    image: "/CodiceZero/Armas/Aturdidor/Weapon_S_1341Big.webp"
   },
   {
     id: 5539, //arma Ye Shunguang
-    name: "Yesterday Calls",
+    name: "Lone Light in the Clouds",
     rank: "S",
-    rol: "Aturdidor",
+    rol: "Ataque",
     // Info para la Tarjeta (Vista rápida)
-    stats: { main: "Ataque", value: "713" }, 
-    
+    stats: { main: "Ataque", value: "743" }, 
+    leak: "Beta",
     // Info para el Detalle (Vista completa)
     detailStats: {
-      baseAtk: { min: 48, max: 713 },     // Nvl 1 -> 60
-      subStat: { name: "Porb. Critica", min: "9.6%", max: "24%" } // Nvl 1 -> 60
+      baseAtk: { min: 50, max: 743 },     // Nvl 1 -> 60
+      subStat: { name: "Crit Dmg", min: "19.2%", max: "48%" } // Nvl 1 -> 60
     },
     image: "/CodiceZero/Armas/Aturdidor/W-Engine_Yesterday_Calls.webp"
   },
