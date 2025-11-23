@@ -408,14 +408,17 @@ export default function AgentDetailPage() {
                       {selectedSkill.subSkills.map((sub, idx) => (
                         <div key={idx} className="flex flex-col gap-1">
                           
-                          {/* Título de la variante (Nivel de Dupe) */}
+                          {/* Título de la variante (Condicional: Mindscape vs Otras Habilidades) */}
                           <div className="flex items-baseline justify-between">
                             <span className="text-xs font-bold uppercase tracking-wider text-white">
                               {sub.name}
                             </span>
-                            <span className="text-[10px] text-white-400 font-mono uppercase bg-white/5 px-1.5 py-0.5 rounded">
-                              M {idx + 1}
-                            </span>
+                            {/* Solo mostrar "M {idx + 1}" para Mindscape */}
+                            {selectedSkill.type === "Mindscape" && (
+                              <span className="text-[10px] text-white-400 font-mono uppercase bg-white/5 px-1.5 py-0.5 rounded">
+                                M {idx + 1}
+                              </span>
+                            )}
                           </div>
                           
                           {/* Descripción con Resaltado (Asegura que 'Daño Glacial' se vea azul) */}
