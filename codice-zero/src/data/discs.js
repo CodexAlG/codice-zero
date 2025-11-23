@@ -1,6 +1,22 @@
 export const driveDiscs = [
   // --- VERSIÓN 1.4 / 1.5 (Lo Más Nuevo) ---
   {
+    id: 9926,
+    name: "Balada de Agua Blanca",
+    twopiece: " ?",
+    fourPiece: " ?",
+    image: "/CodiceZero/Discos/SuitWhiteWaterBallad.png",
+    leak: "Beta"
+  },
+  {
+    id: 9925,
+    name: "Brillando Aria",
+    twoPiece: "Daño Etereo +10%",
+    fourPiece: "Cuando el equipo golpea a un enemigo con Ataque básico, su dominio de anomalías aumenta en 36 puntos durante 8 segundos, los disparadores repetidos restablecen la duración; cuando los enemigos en el campo se aturden, el DMG del equipo aumenta en un 25% durante 18 segundos, los desencadenantes repetidos restablecen la duración.",
+    image: "/CodiceZero/Discos/SuitShiningAria.png",
+    leak: "Beta"
+  },
+  {
     id: 9924,
     name: "Nana de Luna (Moonlight Lullaby)",
     twoPiece: "Recup. Energía +20%.",

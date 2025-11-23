@@ -785,7 +785,70 @@ export const weapons = [
     effect: "Aumenta la energía obtenida por ataques especiales.",
     image: "/CodiceZero/Armas/Soporte/W-Engine_(Reverb)_Mark_III.webp"
   },
-  
+
+
+
+  {
+    id: 5536, //arma Dialyn
+    name: "Yesterday Calls",
+    rank: "S",
+    rol: "Aturdidor",
+    // Info para la Tarjeta (Vista rápida)
+    stats: { main: "Ataque", value: "713" }, 
+    
+    // Info para el Detalle (Vista completa)
+    detailStats: {
+      baseAtk: { min: 48, max: 713 },     // Nvl 1 -> 60
+      subStat: { name: "Porb. Critica", min: "9.6%", max: "24%" } // Nvl 1 -> 60
+    },
+    image: "/CodiceZero/Armas/Aturdidor/W-Engine_Yesterday_Calls.webp"
+  },
+  {
+    id: 5537, //arma Banyue
+    name: "Yesterday Calls",
+    rank: "S",
+    rol: "Ruptura",
+    // Info para la Tarjeta (Vista rápida)
+    stats: { main: "Ataque", value: "713" }, 
+    
+    // Info para el Detalle (Vista completa)
+    detailStats: {
+      baseAtk: { min: 55, max: 713 },     // Nvl 1 -> 60
+      subStat: { name: "hp", min: "12%", max: "30%" } // Nvl 1 -> 60
+    },
+    image: "/CodiceZero/Armas/Aturdidor/Weapon_S_1471.webp"
+  },
+  {
+    id: 5538, //arma Zhao
+    name: "Yesterday Calls",
+    rank: "S",
+    rol: "Aturdidor",
+    // Info para la Tarjeta (Vista rápida)
+    stats: { main: "Ataque", value: "713" }, 
+    
+    // Info para el Detalle (Vista completa)
+    detailStats: {
+      baseAtk: { min: 48, max: 713 },     // Nvl 1 -> 60
+      subStat: { name: "Porb. Critica", min: "9.6%", max: "24%" } // Nvl 1 -> 60
+    },
+    image: "/CodiceZero/Armas/Aturdidor/W-Engine_Yesterday_Calls.webp"
+  },
+  {
+    id: 5539, //arma Ye Shunguang
+    name: "Yesterday Calls",
+    rank: "S",
+    rol: "Aturdidor",
+    // Info para la Tarjeta (Vista rápida)
+    stats: { main: "Ataque", value: "713" }, 
+    
+    // Info para el Detalle (Vista completa)
+    detailStats: {
+      baseAtk: { min: 48, max: 713 },     // Nvl 1 -> 60
+      subStat: { name: "Porb. Critica", min: "9.6%", max: "24%" } // Nvl 1 -> 60
+    },
+    image: "/CodiceZero/Armas/Aturdidor/W-Engine_Yesterday_Calls.webp"
+  },
+
 ];
 
 // Función para obtener armas por rango

@@ -21,6 +21,15 @@ const DiscCard = memo(({ disc }) => {
             className="object-contain"
             unoptimized
           />
+          
+          {/* Insignia de Advertencia (Leak: Beta) */}
+          {disc.leak === "Beta" && (
+            <div className="absolute -top-1 -right-1 z-30">
+              <div className="w-6 h-6 bg-red-500 rounded-full flex items-center justify-center shadow-lg">
+                <span className="text-white text-xs font-bold">!</span>
+              </div>
+            </div>
+          )}
         </div>
       </div>
 

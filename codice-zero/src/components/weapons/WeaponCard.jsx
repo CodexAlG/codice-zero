@@ -46,6 +46,15 @@ const WeaponCard = memo(({ weapon }) => {
         />
       </div>
 
+      {/* Insignia de Advertencia (Leak: Beta) */}
+      {weapon.leak === "Beta" && (
+        <div className="absolute top-2 left-14 z-30">
+          <div className="w-6 h-6 bg-red-500 rounded-full flex items-center justify-center shadow-lg">
+            <span className="text-white text-xs font-bold">!</span>
+          </div>
+        </div>
+      )}
+
       {/* Nombre */}
       <div className="absolute bottom-0 w-full p-2 bg-gradient-to-t from-black via-black/80 to-transparent pt-6">
         <h3 className="text-white font-bold text-xs text-center leading-tight group-hover:text-yellow-400">
