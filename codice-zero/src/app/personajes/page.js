@@ -1,15 +1,26 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { motion, AnimatePresence } from "framer-motion";
 import { agents } from '@/data/agents';
 import AgentCard from '@/components/agents/AgentCard';
+import LoadingSpinner from '@/components/ui/LoadingSpinner';
 
 export default function PersonajesPage() {
   const [activeFilters, setActiveFilters] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
+  const [isLoading, setIsLoading] = useState(true);
+
+  // Simular tiempo de carga (para asegurar que el spinner se vea)
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 500); // Mínimo 500ms de carga
+
+    return () => clearTimeout(timer);
+  }, []);
 
   const toggleFilter = (newFilter) => {
     if (newFilter === "Todos") {
@@ -89,8 +100,15 @@ export default function PersonajesPage() {
     return matchesSearch && matchElement && matchRank && matchRole && matchFaction;
   });
 
+  // ----------------------------------------------------
+  
+  // Lógica de Renderizado
   return (
-    <div className="min-h-screen bg-gray-950 text-white p-8">
+    <>
+      {isLoading && <LoadingSpinner />}
+      
+      {/* Contenido Normal de la Página (Solo visible cuando NO está cargando) */}
+      <div className={`min-h-screen bg-gray-950 text-white p-8 transition-opacity duration-300 ${isLoading ? 'opacity-0' : 'opacity-100'}`}>
       {/* --- PANEL DE FILTROS --- */}
       <div className="w-full mb-8 p-6 bg-gray-950/80 border-y border-white/10 backdrop-blur-md shadow-2xl flex flex-col gap-6">
         
@@ -179,6 +197,7 @@ export default function PersonajesPage() {
         </motion.div>
       </div>
     </div>
+    </>
   );
 }
 
