@@ -31,9 +31,17 @@ export default function Sidebar({ isExpanded, setIsExpanded }) {
       onMouseEnter={() => setIsExpanded(true)}
       onMouseLeave={() => setIsExpanded(false)}
     >
-      {/* Logo */}
-      <div className="flex items-center justify-center h-16 border-b border-gray-700 mb-4">
-        <Image src="/file.svg" alt="CodiceZero Logo" width={28} height={28} className="text-white" />
+      {/* Logo CZ - Insignia Estilizada */}
+      <div className={`flex items-center justify-center h-20 border-b border-white/5 mb-6 relative group transition-all duration-300 ${
+        isExpanded ? 'px-4' : 'px-2'
+      }`}>
+        <div className={`font-display font-black text-transparent bg-clip-text bg-gradient-to-b from-yellow-300 to-yellow-600 drop-shadow-[0_2px_8px_rgba(234,179,8,0.4)] transition-all duration-300 ${
+          isExpanded ? 'text-3xl' : 'text-xl'
+        }`}>
+          CZ
+        </div>
+        {/* Efecto HUD sutil */}
+        <div className="absolute inset-0 bg-gradient-to-r from-yellow-500/10 via-transparent to-yellow-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-lg"></div>
       </div>
 
       {/* Navigation */}
