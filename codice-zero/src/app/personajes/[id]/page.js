@@ -144,6 +144,10 @@ export default function AgentDetailPage() {
 
   // Lógica de Icono Especial (Miyabi/Yixuan/Etéreo)
   let elementIconPath = "";
+  if (agent.name.includes("Ye Shunguang")){
+    elementIconPath = "/CodiceZero/Agentes/Elemento/Icon_TBA.webp";
+
+  }
   if (agent.name.includes("Miyabi")) {
      elementIconPath = "/CodiceZero/Agentes/Elemento/Icon_Frost.png";
   } else if (agent.name.includes("Yixuan")) {

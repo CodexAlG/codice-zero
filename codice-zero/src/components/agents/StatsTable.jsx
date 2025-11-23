@@ -19,9 +19,9 @@ export default function StatsTable({ currentStats, themeColor, agentRole }) {
             >
               {/* Mostrar el bonus con formato apropiado */}
               {` (+${
-                value.toString().includes('%') 
-                  ? `${bonusValue.toFixed(1)}%` 
-                  : value.toString().includes('.') 
+                typeof bonusValue === 'string' && bonusValue.includes('%') 
+                  ? `${parseFloat(bonusValue).toFixed(1)}%` 
+                  : typeof bonusValue === 'number' && bonusValue % 1 !== 0 
                     ? bonusValue.toFixed(2)
                     : Math.floor(bonusValue).toLocaleString()
               })`}
