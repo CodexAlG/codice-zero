@@ -17,8 +17,8 @@ export default function LayoutWrapper({ children }) {
       
       {/* TAREA 2: SIDEBAR VERTICAL (Desktop/Tablet Grande) */}
       <div 
-        // Hidden en móvil, visible en LG. Controla el ancho del layout.
-        className={`hidden lg:flex-shrink-0 h-full transition-all duration-300 ease-in-out ${
+        // Visible en LG, flex-shrink-0 evita que se estire. lg: solo controla tamaño.
+        className={`flex-shrink-0 h-full transition-all duration-300 ease-in-out lg:block ${
           isExpanded ? "lg:w-64" : "lg:w-20"
         }`}
         onMouseEnter={() => setIsExpanded(true)}
