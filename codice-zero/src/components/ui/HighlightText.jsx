@@ -1,5 +1,11 @@
 // Función para crear reglas de resaltado dinámicas basadas en el elemento del personaje
 const createHighlightRules = (elementColor = "#facc15") => [
+  // --- PARENTESIS (Resaltar contenido en blanco y quitar paréntesis) ---
+  {
+    pattern: /\(([^)]+)\)/g,
+    color: "text-white font-bold",
+    extract: true // Indica que se debe usar el grupo de captura 1 (contenido sin paréntesis)
+  },
   // --- ELEMENTOS Y REACCIONES (Con brillo y negrita normal) ---
   {
     pattern: /(Daño\s+Fuego|Quemadura|Quemados?)/gi,
@@ -30,7 +36,7 @@ const createHighlightRules = (elementColor = "#facc15") => [
     pattern: /(¡No te muevas! \[Modo Asalto\]|¡Por favor, no se resista! \[Modo Supresivo\]|Flash Freeze|Congelación Relámpago|Recorte de Dientes de Sierra|Invierno Eterno|Dientes Afilados|Emboscada Ártica|Barrido de Cola|Coleatazo|Ofensiva de Fuego|Poder de Fuego Abrumador|Disparo de Perdigones|Aluvión Completo|Modo de Erradicación|Modo de Erradicación Máxima|Recarga Rápida|Ascua Etérea|Perforación Etérea|Paquete de Energía Expandido III)/gi,
     color: "text-white font-bold"
   },
-   
+
   // --- HABILIDADES Y MECÁNICAS (Blanco Puro + Negrita) ---
   {
     pattern: /((?:Técnica )?Especial(?: EX)?|Definitiva|Ataque(?:s)? (?:en )?Cadena|Cadena|Asistencia(?: Rápida|Defensiva|Evasiva)?|Ataque(?:s)? Básico(?:s)?|Básico|Basico|Dash|Contraataque|Réplica|Astral|Aturdir|Evadir|Evasión|Evasion|Aturdimiento)/gi,
@@ -47,16 +53,16 @@ const processTextWithIconsAndHighlight = (text, skillIcons = {}, skills = [], el
     const fullPattern = `${skill.type}: ${skill.name}`;
     const nameWithoutBrackets = skill.name.replace(/\[.*?\]/g, '').trim();
     const partialPattern = `${skill.type}: ${nameWithoutBrackets}`;
-    
+
     const escapedFull = fullPattern.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
     const escapedPartial = partialPattern.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-    
+
     return escapedFull === escapedPartial ? escapedFull : `${escapedFull}|${escapedPartial}`;
   }).join('|');
 
   // Usar reglas dinámicas basadas en el elemento del personaje
   const dynamicRules = [...createHighlightRules(elementColor)];
-  
+
   if (skillPatterns) {
     dynamicRules.unshift({
       pattern: new RegExp(`(${skillPatterns})`, 'gi'),
@@ -77,17 +83,17 @@ const processTextWithIconsAndHighlight = (text, skillIcons = {}, skills = [], el
       const processedText = processHighlightRules(textSegment, dynamicRules);
       segments.push(...processedText);
     }
-    
+
     // Agregar el icono
     segments.push({
       type: 'icon',
       src: match[1],
       alt: match[2]
     });
-    
+
     lastIndex = match.index + match[0].length;
   }
-  
+
   // Agregar el resto del texto
   if (lastIndex < text.length) {
     const remainingText = text.slice(lastIndex);
@@ -110,7 +116,8 @@ const processHighlightRules = (text, rules) => {
 
   let parts = [{ text, highlight: false }];
 
-  rules.forEach(({ pattern, color }) => {
+  rules.forEach((rule) => {
+    const { pattern, color, extract } = rule;
     const newParts = [];
     parts.forEach((part) => {
       if (part.highlight) {
@@ -118,29 +125,29 @@ const processHighlightRules = (text, rules) => {
       } else {
         const regex = new RegExp(pattern.source, pattern.flags);
         const matches = [...part.text.matchAll(regex)];
-        
+
         if (matches.length > 0) {
           let lastIndex = 0;
           matches.forEach((match) => {
             const matchStart = match.index;
             const matchEnd = matchStart + match[0].length;
-            
+
             if (matchStart > lastIndex) {
               newParts.push({
                 text: part.text.slice(lastIndex, matchStart),
                 highlight: false
               });
             }
-            
+
             newParts.push({
-              text: match[0],
+              text: extract ? match[1] : match[0],
               highlight: true,
               className: color
             });
-            
+
             lastIndex = matchEnd;
           });
-          
+
           if (lastIndex < part.text.length) {
             newParts.push({
               text: part.text.slice(lastIndex),
