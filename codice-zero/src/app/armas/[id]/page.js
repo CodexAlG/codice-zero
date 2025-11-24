@@ -99,7 +99,7 @@ export default function WeaponDetail({ params }) {
             alt={weapon.rank}
             width={80}
             height={80}
-            className="absolute -top-4 -right-4 z-20 w-10 h-10 drop-shadow-lg"
+            className="absolute -top-4 -right-4 z-20 w-30 h-30 drop-shadow-lg"
           />
         </div>
 
