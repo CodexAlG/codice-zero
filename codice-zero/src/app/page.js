@@ -3,7 +3,39 @@ import Image from "next/image";
 import { Send } from "lucide-react";
 
 export default function Home() {
-
+  const socialNetworks = [
+    {
+      name: "Discord",
+      icon: "/CodiceZero/Redes/Discord.png",
+      link: "#", // Sin servidor por el momento
+      customClass: "scale-110"
+    },
+    {
+      name: "X (Twitter)",
+      icon: "/CodiceZero/Redes/Twitter.webp",
+      link: "https://x.com/EgoBl9",
+      customClass: "scale-[1.35]"
+    },
+    {
+      name: "YouTube",
+      icon: "/CodiceZero/Redes/Youtube.png",
+      link: "https://www.youtube.com/@thisego9",
+      customClass: "scale-110"
+    },
+    {
+      name: "GitHub",
+      icon: "/CodiceZero/Redes/Github.png",
+      link: "https://github.com/CodexAlG",
+      customClass: "invert"
+    },
+    {
+      name: "Telegram",
+      icon: Send,
+      link: "https://t.me/CodiceZeroZZZ",
+      isComponent: true,
+      customClass: "text-gray-300 group-hover:text-blue-400 p-1"
+    },
+  ];
 
   return (
     <div className="min-h-screen flex items-center justify-center relative overflow-hidden">
@@ -51,37 +83,30 @@ export default function Home() {
         </div>
 
         {/* Redes Sociales */}
-        {/* Telegram Link */}
-        <div className="mb-16 w-full max-w-2xl">
-          <a
-            href="https://t.me/CodiceZeroZZZ"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="group relative flex items-center gap-6 p-6 bg-gray-900/50 border border-white/10 rounded-2xl hover:bg-blue-500/10 hover:border-blue-500/50 transition-all duration-300 text-left"
-          >
-            {/* Icono */}
-            <div className="flex-shrink-0 w-16 h-16 bg-blue-500/20 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-              <Send className="w-8 h-8 text-blue-400 group-hover:text-blue-300" />
-            </div>
+        <div className="flex items-center gap-8 mb-16">
+          {socialNetworks.map((social) => (
+            <a
+              key={social.name}
+              href={social.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group relative w-10 h-10 transition-transform hover:scale-110 duration-300 flex items-center justify-center"
+              title={social.name}
+            >
+              <div className="absolute inset-0 bg-yellow-400/0 group-hover:bg-yellow-400/20 blur-xl rounded-full transition-all duration-300"></div>
 
-            {/* Texto */}
-            <div className="flex-1">
-              <h3 className="text-xl font-display font-bold text-white mb-2 flex items-center gap-2">
-                Canal Oficial de Telegram
-                <span className="text-xs font-mono bg-blue-500/20 text-blue-300 px-2 py-0.5 rounded border border-blue-500/30">NUEVO</span>
-              </h3>
-              <p className="text-gray-400 text-sm leading-relaxed group-hover:text-gray-300 transition-colors">
-                Únete a nuestro canal oficial para recibir notificaciones instantáneas sobre nuevas guías, actualizaciones de personajes y noticias de Zenless Zone Zero.
-              </p>
-            </div>
-
-            {/* Flecha */}
-            <div className="hidden md:block text-gray-600 group-hover:text-blue-400 group-hover:translate-x-2 transition-all duration-300">
-              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-              </svg>
-            </div>
-          </a>
+              {social.isComponent ? (
+                <social.icon className={`w-full h-full transition-colors duration-300 ${social.customClass}`} />
+              ) : (
+                <Image
+                  src={social.icon}
+                  alt={social.name}
+                  fill
+                  className={`object-contain drop-shadow-lg filter group-hover:brightness-125 ${social.customClass || ""}`}
+                />
+              )}
+            </a>
+          ))}
         </div>
       </div>
 
