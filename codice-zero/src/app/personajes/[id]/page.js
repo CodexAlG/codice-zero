@@ -480,340 +480,341 @@ export default function AgentDetailPage() {
                 ✕
               </button>
             </div>
+          </>
         )}
+      </div>
+
+      {/* ZONA DERECHA (Panel HUD) */}
+      <div className="flex-1 flex flex-col h-full pt-12 px-4 lg:pr-12 lg:pl-0 pb-8 relative z-20">
+
+        {/* --- NUEVO HEADER INFO (Reubicado y Centrado) --- */}
+        <div className="mb-8 w-full flex flex-col items-center text-center">
+          {/* Facción */}
+          <div className="flex items-center gap-2 mb-2 opacity-70">
+            {factionIconPath && (
+              <div className="relative w-6 h-6">
+                <Image src={factionIconPath} alt={agent.faction} fill className="object-contain" />
+              </div>
+            )}
+            <span className="text-xs font-mono uppercase tracking-widest text-yellow-500">{agent.faction}</span>
+            <div className="h-[1px] w-12 bg-yellow-500"></div>
           </div>
 
-        {/* ZONA DERECHA (Panel HUD) */}
-        <div className="flex-1 flex flex-col h-full pt-12 px-4 lg:pr-12 lg:pl-0 pb-8 relative z-20">
+          {/* Nombre */}
+          <h1 className="text-5xl md:text-7xl font-display font-black italic text-white drop-shadow-2xl mb-4 leading-none transform -skew-x-6">
+            {agent.name}
+          </h1>
 
-          {/* --- NUEVO HEADER INFO (Reubicado y Centrado) --- */}
-          <div className="mb-8 w-full flex flex-col items-center text-center">
-            {/* Facción */}
-            <div className="flex items-center gap-2 mb-2 opacity-70">
-              {factionIconPath && (
-                <div className="relative w-6 h-6">
-                  <Image src={factionIconPath} alt={agent.faction} fill className="object-contain" />
-                </div>
-              )}
-              <span className="text-xs font-mono uppercase tracking-widest text-yellow-500">{agent.faction}</span>
-              <div className="h-[1px] w-12 bg-yellow-500"></div>
+          {/* Iconos (Chips) */}
+          <div className="flex flex-wrap justify-center gap-2 md:gap-4">
+            {/* Chip Rango */}
+            <div className="flex items-center gap-2 bg-black/40 px-3 py-1 rounded border border-white/10 backdrop-blur-sm">
+              <Image src={`/CodiceZero/Rango/Icon_Item_Rank_${agent.rank}.webp`} width={20} height={20} alt="Rank" />
+              <span className={`font-bold text-sm ${agent.rank === 'S' ? 'text-yellow-500' : 'text-purple-500'}`}> RANK</span>
             </div>
-
-            {/* Nombre */}
-            <h1 className="text-5xl md:text-7xl font-display font-black italic text-white drop-shadow-2xl mb-4 leading-none transform -skew-x-6">
-              {agent.name}
-            </h1>
-
-            {/* Iconos (Chips) */}
-            <div className="flex flex-wrap justify-center gap-2 md:gap-4">
-              {/* Chip Rango */}
-              <div className="flex items-center gap-2 bg-black/40 px-3 py-1 rounded border border-white/10 backdrop-blur-sm">
-                <Image src={`/CodiceZero/Rango/Icon_Item_Rank_${agent.rank}.webp`} width={20} height={20} alt="Rank" />
-                <span className={`font-bold text-sm ${agent.rank === 'S' ? 'text-yellow-500' : 'text-purple-500'}`}> RANK</span>
-              </div>
-              {/* Chip Elemento */}
-              <div className="flex items-center gap-2 bg-black/40 px-3 py-1 rounded border border-white/10 backdrop-blur-sm">
-                <Image src={elementIconPath} alt={agent.element} width={18} height={18} />
-                <span className="font-bold uppercase text-sm" style={{ color: themeColor }}>{agent.element}</span>
-              </div>
-              {/* Chip Rol */}
-              <div className="flex items-center gap-2 bg-black/40 px-3 py-1 rounded border border-white/10 backdrop-blur-sm">
-                <Image src={`/CodiceZero/Agentes/Rol/${normalize(agent.rol)}.webp`} alt={agent.rol} width={16} height={16} className="invert" />
-                <span className="font-bold text-gray-300 uppercase text-sm">{agent.rol}</span>
-              </div>
-              {/* Chip Advertencia Beta */}
-              {agent.leak && agent.leak.includes("Beta") && (
-                <div className="flex items-center gap-2 bg-red-500/20 px-3 py-1 rounded border border-red-500/50 backdrop-blur-sm">
-                  <svg className="w-4 h-4 text-red-400" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clipRule="evenodd" />
-                  </svg>
-                  <span className="font-bold text-red-400 uppercase text-xs">BETA</span>
-                </div>
-              )}
+            {/* Chip Elemento */}
+            <div className="flex items-center gap-2 bg-black/40 px-3 py-1 rounded border border-white/10 backdrop-blur-sm">
+              <Image src={elementIconPath} alt={agent.element} width={18} height={18} />
+              <span className="font-bold uppercase text-sm" style={{ color: themeColor }}>{agent.element}</span>
             </div>
-
-            {/* Advertencia de Beta Texto Completo */}
+            {/* Chip Rol */}
+            <div className="flex items-center gap-2 bg-black/40 px-3 py-1 rounded border border-white/10 backdrop-blur-sm">
+              <Image src={`/CodiceZero/Agentes/Rol/${normalize(agent.rol)}.webp`} alt={agent.rol} width={16} height={16} className="invert" />
+              <span className="font-bold text-gray-300 uppercase text-sm">{agent.rol}</span>
+            </div>
+            {/* Chip Advertencia Beta */}
             {agent.leak && agent.leak.includes("Beta") && (
-              <div className="mt-6 w-full p-3 bg-yellow-500/10 border border-yellow-500/20 rounded-lg flex items-start gap-3 text-yellow-500">
-                <TriangleAlert className="w-5 h-5 flex-shrink-0 mt-0.5" />
-                <p className="text-sm font-medium leading-relaxed text-left">
-                  Este personaje se encuentra en fase Beta. Sus estadísticas y habilidades están sujetas a cambios antes del lanzamiento oficial.
-                </p>
+              <div className="flex items-center gap-2 bg-red-500/20 px-3 py-1 rounded border border-red-500/50 backdrop-blur-sm">
+                <svg className="w-4 h-4 text-red-400" fill="currentColor" viewBox="0 0 20 20">
+                  <path fillRule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clipRule="evenodd" />
+                </svg>
+                <span className="font-bold text-red-400 uppercase text-xs">BETA</span>
               </div>
             )}
           </div>
 
-          {/* PANEL GRANDE CON ESPACIO */}
-          <div className="flex-1 flex flex-col justify-center px-0 lg:px-12 z-20 h-full">
+          {/* Advertencia de Beta Texto Completo */}
+          {agent.leak && agent.leak.includes("Beta") && (
+            <div className="mt-6 w-full p-3 bg-yellow-500/10 border border-yellow-500/20 rounded-lg flex items-start gap-3 text-yellow-500">
+              <TriangleAlert className="w-5 h-5 flex-shrink-0 mt-0.5" />
+              <p className="text-sm font-medium leading-relaxed text-left">
+                Este personaje se encuentra en fase Beta. Sus estadísticas y habilidades están sujetas a cambios antes del lanzamiento oficial.
+              </p>
+            </div>
+          )}
+        </div>
 
-            {/* Contenedor Principal - Tech HUD Style */}
-            <div className="relative w-full bg-gray-950/80 border border-white/10 rounded-xl overflow-hidden shadow-[0_0_30px_rgba(0,0,0,0.5)] backdrop-blur-xl group hover:border-yellow-500/50 transition-all duration-300 p-4 lg:p-8 flex flex-col gap-6 max-h-[85vh]">
+        {/* PANEL GRANDE CON ESPACIO */}
+        <div className="flex-1 flex flex-col justify-center px-0 lg:px-12 z-20 h-full">
 
-              {/* Header + Slider - SOLO en Stats */}
-              {activeTab === 'stats' && (
-                <div className="flex flex-col sm:flex-row justify-between items-center border-b border-white/10 pb-4 gap-4">
-                  <h2 className="text-2xl font-display text-white-400 uppercase italic font-bold text-center sm:text-left">Atributos Base</h2>
-                  <div className="flex items-center gap-3 w-full sm:w-auto justify-center">
-                    <span className="text-sm font-mono text-gray-400 whitespace-nowrap">Nv.{level}/60</span>
-                    <input
-                      type="range"
-                      min="1"
-                      max="60"
-                      value={level}
-                      onChange={(e) => setLevel(Number(e.target.value))}
-                      className="w-full sm:w-48 h-1.5 bg-gray-700 rounded-lg appearance-none cursor-pointer accent-yellow-400"
-                    />
-                  </div>
-                </div>
-              )}
+          {/* Contenedor Principal - Tech HUD Style */}
+          <div className="relative w-full bg-gray-950/80 border border-white/10 rounded-xl overflow-hidden shadow-[0_0_30px_rgba(0,0,0,0.5)] backdrop-blur-xl group hover:border-yellow-500/50 transition-all duration-300 p-4 lg:p-8 flex flex-col gap-6 max-h-[85vh]">
 
-              {/* Contenido Condicional - Stats o Skills */}
-              {activeTab === 'stats' ? (
-                /* Stats Table usando el componente StatsTable mejorado */
-                <div className="text-sm overflow-y-auto pr-2 scrollbar-hide">
-                  <StatsTable
-                    currentStats={currentStats}
-                    themeColor={themeColor}
-                    agentRole={agent.rol}
+            {/* Header + Slider - SOLO en Stats */}
+            {activeTab === 'stats' && (
+              <div className="flex flex-col sm:flex-row justify-between items-center border-b border-white/10 pb-4 gap-4">
+                <h2 className="text-2xl font-display text-white-400 uppercase italic font-bold text-center sm:text-left">Atributos Base</h2>
+                <div className="flex items-center gap-3 w-full sm:w-auto justify-center">
+                  <span className="text-sm font-mono text-gray-400 whitespace-nowrap">Nv.{level}/60</span>
+                  <input
+                    type="range"
+                    min="1"
+                    max="60"
+                    value={level}
+                    onChange={(e) => setLevel(Number(e.target.value))}
+                    className="w-full sm:w-48 h-1.5 bg-gray-700 rounded-lg appearance-none cursor-pointer accent-yellow-400"
                   />
                 </div>
-              ) : activeTab === 'skills' ? (
-                <div className="animate-fadeIn h-full flex flex-col lg:flex-row items-center lg:items-start justify-between gap-6 px-2 lg:px-4 py-4 lg:py-8 overflow-y-auto lg:overflow-visible">
+              </div>
+            )}
 
-                  {/* --- COLUMNA IZQUIERDA (Contenido / Flexible) --- */}
-                  {/* Esta columna contiene Títulos y Botones de Habilidad, ocupando la mayor parte del espacio */}
-                  <div className="flex-1 flex flex-col gap-6 w-full">
+            {/* Contenido Condicional - Stats o Skills */}
+            {activeTab === 'stats' ? (
+              /* Stats Table usando el componente StatsTable mejorado */
+              <div className="text-sm overflow-y-auto pr-2 scrollbar-hide">
+                <StatsTable
+                  currentStats={currentStats}
+                  themeColor={themeColor}
+                  agentRole={agent.rol}
+                />
+              </div>
+            ) : activeTab === 'skills' ? (
+              <div className="animate-fadeIn h-full flex flex-col lg:flex-row items-center lg:items-start justify-between gap-6 px-2 lg:px-4 py-4 lg:py-8 overflow-y-auto lg:overflow-visible">
 
-                    {/* BLOQUE CORE (A-F) */}
-                    <div className="w-full">
-                      <h4 className="text-xs font-mono text-gray-500 uppercase mb-4 tracking-widest ml-1 border-l-2 border-yellow-500 pl-2">
-                        Mejora de Habilidad Core
-                      </h4>
-                      <div className="flex flex-wrap gap-3">
-                        {/* Botón Base (Icono Core) */}
-                        <button
-                          onClick={() => {
-                            // Buscamos las pasivas
-                            const passive = details?.skills?.find(s => s.type === "Pasiva Central");
-                            const additional = details?.skills?.find(s => s.type.includes("Adicional"));
+                {/* --- COLUMNA IZQUIERDA (Contenido / Flexible) --- */}
+                {/* Esta columna contiene Títulos y Botones de Habilidad, ocupando la mayor parte del espacio */}
+                <div className="flex-1 flex flex-col gap-6 w-full">
 
-                            // VALOR BASE (Índice 0)
-                            const val = details?.coreSkillScaling ? details.coreSkillScaling[0] : "??%";
+                  {/* BLOQUE CORE (A-F) */}
+                  <div className="w-full">
+                    <h4 className="text-xs font-mono text-gray-500 uppercase mb-4 tracking-widest ml-1 border-l-2 border-yellow-500 pl-2">
+                      Mejora de Habilidad Core
+                    </h4>
+                    <div className="flex flex-wrap gap-3">
+                      {/* Botón Base (Icono Core) */}
+                      <button
+                        onClick={() => {
+                          // Buscamos las pasivas
+                          const passive = details?.skills?.find(s => s.type === "Pasiva Central");
+                          const additional = details?.skills?.find(s => s.type.includes("Adicional"));
 
-                            // Inyectar valor en la descripción
-                            const desc = passive?.description.replace("{VALOR}", `<span class='text-green-400 font-bold '>${val}</span>`) || "";
+                          // VALOR BASE (Índice 0)
+                          const val = details?.coreSkillScaling ? details.coreSkillScaling[0] : "??%";
 
-                            handleSelect({
-                              ...passive,
-                              name: `${passive.name} (Nivel Base)`,
-                              type: "Core",
-                              description: desc,
-                              additionalSkill: additional ? {
-                                name: additional.name,
-                                description: additional.description
-                              } : null
-                            });
-                          }}
-                          className={`w-12 h-12 rounded-full border-2 flex items-center justify-center transition-all active:scale-95
+                          // Inyectar valor en la descripción
+                          const desc = passive?.description.replace("{VALOR}", `<span class='text-green-400 font-bold '>${val}</span>`) || "";
+
+                          handleSelect({
+                            ...passive,
+                            name: `${passive.name} (Nivel Base)`,
+                            type: "Core",
+                            description: desc,
+                            additionalSkill: additional ? {
+                              name: additional.name,
+                              description: additional.description
+                            } : null
+                          });
+                        }}
+                        className={`w-12 h-12 rounded-full border-2 flex items-center justify-center transition-all active:scale-95
                           ${selectedSkill?.name.includes("(Base)")
-                              ? `border-[${themeColor}] bg-[${themeColor}]/20 shadow-[0_0_15px_${themeColor}40] scale-110`
-                              : "border-gray-700 bg-gray-900 hover:border-gray-500"}
+                            ? `border-[${themeColor}] bg-[${themeColor}]/20 shadow-[0_0_15px_${themeColor}40] scale-110`
+                            : "border-gray-700 bg-gray-900 hover:border-gray-500"}
                         `}
-                        >
-                          <Image
-                            src="/CodiceZero/Habilidades/Icon_Core_Skill.webp"
-                            alt="Core Base" width={28} height={28} className="object-contain"
-                          />
-                        </button>
+                      >
+                        <Image
+                          src="/CodiceZero/Habilidades/Icon_Core_Skill.webp"
+                          alt="Core Base" width={28} height={28} className="object-contain"
+                        />
+                      </button>
 
-                        {/* Letras A-F */}
-                        {['A', 'B', 'C', 'D', 'E', 'F'].map((letter, idx) => {
-                          const reqLevel = idx === 5 ? 60 : 15 + (idx * 10);
-                          const isActive = level >= reqLevel;
-                          const isSelected = selectedSkill?.name?.includes(`Nodo ${letter}`);
+                      {/* Letras A-F */}
+                      {['A', 'B', 'C', 'D', 'E', 'F'].map((letter, idx) => {
+                        const reqLevel = idx === 5 ? 60 : 15 + (idx * 10);
+                        const isActive = level >= reqLevel;
+                        const isSelected = selectedSkill?.name?.includes(`Nodo ${letter}`);
 
-                          // CÁLCULO: 50% base + 8.33% por nivel (aprox para llegar a 100 en 6 pasos)
-                          // 50 -> 58 -> 66 -> 75 -> 83 -> 91 -> 100
-                          const val = Math.min(100, Math.floor(50 + ((idx + 1) * 8.33)));
+                        // CÁLCULO: 50% base + 8.33% por nivel (aprox para llegar a 100 en 6 pasos)
+                        // 50 -> 58 -> 66 -> 75 -> 83 -> 91 -> 100
+                        const val = Math.min(100, Math.floor(50 + ((idx + 1) * 8.33)));
 
-                          return (
-                            <button
-                              key={letter}
-                              onClick={() => {
-                                const passive = details?.skills?.find(s => s.type === "Pasiva Central");
-                                const additional = details?.skills?.find(s => s.type.includes("Adicional"));
+                        return (
+                          <button
+                            key={letter}
+                            onClick={() => {
+                              const passive = details?.skills?.find(s => s.type === "Pasiva Central");
+                              const additional = details?.skills?.find(s => s.type.includes("Adicional"));
 
-                                // VALOR ESCALADO (Índice idx + 1)
-                                // A=1, B=2, ..., F=6
-                                const val = details?.coreSkillScaling ? details.coreSkillScaling[idx + 1] : "??%";
+                              // VALOR ESCALADO (Índice idx + 1)
+                              // A=1, B=2, ..., F=6
+                              const val = details?.coreSkillScaling ? details.coreSkillScaling[idx + 1] : "??%";
 
-                                // Inyectar valor
-                                const desc = passive?.description.replace("{VALOR}", `<span class='text-green-400 font-bold'>${val}</span>`) || "";
+                              // Inyectar valor
+                              const desc = passive?.description.replace("{VALOR}", `<span class='text-green-400 font-bold'>${val}</span>`) || "";
 
-                                handleSelect({
-                                  ...passive,
-                                  name: `${passive.name} (Nodo ${letter})`,
-                                  type: "Core",
-                                  description: desc,
-                                  additionalSkill: additional ? {
-                                    name: additional.name,
-                                    description: additional.description
-                                  } : null
-                                });
-                              }}
-                              className={`
+                              handleSelect({
+                                ...passive,
+                                name: `${passive.name} (Nodo ${letter})`,
+                                type: "Core",
+                                description: desc,
+                                additionalSkill: additional ? {
+                                  name: additional.name,
+                                  description: additional.description
+                                } : null
+                              });
+                            }}
+                            className={`
                               w-12 h-12 rounded-full flex items-center justify-center transition-all duration-200 active:scale-95 border-2
                               ${isSelected ? "scale-110" : "hover:scale-105"}
                             `}
-                              style={{
-                                borderColor: isSelected ? themeColor : (isActive ? `${themeColor}60` : '#374151'),
-                                backgroundColor: isSelected ? `${themeColor}20` : 'transparent',
-                                boxShadow: isSelected ? `0 0 15px ${themeColor}` : 'none'
-                              }}
-                            >
-                              {/* Usar Imagen de Letra si existe, o Texto si no */}
-                              <Image
-                                src={`/CodiceZero/Habilidades/Icon_Core_Skill_${letter}.webp`}
-                                alt={letter} width={48} height={48}
-                                className={`object-contain ${isActive ? "opacity-100" : "opacity-30 grayscale"}`}
-                              />
-                            </button>
-                          );
-                        })}
-                      </div>
+                            style={{
+                              borderColor: isSelected ? themeColor : (isActive ? `${themeColor}60` : '#374151'),
+                              backgroundColor: isSelected ? `${themeColor}20` : 'transparent',
+                              boxShadow: isSelected ? `0 0 15px ${themeColor}` : 'none'
+                            }}
+                          >
+                            {/* Usar Imagen de Letra si existe, o Texto si no */}
+                            <Image
+                              src={`/CodiceZero/Habilidades/Icon_Core_Skill_${letter}.webp`}
+                              alt={letter} width={48} height={48}
+                              className={`object-contain ${isActive ? "opacity-100" : "opacity-30 grayscale"}`}
+                            />
+                          </button>
+                        );
+                      })}
                     </div>
+                  </div>
 
-                    {/* BLOQUE HABILIDADES DE COMBATE */}
-                    <div className="w-full">
-                      <h4 className="text-xs font-mono text-white uppercase mb-4 tracking-widest ml-1 border-l-2 border-white/20 pl-2">
-                        Habilidades de Combate
-                      </h4>
-                      <div className="flex flex-wrap gap-6 justify-start">
-                        {skillGroups.map((group) => {
-                          // Verificar si está seleccionado
-                          const isSelected = selectedSkill?.type === group.label;
+                  {/* BLOQUE HABILIDADES DE COMBATE */}
+                  <div className="w-full">
+                    <h4 className="text-xs font-mono text-white uppercase mb-4 tracking-widest ml-1 border-l-2 border-white/20 pl-2">
+                      Habilidades de Combate
+                    </h4>
+                    <div className="flex flex-wrap gap-6 justify-start">
+                      {skillGroups.map((group) => {
+                        // Verificar si está seleccionado
+                        const isSelected = selectedSkill?.type === group.label;
 
-                          return (
-                            <button
-                              key={group.id}
-                              onClick={() => {
-                                // 1. Filtrar habilidades del grupo
-                                const skillsInGroup = details?.skills?.filter(s =>
-                                  group.match.some(m => s.type.includes(m))
-                                ) || [];
+                        return (
+                          <button
+                            key={group.id}
+                            onClick={() => {
+                              // 1. Filtrar habilidades del grupo
+                              const skillsInGroup = details?.skills?.filter(s =>
+                                group.match.some(m => s.type.includes(m))
+                              ) || [];
 
-                                if (skillsInGroup.length === 0) return;
+                              if (skillsInGroup.length === 0) return;
 
-                                // 2. Activar Modal con DATOS (No HTML)
-                                handleSelect({
-                                  type: group.label,
-                                  name: group.label,
-                                  // Pasamos el array de sub-habilidades en una propiedad especial
-                                  subSkills: skillsInGroup,
-                                  // Description se usa solo para habilidades simples (Core), aquí la dejamos vacía o nula
-                                  description: null
-                                });
-                              }}
-                              className={`
+                              // 2. Activar Modal con DATOS (No HTML)
+                              handleSelect({
+                                type: group.label,
+                                name: group.label,
+                                // Pasamos el array de sub-habilidades en una propiedad especial
+                                subSkills: skillsInGroup,
+                                // Description se usa solo para habilidades simples (Core), aquí la dejamos vacía o nula
+                                description: null
+                              });
+                            }}
+                            className={`
                               w-16 h-16 rounded-full border-2 flex items-center justify-center transition-all duration-300 group relative active:scale-95
                               ${isSelected
-                                  ? `border-[${themeColor}] bg-[${themeColor}]/20 shadow-[0_0_20px_${themeColor}40] scale-110`
-                                  : "border-gray-700 bg-gray-900 hover:border-white hover:bg-white/10"}
+                                ? `border-[${themeColor}] bg-[${themeColor}]/20 shadow-[0_0_20px_${themeColor}40] scale-110`
+                                : "border-gray-700 bg-gray-900 hover:border-white hover:bg-white/10"}
                             `}
-                            >
-                              <Image
-                                src={group.icon}
-                                alt={group.label}
-                                width={40} height={40}
-                                className={`object-contain transition-transform ${isSelected ? "scale-110" : "group-hover:scale-110"}`}
-                              />
-                            </button>
-                          );
-                        })}
-                      </div>
+                          >
+                            <Image
+                              src={group.icon}
+                              alt={group.label}
+                              width={40} height={40}
+                              className={`object-contain transition-transform ${isSelected ? "scale-110" : "group-hover:scale-110"}`}
+                            />
+                          </button>
+                        );
+                      })}
                     </div>
-
                   </div>
 
-                  {/* --- COLUMNA DERECHA (Mindscape / Fijo) --- */}
-                  {/* Este contenedor es pequeño y el contenedor padre lo centrará verticalmente */}
-                  <div className="flex-none w-24">
-                    {/* --- TRACKER MINDSCAPE (Diseño Neon Ring) --- */}
-                    <button
-                      onClick={() => {
-                        // Filtrar habilidades que contengan "Mindscape" en el tipo
-                        const mindscapeSkills = details?.skills?.filter(skill =>
-                          skill.type && skill.type.includes("Mindscape")
-                        ) || [];
+                </div>
 
-                        // Al hacer click, muestra los niveles de dupe/Mindscape
-                        handleSelect({
-                          type: "Mindscape",
-                          name: "Mindscape (Cinema) Niveles de Dupe",
-                          description: "Aquí va el detalle de los 6 niveles del Mindscape y sus efectos. Nivel actual: 6/6",
-                          subSkills: mindscapeSkills,
-                          tags: ["Dupe", "Niveles"]
-                        });
-                      }}
-                      // Clases para el efecto de borde y fondo
-                      className="w-24 h-24 relative rounded-full border-2 border-gray-700 bg-gray-900/50 flex items-center justify-center shadow-2xl hover:border-white/50 group transition-transform hover:scale-105"
-                      title="Mindscape Levels"
+                {/* --- COLUMNA DERECHA (Mindscape / Fijo) --- */}
+                {/* Este contenedor es pequeño y el contenedor padre lo centrará verticalmente */}
+                <div className="flex-none w-24">
+                  {/* --- TRACKER MINDSCAPE (Diseño Neon Ring) --- */}
+                  <button
+                    onClick={() => {
+                      // Filtrar habilidades que contengan "Mindscape" en el tipo
+                      const mindscapeSkills = details?.skills?.filter(skill =>
+                        skill.type && skill.type.includes("Mindscape")
+                      ) || [];
+
+                      // Al hacer click, muestra los niveles de dupe/Mindscape
+                      handleSelect({
+                        type: "Mindscape",
+                        name: "Mindscape (Cinema) Niveles de Dupe",
+                        description: "Aquí va el detalle de los 6 niveles del Mindscape y sus efectos. Nivel actual: 6/6",
+                        subSkills: mindscapeSkills,
+                        tags: ["Dupe", "Niveles"]
+                      });
+                    }}
+                    // Clases para el efecto de borde y fondo
+                    className="w-24 h-24 relative rounded-full border-2 border-gray-700 bg-gray-900/50 flex items-center justify-center shadow-2xl hover:border-white/50 group transition-transform hover:scale-105"
+                    title="Mindscape Levels"
+                  >
+                    {/* Anillo de Glow Dinámico */}
+                    <div
+                      className="absolute inset-0 rounded-full"
+                      style={{ boxShadow: `0 0 15px 5px ${themeColor}40`, borderColor: themeColor }}
+                    />
+
+                    {/* Texto "M" (Color del Elemento) */}
+                    <span
+                      className="text-4xl font-black font-display leading-none z-10"
+                      style={{ color: themeColor }}
                     >
-                      {/* Anillo de Glow Dinámico */}
-                      <div
-                        className="absolute inset-0 rounded-full"
-                        style={{ boxShadow: `0 0 15px 5px ${themeColor}40`, borderColor: themeColor }}
-                      />
+                      M
+                    </span>
 
-                      {/* Texto "M" (Color del Elemento) */}
-                      <span
-                        className="text-4xl font-black font-display leading-none z-10"
-                        style={{ color: themeColor }}
-                      >
-                        M
-                      </span>
-
-                      {/* Contador 6/6 (Texto Monospaced) */}
-                      <div className="absolute bottom-2 text-xs text-white font-mono bg-black/60 px-1.5 py-0.5 rounded border" style={{ borderColor: `${themeColor}60` }}>
-                        6/6
-                      </div>
-                    </button>
-                  </div>
-
+                    {/* Contador 6/6 (Texto Monospaced) */}
+                    <div className="absolute bottom-2 text-xs text-white font-mono bg-black/60 px-1.5 py-0.5 rounded border" style={{ borderColor: `${themeColor}60` }}>
+                      6/6
+                    </div>
+                  </button>
                 </div>
-              ) : (
-                /* Equip Content (placeholder) */
-                <div className="flex items-center justify-center h-full text-gray-500">
-                  <p>Contenido de Equipo - Próximamente</p>
-                </div>
-              )}
 
-            </div>
+              </div>
+            ) : (
+              /* Equip Content (placeholder) */
+              <div className="flex items-center justify-center h-full text-gray-500">
+                <p>Contenido de Equipo - Próximamente</p>
+              </div>
+            )}
 
-            {/* Navegación Centrada */}
-            <div className="mt-4 flex justify-center gap-6">
-              {['stats', 'skills', 'equip'].map((tab) => (
-                <button
-                  key={tab}
-                  onClick={() => {
-                    setActiveTab(tab);
-                    if (tab !== 'skills') {
-                      setSelectedSkill(null);
-                      setSelectedGroup(null);
-                    }
-                  }}
-                  className={`px-6 py-2 uppercase font-display tracking-widest border-b-2 transition-all ${activeTab === tab
-                    ? "border-yellow-400 text-yellow-400"
-                    : "border-transparent text-gray-500 hover:border-yellow-400 hover:text-yellow-400"
-                    }`}
-                >
-                  {tab === 'stats' ? "Atributos" : tab === 'skills' ? "Habilidades" : "Equipo"}
-                </button>
-              ))}
-            </div>
           </div>
 
+          {/* Navegación Centrada */}
+          <div className="mt-4 flex justify-center gap-6">
+            {['stats', 'skills', 'equip'].map((tab) => (
+              <button
+                key={tab}
+                onClick={() => {
+                  setActiveTab(tab);
+                  if (tab !== 'skills') {
+                    setSelectedSkill(null);
+                    setSelectedGroup(null);
+                  }
+                }}
+                className={`px-6 py-2 uppercase font-display tracking-widest border-b-2 transition-all ${activeTab === tab
+                  ? "border-yellow-400 text-yellow-400"
+                  : "border-transparent text-gray-500 hover:border-yellow-400 hover:text-yellow-400"
+                  }`}
+              >
+                {tab === 'stats' ? "Atributos" : tab === 'skills' ? "Habilidades" : "Equipo"}
+              </button>
+            ))}
+          </div>
         </div>
+
       </div>
-      );
+    </div>
+  );
 }
