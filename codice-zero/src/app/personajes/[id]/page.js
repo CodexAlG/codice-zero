@@ -333,146 +333,130 @@ export default function AgentDetailPage() {
           <Image
             src={agent.image}
             alt={agent.name}
-            fill
-            className="object-contain object-top opacity-100 brightness-110"
-            sizes="(max-width: 768px) 50vw, 450px"
-            priority
-            unoptimized
-          />
-        </div>
-
-        {activeTab === 'skills' && (selectedSkill || selectedGroup) && (
-          <div className="absolute bottom-0 left-0 w-full lg:w-[95%] lg:bottom-4 lg:left-4 p-6 z-50 overflow-y-auto animate-slideUp bg-black/90 lg:bg-gray-900 backdrop-blur-xl lg:backdrop-blur-md rounded-t-3xl lg:rounded-xl border-t border-white/20 lg:border-2 lg:border-white/10 shadow-[0_-10px_40px_rgba(0,0,0,0.8)] lg:shadow-2xl max-h-[75vh] lg:max-h-[60%]">
-
-            {/* Mobile Handle Indicator */}
-            <div className="lg:hidden w-12 h-1.5 bg-white/20 rounded-full mx-auto mb-6"></div>
-
-            {/* Si hay un grupo seleccionado, mostrar habilidades del grupo */}
-            {selectedGroup ? (
               <>
-                {/* Header del Grupo */}
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="w-10 h-10 bg-black/50 rounded flex items-center justify-center border border-white/10">
-                    <Image
-                      src={selectedGroup.icon}
-                      alt={selectedGroup.label}
-                      width={24} height={24}
-                      className="object-contain"
-                      unoptimized
-                    />
-                  </div>
-                  <div>
-                    <span className="text-xs text-yellow-400 font-mono uppercase tracking-widest">Categoría</span>
-                    <h3 className="text-xl font-display text-white leading-none">{selectedGroup.label}</h3>
-                  </div>
-                </div>
+            {/* Header del Grupo */}
+            <div className="flex items-center gap-3 mb-4">
+              <div className="w-10 h-10 bg-black/50 rounded flex items-center justify-center border border-white/10">
+                <Image
+                  src={selectedGroup.icon}
+                  alt={selectedGroup.label}
+                  width={24} height={24}
+                  className="object-contain"
+                  unoptimized
+                />
+              </div>
+              <div>
+                <span className="text-xs text-yellow-400 font-mono uppercase tracking-widest">Categoría</span>
+                <h3 className="text-xl font-display text-white leading-none">{selectedGroup.label}</h3>
+              </div>
+            </div>
 
-                {/* Lista de habilidades del grupo */}
-                <div className="space-y-4">
-                  {getGroupSkills().length > 0 ? (
-                    getGroupSkills().map((skill, index) => (
-                      <div key={index} className="border-b border-white/10 pb-3 last:border-b-0">
-                        <h4 className="text-sm font-display text-white mb-1">{skill.name}</h4>
-                        <span className="text-xs text-yellow-400 font-mono uppercase tracking-widest">{skill.type}</span>
-                        <p className="text-sm text-gray-300 leading-relaxed font-sans mt-2" dangerouslySetInnerHTML={{ __html: processDescription(skill.description) }}></p>
+            {/* Lista de habilidades del grupo */}
+            <div className="space-y-4">
+              {getGroupSkills().length > 0 ? (
+                getGroupSkills().map((skill, index) => (
+                  <div key={index} className="border-b border-white/10 pb-3 last:border-b-0">
+                    <h4 className="text-sm font-display text-white mb-1">{skill.name}</h4>
+                    <span className="text-xs text-yellow-400 font-mono uppercase tracking-widest">{skill.type}</span>
+                    <p className="text-sm text-gray-300 leading-relaxed font-sans mt-2" dangerouslySetInnerHTML={{ __html: processDescription(skill.description) }}></p>
+                  </div>
+                ))
+              ) : (
+                <p className="text-sm text-gray-500">No hay habilidades de esta categoría para este personaje.</p>
+              )}
+            </div>
+          </>
+          ) : selectedSkill ? (
+          /* Modal para habilidades (agrupadas o individuales) */
+          <>
+            {/* Header del Modal */}
+            <div className="flex items-center gap-3 mb-4">
+              <div className="w-10 h-10 bg-black/50 rounded flex items-center justify-center border border-white/10">
+                {/* Icono Pequeño */}
+                <Image
+                  src={skillTypeIcons[selectedSkill.type] || skillTypeIcons["Core"]}
+                  alt="Icon" width={30} height={30} className="object-contain"
+                  unoptimized
+                />
+              </div>
+              <div>
+                <span className="text-xs text-yellow-400 font-mono uppercase tracking-widest">{selectedSkill.type}</span>
+                <h3 className="text-xl font-display text-white leading-none">{selectedSkill.name}</h3>
+              </div>
+            </div>
+
+            {/* Contenido del Modal */}
+            <div className="text-sm text-white leading-relaxed font-sans">
+
+              {/* CASO A: Habilidad Agrupada (Array de Sub-Skills) - Ahora incluye Mindscape */}
+              {selectedSkill.subSkills ? (
+                <div className="flex flex-col gap-4">
+                  {selectedSkill.subSkills.map((sub, idx) => (
+                    <div key={idx} className="flex flex-col gap-1">
+
+                      {/* Título de la variante (Condicional: Mindscape vs Otras Habilidades) */}
+                      <div className="flex items-baseline justify-between">
+                        <span className="text-xs font-bold uppercase tracking-wider text-white">
+                          {sub.name}
+                        </span>
+                        {/* Solo mostrar "M {idx + 1}" para Mindscape */}
+                        {selectedSkill.type === "Mindscape" && (
+                          <span className="text-[10px] text-white-400 font-mono uppercase bg-white/5 px-1.5 py-0.5 rounded">
+                            M {idx + 1}
+                          </span>
+                        )}
                       </div>
-                    ))
-                  ) : (
-                    <p className="text-sm text-gray-500">No hay habilidades de esta categoría para este personaje.</p>
-                  )}
-                </div>
-              </>
-            ) : selectedSkill ? (
-              /* Modal para habilidades (agrupadas o individuales) */
-              <>
-                {/* Header del Modal */}
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="w-10 h-10 bg-black/50 rounded flex items-center justify-center border border-white/10">
-                    {/* Icono Pequeño */}
-                    <Image
-                      src={skillTypeIcons[selectedSkill.type] || skillTypeIcons["Core"]}
-                      alt="Icon" width={30} height={30} className="object-contain"
-                      unoptimized
-                    />
-                  </div>
-                  <div>
-                    <span className="text-xs text-yellow-400 font-mono uppercase tracking-widest">{selectedSkill.type}</span>
-                    <h3 className="text-xl font-display text-white leading-none">{selectedSkill.name}</h3>
-                  </div>
-                </div>
 
-                {/* Contenido del Modal */}
-                <div className="text-sm text-white leading-relaxed font-sans">
+                      {/* Descripción con Resaltado (Asegura que 'Daño Glacial' se vea azul) */}
+                      <p
+                        className="text-gray-300 text-sm leading-snug opacity-90"
+                        dangerouslySetInnerHTML={{ __html: processDescription(sub.description) }}
+                      />
 
-                  {/* CASO A: Habilidad Agrupada (Array de Sub-Skills) - Ahora incluye Mindscape */}
-                  {selectedSkill.subSkills ? (
-                    <div className="flex flex-col gap-4">
-                      {selectedSkill.subSkills.map((sub, idx) => (
-                        <div key={idx} className="flex flex-col gap-1">
-
-                          {/* Título de la variante (Condicional: Mindscape vs Otras Habilidades) */}
-                          <div className="flex items-baseline justify-between">
-                            <span className="text-xs font-bold uppercase tracking-wider text-white">
-                              {sub.name}
-                            </span>
-                            {/* Solo mostrar "M {idx + 1}" para Mindscape */}
-                            {selectedSkill.type === "Mindscape" && (
-                              <span className="text-[10px] text-white-400 font-mono uppercase bg-white/5 px-1.5 py-0.5 rounded">
-                                M {idx + 1}
-                              </span>
-                            )}
-                          </div>
-
-                          {/* Descripción con Resaltado (Asegura que 'Daño Glacial' se vea azul) */}
-                          <p
-                            className="text-gray-300 text-sm leading-snug opacity-90"
-                            dangerouslySetInnerHTML={{ __html: processDescription(sub.description) }}
-                          />
-
-                          {/* Línea separadora (excepto último) */}
-                          {idx < selectedSkill.subSkills.length - 1 && (
-                            <div className="w-full h-[1px] bg-white/5 mt-3"></div>
-                          )}
-                        </div>
-                      ))}
-                    </div>
-                  ) : (
-                    /* CASO B: Habilidad Simple (Core) - Texto con Procesamiento */
-                    <>
-                      <div dangerouslySetInnerHTML={{ __html: processDescription(selectedSkill.description) }} />
-
-                      {/* Habilidad Adicional (si existe) */}
-                      {selectedSkill.additionalSkill && (
-                        <div className="mt-6 pt-4 border-t border-white/10">
-                          <h4 className="text-xs font-bold uppercase tracking-wider text-yellow-400 mb-2">
-                            HABILIDAD ADICIONAL
-                          </h4>
-                          <div className="flex flex-col gap-1">
-                            <span className="text-sm font-semibold text-white">
-                              {selectedSkill.additionalSkill.name}
-                            </span>
-                            <p className="text-sm text-white leading-relaxed" dangerouslySetInnerHTML={{ __html: processDescription(selectedSkill.additionalSkill.description) }} />
-                          </div>
-                        </div>
+                      {/* Línea separadora (excepto último) */}
+                      {idx < selectedSkill.subSkills.length - 1 && (
+                        <div className="w-full h-[1px] bg-white/5 mt-3"></div>
                       )}
-                    </>
-                  )}
-
+                    </div>
+                  ))}
                 </div>
-              </>
+              ) : (
+                /* CASO B: Habilidad Simple (Core) - Texto con Procesamiento */
+                <>
+                  <div dangerouslySetInnerHTML={{ __html: processDescription(selectedSkill.description) }} />
+
+                  {/* Habilidad Adicional (si existe) */}
+                  {selectedSkill.additionalSkill && (
+                    <div className="mt-6 pt-4 border-t border-white/10">
+                      <h4 className="text-xs font-bold uppercase tracking-wider text-yellow-400 mb-2">
+                        HABILIDAD ADICIONAL
+                      </h4>
+                      <div className="flex flex-col gap-1">
+                        <span className="text-sm font-semibold text-white">
+                          {selectedSkill.additionalSkill.name}
+                        </span>
+                        <p className="text-sm text-white leading-relaxed" dangerouslySetInnerHTML={{ __html: processDescription(selectedSkill.additionalSkill.description) }} />
+                      </div>
+                    </div>
+                  )}
+                </>
+              )}
+
+            </div>
+          </>
             ) : null}
 
-            {/* Botón Cerrar */}
-            <button
-              onClick={() => {
-                setSelectedSkill(null);
-                setSelectedGroup(null);
-              }}
-              className="absolute top-4 right-4 text-gray-500 hover:text-white"
-            >
-              ✕
-            </button>
-          </div>
+          {/* Botón Cerrar */}
+          <button
+            onClick={() => {
+              setSelectedSkill(null);
+              setSelectedGroup(null);
+            }}
+            className="absolute top-4 right-4 text-gray-500 hover:text-white"
+          >
+            ✕
+          </button>
+        </div>
         )}
       </div>
 
