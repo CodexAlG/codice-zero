@@ -82,7 +82,7 @@ export default function WeaponDetail({ params }) {
       <div className="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 min-h-screen items-center p-8">
 
         {/* COLUMNA IZQUIERDA: IMAGEN HERO */}
-        <div className="relative aspect-square flex items-center justify-center">
+        <div className="relative aspect-square flex items-center justify-center w-80 mx-auto">
           {/* Fondo de aura sutil */}
           <div className={`absolute inset-0 bg-[${rankColor}] opacity-10 blur-[100px] rounded-full pointer-events-none`}></div>
           <Image
@@ -90,7 +90,7 @@ export default function WeaponDetail({ params }) {
             alt={weapon.name}
             fill
             className="object-contain drop-shadow-2xl z-10"
-            sizes="(max-width: 400px) 50vw, 200px"
+            sizes="(max-width: 768px) 50vw, 400px"
             unoptimized
           />
           {/* Icono de Rango Flotante */}
