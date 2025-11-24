@@ -342,7 +342,7 @@ export default function AgentDetailPage() {
         </div>
 
         {activeTab === 'skills' && (selectedSkill || selectedGroup) && (
-          <div className="absolute bottom-0 left-0 w-full lg:w-[95%] lg:bottom-4 lg:left-4 p-6 z-50 overflow-y-auto animate-slideUp bg-gray-900 border-t border-white/20 lg:border-2 lg:border-white/10 rounded-t-3xl lg:rounded-xl shadow-[0_-10px_40px_rgba(0,0,0,0.8)] lg:shadow-2xl max-h-[60vh] lg:max-h-[60%] backdrop-blur-md">
+          <div className="fixed lg:absolute bottom-0 left-0 w-full lg:w-[95%] lg:bottom-4 lg:left-4 p-6 z-50 overflow-y-auto animate-slideUp bg-gray-900 border-t border-white/20 lg:border-2 lg:border-white/10 rounded-t-3xl lg:rounded-xl shadow-[0_-10px_40px_rgba(0,0,0,0.8)] lg:shadow-2xl max-h-[50vh] lg:max-h-[60%] backdrop-blur-md">
 
             {/* Mobile Handle Indicator */}
             <div className="lg:hidden w-12 h-1.5 bg-white/20 rounded-full mx-auto mb-6"></div>
@@ -477,7 +477,7 @@ export default function AgentDetailPage() {
       </div>
 
       {/* ZONA DERECHA (Panel HUD) */}
-      <div className="flex-1 flex flex-col h-full pt-12 pr-12 pb-8 relative z-20">
+      <div className="flex-1 flex flex-col h-full pt-12 px-4 lg:pr-12 lg:pl-0 pb-8 relative z-20">
 
         {/* --- NUEVO HEADER INFO (Reubicado y Centrado) --- */}
         <div className="mb-8 w-full flex flex-col items-center text-center">
@@ -493,30 +493,30 @@ export default function AgentDetailPage() {
           </div>
 
           {/* Nombre */}
-          <h1 className="text-7xl font-display font-black italic text-white drop-shadow-2xl mb-4 leading-none transform -skew-x-6">
+          <h1 className="text-5xl md:text-7xl font-display font-black italic text-white drop-shadow-2xl mb-4 leading-none transform -skew-x-6">
             {agent.name}
           </h1>
 
           {/* Iconos (Chips) */}
-          <div className="flex gap-4">
+          <div className="flex flex-wrap justify-center gap-2 md:gap-4">
             {/* Chip Rango */}
-            <div className="flex items-center gap-2 bg-black/40 px-4 py-1 rounded border border-white/10 backdrop-blur-sm">
-              <Image src={`/CodiceZero/Rango/Icon_Item_Rank_${agent.rank}.webp`} width={24} height={24} alt="Rank" />
-              <span className={`font-bold ${agent.rank === 'S' ? 'text-yellow-500' : 'text-purple-500'}`}> RANK</span>
+            <div className="flex items-center gap-2 bg-black/40 px-3 py-1 rounded border border-white/10 backdrop-blur-sm">
+              <Image src={`/CodiceZero/Rango/Icon_Item_Rank_${agent.rank}.webp`} width={20} height={20} alt="Rank" />
+              <span className={`font-bold text-sm ${agent.rank === 'S' ? 'text-yellow-500' : 'text-purple-500'}`}> RANK</span>
             </div>
             {/* Chip Elemento */}
-            <div className="flex items-center gap-2 bg-black/40 px-4 py-1 rounded border border-white/10 backdrop-blur-sm">
-              <Image src={elementIconPath} alt={agent.element} width={20} height={20} />
-              <span className="font-bold uppercase" style={{ color: themeColor }}>{agent.element}</span>
+            <div className="flex items-center gap-2 bg-black/40 px-3 py-1 rounded border border-white/10 backdrop-blur-sm">
+              <Image src={elementIconPath} alt={agent.element} width={18} height={18} />
+              <span className="font-bold uppercase text-sm" style={{ color: themeColor }}>{agent.element}</span>
             </div>
             {/* Chip Rol */}
-            <div className="flex items-center gap-2 bg-black/40 px-4 py-1 rounded border border-white/10 backdrop-blur-sm">
-              <Image src={`/CodiceZero/Agentes/Rol/${normalize(agent.rol)}.webp`} alt={agent.rol} width={18} height={18} className="invert" />
-              <span className="font-bold text-gray-300 uppercase">{agent.rol}</span>
+            <div className="flex items-center gap-2 bg-black/40 px-3 py-1 rounded border border-white/10 backdrop-blur-sm">
+              <Image src={`/CodiceZero/Agentes/Rol/${normalize(agent.rol)}.webp`} alt={agent.rol} width={16} height={16} className="invert" />
+              <span className="font-bold text-gray-300 uppercase text-sm">{agent.rol}</span>
             </div>
             {/* Chip Advertencia Beta */}
             {agent.leak && agent.leak.includes("Beta") && (
-              <div className="flex items-center gap-2 bg-red-500/20 px-4 py-1 rounded border border-red-500/50 backdrop-blur-sm">
+              <div className="flex items-center gap-2 bg-red-500/20 px-3 py-1 rounded border border-red-500/50 backdrop-blur-sm">
                 <svg className="w-4 h-4 text-red-400" fill="currentColor" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clipRule="evenodd" />
                 </svg>
@@ -537,24 +537,24 @@ export default function AgentDetailPage() {
         </div>
 
         {/* PANEL GRANDE CON ESPACIO */}
-        <div className="flex-1 flex flex-col justify-center pr-12 pl-12 z-20 h-full">
+        <div className="flex-1 flex flex-col justify-center px-0 lg:px-12 z-20 h-full">
 
           {/* Contenedor Principal - Tech HUD Style */}
-          <div className="relative w-full bg-gray-950/80 border border-white/10 rounded-xl overflow-hidden shadow-[0_0_30px_rgba(0,0,0,0.5)] backdrop-blur-xl group hover:border-yellow-500/50 transition-all duration-300 p-8 flex flex-col gap-6 max-h-[85vh]">
+          <div className="relative w-full bg-gray-950/80 border border-white/10 rounded-xl overflow-hidden shadow-[0_0_30px_rgba(0,0,0,0.5)] backdrop-blur-xl group hover:border-yellow-500/50 transition-all duration-300 p-4 lg:p-8 flex flex-col gap-6 max-h-[85vh]">
 
             {/* Header + Slider - SOLO en Stats */}
             {activeTab === 'stats' && (
-              <div className="flex justify-between items-center border-b border-white/10 pb-4">
-                <h2 className="text-2xl font-display text-white-400 uppercase italic font-bold">Atributos Base</h2>
-                <div className="flex items-center gap-3">
-                  <span className="text-sm font-mono text-gray-400">Nv.{level}/60</span>
+              <div className="flex flex-col sm:flex-row justify-between items-center border-b border-white/10 pb-4 gap-4">
+                <h2 className="text-2xl font-display text-white-400 uppercase italic font-bold text-center sm:text-left">Atributos Base</h2>
+                <div className="flex items-center gap-3 w-full sm:w-auto justify-center">
+                  <span className="text-sm font-mono text-gray-400 whitespace-nowrap">Nv.{level}/60</span>
                   <input
                     type="range"
                     min="1"
                     max="60"
                     value={level}
                     onChange={(e) => setLevel(Number(e.target.value))}
-                    className="w-48 h-1.5 bg-gray-700 rounded-lg appearance-none cursor-pointer accent-yellow-400"
+                    className="w-full sm:w-48 h-1.5 bg-gray-700 rounded-lg appearance-none cursor-pointer accent-yellow-400"
                   />
                 </div>
               </div>
@@ -571,11 +571,11 @@ export default function AgentDetailPage() {
                 />
               </div>
             ) : activeTab === 'skills' ? (
-              <div className="animate-fadeIn h-full flex items-center justify-between gap-6 px-4 py-8">
+              <div className="animate-fadeIn h-full flex flex-col lg:flex-row items-center lg:items-start justify-between gap-6 px-2 lg:px-4 py-4 lg:py-8 overflow-y-auto lg:overflow-visible">
 
                 {/* --- COLUMNA IZQUIERDA (Contenido / Flexible) --- */}
                 {/* Esta columna contiene Títulos y Botones de Habilidad, ocupando la mayor parte del espacio */}
-                <div className="flex-1 flex flex-col gap-6">
+                <div className="flex-1 flex flex-col gap-6 w-full">
 
                   {/* BLOQUE CORE (A-F) */}
                   <div className="w-full">
