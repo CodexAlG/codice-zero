@@ -341,9 +341,11 @@ export default function AgentDetailPage() {
           />
         </div>
 
-        {/* --- MODAL DE DETALLE DE HABILIDAD (Sobre el Personaje) --- */}
         {activeTab === 'skills' && (selectedSkill || selectedGroup) && (
-          <div className="absolute bottom-4 left-4 w-full max-w-[95%] p-6 bg-gray-900 border-2 border-white/10 rounded-xl shadow-2xl backdrop-blur-md z-50 max-h-[60%] overflow-y-auto animate-slideUp">
+          <div className="absolute bottom-0 left-0 w-full lg:w-[95%] lg:bottom-4 lg:left-4 p-6 z-50 overflow-y-auto animate-slideUp bg-black/90 lg:bg-gray-900 backdrop-blur-xl lg:backdrop-blur-md rounded-t-3xl lg:rounded-xl border-t border-white/20 lg:border-2 lg:border-white/10 shadow-[0_-10px_40px_rgba(0,0,0,0.8)] lg:shadow-2xl max-h-[75vh] lg:max-h-[60%]">
+
+            {/* Mobile Handle Indicator */}
+            <div className="lg:hidden w-12 h-1.5 bg-white/20 rounded-full mx-auto mb-6"></div>
 
             {/* Si hay un grupo seleccionado, mostrar habilidades del grupo */}
             {selectedGroup ? (
