@@ -26,7 +26,7 @@ export default function DiscsPage() {
         // Actualizar el timestamp
         sessionStorage.setItem('lastLoadTime', new Date().getTime());
       }, 500); // 500ms de carga mínima simulada
-      
+
       return () => clearTimeout(timer);
     } else {
       // Si está dentro del tiempo de gracia, cargamos al instante
@@ -37,29 +37,29 @@ export default function DiscsPage() {
   return (
     <>
       {isLoading && <LoadingSpinner />}
-      
+
       {/* Contenido Normal de la Página (Solo visible cuando NO está cargando) */}
       <div className={`min-h-screen text-white p-6 transition-opacity duration-300 ${isLoading ? 'opacity-0' : 'opacity-100'}`}>
-      <div className="max-w-7xl mx-auto">
-        <SectionTitle
-          title="Base de Datos de Discos"
-          subtitle="Todos los conjuntos de discos disponibles en el juego"
-        />
+        <div className="max-w-7xl mx-auto">
+          <SectionTitle
+            title="Base de Datos de Discos"
+            subtitle="Todos los conjuntos de discos disponibles en el juego"
+          />
 
-        {/* Discs Grid */}
-        <div className="w-full max-w-7xl mx-auto">
-          <motion.div 
-            layout 
-            className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 2xl:grid-cols-7 gap-4 justify-center transition-none"
-            style={{ minHeight: '80vh' }}
-          >
-            {driveDiscs.map((disc) => (
-              <DiscCard key={disc.id} disc={disc} />
-            ))}
-          </motion.div>
+          {/* Discs Grid */}
+          <div className="w-full max-w-7xl mx-auto">
+            <motion.div
+              layout
+              className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 justify-center transition-none"
+              style={{ minHeight: '80vh' }}
+            >
+              {driveDiscs.map((disc) => (
+                <DiscCard key={disc.id} disc={disc} />
+              ))}
+            </motion.div>
+          </div>
         </div>
       </div>
-    </div>
     </>
   );
 }
