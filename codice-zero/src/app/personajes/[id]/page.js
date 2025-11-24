@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { useParams } from 'next/navigation';
 import Image from 'next/image';
 import Link from 'next/link';
-import { ArrowLeft } from 'lucide-react';
+import { ArrowLeft, TriangleAlert } from 'lucide-react';
 import { agents } from '@/data/agents';
 import { agentDetails } from '@/data/agentDetails';
 import { calculateStatsWithCore } from '@/utils/statCalculator';
@@ -52,20 +52,20 @@ export default function AgentDetailPage() {
     processed = processed.replace(/\[Icono (.*?)\]/g, (match, iconName) => {
       // Buscar directamente en el mapa de iconos inline
       // Esto arregla el problema de Especial vs Especial EX
-      const src = inlineIcons[iconName.trim()]; 
-      
+      const src = inlineIcons[iconName.trim()];
+
       if (!src) return match; // Si no existe (ej. typo), no reemplaza
 
       // Ajuste de tamaño (igual para todos o específico si quieres)
-      const heightStyle = "1.3em"; 
+      const heightStyle = "1.3em";
       const verticalAlign = "-0.3em";
-      
+
       return `<img src="${src}" alt="${iconName}" style="display:inline-block; height:${heightStyle}; width:auto; vertical-align:${verticalAlign}; margin:0 2px;" />`;
     });
 
     // PASO 2: Resaltado EXPLICITO por Paréntesis (Prioridad Alta)
     // Busca \(.*?\) y reemplaza por span sin los paréntesis.
-    processed = processed.replace(/\((.*?)\)/g, (match, content) => 
+    processed = processed.replace(/\((.*?)\)/g, (match, content) =>
       `<span class="text-white font-bold border-b border-white/20">${content}</span>`
     );
 
@@ -78,15 +78,15 @@ export default function AgentDetailPage() {
       { pattern: /Daño (Eléctrico)/gi, color: "text-[#3b82f6] font-bold" },
       { pattern: /Daño (Etéreo)/gi, color: "text-[#d946ef] font-bold" },
       // REGLA CLAVE: Usar el color del elemento del personaje para daño masivo/severo
-      
-      
+
+
       // Estados y Mecánicas (Estos sí se colorean siempre)
       { pattern: /(Congelación)/gi, color: "text-[#22d3ee] font-bold" },
       { pattern: /(Quemadura)/gi, color: "text-[#ef4444] font-bold" },
       { pattern: /(Shock)/gi, color: "text-[#3b82f6] font-bold" },
       { pattern: /(Asalto)/gi, color: "text-[#eab308] font-bold" },
       { pattern: /(Corrupción)/gi, color: "text-[#d946ef] font-bold" },
-      
+
     ];
 
     // Aplicar reglas en orden (habilidades primero, luego elementos)
@@ -144,28 +144,28 @@ export default function AgentDetailPage() {
 
   // Lógica de Icono Especial (Miyabi/Yixuan/Etéreo)
   let elementIconPath = "";
-  if (agent.name.includes("Ye Shunguang")){
+  if (agent.name.includes("Ye Shunguang")) {
     elementIconPath = "/CodiceZero/Agentes/Elemento/IconHonedEdge.webp";
-  } else  if (agent.name.includes("Miyabi")) {
-     elementIconPath = "/CodiceZero/Agentes/Elemento/Icon_Frost.png";
+  } else if (agent.name.includes("Miyabi")) {
+    elementIconPath = "/CodiceZero/Agentes/Elemento/Icon_Frost.png";
   } else if (agent.name.includes("Yixuan")) {
-     elementIconPath = "/CodiceZero/Agentes/Elemento/Icon_Auric_Ink.webp";
+    elementIconPath = "/CodiceZero/Agentes/Elemento/Icon_Auric_Ink.webp";
   } else {
-     const iconMap = {
-       "fuego": "Fuego.webp",
-       "hielo": "Hielo.webp",
-       "electrico": "Electrico.webp",
-       "fisico": "Fisico.webp",
-       "etereo": "Etéreo.webp"
-     };
-     const normalizedElement = normalize(agent.element).toLowerCase();
-     elementIconPath = `/CodiceZero/Agentes/Elemento/${iconMap[normalizedElement] || "Fisico.webp"}`;
+    const iconMap = {
+      "fuego": "Fuego.webp",
+      "hielo": "Hielo.webp",
+      "electrico": "Electrico.webp",
+      "fisico": "Fisico.webp",
+      "etereo": "Etéreo.webp"
+    };
+    const normalizedElement = normalize(agent.element).toLowerCase();
+    elementIconPath = `/CodiceZero/Agentes/Elemento/${iconMap[normalizedElement] || "Fisico.webp"}`;
   }
 
   // Lógica de Cálculo usando statCalculator
   const calculateCurrentStats = () => {
     if (!details?.baseStats) return {};
-    
+
     // Preparar baseStats para el calculador - CORREGIDO para pasar objetos completos
     const baseStatsForCalc = {
       hp: details.baseStats.hp, // Pasar el objeto completo {min, max}
@@ -206,7 +206,7 @@ export default function AgentDetailPage() {
   // Filtrar habilidades del grupo seleccionado
   const getGroupSkills = () => {
     if (!selectedGroup || !details?.skills) return [];
-    return details.skills.filter(skill => 
+    return details.skills.filter(skill =>
       selectedGroup.types.some(type => skill.type.includes(type))
     );
   };
@@ -214,25 +214,25 @@ export default function AgentDetailPage() {
   // Función para seleccionar nivel del core
   const handleSelectCore = (level) => {
     if (!details?.skills) return;
-    
+
     // Buscar la habilidad "Pasiva Central"
     const coreSkill = details.skills.find(skill => skill.type === "Pasiva Central");
     if (!coreSkill) return;
-    
+
     // Calcular el valor escalado basado en el nivel
     const baseValue = 50; // Valor base
     const increment = 8; // Incremento por nivel
     const scaledValue = baseValue + (level * increment);
-    
+
     // Reemplazar {VALOR} en la descripción
     const scaledDescription = coreSkill.description.replace('{VALOR}', scaledValue);
-    
+
     const coreSkillInfo = {
       type: "Pasiva Central",
       name: `Core Skill - Nivel ${level}/6`,
       description: scaledDescription
     };
-    
+
     handleSelect(coreSkillInfo);
   };
 
@@ -244,7 +244,7 @@ export default function AgentDetailPage() {
     "Ataque Normal": "/CodiceZero/Habilidades/ZZZ-Icon-System-Skill-Basic-Attack-White-Alt-01.webp",
     "Ataque Básico": "/CodiceZero/Habilidades/ZZZ-Icon-System-Skill-Basic-Attack-White-Alt-01.webp",
     "Ataque Normal (Carga)": "/CodiceZero/Habilidades/ZZZ-Icon-System-Skill-Basic-Attack-White-Alt-01.webp",
-    
+
     // --- EVASIÓN (Dodge-02) ---
     "Evasión": "/CodiceZero/Habilidades/ZZZ-Icon-System-Skill-Dodge-02.webp",
     "Evasión / Dash": "/CodiceZero/Habilidades/ZZZ-Icon-System-Skill-Dodge-02.webp",
@@ -312,10 +312,10 @@ export default function AgentDetailPage() {
   // 5. QUINTO: Return del JSX
   return (
     <div className="min-h-screen text-white flex flex-col lg:flex-row overflow-y-auto">
-       
+
       {/* BOTÓN VOLVER - POSICION ABSOLUTA */}
-      <Link 
-        href="/personajes" 
+      <Link
+        href="/personajes"
         className="absolute top-4 left-4 lg:left-20 z-50 inline-flex items-center text-gray-400 hover:text-white transition-colors bg-black/40 px-4 py-2 rounded-lg border border-white/10"
       >
         <ArrowLeft className="w-4 h-4 mr-2" />
@@ -323,7 +323,7 @@ export default function AgentDetailPage() {
       </Link>
 
       {/* 1. ZONA IZQUIERDA (Arte/Imagen) */}
-      <div 
+      <div
         // Ocupa el 100% del ancho en móvil. El alto es fijo para que la imagen se vea bien.
         className="relative w-full lg:w-[600px] flex-shrink-0 h-[50vh] lg:h-screen border-b lg:border-r border-white/10 bg-transparent"
       >
@@ -340,22 +340,22 @@ export default function AgentDetailPage() {
             unoptimized
           />
         </div>
-        
+
         {/* --- MODAL DE DETALLE DE HABILIDAD (Sobre el Personaje) --- */}
         {activeTab === 'skills' && (selectedSkill || selectedGroup) && (
           <div className="absolute bottom-4 left-4 w-full max-w-[95%] p-6 bg-gray-900 border-2 border-white/10 rounded-xl shadow-2xl backdrop-blur-md z-50 max-h-[60%] overflow-y-auto animate-slideUp">
-             
+
             {/* Si hay un grupo seleccionado, mostrar habilidades del grupo */}
             {selectedGroup ? (
               <>
                 {/* Header del Grupo */}
                 <div className="flex items-center gap-3 mb-4">
                   <div className="w-10 h-10 bg-black/50 rounded flex items-center justify-center border border-white/10">
-                    <Image 
-                      src={selectedGroup.icon} 
-                      alt={selectedGroup.label} 
-                      width={24} height={24} 
-                      className="object-contain" 
+                    <Image
+                      src={selectedGroup.icon}
+                      alt={selectedGroup.label}
+                      width={24} height={24}
+                      className="object-contain"
                       unoptimized
                     />
                   </div>
@@ -364,7 +364,7 @@ export default function AgentDetailPage() {
                     <h3 className="text-xl font-display text-white leading-none">{selectedGroup.label}</h3>
                   </div>
                 </div>
-                
+
                 {/* Lista de habilidades del grupo */}
                 <div className="space-y-4">
                   {getGroupSkills().length > 0 ? (
@@ -386,28 +386,28 @@ export default function AgentDetailPage() {
                 {/* Header del Modal */}
                 <div className="flex items-center gap-3 mb-4">
                   <div className="w-10 h-10 bg-black/50 rounded flex items-center justify-center border border-white/10">
-                     {/* Icono Pequeño */}
-                     <Image 
-                       src={skillTypeIcons[selectedSkill.type] || skillTypeIcons["Core"]} 
-                       alt="Icon" width={30} height={30} className="object-contain" 
-                       unoptimized
-                     />
+                    {/* Icono Pequeño */}
+                    <Image
+                      src={skillTypeIcons[selectedSkill.type] || skillTypeIcons["Core"]}
+                      alt="Icon" width={30} height={30} className="object-contain"
+                      unoptimized
+                    />
                   </div>
                   <div>
                     <span className="text-xs text-yellow-400 font-mono uppercase tracking-widest">{selectedSkill.type}</span>
                     <h3 className="text-xl font-display text-white leading-none">{selectedSkill.name}</h3>
                   </div>
                 </div>
-                
+
                 {/* Contenido del Modal */}
                 <div className="text-sm text-white leading-relaxed font-sans">
-                  
+
                   {/* CASO A: Habilidad Agrupada (Array de Sub-Skills) - Ahora incluye Mindscape */}
                   {selectedSkill.subSkills ? (
                     <div className="flex flex-col gap-4">
                       {selectedSkill.subSkills.map((sub, idx) => (
                         <div key={idx} className="flex flex-col gap-1">
-                          
+
                           {/* Título de la variante (Condicional: Mindscape vs Otras Habilidades) */}
                           <div className="flex items-baseline justify-between">
                             <span className="text-xs font-bold uppercase tracking-wider text-white">
@@ -420,10 +420,10 @@ export default function AgentDetailPage() {
                               </span>
                             )}
                           </div>
-                          
+
                           {/* Descripción con Resaltado (Asegura que 'Daño Glacial' se vea azul) */}
-                          <p 
-                            className="text-gray-300 text-sm leading-snug opacity-90" 
+                          <p
+                            className="text-gray-300 text-sm leading-snug opacity-90"
                             dangerouslySetInnerHTML={{ __html: processDescription(sub.description) }}
                           />
 
@@ -438,7 +438,7 @@ export default function AgentDetailPage() {
                     /* CASO B: Habilidad Simple (Core) - Texto con Procesamiento */
                     <>
                       <div dangerouslySetInnerHTML={{ __html: processDescription(selectedSkill.description) }} />
-                      
+
                       {/* Habilidad Adicional (si existe) */}
                       {selectedSkill.additionalSkill && (
                         <div className="mt-6 pt-4 border-t border-white/10">
@@ -455,13 +455,13 @@ export default function AgentDetailPage() {
                       )}
                     </>
                   )}
-                  
+
                 </div>
               </>
             ) : null}
-            
+
             {/* Botón Cerrar */}
-            <button 
+            <button
               onClick={() => {
                 setSelectedSkill(null);
                 setSelectedGroup(null);
@@ -476,7 +476,7 @@ export default function AgentDetailPage() {
 
       {/* ZONA DERECHA (Panel HUD) */}
       <div className="flex-1 flex flex-col h-full pt-12 pr-12 pb-8 relative z-20">
-         
+
         {/* --- NUEVO HEADER INFO (Reubicado y Centrado) --- */}
         <div className="mb-8 w-full flex flex-col items-center text-center">
           {/* Facción */}
@@ -489,7 +489,7 @@ export default function AgentDetailPage() {
             <span className="text-xs font-mono uppercase tracking-widest text-yellow-500">{agent.faction}</span>
             <div className="h-[1px] w-12 bg-yellow-500"></div>
           </div>
-          
+
           {/* Nombre */}
           <h1 className="text-7xl font-display font-black italic text-white drop-shadow-2xl mb-4 leading-none transform -skew-x-6">
             {agent.name}
@@ -522,27 +522,37 @@ export default function AgentDetailPage() {
               </div>
             )}
           </div>
+
+          {/* Advertencia de Beta Texto Completo */}
+          {agent.leak && agent.leak.includes("Beta") && (
+            <div className="mt-6 w-full p-3 bg-yellow-500/10 border border-yellow-500/20 rounded-lg flex items-start gap-3 text-yellow-500">
+              <TriangleAlert className="w-5 h-5 flex-shrink-0 mt-0.5" />
+              <p className="text-sm font-medium leading-relaxed text-left">
+                Este personaje se encuentra en fase Beta. Sus estadísticas y habilidades están sujetas a cambios antes del lanzamiento oficial.
+              </p>
+            </div>
+          )}
         </div>
 
         {/* PANEL GRANDE CON ESPACIO */}
         <div className="flex-1 flex flex-col justify-center pr-12 pl-12 z-20 h-full">
-           
+
           {/* Contenedor Principal - Tech HUD Style */}
           <div className="relative w-full bg-gray-950/80 border border-white/10 rounded-xl overflow-hidden shadow-[0_0_30px_rgba(0,0,0,0.5)] backdrop-blur-xl group hover:border-yellow-500/50 transition-all duration-300 p-8 flex flex-col gap-6 max-h-[85vh]">
-             
+
             {/* Header + Slider - SOLO en Stats */}
             {activeTab === 'stats' && (
               <div className="flex justify-between items-center border-b border-white/10 pb-4">
                 <h2 className="text-2xl font-display text-white-400 uppercase italic font-bold">Atributos Base</h2>
                 <div className="flex items-center gap-3">
                   <span className="text-sm font-mono text-gray-400">Nv.{level}/60</span>
-                  <input 
-                    type="range" 
-                    min="1" 
-                    max="60" 
-                    value={level} 
+                  <input
+                    type="range"
+                    min="1"
+                    max="60"
+                    value={level}
                     onChange={(e) => setLevel(Number(e.target.value))}
-                    className="w-48 h-1.5 bg-gray-700 rounded-lg appearance-none cursor-pointer accent-yellow-400" 
+                    className="w-48 h-1.5 bg-gray-700 rounded-lg appearance-none cursor-pointer accent-yellow-400"
                   />
                 </div>
               </div>
@@ -552,15 +562,15 @@ export default function AgentDetailPage() {
             {activeTab === 'stats' ? (
               /* Stats Table usando el componente StatsTable mejorado */
               <div className="text-sm overflow-y-auto pr-2 scrollbar-hide">
-                <StatsTable 
-                  currentStats={currentStats} 
+                <StatsTable
+                  currentStats={currentStats}
                   themeColor={themeColor}
                   agentRole={agent.rol}
                 />
               </div>
             ) : activeTab === 'skills' ? (
               <div className="animate-fadeIn h-full flex items-center justify-between gap-6 px-4 py-8">
-                
+
                 {/* --- COLUMNA IZQUIERDA (Contenido / Flexible) --- */}
                 {/* Esta columna contiene Títulos y Botones de Habilidad, ocupando la mayor parte del espacio */}
                 <div className="flex-1 flex flex-col gap-6">
@@ -577,13 +587,13 @@ export default function AgentDetailPage() {
                           // Buscamos las pasivas
                           const passive = details?.skills?.find(s => s.type === "Pasiva Central");
                           const additional = details?.skills?.find(s => s.type.includes("Adicional"));
-                          
+
                           // VALOR BASE (Índice 0)
                           const val = details?.coreSkillScaling ? details.coreSkillScaling[0] : "??%";
-                          
+
                           // Inyectar valor en la descripción
                           const desc = passive?.description.replace("{VALOR}", `<span class='text-green-400 font-bold '>${val}</span>`) || "";
-                          
+
                           handleSelect({
                             ...passive,
                             name: `${passive.name} (Nivel Base)`,
@@ -596,14 +606,14 @@ export default function AgentDetailPage() {
                           });
                         }}
                         className={`w-12 h-12 rounded-full border-2 flex items-center justify-center transition-all active:scale-95
-                          ${selectedSkill?.name.includes("(Base)") 
-                            ? `border-[${themeColor}] bg-[${themeColor}]/20 shadow-[0_0_15px_${themeColor}40] scale-110` 
+                          ${selectedSkill?.name.includes("(Base)")
+                            ? `border-[${themeColor}] bg-[${themeColor}]/20 shadow-[0_0_15px_${themeColor}40] scale-110`
                             : "border-gray-700 bg-gray-900 hover:border-gray-500"}
                         `}
                       >
-                        <Image 
-                          src="/CodiceZero/Habilidades/Icon_Core_Skill.webp" 
-                          alt="Core Base" width={28} height={28} className="object-contain" 
+                        <Image
+                          src="/CodiceZero/Habilidades/Icon_Core_Skill.webp"
+                          alt="Core Base" width={28} height={28} className="object-contain"
                         />
                       </button>
 
@@ -612,22 +622,22 @@ export default function AgentDetailPage() {
                         const reqLevel = idx === 5 ? 60 : 15 + (idx * 10);
                         const isActive = level >= reqLevel;
                         const isSelected = selectedSkill?.name?.includes(`Nodo ${letter}`);
-                        
+
                         // CÁLCULO: 50% base + 8.33% por nivel (aprox para llegar a 100 en 6 pasos)
                         // 50 -> 58 -> 66 -> 75 -> 83 -> 91 -> 100
                         const val = Math.min(100, Math.floor(50 + ((idx + 1) * 8.33)));
-                        
+
                         return (
                           <button
                             key={letter}
                             onClick={() => {
                               const passive = details?.skills?.find(s => s.type === "Pasiva Central");
                               const additional = details?.skills?.find(s => s.type.includes("Adicional"));
-                              
+
                               // VALOR ESCALADO (Índice idx + 1)
                               // A=1, B=2, ..., F=6
                               const val = details?.coreSkillScaling ? details.coreSkillScaling[idx + 1] : "??%";
-                              
+
                               // Inyectar valor
                               const desc = passive?.description.replace("{VALOR}", `<span class='text-green-400 font-bold'>${val}</span>`) || "";
 
@@ -653,10 +663,10 @@ export default function AgentDetailPage() {
                             }}
                           >
                             {/* Usar Imagen de Letra si existe, o Texto si no */}
-                            <Image 
-                               src={`/CodiceZero/Habilidades/Icon_Core_Skill_${letter}.webp`} 
-                               alt={letter} width={48} height={48} 
-                               className={`object-contain ${isActive ? "opacity-100" : "opacity-30 grayscale"}`}
+                            <Image
+                              src={`/CodiceZero/Habilidades/Icon_Core_Skill_${letter}.webp`}
+                              alt={letter} width={48} height={48}
+                              className={`object-contain ${isActive ? "opacity-100" : "opacity-30 grayscale"}`}
                             />
                           </button>
                         );
@@ -679,7 +689,7 @@ export default function AgentDetailPage() {
                             key={group.id}
                             onClick={() => {
                               // 1. Filtrar habilidades del grupo
-                              const skillsInGroup = details?.skills?.filter(s => 
+                              const skillsInGroup = details?.skills?.filter(s =>
                                 group.match.some(m => s.type.includes(m))
                               ) || [];
 
@@ -690,22 +700,22 @@ export default function AgentDetailPage() {
                                 type: group.label,
                                 name: group.label,
                                 // Pasamos el array de sub-habilidades en una propiedad especial
-                                subSkills: skillsInGroup, 
+                                subSkills: skillsInGroup,
                                 // Description se usa solo para habilidades simples (Core), aquí la dejamos vacía o nula
-                                description: null 
+                                description: null
                               });
                             }}
                             className={`
                               w-16 h-16 rounded-full border-2 flex items-center justify-center transition-all duration-300 group relative active:scale-95
                               ${isSelected
-                                ? `border-[${themeColor}] bg-[${themeColor}]/20 shadow-[0_0_20px_${themeColor}40] scale-110` 
+                                ? `border-[${themeColor}] bg-[${themeColor}]/20 shadow-[0_0_20px_${themeColor}40] scale-110`
                                 : "border-gray-700 bg-gray-900 hover:border-white hover:bg-white/10"}
                             `}
                           >
-                            <Image 
-                              src={group.icon} 
-                              alt={group.label} 
-                              width={40} height={40} 
+                            <Image
+                              src={group.icon}
+                              alt={group.label}
+                              width={40} height={40}
                               className={`object-contain transition-transform ${isSelected ? "scale-110" : "group-hover:scale-110"}`}
                             />
                           </button>
@@ -723,7 +733,7 @@ export default function AgentDetailPage() {
                   <button
                     onClick={() => {
                       // Filtrar habilidades que contengan "Mindscape" en el tipo
-                      const mindscapeSkills = details?.skills?.filter(skill => 
+                      const mindscapeSkills = details?.skills?.filter(skill =>
                         skill.type && skill.type.includes("Mindscape")
                       ) || [];
 
@@ -741,14 +751,14 @@ export default function AgentDetailPage() {
                     title="Mindscape Levels"
                   >
                     {/* Anillo de Glow Dinámico */}
-                    <div 
-                      className="absolute inset-0 rounded-full" 
+                    <div
+                      className="absolute inset-0 rounded-full"
                       style={{ boxShadow: `0 0 15px 5px ${themeColor}40`, borderColor: themeColor }}
                     />
 
                     {/* Texto "M" (Color del Elemento) */}
-                    <span 
-                      className="text-4xl font-black font-display leading-none z-10" 
+                    <span
+                      className="text-4xl font-black font-display leading-none z-10"
                       style={{ color: themeColor }}
                     >
                       M
@@ -783,11 +793,10 @@ export default function AgentDetailPage() {
                     setSelectedGroup(null);
                   }
                 }}
-                className={`px-6 py-2 uppercase font-display tracking-widest border-b-2 transition-all ${
-                  activeTab === tab 
-                    ? "border-yellow-400 text-yellow-400" 
-                    : "border-transparent text-gray-500 hover:border-yellow-400 hover:text-yellow-400"
-                }`}
+                className={`px-6 py-2 uppercase font-display tracking-widest border-b-2 transition-all ${activeTab === tab
+                  ? "border-yellow-400 text-yellow-400"
+                  : "border-transparent text-gray-500 hover:border-yellow-400 hover:text-yellow-400"
+                  }`}
               >
                 {tab === 'stats' ? "Atributos" : tab === 'skills' ? "Habilidades" : "Equipo"}
               </button>

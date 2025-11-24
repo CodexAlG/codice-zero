@@ -7,6 +7,7 @@ import HighlightText from "@/components/ui/HighlightText";
 import { driveDiscs } from "@/data/discs";
 import LoadingSpinner from '@/components/ui/LoadingSpinner';
 import DiscCard from '@/components/discs/DiscCard';
+import BetaWarning from "@/components/ui/BetaWarning";
 
 export default function DiscsPage() {
   const [isLoading, setIsLoading] = useState(true);
@@ -34,6 +35,8 @@ export default function DiscsPage() {
     }
   }, []);
 
+  const hasBetaContent = driveDiscs.some(disc => disc.leak === "Beta");
+
   return (
     <>
       {isLoading && <LoadingSpinner />}
@@ -45,6 +48,8 @@ export default function DiscsPage() {
             title="Base de Datos de Discos"
             subtitle="Todos los conjuntos de discos disponibles en el juego"
           />
+
+          {hasBetaContent && <BetaWarning />}
 
           {/* Discs Grid */}
           <div className="w-full max-w-7xl mx-auto">

@@ -1,12 +1,19 @@
 import Image from "next/image";
 import { memo } from 'react';
 import HighlightText from "@/components/ui/HighlightText";
+import { TriangleAlert } from "lucide-react";
 
 const DiscCard = memo(({ disc }) => {
   return (
     <div
       className="relative w-full h-auto min-h-[320px] p-5 rounded-2xl bg-gradient-to-br from-gray-900 to-gray-800 border border-white/10 hover:border-yellow-500 hover:shadow-lg hover:shadow-yellow-500/10 cursor-pointer group flex flex-col gap-4 transition-all duration-300"
     >
+      {/* Beta Warning Icon */}
+      {disc.leak === "Beta" && (
+        <div className="absolute top-2 left-2 z-10 bg-red-500/20 p-1.5 rounded-full border border-red-500/50" title="Contenido Beta">
+          <TriangleAlert className="w-4 h-4 text-red-500" />
+        </div>
+      )}
 
       {/* 1. HEADER (Imagen y Nombre) */}
       <div className="flex items-center gap-4 border-b border-white/5 pb-4">
