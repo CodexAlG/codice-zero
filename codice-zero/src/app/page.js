@@ -38,13 +38,13 @@ export default function Home() {
   ];
 
   return (
-    <div className="min-h-screen flex items-center justify-center relative overflow-hidden">
+    <div className="min-h-screen flex flex-col relative overflow-hidden">
 
       {/* Fondo de Malla (Grid) */}
       <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] pointer-events-none"></div>
 
       {/* Contenido Principal */}
-      <div className="z-10 flex flex-col items-center max-w-4xl px-6 text-center">
+      <main className="flex-1 flex flex-col items-center justify-center w-full max-w-4xl px-6 text-center mx-auto py-12">
 
         <span className="text-xs font-mono text-yellow-500/50 tracking-[0.5em] mb-[-10px] block">SYSTEM.ROOT.ACCESS</span>
 
@@ -83,7 +83,7 @@ export default function Home() {
         </div>
 
         {/* Redes Sociales */}
-        <div className="flex items-center gap-8 mb-16">
+        <div className="flex items-center gap-8 mb-8">
           {socialNetworks.map((social) => (
             <a
               key={social.name}
@@ -108,10 +108,10 @@ export default function Home() {
             </a>
           ))}
         </div>
-      </div>
+      </main>
 
       {/* Footer */}
-      <footer className="absolute bottom-6 text-center space-y-1 text-gray-600 text-xs font-mono">
+      <footer className="w-full py-6 text-center space-y-1 text-gray-600 text-xs font-mono relative z-10">
         <p>© 2025 CodiceZero. Todos los derechos reservados.</p>
         <p>Zenless Zone Zero es una marca registrada de HoYoverse.</p>
       </footer>
