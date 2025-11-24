@@ -1,5 +1,6 @@
 "use client";
 import { useState, useEffect } from 'react';
+import { motion } from 'framer-motion';
 import Image from "next/image";
 import SectionTitle from "@/components/ui/SectionTitle";
 import HighlightText from "@/components/ui/HighlightText";
@@ -47,14 +48,15 @@ export default function DiscsPage() {
 
         {/* Discs Grid */}
         <div className="w-full max-w-7xl mx-auto">
-          <div 
-            className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8 xl:grid-cols-9 gap-3 justify-center transition-none"
+          <motion.div 
+            layout 
+            className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 2xl:grid-cols-7 gap-4 justify-center transition-none"
             style={{ minHeight: '80vh' }}
           >
             {driveDiscs.map((disc) => (
               <DiscCard key={disc.id} disc={disc} />
             ))}
-          </div>
+          </motion.div>
         </div>
       </div>
     </div>
