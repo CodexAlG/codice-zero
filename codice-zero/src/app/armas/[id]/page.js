@@ -90,7 +90,7 @@ export default function WeaponDetail({ params }) {
             alt={weapon.name}
             fill
             className="object-contain drop-shadow-2xl z-10"
-            sizes="(max-width: 400px) 50vw, 400px"
+            sizes="(max-width: 400px) 50vw, 200px"
             unoptimized
           />
           {/* Icono de Rango Flotante */}
