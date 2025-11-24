@@ -12,7 +12,7 @@ export const driveDiscs = [
     id: 9925,
     name: "Brillando Aria",
     twoPiece: "Daño Etereo +10%",
-    fourPiece: "Cuando el portador realiza un Ataque Basico y golpea a un enemigo, su Maestría de anomalía aumenta en 36 puntos, con una duración de 8 segundos. La duración se restablece si se activa repetidamente. Cuando un enemigo en el campo entra en estado aturdido, el daño infligido por el portador aumenta en 25%, con una duración de 18 segundos. La duración se restablece si se activa repetidamente.",
+    fourPiece: "Cuando el portador realiza un Ataque Básico y golpea a un enemigo, su Maestría de anomalía aumenta en 36 puntos, con una duración de 8 segundos. La duración se restablece si se activa repetidamente. Cuando un enemigo en el campo entra en estado aturdido, el daño infligido por el portador aumenta en 25%, con una duración de 18 segundos. La duración se restablece si se activa repetidamente.",
     image: "/CodiceZero/Discos/SuitShiningAria.png",
     leak: "Beta"
   },

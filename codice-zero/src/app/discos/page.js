@@ -46,10 +46,15 @@ export default function DiscsPage() {
         />
 
         {/* Discs Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 items-start transition-none" style={{ minHeight: '50vh' }}>
-          {driveDiscs.map((disc) => (
-            <DiscCard key={disc.id} disc={disc} />
-          ))}
+        <div className="w-full max-w-7xl mx-auto">
+          <div 
+            className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8 xl:grid-cols-9 gap-3 justify-center transition-none"
+            style={{ minHeight: '80vh' }}
+          >
+            {driveDiscs.map((disc) => (
+              <DiscCard key={disc.id} disc={disc} />
+            ))}
+          </div>
         </div>
       </div>
     </div>

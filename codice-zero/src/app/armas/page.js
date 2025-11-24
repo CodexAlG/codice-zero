@@ -158,8 +158,8 @@ export default function ArmasPage() {
       <div className="w-full max-w-7xl mx-auto">
         <motion.div 
           layout 
-          className="grid grid-cols-4 md:grid-cols-6 lg:grid-cols-8 xl:grid-cols-9 gap-4 justify-center items-start transition-none"
-          style={{ minHeight: '50vh' }}
+          className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8 xl:grid-cols-9 gap-3 justify-center transition-none"
+          style={{ minHeight: '80vh' }}
         >
         <AnimatePresence mode="popLayout">
           {filteredWeapons.map((weapon) => (

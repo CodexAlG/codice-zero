@@ -102,7 +102,7 @@ export default function AgentDetailPage() {
   // 3. TERCERO: Validar si existe (Return temprano)
   if (!agent) {
     return (
-      <div className="fixed inset-0 bg-gray-950 text-white flex items-center justify-center pl-20">
+      <div className="min-h-screen bg-gray-950 text-white flex items-center justify-center">
         <p className="text-2xl">Agente no encontrado</p>
       </div>
     );
@@ -300,7 +300,7 @@ export default function AgentDetailPage() {
 
   if (!details) {
     return (
-      <div className="fixed inset-0 bg-gray-950 text-white flex items-center justify-center pl-20">
+      <div className="min-h-screen bg-gray-950 text-white flex items-center justify-center">
         <div className="text-center">
           <h1 className="text-4xl font-orbitron mb-4">{agent.name}</h1>
           <p className="text-xl text-yellow-400">Próximamente</p>
@@ -311,19 +311,22 @@ export default function AgentDetailPage() {
 
   // 5. QUINTO: Return del JSX
   return (
-    <div className="fixed inset-0 text-white flex pl-20 overflow-hidden">
+    <div className="min-h-screen text-white flex flex-col lg:flex-row overflow-y-auto">
        
       {/* BOTÓN VOLVER - POSICION ABSOLUTA */}
       <Link 
         href="/personajes" 
-        className="absolute top-4 left-20 z-50 inline-flex items-center text-gray-400 hover:text-white transition-colors bg-black/40 px-4 py-2 rounded-lg border border-white/10"
+        className="absolute top-4 left-4 lg:left-20 z-50 inline-flex items-center text-gray-400 hover:text-white transition-colors bg-black/40 px-4 py-2 rounded-lg border border-white/10"
       >
         <ArrowLeft className="w-4 h-4 mr-2" />
         Volver
       </Link>
 
-      {/* IZQUIERDA: 550px Fijos o W-1/2 (Aumento de Tamaño) */}
-      <div className="relative w-[550px] xl:w-[600px] h-full border-r border-white/10 bg-transparent flex-shrink-0">
+      {/* 1. ZONA IZQUIERDA (Arte/Imagen) */}
+      <div 
+        // Ocupa el 100% del ancho en móvil. El alto es fijo para que la imagen se vea bien.
+        className="relative w-full lg:w-[600px] flex-shrink-0 h-[50vh] lg:h-screen border-b lg:border-r border-white/10 bg-transparent"
+      >
         {/* Imagen de Fondo Limpia */}
         <div className="absolute inset-0 z-0">
           <div className="absolute inset-0 bg-gradient-to-r from-transparent via-black/10 to-gray-950 z-10"></div>
