@@ -13,16 +13,16 @@ export const weapons = [
     rank: "S",
     rol: "Anomalia",
     // Info para la Tarjeta (Vista rápida)
-    stats: { main: "PEN Ratio", value: "24%" }, 
-    
+    stats: { main: "PEN Ratio", value: "24%" },
+
     // Info para el Detalle (Vista completa)
     detailStats: {
       baseAtk: { min: 46, max: 684 },     // Nvl 1 -> 60
       subStat: { name: "Tasa de Perforación", min: "9.6%", max: "24%" } // Nvl 1 -> 60
     },
     effect: {
-      title: "Gestión de Datos",
-      description: "Aumenta el Ataque en un 12%. Al ejecutar una <span class='text-white font-bold'>técnica especial</span> o una <span class='text-white font-bold'>técnica especial EX</span>, aumenta la Maestría de Anomalía del portador en 25 ptos. durante 8 s. Pueden acumularse hasta 3 cargas. La duración de cada carga es independiente.",
+      title: "",
+      description: "Aumenta el Ataque en un 12%. Al ejecutar una (técnica especial) o una (técnica especial EX), aumenta la Maestría de Anomalía del portador en 25 ptos. durante 8 s. Pueden acumularse hasta 3 cargas. La duración de cada carga es independiente.",
       refinements: [ // Tabla de Mejora (R1 - R5)
         { level: 1, atk: "12%", mastery: "25" },
         { level: 2, atk: "15%", mastery: "31" },
@@ -43,8 +43,8 @@ export const weapons = [
       subStat: { name: "Maestría de Anomalía", min: "36", max: "90" } // Nvl 1 -> 60
     },
     effect: {
-      title: "Gestión de Datos",
-      description: "Al ejecutar un <span class='text-white font-bold'>ataque rapido</span>, obtienes 1 carga de <span class='text-white font-bold'>instinto cazador</span>. Por cada carga de <span class='text-white font-bold'>instinto cazador</span>, el <span class='text-yellow-400 font-bold'>daño físico</span> del portador aumenta en un 12% durante 10 s. Pueden acumularse hasta 3 cargas. Puede activarse una vez cada 0.5 s. La duración se reinicia con cada activación. Al entrar en combate o al ejecutar una evasión perfecta, el portador obtiene 3 cargas de <span class='text-white font-bold'>instinto cazador</span> de inmediato. Cuando las cargas de <span class='text-white font-bold'>instinto cazador</span> alcanzan el máximo, la tasa de acumulación de Anomalía de Atributo del portador aumenta en un 40%.",
+      title: "",
+      description: "Al ejecutar un (ataque rapido), obtienes 1 carga de (instinto cazador). Por cada carga de (instinto cazador), el daño físico del portador aumenta en un 12% durante 10 s. Pueden acumularse hasta 3 cargas. Puede activarse una vez cada 0.5 s. La duración se reinicia con cada activación. Al entrar en combate o al ejecutar una (evasión perfecta), el portador obtiene 3 cargas de (instinto cazador) de inmediato. Cuando las cargas de (instinto cazador) alcanzan el máximo, la tasa de acumulación de Anomalía de Atributo del portador aumenta en un 40%.",
       refinements: [ // Tabla de Mejora (R1 - R5)
         { level: 1, atk: "12%", mastery: "40%" },
         { level: 2, atk: "15%", mastery: "50%" },
@@ -60,8 +60,21 @@ export const weapons = [
     name: "Agitador de Llamas", // Burnice (Flamemaker Shaker)
     rank: "S",
     rol: "Anomalia",
-    stats: { main: "ATK %", value: "30%" },
-    effect: "Aumenta la recuperación de energía. Al golpear con una Especial EX, aumenta el ataque y la Maestría de Anomalía.",
+    detailStats: {
+      baseAtk: { min: 48, max: 713 },     // Nvl 1 -> 60
+      subStat: { name: "Ataque", min: "12%", max: "30%" } // Nvl 1 -> 60
+    },
+    effect: {
+      title: "",
+      description: "Mientras está fuera del campo, la Regeneración de Energía del equipo aumenta en 0.6/s. Cuando golpea a un enemigo con un (ataque especial o ataque rápido), el daño del equipo aumenta en un 3.5%, apilándose hasta 10 veces y durando 6s. Este efecto puede desencadenar una vez cada 0.3s. Mientras está fuera del campo, el efecto de la pila se duplica. Los desencadenadores repetidos restablecen la duración. Al obtener el efecto de aumento de Daño, si el número de pilas de corriente es mayor o igual a 5, entonces la Maestria de Anomalía del equipo aumenta en 50. Este aumento de la Maestria de Anomalía no se acumula y dura 6s.",
+      refinements: [ // Tabla de Mejora (R1 - R5)
+        { level: 1, atk: "0.6%", tasa: "3.5%", mastery: "50" },
+        { level: 2, atk: "0.75%", tasa: "4.4%", mastery: "62" },
+        { level: 3, atk: "0.9%", tasa: "5.2%", mastery: "75" },
+        { level: 4, atk: "1.05%", tasa: "6.1%", mastery: "87" },
+        { level: 5, atk: "1.2%", tasa: "7.0%", mastery: "100" }
+      ]
+    },
     image: "/CodiceZero/Armas/Anomalia/W-Engine_Flamemaker_Shaker.png" // Es PNG
   },
   {
@@ -473,7 +486,7 @@ export const weapons = [
     effect: "Al atacar por la espalda, el daño de aturdimiento aumenta un 20%.",
     image: "/CodiceZero/Armas/Aturdidor/W-Engine_Box_Cutter.webp"
   },
-  
+
 
   // --- RANGO B (Desde 5707) ---
   {
@@ -518,7 +531,7 @@ export const weapons = [
     effect: "Aumenta el escudo generado. Al bloquear o interrumpir, aumenta el daño de todo el equipo un 18%.",
     image: "/CodiceZero/Armas/Defensa/W-Engine_Tusks_of_Fury.webp"
   },
-  
+
 
   // --- RANGO A (Desde 5623 para evitar conflictos) ---
   {
@@ -629,7 +642,7 @@ export const weapons = [
     image: "/CodiceZero/Armas/Ruptura/W-Engine_Qingming_Birdcage.webp"
   },
   // --- RANGO A (Desde 5628 para evitar conflictos) ---
-  
+
   {
     id: 5630,
     name: "Ignición Fatua", // Grill O'Wisp
@@ -757,7 +770,7 @@ export const weapons = [
     effect: "Al usar Especial EX, aumenta el ATK de todo el equipo.",
     image: "/CodiceZero/Armas/Soporte/W-Engine_Bashful_Demon.webp"
   },
-  
+
 
   // --- RANGO B (Desde 5716) ---
   {
@@ -796,8 +809,8 @@ export const weapons = [
     rank: "S",
     rol: "Aturdidor",
     // Info para la Tarjeta (Vista rápida)
-    stats: { main: "Ataque", value: "713" }, 
-    
+    stats: { main: "Ataque", value: "713" },
+
     // Info para el Detalle (Vista completa)
     detailStats: {
       baseAtk: { min: 48, max: 713 },     // Nvl 1 -> 60
@@ -811,8 +824,8 @@ export const weapons = [
     rank: "S",
     rol: "Ruptura",
     // Info para la Tarjeta (Vista rápida)
-    stats: { main: "Ataque", value: "713" }, 
-    
+    stats: { main: "Ataque", value: "713" },
+
     // Info para el Detalle (Vista completa)
     detailStats: {
       baseAtk: { min: 55, max: 713 },     // Nvl 1 -> 60
@@ -826,7 +839,7 @@ export const weapons = [
     rank: "S",
     rol: "Defensa",
     // Info para la Tarjeta (Vista rápida)
-    stats: { main: "Ataque", value: "713" }, 
+    stats: { main: "Ataque", value: "713" },
     leak: "Beta",
     // Info para el Detalle (Vista completa)
     detailStats: {
@@ -841,7 +854,7 @@ export const weapons = [
     rank: "S",
     rol: "Ataque",
     // Info para la Tarjeta (Vista rápida)
-    stats: { main: "Ataque", value: "743" }, 
+    stats: { main: "Ataque", value: "743" },
     leak: "Beta",
     // Info para el Detalle (Vista completa)
     detailStats: {

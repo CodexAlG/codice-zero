@@ -70,14 +70,14 @@ export const agentDetails = {
         tags: ["Físico", "Evasión"],
       },
       {
-        type: "Ataque de Carrera",
+        type: "Evasión",
         name: "Ataque de Carrera",
         description: "Al usar (Evasión), Clic [Icono Ataque] para activar: Causa Daño Físico.",
         tags: ["Físico", "Ataque de Carrera", "Evasión"],
       },
       {
-        type: "Ataque de Carrera",
-        name: "Corte de Retirada",
+        type: "Evasión",
+        name: "Ataque de Carrera: Corte de Retirada",
         description: "Bajo (Forma de Empuñadura), sin mover el joystick/palanca Clic [Icono Dodges] para activar: Lanza un rápido corte de retirada, si durante el periodo activa una (evasión perfecta), Clic [Icono Ataque] para activar rápidamente (Ataque Básico: Forma de Empuñadura Tierra Definitiva). Posee estado de invencibilidad durante la activación.",
         tags: ["Físico", "Ataque de Carrera", "Forma de Empuñadura", "Evasión"],
       },
