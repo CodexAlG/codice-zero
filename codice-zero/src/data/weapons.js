@@ -68,11 +68,11 @@ export const weapons = [
       title: "",
       description: "Mientras está fuera del campo, la Regeneración de Energía del equipo aumenta en 0.6/s. Cuando golpea a un enemigo con un (ataque especial o ataque rápido), el daño del equipo aumenta en un 3.5%, apilándose hasta 10 veces y durando 6s. Este efecto puede desencadenar una vez cada 0.3s. Mientras está fuera del campo, el efecto de la pila se duplica. Los desencadenadores repetidos restablecen la duración. Al obtener el efecto de aumento de Daño, si el número de pilas de corriente es mayor o igual a 5, entonces la Maestria de Anomalía del equipo aumenta en 50. Este aumento de la Maestria de Anomalía no se acumula y dura 6s.",
       refinements: [ // Tabla de Mejora (R1 - R5)
-        { level: 1, atk: "0.6", tasa: "3.5%", mastery: "50" },
-        { level: 2, atk: "0.75", tasa: "4.4%", mastery: "62" },
-        { level: 3, atk: "0.9", tasa: "5.2%", mastery: "75" },
-        { level: 4, atk: "1.05", tasa: "6.1%", mastery: "87" },
-        { level: 5, atk: "1.2", tasa: "7.0%", mastery: "100" }
+        { level: 1, atk: "0.6/s", tasa: "3.5%", mastery: "50" },
+        { level: 2, atk: "0.75/s", tasa: "4.4%", mastery: "62" },
+        { level: 3, atk: "0.9/s", tasa: "5.2%", mastery: "75" },
+        { level: 4, atk: "1.05/s", tasa: "6.1%", mastery: "87" },
+        { level: 5, atk: "1.2/s", tasa: "7.0%", mastery: "100" }
       ]
     },
     image: "/CodiceZero/Armas/Anomalia/W-Engine_Flamemaker_Shaker.png" // Es PNG

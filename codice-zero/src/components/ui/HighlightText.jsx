@@ -22,16 +22,16 @@ const createHighlightRules = (elementColor = "#facc15") => [
     pattern: /(¡No te muevas! \[Modo Asalto\]|¡Por favor, no se resista! \[Modo Supresivo\]|Flash Freeze|Congelación Relámpago|Recorte de Dientes de Sierra|Invierno Eterno|Dientes Afilados|Emboscada Ártica|Barrido de Cola|Coleatazo|Ofensiva de Fuego|Poder de Fuego Abrumador|Disparo de Perdigones|Aluvión Completo|Modo de Erradicación|Modo de Erradicación Máxima|Recarga Rápida|Ascua Etérea|Perforación Etérea|Paquete de Energía Expandido III)/gi,
     color: "text-white font-bold",
   },
-  // Skill and mechanic names – without the generic "Cadena" word (handled separately)
+  // Skill and mechanic names – without generic "Cadena"
   {
     pattern: /((?:Técnica )?Especial(?: EX)?|Definitiva|Asistencia(?: Rápida|Defensiva|Evasiva)?|Ataque(?:s)? Básico(?:s)?|Básico|Basico|Dash|Contraataque|Réplica|Astral|Aturdir|Evadir|Evasión|Evasion|Aturdimiento)/gi,
     color: "text-white font-bold",
   },
   // Highlight the word "Cadena" only when it stands alone
   { pattern: /\bCadena\b/gi, color: "text-white font-bold" },
-  // Emerald span with trailing /s – keep the number and the "/s"
+  // Emerald span – highlight the number inside the span
   {
-    pattern: /<span class="text-emerald-400 font-bold text-lg">([^<]+)<\/span>\/s/g,
+    pattern: /<span class="text-emerald-400 font-bold text-lg">([^<]+)<\/span>/g,
     color: "text-emerald-400 font-bold text-lg",
     extract: true,
   },
