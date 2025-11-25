@@ -3,10 +3,10 @@ const getInterpolatedValue = (min, max, level) => {
     // FIX CRUCIAL: Usamos Number() para una conversión segura a número
     const numMin = Number(min);
     const numMax = Number(max);
-    
+
     if (level <= 1) return numMin;
     if (level >= 60) return numMax;
-    
+
     // (Si por alguna razón numMin/numMax siguen siendo inválidos, Math.floor(NaN) es NaN. 
     // Pero esto cubre el caso de conversión).
     const percent = (level - 1) / 59;
@@ -51,6 +51,7 @@ export const calculateStatsWithCore = (baseStats, level, coreConfig) => {
     let anomalyRate = baseStats.anomalyRate;
     let energyRegen = baseStats.energyRegen;
     let impact = baseStats.impact;
+    let penRatio = baseStats.penRatio; // Added penRatio variable
 
     // 3. Helper para sumar porcentajes/valores planos
     const addPercentage = (baseStr, bonus) => {
@@ -72,38 +73,49 @@ export const calculateStatsWithCore = (baseStats, level, coreConfig) => {
         bonusValue = baseHpMin * (addedSpecial / 100);
         hp = hp + bonusValue;
         buffedStat = "hp";
-    
+
     } else if (originalStatName.includes("atk%")) {
         const baseAtkMin = baseStats.atk.min;
         bonusValue = baseAtkMin * (addedSpecial / 100);
         atk = atk + bonusValue;
         buffedStat = "atk";
-    
+
     } else if (originalStatName.includes("def%")) {
         const baseDefMin = baseStats.def.min;
         bonusValue = baseDefMin * (addedSpecial / 100);
         def = def + bonusValue;
         buffedStat = "def";
-    
+
     } else if (statName.includes("prob") || statName.includes("crit rate") || statName.includes("crítica")) {
         critRate = addPercentage(baseStats.crit, addedSpecial);
         buffedStat = "crit";
+        bonusValue = addedSpecial;
     } else if (statName.includes("daño") || statName.includes("crit dmg") || statName.includes("dano")) {
         critDmg = addPercentage(baseStats.critDmg, addedSpecial);
         buffedStat = "critDmg";
+        bonusValue = addedSpecial;
     } else if (statName.includes("maestría") || statName.includes("maestria") || statName.includes("mastery")) {
         // Si es plano (no %), sumamos directo
         anomalyMastery = (parseInt(baseStats.anomalyMastery) + Math.floor(addedSpecial)).toString();
         buffedStat = "anomalyMastery";
+        bonusValue = addedSpecial;
     } else if (statName.includes("tasa") || statName.includes("anomaly rate")) {
         anomalyRate = (parseInt(baseStats.anomalyRate) + Math.floor(addedSpecial)).toString();
         buffedStat = "anomalyRate";
+        bonusValue = addedSpecial;
     } else if (statName.includes("energía") || statName.includes("energia") || statName.includes("energy")) {
         energyRegen = (parseFloat(baseStats.energyRegen) + addedSpecial).toFixed(2);
         buffedStat = "energyRegen";
+        bonusValue = addedSpecial;
     } else if (statName.includes("impacto") || statName.includes("impact")) {
+        // Impacto suele ser plano en el juego, pero si viene como string, aseguramos
         impact = (parseFloat(baseStats.impact) + addedSpecial).toString();
         buffedStat = "impact";
+        bonusValue = addedSpecial;
+    } else if (statName.includes("pen ratio") || statName.includes("perforación") || statName.includes("perforacion")) {
+        penRatio = addPercentage(baseStats.penRatio, addedSpecial);
+        buffedStat = "penRatio";
+        bonusValue = addedSpecial;
     }
     // SheerForce no longer has special handling - it's calculated separately above with interpolation
 
@@ -112,13 +124,13 @@ export const calculateStatsWithCore = (baseStats, level, coreConfig) => {
         hp: Math.floor(hp).toLocaleString(),
         def: Math.floor(def).toLocaleString(),
         atk: Math.floor(atk).toLocaleString(),
-        impact: baseStats.impact, // Valor fijo o base
+        impact: impact, // Usamos la variable local modificada
         sheerForce: sheerForce ? Math.floor(sheerForce).toLocaleString() : null, // Solo interpolado
         crit: critRate,
         critDmg: critDmg,
         anomalyMastery: anomalyMastery,
         anomalyRate: anomalyRate,
-        penRatio: baseStats.penRatio,
+        penRatio: penRatio, // Usamos la variable local modificada
         energyRegen: energyRegen,
 
         buffedStat: buffedStat,
