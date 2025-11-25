@@ -17,7 +17,7 @@ export const agentDetails = {
       energyRegen: "1.2",
     },
     coreStats: {
-      statName: "prob", // Core stat único para alcanzar el cap de buff
+      statName: "crit rate", // Core stat único para alcanzar el cap de buff
       valuePerNode: 4.8,
     },
     skills: [
@@ -259,7 +259,7 @@ export const agentDetails = {
       sheerForce: { min: 105, max: 1107 },
     },
     coreStats: {
-      statName: "Core Prob. Crítica", // Core stat único para alcanzar el cap de buff
+      statName: "crit rate", // Core stat único para alcanzar el cap de buff
       valuePerNode: 4.8,
     },
   },
@@ -278,7 +278,7 @@ export const agentDetails = {
       energyRegen: "1.2", // Regeneración nativa de Soporte S
     },
     coreStats: {
-      statName: "Core Prob. Crítica", // Core stat único para alcanzar el cap de buff
+      statName: "crit rate", // Core stat único para alcanzar el cap de buff
       valuePerNode: 4.8,
     },
   },
@@ -300,7 +300,7 @@ export const agentDetails = {
       sheerForce: { min: 105, max: 1107 },
     },
     coreStats: {
-      statName: "Core Prob. Crítica",
+      statName: "crit rate",
       valuePerNode: 4.8,
     },
     coreSkillScaling: ["50%", "58%", "66%", "74%", "82%", "90%", "100%"],
@@ -468,7 +468,7 @@ export const agentDetails = {
       energyRegen: "1.2", // Regeneración nativa de Soporte S
     },
     coreStats: {
-      statName: "energía", // Core stat único para alcanzar el cap de buff
+      statName: "energia", // Core stat único para alcanzar el cap de buff
       valuePerNode: 0.12,
     },
   },
@@ -487,7 +487,7 @@ export const agentDetails = {
       sheerForce: { min: 94, max: 999 },
     },
     coreStats: {
-      statName: "Atk %",
+      statName: "atk%",
       valuePerNode: 4.0,
     },
   },
@@ -509,7 +509,7 @@ export const agentDetails = {
       energyRegen: "1.2",
     },
     coreStats: {
-      statName: "Crit Rate",
+      statName: "crit rate",
       valuePerNode: 4.8,
     },
   },
@@ -527,7 +527,7 @@ export const agentDetails = {
       energyRegen: "1.2",
     },
     coreStats: {
-      statName: "Crit Dmg",
+      statName: "crit dmg",
       valuePerNode: 9.6,
     },
   },
@@ -549,7 +549,7 @@ export const agentDetails = {
       energyRegen: "1.4",
     },
     coreStats: {
-      statName: "Anomaly Proficiency",
+      statName: "maestria",
       valuePerNode: 18,
     },
   },
@@ -567,7 +567,7 @@ export const agentDetails = {
       energyRegen: "2.4",
     },
     coreStats: {
-      statName: "Energy Regen",
+      statName: "energia",
       valuePerNode: 0.2,
     },
   },
@@ -589,7 +589,7 @@ export const agentDetails = {
       energyRegen: "1.2",
     },
     coreStats: {
-      statName: "Impact",
+      statName: "impact",
       valuePerNode: 6.0,
     },
   },
@@ -607,7 +607,7 @@ export const agentDetails = {
       energyRegen: "1.2",
     },
     coreStats: {
-      statName: "Pen Ratio",
+      statName: "pen ratio",
       valuePerNode: 4.8,
     },
   },
@@ -625,7 +625,7 @@ export const agentDetails = {
       energyRegen: "1.0",
     },
     coreStats: {
-      statName: "Def %",
+      statName: "def%",
       valuePerNode: 7.5,
     },
   },
@@ -648,7 +648,7 @@ export const agentDetails = {
       energyRegen: "1.2",
     },
     coreStats: {
-      statName: "Crit Rate", // Necesario según builds de usuarios beta
+      statName: "crit rate", // Necesario según builds de usuarios beta
       valuePerNode: 4.8,
     },
   },
@@ -666,7 +666,7 @@ export const agentDetails = {
       energyRegen: "1.5",
     },
     coreStats: {
-      statName: "Anomaly Proficiency",
+      statName: "maestria",
       valuePerNode: 18,
     },
   },
@@ -689,7 +689,7 @@ export const agentDetails = {
       energyRegen: "1.2",
     },
     coreStats: {
-      statName: "Crit Rate", // Único Aturdidor que sube Crítico por Core
+      statName: "crit rate", // Único Aturdidor que sube Crítico por Core
       valuePerNode: 4.8,
     },
   },
@@ -707,7 +707,7 @@ export const agentDetails = {
       energyRegen: "1.2",
     },
     coreStats: {
-      statName: "Crit Dmg",
+      statName: "crit dmg",
       valuePerNode: 9.6,
     },
   },
@@ -725,7 +725,7 @@ export const agentDetails = {
       energyRegen: "1.2",
     },
     coreStats: {
-      statName: "Impact",
+      statName: "impact",
       valuePerNode: 4.0,
     },
   },
@@ -748,7 +748,7 @@ export const agentDetails = {
       energyRegen: "2.6", // Muy alta regen
     },
     coreStats: {
-      statName: "Atk %",
+      statName: "atk%",
       valuePerNode: 4.8,
     },
   },
@@ -766,7 +766,7 @@ export const agentDetails = {
       energyRegen: "1.2",
     },
     coreStats: {
-      statName: "Crit Rate",
+      statName: "crit rate",
       valuePerNode: 4.8,
     },
   },
@@ -789,7 +789,7 @@ export const agentDetails = {
       energyRegen: "1.2",
     },
     coreStats: {
-      statName: "Crit Dmg", // Híbrido crit/anomalia
+      statName: "crit dmg", // Híbrido crit/anomalia
       valuePerNode: 9.6,
     },
   },
@@ -809,7 +809,7 @@ export const agentDetails = {
       energyRegen: "1.2",
     },
     coreStats: {
-      statName: "Crit Rate",
+      statName: "crit rate",
       valuePerNode: 4.8,
     },
   },
@@ -832,7 +832,7 @@ export const agentDetails = {
       energyRegen: "1.5",
     },
     coreStats: {
-      statName: "Anomaly Proficiency",
+      statName: "maestria",
       valuePerNode: 18,
     },
   },
@@ -851,7 +851,7 @@ export const agentDetails = {
       energyRegen: "1.2",
     },
     coreStats: {
-      statName: "Impact",
+      statName: "impact",
       valuePerNode: 6.0,
     },
   },
@@ -874,7 +874,7 @@ export const agentDetails = {
       energyRegen: "1.4",
     },
     coreStats: {
-      statName: "Atk %",
+      statName: "atk%",
       valuePerNode: 4.8,
     },
   },
@@ -893,7 +893,7 @@ export const agentDetails = {
       energyRegen: "1.2",
     },
     coreStats: {
-      statName: "Impact",
+      statName: "impact",
       valuePerNode: 6.0,
     },
   },
@@ -916,7 +916,7 @@ export const agentDetails = {
       energyRegen: "1.2",
     },
     coreStats: {
-      statName: "Anomaly Proficiency",
+      statName: "maestria",
       valuePerNode: 18,
     },
   },
@@ -934,7 +934,7 @@ export const agentDetails = {
       energyRegen: "1.2",
     },
     coreStats: {
-      statName: "Impact",
+      statName: "impact",
       valuePerNode: 6.0,
     },
   },
@@ -952,7 +952,7 @@ export const agentDetails = {
       energyRegen: "1.2",
     },
     coreStats: {
-      statName: "Atk %",
+      statName: "atk%",
       valuePerNode: 4.0,
     },
   },
@@ -975,7 +975,7 @@ export const agentDetails = {
       energyRegen: "1.2",
     },
     coreStats: {
-      statName: "Crit Dmg",
+      statName: "crit dmg",
       valuePerNode: 9.6,
     },
   },
@@ -994,7 +994,7 @@ export const agentDetails = {
       energyRegen: "1.2",
     },
     coreStats: {
-      statName: "Crit Rate",
+      statName: "crit rate",
       valuePerNode: 4.8,
     },
   },
@@ -1016,7 +1016,7 @@ export const agentDetails = {
       energyRegen: "1.2",
     },
     coreStats: {
-      statName: "Impact",
+      statName: "impact",
       valuePerNode: 6.0,
     },
   },
@@ -1034,7 +1034,7 @@ export const agentDetails = {
       energyRegen: "1.2",
     },
     coreStats: {
-      statName: "Atk %",
+      statName: "atk%",
       valuePerNode: 4.8,
     },
   },
@@ -1052,7 +1052,7 @@ export const agentDetails = {
       energyRegen: "1.2",
     },
     coreStats: {
-      statName: "Impact",
+      statName: "impact",
       valuePerNode: 6.0,
     },
   },
@@ -1070,7 +1070,7 @@ export const agentDetails = {
       energyRegen: "2.4",
     },
     coreStats: {
-      statName: "Pen Ratio",
+      statName: "pen ratio",
       valuePerNode: 4.8,
     },
   },
@@ -1088,7 +1088,7 @@ export const agentDetails = {
       energyRegen: "1.4",
     },
     coreStats: {
-      statName: "Anomaly Proficiency",
+      statName: "maestria",
       valuePerNode: 18,
     },
   },
@@ -1106,7 +1106,7 @@ export const agentDetails = {
       energyRegen: "1.2",
     },
     coreStats: {
-      statName: "Crit Dmg",
+      statName: "crit dmg",
       valuePerNode: 9.6,
     },
   },
@@ -1128,7 +1128,7 @@ export const agentDetails = {
       energyRegen: "1.8",
     },
     coreStats: {
-      statName: "Atk %",
+      statName: "atk%",
       valuePerNode: 4.0,
     },
   },
@@ -1146,7 +1146,7 @@ export const agentDetails = {
       energyRegen: "1.2",
     },
     coreStats: {
-      statName: "Anomaly Proficiency",
+      statName: "maestria",
       valuePerNode: 15,
     },
   },
@@ -1164,7 +1164,7 @@ export const agentDetails = {
       energyRegen: "1.6",
     },
     coreStats: {
-      statName: "Atk %",
+      statName: "atk%",
       valuePerNode: 4.0,
     },
   },
@@ -1182,7 +1182,7 @@ export const agentDetails = {
       energyRegen: "2.0",
     },
     coreStats: {
-      statName: "Energy Regen",
+      statName: "energia",
       valuePerNode: 0.16,
     },
   },
@@ -1200,7 +1200,7 @@ export const agentDetails = {
       energyRegen: "1.2",
     },
     coreStats: {
-      statName: "Impact",
+      statName: "impact",
       valuePerNode: 4.0,
     },
   },
@@ -1218,7 +1218,7 @@ export const agentDetails = {
       energyRegen: "1.2",
     },
     coreStats: {
-      statName: "Crit Rate",
+      statName: "crit rate",
       valuePerNode: 4.0,
     },
   },
@@ -1236,7 +1236,7 @@ export const agentDetails = {
       energyRegen: "1.2",
     },
     coreStats: {
-      statName: "Crit Dmg",
+      statName: "crit dmg",
       valuePerNode: 8.0,
     },
   },
@@ -1254,7 +1254,7 @@ export const agentDetails = {
       energyRegen: "1.0",
     },
     coreStats: {
-      statName: "Def %",
+      statName: "def%",
       valuePerNode: 6.0,
     },
   },
@@ -1272,7 +1272,7 @@ export const agentDetails = {
       energyRegen: "1.0",
     },
     coreStats: {
-      statName: "Atk %",
+      statName: "atk%",
       valuePerNode: 4.0,
     },
   }
