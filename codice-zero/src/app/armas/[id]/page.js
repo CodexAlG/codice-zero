@@ -1,6 +1,7 @@
 "use client";
 import { useState, use } from "react"; // Importar 'use'
 import Image from "next/image";
+import HighlightText from "@/components/ui/HighlightText";
 import Link from "next/link";
 import { weapons } from "@/data/weapons"; // Usamos la base de datos única
 import { ArrowLeft, TriangleAlert } from "lucide-react"; // O tu icono de regreso
@@ -68,7 +69,11 @@ export default function WeaponDetail({ params }) {
       desc = desc.replace(regex, `<span class="text-emerald-400 font-bold text-lg">${currentVal}</span>`);
     });
 
-    return <div className="text-sm md:text-base leading-7 text-gray-400" dangerouslySetInnerHTML={{ __html: desc }} />;
+    return (
+      <div className="text-sm md:text-base leading-7 text-gray-400">
+        <HighlightText text={desc} />
+      </div>
+    );
   };
 
   return (
