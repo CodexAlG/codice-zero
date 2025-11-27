@@ -551,7 +551,7 @@ export default function AgentDetailPage() {
         <div className="flex-1 flex flex-col justify-center px-0 lg:px-12 z-20 h-full">
 
           {/* Contenedor Principal - Tech HUD Style */}
-          <div className="relative w-full bg-gray-950/80 border border-white/10 rounded-xl overflow-hidden shadow-[0_0_30px_rgba(0,0,0,0.5)] backdrop-blur-xl group hover:border-yellow-500/50 transition-all duration-300 p-4 lg:p-8 flex flex-col gap-6 max-h-[85vh]">
+          <div className="relative w-full bg-gray-950/80 border border-white/10 rounded-xl overflow-hidden shadow-[0_0_30px_rgba(0,0,0,0.5)] backdrop-blur-xl group hover:border-yellow-500/50 transition-all duration-300 p-4 lg:p-6 flex flex-col gap-2 max-h-[85vh]">
 
             {/* Header + Slider - SOLO en Stats */}
             {activeTab === 'stats' && (
@@ -561,7 +561,7 @@ export default function AgentDetailPage() {
                   agentRole={agent.rol}
                   themeColor={themeColor}
                 />
-                <div className="flex flex-col sm:flex-row justify-between items-center border-b border-white/10 pb-4 gap-4">
+                <div className="flex flex-col sm:flex-row justify-between items-center border-b border-white/10 pb-2 gap-4">
                   <h2 className="text-2xl font-display text-white-400 uppercase italic font-bold text-center sm:text-left">Atributos Base</h2>
                   <div className="flex items-center gap-3 w-full sm:w-auto justify-center">
                     <span className="text-sm font-mono text-gray-400 whitespace-nowrap">Nv.{level}/60</span>

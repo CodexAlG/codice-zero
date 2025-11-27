@@ -103,25 +103,25 @@ export default function AscensionMaterials({ level, agentRole, themeColor }) {
         return (
             <Link href={detailUrl} className="flex flex-col items-center gap-1 cursor-pointer group/item">
                 <div
-                    className="relative w-12 h-12 bg-black/60 rounded-lg border border-white/10 flex items-center justify-center shadow-lg group-hover/item:scale-105 transition-transform duration-200"
+                    className="relative w-16 h-16 bg-black/60 rounded-xl border border-white/10 flex items-center justify-center shadow-lg group-hover/item:scale-105 transition-transform duration-200"
                     style={{ borderColor: color ? `${color}60` : 'rgba(255,255,255,0.1)' }}
                 >
                     {/* Glow effect */}
                     {color && (
                         <div
-                            className="absolute inset-0 rounded-lg opacity-20"
-                            style={{ backgroundColor: color, boxShadow: `0 0 10px ${color}` }}
+                            className="absolute inset-0 rounded-xl opacity-20"
+                            style={{ backgroundColor: color, boxShadow: `0 0 15px ${color}` }}
                         />
                     )}
                     <Image
                         src={icon}
                         alt={label}
-                        width={32}
-                        height={32}
+                        width={48}
+                        height={48}
                         className="object-contain z-10"
                     />
                 </div>
-                <span className="text-xs font-bold font-mono bg-black/40 px-1.5 py-0.5 rounded text-white border border-white/5">
+                <span className="text-sm font-bold font-mono bg-black/40 px-2 py-0.5 rounded text-white border border-white/5">
                     {value.toLocaleString()}
                 </span>
             </Link>
@@ -129,8 +129,8 @@ export default function AscensionMaterials({ level, agentRole, themeColor }) {
     };
 
     return (
-        <div className="w-full mb-4 animate-fadeIn">
-            <div className="flex flex-wrap items-end gap-2 p-3 bg-black/20 rounded-xl border border-white/5">
+        <div className="w-full mb-1 animate-fadeIn">
+            <div className="flex flex-wrap items-end gap-3 p-2 bg-black/20 rounded-xl border border-white/5">
                 {/* Denny siempre primero */}
                 <MaterialItem icon={dennyPath} value={materials.denny} label="Denny" color="#00BFFF" type="currency" />
 
