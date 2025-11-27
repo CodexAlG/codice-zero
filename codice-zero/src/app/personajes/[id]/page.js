@@ -379,13 +379,13 @@ export default function AgentDetailPage() {
                     {getGroupSkills().length > 0 ? (
                       getGroupSkills().map((skill, index) => (
                         <div key={index} className="border-b border-white/10 pb-3 last:border-b-0">
-                          <h4 className="text-sm font-display text-white mb-1">{skill.name}</h4>
-                          <span className="text-xs text-yellow-400 font-mono uppercase tracking-widest">{skill.type}</span>
-                          <p className="text-sm text-gray-300 leading-relaxed font-sans mt-2" dangerouslySetInnerHTML={{ __html: processDescription(skill.description) }}></p>
+                          <h4 className="text-base font-display text-white mb-1">{skill.name}</h4>
+                          <span className="text-base text-yellow-400 font-mono uppercase tracking-widest">{skill.type}</span>
+                          <p className="text-base text-gray-300 leading-relaxed font-sans mt-2" dangerouslySetInnerHTML={{ __html: processDescription(skill.description) }}></p>
                         </div>
                       ))
                     ) : (
-                      <p className="text-sm text-gray-500">No hay habilidades de esta categoría para este personaje.</p>
+                      <p className="text-base text-gray-500">No hay habilidades de esta categoría para este personaje.</p>
                     )}
                   </div>
                 </>
@@ -409,7 +409,7 @@ export default function AgentDetailPage() {
                   </div>
 
                   {/* Contenido del Modal */}
-                  <div className="text-sm text-white leading-relaxed font-sans">
+                  <div className="text-base text-white leading-relaxed font-sans">
 
                     {/* CASO A: Habilidad Agrupada (Array de Sub-Skills) - Ahora incluye Mindscape */}
                     {selectedSkill.subSkills ? (
@@ -419,7 +419,7 @@ export default function AgentDetailPage() {
 
                             {/* Título de la variante (Condicional: Mindscape vs Otras Habilidades) */}
                             <div className="flex items-baseline justify-between">
-                              <span className="text-xs font-bold uppercase tracking-wider text-white">
+                              <span className="text-base font-bold uppercase tracking-wider text-white">
                                 {sub.name}
                               </span>
                               {/* Solo mostrar "M {idx + 1}" para Mindscape */}
@@ -432,7 +432,7 @@ export default function AgentDetailPage() {
 
                             {/* Descripción con Resaltado (Asegura que 'Daño Glacial' se vea azul) */}
                             <p
-                              className="text-gray-300 text-sm leading-snug opacity-90"
+                              className="text-gray-300 text-base leading-snug opacity-90"
                               dangerouslySetInnerHTML={{ __html: processDescription(sub.description) }}
                             />
 
@@ -451,14 +451,14 @@ export default function AgentDetailPage() {
                         {/* Habilidad Adicional (si existe) */}
                         {selectedSkill.additionalSkill && (
                           <div className="mt-6 pt-4 border-t border-white/10">
-                            <h4 className="text-xs font-bold uppercase tracking-wider text-yellow-400 mb-2">
+                            <h4 className="text-base font-bold uppercase tracking-wider text-yellow-400 mb-2">
                               HABILIDAD ADICIONAL
                             </h4>
                             <div className="flex flex-col gap-1">
-                              <span className="text-sm font-semibold text-white">
+                              <span className="text-base font-semibold text-white">
                                 {selectedSkill.additionalSkill.name}
                               </span>
-                              <p className="text-sm text-white leading-relaxed" dangerouslySetInnerHTML={{ __html: processDescription(selectedSkill.additionalSkill.description) }} />
+                              <p className="text-base text-white leading-relaxed" dangerouslySetInnerHTML={{ __html: processDescription(selectedSkill.additionalSkill.description) }} />
                             </div>
                           </div>
                         )}
@@ -587,7 +587,7 @@ export default function AgentDetailPage() {
 
                   {/* BLOQUE CORE (A-F) */}
                   <div className="w-full">
-                    <h4 className="text-xs font-mono text-gray-500 uppercase mb-4 tracking-widest ml-1 border-l-2 border-yellow-500 pl-2">
+                    <h4 className="text-xs font-mono text-white uppercase mb-4 tracking-widest ml-1 border-l-2 border-yellow-500 pl-2">
                       Mejora de Habilidad Core
                     </h4>
                     <div className="flex flex-wrap gap-3">
