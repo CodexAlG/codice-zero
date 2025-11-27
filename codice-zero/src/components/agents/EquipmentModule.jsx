@@ -76,7 +76,10 @@ export default function EquipmentModule({ equipment, themeColor }) {
                     {/* Skill Priority Section */}
                     {equipment.skillPriority && (
                         <div className="mt-3 pt-2 border-t border-white/10 flex flex-col gap-2">
-                            <h4 className="text-[10px] text-gray-400 font-bold uppercase tracking-wider text-center">Prioridad de Subida de Habilidades</h4>
+                            <h3 className="text-base font-display text-white uppercase italic font-bold mb-2 flex items-center gap-2 shrink-0">
+                                <div className="w-1 h-5 bg-yellow-500 rounded-full"></div>
+                                Prioridad de Subida de Habilidades
+                            </h3>
                             <div className="flex items-center justify-center gap-2 bg-black/20 rounded-lg p-2">
                                 {equipment.skillPriority.map((icon, index) => (
                                     <div key={index} className="flex items-center">
@@ -89,7 +92,7 @@ export default function EquipmentModule({ equipment, themeColor }) {
                                             />
                                         </div>
                                         {index < equipment.skillPriority.length - 1 && (
-                                            <span className="text-gray-500 font-bold mx-1 text-xs">&gt;</span>
+                                            <span className="text-white font-bold mx-1 text-sm">&gt;</span>
                                         )}
                                     </div>
                                 ))}
