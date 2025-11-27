@@ -12,19 +12,19 @@ export default function EquipmentModule({ equipment, themeColor }) {
     const { weapons, driveDiscs, teams } = equipment;
 
     return (
-        <div className="animate-fadeIn w-full h-full flex flex-col gap-2 pr-1 pb-1 overflow-hidden">
+        <div className="animate-fadeIn w-full h-full flex flex-col gap-2 pr-1 pb-1 overflow-visible">
 
-            {/* --- SECCIÓN SUPERIOR: ARMAS Y DISCOS (Ocupa el espacio disponible) --- */}
-            <div className="flex-1 flex flex-col xl:flex-row gap-2 min-h-0">
+            {/* --- SECCIÓN SUPERIOR: ARMAS Y DISCOS (Altura automática) --- */}
+            <div className="flex flex-col xl:flex-row gap-2">
 
                 {/* --- SECCIÓN 1: AMPLIFICADORES (WEAPONS) [AZUL] --- */}
-                <section className="flex-1 bg-gray-900/60 border border-white/10 rounded-xl p-3 flex flex-col min-w-0">
+                <section className="flex-1 bg-gray-900/60 border border-white/10 rounded-xl p-3 flex flex-col min-w-0 h-auto">
                     <h3 className="text-base font-display text-white uppercase italic font-bold mb-2 flex items-center gap-2 shrink-0">
                         <div className="w-1 h-5 bg-yellow-500 rounded-full"></div>
                         Amplificadores
                     </h3>
                     {/* [VERDE] Grid de 3 armas */}
-                    <div className="flex-1 grid grid-cols-3 gap-2 min-h-0 items-center content-center">
+                    <div className="grid grid-cols-3 gap-2 items-center content-center h-auto">
                         {weapons.map((weapon, index) => (
                             <div key={index} className="h-auto bg-black/40 border border-white/5 rounded-lg p-3 flex flex-col items-center justify-center gap-2 hover:border-white/20 transition-colors group min-w-0">
                                 <div className="relative w-20 h-20 shrink-0">
@@ -50,15 +50,15 @@ export default function EquipmentModule({ equipment, themeColor }) {
                 </section>
 
                 {/* --- SECCIÓN 2: PISTAS DE DISCO (DRIVE DISCS) [AZUL] --- */}
-                <section className="flex-1 bg-gray-900/60 border border-white/10 rounded-xl p-3 flex flex-col min-w-0">
+                <section className="flex-1 bg-gray-900/60 border border-white/10 rounded-xl p-3 flex flex-col min-w-0 h-auto">
                     <h3 className="text-base font-display text-white uppercase italic font-bold mb-2 flex items-center gap-2 shrink-0">
                         <div className="w-1 h-5 bg-yellow-500 rounded-full"></div>
                         Pistas de Disco
                     </h3>
 
-                    <div className="flex-1 flex flex-row gap-2 min-h-0 items-center">
+                    <div className="flex flex-row gap-2 items-center h-auto">
                         {/* [VERDE] Sets Recomendados (Iconos Verticales [ROSA]) */}
-                        <div className="flex-1 h-full bg-black/40 border border-white/5 rounded-lg p-2 flex flex-col items-center justify-center gap-3 min-w-0 relative overflow-hidden">
+                        <div className="flex-1 bg-black/40 border border-white/5 rounded-lg p-2 flex flex-col items-center justify-center gap-3 min-w-0 relative overflow-hidden h-auto">
                             {/* Background decoration */}
                             <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent pointer-events-none"></div>
 
@@ -82,7 +82,7 @@ export default function EquipmentModule({ equipment, themeColor }) {
                         </div>
 
                         {/* [AMARILLO] Stats Principales */}
-                        <div className="flex-[1.2] flex flex-col justify-center gap-2 min-w-0 h-full bg-black/20 border border-white/5 rounded-lg p-2">
+                        <div className="flex-[1.2] flex flex-col justify-center gap-2 min-w-0 bg-black/20 border border-white/5 rounded-lg p-2 h-auto">
                             <div className="flex items-center justify-between bg-black/40 px-3 py-2 rounded border border-white/5">
                                 <span className="text-[10px] font-bold text-gray-400 w-6 shrink-0">IV</span>
                                 <span className="text-[10px] text-white font-medium text-right truncate">{driveDiscs.stats.main.iv}</span>
@@ -109,16 +109,16 @@ export default function EquipmentModule({ equipment, themeColor }) {
             </div>
 
             {/* --- SECCIÓN 3: EQUIPOS (TEAMS) [AZUL] --- */}
-            <section className="shrink-0 bg-gray-900/60 border border-white/10 rounded-xl p-3 min-w-0">
+            <section className="shrink-0 bg-gray-900/60 border border-white/10 rounded-xl p-3 min-w-0 h-auto">
                 <h3 className="text-base font-display text-white uppercase italic font-bold mb-2 flex items-center gap-2">
                     <div className="w-1 h-5 bg-yellow-500 rounded-full"></div>
                     Composiciones
                 </h3>
 
                 {/* [VERDE] Grid de 2 equipos */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-2 h-auto">
                     {teams.map((team, index) => (
-                        <div key={index} className="bg-black/40 border border-white/5 rounded-lg p-2 flex items-center justify-between gap-2 min-w-0 hover:bg-black/50 transition-colors">
+                        <div key={index} className="bg-black/40 border border-white/5 rounded-lg p-2 flex items-center justify-between gap-2 min-w-0 hover:bg-black/50 transition-colors h-auto">
                             <div className="min-w-[100px] shrink-0">
                                 <h4 className="text-white font-bold text-xs leading-tight">{team.name}</h4>
                             </div>
