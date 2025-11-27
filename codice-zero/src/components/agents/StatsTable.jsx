@@ -2,36 +2,35 @@ export default function StatsTable({ currentStats, themeColor, agentRole }) {
   // Componente de Fila de Atributo - Mejorado para mostrar bonus inmediatamente
   const AttributeRow = ({ label, value, highlight, bonusValue }) => {
     const hasBonus = highlight && bonusValue > 0;
-    
+
     // Extraer el valor numérico para mostrar el bonus inmediatamente
     const baseValue = value?.toString().replace(/[,+]/g, '');
     const bonusNum = parseFloat(bonusValue || 0);
-    
+
     return (
       <div className="flex items-center gap-4 py-0.5 border-b border-white/5 last:border-0 group hover:bg-white/5 px-1 rounded transition-all duration-200">
-        <span className={`text-xs font-mono uppercase tracking-wide transition-colors ${
-          hasBonus ? 'group-hover:text-white' : 'text-gray-300 group-hover:text-white'
-        }`} style={{
-          color: hasBonus ? themeColor : undefined
-        }}>
+        <span className={`text-base font-mono uppercase tracking-wide transition-colors ${hasBonus ? 'group-hover:text-white' : 'text-gray-300 group-hover:text-white'
+          }`} style={{
+            color: hasBonus ? themeColor : undefined
+          }}>
           {label}
           {hasBonus && <span className="ml-1" style={{ color: themeColor }}>★</span>}
         </span>
-        <span className="text-sm font-bold font-mono drop-shadow-sm ml-auto">
+        <span className="text-base font-bold font-mono drop-shadow-sm ml-auto">
           {hasBonus ? (
             // Mostrar valor total destacado cuando hay bonus
             <span className="flex items-center gap-1">
-              <span 
+              <span
                 className="text-white transition-colors"
-                style={{ 
+                style={{
                   textShadow: `0 0 8px ${themeColor}40`
                 }}
               >
                 {value}
               </span>
-              <span 
-                className="text-xs font-extrabold"
-                style={{ 
+              <span
+                className="text-base font-extrabold"
+                style={{
                   color: themeColor,
                   textShadow: `0 0 4px ${themeColor}`,
                   filter: 'brightness(1.2)'
