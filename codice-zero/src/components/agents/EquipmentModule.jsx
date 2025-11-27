@@ -83,22 +83,22 @@ export default function EquipmentModule({ equipment, themeColor }) {
 
                         {/* [AMARILLO] Stats Principales */}
                         <div className="flex-[1.2] flex flex-col justify-center gap-2 min-w-0 bg-black/20 border border-white/5 rounded-lg p-2 h-auto">
-                            <div className="flex items-center justify-between bg-black/40 px-3 py-2 rounded border border-white/5">
-                                <span className="text-[10px] font-bold text-gray-400 w-6 shrink-0">IV</span>
-                                <span className="text-xs text-white font-medium text-right truncate">{driveDiscs.stats.main.iv}</span>
+                            <div className="flex items-start justify-between bg-black/40 px-3 py-2 rounded border border-white/5">
+                                <span className="text-[10px] font-bold text-gray-400 w-6 shrink-0 mt-0.5">IV</span>
+                                <span className="text-xs text-white font-medium text-right whitespace-normal leading-tight">{driveDiscs.stats.main.iv.replace(/\//g, ' > ')}</span>
                             </div>
-                            <div className="flex items-center justify-between bg-black/40 px-3 py-2 rounded border border-white/5">
-                                <span className="text-[10px] font-bold text-gray-400 w-6 shrink-0">V</span>
-                                <span className="text-xs text-white font-medium text-right truncate">{driveDiscs.stats.main.v}</span>
+                            <div className="flex items-start justify-between bg-black/40 px-3 py-2 rounded border border-white/5">
+                                <span className="text-[10px] font-bold text-gray-400 w-6 shrink-0 mt-0.5">V</span>
+                                <span className="text-xs text-white font-medium text-right whitespace-normal leading-tight">{driveDiscs.stats.main.v.replace(/\//g, ' > ')}</span>
                             </div>
-                            <div className="flex items-center justify-between bg-black/40 px-3 py-2 rounded border border-white/5">
-                                <span className="text-[10px] font-bold text-gray-400 w-6 shrink-0">VI</span>
-                                <span className="text-xs text-white font-medium text-right truncate">{driveDiscs.stats.main.vi}</span>
+                            <div className="flex items-start justify-between bg-black/40 px-3 py-2 rounded border border-white/5">
+                                <span className="text-[10px] font-bold text-gray-400 w-6 shrink-0 mt-0.5">VI</span>
+                                <span className="text-xs text-white font-medium text-right whitespace-normal leading-tight">{driveDiscs.stats.main.vi.replace(/\//g, ' > ')}</span>
                             </div>
                             {/* Substats */}
                             <div className="flex flex-wrap gap-1 mt-1 justify-end">
                                 {driveDiscs.stats.sub.slice(0, 4).map((stat, idx) => (
-                                    <span key={idx} className="text-[9px] bg-white/5 text-gray-300 px-1.5 py-0.5 rounded border border-white/5">
+                                    <span key={idx} className="text-[11px] bg-white/5 text-gray-300 px-1.5 py-0.5 rounded border border-white/5">
                                         {stat}
                                     </span>
                                 ))}
