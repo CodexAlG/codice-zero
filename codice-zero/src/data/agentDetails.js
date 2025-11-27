@@ -634,13 +634,13 @@ export const agentDetails = {
       {
         type: "Ataque Básico",
         name: "Encantada de Servirle",
-        description: "Presiona [Icono Ataque] para activar: Desata hasta cuatro ataques, causando Daño Fisico.",
+        description: "Presiona [Icono Ataque] para activar: Desata hasta cuatro ataques, causando Daño Físico.",
         tags: ["Físico", "Ataque Básico"],
       },
       {
         type: "Ataque Básico",
         name: "Piedra, Papel, Tijeras",
-        description: "Después de (Tecnica Especial EX: Piedra) o (Tecnica Especial EX: Tijeras), presiona [Icono Ataque] para activar: Realiza hasta dos ataques, causando Daño Fisico. Durante la activación de la habilidad, el nivel de Anti-Interrupción aumenta, y el daño recibido se reduce en un 40%.",
+        description: "Después de (Tecnica Especial EX: Piedra) o (Tecnica Especial EX: Tijeras), presiona [Icono Ataque] para activar: Realiza hasta dos ataques, causando Daño Físico. Durante la activación de la habilidad, el nivel de Anti-Interrupción aumenta, y el daño recibido se reduce en un 40%.",
         tags: ["Físico", "Ataque Básico"],
       },
       {
@@ -652,49 +652,49 @@ export const agentDetails = {
       {
         type: "Evasión",
         name: "Ataque de Carrera: Llamada Repentina",
-        description: "Presiona [Icono Ataque] durante una evasión para activar: Lanza un ataque de embestida a los enemigos en frente, causando Daño Fisico.",
+        description: "Presiona [Icono Ataque] durante una evasión para activar: Lanza un ataque de embestida a los enemigos en frente, causando Daño Físico.",
         tags: ["Físico", "Evasión"],
       },
       {
         type: "Evasión",
         name: "Contraataque de Evasión: Numero No Disponible",
-        description: "Presiona [Icono Ataque] durante una (Evasion Perfecta) para activar: Lanza ataques consecutivos contra los enemigos en frente, causando Daño Fisico. Después de usar esta habilidad, puede seguir inmediatamente con el 4to golpe de (Ataque Basico: Encantada de Servirle). El personaje es invulnerable mientras usa esta habilidad.",
+        description: "Presiona [Icono Ataque] durante una (Evasion Perfecta) para activar: Lanza ataques consecutivos contra los enemigos en frente, causando Daño Físico. Después de usar esta habilidad, puede seguir inmediatamente con el 4to golpe de (Ataque Basico: Encantada de Servirle). El personaje es invulnerable mientras usa esta habilidad.",
         tags: ["Físico", "Evasión"],
       },
       {
         type: "Técnica Especial EX",
         name: "¡Pierdase!",
-        description: "Con (Queja del Cliente), mantén [Icono Ataque] para activar: Entrega un ataque de saludo marcial hacia adelante. Al activarse, consume (Queja del Cliente) y causa Daño Fisico. Al activarse, se activa la (Asistencia Rapida) del personaje anterior. El personaje es invulnerable mientras usa esta habilidad.",
+        description: "Con (Queja del Cliente), mantén [Icono Ataque] para activar: Entrega un ataque de saludo marcial hacia adelante. Al activarse, consume (Queja del Cliente) y causa Daño Físico. Al activarse, se activa la (Asistencia Rapida) del personaje anterior. El personaje es invulnerable mientras usa esta habilidad.",
         tags: ["Físico", "Técnica Especial"],
       },
       {
         type: "Técnica Especial",
         name: "Gesto de Bienvenida",
-        description: "Presiona [Icono Especial] para activar: Lanza anillos duales para cortar a los enemigos, causando Daño Fisico. El nivel de Anti-Interrupción aumenta mientras usa esta habilidad.",
+        description: "Presiona [Icono Especial] para activar: Lanza anillos duales para cortar a los enemigos, causando Daño Físico. El nivel de Anti-Interrupción aumenta mientras usa esta habilidad.",
         tags: ["Físico", "Técnica Especial"],
       },
       {
         type: "Técnica Especial EX",
         name: "Piedra",
-        description: "Con suficiente Energía, presiona [Icono Especial EX] para activar: Lanza un ataque de puño, causando Daño Fisico. El personaje es invulnerable mientras usa esta habilidad.",
+        description: "Con suficiente Energía, presiona [Icono Especial EX] para activar: Lanza un ataque de puño, causando Daño Físico. El personaje es invulnerable mientras usa esta habilidad.",
         tags: ["Físico", "Técnica Especial"],
       },
       {
         type: "Técnica Especial EX",
         name: "Tijeras",
-        description: "Con suficiente Energía, presiona [Icono Especial EX] para activar: Lanza un ataque de tijeras, causando Daño Fisico. El personaje es invulnerable mientras usa esta habilidad.",
+        description: "Con suficiente Energía, presiona [Icono Especial EX] para activar: Lanza un ataque de tijeras, causando Daño Físico. El personaje es invulnerable mientras usa esta habilidad.",
         tags: ["Físico", "Técnica Especial"],
       },
       {
         type: "Técnica Especial EX",
         name: "¡Papel!",
-        description: "Con suficiente Energía, presiona [Icono Especial EX] para activar: Lanza un ataque de papel, causando Daño Fisico. El personaje es invulnerable mientras usa esta habilidad.",
+        description: "Con suficiente Energía, presiona [Icono Especial EX] para activar: Lanza un ataque de papel, causando Daño Físico. El personaje es invulnerable mientras usa esta habilidad.",
         tags: ["Físico", "Técnica Especial"],
       },
       {
         type: "Asistencia",
         name: "Asistencia Rapida: Llamada Directa",
-        description: "Cuando el personaje activo es lanzado, presiona [Icono Assist] para activar: Lanza ataques consecutivos contra los enemigos en frente, causando Daño Fisico. Después de usar esta habilidad, puede seguir inmediatamente con el 4to golpe de (Ataque Basico: Encantada de Servirle). El personaje es invulnerable mientras usa esta habilidad.",
+        description: "Cuando el personaje activo es lanzado, presiona [Icono Assist] para activar: Lanza ataques consecutivos contra los enemigos en frente, causando Daño Físico. Después de usar esta habilidad, puede seguir inmediatamente con el 4to golpe de (Ataque Basico: Encantada de Servirle). El personaje es invulnerable mientras usa esta habilidad.",
         tags: ["Asistencia"],
       },
       {
@@ -706,7 +706,7 @@ export const agentDetails = {
       {
         type: "Asistencia",
         name: "Ataque de Asistencia: Llamadas Consecutivas",
-        description: "Presiona [Icono Ataque] después de una (Asistencia Defensiva) para activar: Realiza una carrera rápida seguida de un ataque de corte, causando Daño Fisico. Después de usar esta habilidad, puede seguir inmediatamente con el 4to golpe de (Ataque Basico: Encantada de Servirle). El personaje es invulnerable mientras usa esta habilidad.",
+        description: "Presiona [Icono Ataque] después de una (Asistencia Defensiva) para activar: Realiza una carrera rápida seguida de un ataque de corte, causando Daño Físico. Después de usar esta habilidad, puede seguir inmediatamente con el 4to golpe de (Ataque Basico: Encantada de Servirle). El personaje es invulnerable mientras usa esta habilidad.",
         tags: ["Físico", "Asistencia"],
       },
       {
@@ -724,13 +724,13 @@ export const agentDetails = {
       {
         type: "Ataque en Cadena",
         name: "Felpudo de Bienvenida",
-        description: "Cuando un (Ataque en Cadena) es activado, selecciona el personaje para activar: Lanza patadas consecutivas contra los enemigos en frente, causando masivo Daño Fisico. Después de usar esta habilidad, puede seguir inmediatamente con el 4to golpe de (Ataque Basico: Encantada de Servirle). El personaje es invulnerable mientras usa esta habilidad.",
+        description: "Cuando un (Ataque en Cadena) es activado, selecciona el personaje para activar: Lanza patadas consecutivas contra los enemigos en frente, causando masivo Daño Físico. Después de usar esta habilidad, puede seguir inmediatamente con el 4to golpe de (Ataque Basico: Encantada de Servirle). El personaje es invulnerable mientras usa esta habilidad.",
         tags: ["Físico", "Ataque en Cadena"],
       },
       {
         type: "Técnica Definitiva",
         name: "Servicio Detenido por Numero Marcado",
-        description: "Cuando el Nivel de Decibelios está al [Maximo], presiona [Icono Definitiva] para activar: Corre hacia adelante y realiza un ataque de golpe de dedo, causando masivo Daño Fisico. Después de usar esta habilidad, puede seguir inmediatamente con el 4to golpe de (Ataque Basico: Encantada de Servirle). El personaje es invulnerable mientras usa esta habilidad.",
+        description: "Cuando el Nivel de Decibelios está al [Maximo], presiona [Icono Definitiva] para activar: Corre hacia adelante y realiza un ataque de golpe de dedo, causando masivo Daño Físico. Después de usar esta habilidad, puede seguir inmediatamente con el 4to golpe de (Ataque Basico: Encantada de Servirle). El personaje es invulnerable mientras usa esta habilidad.",
         tags: ["Físico", "Técnica Definitiva"],
       },
       {
@@ -766,7 +766,7 @@ export const agentDetails = {
       {
         type: "Mindscape 6",
         name: "Verdad",
-        description: "Cuando un aliado entra al campo con una (Definitiva) a través del efecto de la (Pasiva Principal), ese aliado gana el efecto (Resplandor). Con este efecto, asestar un ataque hace que Dialyn inflija una instancia adicional de Daño Fisico igual al 480% del ATK de Dialyn. Este daño es tratado como daño de (Tecnica Especial EX), y puede activarse una vez cada segundo, hasta 12 veces. Ganar (Resplandor) nuevamente refresca su conteo de activaciones. Solo un aliado puede tener (Resplandor) a la vez.",
+        description: "Cuando un aliado entra al campo con una (Definitiva) a través del efecto de la (Pasiva Principal), ese aliado gana el efecto (Resplandor). Con este efecto, asestar un ataque hace que Dialyn inflija una instancia adicional de Daño Físico igual al 480% del ATK de Dialyn. Este daño es tratado como daño de (Tecnica Especial EX), y puede activarse una vez cada segundo, hasta 12 veces. Ganar (Resplandor) nuevamente refresca su conteo de activaciones. Solo un aliado puede tener (Resplandor) a la vez.",
         tags: ["Mindscape 6"],
       },
     ]
