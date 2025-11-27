@@ -79,17 +79,17 @@ export const agentDetails = {
         {
           name: "Equipo Físico Puro",
           members: [
-            { name: "Ye Shunguang", role: "Ataque", element: "Fisico", icon: "/CodiceZero/Agentes/Icon_Agent_Ye_Shunguang_State.webp" },
-            { name: "Caesar", role: "Defensa", element: "Fisico", icon: "/CodiceZero/Agentes/Icon_Agent_Caesar_King_State.webp" },
-            { name: "Burnice", role: "Anomalia", element: "Fuego", icon: "/CodiceZero/Agentes/Icon_Agent_Burnice_White_State.webp" }
+            { name: "Ye Shunguang", role: "Ataque", element: "Fisico", icon: "/CodiceZero/Agentes/YeShunguang.webp" },
+            { name: "Caesar", role: "Defensa", element: "Fisico", icon: "/CodiceZero/Agentes/Caesar.webp" },
+            { name: "Burnice", role: "Anomalia", element: "Fuego", icon: "/CodiceZero/Agentes/Burnice.webp" }
           ]
         },
         {
           name: "Equipo de Asalto",
           members: [
-            { name: "Ye Shunguang", role: "Ataque", element: "Fisico", icon: "/CodiceZero/Agentes/Icon_Agent_Ye_Shunguang_State.webp" },
-            { name: "Piper", role: "Anomalia", element: "Fisico", icon: "/CodiceZero/Agentes/Icon_Agent_Piper_Wheel_State.webp" },
-            { name: "Lucy", role: "Soporte", element: "Fuego", icon: "/CodiceZero/Agentes/Icon_Agent_Luciana_de_Montefio_State.webp" }
+            { name: "Ye Shunguang", role: "Ataque", element: "Fisico", icon: "/CodiceZero/Agentes/YeShunguang.webp" },
+            { name: "Piper", role: "Anomalia", element: "Fisico", icon: "/CodiceZero/Agentes/Piper.webp" },
+            { name: "Lucy", role: "Soporte", element: "Fuego", icon: "/CodiceZero/Agentes/Lucy.webp" }
           ]
         }
       ]
