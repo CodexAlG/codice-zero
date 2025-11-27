@@ -571,7 +571,7 @@ export default function AgentDetailPage() {
             {/* Contenido Condicional - Stats o Skills */}
             {activeTab === 'stats' ? (
               /* Stats Table usando el componente StatsTable mejorado */
-              <div className="text-sm overflow-y-auto pr-2 scrollbar-hide">
+              <div className="text-base overflow-y-auto pr-2 scrollbar-hide">
                 <StatsTable
                   currentStats={currentStats}
                   themeColor={themeColor}
