@@ -593,7 +593,7 @@ export default function AgentDetailPage() {
 
                 {/* --- MATERIALES DE HABILIDAD --- */}
                 <div className="w-full lg:hidden">
-                  <SkillMaterials agentElement={agent.element} themeColor={themeColor} materials={agent.materials} />
+                  <SkillMaterials agentElement={agent.element} themeColor={themeColor} materials={details?.materials} />
                 </div>
 
                 {/* --- COLUMNA IZQUIERDA (Contenido / Flexible) --- */}
@@ -602,7 +602,7 @@ export default function AgentDetailPage() {
 
                   {/* --- MATERIALES DE HABILIDAD (Desktop) --- */}
                   <div className="hidden lg:block w-full">
-                    <SkillMaterials agentElement={agent.element} themeColor={themeColor} materials={agent.materials} />
+                    <SkillMaterials agentElement={agent.element} themeColor={themeColor} materials={details?.materials} />
                   </div>
 
                   {/* BLOQUE CORE (A-F) */}
