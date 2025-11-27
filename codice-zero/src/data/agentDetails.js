@@ -312,7 +312,7 @@ export const agentDetails = {
       {
         type: "Técnica Especial EX",
         name: "Técnica Especial Reforzada",
-        description: "Cuando la energía es suficiente, Clic [Icono Especial EX] para activar: Realiza un corte hacia adelante al enemigo, causando gran cantidad de Daño Hielo; Al activar el movimiento, si los PV actuales de Zhao son mayores al 50%, consumirá el 6% de los PV Máximos para hacer que todos los personajes del equipo recuperen PV cada segundo basados en el 1% de los PV Máximos de Zhao, dura 5 segundos, se activa máximo una vez cada 15 segundos; Al activar el movimiento, otorga al equipo el efecto (Aumento). Al activar este efecto, si se encuentra bajo (Velo Etereo: Vida), activará (Asistencia Rapida). Posee efecto de invencibilidad durante la activación.",
+        description: "Cuando la energía es suficiente, Clic [Icono Especial EX] para activar: Realiza un corte hacia adelante al enemigo, causando gran cantidad de Daño Hielo; Al activar el movimiento, si los PV actuales de Zhao son mayores al 50%, consumirá el 6% de los PV Máximos para hacer que todos los personajes del equipo recuperen PV cada segundo basados en el 1% de los PV Máximos de Zhao, dura 5 segundos, se activa máximo una vez cada 15 segundos; Al activar el movimiento, otorga al equipo el efecto (Aumento). Al activar este efecto, si se encuentra bajo (Velo Etereo: Manantial), activará (Asistencia Rapida). Posee efecto de invencibilidad durante la activación.",
         tags: ["Hielo", "Técnica Especial"],
       },
       {
@@ -330,13 +330,13 @@ export const agentDetails = {
       {
         type: "Pasiva Central",
         name: "Pasiva Principal",
-        description: "Zhao aumenta su Probabilidad de Crítico adicionalmente basada en sus PV Máximos iniciales, cada 1000 puntos de PV Máximos aumenta un {VALOR_1} de Probabilidad de Crítico; Cuando el agente en el campo causa daño, aturde a un enemigo o derrota a un enemigo, Zhao acumula 1.5/15/10 puntos de (Valor de Escarcha), se activa máximo una vez cada 1/50/50 segundos, máximo 100 puntos; Cuando el (Valor de Escarcha) está lleno, cambiar a Zhao al campo puede activar (Tecnica de Entrada); Cuando Zhao activa (Tecnica de Entrada), abre el (Velo Etereo: Vida), dura 50 segundos, antes de activarse nuevamente, cerrará el (Velo Etereo: Manantial) existente; Cuando Zhao activa (Tecnica Especial Reforzada) o (Tecnica de Entrada), todo el equipo obtiene el efecto (Aumento), aumentando el Ataque en {VALOR_2} puntos, dura 40 segundos, activaciones repetidas extienden la duración; al activar este efecto, si se encuentra bajo (Velo Etereo: Manantial), activará (Asistencia Rapida).",
+        description: "Zhao aumenta su Probabilidad de Crítico adicionalmente basada en sus PV Máximos iniciales, cada 1000 puntos de PV Máximos aumenta un {VALOR_1} de Probabilidad de Crítico; Cuando el agente en el campo causa daño, aturde a un enemigo o derrota a un enemigo, Zhao acumula 1.5/15/10 puntos de (Valor de Escarcha), se activa máximo una vez cada 1/50/50 segundos, máximo 100 puntos; Cuando el (Valor de Escarcha) está lleno, cambiar a Zhao al campo puede activar (Tecnica de Entrada); Cuando Zhao activa (Tecnica de Entrada), abre el (Velo Etereo: Manantial), dura 50 segundos, antes de activarse nuevamente, cerrará el (Velo Etereo: Manantial) existente; Cuando Zhao activa (Tecnica Especial Reforzada) o (Tecnica de Entrada), todo el equipo obtiene el efecto (Aumento), aumentando el Ataque en {VALOR_2} puntos, dura 40 segundos, activaciones repetidas extienden la duración; al activar este efecto, si se encuentra bajo (Velo Etereo: Manantial), activará (Asistencia Rapida).",
         tags: ["Pasiva Central"],
       },
       {
         type: "Habilidad Adicional",
         name: "Habilidad Adicional",
-        description: "Se activa cuando hay personajes de [Ataque], [Anomalia] o [Aturdimiento] en el equipo: Cuando Zhao está bajo (Velo Etereo), aumenta el daño causado por todo el equipo en un 10%. Si los PV Máximos iniciales de Zhao son superiores a 6000 puntos, por cada 1000 puntos de PV Máximos iniciales excedentes, el efecto de aumento de daño mejora adicionalmente en un 1.5%, hasta un aumento máximo del 40%. Cuando los PV Máximos iniciales alcanzan 26000 puntos, el efecto de mejora alcanza su valor máximo.",
+        description: "Se activa cuando hay personajes de (Ataque), (Anomalia) o (Aturdimiento) en el equipo: Cuando Zhao está bajo (Velo Etereo), aumenta el daño causado por todo el equipo en un 10%. Si los PV Máximos iniciales de Zhao son superiores a 6000 puntos, por cada 1000 puntos de PV Máximos iniciales excedentes, el efecto de aumento de daño mejora adicionalmente en un 1.5%, hasta un aumento máximo del 40%. Cuando los PV Máximos iniciales alcanzan 26000 puntos, el efecto de mejora alcanza su valor máximo.",
         tags: ["Habilidad Adicional"],
       },
       {
