@@ -1,0 +1,100 @@
+import Image from 'next/image';
+
+export default function SkillMaterials({ agentElement, themeColor }) {
+    // 1. Cantidades Fijas
+    const materials = {
+        denny: 2500000,
+        basic: 25,
+        advanced: 75,
+        specialized: 250,
+        hamster: 5
+    };
+
+    // 2. Mapeo de Iconos por Elemento
+    // Estructura: [Basic, Advanced, Specialized]
+    // Nombres de archivo basados en la exploración:
+    // Fuego: Burn
+    // Electrico: Shock
+    // Hielo: Freeze (Asumido, verificaré si falla, pero es el estándar ZZZ)
+    // Fisico: Physical (Asumido)
+    // Etereo: Ether (Asumido)
+
+    // Normalización del elemento para mapear a nombres de archivo
+    const normalizeElement = (el) => {
+        const map = {
+            "Fuego": "Burn",
+            "Electrico": "Shock",
+            "Hielo": "Freeze",
+            "Fisico": "Physical",
+            "Etereo": "Ether"
+        };
+        return map[el] || el;
+    };
+
+    const type = normalizeElement(agentElement);
+
+    // Carpetas coinciden con el nombre del elemento en español (Capitalizado)
+    // Fuego, Electrico, Hielo, Fisico, Etereo
+    const folder = agentElement;
+
+    const basePath = `/CodiceZero/Materiales/Chips/${folder}/`;
+    const dennyPath = "/CodiceZero/Materiales/Varios/Item_Denny.webp";
+    const hamsterPath = "/CodiceZero/Materiales/Varios/Item_Hamster_Cage_Pass.webp";
+
+    const chipIcons = [
+        `Item_Basic_${type}_Chip.webp`,
+        `Item_Advanced_${type}_Chip.webp`,
+        `Item_Specialized_${type}_Chip.webp`
+    ];
+
+    // Helper para renderizar un item
+    const MaterialItem = ({ icon, value, label, color, isHamster }) => {
+        return (
+            <div className="flex flex-col items-center gap-2">
+                <div
+                    className="relative w-16 h-16 bg-black/60 rounded-xl border border-white/10 flex items-center justify-center shadow-lg group hover:scale-105 transition-transform duration-200"
+                    style={{ borderColor: color ? `${color}60` : 'rgba(255,255,255,0.1)' }}
+                >
+                    {/* Glow effect */}
+                    {color && (
+                        <div
+                            className="absolute inset-0 rounded-xl opacity-20"
+                            style={{ backgroundColor: color, boxShadow: `0 0 15px ${color}` }}
+                        />
+                    )}
+                    <Image
+                        src={icon}
+                        alt={label}
+                        width={48}
+                        height={48}
+                        className="object-contain z-10"
+                    />
+                </div>
+                <span className={`text-sm font-bold font-mono bg-black/40 px-2 py-0.5 rounded text-white border border-white/5 ${isHamster ? 'text-yellow-400' : ''}`}>
+                    {value.toLocaleString()}
+                </span>
+            </div>
+        );
+    };
+
+    return (
+        <div className="w-full mb-6 animate-fadeIn">
+            <div className="flex flex-wrap items-end gap-4 p-4 bg-black/20 rounded-xl border border-white/5">
+                {/* Denny */}
+                <MaterialItem icon={dennyPath} value={materials.denny} label="Denny" color="#00BFFF" />
+
+                {/* Basic Chip */}
+                <MaterialItem icon={`${basePath}${chipIcons[0]}`} value={materials.basic} label="Basic Chip" color={themeColor} />
+
+                {/* Advanced Chip */}
+                <MaterialItem icon={`${basePath}${chipIcons[1]}`} value={materials.advanced} label="Advanced Chip" color={themeColor} />
+
+                {/* Specialized Chip */}
+                <MaterialItem icon={`${basePath}${chipIcons[2]}`} value={materials.specialized} label="Specialized Chip" color={themeColor} />
+
+                {/* Hamster Cage Pass */}
+                <MaterialItem icon={hamsterPath} value={materials.hamster} label="Hamster Cage Pass" color="#FFD700" isHamster={true} />
+            </div>
+        </div>
+    );
+}

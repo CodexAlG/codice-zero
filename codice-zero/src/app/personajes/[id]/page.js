@@ -11,6 +11,7 @@ import { calculateStatsWithCore } from '@/utils/statCalculator';
 import SkillsModule from '@/components/agents/SkillsModule';
 import StatsTable from '@/components/agents/StatsTable';
 import AscensionMaterials from '@/components/agents/AscensionMaterials';
+import SkillMaterials from '@/components/agents/SkillMaterials';
 //coment
 export default function AgentDetailPage() {
   // 1. PRIMERO: Definir params y encontrar el agente
@@ -589,9 +590,19 @@ export default function AgentDetailPage() {
             ) : activeTab === 'skills' ? (
               <div className="animate-fadeIn h-full flex flex-col lg:flex-row items-center lg:items-start justify-between gap-6 px-2 lg:px-4 py-4 lg:py-8 overflow-y-auto lg:overflow-visible">
 
+                {/* --- MATERIALES DE HABILIDAD --- */}
+                <div className="w-full lg:hidden">
+                  <SkillMaterials agentElement={agent.element} themeColor={themeColor} />
+                </div>
+
                 {/* --- COLUMNA IZQUIERDA (Contenido / Flexible) --- */}
                 {/* Esta columna contiene Títulos y Botones de Habilidad, ocupando la mayor parte del espacio */}
                 <div className="flex-1 flex flex-col gap-6 w-full">
+
+                  {/* --- MATERIALES DE HABILIDAD (Desktop) --- */}
+                  <div className="hidden lg:block w-full">
+                    <SkillMaterials agentElement={agent.element} themeColor={themeColor} />
+                  </div>
 
                   {/* BLOQUE CORE (A-F) */}
                   <div className="w-full">
@@ -836,9 +847,9 @@ export default function AgentDetailPage() {
               </button>
             ))}
           </div>
-        </div>
+        </div >
 
-      </div>
-    </div>
+      </div >
+    </div >
   );
 }
