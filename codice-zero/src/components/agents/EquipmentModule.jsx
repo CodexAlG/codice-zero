@@ -96,12 +96,10 @@ export default function EquipmentModule({ equipment, themeColor }) {
                                 <span className="text-xs text-white font-medium text-right whitespace-normal leading-tight">{driveDiscs.stats.main.vi.replace(/\//g, ' > ')}</span>
                             </div>
                             {/* Substats */}
-                            <div className="flex flex-wrap gap-1 mt-1 justify-end">
-                                {driveDiscs.stats.sub.slice(0, 4).map((stat, idx) => (
-                                    <span key={idx} className="text-[11px] bg-white/5 text-gray-300 px-1.5 py-0.5 rounded border border-white/5">
-                                        {stat}
-                                    </span>
-                                ))}
+                            <div className="mt-2 text-right">
+                                <span className="text-xs text-gray-300 font-medium leading-tight">
+                                    {driveDiscs.stats.sub.slice(0, 4).join(' > ')}
+                                </span>
                             </div>
                         </div>
                     </div>
@@ -126,7 +124,7 @@ export default function EquipmentModule({ equipment, themeColor }) {
                             <div className="flex items-center gap-2 min-w-0 overflow-x-auto no-scrollbar">
                                 {team.members.map((member, mIdx) => (
                                     <div key={mIdx} className="flex flex-col items-center group cursor-pointer relative shrink-0">
-                                        <div className="relative w-12 h-12 rounded-full overflow-hidden border border-gray-600 group-hover:border-yellow-500 transition-colors bg-gray-800 shadow-lg">
+                                        <div className="relative w-14 h-14 rounded-full overflow-hidden border border-gray-600 group-hover:border-yellow-500 transition-colors bg-gray-800 shadow-lg">
                                             <Image
                                                 src={member.icon}
                                                 alt={member.name}
