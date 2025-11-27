@@ -720,97 +720,101 @@ export default function AgentDetailPage() {
                     </div>
                   </div>
 
-                  {/* BLOQUE HABILIDADES DE COMBATE */}
+                  {/* BLOQUE HABILIDADES DE COMBATE + MINDSCAPE */}
                   <div className="w-full">
                     <h4 className="text-xs font-mono text-white uppercase mb-4 tracking-widest ml-1 border-l-2 border-white/20 pl-2">
                       Habilidades de Combate
                     </h4>
-                    <div className="flex flex-wrap gap-6 justify-start">
-                      {skillGroups.map((group) => {
-                        // Verificar si está seleccionado
-                        const isSelected = selectedSkill?.type === group.label;
 
-                        return (
-                          <button
-                            key={group.id}
-                            onClick={() => {
-                              // 1. Filtrar habilidades del grupo
-                              const skillsInGroup = details?.skills?.filter(s =>
-                                group.match.some(m => s.type.includes(m))
-                              ) || [];
+                    <div className="flex flex-col md:flex-row justify-between items-start gap-4">
+                      {/* Lista de Habilidades */}
+                      <div className="flex flex-wrap gap-6 justify-start flex-1">
+                        {skillGroups.map((group) => {
+                          // Verificar si está seleccionado
+                          const isSelected = selectedSkill?.type === group.label;
 
-                              if (skillsInGroup.length === 0) return;
+                          return (
+                            <button
+                              key={group.id}
+                              onClick={() => {
+                                // 1. Filtrar habilidades del grupo
+                                const skillsInGroup = details?.skills?.filter(s =>
+                                  group.match.some(m => s.type.includes(m))
+                                ) || [];
 
-                              // 2. Activar Modal con DATOS (No HTML)
-                              handleSelect({
-                                type: group.label,
-                                name: group.label,
-                                // Pasamos el array de sub-habilidades en una propiedad especial
-                                subSkills: skillsInGroup,
-                                // Description se usa solo para habilidades simples (Core), aquí la dejamos vacía o nula
-                                description: null
-                              });
-                            }}
-                            className={`
-                              w-16 h-16 rounded-full border-2 flex items-center justify-center transition-all duration-300 group relative active:scale-95
-                              ${isSelected
-                                ? `border-[${themeColor}] bg-[${themeColor}]/20 shadow-[0_0_20px_${themeColor}40] scale-110`
-                                : "border-gray-700 bg-gray-900 hover:border-white hover:bg-white/10"}
-                            `}
-                          >
-                            <Image
-                              src={group.icon}
-                              alt={group.label}
-                              width={40} height={40}
-                              className={`object-contain transition-transform ${isSelected ? "scale-110" : "group-hover:scale-110"}`}
-                            />
-                          </button>
-                        );
-                      })}
-                    </div>
-                  </div>
+                                if (skillsInGroup.length === 0) return;
 
-                  {/* --- TRACKER MINDSCAPE (Diseño Neon Ring) - REUBICADO --- */}
-                  <div className="w-full flex justify-center mt-8 border-t border-white/5 pt-6">
-                    <button
-                      onClick={() => {
-                        // Filtrar habilidades que contengan "Mindscape" en el tipo
-                        const mindscapeSkills = details?.skills?.filter(skill =>
-                          skill.type && skill.type.includes("Mindscape")
-                        ) || [];
-
-                        // Al hacer click, muestra los niveles de dupe/Mindscape
-                        handleSelect({
-                          type: "Mindscape",
-                          name: "Mindscape (Cinema) Niveles de Dupe",
-                          description: "Aquí va el detalle de los 6 niveles del Mindscape y sus efectos. Nivel actual: 6/6",
-                          subSkills: mindscapeSkills,
-                          tags: ["Dupe", "Niveles"]
-                        });
-                      }}
-                      // Clases para el efecto de borde y fondo
-                      className="w-20 h-20 relative rounded-full border-2 border-gray-700 bg-gray-900/50 flex items-center justify-center shadow-2xl hover:border-white/50 group transition-transform hover:scale-105"
-                      title="Mindscape Levels"
-                    >
-                      {/* Anillo de Glow Dinámico */}
-                      <div
-                        className="absolute inset-0 rounded-full"
-                        style={{ boxShadow: `0 0 15px 5px ${themeColor}40`, borderColor: themeColor }}
-                      />
-
-                      {/* Texto "M" (Color del Elemento) */}
-                      <span
-                        className="text-3xl font-black font-display leading-none z-10"
-                        style={{ color: themeColor }}
-                      >
-                        M
-                      </span>
-
-                      {/* Badge Nivel */}
-                      <div className="absolute -bottom-2 bg-black/80 border border-white/20 text-[10px] px-1.5 rounded text-white font-mono z-20">
-                        6/6
+                                // 2. Activar Modal con DATOS (No HTML)
+                                handleSelect({
+                                  type: group.label,
+                                  name: group.label,
+                                  // Pasamos el array de sub-habilidades en una propiedad especial
+                                  subSkills: skillsInGroup,
+                                  // Description se usa solo para habilidades simples (Core), aquí la dejamos vacía o nula
+                                  description: null
+                                });
+                              }}
+                              className={`
+                                w-16 h-16 rounded-full border-2 flex items-center justify-center transition-all duration-300 group relative active:scale-95
+                                ${isSelected
+                                  ? `border-[${themeColor}] bg-[${themeColor}]/20 shadow-[0_0_20px_${themeColor}40] scale-110`
+                                  : "border-gray-700 bg-gray-900 hover:border-white hover:bg-white/10"}
+                              `}
+                            >
+                              <Image
+                                src={group.icon}
+                                alt={group.label}
+                                width={40} height={40}
+                                className={`object-contain transition-transform ${isSelected ? "scale-110" : "group-hover:scale-110"}`}
+                              />
+                            </button>
+                          );
+                        })}
                       </div>
-                    </button>
+
+                      {/* --- TRACKER MINDSCAPE (Diseño Neon Ring) --- */}
+                      <div className="flex-none pt-2 md:pt-0">
+                        <button
+                          onClick={() => {
+                            // Filtrar habilidades que contengan "Mindscape" en el tipo
+                            const mindscapeSkills = details?.skills?.filter(skill =>
+                              skill.type && skill.type.includes("Mindscape")
+                            ) || [];
+
+                            // Al hacer click, muestra los niveles de dupe/Mindscape
+                            handleSelect({
+                              type: "Mindscape",
+                              name: "Mindscape (Cinema) Niveles de Dupe",
+                              description: "Aquí va el detalle de los 6 niveles del Mindscape y sus efectos. Nivel actual: 6/6",
+                              subSkills: mindscapeSkills,
+                              tags: ["Dupe", "Niveles"]
+                            });
+                          }}
+                          // Clases para el efecto de borde y fondo
+                          className="w-20 h-20 relative rounded-full border-2 border-gray-700 bg-gray-900/50 flex items-center justify-center shadow-2xl hover:border-white/50 group transition-transform hover:scale-105"
+                          title="Mindscape Levels"
+                        >
+                          {/* Anillo de Glow Dinámico */}
+                          <div
+                            className="absolute inset-0 rounded-full"
+                            style={{ boxShadow: `0 0 15px 5px ${themeColor}40`, borderColor: themeColor }}
+                          />
+
+                          {/* Texto "M" (Color del Elemento) */}
+                          <span
+                            className="text-3xl font-black font-display leading-none z-10"
+                            style={{ color: themeColor }}
+                          >
+                            M
+                          </span>
+
+                          {/* Badge Nivel */}
+                          <div className="absolute -bottom-2 bg-black/80 border border-white/20 text-[10px] px-1.5 rounded text-white font-mono z-20">
+                            6/6
+                          </div>
+                        </button>
+                      </div>
+                    </div>
                   </div>
 
                 </div>
