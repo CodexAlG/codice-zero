@@ -564,7 +564,7 @@ export default function AgentDetailPage() {
         <div className="flex-1 flex flex-col justify-center px-0 lg:px-4 z-20 h-full">
 
           {/* Contenedor Principal - Tech HUD Style */}
-          <div className="relative w-full bg-gray-950/80 border border-white/10 rounded-xl overflow-hidden shadow-[0_0_30px_rgba(0,0,0,0.5)] backdrop-blur-xl group hover:border-yellow-500/50 transition-all duration-300 p-3 lg:p-4 flex flex-col gap-2 h-[85vh]">
+          <div className="relative w-full bg-gray-950/80 border border-white/10 rounded-xl overflow-hidden shadow-[0_0_30px_rgba(0,0,0,0.5)] backdrop-blur-xl group hover:border-yellow-500/50 transition-all duration-300 p-3 lg:p-4 flex flex-col gap-2 h-[70vh]">
 
             {/* Header + Slider - SOLO en Stats */}
             {activeTab === 'stats' && (
