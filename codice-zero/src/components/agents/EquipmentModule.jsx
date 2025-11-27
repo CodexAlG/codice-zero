@@ -124,7 +124,7 @@ export default function EquipmentModule({ equipment, themeColor }) {
                             <div className="flex items-center gap-2 min-w-0 overflow-x-auto no-scrollbar">
                                 {team.members.map((member, mIdx) => (
                                     <div key={mIdx} className="flex flex-col items-center group cursor-pointer relative shrink-0">
-                                        <div className="relative w-14 h-14 rounded-full overflow-hidden border border-gray-600 group-hover:border-yellow-500 transition-colors bg-gray-800 shadow-lg">
+                                        <div className="relative w-18 h-18 rounded-full overflow-hidden border border-gray-600 group-hover:border-yellow-500 transition-colors bg-gray-800 shadow-lg">
                                             <Image
                                                 src={member.icon}
                                                 alt={member.name}
