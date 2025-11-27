@@ -118,7 +118,7 @@ export default function EquipmentModule({ equipment, themeColor }) {
                     {teams.map((team, index) => (
                         <div key={index} className="bg-black/40 border border-white/5 rounded-lg p-2 flex items-center justify-between gap-2 min-w-0 hover:bg-black/50 transition-colors h-auto">
                             <div className="min-w-[100px] shrink-0">
-                                <h4 className="text-white font-bold text-xs leading-tight">{team.name}</h4>
+                                <h4 className="text-white font-bold text-base leading-tight">{team.name}</h4>
                             </div>
 
                             <div className="flex items-center gap-2 min-w-0 overflow-x-auto no-scrollbar">

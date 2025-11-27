@@ -33,30 +33,30 @@ export const agentDetails = {
     equipment: {
       weapons: [
         {
-          name: "Cojín de Acero",
+          name: "Lone Light in the Clouds",
           rarity: "S",
-          icon: "W-Engine_Steel_Cushion.webp",
+          icon: "W-Engine_Lone_Light_in_the_Clouds.webp",
           description: "Aumenta el Daño Físico y la Probabilidad de Crítico."
         },
         {
-          name: "Motor Estelar",
-          rarity: "A",
-          icon: "W-Engine_Starlight_Engine.webp",
+          name: "Nocturno del Corazon",
+          rarity: "S",
+          icon: "W-Engine_Heart_of_the_Night.webp",
           description: "Aumenta el ATQ tras realizar una Evasión o Asistencia."
         },
         {
-          name: "Réplica de Motor Estelar",
-          rarity: "A",
-          icon: "W-Engine_Starlight_Engine_Replica.webp",
+          name: "Azufre",
+          rarity: "S",
+          icon: "W-Engine_Azur.webp",
           description: "Alternativa sólida para daño sostenido."
         }
       ],
       driveDiscs: {
         sets: [
           {
-            name: "Metal Colmilludo",
+            name: "Belada de Agua Blanca",
             count: 4,
-            icon: "Drive_Disc_Fanged_Metal_Icon.webp",
+            icon: "Drive_Disc_White_Water_Belada_Icon.webp",
             description: "Aumenta el Daño Físico y el daño tras Asalto."
           },
           {
@@ -77,19 +77,19 @@ export const agentDetails = {
       },
       teams: [
         {
-          name: "Equipo Físico Puro",
+          name: "Equipo Premium",
           members: [
             { name: "Ye Shunguang", role: "Ataque", element: "Fisico", icon: "/CodiceZero/ICONOS/Agent_Ye_Shunguang_Icon.webp" },
-            { name: "Caesar", role: "Defensa", element: "Fisico", icon: "/CodiceZero/ICONOS/Agent_Caesar_King_Icon.webp" },
-            { name: "Burnice", role: "Anomalia", element: "Fuego", icon: "/CodiceZero/ICONOS/Agent_Burnice_White_Icon.webp" }
+            { name: "Dialyn", role: "Aturdidor", element: "Fisico", icon: "/CodiceZero/ICONOS/Agent_Dialyn_Icon.webp" },
+            { name: "Zhao", role: "Defensa", element: "Hielo", icon: "/CodiceZero/ICONOS/Agent_Zhao_Icon.webp" }
           ]
         },
         {
-          name: "Equipo de Asalto",
+          name: "Equipo F2P",
           members: [
             { name: "Ye Shunguang", role: "Ataque", element: "Fisico", icon: "/CodiceZero/ICONOS/Agent_Ye_Shunguang_Icon.webp" },
-            { name: "Piper", role: "Anomalia", element: "Fisico", icon: "/CodiceZero/ICONOS/Agent_Piper_Wheel_Icon.webp" },
-            { name: "Lucy", role: "Soporte", element: "Fuego", icon: "/CodiceZero/ICONOS/Agent_Lucia_Elowen_Icon.webp" }
+            { name: "Koleda", role: "Aturdidor", element: "Fisico", icon: "/CodiceZero/ICONOS/Agent_Koleda_Icon.webp" },
+            { name: "Zhao", role: "Defensa", element: "Hielo", icon: "/CodiceZero/ICONOS/Agent_Zhao_Icon.webp" }
           ]
         }
       ]
