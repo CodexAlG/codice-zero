@@ -24,10 +24,10 @@ export default function EquipmentModule({ equipment, themeColor }) {
                         Amplificadores
                     </h3>
                     {/* [VERDE] Grid de 3 armas */}
-                    <div className="flex-1 grid grid-cols-3 gap-2 min-h-0 items-center">
+                    <div className="flex-1 grid grid-cols-3 gap-2 min-h-0 items-center content-center">
                         {weapons.map((weapon, index) => (
-                            <div key={index} className="h-full bg-black/40 border border-white/5 rounded-lg p-2 flex flex-col items-center justify-center gap-1 hover:border-white/20 transition-colors group min-w-0">
-                                <div className="relative w-16 h-16 shrink-0">
+                            <div key={index} className="h-auto bg-black/40 border border-white/5 rounded-lg p-3 flex flex-col items-center justify-center gap-2 hover:border-white/20 transition-colors group min-w-0">
+                                <div className="relative w-20 h-20 shrink-0">
                                     {/* Glow effect based on rarity */}
                                     <div className={`absolute inset-0 rounded-full blur-lg opacity-20 ${weapon.rarity === 'S' ? 'bg-yellow-500' : 'bg-purple-500'}`}></div>
                                     <Image
@@ -36,7 +36,7 @@ export default function EquipmentModule({ equipment, themeColor }) {
                                         fill
                                         className="object-contain drop-shadow-lg group-hover:scale-105 transition-transform duration-300"
                                     />
-                                    <div className={`absolute -top-1 -right-1 w-5 h-5 rounded-full flex items-center justify-center text-[10px] font-bold border ${weapon.rarity === 'S' ? 'bg-yellow-500/20 border-yellow-500 text-yellow-500' : 'bg-purple-500/20 border-purple-500 text-purple-500'
+                                    <div className={`absolute -top-1 -right-1 w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold border ${weapon.rarity === 'S' ? 'bg-yellow-500/20 border-yellow-500 text-yellow-500' : 'bg-purple-500/20 border-purple-500 text-purple-500'
                                         }`}>
                                         {weapon.rarity}
                                     </div>
@@ -58,14 +58,14 @@ export default function EquipmentModule({ equipment, themeColor }) {
 
                     <div className="flex-1 flex flex-row gap-2 min-h-0 items-center">
                         {/* [VERDE] Sets Recomendados (Iconos Verticales [ROSA]) */}
-                        <div className="flex-1 h-full bg-black/40 border border-white/5 rounded-lg p-2 flex flex-col items-center justify-center gap-2 min-w-0 relative overflow-hidden">
+                        <div className="flex-1 h-full bg-black/40 border border-white/5 rounded-lg p-2 flex flex-col items-center justify-center gap-3 min-w-0 relative overflow-hidden">
                             {/* Background decoration */}
                             <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent pointer-events-none"></div>
 
                             {driveDiscs.sets.map((set, index) => (
                                 <div key={index} className="flex items-center gap-2 min-w-0 z-10 w-full justify-center">
                                     {/* [ROSA] Imagen del Disco */}
-                                    <div className="relative w-16 h-16 shrink-0 group transition-transform hover:scale-110" title={set.name}>
+                                    <div className="relative w-20 h-20 shrink-0 group transition-transform hover:scale-110" title={set.name}>
                                         <div className="absolute inset-0 bg-black/50 rounded-full blur-md -z-10"></div>
                                         <Image
                                             src={`/CodiceZero/Discos/${set.icon}`}
@@ -126,7 +126,7 @@ export default function EquipmentModule({ equipment, themeColor }) {
                             <div className="flex items-center gap-2 min-w-0 overflow-x-auto no-scrollbar">
                                 {team.members.map((member, mIdx) => (
                                     <div key={mIdx} className="flex flex-col items-center group cursor-pointer relative shrink-0">
-                                        <div className="relative w-10 h-10 rounded-full overflow-hidden border border-gray-600 group-hover:border-yellow-500 transition-colors bg-gray-800 shadow-lg">
+                                        <div className="relative w-12 h-12 rounded-full overflow-hidden border border-gray-600 group-hover:border-yellow-500 transition-colors bg-gray-800 shadow-lg">
                                             <Image
                                                 src={member.icon}
                                                 alt={member.name}
