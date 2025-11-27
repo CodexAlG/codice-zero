@@ -85,15 +85,15 @@ export default function EquipmentModule({ equipment, themeColor }) {
                         <div className="flex-[1.2] flex flex-col justify-center gap-2 min-w-0 bg-black/20 border border-white/5 rounded-lg p-2 h-auto">
                             <div className="flex items-center justify-between bg-black/40 px-3 py-2 rounded border border-white/5">
                                 <span className="text-[10px] font-bold text-gray-400 w-6 shrink-0">IV</span>
-                                <span className="text-[10px] text-white font-medium text-right truncate">{driveDiscs.stats.main.iv}</span>
+                                <span className="text-xs text-white font-medium text-right truncate">{driveDiscs.stats.main.iv}</span>
                             </div>
                             <div className="flex items-center justify-between bg-black/40 px-3 py-2 rounded border border-white/5">
                                 <span className="text-[10px] font-bold text-gray-400 w-6 shrink-0">V</span>
-                                <span className="text-[10px] text-white font-medium text-right truncate">{driveDiscs.stats.main.v}</span>
+                                <span className="text-xs text-white font-medium text-right truncate">{driveDiscs.stats.main.v}</span>
                             </div>
                             <div className="flex items-center justify-between bg-black/40 px-3 py-2 rounded border border-white/5">
                                 <span className="text-[10px] font-bold text-gray-400 w-6 shrink-0">VI</span>
-                                <span className="text-[10px] text-white font-medium text-right truncate">{driveDiscs.stats.main.vi}</span>
+                                <span className="text-xs text-white font-medium text-right truncate">{driveDiscs.stats.main.vi}</span>
                             </div>
                             {/* Substats */}
                             <div className="flex flex-wrap gap-1 mt-1 justify-end">
