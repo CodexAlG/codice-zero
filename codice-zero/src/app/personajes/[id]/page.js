@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { useParams } from 'next/navigation';
+import { useParams, useSearchParams, useRouter, usePathname } from 'next/navigation';
 import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowLeft, TriangleAlert } from 'lucide-react';
@@ -16,11 +16,15 @@ import SkillMaterials from '@/components/agents/SkillMaterials';
 export default function AgentDetailPage() {
   // 1. PRIMERO: Definir params y encontrar el agente
   const params = useParams();
+  const searchParams = useSearchParams();
+  const router = useRouter();
+  const pathname = usePathname();
+
   const agentId = parseInt(params.id);
   const agent = agents.find(a => a.id === agentId);
 
   // 2. SEGUNDO: Hooks de estado
-  const [activeTab, setActiveTab] = useState("stats"); // Pestañas: 'stats', 'skills', 'equip'
+  const [activeTab, setActiveTab] = useState(searchParams.get('tab') || "stats"); // Pestañas: 'stats', 'skills', 'equip'
   const [level, setLevel] = useState(60); // Nivel del personaje
   const [selectedSkill, setSelectedSkill] = useState(null); // Habilidad seleccionada
   const [selectedGroup, setSelectedGroup] = useState(null); // Grupo de habilidades seleccionado
