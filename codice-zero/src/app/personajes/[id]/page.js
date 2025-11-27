@@ -547,6 +547,7 @@ export default function AgentDetailPage() {
         </div>
 
         {/* PANEL GRANDE CON ESPACIO */}
+
         <div className="flex-1 flex flex-col justify-center px-0 lg:px-12 z-20 h-full">
 
           {/* Contenedor Principal - Tech HUD Style */}
@@ -769,51 +770,49 @@ export default function AgentDetailPage() {
                     </div>
                   </div>
 
-                </div>
+                  {/* --- TRACKER MINDSCAPE (Diseño Neon Ring) - REUBICADO --- */}
+                  <div className="w-full flex justify-center mt-8 border-t border-white/5 pt-6">
+                    <button
+                      onClick={() => {
+                        // Filtrar habilidades que contengan "Mindscape" en el tipo
+                        const mindscapeSkills = details?.skills?.filter(skill =>
+                          skill.type && skill.type.includes("Mindscape")
+                        ) || [];
 
-                {/* --- COLUMNA DERECHA (Mindscape / Fijo) --- */}
-                {/* Este contenedor es pequeño y el contenedor padre lo centrará verticalmente */}
-                <div className="flex-none w-24">
-                  {/* --- TRACKER MINDSCAPE (Diseño Neon Ring) --- */}
-                  <button
-                    onClick={() => {
-                      // Filtrar habilidades que contengan "Mindscape" en el tipo
-                      const mindscapeSkills = details?.skills?.filter(skill =>
-                        skill.type && skill.type.includes("Mindscape")
-                      ) || [];
-
-                      // Al hacer click, muestra los niveles de dupe/Mindscape
-                      handleSelect({
-                        type: "Mindscape",
-                        name: "Mindscape (Cinema) Niveles de Dupe",
-                        description: "Aquí va el detalle de los 6 niveles del Mindscape y sus efectos. Nivel actual: 6/6",
-                        subSkills: mindscapeSkills,
-                        tags: ["Dupe", "Niveles"]
-                      });
-                    }}
-                    // Clases para el efecto de borde y fondo
-                    className="w-24 h-24 relative rounded-full border-2 border-gray-700 bg-gray-900/50 flex items-center justify-center shadow-2xl hover:border-white/50 group transition-transform hover:scale-105"
-                    title="Mindscape Levels"
-                  >
-                    {/* Anillo de Glow Dinámico */}
-                    <div
-                      className="absolute inset-0 rounded-full"
-                      style={{ boxShadow: `0 0 15px 5px ${themeColor}40`, borderColor: themeColor }}
-                    />
-
-                    {/* Texto "M" (Color del Elemento) */}
-                    <span
-                      className="text-4xl font-black font-display leading-none z-10"
-                      style={{ color: themeColor }}
+                        // Al hacer click, muestra los niveles de dupe/Mindscape
+                        handleSelect({
+                          type: "Mindscape",
+                          name: "Mindscape (Cinema) Niveles de Dupe",
+                          description: "Aquí va el detalle de los 6 niveles del Mindscape y sus efectos. Nivel actual: 6/6",
+                          subSkills: mindscapeSkills,
+                          tags: ["Dupe", "Niveles"]
+                        });
+                      }}
+                      // Clases para el efecto de borde y fondo
+                      className="w-20 h-20 relative rounded-full border-2 border-gray-700 bg-gray-900/50 flex items-center justify-center shadow-2xl hover:border-white/50 group transition-transform hover:scale-105"
+                      title="Mindscape Levels"
                     >
-                      M
-                    </span>
+                      {/* Anillo de Glow Dinámico */}
+                      <div
+                        className="absolute inset-0 rounded-full"
+                        style={{ boxShadow: `0 0 15px 5px ${themeColor}40`, borderColor: themeColor }}
+                      />
 
-                    {/* Contador 6/6 (Texto Monospaced) */}
-                    <div className="absolute bottom-2 text-xs text-white font-mono bg-black/60 px-1.5 py-0.5 rounded border" style={{ borderColor: `${themeColor}60` }}>
-                      6/6
-                    </div>
-                  </button>
+                      {/* Texto "M" (Color del Elemento) */}
+                      <span
+                        className="text-3xl font-black font-display leading-none z-10"
+                        style={{ color: themeColor }}
+                      >
+                        M
+                      </span>
+
+                      {/* Badge Nivel */}
+                      <div className="absolute -bottom-2 bg-black/80 border border-white/20 text-[10px] px-1.5 rounded text-white font-mono z-20">
+                        6/6
+                      </div>
+                    </button>
+                  </div>
+
                 </div>
 
               </div>
@@ -853,3 +852,4 @@ export default function AgentDetailPage() {
     </div >
   );
 }
+```
