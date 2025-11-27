@@ -72,6 +72,29 @@ export default function EquipmentModule({ equipment, themeColor }) {
                             );
                         })}
                     </div>
+
+                    {/* Skill Priority Section */}
+                    {equipment.skillPriority && (
+                        <div className="mt-3 pt-2 border-t border-white/10 flex flex-col gap-2">
+                            <div className="flex items-center justify-center gap-2 bg-black/20 rounded-lg p-2">
+                                {equipment.skillPriority.map((icon, index) => (
+                                    <div key={index} className="flex items-center">
+                                        <div className="relative w-8 h-8 group hover:scale-110 transition-transform duration-300">
+                                            <Image
+                                                src={icon}
+                                                alt="Skill Priority"
+                                                fill
+                                                className="object-contain drop-shadow-md"
+                                            />
+                                        </div>
+                                        {index < equipment.skillPriority.length - 1 && (
+                                            <span className="text-gray-500 font-bold mx-1 text-xs">&gt;</span>
+                                        )}
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                    )}
                 </section>
 
                 {/* --- SECCIÓN 2: PISTAS DE DISCO (DRIVE DISCS) [AZUL] --- */}

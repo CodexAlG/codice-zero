@@ -70,7 +70,7 @@ export const agentDetails = {
           main: {
             iv: "Prob. Crítico / Daño Crítico",
             v: "Daño Físico / ATQ%",
-            vi: "ATQ% / Tasa de Anomalía"
+            vi: "ATQ%"
           },
           sub: ["Prob. Crítico", "Daño Crítico", "ATQ%", "Penetración"]
         }
@@ -92,6 +92,13 @@ export const agentDetails = {
             { name: "Zhao", role: "Defensa", element: "Hielo", icon: "/CodiceZero/ICONOS/Agent_Zhao_Icon.webp" }
           ]
         }
+      ],
+      skillPriority: [
+        "/CodiceZero/Habilidades/Icon_Basic_Attack.webp",
+        "/CodiceZero/Habilidades/Icon_EX_Special_Attack.webp",
+        "/CodiceZero/Habilidades/Icon_Ultimate_Colored.webp",
+        "/CodiceZero/Habilidades/Icon_Dodge.webp",
+        "/CodiceZero/Habilidades/Icon_Assist_Attack.png"
       ]
     },
     skills: [
