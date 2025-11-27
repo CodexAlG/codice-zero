@@ -349,7 +349,7 @@ export default function AgentDetailPage() {
               onClick={() => { setSelectedSkill(null); setSelectedGroup(null); }}
             />
 
-            <div className="fixed lg:absolute bottom-4 left-4 right-4 lg:right-auto w-auto lg:w-[95%] lg:left-4 p-6 z-50 overflow-y-auto animate-slideUp bg-gray-900 border border-white/20 lg:border-2 lg:border-white/10 rounded-3xl lg:rounded-xl shadow-[0_10px_40px_rgba(0,0,0,0.8)] lg:shadow-2xl max-h-[85vh] lg:max-h-[60%] backdrop-blur-md">
+            <div className="fixed lg:absolute bottom-4 left-4 right-4 lg:right-auto w-auto lg:w-[95%] lg:left-4 p-6 z-50 overflow-y-auto animate-slideUp bg-gray-900 border border-white/20 lg:border-2 lg:border-white/10 rounded-3xl lg:rounded-xl shadow-[0_10px_40px_rgba(0,0,0,0.8)] lg:shadow-2xl max-h-[60vh] lg:max-h-[60%] backdrop-blur-md">
 
               {/* Mobile Handle Indicator */}
               <div className="lg:hidden w-12 h-1.5 bg-white/20 rounded-full mx-auto mb-6"></div>
