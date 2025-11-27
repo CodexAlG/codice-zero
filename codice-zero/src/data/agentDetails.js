@@ -30,6 +30,70 @@ export const agentDetails = {
         icon: "Item_Higher_Dimensional_Data_Miasmic_Elytron.webp"
       }
     },
+    equipment: {
+      weapons: [
+        {
+          name: "Cojín de Acero",
+          rarity: "S",
+          icon: "W-Engine_Steel_Cushion.webp",
+          description: "Aumenta el Daño Físico y la Probabilidad de Crítico."
+        },
+        {
+          name: "Motor Estelar",
+          rarity: "A",
+          icon: "W-Engine_Starlight_Engine.webp",
+          description: "Aumenta el ATQ tras realizar una Evasión o Asistencia."
+        },
+        {
+          name: "Réplica de Motor Estelar",
+          rarity: "A",
+          icon: "W-Engine_Starlight_Engine_Replica.webp",
+          description: "Alternativa sólida para daño sostenido."
+        }
+      ],
+      driveDiscs: {
+        sets: [
+          {
+            name: "Metal Colmilludo",
+            count: 4,
+            icon: "Drive_Disc_Fanged_Metal_Icon.webp",
+            description: "Aumenta el Daño Físico y el daño tras Asalto."
+          },
+          {
+            name: "Pájaro Carpintero Electro",
+            count: 2,
+            icon: "Drive_Disc_Woodpecker_Electro_Icon.png",
+            description: "Aumenta la Probabilidad de Crítico."
+          }
+        ],
+        stats: {
+          main: {
+            iv: "Prob. Crítico / Daño Crítico",
+            v: "Daño Físico / ATQ%",
+            vi: "ATQ% / Tasa de Anomalía"
+          },
+          sub: ["Prob. Crítico", "Daño Crítico", "ATQ%", "Penetración"]
+        }
+      },
+      teams: [
+        {
+          name: "Equipo Físico Puro",
+          members: [
+            { name: "Ye Shunguang", role: "Ataque", element: "Fisico", icon: "/CodiceZero/Agentes/Icon_Agent_Ye_Shunguang_State.webp" },
+            { name: "Caesar", role: "Defensa", element: "Fisico", icon: "/CodiceZero/Agentes/Icon_Agent_Caesar_King_State.webp" },
+            { name: "Burnice", role: "Anomalia", element: "Fuego", icon: "/CodiceZero/Agentes/Icon_Agent_Burnice_White_State.webp" }
+          ]
+        },
+        {
+          name: "Equipo de Asalto",
+          members: [
+            { name: "Ye Shunguang", role: "Ataque", element: "Fisico", icon: "/CodiceZero/Agentes/Icon_Agent_Ye_Shunguang_State.webp" },
+            { name: "Piper", role: "Anomalia", element: "Fisico", icon: "/CodiceZero/Agentes/Icon_Agent_Piper_Wheel_State.webp" },
+            { name: "Lucy", role: "Soporte", element: "Fuego", icon: "/CodiceZero/Agentes/Icon_Agent_Luciana_de_Montefio_State.webp" }
+          ]
+        }
+      ]
+    },
     skills: [
       {
         type: "Ataque Básico",

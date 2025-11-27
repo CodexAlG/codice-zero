@@ -12,6 +12,7 @@ import SkillsModule from '@/components/agents/SkillsModule';
 import StatsTable from '@/components/agents/StatsTable';
 import AscensionMaterials from '@/components/agents/AscensionMaterials';
 import SkillMaterials from '@/components/agents/SkillMaterials';
+import EquipmentModule from '@/components/agents/EquipmentModule';
 //coment
 export default function AgentDetailPage() {
   // 1. PRIMERO: Definir params y encontrar el agente
@@ -833,10 +834,11 @@ export default function AgentDetailPage() {
 
               </div>
             ) : (
-              /* Equip Content (placeholder) */
-              <div className="flex items-center justify-center h-full text-gray-500">
-                <p>Contenido de Equipo - Próximamente</p>
-              </div>
+              /* Equip Content - Ahora usa EquipmentModule */
+              <EquipmentModule
+                equipment={details?.equipment}
+                themeColor={themeColor}
+              />
             )}
 
           </div>
