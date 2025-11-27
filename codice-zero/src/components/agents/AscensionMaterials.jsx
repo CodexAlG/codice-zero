@@ -73,14 +73,7 @@ export default function AscensionMaterials({ level, agentRole, themeColor }) {
         ]
     };
 
-    // Mapeo de carpetas por rol (algunos nombres de carpeta difieren del rol exacto en español a veces, pero aquí parecen coincidir o ser mapeables)
-    // Basado en find_by_name:
-    // Anomalia -> Anomalia
-    // Ataque -> Atacantes
-    // Aturdidor -> Aturdidor
-    // Defensa -> Defensa
-    // Ruptura -> Ruptura
-    // Soporte -> Soporte
+    // Mapeo de carpetas por rol
     const roleFolders = {
         "Ataque": "Atacantes",
         "Defensa": "Defensa",
@@ -99,13 +92,13 @@ export default function AscensionMaterials({ level, agentRole, themeColor }) {
     const dennyPath = "/CodiceZero/Materiales/Varios/Item_Denny.webp";
 
     // Helper para renderizar un item
-    const MaterialItem = ({ icon, value, label, color }) => {
+    const MaterialItem = ({ icon, value, label, color, type }) => {
         if (value <= 0) return null;
 
         // Codificar parámetros para la URL
         const encodedName = encodeURIComponent(label);
         const encodedIcon = encodeURIComponent(icon);
-        const detailUrl = `/materiales/detail?name=${encodedName}&icon=${encodedIcon}`;
+        const detailUrl = `/materiales/detail?name=${encodedName}&icon=${encodedIcon}&type=${type}`;
 
         return (
             <Link href={detailUrl} className="flex flex-col items-center gap-2 cursor-pointer group/item">
@@ -139,16 +132,16 @@ export default function AscensionMaterials({ level, agentRole, themeColor }) {
         <div className="w-full mb-6 animate-fadeIn">
             <div className="flex flex-wrap items-end gap-4 p-4 bg-black/20 rounded-xl border border-white/5">
                 {/* Denny siempre primero */}
-                <MaterialItem icon={dennyPath} value={materials.denny} label="Denny" color="#00BFFF" /> {/* Azul cyan para Denny */}
+                <MaterialItem icon={dennyPath} value={materials.denny} label="Denny" color="#00BFFF" type="currency" />
 
                 {/* Basic Seal */}
-                <MaterialItem icon={`${basePath}${icons[0]}`} value={materials.basic} label="Basic Seal" color={themeColor} />
+                <MaterialItem icon={`${basePath}${icons[0]}`} value={materials.basic} label="Sello de Certificación Básico" color={themeColor} type="ascension" />
 
                 {/* Advanced Seal */}
-                <MaterialItem icon={`${basePath}${icons[1]}`} value={materials.advanced} label="Advanced Seal" color={themeColor} />
+                <MaterialItem icon={`${basePath}${icons[1]}`} value={materials.advanced} label="Sello de Certificación Avanzado" color={themeColor} type="ascension" />
 
                 {/* Expert Seal */}
-                <MaterialItem icon={`${basePath}${icons[2]}`} value={materials.expert} label="Expert Seal" color={themeColor} />
+                <MaterialItem icon={`${basePath}${icons[2]}`} value={materials.expert} label="Sello de Certificación Experto" color={themeColor} type="ascension" />
             </div>
         </div>
     );

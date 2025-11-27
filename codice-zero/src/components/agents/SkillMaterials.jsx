@@ -51,11 +51,11 @@ export default function SkillMaterials({ agentElement, themeColor, materials: bo
     ];
 
     // Helper para renderizar un item
-    const MaterialItem = ({ icon, value, label, color, isHamster, name }) => {
+    const MaterialItem = ({ icon, value, label, color, isHamster, name, type }) => {
         // Codificar parámetros para la URL
         const encodedName = encodeURIComponent(name || label);
         const encodedIcon = encodeURIComponent(icon);
-        const detailUrl = `/materiales/detail?name=${encodedName}&icon=${encodedIcon}`;
+        const detailUrl = `/materiales/detail?name=${encodedName}&icon=${encodedIcon}&type=${type}`;
 
         return (
             <Link href={detailUrl} className="flex flex-col items-center gap-2 cursor-pointer group/item">
@@ -91,19 +91,19 @@ export default function SkillMaterials({ agentElement, themeColor, materials: bo
         <div className="w-full mb-6 animate-fadeIn">
             <div className="flex flex-wrap items-start gap-4 p-4 bg-black/20 rounded-xl border border-white/5">
                 {/* Denny */}
-                <MaterialItem icon={dennyPath} value={materials.denny} label="Denny" color="#00BFFF" />
+                <MaterialItem icon={dennyPath} value={materials.denny} label="Denny" color="#00BFFF" type="currency" />
 
                 {/* Basic Chip */}
-                <MaterialItem icon={`${basePath}${chipIcons[0]}`} value={materials.basic} label="Basic Chip" color={themeColor} />
+                <MaterialItem icon={`${basePath}${chipIcons[0]}`} value={materials.basic} label="Chip Básico" color={themeColor} type="skill" />
 
                 {/* Advanced Chip */}
-                <MaterialItem icon={`${basePath}${chipIcons[1]}`} value={materials.advanced} label="Advanced Chip" color={themeColor} />
+                <MaterialItem icon={`${basePath}${chipIcons[1]}`} value={materials.advanced} label="Chip Avanzado" color={themeColor} type="skill" />
 
                 {/* Specialized Chip */}
-                <MaterialItem icon={`${basePath}${chipIcons[2]}`} value={materials.specialized} label="Specialized Chip" color={themeColor} />
+                <MaterialItem icon={`${basePath}${chipIcons[2]}`} value={materials.specialized} label="Chip Especializado" color={themeColor} type="skill" />
 
                 {/* Hamster Cage Pass */}
-                <MaterialItem icon={hamsterPath} value={materials.hamster} label="Hamster Cage Pass" color="#FFD700" isHamster={true} />
+                <MaterialItem icon={hamsterPath} value={materials.hamster} label="Pase de Jaula de Hámster" color="#FFD700" isHamster={true} type="hamster" />
 
                 {/* Boss Materials (Si existen y tienen icono definido) */}
                 {bossMaterials && (
@@ -116,6 +116,7 @@ export default function SkillMaterials({ agentElement, themeColor, materials: bo
                                 label={bossMaterials.weeklyBoss.name}
                                 name={bossMaterials.weeklyBoss.name}
                                 color="#FF4500" // Orange-ish for boss
+                                type="boss"
                             />
                         )}
                         {/* Elite Boss */}
@@ -126,6 +127,7 @@ export default function SkillMaterials({ agentElement, themeColor, materials: bo
                                 label={bossMaterials.eliteBoss.name}
                                 name={bossMaterials.eliteBoss.name}
                                 color="#9370DB" // Purple-ish for elite
+                                type="boss"
                             />
                         )}
                     </>

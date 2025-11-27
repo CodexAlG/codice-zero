@@ -11,6 +11,7 @@ function MaterialDetailContent() {
 
     const name = searchParams.get('name');
     const icon = searchParams.get('icon');
+    const type = searchParams.get('type');
 
     if (!name || !icon) {
         return (
@@ -19,6 +20,36 @@ function MaterialDetailContent() {
             </div>
         );
     }
+
+    // Diccionario de contenido basado en tipo
+    const content = {
+        ascension: {
+            desc: "Una insignia oficial que certifica la cualificación de un agente.",
+            usage: "Material requerido para ascender al Agente y desbloquear nuevos límites de nivel."
+        },
+        skill: {
+            desc: "Un chip de datos que contiene técnicas de combate avanzadas.",
+            usage: "Material requerido para mejorar las Habilidades de Combate."
+        },
+        boss: {
+            desc: "Un material raro obtenido de enemigos formidables.",
+            usage: "Material requerido para mejorar las Habilidades Core y Habilidades de Combate de alto nivel."
+        },
+        hamster: {
+            desc: "Un pase especial muy codiciado.",
+            usage: "Material raro para mejoras de alto nivel."
+        },
+        currency: {
+            desc: "La moneda principal de Nueva Eridu.",
+            usage: "Se utiliza para todo tipo de transacciones y mejoras."
+        },
+        default: {
+            desc: "Un modelo de datos construido sobre los registros de combate de numerosos investigadores.",
+            usage: "Item requerido para incrementar el nivel de Habilidades Core y Habilidades de Combate."
+        }
+    };
+
+    const { desc, usage } = content[type] || content.default;
 
     return (
         <div className="relative w-full h-full flex items-center justify-center bg-black">
@@ -64,8 +95,7 @@ function MaterialDetailContent() {
 
                     <div className="space-y-4 text-gray-400 leading-relaxed">
                         <p>
-                            Un modelo de datos construido sobre los registros de combate de numerosos investigadores.
-                            Contiene las impresiones más penetrantes de este material.
+                            {desc}
                         </p>
                         <p className="text-sm border-l-2 border-white/10 pl-4 italic">
                             "Suficientes datos para verlo 'nacer y vivir' dentro de un sistema VR."
@@ -75,7 +105,7 @@ function MaterialDetailContent() {
                     <div className="mt-4 p-4 bg-white/5 rounded-xl border border-white/5">
                         <p className="text-xs text-gray-500 font-mono uppercase mb-1">Uso</p>
                         <p className="text-sm text-gray-300">
-                            Item requerido para incrementar el nivel de Habilidades Core y Habilidades de Combate.
+                            {usage}
                         </p>
                     </div>
                 </div>
