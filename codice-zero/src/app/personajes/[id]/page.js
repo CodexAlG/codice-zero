@@ -21,7 +21,7 @@ export default function AgentDetailPage() {
 
   // 2. SEGUNDO: Hooks de estado
   const [activeTab, setActiveTab] = useState("stats"); // Pestañas: 'stats', 'skills', 'equip'
-  const [level, setLevel] = useState(1); // Nivel del personaje
+  const [level, setLevel] = useState(60); // Nivel del personaje
   const [selectedSkill, setSelectedSkill] = useState(null); // Habilidad seleccionada
   const [selectedGroup, setSelectedGroup] = useState(null); // Grupo de habilidades seleccionado
 
