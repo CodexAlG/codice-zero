@@ -315,6 +315,14 @@ export default function AgentDetailPage() {
     );
   }
 
+  // Función para cambiar pestaña y actualizar URL
+  const handleTabChange = (tab) => {
+    setActiveTab(tab);
+    const params = new URLSearchParams(searchParams);
+    params.set('tab', tab);
+    router.replace(`${pathname}?${params.toString()}`, { scroll: false });
+  };
+
   // 5. QUINTO: Return del JSX
   return (
     <div className="min-h-screen text-white flex flex-col lg:flex-row overflow-y-auto">
@@ -839,7 +847,7 @@ export default function AgentDetailPage() {
               <button
                 key={tab}
                 onClick={() => {
-                  setActiveTab(tab);
+                  handleTabChange(tab);
                   if (tab !== 'skills') {
                     setSelectedSkill(null);
                     setSelectedGroup(null);
