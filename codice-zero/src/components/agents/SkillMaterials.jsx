@@ -3,7 +3,7 @@ import Image from 'next/image';
 export default function SkillMaterials({ agentElement, themeColor, materials: bossMaterials }) {
     // 1. Cantidades Fijas
     const materials = {
-        denny: 2500000,
+        denny: 2905000,
         basic: 25,
         advanced: 75,
         specialized: 250,
@@ -76,11 +76,6 @@ export default function SkillMaterials({ agentElement, themeColor, materials: bo
                     <span className={`text-sm font-bold font-mono bg-black/40 px-2 py-0.5 rounded text-white border border-white/5 ${isHamster ? 'text-yellow-400' : ''}`}>
                         {value.toLocaleString()}
                     </span>
-                    {name && (
-                        <span className="text-[10px] text-gray-400 text-center leading-tight max-w-[80px]">
-                            {name}
-                        </span>
-                    )}
                 </div>
             </div>
         );
