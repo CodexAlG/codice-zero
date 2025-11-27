@@ -325,7 +325,7 @@ export default function AgentDetailPage() {
       {/* 1. ZONA IZQUIERDA (Arte/Imagen) */}
       <div
         // Ocupa el 100% del ancho en móvil. El alto es fijo para que la imagen se vea bien.
-        className="relative w-full lg:w-[600px] flex-shrink-0 h-[50vh] lg:h-screen border-b lg:border-r border-white/10 bg-transparent"
+        className="relative w-full lg:w-[45%] flex-shrink-0 h-[50vh] lg:h-screen border-b lg:border-r border-white/10 bg-transparent"
       >
         {/* Imagen de Fondo Limpia */}
         <div className="absolute inset-0 z-0">
