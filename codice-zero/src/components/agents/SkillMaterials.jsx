@@ -101,11 +101,14 @@ export default function SkillMaterials({ agentElement, themeColor, materials: bo
                 {/* Specialized Chip */}
                 <MaterialItem icon={`${basePath}${chipIcons[2]}`} value={materials.specialized} label="Specialized Chip" color={themeColor} />
 
-                {/* Boss Materials (Si existen) */}
+                {/* Hamster Cage Pass */}
+                <MaterialItem icon={hamsterPath} value={materials.hamster} label="Hamster Cage Pass" color="#FFD700" isHamster={true} />
+
+                {/* Boss Materials (Si existen y tienen icono definido) */}
                 {bossMaterials && (
                     <>
                         {/* Weekly Boss */}
-                        {bossMaterials.weeklyBoss && (
+                        {bossMaterials.weeklyBoss && bossMaterials.weeklyBoss.icon && (
                             <MaterialItem
                                 icon={`/CodiceZero/Materiales/Enemigos/Semanales/${bossMaterials.weeklyBoss.icon}`}
                                 value={materials.weekly}
@@ -115,7 +118,7 @@ export default function SkillMaterials({ agentElement, themeColor, materials: bo
                             />
                         )}
                         {/* Elite Boss */}
-                        {bossMaterials.eliteBoss && (
+                        {bossMaterials.eliteBoss && bossMaterials.eliteBoss.icon && (
                             <MaterialItem
                                 icon={`/CodiceZero/Materiales/Enemigos/Elite/${bossMaterials.eliteBoss.icon}`}
                                 value={materials.elite}
@@ -126,9 +129,6 @@ export default function SkillMaterials({ agentElement, themeColor, materials: bo
                         )}
                     </>
                 )}
-
-                {/* Hamster Cage Pass */}
-                <MaterialItem icon={hamsterPath} value={materials.hamster} label="Hamster Cage Pass" color="#FFD700" isHamster={true} />
             </div>
         </div>
     );
