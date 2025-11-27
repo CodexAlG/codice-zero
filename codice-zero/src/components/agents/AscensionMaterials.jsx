@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 
 export default function AscensionMaterials({ level, agentRole, themeColor }) {
     // 1. Definir la lógica de materiales acumulativos
@@ -93,6 +93,8 @@ export default function AscensionMaterials({ level, agentRole, themeColor }) {
 
     // Helper para renderizar un item
     const MaterialItem = ({ icon, value, label, color, type }) => {
+        const router = useRouter();
+
         if (value <= 0) return null;
 
         // Codificar parámetros para la URL
@@ -101,7 +103,10 @@ export default function AscensionMaterials({ level, agentRole, themeColor }) {
         const detailUrl = `/materiales/detail?name=${encodedName}&icon=${encodedIcon}&type=${type}`;
 
         return (
-            <Link href={detailUrl} className="flex flex-col items-center gap-1 cursor-pointer group/item">
+            <div
+                onClick={() => router.push(detailUrl)}
+                className="flex flex-col items-center gap-1 cursor-pointer group/item"
+            >
                 <div
                     className="relative w-16 h-16 bg-black/60 rounded-xl border border-white/10 flex items-center justify-center shadow-lg group-hover/item:scale-105 transition-transform duration-200"
                     style={{ borderColor: color ? `${color}60` : 'rgba(255,255,255,0.1)' }}
@@ -124,7 +129,7 @@ export default function AscensionMaterials({ level, agentRole, themeColor }) {
                 <span className="text-sm font-bold font-mono bg-black/40 px-2 py-0.5 rounded text-white border border-white/5">
                     {value.toLocaleString()}
                 </span>
-            </Link>
+            </div>
         );
     };
 
