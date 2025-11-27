@@ -1,13 +1,15 @@
 import Image from 'next/image';
 
-export default function SkillMaterials({ agentElement, themeColor }) {
+export default function SkillMaterials({ agentElement, themeColor, materials: bossMaterials }) {
     // 1. Cantidades Fijas
     const materials = {
         denny: 2500000,
         basic: 25,
         advanced: 75,
         specialized: 250,
-        hamster: 5
+        hamster: 5,
+        weekly: 9,
+        elite: 60
     };
 
     // 2. Mapeo de Iconos por Elemento
@@ -48,7 +50,7 @@ export default function SkillMaterials({ agentElement, themeColor }) {
     ];
 
     // Helper para renderizar un item
-    const MaterialItem = ({ icon, value, label, color, isHamster }) => {
+    const MaterialItem = ({ icon, value, label, color, isHamster, name }) => {
         return (
             <div className="flex flex-col items-center gap-2">
                 <div
@@ -70,16 +72,23 @@ export default function SkillMaterials({ agentElement, themeColor }) {
                         className="object-contain z-10"
                     />
                 </div>
-                <span className={`text-sm font-bold font-mono bg-black/40 px-2 py-0.5 rounded text-white border border-white/5 ${isHamster ? 'text-yellow-400' : ''}`}>
-                    {value.toLocaleString()}
-                </span>
+                <div className="flex flex-col items-center gap-1">
+                    <span className={`text-sm font-bold font-mono bg-black/40 px-2 py-0.5 rounded text-white border border-white/5 ${isHamster ? 'text-yellow-400' : ''}`}>
+                        {value.toLocaleString()}
+                    </span>
+                    {name && (
+                        <span className="text-[10px] text-gray-400 text-center leading-tight max-w-[80px]">
+                            {name}
+                        </span>
+                    )}
+                </div>
             </div>
         );
     };
 
     return (
         <div className="w-full mb-6 animate-fadeIn">
-            <div className="flex flex-wrap items-end gap-4 p-4 bg-black/20 rounded-xl border border-white/5">
+            <div className="flex flex-wrap items-start gap-4 p-4 bg-black/20 rounded-xl border border-white/5">
                 {/* Denny */}
                 <MaterialItem icon={dennyPath} value={materials.denny} label="Denny" color="#00BFFF" />
 
@@ -91,6 +100,32 @@ export default function SkillMaterials({ agentElement, themeColor }) {
 
                 {/* Specialized Chip */}
                 <MaterialItem icon={`${basePath}${chipIcons[2]}`} value={materials.specialized} label="Specialized Chip" color={themeColor} />
+
+                {/* Boss Materials (Si existen) */}
+                {bossMaterials && (
+                    <>
+                        {/* Weekly Boss */}
+                        {bossMaterials.weeklyBoss && (
+                            <MaterialItem
+                                icon={`/CodiceZero/Materiales/Enemigos/Semanales/${bossMaterials.weeklyBoss.icon}`}
+                                value={materials.weekly}
+                                label={bossMaterials.weeklyBoss.name}
+                                name={bossMaterials.weeklyBoss.name}
+                                color="#FF4500" // Orange-ish for boss
+                            />
+                        )}
+                        {/* Elite Boss */}
+                        {bossMaterials.eliteBoss && (
+                            <MaterialItem
+                                icon={`/CodiceZero/Materiales/Enemigos/Elite/${bossMaterials.eliteBoss.icon}`}
+                                value={materials.elite}
+                                label={bossMaterials.eliteBoss.name}
+                                name={bossMaterials.eliteBoss.name}
+                                color="#9370DB" // Purple-ish for elite
+                            />
+                        )}
+                    </>
+                )}
 
                 {/* Hamster Cage Pass */}
                 <MaterialItem icon={hamsterPath} value={materials.hamster} label="Hamster Cage Pass" color="#FFD700" isHamster={true} />

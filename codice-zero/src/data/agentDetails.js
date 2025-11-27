@@ -20,6 +20,16 @@ export const agentDetails = {
       statName: "crit rate", // Core stat único para alcanzar el cap de buff
       valuePerNode: 4.8,
     },
+    materials: {
+      weeklyBoss: {
+        name: "Exuvia del Refinamiento",
+        icon: "Item_Exuvia_of_Refinement.webp"
+      },
+      eliteBoss: {
+        name: "Datos Dimensionales Superiores: Elytron Miásmico",
+        icon: "Item_Higher_Dimensional_Data_Miasmic_Elytron.webp"
+      }
+    },
     skills: [
       {
         type: "Ataque Básico",
@@ -239,6 +249,16 @@ export const agentDetails = {
       statName: "hp%", // Core stat único para alcanzar el cap de buff
       valuePerNode: 6,
     },
+    materials: {
+      weeklyBoss: {
+        name: "",
+        icon: ""
+      },
+      eliteBoss: {
+        name: "",
+        icon: ""
+      }
+    },
     coreSkillScaling: [
       ["0.8%", "100"],
       ["0.9%", "250"],
@@ -398,6 +418,16 @@ export const agentDetails = {
     coreStats: {
       statName: "crit rate", // Core stat único para alcanzar el cap de buff
       valuePerNode: 4.8,
+    },
+    materials: {
+      weeklyBoss: {
+        name: "Pico de miasma carmesí",
+        icon: "Item_Crimson_Miasma_Spike.webp"
+      },
+      eliteBoss: {
+        name: "Datos Dimensionales Superiores: Elytron Miásmico",
+        icon: "Item_Higher_Dimensional_Data_Miasmic_Elytron.webp"
+      }
     },
     coreSkillScaling: [
       ["150", "18%", "18%"],
@@ -621,6 +651,16 @@ export const agentDetails = {
       statName: "crit rate", // Core stat único para alcanzar el cap de buff
       valuePerNode: 4.8,
     },
+    materials: {
+      weeklyBoss: {
+        name: "Exuvia del Refinamiento",
+        icon: "Item_Exuvia_of_Refinement.webp"
+      },
+      eliteBoss: {
+        name: "Datos de dimensiones superiores: Fantasma sigiloso",
+        icon: "Item_Higher_Dimensional_Data_Stealth_Phantom.webp"
+      }
+    },
     coreSkillScaling: [
       ["1.4", "15%"],
       ["1.5", "17.5%"],
@@ -791,6 +831,16 @@ export const agentDetails = {
     coreStats: {
       statName: "crit rate",
       valuePerNode: 4.8,
+    },
+    materials: {
+      weeklyBoss: {
+        name: "Pico de miasma carmesí",
+        icon: "Item_Crimson_Miasma_Spike.webp"
+      },
+      eliteBoss: {
+        name: "Datos de dimensiones superiores: Acero onírico corrupto",
+        icon: "Item_Higher_Dimensional_Data_Corrupted_Dreamsteel.webp"
+      }
     },
     coreSkillScaling: ["50%", "58%", "66%", "74%", "82%", "90%", "100%"],
     // --- AQUI ESTÁ LA CLAVE: EL ARRAY SKILLS ---
