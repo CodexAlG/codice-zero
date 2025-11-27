@@ -39,7 +39,7 @@ export const agentDetails = {
           description: "Aumenta el Daño Físico y la Probabilidad de Crítico."
         },
         {
-          name: "Nocturno del Corazon",
+          name: "Nocturno del Corazón",
           rarity: "S",
           icon: "W-Engine_Heartstring_Nocturne.webp",
           description: "Aumenta el ATQ tras realizar una Evasión o Asistencia."
@@ -54,7 +54,7 @@ export const agentDetails = {
       driveDiscs: {
         sets: [
           {
-            name: "Belada de Agua Blanca",
+            name: "Balada de Agua Blanca",
             count: 4,
             icon: "SuitWhiteWaterBallad.png",
             description: "Aumenta el Daño Físico y el daño tras Asalto."

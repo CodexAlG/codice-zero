@@ -1,4 +1,7 @@
 import Image from 'next/image';
+import Link from 'next/link';
+import { agents } from '../../data/agents';
+import { weapons as weaponsData } from '../../data/weapons';
 
 export default function EquipmentModule({ equipment, themeColor }) {
     if (!equipment) {
@@ -11,8 +14,18 @@ export default function EquipmentModule({ equipment, themeColor }) {
 
     const { weapons, driveDiscs, teams } = equipment;
 
+    // Helper functions to get IDs
+    const getWeaponData = (name) => {
+        return weaponsData.find(w => w.name === name);
+    };
+
+    const getAgentId = (name) => {
+        const agent = agents.find(a => a.name === name);
+        return agent ? agent.id : null;
+    };
+
     return (
-        <div className="animate-fadeIn w-full h-full flex flex-col gap-2 pr-1 pb-1 overflow-visible">
+        <div className="flex flex-col gap-2 h-auto">
 
             {/* --- SECCIÓN SUPERIOR: ARMAS Y DISCOS (Altura automática) --- */}
             <div className="flex flex-col xl:flex-row gap-2">
@@ -25,27 +38,39 @@ export default function EquipmentModule({ equipment, themeColor }) {
                     </h3>
                     {/* [VERDE] Grid de 3 armas */}
                     <div className="grid grid-cols-3 gap-2 items-center content-center h-auto">
-                        {weapons.map((weapon, index) => (
-                            <div key={index} className="h-auto bg-black/40 border border-white/5 rounded-lg p-3 flex flex-col items-center justify-center gap-2 hover:border-white/20 transition-colors group min-w-0">
-                                <div className="relative w-20 h-20 shrink-0">
-                                    {/* Glow effect based on rarity */}
-                                    <div className={`absolute inset-0 rounded-full blur-lg opacity-20 ${weapon.rarity === 'S' ? 'bg-yellow-500' : 'bg-purple-500'}`}></div>
-                                    <Image
-                                        src={`/CodiceZero/Armas/${weapon.rarity === 'S' ? 'Ataque' : 'Ataque'}/${weapon.icon}`}
-                                        alt={weapon.name}
-                                        fill
-                                        className="object-contain drop-shadow-lg group-hover:scale-105 transition-transform duration-300"
-                                    />
-                                    <div className={`absolute -top-1 -right-1 w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold border ${weapon.rarity === 'S' ? 'bg-yellow-500/20 border-yellow-500 text-yellow-500' : 'bg-purple-500/20 border-purple-500 text-purple-500'
-                                        }`}>
-                                        {weapon.rarity}
+                        {weapons.map((weapon, index) => {
+                            const weaponData = getWeaponData(weapon.name);
+                            const weaponId = weaponData?.id;
+                            // Use image from weaponsData if available, otherwise fallback to a default path (assuming Ataque for now if not found)
+                            const imageSrc = weaponData?.image || `/CodiceZero/Armas/Ataque/${weapon.icon}`;
+
+                            return (
+                                <Link
+                                    key={index}
+                                    href={weaponId ? `/armas/${weaponId}` : '#'}
+                                    className={`bg-black/40 border border-white/5 rounded-lg p-2 flex flex-col items-center gap-2 group hover:bg-black/60 transition-colors relative h-auto ${!weaponId ? 'pointer-events-none' : ''}`}
+                                >
+                                    <div className="relative w-20 h-20 shrink-0">
+                                        {/* Glow effect based on rarity */}
+                                        <div className={`absolute inset-0 rounded-full blur-lg opacity-20 ${weapon.rarity === 'S' ? 'bg-yellow-500' : 'bg-purple-500'}`}></div>
+                                        <Image
+                                            src={imageSrc}
+                                            alt={weapon.name}
+                                            fill
+                                            className="object-contain drop-shadow-lg group-hover:scale-110 transition-transform duration-300"
+                                        />
+                                        <div className={`absolute -top-1 -right-1 w-5 h-5 rounded-full flex items-center justify-center text-[10px] font-bold border border-white/20 ${weapon.rarity === 'S' ? 'bg-yellow-500 text-black' : 'bg-purple-500 text-white'}`}>
+                                            {weapon.rarity}
+                                        </div>
                                     </div>
-                                </div>
-                                <div className="text-center w-full min-w-0">
-                                    <h4 className="text-gray-200 font-bold text-[10px] leading-tight truncate w-full">{weapon.name}</h4>
-                                </div>
-                            </div>
-                        ))}
+                                    <div className="w-full text-center">
+                                        <p className="text-[10px] text-gray-300 font-medium truncate w-full group-hover:text-yellow-500 transition-colors">
+                                            {weapon.name}
+                                        </p>
+                                    </div>
+                                </Link>
+                            );
+                        })}
                     </div>
                 </section>
 
@@ -58,14 +83,11 @@ export default function EquipmentModule({ equipment, themeColor }) {
 
                     <div className="flex flex-row gap-2 items-center h-auto">
                         {/* [VERDE] Sets Recomendados (Iconos Verticales [ROSA]) */}
-                        <div className="flex-1 bg-black/40 border border-white/5 rounded-lg p-2 flex flex-col items-center justify-center gap-3 min-w-0 relative overflow-hidden h-auto">
-                            {/* Background decoration */}
-                            <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent pointer-events-none"></div>
-
+                        <Link href="/discos" className="flex-1 bg-black/40 border border-white/5 rounded-lg p-2 flex flex-col items-center justify-center gap-3 min-w-0 relative overflow-hidden h-auto group hover:bg-black/50 transition-colors">
                             {driveDiscs.sets.map((set, index) => (
                                 <div key={index} className="flex items-center gap-2 min-w-0 z-10 w-full justify-center">
                                     {/* [ROSA] Imagen del Disco */}
-                                    <div className="relative w-20 h-20 shrink-0 group transition-transform hover:scale-110" title={set.name}>
+                                    <div className="relative w-20 h-20 shrink-0 group-hover:scale-105 transition-transform duration-300" title={set.name}>
                                         <div className="absolute inset-0 bg-black/50 rounded-full blur-md -z-10"></div>
                                         <Image
                                             src={`/CodiceZero/Discos/${set.icon}`}
@@ -79,7 +101,7 @@ export default function EquipmentModule({ equipment, themeColor }) {
                                     </div>
                                 </div>
                             ))}
-                        </div>
+                        </Link>
 
                         {/* [AMARILLO] Stats Principales */}
                         <div className="flex-[1.2] flex flex-col justify-center gap-2 min-w-0 bg-black/20 border border-white/5 rounded-lg p-2 h-auto">
@@ -122,22 +144,29 @@ export default function EquipmentModule({ equipment, themeColor }) {
                             </div>
 
                             <div className="flex items-center gap-2 min-w-0 overflow-x-auto no-scrollbar">
-                                {team.members.map((member, mIdx) => (
-                                    <div key={mIdx} className="flex flex-col items-center group cursor-pointer relative shrink-0">
-                                        <div className="relative w-18 h-18 rounded-full overflow-hidden border border-gray-600 group-hover:border-yellow-500 transition-colors bg-gray-800 shadow-lg">
-                                            <Image
-                                                src={member.icon}
-                                                alt={member.name}
-                                                fill
-                                                className="object-cover"
-                                            />
-                                        </div>
-                                        {/* Connector Line */}
-                                        {mIdx < team.members.length - 1 && (
-                                            <div className="absolute -right-2 top-1/2 w-2 h-[1px] bg-white/10"></div>
-                                        )}
-                                    </div>
-                                ))}
+                                {team.members.map((member, mIdx) => {
+                                    const agentId = getAgentId(member.name);
+                                    return (
+                                        <Link
+                                            key={mIdx}
+                                            href={agentId ? `/personajes/${agentId}` : '#'}
+                                            className={`flex flex-col items-center group cursor-pointer relative shrink-0 ${!agentId ? 'pointer-events-none' : ''}`}
+                                        >
+                                            <div className="relative w-18 h-18 rounded-full overflow-hidden border border-gray-600 group-hover:border-yellow-500 transition-colors bg-gray-800 shadow-lg">
+                                                <Image
+                                                    src={member.icon}
+                                                    alt={member.name}
+                                                    fill
+                                                    className="object-cover"
+                                                />
+                                            </div>
+                                            {/* Connector Line */}
+                                            {mIdx < team.members.length - 1 && (
+                                                <div className="hidden"></div> // Placeholder for potential connector
+                                            )}
+                                        </Link>
+                                    );
+                                })}
                             </div>
                         </div>
                     ))}
