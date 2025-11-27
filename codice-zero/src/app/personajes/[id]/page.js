@@ -10,6 +10,7 @@ import { agentDetails } from '@/data/agentDetails';
 import { calculateStatsWithCore } from '@/utils/statCalculator';
 import SkillsModule from '@/components/agents/SkillsModule';
 import StatsTable from '@/components/agents/StatsTable';
+import AscensionMaterials from '@/components/agents/AscensionMaterials';
 //coment
 export default function AgentDetailPage() {
   // 1. PRIMERO: Definir params y encontrar el agente
@@ -552,20 +553,27 @@ export default function AgentDetailPage() {
 
             {/* Header + Slider - SOLO en Stats */}
             {activeTab === 'stats' && (
-              <div className="flex flex-col sm:flex-row justify-between items-center border-b border-white/10 pb-4 gap-4">
-                <h2 className="text-2xl font-display text-white-400 uppercase italic font-bold text-center sm:text-left">Atributos Base</h2>
-                <div className="flex items-center gap-3 w-full sm:w-auto justify-center">
-                  <span className="text-sm font-mono text-gray-400 whitespace-nowrap">Nv.{level}/60</span>
-                  <input
-                    type="range"
-                    min="1"
-                    max="60"
-                    value={level}
-                    onChange={(e) => setLevel(Number(e.target.value))}
-                    className="w-full sm:w-48 h-1.5 bg-gray-700 rounded-lg appearance-none cursor-pointer accent-yellow-400"
-                  />
+              <>
+                <AscensionMaterials
+                  level={level}
+                  agentRole={agent.rol}
+                  themeColor={themeColor}
+                />
+                <div className="flex flex-col sm:flex-row justify-between items-center border-b border-white/10 pb-4 gap-4">
+                  <h2 className="text-2xl font-display text-white-400 uppercase italic font-bold text-center sm:text-left">Atributos Base</h2>
+                  <div className="flex items-center gap-3 w-full sm:w-auto justify-center">
+                    <span className="text-sm font-mono text-gray-400 whitespace-nowrap">Nv.{level}/60</span>
+                    <input
+                      type="range"
+                      min="1"
+                      max="60"
+                      value={level}
+                      onChange={(e) => setLevel(Number(e.target.value))}
+                      className="w-full sm:w-48 h-1.5 bg-gray-700 rounded-lg appearance-none cursor-pointer accent-yellow-400"
+                    />
+                  </div>
                 </div>
-              </div>
+              </>
             )}
 
             {/* Contenido Condicional - Stats o Skills */}
