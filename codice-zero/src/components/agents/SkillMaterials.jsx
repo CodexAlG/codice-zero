@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import Link from 'next/link';
 
 export default function SkillMaterials({ agentElement, themeColor, materials: bossMaterials }) {
     // 1. Cantidades Fijas
@@ -51,10 +52,15 @@ export default function SkillMaterials({ agentElement, themeColor, materials: bo
 
     // Helper para renderizar un item
     const MaterialItem = ({ icon, value, label, color, isHamster, name }) => {
+        // Codificar parámetros para la URL
+        const encodedName = encodeURIComponent(name || label);
+        const encodedIcon = encodeURIComponent(icon);
+        const detailUrl = `/materiales/detail?name=${encodedName}&icon=${encodedIcon}`;
+
         return (
-            <div className="flex flex-col items-center gap-2">
+            <Link href={detailUrl} className="flex flex-col items-center gap-2 cursor-pointer group/item">
                 <div
-                    className="relative w-16 h-16 bg-black/60 rounded-xl border border-white/10 flex items-center justify-center shadow-lg group hover:scale-105 transition-transform duration-200"
+                    className="relative w-16 h-16 bg-black/60 rounded-xl border border-white/10 flex items-center justify-center shadow-lg group-hover/item:scale-105 transition-transform duration-200"
                     style={{ borderColor: color ? `${color}60` : 'rgba(255,255,255,0.1)' }}
                 >
                     {/* Glow effect */}
@@ -77,7 +83,7 @@ export default function SkillMaterials({ agentElement, themeColor, materials: bo
                         {value.toLocaleString()}
                     </span>
                 </div>
-            </div>
+            </Link>
         );
     };
 
