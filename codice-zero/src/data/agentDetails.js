@@ -41,13 +41,13 @@ export const agentDetails = {
         {
           name: "Nocturno del Corazon",
           rarity: "S",
-          icon: "W-Engine_Heart_of_the_Night.webp",
+          icon: "W-Engine_Heartstring_Nocturne.webp",
           description: "Aumenta el ATQ tras realizar una Evasión o Asistencia."
         },
         {
           name: "Azufre",
           rarity: "S",
-          icon: "W-Engine_Azur.webp",
+          icon: "W-Engine_The_Brimstone.webp",
           description: "Alternativa sólida para daño sostenido."
         }
       ],
@@ -56,7 +56,7 @@ export const agentDetails = {
           {
             name: "Belada de Agua Blanca",
             count: 4,
-            icon: "Drive_Disc_White_Water_Belada_Icon.webp",
+            icon: "SuitWhiteWaterBallad.png",
             description: "Aumenta el Daño Físico y el daño tras Asalto."
           },
           {
@@ -88,7 +88,7 @@ export const agentDetails = {
           name: "Equipo F2P",
           members: [
             { name: "Ye Shunguang", role: "Ataque", element: "Fisico", icon: "/CodiceZero/ICONOS/Agent_Ye_Shunguang_Icon.webp" },
-            { name: "Koleda", role: "Aturdidor", element: "Fisico", icon: "/CodiceZero/ICONOS/Agent_Koleda_Icon.webp" },
+            { name: "Koleda", role: "Aturdidor", element: "Fisico", icon: "/CodiceZero/ICONOS/Agent_Koleda_Belobog_Icon.webp" },
             { name: "Zhao", role: "Defensa", element: "Hielo", icon: "/CodiceZero/ICONOS/Agent_Zhao_Icon.webp" }
           ]
         }
