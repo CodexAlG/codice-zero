@@ -602,7 +602,15 @@ export default function AgentDetailPage() {
                           const val = details?.coreSkillScaling ? details.coreSkillScaling[0] : "??%";
 
                           // Inyectar valor en la descripción
-                          const desc = passive?.description.replace("{VALOR}", `<span class='text-green-400 font-bold '>${val}</span>`) || "";
+                          // Inyectar valor en la descripción
+                          let desc = passive?.description || "";
+                          if (Array.isArray(val)) {
+                            val.forEach((v, i) => {
+                              desc = desc.replace(`{VALOR_${i + 1}}`, `<span class='text-green-400 font-bold'>${v}</span>`);
+                            });
+                          } else {
+                            desc = desc.replace("{VALOR}", `<span class='text-green-400 font-bold '>${val}</span>`);
+                          }
 
                           handleSelect({
                             ...passive,
@@ -649,7 +657,15 @@ export default function AgentDetailPage() {
                               const val = details?.coreSkillScaling ? details.coreSkillScaling[idx + 1] : "??%";
 
                               // Inyectar valor
-                              const desc = passive?.description.replace("{VALOR}", `<span class='text-green-400 font-bold'>${val}</span>`) || "";
+                              // Inyectar valor
+                              let desc = passive?.description || "";
+                              if (Array.isArray(val)) {
+                                val.forEach((v, i) => {
+                                  desc = desc.replace(`{VALOR_${i + 1}}`, `<span class='text-green-400 font-bold'>${v}</span>`);
+                                });
+                              } else {
+                                desc = desc.replace("{VALOR}", `<span class='text-green-400 font-bold'>${val}</span>`);
+                              }
 
                               handleSelect({
                                 ...passive,
