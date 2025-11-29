@@ -3,7 +3,6 @@
 import { useState, useEffect, useMemo } from 'react';
 import { memo } from 'react';
 import Image from 'next/image';
-import Link from 'next/link';
 import { motion, AnimatePresence } from "framer-motion";
 import { bangboos } from '@/data/bangboos';
 import BangbooCard from '@/components/bangboos/BangbooCard';
@@ -48,35 +47,33 @@ export default function BangboosPage() {
         });
     };
 
-    const rankFilters = ["S", "A", "B"];
+    const rankFilters = ["S", "A"];
     const factionFilters = [
-        "Generic",
-        "Belobog Heavy Industries",
-        "Cunning Hares",
-        "Victoria Housekeeping",
-        "Sons of Calydon",
-        "N.E.P.S.",
-        "H.S.O.-6",
-        "Obol Squad"
+        { name: "Belobog Heavy Industries", icon: "/CodiceZero/Agentes/Faction/Faction_Belobog_Heavy_Industries_Icon.webp" },
+        { name: "Cunning Hares", icon: "/CodiceZero/Agentes/Faction/Faction_Criminal_Investigation_Special_Response_Team_Icon.webp" },
+        { name: "Victoria Housekeeping", icon: "/CodiceZero/Agentes/Faction/Faction_Victoria_Housekeeping_Co._Icon.webp" },
+        { name: "Sons of Calydon", icon: "/CodiceZero/Agentes/Faction/Faction_Sons_of_Calydon_Icon.webp" },
+        { name: "N.E.P.S.", icon: "/CodiceZero/Agentes/Faction/Faction_Hollow_Special_Operations_Section_6_Icon.webp" },
+        { name: "H.S.O.-6", icon: "/CodiceZero/Agentes/Faction/Faction_Defense_Force_-_Silver_Squad_Icon.webp" },
+        { name: "Obol Squad", icon: "/CodiceZero/Agentes/Faction/Faction_Obol_Squad_Icon.webp" }
     ];
 
     const filterIcons = {
         // Rangos
         "S": "/CodiceZero/Rango/Icon_Item_Rank_S.webp",
-        "A": "/CodiceZero/Rango/Icon_Item_Rank_A.webp",
-        "B": "/CodiceZero/Rango/Icon_Item_Rank_B.webp"
+        "A": "/CodiceZero/Rango/Icon_Item_Rank_A.webp"
     };
 
     // Mapa de prioridad para ordenamiento
-    const rankPriority = { "S": 1, "A": 2, "B": 3 };
+    const rankPriority = { "S": 1, "A": 2 };
 
     const filteredBangboos = useMemo(() => {
         return (activeFilters.length === 0
             ? bangboos
             : bangboos.filter(b => {
                 // Separar filtros activos por categoría
-                const rankFilters = activeFilters.filter(f => ["S", "A", "B"].includes(f));
-                const factionFilters = activeFilters.filter(f => !["S", "A", "B"].includes(f));
+                const rankFilters = activeFilters.filter(f => ["S", "A"].includes(f));
+                const factionFilters = activeFilters.filter(f => !["S", "A"].includes(f));
 
                 // Verificar Rango (Si hay filtros de rango, debe coincidir con uno de ellos)
                 const matchRank = rankFilters.length === 0 || rankFilters.includes(b.rank);
@@ -88,7 +85,7 @@ export default function BangboosPage() {
                 return matchRank && matchFaction;
             })
         ).sort((a, b) => {
-            // Ordenar por Rango (S < A < B)
+            // Ordenar por Rango (S < A)
             const rankDiff = rankPriority[a.rank] - rankPriority[b.rank];
             if (rankDiff !== 0) return rankDiff;
             return b.id - a.id;
@@ -138,11 +135,13 @@ export default function BangboosPage() {
                                 {/* Filtros de Facción */}
                                 <div className="flex items-center gap-1 p-2 bg-black/40 border border-white/5 rounded-lg shadow-inner flex-wrap">
                                     {factionFilters.map((faction) => (
-                                        <FactionFilterButton
-                                            key={faction}
-                                            name={faction}
+                                        <FilterIcon
+                                            key={faction.name}
+                                            name={faction.name}
+                                            icon={faction.icon}
                                             activeFilters={activeFilters}
                                             toggleFilter={toggleFilter}
+                                            size={24}
                                         />
                                     ))}
                                 </div>
@@ -208,21 +207,3 @@ const FilterIcon = memo(({ name, icon, activeFilters, toggleFilter, size = 24 })
 });
 
 FilterIcon.displayName = 'FilterIcon';
-
-const FactionFilterButton = memo(({ name, activeFilters, toggleFilter }) => {
-    const isActive = activeFilters.includes(name);
-
-    return (
-        <button
-            onClick={() => toggleFilter(name)}
-            className={`px-3 py-1.5 rounded-lg text-xs font-bold border transition-all duration-300 ${isActive
-                ? "bg-yellow-500/20 text-yellow-400 border-yellow-500 shadow-[0_0_10px_rgba(234,179,8,0.3)]"
-                : "bg-gray-900/50 text-gray-400 border-gray-700 hover:border-gray-500 hover:text-white"
-                }`}
-        >
-            {name}
-        </button>
-    );
-});
-
-FactionFilterButton.displayName = 'FactionFilterButton';
