@@ -32,9 +32,9 @@ const AgentCard = memo(({ agent }) => {
       <div className="absolute top-1.5 left-1.5 z-20 flex flex-col gap-0.5">
         <div className="relative w-6 h-6">
           <div className={`absolute inset-0 blur-md rounded-full opacity-90 ${agent.element === 'Fuego' ? 'bg-red-600' :
-            agent.element === 'Hielo' ? 'bg-cyan-500' :
-              agent.element === 'Electrico' ? 'bg-blue-600' :
-                agent.element === 'Fisico' ? 'bg-yellow-500' : 'bg-pink-600'
+              agent.element === 'Hielo' ? 'bg-cyan-500' :
+                agent.element === 'Electrico' ? 'bg-blue-600' :
+                  agent.element === 'Fisico' ? 'bg-yellow-500' : 'bg-pink-600'
             }`}></div>
           <div className="relative w-6 h-6 bg-black/60 rounded-md p-0.5 border border-white/10">
             <Image
@@ -73,14 +73,14 @@ const AgentCard = memo(({ agent }) => {
         />
       </div>
 
-      {/* Agent Icon */}
-      <div className="absolute inset-0 flex items-center justify-center p-2 group-hover:scale-110 transition-transform duration-300">
+      {/* Agent Icon - Cover para llenar mejor */}
+      <div className="absolute inset-0 flex items-center justify-center p-1 group-hover:scale-110 transition-transform duration-300">
         <Image
           src={agent.image}
           alt={agent.name}
-          width={100}
-          height={100}
-          className="object-contain"
+          width={120}
+          height={120}
+          className="object-cover rounded-lg"
           unoptimized
         />
       </div>
@@ -96,9 +96,9 @@ const AgentCard = memo(({ agent }) => {
         </div>
       )}
 
-      {/* Name */}
-      <div className="absolute bottom-0 w-full p-1.5 bg-gradient-to-t from-black via-black/80 to-transparent pt-4">
-        <h3 className="text-white font-bold text-[10px] text-center leading-tight group-hover:text-yellow-400">
+      {/* Name - Text más grande */}
+      <div className="absolute bottom-0 w-full p-2 bg-gradient-to-t from-black via-black/90 to-transparent pt-6">
+        <h3 className="text-white font-bold text-xs text-center leading-tight group-hover:text-yellow-400">
           {agent.name}
         </h3>
       </div>
