@@ -1,12 +1,12 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useParams, useSearchParams, useRouter, usePathname } from 'next/navigation';
-import Image from 'next/image';
+import { Image as NextImage } from 'next/image';
 import Link from 'next/link';
 import { ArrowLeft, TriangleAlert } from 'lucide-react';
 import { agents } from '@/data/agents';
-import { agentDetails } from '@/data/agentDetails';
+import { getAgentDetails } from '@/data/agentDetails';
 import { calculateStatsWithCore } from '@/utils/statCalculator';
 import SkillsModule from '@/components/agents/SkillsModule';
 import StatsTable from '@/components/agents/StatsTable';
@@ -86,6 +86,19 @@ export default function AgentDetailPage() {
   const [level, setLevel] = useState(60); // Nivel del personaje
   const [selectedSkill, setSelectedSkill] = useState(null); // Habilidad seleccionada
   const [selectedGroup, setSelectedGroup] = useState(null); // Grupo de habilidades seleccionado
+  const [details, setDetails] = useState(null); // Agent details loaded dynamically
+  const [isLoading, setIsLoading] = useState(true); // Loading state
+
+  // Load agent details dynamically
+  useEffect(() => {
+    async function loadDetails() {
+      setIsLoading(true);
+      const data = await getAgentDetails(agentId);
+      setDetails(data);
+      setIsLoading(false);
+    }
+    loadDetails();
+  }, [agentId]);
 
   // Grupos de Habilidades Maestros
   const skillGroups = [
@@ -173,7 +186,8 @@ export default function AgentDetailPage() {
   }
 
   // 4. CUARTO: Lógica que depende de 'agent' (Colores, Iconos)
-  const details = agentDetails[agentId];
+  // Note: details is now loaded dynamically via useEffect
+
 
   // Helper de normalización
   const normalize = (str) => str ? str.normalize("NFD").replace(/[\u0300-\u036f]/g, "") : "";
