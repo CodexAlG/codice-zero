@@ -34,7 +34,7 @@ export default function Sidebar({ isExpanded, isMobile, toggleDrawer }) {
 
   return (
     <aside
-      className={`h-screen border-r border-white/5 flex flex-col overflow-hidden backdrop-blur-sm text-white p-4 transition-all duration-300 ease-in-out ${isMobile
+      className={`h-screen border-r border-white/5 flex flex-col overflow-hidden bg-black text-white p-4 transition-all duration-300 ease-in-out ${isMobile
         ? 'fixed top-0 left-0 w-64 z-[90]'
         : 'relative w-full' // Full width of container (w-48 from LayoutWrapper)
         }`}
@@ -71,7 +71,7 @@ export default function Sidebar({ isExpanded, isMobile, toggleDrawer }) {
             <Link href="/" onClick={handleLinkClick} className={`relative flex items-center h-12 py-2 px-2 rounded-md transition-all duration-200 ${activeItem === -1 ? 'text-yellow-300 bg-yellow-500/10 text-yellow-300 shadow-lg shadow-yellow-500/20 border border-yellow-400/30' : 'text-gray-100 hover:bg-cyan-500/10 hover:text-cyan-300 hover:shadow-md hover:shadow-cyan-400/20'} hover:border hover:border-cyan-400/20`}>
               {activeItem === -1 && <div className="absolute left-0 top-0 bottom-0 w-[3px] bg-gradient-to-b from-yellow-300 to-yellow-500 shadow-lg shadow-yellow-500/50"></div>}
               <Home size={32} className={`transition-all duration-200 ${activeItem === -1 ? 'text-yellow-300 drop-shadow-lg shadow-yellow-400/50' : 'text-gray-200 opacity-80 hover:text-cyan-300 hover:opacity-100 hover:drop-shadow-md hover:shadow-cyan-400/50'}`} />
-              <span className={`ml-3 font-medium transition-opacity`}> {/* Reduced margin from ml-4 to ml-3 */}
+              <span className={`ml-3 font-medium transition-opacity`}>
                 Inicio
               </span>
             </Link>
