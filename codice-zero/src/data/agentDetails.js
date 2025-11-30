@@ -79,7 +79,6 @@ export const agentDetails = {
         {
           name: "Equipo Premium",
           members: [
-            { name: "Ye Shunguang", role: "Ataque", element: "Fisico", icon: "/CodiceZero/ICONOS/Agent_Ye_Shunguang_Icon.webp" },
             { name: "Dialyn", role: "Aturdidor", element: "Fisico", icon: "/CodiceZero/ICONOS/Agent_Dialyn_Icon.webp" },
             { name: "Zhao", role: "Defensa", element: "Hielo", icon: "/CodiceZero/ICONOS/Agent_Zhao_Icon.webp" }
           ]
@@ -87,7 +86,6 @@ export const agentDetails = {
         {
           name: "Equipo F2P",
           members: [
-            { name: "Ye Shunguang", role: "Ataque", element: "Fisico", icon: "/CodiceZero/ICONOS/Agent_Ye_Shunguang_Icon.webp" },
             { name: "Koleda", role: "Aturdidor", element: "Fisico", icon: "/CodiceZero/ICONOS/Agent_Koleda_Belobog_Icon.webp" },
             { name: "Zhao", role: "Defensa", element: "Hielo", icon: "/CodiceZero/ICONOS/Agent_Zhao_Icon.webp" }
           ]
