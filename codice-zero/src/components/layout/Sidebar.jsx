@@ -34,13 +34,13 @@ export default function Sidebar({ isExpanded, isMobile, toggleDrawer }) {
 
   return (
     <aside
-      className={`h-screen border-r border-white/5 flex flex-col overflow-hidden bg-[#0f172a] text-white p-4 transition-all duration-300 ease-in-out ${isMobile
+      className={`h-screen border-r border-white/5 flex flex-col overflow-hidden bg-[#0f172a]/90 backdrop-blur-md text-white p-4 transition-all duration-300 ease-in-out ${isMobile
         ? 'fixed top-0 left-0 w-64 z-[90]'
         : 'relative w-full' // Full width of container (w-48 from LayoutWrapper)
         }`}
     >
       {/* Logo CZ y Botón Cerrar Móvil */}
-      <Link href="/" className="flex-shrink-0 flex items-center justify-center h-20 w-full relative group bg-[#0f172a] shadow-2xl">
+      <Link href="/" className="flex-shrink-0 flex items-center justify-center h-20 w-full relative group bg-transparent shadow-2xl">
 
         {/* Insignia CZ */}
         <div
