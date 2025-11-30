@@ -35,21 +35,16 @@ export default function Sidebar({ isExpanded, isMobile, toggleDrawer }) {
   return (
     <aside
       className={`h-screen border-r border-white/5 flex flex-col overflow-hidden backdrop-blur-sm text-white p-4 transition-all duration-300 ease-in-out ${isMobile
-          ? 'fixed top-0 left-0 w-64 z-[90]'
-          : 'relative'
-        } ${isExpanded ? 'w-64' : 'w-20'
-        } ${!isMobile ? 'hover:w-64' : ''
+        ? 'fixed top-0 left-0 w-64 z-[90]'
+        : 'relative w-full' // Full width of container (w-48 from LayoutWrapper)
         }`}
-      onMouseEnter={!isMobile ? () => {/* Mouse events solo en desktop */ } : undefined}
-      onMouseLeave={!isMobile ? () => {/* Mouse events solo en desktop */ } : undefined}
     >
       {/* Logo CZ y Botón Cerrar Móvil */}
       <Link href="/" className="flex-shrink-0 flex items-center justify-center h-20 w-full relative group bg-black/70 shadow-2xl">
 
         {/* Insignia CZ */}
         <div
-          className={`text-transparent bg-clip-text bg-gradient-to-br from-yellow-300 to-yellow-600 drop-shadow-[0_0_10px_rgba(234,179,8,0.9)] tracking-tighter transition-all duration-300 group-hover:scale-105 font-display font-black italic ${isExpanded ? 'text-3xl' : 'text-xl'
-            }`}
+          className={`text-transparent bg-clip-text bg-gradient-to-br from-yellow-300 to-yellow-600 drop-shadow-[0_0_10px_rgba(234,179,8,0.9)] tracking-tighter transition-all duration-300 group-hover:scale-105 font-display font-black italic text-3xl`}
         >
           CZ
         </div>
@@ -75,8 +70,8 @@ export default function Sidebar({ isExpanded, isMobile, toggleDrawer }) {
           <li>
             <Link href="/" onClick={handleLinkClick} className={`relative flex items-center h-12 py-2 px-2 rounded-md transition-all duration-200 ${activeItem === -1 ? 'text-yellow-300 bg-yellow-500/10 text-yellow-300 shadow-lg shadow-yellow-500/20 border border-yellow-400/30' : 'text-gray-100 hover:bg-cyan-500/10 hover:text-cyan-300 hover:shadow-md hover:shadow-cyan-400/20'} hover:border hover:border-cyan-400/20`}>
               {activeItem === -1 && <div className="absolute left-0 top-0 bottom-0 w-[3px] bg-gradient-to-b from-yellow-300 to-yellow-500 shadow-lg shadow-yellow-500/50"></div>}
-              <Home size={36} className={`transition-all duration-200 ${activeItem === -1 ? 'text-yellow-300 drop-shadow-lg shadow-yellow-400/50' : 'text-gray-200 opacity-80 hover:text-cyan-300 hover:opacity-100 hover:drop-shadow-md hover:shadow-cyan-400/50'}`} />
-              <span className={`ml-4 font-medium ${!isExpanded && 'hidden'} transition-opacity`}>
+              <Home size={32} className={`transition-all duration-200 ${activeItem === -1 ? 'text-yellow-300 drop-shadow-lg shadow-yellow-400/50' : 'text-gray-200 opacity-80 hover:text-cyan-300 hover:opacity-100 hover:drop-shadow-md hover:shadow-cyan-400/50'}`} />
+              <span className={`ml-3 font-medium transition-opacity`}> {/* Reduced margin from ml-4 to ml-3 */}
                 Inicio
               </span>
             </Link>
@@ -84,8 +79,8 @@ export default function Sidebar({ isExpanded, isMobile, toggleDrawer }) {
           <li>
             <Link href="/personajes" onClick={handleLinkClick} className={`relative flex items-center h-12 py-2 px-2 rounded-md transition-all duration-200 ${activeItem === 0 ? 'text-yellow-300 bg-yellow-500/10 text-yellow-300 shadow-lg shadow-yellow-500/20 border border-yellow-400/30' : 'text-gray-100 hover:bg-cyan-500/10 hover:text-cyan-300 hover:shadow-md hover:shadow-cyan-400/20'} hover:border hover:border-cyan-400/20`}>
               {activeItem === 0 && <div className="absolute left-0 top-0 bottom-0 w-[3px] bg-gradient-to-b from-yellow-300 to-yellow-500 shadow-lg shadow-yellow-500/50"></div>}
-              <Image src="/CodiceZero/Agentes/Icon_Agents.webp" alt="Icono Personajes" width={36} height={36} className={`transition-all duration-200 ${activeItem === 0 ? 'drop-shadow-lg shadow-yellow-400/50 saturate-200 contrast-200' : 'opacity-80 hover:opacity-100 hover:drop-shadow-md hover:shadow-cyan-400/50 saturate-150 hover:saturate-200 hover:contrast-150'}`} />
-              <span className={`ml-4 font-medium ${!isExpanded && 'hidden'} transition-opacity`}>
+              <Image src="/CodiceZero/Agentes/Icon_Agents.webp" alt="Icono Personajes" width={32} height={32} className={`transition-all duration-200 ${activeItem === 0 ? 'drop-shadow-lg shadow-yellow-400/50 saturate-200 contrast-200' : 'opacity-80 hover:opacity-100 hover:drop-shadow-md hover:shadow-cyan-400/50 saturate-150 hover:saturate-200 hover:contrast-150'}`} />
+              <span className={`ml-3 font-medium transition-opacity`}>
                 Personajes
               </span>
             </Link>
@@ -93,8 +88,8 @@ export default function Sidebar({ isExpanded, isMobile, toggleDrawer }) {
           <li>
             <Link href="/armas" onClick={handleLinkClick} className={`relative flex items-center h-12 py-2 px-2 rounded-md transition-all duration-200 ${activeItem === 1 ? 'text-yellow-300 bg-yellow-500/10 text-yellow-300 shadow-lg shadow-yellow-500/20 border border-yellow-400/30' : 'text-gray-100 hover:bg-cyan-500/10 hover:text-cyan-300 hover:shadow-md hover:shadow-cyan-400/20'} hover:border hover:border-cyan-400/20`}>
               {activeItem === 1 && <div className="absolute left-0 top-0 bottom-0 w-[3px] bg-gradient-to-b from-yellow-300 to-yellow-500 shadow-lg shadow-yellow-500/50"></div>}
-              <Image src="/CodiceZero/Armas/Icon_Storage_W-Engine.webp" alt="Icono Armas" width={36} height={36} className={`transition-all duration-200 ${activeItem === 1 ? 'drop-shadow-lg shadow-yellow-400/50 saturate-200 contrast-200' : 'opacity-80 hover:opacity-100 hover:drop-shadow-md hover:shadow-cyan-400/50 saturate-150 hover:saturate-200 hover:contrast-150'}`} />
-              <span className={`ml-4 font-medium ${!isExpanded && 'hidden'} transition-opacity`}>
+              <Image src="/CodiceZero/Armas/Icon_Storage_W-Engine.webp" alt="Icono Armas" width={32} height={32} className={`transition-all duration-200 ${activeItem === 1 ? 'drop-shadow-lg shadow-yellow-400/50 saturate-200 contrast-200' : 'opacity-80 hover:opacity-100 hover:drop-shadow-md hover:shadow-cyan-400/50 saturate-150 hover:saturate-200 hover:contrast-150'}`} />
+              <span className={`ml-3 font-medium transition-opacity`}>
                 Armas
               </span>
             </Link>
@@ -102,8 +97,8 @@ export default function Sidebar({ isExpanded, isMobile, toggleDrawer }) {
           <li>
             <a href="#" onClick={handleLinkClick} className={`relative flex items-center h-12 py-2 px-2 rounded-md transition-all duration-200 ${activeItem === 2 ? 'text-yellow-300 bg-yellow-500/10 text-yellow-300 shadow-lg shadow-yellow-500/20 border border-yellow-400/30' : 'text-gray-100 hover:bg-cyan-500/10 hover:text-cyan-300 hover:shadow-md hover:shadow-cyan-400/20'} hover:border hover:border-cyan-400/20`}>
               {activeItem === 2 && <div className="absolute left-0 top-0 bottom-0 w-[3px] bg-gradient-to-b from-yellow-300 to-yellow-500 shadow-lg shadow-yellow-500/50"></div>}
-              <BookOpen size={36} className={`transition-all duration-200 ${activeItem === 2 ? 'text-yellow-300 drop-shadow-lg shadow-yellow-400/50' : 'text-gray-200 opacity-80 hover:text-cyan-300 hover:opacity-100 hover:drop-shadow-md hover:shadow-cyan-400/50'}`} />
-              <span className={`ml-4 font-medium ${!isExpanded && 'hidden'} transition-opacity`}>
+              <BookOpen size={32} className={`transition-all duration-200 ${activeItem === 2 ? 'text-yellow-300 drop-shadow-lg shadow-yellow-400/50' : 'text-gray-200 opacity-80 hover:text-cyan-300 hover:opacity-100 hover:drop-shadow-md hover:shadow-cyan-400/50'}`} />
+              <span className={`ml-3 font-medium transition-opacity`}>
                 Guías
               </span>
             </a>
@@ -111,8 +106,8 @@ export default function Sidebar({ isExpanded, isMobile, toggleDrawer }) {
           <li>
             <Link href="/bangboos" onClick={handleLinkClick} className={`relative flex items-center h-12 py-2 px-2 rounded-md transition-all duration-200 ${activeItem === 3 ? 'text-yellow-300 bg-yellow-500/10 text-yellow-300 shadow-lg shadow-yellow-500/20 border border-yellow-400/30' : 'text-gray-100 hover:bg-cyan-500/10 hover:text-cyan-300 hover:shadow-md hover:shadow-cyan-400/20'} hover:border hover:border-cyan-400/20`}>
               {activeItem === 3 && <div className="absolute left-0 top-0 bottom-0 w-[3px] bg-gradient-to-b from-yellow-300 to-yellow-500 shadow-lg shadow-yellow-500/50"></div>}
-              <Image src="/CodiceZero/Bangboo/INTER-KNOT_Bangboo.webp" alt="Icono Bangboo" width={36} height={36} className={`transition-all duration-200 ${activeItem === 3 ? 'drop-shadow-lg shadow-yellow-400/50 saturate-200 contrast-200' : 'opacity-80 hover:opacity-100 hover:drop-shadow-md hover:shadow-cyan-400/50 saturate-150 hover:saturate-200 hover:contrast-150'}`} />
-              <span className={`ml-4 font-medium ${!isExpanded && 'hidden'} transition-opacity`}>
+              <Image src="/CodiceZero/Bangboo/INTER-KNOT_Bangboo.webp" alt="Icono Bangboo" width={32} height={32} className={`transition-all duration-200 ${activeItem === 3 ? 'drop-shadow-lg shadow-yellow-400/50 saturate-200 contrast-200' : 'opacity-80 hover:opacity-100 hover:drop-shadow-md hover:shadow-cyan-400/50 saturate-150 hover:saturate-200 hover:contrast-150'}`} />
+              <span className={`ml-3 font-medium transition-opacity`}>
                 Bangboo
               </span>
             </Link>
@@ -120,8 +115,8 @@ export default function Sidebar({ isExpanded, isMobile, toggleDrawer }) {
           <li>
             <Link href="/discos" onClick={handleLinkClick} className={`relative flex items-center h-12 py-2 px-2 rounded-md transition-all duration-200 ${activeItem === 4 ? 'text-yellow-300 bg-yellow-500/10 text-yellow-300 shadow-lg shadow-yellow-500/20 border border-yellow-400/30' : 'text-gray-100 hover:bg-cyan-500/10 hover:text-cyan-300 hover:shadow-md hover:shadow-cyan-400/20'} hover:border hover:border-cyan-400/20`}>
               {activeItem === 4 && <div className="absolute left-0 top-0 bottom-0 w-[3px] bg-gradient-to-b from-yellow-300 to-yellow-500 shadow-lg shadow-yellow-500/50"></div>}
-              <Image src="/CodiceZero/Discos/Icon_Storage_Drive_Disc.webp" alt="Icono Discos" width={36} height={36} className={`transition-all duration-200 ${activeItem === 4 ? 'drop-shadow-lg shadow-yellow-400/50 saturate-200 contrast-200' : 'opacity-80 hover:opacity-100 hover:drop-shadow-md hover:shadow-cyan-400/50 saturate-150 hover:saturate-200 hover:contrast-150'}`} />
-              <span className={`ml-4 font-medium ${!isExpanded && 'hidden'} transition-opacity`}>
+              <Image src="/CodiceZero/Discos/Icon_Storage_Drive_Disc.webp" alt="Icono Discos" width={32} height={32} className={`transition-all duration-200 ${activeItem === 4 ? 'drop-shadow-lg shadow-yellow-400/50 saturate-200 contrast-200' : 'opacity-80 hover:opacity-100 hover:drop-shadow-md hover:shadow-cyan-400/50 saturate-150 hover:saturate-200 hover:contrast-150'}`} />
+              <span className={`ml-3 font-medium transition-opacity`}>
                 Discos
               </span>
             </Link>

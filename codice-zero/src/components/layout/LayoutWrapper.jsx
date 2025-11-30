@@ -5,8 +5,8 @@ import Sidebar from "./Sidebar";
 import MobileHeader from "./MobileHeader";
 
 export default function LayoutWrapper({ children }) {
-  const [isExpanded, setIsExpanded] = useState(false);
-  const [isDrawerOpen, setIsDrawerOpen] = useState(false); // NUEVO ESTADO
+  // Removed isExpanded state as sidebar is now static
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const pathname = usePathname();
 
   const toggleDrawer = () => setIsDrawerOpen(prev => !prev);
@@ -30,13 +30,11 @@ export default function LayoutWrapper({ children }) {
 
       {/* TAREA 2: SIDEBAR VERTICAL (Desktop/Tablet Grande) */}
       <div
-        // FIX CRÍTICO: 'hidden' por defecto, 'lg:block' solo en escritorio
-        className={`hidden lg:block lg:flex-shrink-0 h-full transition-all duration-300 ease-in-out ${isExpanded ? "lg:w-64" : "lg:w-20"
-          }`}
-        onMouseEnter={() => setIsExpanded(true)}
-        onMouseLeave={() => setIsExpanded(false)}
+        // Fixed width, no hover expansion
+        className="hidden lg:block lg:flex-shrink-0 h-full lg:w-48 transition-all duration-300 ease-in-out"
       >
-        <Sidebar isExpanded={isExpanded} isMobile={false} />
+        {/* Always expanded in desktop */}
+        <Sidebar isExpanded={true} isMobile={false} />
       </div>
 
       {/* TAREA 3: MAIN CONTENT (Añadir Padding para el Header Móvil) */}
