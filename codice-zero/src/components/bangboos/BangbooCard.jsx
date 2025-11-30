@@ -7,27 +7,6 @@ const BangbooCard = memo(({ bangboo, priority = false }) => {
     const rankColor = bangboo.rank === 'S' ? 'border-yellow-500' : bangboo.rank === 'A' ? 'border-purple-500' : 'border-blue-500';
     const rankIcon = `/CodiceZero/Rango/Icon_Item_Rank_${bangboo.rank}.webp`;
 
-    // Show skeleton while image loads
-    if (!imageLoaded) {
-        return (
-            <div className="relative">
-                <SkeletonCard aspectRatio="4/5" />
-                {/* Hidden image to trigger loading */}
-                <Image
-                    src={bangboo.image}
-                    alt={bangboo.name}
-                    width={140}
-                    height={140}
-                    className="hidden"
-                    onLoad={() => setImageLoaded(true)}
-                    loading={priority ? "eager" : "lazy"}
-                    priority={priority}
-                    unoptimized
-                />
-            </div>
-        );
-    }
-
     return (
         <div className={`relative w-full max-w-[160px] mx-auto aspect-[4/5] bg-gray-900/80 rounded-lg border-b-4 ${rankColor} overflow-hidden group hover:scale-[1.02] hover:shadow-xl transition-none`}>
 
@@ -45,12 +24,20 @@ const BangbooCard = memo(({ bangboo, priority = false }) => {
 
             {/* Bangboo Image */}
             <div className="absolute inset-0 flex items-center justify-center p-2 group-hover:scale-110 transition-transform duration-300">
+
+                {/* Skeleton Overlay */}
+                {!imageLoaded && (
+                    <div className="absolute inset-0 z-10">
+                        <SkeletonCard aspectRatio="4/5" />
+                    </div>
+                )}
+
                 <Image
                     src={bangboo.image}
                     alt={bangboo.name}
                     width={140}
                     height={140}
-                    className="object-contain"
+                    className={`object-contain transition-opacity duration-300 ${imageLoaded ? 'opacity-100' : 'opacity-0'}`}
                     onLoad={() => setImageLoaded(true)}
                     loading={priority ? "eager" : "lazy"}
                     priority={priority}

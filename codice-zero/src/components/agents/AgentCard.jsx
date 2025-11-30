@@ -27,27 +27,6 @@ const AgentCard = memo(({ agent, priority = false }) => {
     return `/CodiceZero/Agentes/Elemento/${iconMap[normalizedElement] || "Fisico.webp"}`;
   };
 
-  // Show skeleton while image loads
-  if (!imageLoaded) {
-    return (
-      <div className="relative">
-        <SkeletonCard aspectRatio="4/5" />
-        {/* Hidden image to trigger loading */}
-        <Image
-          src={agent.image}
-          alt={agent.name}
-          width={140}
-          height={175}
-          className="hidden"
-          onLoad={() => setImageLoaded(true)}
-          loading={priority ? "eager" : "lazy"}
-          priority={priority}
-          unoptimized
-        />
-      </div>
-    );
-  }
-
   return (
     <div className={`relative w-full max-w-[140px] mx-auto aspect-[4/5] bg-gray-900/80 rounded-lg border-b-4 ${rankColor} overflow-hidden group hover:scale-[1.02] hover:shadow-xl transition-none`}>
 
@@ -55,9 +34,9 @@ const AgentCard = memo(({ agent, priority = false }) => {
       <div className="absolute top-1.5 left-1.5 z-20 flex flex-col gap-0.5">
         <div className="relative w-6 h-6">
           <div className={`absolute inset-0 blur-md rounded-full opacity-90 ${agent.element === 'Fuego' ? 'bg-red-600' :
-              agent.element === 'Hielo' ? 'bg-cyan-500' :
-                agent.element === 'Electrico' ? 'bg-blue-600' :
-                  agent.element === 'Fisico' ? 'bg-yellow-500' : 'bg-pink-600'
+            agent.element === 'Hielo' ? 'bg-cyan-500' :
+              agent.element === 'Electrico' ? 'bg-blue-600' :
+                agent.element === 'Fisico' ? 'bg-yellow-500' : 'bg-pink-600'
             }`}></div>
           <div className="relative w-6 h-6 bg-black/60 rounded-md p-0.5 border border-white/10">
             <Image
@@ -98,12 +77,21 @@ const AgentCard = memo(({ agent, priority = false }) => {
 
       {/* Agent Icon - Cover para llenar mejor */}
       <div className="absolute inset-0 flex items-center justify-center p-1 group-hover:scale-110 transition-transform duration-300">
+
+        {/* Skeleton Overlay - Visible until image loads */}
+        {!imageLoaded && (
+          <div className="absolute inset-0 z-10">
+            <SkeletonCard aspectRatio="4/5" />
+          </div>
+        )}
+
         <Image
           src={agent.image}
           alt={agent.name}
           width={140}
           height={175}
-          className="object-cover rounded-lg"
+          className={`object-cover rounded-lg transition-opacity duration-300 ${imageLoaded ? 'opacity-100' : 'opacity-0'}`}
+          onLoad={() => setImageLoaded(true)}
           loading={priority ? "eager" : "lazy"}
           priority={priority}
           unoptimized
