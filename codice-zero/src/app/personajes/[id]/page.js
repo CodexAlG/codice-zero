@@ -6,7 +6,7 @@ import { Image as NextImage } from 'next/image';
 import Link from 'next/link';
 import { ArrowLeft, TriangleAlert } from 'lucide-react';
 import { agents } from '@/data/agents';
-import { getAgentDetails } from '@/data/agentDetails';
+import { getAgentDetails } from '@/data/agentDetails/';
 import { calculateStatsWithCore } from '@/utils/statCalculator';
 import SkillsModule from '@/components/agents/SkillsModule';
 import StatsTable from '@/components/agents/StatsTable';
