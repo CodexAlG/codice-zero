@@ -403,7 +403,7 @@ export default function AgentDetailPage() {
         <div className="absolute inset-0 z-0">
           <div className="absolute inset-0 bg-gradient-to-r from-transparent via-black/10 to-gray-950 z-10"></div>
           <Image
-            src={agent.image}
+            src={agentFullImage}
             alt={agent.name}
             fill
             className="object-contain object-top opacity-100 brightness-110"

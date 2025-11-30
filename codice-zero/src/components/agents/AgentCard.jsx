@@ -26,15 +26,15 @@ const AgentCard = memo(({ agent }) => {
   };
 
   return (
-    <div className={`relative w-full max-w-[120px] mx-auto aspect-[4/5] bg-gray-900/80 rounded-lg border-b-4 ${rankColor} overflow-hidden group hover:scale-[1.02] hover:shadow-xl transition-none`}>
+    <div className={`relative w-full max-w-[140px] mx-auto aspect-[4/5] bg-gray-900/80 rounded-lg border-b-4 ${rankColor} overflow-hidden group hover:scale-[1.02] hover:shadow-xl transition-none`}>
 
       {/* Element Icon with Aura - Top Left */}
       <div className="absolute top-1.5 left-1.5 z-20 flex flex-col gap-0.5">
         <div className="relative w-6 h-6">
           <div className={`absolute inset-0 blur-md rounded-full opacity-90 ${agent.element === 'Fuego' ? 'bg-red-600' :
-              agent.element === 'Hielo' ? 'bg-cyan-500' :
-                agent.element === 'Electrico' ? 'bg-blue-600' :
-                  agent.element === 'Fisico' ? 'bg-yellow-500' : 'bg-pink-600'
+            agent.element === 'Hielo' ? 'bg-cyan-500' :
+              agent.element === 'Electrico' ? 'bg-blue-600' :
+                agent.element === 'Fisico' ? 'bg-yellow-500' : 'bg-pink-600'
             }`}></div>
           <div className="relative w-6 h-6 bg-black/60 rounded-md p-0.5 border border-white/10">
             <Image
