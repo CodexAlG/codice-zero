@@ -58,8 +58,8 @@ export default function DiscsPage() {
               className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 justify-center transition-none"
               style={{ minHeight: '80vh' }}
             >
-              {driveDiscs.map((disc) => (
-                <DiscCard key={disc.id} disc={disc} />
+              {driveDiscs.map((disc, index) => (
+                <DiscCard key={disc.id} disc={disc} priority={index < 8} />
               ))}
             </motion.div>
           </div>

@@ -1,9 +1,32 @@
 import Image from "next/image";
-import { memo } from 'react';
+import { memo, useState } from 'react';
 import HighlightText from "@/components/ui/HighlightText";
-import { TriangleAlert } from "lucide-react";
+import SkeletonCard from '@/components/ui/SkeletonCard';
 
-const DiscCard = memo(({ disc }) => {
+const DiscCard = memo(({ disc, priority = false }) => {
+  const [imageLoaded, setImageLoaded] = useState(false);
+
+  // Show skeleton while image loads
+  if (!imageLoaded) {
+    return (
+      <div className="relative w-full h-auto min-h-[320px] rounded-2xl overflow-hidden">
+        <SkeletonCard aspectRatio="1/1" />
+        {/* Hidden image to trigger loading */}
+        <Image
+          src={disc.image}
+          alt={disc.name}
+          width={64}
+          height={64}
+          className="hidden"
+          onLoad={() => setImageLoaded(true)}
+          loading={priority ? "eager" : "lazy"}
+          priority={priority}
+          unoptimized
+        />
+      </div>
+    );
+  }
+
   return (
     <div
       className="relative w-full h-auto min-h-[320px] p-5 rounded-2xl bg-gradient-to-br from-gray-900 to-gray-800 border border-white/10 hover:border-yellow-500 hover:shadow-lg hover:shadow-yellow-500/10 cursor-pointer group flex flex-col gap-4 transition-all duration-300"
@@ -28,6 +51,9 @@ const DiscCard = memo(({ disc }) => {
             width={64}
             height={64}
             className="object-contain w-full h-full drop-shadow-xl group-hover:scale-110 transition-transform duration-300"
+            onLoad={() => setImageLoaded(true)}
+            loading={priority ? "eager" : "lazy"}
+            priority={priority}
             unoptimized
           />
         </div>

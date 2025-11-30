@@ -163,7 +163,7 @@ export default function BangboosPage() {
                         style={{ minHeight: '80vh' }}
                     >
                         <AnimatePresence mode="popLayout">
-                            {filteredBangboos.map((bangboo) => (
+                            {filteredBangboos.map((bangboo, index) => (
                                 <motion.div
                                     key={bangboo.id}
                                     layout // Animación suave de movimiento
@@ -172,7 +172,7 @@ export default function BangboosPage() {
                                     exit={{ opacity: 0 }}
                                     transition={{ duration: 0 }}
                                 >
-                                    <BangbooCard bangboo={bangboo} />
+                                    <BangbooCard bangboo={bangboo} priority={index < 10} />
                                 </motion.div>
                             ))}
                         </AnimatePresence>
