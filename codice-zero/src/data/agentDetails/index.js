@@ -1,43 +1,39 @@
 /**
- * Agent Details Dynamic Loader
+ * Agent Details Static Loader
  * 
- * Provides lazy loading for agent details to improve performance.
- * Only loads the specific agent data when needed.
+ * Webpack/Next.js can't handle fully dynamic imports in production.
+ * This file statically imports all agent details so they can be bundled.
  */
 
+// Import all agent detail files
+import agent47 from './released/agent-47.js';
+
+// Create a lookup map
+const agentDetailsMap = {
+    47: agent47,
+    // Add more as you migrate:
+    // 46: agent46,
+    // 45: agent45,
+    // etc...
+};
+
 /**
- * Dynamically loads agent details based on agent ID
+ * Gets agent details by ID (static lookup)
  * 
  * @param {number} id - Agent ID
  * @returns {Promise<Object|null>} Agent details object or null if not found
  */
 export async function getAgentDetails(id) {
-    try {
-        // Try loading from released agents first
-        const details = await import(`./released/agent-${id}.js`);
-        return details.default;
-    } catch {
-        try {
-            // If not found, try beta agents
-            const details = await import(`./beta/agent-${id}.js`);
-            return details.default;
-        } catch {
-            // Agent doesn't have details yet
-            return null;
-        }
-    }
+    // Return from static map
+    const details = agentDetailsMap[id];
+    return details || null;
 }
 
 /**
- * Preloads agent details for faster navigation
- * Useful for prefetching when hovering over agent cards
+ * Preloads agent details (no-op since already bundled)
  * 
  * @param {number} id - Agent ID to preload
  */
 export function preloadAgentDetails(id) {
-    import(`./released/agent-${id}.js`).catch(() => {
-        import(`./beta/agent-${id}.js`).catch(() => {
-            // Silently fail if not found
-        });
-    });
+    // No-op: all agents already in bundle
 }
