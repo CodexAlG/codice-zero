@@ -1,10 +1,12 @@
 import Image from "next/image";
-import { memo } from 'react';
+import { memo, useState } from 'react';
+import SkeletonCard from '@/components/ui/SkeletonCard';
 
 // Helper para normalizar nombres de archivos (quitar tildes, mantener capitalización)
 const normalize = (str) => str ? str.normalize("NFD").replace(/[\u0300-\u036f]/g, "") : "";
 
-const AgentCard = memo(({ agent }) => {
+const AgentCard = memo(({ agent, priority = false }) => {
+  const [imageLoaded, setImageLoaded] = useState(false);
   const rankColor = agent.rank === 'S' ? 'border-yellow-500' : agent.rank === 'A' ? 'border-purple-500' : 'border-blue-500';
   const rankIcon = `/CodiceZero/Rango/Icon_Item_Rank_${agent.rank}.webp`;
 
@@ -24,6 +26,27 @@ const AgentCard = memo(({ agent }) => {
     const normalizedElement = agent.element.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
     return `/CodiceZero/Agentes/Elemento/${iconMap[normalizedElement] || "Fisico.webp"}`;
   };
+
+  // Show skeleton while image loads
+  if (!imageLoaded) {
+    return (
+      <div className="relative">
+        <SkeletonCard aspectRatio="4/5" />
+        {/* Hidden image to trigger loading */}
+        <Image
+          src={agent.image}
+          alt={agent.name}
+          width={140}
+          height={175}
+          className="hidden"
+          onLoad={() => setImageLoaded(true)}
+          loading={priority ? "eager" : "lazy"}
+          priority={priority}
+          unoptimized
+        />
+      </div>
+    );
+  }
 
   return (
     <div className={`relative w-full max-w-[140px] mx-auto aspect-[4/5] bg-gray-900/80 rounded-lg border-b-4 ${rankColor} overflow-hidden group hover:scale-[1.02] hover:shadow-xl transition-none`}>
@@ -78,9 +101,11 @@ const AgentCard = memo(({ agent }) => {
         <Image
           src={agent.image}
           alt={agent.name}
-          width={120}
-          height={120}
+          width={140}
+          height={175}
           className="object-cover rounded-lg"
+          loading={priority ? "eager" : "lazy"}
+          priority={priority}
           unoptimized
         />
       </div>
