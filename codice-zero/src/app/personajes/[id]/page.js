@@ -92,10 +92,8 @@ export default function AgentDetailPage() {
   // Load agent details dynamically
   useEffect(() => {
     async function loadDetails() {
-      console.log('🔍 Loading details for agent ID:', agentId);
       setIsLoading(true);
       const data = await getAgentDetails(agentId);
-      console.log('📦 Loaded data:', data);
       setDetails(data);
       setIsLoading(false);
     }
