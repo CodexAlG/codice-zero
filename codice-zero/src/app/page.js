@@ -1,8 +1,21 @@
 "use client";
 import Image from "next/image";
 import { Send } from "lucide-react";
+import { agents } from "@/data/agents";
 
 export default function Home() {
+  // Filter agents that don't have leak: "Beta"
+  const releaseAgents = agents.filter(agent => agent.leak !== "Beta");
+
+  // Get the latest version from released agents
+  const latestVersion = releaseAgents.reduce((maxVersion, agent) => {
+    const agentVersion = parseFloat(agent.version || "0");
+    return agentVersion > maxVersion ? agentVersion : maxVersion;
+  }, 0);
+
+  // Count released agents
+  const agentCount = releaseAgents.length;
+
   const socialNetworks = [
     {
       name: "Discord",
@@ -74,11 +87,11 @@ export default function Home() {
           </div>
           <div className="flex items-center gap-2">
             <div className="w-2 h-2 bg-yellow-500 rounded-full"></div>
-            <span>GAME VER: 2.3</span>
+            <span>GAME VER: {latestVersion.toFixed(1)}</span>
           </div>
           <div className="flex items-center gap-2">
             <div className="w-2 h-2 bg-cyan-500 rounded-full"></div>
-            <span>AGENTS: 43</span>
+            <span>AGENTS: {agentCount}</span>
           </div>
         </div>
 
