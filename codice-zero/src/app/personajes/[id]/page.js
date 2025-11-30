@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { useParams, useSearchParams, useRouter, usePathname } from 'next/navigation';
-import { Image as NextImage } from 'next/image';
+import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowLeft, TriangleAlert } from 'lucide-react';
 import { agents } from '@/data/agents';
@@ -92,8 +92,10 @@ export default function AgentDetailPage() {
   // Load agent details dynamically
   useEffect(() => {
     async function loadDetails() {
+      console.log('🔍 Loading details for agent ID:', agentId);
       setIsLoading(true);
       const data = await getAgentDetails(agentId);
+      console.log('📦 Loaded data:', data);
       setDetails(data);
       setIsLoading(false);
     }
