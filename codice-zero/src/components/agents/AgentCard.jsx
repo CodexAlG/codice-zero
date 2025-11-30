@@ -26,36 +26,48 @@ const AgentCard = memo(({ agent }) => {
   };
 
   return (
-    <div className={`relative w-full max-w-[160px] mx-auto aspect-[4/5] bg-gray-900/80 rounded-lg border-b-4 ${rankColor} overflow-hidden group hover:scale-[1.02] hover:shadow-xl transition-none`}>
+    <div className={`relative w-full max-w-[120px] mx-auto aspect-[4/5] bg-gray-900/80 rounded-lg border-b-4 ${rankColor} overflow-hidden group hover:scale-[1.02] hover:shadow-xl transition-none`}>
 
       {/* Element Icon with Aura - Top Left */}
-      <div className="absolute top-2 left-2 z-20">
-        <div className="relative w-7 h-7">
+      <div className="absolute top-1.5 left-1.5 z-20 flex flex-col gap-0.5">
+        <div className="relative w-6 h-6">
           <div className={`absolute inset-0 blur-md rounded-full opacity-90 ${agent.element === 'Fuego' ? 'bg-red-600' :
               agent.element === 'Hielo' ? 'bg-cyan-500' :
                 agent.element === 'Electrico' ? 'bg-blue-600' :
                   agent.element === 'Fisico' ? 'bg-yellow-500' : 'bg-pink-600'
             }`}></div>
-          <div className="relative w-7 h-7 bg-black/60 rounded-md p-0.5 border border-white/10">
+          <div className="relative w-6 h-6 bg-black/60 rounded-md p-0.5 border border-white/10">
             <Image
               src={getElementIcon(agent)}
               alt={agent.element}
-              width={24}
-              height={24}
+              width={20}
+              height={20}
               className="object-contain"
               unoptimized
             />
           </div>
         </div>
+
+        {/* Role Icon - Below Element */}
+        <div className="relative w-5 h-5 flex items-center justify-center bg-black/40 rounded border border-white/10">
+          <Image
+            src={`/CodiceZero/Agentes/Rol/${normalize(agent.rol)}.webp`}
+            alt={agent.rol}
+            width={16}
+            height={16}
+            className="object-contain invert opacity-90"
+            unoptimized
+          />
+        </div>
       </div>
 
       {/* Rank Icon - Top Right */}
-      <div className="absolute top-2 right-2 z-20">
+      <div className="absolute top-1.5 right-1.5 z-20">
         <Image
           src={rankIcon}
           alt={agent.rank}
-          width={32}
-          height={32}
+          width={24}
+          height={24}
           className="drop-shadow-md"
           unoptimized
         />
@@ -66,8 +78,8 @@ const AgentCard = memo(({ agent }) => {
         <Image
           src={agent.image}
           alt={agent.name}
-          width={140}
-          height={140}
+          width={100}
+          height={100}
           className="object-contain"
           unoptimized
         />
@@ -76,8 +88,8 @@ const AgentCard = memo(({ agent }) => {
       {/* LEAK WARNING ICON - Solo para agentes con leak que contenga "Beta" */}
       {agent.leak && agent.leak.includes("Beta") && (
         <div className="absolute top left z-30 filter drop-shadow-lg">
-          <div className="w-6 h-6 bg-red-500 rounded-full flex items-center justify-center animate-pulse">
-            <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
+          <div className="w-5 h-5 bg-red-500 rounded-full flex items-center justify-center animate-pulse">
+            <svg className="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
               <path fillRule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clipRule="evenodd" />
             </svg>
           </div>
@@ -85,8 +97,8 @@ const AgentCard = memo(({ agent }) => {
       )}
 
       {/* Name */}
-      <div className="absolute bottom-0 w-full p-2 bg-gradient-to-t from-black via-black/80 to-transparent pt-6">
-        <h3 className="text-white font-bold text-xs text-center leading-tight group-hover:text-yellow-400">
+      <div className="absolute bottom-0 w-full p-1.5 bg-gradient-to-t from-black via-black/80 to-transparent pt-4">
+        <h3 className="text-white font-bold text-[10px] text-center leading-tight group-hover:text-yellow-400">
           {agent.name}
         </h3>
       </div>

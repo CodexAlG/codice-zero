@@ -24,6 +24,63 @@ export default function AgentDetailPage() {
   const agentId = parseInt(params.id);
   const agent = agents.find(a => a.id === agentId);
 
+  // Función helper: Obtener imagen grande del agente (para página de detalles)
+  const getAgentFullImage = (agent) => {
+    const imageMap = {
+      47: "/CodiceZero/Agentes/YeShunguang.webp",
+      46: "/CodiceZero/Agentes/Zhao.webp",
+      45: "/CodiceZero/Agentes/Banyue.webp",
+      44: "/CodiceZero/Agentes/Dialyn.webp",
+      43: "/CodiceZero/Agentes/Yidhari.png",
+      42: "/CodiceZero/Agentes/Lucia.webp",
+      41: "/CodiceZero/Agentes/Manato.png",
+      40: "/CodiceZero/Agentes/Orphie.webp",
+      39: "/CodiceZero/Agentes/Seed.webp",
+      38: "/CodiceZero/Agentes/Alice.webp",
+      37: "/CodiceZero/Agentes/Yuzuha.webp",
+      36: "/CodiceZero/Agentes/Jufufu.webp",
+      35: "/CodiceZero/Agentes/Yixuan.webp",
+      34: "/CodiceZero/Agentes/Pan.webp",
+      33: "/CodiceZero/Agentes/Hugo.webp",
+      32: "/CodiceZero/Agentes/Vivian.webp",
+      31: "/CodiceZero/Agentes/Trigger.webp",
+      30: "/CodiceZero/Agentes/Sanby.webp",
+      29: "/CodiceZero/Agentes/Pulchra.webp",
+      27: "/CodiceZero/Agentes/Astra.webp",
+      28: "/CodiceZero/Agentes/Evelyn.webp",
+      26: "/CodiceZero/Agentes/Miyabi.webp",
+      25: "/CodiceZero/Agentes/Harumasa.webp",
+      23: "/CodiceZero/Agentes/Yanagi.webp",
+      24: "/CodiceZero/Agentes/Lighter.webp",
+      22: "/CodiceZero/Agentes/Burnice.webp",
+      21: "/CodiceZero/Agentes/Caesar.webp",
+      10: "/CodiceZero/Agentes/Jane.webp",
+      9: "/CodiceZero/Agentes/Qingyi.webp",
+      20: "/CodiceZero/Agentes/Seth.webp",
+      2: "/CodiceZero/Agentes/ZhuYuan.webp",
+      1: "/CodiceZero/Agentes/Ellen.webp",
+      3: "/CodiceZero/Agentes/Lycaon.webp",
+      5: "/CodiceZero/Agentes/S11.webp",
+      4: "/CodiceZero/Agentes/Koleda.webp",
+      6: "/CodiceZero/Agentes/Rina.webp",
+      7: "/CodiceZero/Agentes/Grace.webp",
+      8: "/CodiceZero/Agentes/Nekomiya.webp",
+      18: "/CodiceZero/Agentes/Lucy.webp",
+      19: "/CodiceZero/Agentes/Piper.webp",
+      15: "/CodiceZero/Agentes/Soukaku.webp",
+      12: "/CodiceZero/Agentes/Nicole.webp",
+      11: "/CodiceZero/Agentes/Anby.webp",
+      13: "/CodiceZero/Agentes/Billy.webp",
+      14: "/CodiceZero/Agentes/Corin.webp",
+      16: "/CodiceZero/Agentes/Ben.webp",
+      17: "/CodiceZero/Agentes/Anton.webp"
+    };
+    return imageMap[agent.id] || agent.image; // Fallback to icon if not found
+  };
+
+  // Obtener la imagen grande para este agente
+  const agentFullImage = getAgentFullImage(agent);
+
   // 2. SEGUNDO: Hooks de estado
   const [activeTab, setActiveTab] = useState(searchParams.get('tab') || "stats"); // Pestañas: 'stats', 'skills', 'equip'
   const [level, setLevel] = useState(60); // Nivel del personaje

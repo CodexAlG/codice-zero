@@ -145,8 +145,8 @@ export default function PersonajesPage() {
               <button
                 onClick={() => toggleFilter("Todos")}
                 className={`h-10 px-6 rounded-lg font-bold font-display text-sm tracking-wider border transition-all ${activeFilters.length === 0
-                    ? "bg-yellow-400 text-black border-yellow-400 shadow-[0_0_15px_#facc15]"
-                    : "bg-gray-900 text-gray-400 border-gray-700 hover:border-gray-500 hover:text-white"
+                  ? "bg-yellow-400 text-black border-yellow-400 shadow-[0_0_15px_#facc15]"
+                  : "bg-gray-900 text-gray-400 border-gray-700 hover:border-gray-500 hover:text-white"
                   }`}
               >
                 TODOS
@@ -198,7 +198,7 @@ export default function PersonajesPage() {
 
         {/* GRID DE PERSONAJES OPTIMIZADO */}
         <div className="w-full max-w-7xl mx-auto">
-          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 2xl:grid-cols-6 gap-6 justify-center items-start transition-none" style={{ minHeight: '50vh' }}>
+          <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8 xl:grid-cols-10 2xl:grid-cols-12 gap-2 justify-center items-start transition-none" style={{ minHeight: '50vh' }}>
             {filteredAgents.map((agent) => (
               <Link key={agent.id} href={`/personajes/${agent.id}`}>
                 <AgentCard agent={agent} />
@@ -220,8 +220,8 @@ const FilterIcon = memo(({ name, icon, activeFilters, toggleFilter, size = 24 })
       title={name}
       // Clases base: Borde transparente, transición suave
       className={`relative p-2 rounded-lg border-2 transition-all duration-300 group ${isActive
-          ? "border-yellow-500 bg-yellow-500/10 shadow-[0_0_15px_rgba(234,179,8,0.4)] scale-110 z-10 opacity-100"
-          : "border-transparent hover:bg-white/5 opacity-40 hover:opacity-100 hover:scale-105"
+        ? "border-yellow-500 bg-yellow-500/10 shadow-[0_0_15px_rgba(234,179,8,0.4)] scale-110 z-10 opacity-100"
+        : "border-transparent hover:bg-white/5 opacity-40 hover:opacity-100 hover:scale-105"
         }`}
     >
       <Image
