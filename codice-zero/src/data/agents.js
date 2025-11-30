@@ -10,7 +10,7 @@ export const agents = [
     faction: "Yunkui Summit",
     version: "2.5",
     leak: "Beta",
-    image: "/CodiceZero/Agentes/YeShunguang.webp",
+    image: "/CodiceZero/ICONOS/Agent_Ye_Shunguang_Icon.webp",
     customStyle: "scale-[1.00] group-hover:scale-[1.10] object-[center_top]",
   },
   {
@@ -22,7 +22,7 @@ export const agents = [
     faction: "Krampus Compliance Authority",
     version: "2.5",
     leak: "Beta",
-    image: "/CodiceZero/Agentes/Zhao.webp",
+    image: "/CodiceZero/ICONOS/Agent_Zhao_Icon.webp",
     customStyle: "scale-[1.00] group-hover:scale-[1.10] object-[center_top]",
   },
   // --- VERSIÓN 2.4 ---
@@ -34,7 +34,7 @@ export const agents = [
     rol: "Ruptura",
     faction: "Krampus Compliance Authority",
     version: "2.4",
-    image: "/CodiceZero/Agentes/Banyue.webp",
+    image: "/CodiceZero/ICONOS/Agent_Banyue_Icon.webp",
     customStyle: "scale-[1.00] group-hover:scale-[1.10] object-[center_top]",
   },
   {
@@ -45,7 +45,7 @@ export const agents = [
     rol: "Aturdidor",
     faction: "Krampus Compliance Authority",
     version: "2.4",
-    image: "/CodiceZero/Agentes/Dialyn.webp",
+    image: "/CodiceZero/ICONOS/Agent_Dialyn_Icon.webp",
     customStyle: "scale-[1.00] group-hover:scale-[1.10] object-[center_top]",
 
   },
@@ -58,7 +58,7 @@ export const agents = [
     rol: "Ruptura",
     faction: "Spook Shack",
     version: "2.3",
-    image: "/CodiceZero/Agentes/Yidhari.png",
+    image: "/CodiceZero/ICONOS/Agent_Yidhari_Murphy_Icon.webp",
     customStyle: "scale-[1.00] group-hover:scale-[1.10] object-[center_top]",
 
   },
@@ -70,7 +70,7 @@ export const agents = [
     rol: "Soporte",
     faction: "Spook Shack",
     version: "2.3",
-    image: "/CodiceZero/Agentes/Lucia.webp",
+    image: "/CodiceZero/ICONOS/Agent_Lucia_Elowen_Icon.webp",
     customStyle: "scale-[1.00] group-hover:scale-[1.10] object-[center_top]",
   },
   {
@@ -81,7 +81,7 @@ export const agents = [
     rol: "Ruptura",
     faction: "Spook Shack",
     version: "2.3",
-    image: "/CodiceZero/Agentes/Manato.png",
+    image: "/CodiceZero/ICONOS/Agent_Komano_Manato_Icon.webp",
     customStyle: "scale-[1.00] group-hover:scale-[1.10] object-[center_top]",
   },
   // --- VERSIÓN 2.2 ---
@@ -93,7 +93,7 @@ export const agents = [
     rol: "Ataque",
     faction: "Obol Squad",
     version: "2.2",
-    image: "/CodiceZero/Agentes/Orphie.webp",
+    image: "/CodiceZero/ICONOS/Agent_Orphie_Magnusson_&_Magus_Icon.webp",
     customStyle: "scale-[1.00] group-hover:scale-[1.10] object-[center_top] object-[right-2] ",
   },
   {
@@ -104,7 +104,7 @@ export const agents = [
     rol: "Ataque",
     faction: "Obol Squad",
     version: "2.2",
-    image: "/CodiceZero/Agentes/Seed.webp",
+    image: "/CodiceZero/ICONOS/Agent_Seed_Icon.webp",
     customStyle: "scale-[1.00] group-hover:scale-[1.10] object-[center_top]",
 
   },
@@ -117,7 +117,7 @@ export const agents = [
     rol: "Anomalia",
     faction: "Spook Shack",
     version: "2.1",
-    image: "/CodiceZero/Agentes/Alice.webp",
+    image: "/CodiceZero/ICONOS/Agent_Alice_Thymefield_Icon.webp",
     customStyle: "scale-[1.00] group-hover:scale-[1.10] object-[center_top]",
 
   },
@@ -129,7 +129,7 @@ export const agents = [
     rol: "Soporte",
     faction: "Spook Shack",
     version: "2.1",
-    image: "/CodiceZero/Agentes/Yuzuha.webp",
+    image: "/CodiceZero/ICONOS/Agent_Ukinami_Yuzuha_Icon.webp",
     customStyle: "scale-[1.00] group-hover:scale-[1.10] object-[center_top]",
 
   },
@@ -142,7 +142,7 @@ export const agents = [
     rol: "Aturdidor",
     faction: "Yunkui Summit",
     version: "2.0",
-    image: "/CodiceZero/Agentes/Jufufu.webp",
+    image: "/CodiceZero/ICONOS/Agent_Ju_Fufu_Icon.webp",
     customStyle: "scale-[1.00] group-hover:scale-[1.10] object-[center_top]",
   },
   {
@@ -153,7 +153,7 @@ export const agents = [
     rol: "Ruptura",
     faction: "Yunkui Summit",
     version: "2.0",
-    image: "/CodiceZero/Agentes/Yixuan.webp",
+    image: "/CodiceZero/ICONOS/Agent_Yixuan_Icon.webp",
     customStyle: "scale-[1.00] group-hover:scale-[1.10] object-[center_top]",
 
   },
@@ -165,7 +165,7 @@ export const agents = [
     rol: "Defensa",
     faction: "Yunkui Summit",
     version: "2.0",
-    image: "/CodiceZero/Agentes/Pan.webp",
+    image: "/CodiceZero/ICONOS/Agent_Pan_Yinhu_Icon.webp",
     customStyle: "scale-[1.00] group-hover:scale-[1.10] object-[center_top]",
   },
   // --- VERSIÓN 1.7 ---
@@ -177,7 +177,7 @@ export const agents = [
     rol: "Ataque",
     faction: "Mookingbird",
     version: "1.7",
-    image: "/CodiceZero/Agentes/Hugo.webp",
+    image: "/CodiceZero/ICONOS/Agent_Hugo_Vlad_Icon.webp",
     customStyle: "scale-[1.00] group-hover:scale-[1.10] object-[center_top]",
 
   },
@@ -189,7 +189,7 @@ export const agents = [
     rol: "Anomalia",
     faction: "Mookingbird",
     version: "1.7",
-    image: "/CodiceZero/Agentes/Vivian.webp",
+    image: "/CodiceZero/ICONOS/Agent_Vivian_Banshee_Icon.webp",
     customStyle: "scale-[1.00] group-hover:scale-[1.10] object-[center_top]",
   },
   // --- VERSIÓN 1.6 ---
@@ -201,7 +201,7 @@ export const agents = [
     rol: "Aturdidor",
     faction: "Obol Squad",
     version: "1.6",
-    image: "/CodiceZero/Agentes/Trigger.webp",
+    image: "/CodiceZero/ICONOS/Agent_Trigger_Icon.webp",
     customStyle: "scale-[1.00] group-hover:scale-[1.10] object-[center_top]",
 
   },
@@ -213,7 +213,7 @@ export const agents = [
     rol: "Ataque",
     faction: "Defense Force - Silver Squad",
     version: "1.6",
-    image: "/CodiceZero/Agentes/Sanby.webp",
+    image: "/CodiceZero/ICONOS/Agent_Soldier_0_-_Anby_Icon.webp",
     customStyle: "scale-[1.00] group-hover:scale-[1.10] object-[center_top]",
 
   },
@@ -225,7 +225,7 @@ export const agents = [
     rol: "Aturdidor",
     faction: "Sons of Calydon",
     version: "1.6",
-    image: "/CodiceZero/Agentes/Pulchra.webp",
+    image: "/CodiceZero/ICONOS/Agent_Pulchra_Fellini_Icon.webp",
     customStyle: "scale-[1.00] group-hover:scale-[1.10] object-[center_top]",
 
   },
@@ -238,7 +238,7 @@ export const agents = [
     rol: "Soporte",
     faction: "Stars of Lyra",
     version: "1.5",
-    image: "/CodiceZero/Agentes/Astra.webp",
+    image: "/CodiceZero/ICONOS/Agent_Astra_Yao_Icon.webp",
     customStyle: "scale-[1.00] group-hover:scale-[1.10] object-[center_top]",
 
   },
@@ -250,11 +250,11 @@ export const agents = [
     rol: "Ataque",
     faction: "Stars of Lyra",
     version: "1.5",
-    image: "/CodiceZero/Agentes/Evelyn.webp",
+    image: "/CodiceZero/ICONOS/Agent_Evelyn_Chevalier_Icon.webp",
     customStyle: "scale-[1.00] group-hover:scale-[1.10] object-[center_top]",
   },
 
-// --- VERSIÓN 1.4 (Section 6) ---
+  // --- VERSIÓN 1.4 (Section 6) ---
   {
     id: 26,
     name: "Miyabi",
@@ -263,7 +263,7 @@ export const agents = [
     rol: "Anomalia",
     faction: "Section 6",
     version: "1.4",
-    image: "/CodiceZero/Agentes/Miyabi.webp",
+    image: "/CodiceZero/ICONOS/Agent_Hoshimi_Miyabi_Icon.webp",
     customStyle: "scale-[1.00] group-hover:scale-[1.10] object-[center_top]",
 
   },
@@ -275,12 +275,12 @@ export const agents = [
     rol: "Ataque",
     faction: "Section 6",
     version: "1.4",
-    image: "/CodiceZero/Agentes/Harumasa.webp",
+    image: "/CodiceZero/ICONOS/Agent_Asaba_Harumasa_Icon.webp",
     customStyle: "scale-[1.00] group-hover:scale-[1.10] object-[center_top]",
 
   },
 
-    // --- VERSIÓN 1.3 (Virtual Revenge) ---
+  // --- VERSIÓN 1.3 (Virtual Revenge) ---
   {
     id: 23,
     name: "Yanagi",
@@ -289,7 +289,7 @@ export const agents = [
     rol: "Anomalia",
     faction: "Section 6",
     version: "1.3",
-    image: "/CodiceZero/Agentes/Yanagi.webp",
+    image: "/CodiceZero/ICONOS/Agent_Tsukishiro_Yanagi_Icon.webp",
     customStyle: "scale-[1.00] group-hover:scale-[1.10] object-[center_top]",
 
   },
@@ -301,12 +301,12 @@ export const agents = [
     rol: "Aturdidor",
     faction: "Sons of Calydon",
     version: "1.3",
-    image: "/CodiceZero/Agentes/Lighter.webp",
+    image: "/CodiceZero/ICONOS/Agent_Lighter_Icon.webp",
     customStyle: "scale-[1.00] group-hover:scale-[1.10] object-[center_top]",
   },
 
-   //VERSION 1.2
-   {
+  //VERSION 1.2
+  {
     id: 22,
     name: "Burnice",
     rank: "S",
@@ -314,10 +314,10 @@ export const agents = [
     rol: "Anomalia",
     faction: "Sons of calydon",
     version: "1.2",
-    image: "/CodiceZero/Agentes/Burnice.webp",
+    image: "/CodiceZero/ICONOS/Agent_Burnice_White_Icon.webp",
     customStyle: "scale-[1.00] group-hover:scale-[1.10] object-[center_top]",
-   },
-   {
+  },
+  {
     id: 21,
     name: "Caesar",
     rank: "S",
@@ -325,11 +325,11 @@ export const agents = [
     rol: "Defensa",
     faction: "Sons of Calydon",
     version: "1.2",
-    image: "/CodiceZero/Agentes/Caesar.webp",
+    image: "/CodiceZero/ICONOS/Agent_Caesar_King_Icon.webp",
     customStyle: "scale-[1.00] group-hover:scale-[1.10] object-[center_top]",
 
   },
-  
+
   // --- VERSIÓN 1.1 ---
   {
     id: 10,
@@ -339,7 +339,7 @@ export const agents = [
     rol: "Anomalia",
     faction: "N.E.P.S.",
     version: "1.1",
-    image: "/CodiceZero/Agentes/Jane.webp",
+    image: "/CodiceZero/ICONOS/Agent_Jane_Doe_Icon.webp",
     customStyle: "scale-[1.00] group-hover:scale-[1.10] object-[center_top]",
   },
   {
@@ -350,7 +350,7 @@ export const agents = [
     rol: "Aturdidor",
     faction: "N.E.P.S.",
     version: "1.1",
-    image: "/CodiceZero/Agentes/Qingyi.webp",
+    image: "/CodiceZero/ICONOS/Agent_Qingyi_Icon.webp",
     customStyle: "scale-[1.00] group-hover:scale-[1.10] object-[center_top]",
   },
   {
@@ -361,11 +361,11 @@ export const agents = [
     rol: "Defensa",
     faction: "N.E.P.S.",
     version: "1.1",
-    image: "/CodiceZero/Agentes/Seth.webp",
+    image: "/CodiceZero/ICONOS/Agent_Seth_Lowell_Icon.webp",
     customStyle: "scale-[1.00] group-hover:scale-[1.10] object-[center_top]",
   },
 
-// --- VERSIÓN 1.0 (Limitados) ---
+  // --- VERSIÓN 1.0 (Limitados) ---
   {
     id: 2,
     name: "Zhu Yuan",
@@ -374,7 +374,7 @@ export const agents = [
     rol: "Ataque",
     faction: "N.E.P.S.",
     version: "1.0",
-    image: "/CodiceZero/Agentes/ZhuYuan.webp",
+    image: "/CodiceZero/ICONOS/Agent_Zhu_Yuan_Icon.webp",
     customStyle: "scale-[1.00] group-hover:scale-[1.10] object-[center_top]",
   },
   {
@@ -385,11 +385,11 @@ export const agents = [
     rol: "Ataque",
     faction: "Victoria Housekeeping",
     version: "1.0",
-    image: "/CodiceZero/Agentes/Ellen.webp",
+    image: "/CodiceZero/ICONOS/Agent_Ellen_Joe_Icon.webp",
     customStyle: "scale-[1.00] group-hover:scale-[1.10] object-[center_top]",
   },
 
-    // --- VERSIÓN 1.0 (Estándar S) ---
+  // --- VERSIÓN 1.0 (Estándar S) ---
   {
     id: 3,
     name: "Lycaon",
@@ -398,7 +398,7 @@ export const agents = [
     rol: "Aturdidor",
     faction: "Victoria Housekeeping",
     version: "1.0",
-    image: "/CodiceZero/Agentes/Lycaon.webp",
+    image: "/CodiceZero/ICONOS/Agent_Von_Lycaon_Icon.webp",
     customStyle: "scale-[1.00] group-hover:scale-[1.10] object-[center_top]",
   },
   {
@@ -409,7 +409,7 @@ export const agents = [
     rol: "Ataque",
     faction: "Obol Squad",
     version: "1.0",
-    image: "/CodiceZero/Agentes/S11.webp",
+    image: "/CodiceZero/ICONOS/Agent_Soldier_11_Icon.webp",
     customStyle: "scale-[1.00] group-hover:scale-[1.10] object-[center_top]",
   },
   {
@@ -420,7 +420,7 @@ export const agents = [
     rol: "Aturdidor",
     faction: "Belobog Heavy Industries",
     version: "1.0",
-    image: "/CodiceZero/Agentes/Koleda.webp",
+    image: "/CodiceZero/ICONOS/Agent_Koleda_Belobog_Icon.webp",
     customStyle: "scale-[1.00] group-hover:scale-[1.10] object-[center_top]",
   },
   {
@@ -431,8 +431,8 @@ export const agents = [
     rol: "Soporte",
     faction: "Victoria Housekeeping",
     version: "1.0",
-    image: "/CodiceZero/Agentes/Rina.webp",
-    customStyle : "object-[center_top]",
+    image: "/CodiceZero/ICONOS/Agent_Alexandrina_Sebastiane_Icon.webp",
+    customStyle: "object-[center_top]",
   },
   {
     id: 7,
@@ -442,8 +442,8 @@ export const agents = [
     rol: "Anomalia",
     faction: "Belobog Heavy Industries",
     version: "1.0",
-    image: "/CodiceZero/Agentes/Grace.webp",
-    customStyle : "object-[center_top]",
+    image: "/CodiceZero/ICONOS/Agent_Grace_Howard_Icon.webp",
+    customStyle: "object-[center_top]",
   },
   {
     id: 8,
@@ -453,11 +453,11 @@ export const agents = [
     rol: "Ataque",
     faction: "Cunning Hares",
     version: "1.0",
-    image: "/CodiceZero/Agentes/Nekomiya.webp",
-    customStyle : "object-[center_top]",
+    image: "/CodiceZero/ICONOS/Agent_Nekomiya_Mana_Icon.webp",
+    customStyle: "object-[center_top]",
   },
 
-    // --- VERSIÓN 1.0 (Estándar A) ---
+  // --- VERSIÓN 1.0 (Estándar A) ---
   {
     id: 18,
     name: "Lucy",
@@ -466,7 +466,7 @@ export const agents = [
     rol: "Soporte",
     faction: "Sons of Calydon",
     version: "1.0",
-    image: "/CodiceZero/Agentes/Lucy.webp",
+    image: "/CodiceZero/ICONOS/Agent_Luciana_de_Montefio_Icon.webp",
     customStyle: "scale-[1.00] group-hover:scale-[1.10] object-[center_top]",
   },
   {
@@ -477,8 +477,8 @@ export const agents = [
     rol: "Anomalia",
     faction: "Sons of Calydon",
     version: "1.0",
-    image: "/CodiceZero/Agentes/Piper.webp",
-    customStyle : "object-[center_top]",
+    image: "/CodiceZero/ICONOS/Agent_Piper_Wheel_Icon.webp",
+    customStyle: "object-[center_top]",
   },
   {
     id: 15,
@@ -488,8 +488,8 @@ export const agents = [
     rol: "Soporte",
     faction: "Section 6",
     version: "1.0",
-    image: "/CodiceZero/Agentes/Soukaku.webp",
-    customStyle : "object-[center_top]",
+    image: "/CodiceZero/ICONOS/Agent_Soukaku_Icon.webp",
+    customStyle: "object-[center_top]",
   },
   {
     id: 12,
@@ -499,8 +499,8 @@ export const agents = [
     rol: "Soporte",
     faction: "Cunning Hares",
     version: "1.0",
-    image: "/CodiceZero/Agentes/Nicole.webp",
-    customStyle : "object-[center_top]",
+    image: "/CodiceZero/ICONOS/Agent_Nicole_Demara_Icon.webp",
+    customStyle: "object-[center_top]",
   },
   {
     id: 11,
@@ -510,8 +510,8 @@ export const agents = [
     rol: "Aturdidor",
     faction: "Cunning Hares",
     version: "1.0",
-    image: "/CodiceZero/Agentes/Anby.webp",
-    customStyle : "object-[center_top]",
+    image: "/CodiceZero/ICONOS/Agent_Anby_Demara_Icon.webp",
+    customStyle: "object-[center_top]",
   },
   {
     id: 13,
@@ -521,8 +521,8 @@ export const agents = [
     rol: "Ataque",
     faction: "Cunning Hares",
     version: "1.0",
-    image: "/CodiceZero/Agentes/Billy.webp",
-    customStyle : "object-[center_top]",
+    image: "/CodiceZero/ICONOS/Agent_Billy_Kid_Icon.webp",
+    customStyle: "object-[center_top]",
   },
   {
     id: 14,
@@ -532,8 +532,8 @@ export const agents = [
     rol: "Ataque",
     faction: "Victoria Housekeeping",
     version: "1.0",
-    image: "/CodiceZero/Agentes/Corin.webp",
-    customStyle : "object-[center_top]",
+    image: "/CodiceZero/ICONOS/Agent_Corin_Wickes_Icon.webp",
+    customStyle: "object-[center_top]",
   },
   {
     id: 16,
@@ -543,7 +543,7 @@ export const agents = [
     rol: "Defensa",
     faction: "Belobog Heavy Industries",
     version: "1.0",
-    image: "/CodiceZero/Agentes/Ben.webp",
+    image: "/CodiceZero/ICONOS/Agent_Ben_Bigger_Icon.webp",
     customStyle: "scale-[1.00] group-hover:scale-[1.10] object-[center_top]",
   },
   {
@@ -554,8 +554,8 @@ export const agents = [
     rol: "Ataque",
     faction: "Belobog Heavy Industries",
     version: "1.0",
-    image: "/CodiceZero/Agentes/Anton.webp",
-    customStyle : "object-[center_top]",
+    image: "/CodiceZero/ICONOS/Agent_Anton_Ivanov_Icon.webp",
+    customStyle: "object-[center_top]",
   }
- 
- ];
+
+];
