@@ -151,7 +151,7 @@ export default function AgentDetailPage() {
       // Fuego
       { pattern: /(Acumulaci[oó]n\s+de\s+Anomal[ií]a\s+Fuego|Daño\s+Fuego|Quemadura|Quemados?|Anomal[ií]a\s+Fuego|Res\s+Fuego|Resistencia\s+Fuego)/gi, color: "text-[#ef4444] font-bold" },
       // Hielo
-      { pattern: /(Acumulaci[oó]n\s+de\s+Anomal[ií]a\s+Hielo|Daño\s+Hielo|Rompehielo|Romper\s+Hielo|Congelaci[oó]n\w*|Ruptura|Anomal[ií]a\s+Hielo|Res\s+Hielo|Resistencia\s+Hielo|Hielo)/gi, color: "text-[#22d3ee] font-bold" },
+      { pattern: /(Acumulaci[oó]n\s+de\s+Anomal[ií]a\s+Hielo|Daño\s+Hielo|Rompehielo|Romper\s+Hielo|Congelaci[oó]n\w*|Anomal[ií]a\s+Hielo|Res\s+Hielo|Resistencia\s+Hielo|Hielo)/gi, color: "text-[#22d3ee] font-bold" },
       // Eléctrico
       { pattern: /(Acumulaci[oó]n\s+de\s+Anomal[ií]a\s+El[eé]ctrica|Daño\s+El[eé]ctrico|Shock|Electrocuci[oó]n|Anomal[ií]a\s+El[eé]ctrica|Res\s+El[eé]ctrica|Resistencia\s+El[eé]ctrica)/gi, color: "text-[#3b82f6] font-bold" },
       // Físico
