@@ -26,7 +26,13 @@ export default {
     valuePerNode: 0.12
   },
   coreSkillScaling: [
-    ["10%", "11.7%", "13.3%", "15%", "16.7%", "18.3%", "20%"]
+    ["10%"],
+    ["11.7%"],
+    ["13.3%"],
+    ["15%"],
+    ["16.7%"],
+    ["18.3%"],
+    ["20%"]
   ],
   skills: [
     {
@@ -98,13 +104,13 @@ export default {
     {
       type: "Pasiva Central",
       name: "Pasiva Principal: Nocturno Perdido",
-      description: "Al entrar al campo de batalla, Lucia gana inmediatamente 60 (Puntos de Sueño). Si sus (Puntos de Sueño) alcanzan 100 al activar un (Capricho) o (Armonia), ella entra en el estado (Sueño). Al entrar en el estado (Sueño), activa una (Asistencia Rapida) y simultáneamente activa (Velo Etereo: Manantial). Mientras (Velo Etereo: Manantial) está activo, los PV Máximos de todos los miembros del escuadrón aumentan un 5%, durando 40s. Activaciones repetidas extienden la duración, hasta un máximo de 300s. Mientras Lucia está en el estado (Sueño), usar cualquier (Capricho) consume 25 (Puntos de Sueño) y lo mejora a (Armonia). Siempre que el ataque de otro personaje activo golpea a un enemigo, Lucia consume 25 (Puntos de Sueño) para desatar una (Replica). Esta (Replica) es una (Armonia). Después de que Lucia activa una mejora de habilidad o (Replica), (Replica) no puede ser activada por 8s. Cuando Lucia activa una mejora de habilidad o una (Replica), todos los miembros del escuadrón ganan el estado (Cancion de Cuna del Soñador). Mientras está en el estado (Cancion de Cuna del Soñador), el DAÑO infligido aumenta un {VALOR} por 12s. Activaciones repetidas reinician la duración. Si Lucia se queda sin (Puntos de Sueño) o deja el (Velo Etereo), sale del estado (Sueño).",
+      description: "Al entrar al campo de batalla, Lucia gana inmediatamente 60 (Puntos de Sueño). Si sus (Puntos de Sueño) alcanzan 100 al activar un (Capricho) o (Armonia), ella entra en el estado (Sueño). Al entrar en el estado (Sueño), activa una (Asistencia Rapida) y simultáneamente activa (Velo Etereo: Manantial). Mientras (Velo Etereo: Manantial) está activo, los PV Máximos de todos los miembros del escuadrón aumentan un 5%, durando 40s. Activaciones repetidas extienden la duración, hasta un máximo de 300s. Mientras Lucia está en el estado (Sueño), usar cualquier (Capricho) consume 25 (Puntos de Sueño) y lo mejora a (Armonia). Siempre que el ataque de otro personaje activo golpea a un enemigo, Lucia consume 25 (Puntos de Sueño) para desatar una (Replica). Esta (Replica) es una (Armonia). Después de que Lucia activa una mejora de habilidad o (Replica), (Replica) no puede ser activada por 8s. Cuando Lucia activa una mejora de habilidad o una (Replica), todos los miembros del escuadrón ganan el estado (Cancion de Cuna del Soñador). Mientras está en el estado (Cancion de Cuna del Soñador), el DAÑO infligido aumenta un {VALOR_1} por 12s. Activaciones repetidas reinician la duración. Si Lucia se queda sin (Puntos de Sueño) o deja el (Velo Etereo), sale del estado (Sueño).",
       tags: ["Pasiva Central"]
     },
     {
       type: "Habilidad Adicional",
       name: "Habilidad Adicional: Balada de la Larga Noche",
-      description: "Cuando otro personaje en tu escuadrón es un personaje de (Ruptura) o (Aturdidor): Al aplicar (Rompeoscuridad), aplica adicionalmente un efecto de aumento de Daño CRIT del {VALOR_1}.",
+      description: "Cuando otro personaje en tu escuadrón es un personaje de (Ruptura) o (Aturdidor): Al aplicar (Rompeoscuridad), aplica adicionalmente un efecto de aumento de Daño CRIT del 30%.",
       tags: ["Habilidad Adicional"]
     },
     {
