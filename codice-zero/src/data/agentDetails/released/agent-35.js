@@ -2,27 +2,31 @@
 export default {
   baseStats: {
     hp: {
-      min: 630,
-      max: 7800
+      min: 673,
+      max: 8373
     },
     atk: {
-      min: 150,
-      max: 990
+      min: 126,
+      max: 872
     },
     def: {
-      min: 51,
-      max: 635
+      min: 35,
+      max: 441
     },
-    impact: 108,
+    impact: 93,
     crit: "5%",
     critDmg: "50%",
-    anomalyRate: "98",
-    anomalyMastery: "98",
+    anomalyRate: "92",
+    anomalyMastery: "90",
     penRatio: "0%",
     energyRegen: "1.2",
+    sheerForce: {
+      min: 105,
+      max: 1099
+    }
   },
   coreStats: {
-    statName: "pen ratio",
+    statName: "crit rate",
     valuePerNode: 4.8
   },
   coreSkillScaling: [
