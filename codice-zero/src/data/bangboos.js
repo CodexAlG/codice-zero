@@ -207,5 +207,47 @@ export const bangboos = [
         rank: "A",
         faction: "Generic",
         image: "/CodiceZero/Bangboo/Sumoboo_Portrait.webp"
+    },
+    {
+        id: 30,
+        name: "Bagboo",
+        rank: "A",
+        faction: "Generic",
+        image: "/CodiceZero/Bangboo/Bagboo_Portrait.webp"
+    },
+    {
+        id: 31,
+        name: "Bild N. Boolok",
+        rank: "A",
+        faction: "Generic",
+        image: "/CodiceZero/Bangboo/Bild_N._Boolok_Portrait.webp"
+    },
+    {
+        id: 32,
+        name: "Miss Esme",
+        rank: "A",
+        faction: "Generic",
+        image: "/CodiceZero/Bangboo/Miss_Esme_Portrait.webp"
+    },
+    {
+        id: 33,
+        name: "Overtimeboo",
+        rank: "A",
+        faction: "Generic",
+        image: "/CodiceZero/Bangboo/Overtimeboo_Portrait.webp"
+    },
+    {
+        id: 34,
+        name: "Robin",
+        rank: "A",
+        faction: "Generic",
+        image: "/CodiceZero/Bangboo/Robin_Portrait.webp"
+    },
+    {
+        id: 35,
+        name: "Snap",
+        rank: "A",
+        faction: "Generic",
+        image: "/CodiceZero/Bangboo/Snap_Portrait.webp"
     }
 ];
