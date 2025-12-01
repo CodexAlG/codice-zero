@@ -44,7 +44,7 @@ export default {
     {
       type: "Ataque Básico",
       name: "Ataque Basico: Vals de Brillo Estelar",
-      description: "Cuando la (Etiqueta de Hoja) de Alice alcanza 1 barra, mantén [Icono Ataque] para activar: Mantén para cargar, gastando hasta 3 barras de (Etiqueta de Hoja). Suelta [Icono Ataque] o cuando la (Etiqueta de Hoja) esté por debajo de 1 barra, Alice realiza una serie de cortes en un área centrada en el enemigo objetivo, con el número de golpes determinado por el nivel de carga, causando masivo Daño Fisico. Cuando el Movimiento Final de un (Ataque Basico: Vals de Brillo Estelar) cargado de tres etapas golpea, activa un efecto especial de (Asalto): (Asalto de Polaridad). Esto causa DAÑO igual al 100.0% del (Asalto) original, ignorando la Acumulación de Anomalía, y puede interactuar con otras Anomalías de Atributo, incluyendo Físico, para activar (Desorden). (Etiqueta de Hoja) no se acumula al golpear a un enemigo. El personaje es invulnerable mientras usa esta habilidad.",
+      description: "Cuando la (Etiqueta de Hoja) de Alice alcanza 1 barra, mantén [Icono Ataque] para activar: Mantén para cargar, gastando hasta 3 barras de (Etiqueta de Hoja). Suelta [Icono Ataque] o cuando la (Etiqueta de Hoja) esté por debajo de 1 barra, Alice realiza una serie de cortes en un área centrada en el enemigo objetivo, con el número de golpes determinado por el nivel de carga, causando masivo Daño Fisico. Cuando el Movimiento Final de un (Ataque Basico: Vals de Brillo Estelar) cargado de tres etapas golpea, activa un efecto especial de (Asalto): Asalto de Polaridad. Esto causa DAÑO igual al 100.0% del (Asalto) original, ignorando la Acumulación de Anomalía, y puede interactuar con otras Anomalías de Atributo, incluyendo Físico, para activar (Desorden). (Etiqueta de Hoja) no se acumula al golpear a un enemigo. El personaje es invulnerable mientras usa esta habilidad.",
       tags: ["Físico", "Ataque Básico"]
     },
     {
@@ -104,7 +104,7 @@ export default {
     {
       type: "Pasiva Central",
       name: "Pasiva Principal: Arcoiris Gemelos del Corazon de la Espada",
-      description: "Después de que cualquier miembro del escuadrón inflige una (Anomalia Fisica) en un enemigo, Alice causa daño adicional cada 0.95s de su duración activa, igual al {VALOR_1} del Daño de Anomalía Física original. Si (Desorden) es activado mientras el enemigo está sufriendo una (Anomalia Fisica), por cada 1s de duración restante de (Anomalia Fisica), el multiplicador de DAÑO de (Desorden) aumenta en un 18%, hasta un máximo de 180.0%. Cuando los ataques de Alice golpean a un enemigo, ella acumula (Etiqueta de Hoja). Cuando ella activa un (Asalto) a través de la Acumulación de Anomalía, gana 10 (Etiqueta de Hoja). (Etiqueta de Hoja) tiene un máximo de 300, con cada 100 siendo 1 barra. Cuando el Movimiento Final de un (Ataque Basico: Vals de Brillo Estelar) cargado de tres etapas aterriza, activa un efecto especial de (Asalto): (Asalto de Polaridad), causando 100.0% del DAÑO de (Asalto) original, ignorando el progreso de Acumulación de Anomalía. Esto puede combinarse con cualquier otra Anomalía de Atributo, incluyendo Anomalía Física, para activar (Desorden). Cuando Alice activa (Asalto) en un enemigo, su (Tasa de Acumulacion de Anomalia Fisica) aumenta en un 25% por 30s.",
+      description: "Después de que cualquier miembro del escuadrón inflige una Anomalia Fisica en un enemigo, Alice causa daño adicional cada 0.95s de su duración activa, igual al {VALOR_1} del Daño de Anomalía Física original. Si (Desorden) es activado mientras el enemigo está sufriendo una Anomalia Fisica, por cada 1s de duración restante de Anomalia Fisica, el multiplicador de DAÑO de (Desorden) aumenta en un 18%, hasta un máximo de 180.0%. Cuando los ataques de Alice golpean a un enemigo, ella acumula (Etiqueta de Hoja). Cuando ella activa un (Asalto) a través de la Acumulación de Anomalía, gana 10 (Etiqueta de Hoja). (Etiqueta de Hoja) tiene un máximo de 300, con cada 100 siendo 1 barra. Cuando el Movimiento Final de un (Ataque Basico: Vals de Brillo Estelar) cargado de tres etapas aterriza, activa un efecto especial de (Asalto): Asalto de Polaridad, causando 100.0% del DAÑO de (Asalto) original, ignorando el progreso de Acumulación de Anomalía. Esto puede combinarse con cualquier otra Anomalía de Atributo, incluyendo Anomalía Física, para activar (Desorden). Cuando Alice activa (Asalto) en un enemigo, su Tasa de Acumulacion de Anomalia Fisica aumenta en un 25% por 30s.",
       tags: ["Pasiva Central"]
     },
     {
@@ -128,13 +128,13 @@ export default {
     {
       type: "Mindscape 1",
       name: "Puñado de Cilantro",
-      description: "Cuando Alice activa un (Asalto de Polaridad), gana 25 (Etiqueta de Hoja). Cuando activa (Asalto) contra un enemigo, la DEF del objetivo se reduce en un 20% por 30s.",
+      description: "Cuando Alice activa un Asalto de Polaridad, gana 25 (Etiqueta de Hoja). Cuando activa (Asalto) contra un enemigo, la DEF del objetivo se reduce en un 20% por 30s.",
       tags: ["Mindscape 1"]
     },
     {
       type: "Mindscape 2",
       name: "Sabio en la Punta de la Espada",
-      description: "Cuando el Movimiento Final de (Definitiva: Final de Lluvia de Estrellas) golpea a un enemigo, activa (Asalto de Polaridad). El DAÑO de (Asalto) de todos los miembros del escuadrón aumenta en un 15%. El DAÑO de (Desorden) contra enemigos sufriendo de (Anomalia Fisica) aumenta en un 15%. Al entrar al campo de batalla, Alice gana inmediatamente 1,000 Decibelios. Se activa una vez cada 180s en el modo Zona de Investigación.",
+      description: "Cuando el Movimiento Final de (Definitiva: Final de Lluvia de Estrellas) golpea a un enemigo, activa Asalto de Polaridad. El DAÑO de (Asalto) de todos los miembros del escuadrón aumenta en un 15%. El DAÑO de (Desorden) contra enemigos sufriendo de Anomalia Fisica aumenta en un 15%. Al entrar al campo de batalla, Alice gana inmediatamente 1,000 Decibelios. Se activa una vez cada 180s en el modo Zona de Investigación.",
       tags: ["Mindscape 2"]
     },
     {
@@ -146,7 +146,7 @@ export default {
     {
       type: "Mindscape 4",
       name: "Romero en Sus Labios",
-      description: "Alice ignora el 10% de la (Res Fisica) del objetivo. (Ataque Basico: Abertura Celestial) mejorado acumula un 25% más de (Acumulacion de Anomalia Fisica).",
+      description: "Alice ignora el 10% de la Res Fisica del objetivo. (Ataque Basico: Abertura Celestial) mejorado acumula un 25% más de Acumulacion de Anomalia Fisica.",
       tags: ["Mindscape 4"]
     },
     {
