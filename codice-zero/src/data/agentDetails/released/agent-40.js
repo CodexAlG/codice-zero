@@ -2,22 +2,22 @@
 export default {
   baseStats: {
     hp: {
-      min: 605,
-      max: 7640
+      min: 626,
+      max: 7788
     },
     atk: {
-      min: 162,
-      max: 1095
+      min: 134,
+      max: 929
     },
     def: {
       min: 49,
       max: 612
     },
-    impact: 92,
+    impact: 93,
     crit: "5%",
     critDmg: "50%",
-    anomalyRate: "91",
-    anomalyMastery: "91",
+    anomalyRate: "92",
+    anomalyMastery: "90",
     penRatio: "0%",
     energyRegen: "1.2",
   },
@@ -32,7 +32,7 @@ export default {
     ["18.8%", "63.7%", "205", "520"],
     ["20.8%", "70.8%", "230", "580"],
     ["22.9%", "77.9%", "255", "640"],
-    ["25%", "85%", "290", "700"]
+    ["25%", "85%", "280", "700"]
   ],
   skills: [
     {
