@@ -48,13 +48,13 @@ export default {
     {
       type: "Ataque Básico",
       name: "Ataque Basico: Coalescencia de Nube Velo de Tinta",
-      description: "Mantén [Icono Evasión] para activar: Despliega una Gran Formación Tai Chi, causando Daño Tinta Aurica. Cuando la habilidad termina, lanza automáticamente el 5to golpe de (Ataque Basico: Golpe Cirro). El Nivel de Anti-Interrupción aumenta mientras usa esta habilidad, y el Daño recibido se reduce en un 40%.",
+      description: "Mantén [Icono Dodges] para activar: Despliega una Gran Formación Tai Chi, causando Daño Tinta Aurica. Cuando la habilidad termina, lanza automáticamente el 5to golpe de (Ataque Basico: Golpe Cirro). El Nivel de Anti-Interrupción aumenta mientras usa esta habilidad, y el Daño recibido se reduce en un 40%.",
       tags: ["Etéreo", "Ataque Básico"]
     },
     {
       type: "Ataque Básico",
       name: "Ataque Basico: Matriz Aurica",
-      description: "Mientras posees un (Punto de Tinta Aurica): presiona [Icono Ataque] durante (Evasion: Paso de Nimbo), o mantén [Icono Evasión] para activar: Despliega una matriz, causando continuamente Daño Tinta Aurica. Cuando la habilidad termina, activa automáticamente (Ataque Basico: Erupcion Qingming). Mientras canaliza, recupera continuamente Adrenalina, recuperando 7/s, por hasta 3s. El personaje es invulnerable mientras usa esta habilidad, y entra en el estado (Vista Vital).",
+      description: "Mientras posees un (Punto de Tinta Aurica): presiona [Icono Ataque] durante (Evasion: Paso de Nimbo), o mantén [Icono Dodges] para activar: Despliega una matriz, causando continuamente Daño Tinta Aurica. Cuando la habilidad termina, activa automáticamente (Ataque Basico: Erupcion Qingming). Mientras canaliza, recupera continuamente Adrenalina, recuperando 7/s, por hasta 3s. El personaje es invulnerable mientras usa esta habilidad, y entra en el estado (Vista Vital).",
       tags: ["Etéreo", "Ataque Básico"]
     },
     {
@@ -66,7 +66,7 @@ export default {
     {
       type: "Evasión",
       name: "Evasion: Tecnica de Nube Oculta",
-      description: "Presiona [Icono Evasión] para activar: Una evasión rápida de carrera. El personaje es invulnerable mientras usa esta habilidad.",
+      description: "Presiona [Icono Dodges] para activar: Una evasión rápida de carrera. El personaje es invulnerable mientras usa esta habilidad.",
       tags: ["Evasión"]
     },
     {
@@ -78,7 +78,7 @@ export default {
     {
       type: "Evasión",
       name: "Evasion: Paso de Nimbo",
-      description: "Al arrastrar la palanca/joystick, mantén [Icono Evasión] para activar: Entra en un estado de alta velocidad (Ligero como el Aire). Mientras está en el estado (Ligero como el Aire) en el Modo Zona de Investigación, recolecta automáticamente todos los puntos de recolección de recursos dentro del alcance. Mientras está en el estado (Ligero como el Aire), usa la palanca/joystick para dirigir. Suelta la palanca/joystick para parar. El personaje es invulnerable en el momento en que esta habilidad se activa.",
+      description: "Al arrastrar la palanca/joystick, mantén [Icono Dodges] para activar: Entra en un estado de alta velocidad (Ligero como el Aire). Mientras está en el estado (Ligero como el Aire) en el Modo Zona de Investigación, recolecta automáticamente todos los puntos de recolección de recursos dentro del alcance. Mientras está en el estado (Ligero como el Aire), usa la palanca/joystick para dirigir. Suelta la palanca/joystick para parar. El personaje es invulnerable en el momento en que esta habilidad se activa.",
       tags: ["Evasión"]
     },
     {
@@ -96,7 +96,7 @@ export default {
     {
       type: "Técnica Especial EX",
       name: "Tecnica Especial EX: Manifestacion de Tinta",
-      description: "Con suficiente Adrenalina, presiona o mantén [Icono Especial EX] para activar: Carga continuamente, y suelta [Icono Especial EX] para lanzar un ataque de ala ascendente, causando masivo Daño Tinta Aurica. Mientras carga, los ataques entrantes son bloqueados automáticamente y activarán el ataque de ala ascendente. Si es golpeada en el momento exacto en que comienza a cargar, activa un efecto de (Bloqueo Perfecto), negando el DAÑO e incrementando el Nivel de Interrupción de la habilidad para igualar a una (Asistencia Defensiva) Pesada, y recuperando 10 de Adrenalina. Cuando un ataque de ala ascendente golpea a un enemigo con un destello rojo o destello amarillo, un (Bloqueo Perfecto) puede ser activado, negando el golpe e incrementando el Nivel de Interrupción de la habilidad para igualar a una (Asistencia Defensiva) y recuperando 10 de Adrenalina. El efecto de (Bloqueo Perfecto) puede ocurrir como máximo una vez cada 0.5s. Si carga hasta destellar o cuando activa el efecto de (Bloqueo Perfecto), el ataque de ala ascendente puede ser seguido por un Ataque de Talismán adicional. Después de la habilidad, presiona [Icono Especial] para lanzar (Tecnica Especial EX: Bombardeo de Nube Celestial - Ruptura). Después de (Tecnica Especial EX: Bombardeo de Nube Celestial - Ruptura), y con suficiente Adrenalina, presiona [Icono Especial EX] para consumir otros 20 de Adrenalina para lanzar (Tecnica Especial EX: Erupcion Qingming - Ruptura). Después de usar (Tecnica Especial EX: Erupcion Qingming - Ruptura) y con suficientes (Puntos de Tinta Aurica), mantén [Icono Evasión] para seguir rápidamente con (Ataque Basico: Matriz Aurica). El personaje es invulnerable durante el ataque de ala ascendente, y el Nivel de Anti-Interrupción aumenta mientras carga.",
+      description: "Con suficiente Adrenalina, presiona o mantén [Icono Especial EX] para activar: Carga continuamente, y suelta [Icono Especial EX] para lanzar un ataque de ala ascendente, causando masivo Daño Tinta Aurica. Mientras carga, los ataques entrantes son bloqueados automáticamente y activarán el ataque de ala ascendente. Si es golpeada en el momento exacto en que comienza a cargar, activa un efecto de (Bloqueo Perfecto), negando el DAÑO e incrementando el Nivel de Interrupción de la habilidad para igualar a una (Asistencia Defensiva) Pesada, y recuperando 10 de Adrenalina. Cuando un ataque de ala ascendente golpea a un enemigo con un destello rojo o destello amarillo, un (Bloqueo Perfecto) puede ser activado, negando el golpe e incrementando el Nivel de Interrupción de la habilidad para igualar a una (Asistencia Defensiva) y recuperando 10 de Adrenalina. El efecto de (Bloqueo Perfecto) puede ocurrir como máximo una vez cada 0.5s. Si carga hasta destellar o cuando activa el efecto de (Bloqueo Perfecto), el ataque de ala ascendente puede ser seguido por un Ataque de Talismán adicional. Después de la habilidad, presiona [Icono Especial] para lanzar (Tecnica Especial EX: Bombardeo de Nube Celestial - Ruptura). Después de (Tecnica Especial EX: Bombardeo de Nube Celestial - Ruptura), y con suficiente Adrenalina, presiona [Icono Especial EX] para consumir otros 20 de Adrenalina para lanzar (Tecnica Especial EX: Erupcion Qingming - Ruptura). Después de usar (Tecnica Especial EX: Erupcion Qingming - Ruptura) y con suficientes (Puntos de Tinta Aurica), mantén [Icono Dodges] para seguir rápidamente con (Ataque Basico: Matriz Aurica). El personaje es invulnerable durante el ataque de ala ascendente, y el Nivel de Anti-Interrupción aumenta mientras carga.",
       tags: ["Etéreo", "Técnica Especial EX"]
     },
     {
@@ -143,20 +143,20 @@ export default {
     },
     {
       type: "Ataque en Cadena",
-      name: "Ataque en Cadena: Colapso de Caldero de Tigre",
-      description: "Cuando un (Ataque en Cadena) es activado, selecciona el personaje para activar: Gira a Hu Wei para entregar un golpe poderoso a los enemigos en un área pequeña adelante, causando masivo Daño Fuego. El personaje es invulnerable mientras usa esta habilidad.",
-      tags: ["Fuego", "Ataque en Cadena"]
+      name: "Ataque en Cadena: Embestida de Tinta Aurica",
+      description: "Cuando un (Ataque en Cadena) es activado, selecciona el personaje para activar: Se lanza rápidamente hacia adelante y ataca, seguido de un estallido explosivo de alas, causando masivo Daño Tinta Aurica. El personaje es invulnerable mientras usa esta habilidad.",
+      tags: ["Etéreo", "Ataque en Cadena"]
     },
     {
       type: "Técnica Definitiva",
       name: "Definitiva: Sombra de Cielo Qingming",
-      description: "Causa masivo Daño Tinta Aurica.",
+      description: "Cuando el Nivel de Decibelios está al [Maximo], presiona [Icono Definitiva] para activar: Lanza un aluvión de ataques de alas, luego guía innumerables talismanes para atacar, causando masivo Daño Tinta Aurica. Al activar esta habilidad, Yixuan redistribuye equitativamente los PV del escuadrón. Después de usar esta habilidad y con suficientes (Puntos de Tinta Aurica), mantén [Icono Dodges] para seguir rápidamente con (Ataque Basico: Matriz Aurica). El personaje es invulnerable mientras usa esta habilidad.",
       tags: ["Etéreo", "Técnica Definitiva"]
     },
     {
       type: "Técnica Definitiva",
       name: "Definitiva: Supresion de Talisman Sin Fin",
-      description: "Causa masivo Daño Tinta Aurica. Consume (Puntos de Tecnica).",
+      description: "Con suficientes (Puntos de Tecnica), presiona [Icono Definitiva] para activar: Consume 120 (Puntos de Tecnica) para extender sus alas, luego guía innumerables talismanes para atacar, causando masivo Daño Tinta Aurica. Con suficientes (Puntos de Tecnica) y Decibelios, esta habilidad se activa con prioridad. Después de usar esta habilidad y con suficientes (Puntos de Tinta Aurica), mantén [Icono Dodges] para seguir rápidamente con (Ataque Basico: Matriz Aurica). Al activar esta habilidad, Yixuan redistribuye equitativamente los PV del escuadrón. El personaje es invulnerable mientras usa esta habilidad.",
       tags: ["Etéreo", "Técnica Definitiva"]
     },
     {
