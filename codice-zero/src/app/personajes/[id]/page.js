@@ -157,7 +157,7 @@ export default function AgentDetailPage() {
       // Físico
       { pattern: /(Asalto\s+de\s+Polaridad|Acumulaci[oó]n\s+de\s+Anomal[ií]a\s+F[ií]sica|Daño\s+F[ií]sico|Anomal[ií]a\s+F[ií]sica|Res\s+F[ií]sica|Resistencia\s+F[ií]sica|Asalto)/gi, color: "text-[#eab308] font-bold" },
       // Etéreo
-      { pattern: /(Acumulaci[oó]n\s+de\s+Anomal[ií]a\s+Et[eé]rea|Daño\s+Et[eé]reo|Corrupci[oó]n|Anomal[ií]a\s+Et[eé]rea|Res\s+Et[eé]rea|Resistencia\s+Et[eé]rea)/gi, color: "text-[#d946ef] font-bold" },
+      { pattern: /(Acumulaci[oó]n\s+de\s+Anomal[ií]a\s+(?:Et[eé]rea|Tinta\s+Aurica)|Daño\s+(?:Et[eé]reo|Tinta\s+Aurica)|Corrupci[oó]n|Anomal[ií]a\s+(?:Et[eé]rea|Tinta\s+Aurica)|Res\s+(?:Et[eé]rea|Tinta\s+Aurica)|Resistencia\s+(?:Et[eé]rea|Tinta\s+Aurica)|Tinta\s+Aurica)/gi, color: "text-[#d946ef] font-bold" },
     ];
 
     // Aplicar reglas en orden (habilidades primero, luego elementos)
