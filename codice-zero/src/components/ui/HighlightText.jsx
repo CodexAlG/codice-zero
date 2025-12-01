@@ -12,7 +12,7 @@ const createHighlightRules = (elementColor = "#facc15") => [
   // Damage types
   { pattern: /(Daño\s+Fuego|Quemadura|Quemados?)/gi, color: "text-[#ef4444] font-bold" },
   { pattern: /(Daño\s+Hielo|Rompehielo|Romper Hielo|Hielo|Congelacion|Congelación\w*|Ruptura)/gi, color: "text-[#22d3ee] font-bold" },
-  { pattern: /(Daño\s+Eléctrico|Daño\s+Electrico|Shock)/gi, color: "text-[#3b82f6] font-bold" },
+  { pattern: /(Daño\s+Eléctrico|Daño\s+Electrico|Shock|Electrocución)/gi, color: "text-[#3b82f6] font-bold" },
   { pattern: /(Daño\s+Físico|Daño\s+Fisico|Asalto)/gi, color: "text-[#eab308] font-bold" },
   { pattern: /(Daño\s+Etéreo|Daño\s+Etereo|Corrupción)/gi, color: "text-[#d946ef] font-bold" },
   // Massive / Severe damage – use element colour
