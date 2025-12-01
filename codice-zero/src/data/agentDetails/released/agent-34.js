@@ -48,7 +48,7 @@ export default {
       tags: ["Evasión"]
     },
     {
-      type: "Ataque de Carrera",
+      type: "Evasión",
       name: "Ataque de Carrera: Aceite Hirviendo Supremo",
       description: "Presiona [Icono Ataque] durante una evasión para activar: Realiza un ataque cuerpo a cuerpo rápido hacia adelante, causando Daño Fisico.",
       tags: ["Físico", "Ataque de Carrera", "Evasión"]
@@ -74,7 +74,7 @@ export default {
     {
       type: "Técnica Especial EX",
       name: "Tecnica Especial EX: Golpe de Pulso Montañoso",
-      description: "Con suficiente Energía, presiona [Icono Especial] para activar: (Tecnica Especial EX: Golpe de Pulso Montañoso) desata un golpe poderoso hacia adelante, causando Daño Fisico. Gana 3 puntos de (Fuerza de Ruptura) al activarse. Al golpear a un enemigo, activa la (Asistencia Rapida) del personaje anterior en el escuadrón. Agentes que entren al campo vía esta (Asistencia Rapida) ganarán el bono de Fuerza Pura de la (Pasiva Principal). Después de cambiar, Pan Yinhu permanecerá en el campo y lanzará automáticamente (Tecnica Especial: Toque de la Muerte) hasta que su (Fuerza de Ruptura) se agote, donde luego dejará el campo. El personaje es invulnerable mientras usa esta habilidad.",
+      description: "Con suficiente Energía, presiona [Icono Especial EX] para activar: (Tecnica Especial EX: Golpe de Pulso Montañoso) desata un golpe poderoso hacia adelante, causando Daño Fisico. Gana 3 puntos de (Fuerza de Ruptura) al activarse. Al golpear a un enemigo, activa la (Asistencia Rapida) del personaje anterior en el escuadrón. Agentes que entren al campo vía esta (Asistencia Rapida) ganarán el bono de Fuerza Pura de la (Pasiva Principal). Después de cambiar, Pan Yinhu permanecerá en el campo y lanzará automáticamente (Tecnica Especial: Toque de la Muerte) hasta que su (Fuerza de Ruptura) se agote, donde luego dejará el campo. El personaje es invulnerable mientras usa esta habilidad.",
       tags: ["Físico", "Técnica Especial EX"]
     },
     {
@@ -98,7 +98,7 @@ export default {
     {
       type: "Pasiva Central",
       name: "Pasiva Principal: Iluminacion del Meridiano",
-      description: "Por un breve periodo cuando la (Tecnica Especial EX: Golpe de Pulso Montañoso) de Pan Yinhu golpea a un enemigo y activa (Asistencia Rapida), el siguiente Agente entrando a través de una (Asistencia Rapida) o (Ataque en Cadena) ganará el efecto (Flujo del Meridiano). Este efecto provee un aumento de Fuerza Pura igual al {VALOR} del ATK inicial de Pan Yinhu y dura 25s. La Fuerza Pura provista por este efecto no puede exceder 540 puntos.",
+      description: "Por un breve periodo cuando la (Tecnica Especial EX: Golpe de Pulso Montañoso) de Pan Yinhu golpea a un enemigo y activa (Asistencia Rapida), el siguiente Agente entrando a través de una (Asistencia Rapida) o (Ataque en Cadena) ganará el efecto (Flujo del Meridiano). Este efecto provee un aumento de Fuerza Pura igual al {VALOR_1} del ATK inicial de Pan Yinhu y dura 25s. La Fuerza Pura provista por este efecto no puede exceder 540 puntos.",
       tags: ["Pasiva Central"]
     },
     {
