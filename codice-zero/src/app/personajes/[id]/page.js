@@ -148,22 +148,16 @@ export default function AgentDetailPage() {
 
     // PASO 3: Palabras Clave (Elementos y Estados)
     const rules = [
-      // REGLA: Solo colorear Elemento si está precedido por "Daño"
-      { pattern: /Daño (Glacial|Hielo|Congelación)/gi, color: "text-[#22d3ee] font-bold" },
-      { pattern: /Daño (Físico)/gi, color: "text-[#eab308] font-bold" },
-      { pattern: /Daño (Fuego)/gi, color: "text-[#ef4444] font-bold" },
-      { pattern: /Daño (Eléctrico)/gi, color: "text-[#3b82f6] font-bold" },
-      { pattern: /Daño (Etéreo)/gi, color: "text-[#d946ef] font-bold" },
-      // REGLA CLAVE: Usar el color del elemento del personaje para daño masivo/severo
-
-
-      // Estados y Mecánicas (Estos sí se colorean siempre)
-      { pattern: /(Congelación)/gi, color: "text-[#22d3ee] font-bold" },
-      { pattern: /(Quemadura)/gi, color: "text-[#ef4444] font-bold" },
-      { pattern: /(Shock)/gi, color: "text-[#3b82f6] font-bold" },
-      { pattern: /(Asalto)/gi, color: "text-[#eab308] font-bold" },
-      { pattern: /(Corrupción)/gi, color: "text-[#d946ef] font-bold" },
-
+      // Fuego
+      { pattern: /(Acumulaci[oó]n\s+de\s+Anomal[ií]a\s+Fuego|Daño\s+Fuego|Quemadura|Quemados?|Anomal[ií]a\s+Fuego|Res\s+Fuego|Resistencia\s+Fuego)/gi, color: "text-[#ef4444] font-bold" },
+      // Hielo
+      { pattern: /(Acumulaci[oó]n\s+de\s+Anomal[ií]a\s+Hielo|Daño\s+Hielo|Rompehielo|Romper\s+Hielo|Congelaci[oó]n\w*|Ruptura|Anomal[ií]a\s+Hielo|Res\s+Hielo|Resistencia\s+Hielo|Hielo)/gi, color: "text-[#22d3ee] font-bold" },
+      // Eléctrico
+      { pattern: /(Acumulaci[oó]n\s+de\s+Anomal[ií]a\s+El[eé]ctrica|Daño\s+El[eé]ctrico|Shock|Electrocuci[oó]n|Anomal[ií]a\s+El[eé]ctrica|Res\s+El[eé]ctrica|Resistencia\s+El[eé]ctrica)/gi, color: "text-[#3b82f6] font-bold" },
+      // Físico
+      { pattern: /(Asalto\s+de\s+Polaridad|Acumulaci[oó]n\s+de\s+Anomal[ií]a\s+F[ií]sica|Daño\s+F[ií]sico|Anomal[ií]a\s+F[ií]sica|Res\s+F[ií]sica|Resistencia\s+F[ií]sica|Asalto)/gi, color: "text-[#eab308] font-bold" },
+      // Etéreo
+      { pattern: /(Acumulaci[oó]n\s+de\s+Anomal[ií]a\s+Et[eé]rea|Daño\s+Et[eé]reo|Corrupci[oó]n|Anomal[ií]a\s+Et[eé]rea|Res\s+Et[eé]rea|Resistencia\s+Et[eé]rea)/gi, color: "text-[#d946ef] font-bold" },
     ];
 
     // Aplicar reglas en orden (habilidades primero, luego elementos)
