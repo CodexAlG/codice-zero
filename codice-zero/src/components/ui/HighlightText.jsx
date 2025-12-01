@@ -10,11 +10,11 @@ const createHighlightRules = (elementColor = "#facc15") => [
     extract: true,
   },
   // Damage types
-  { pattern: /(Daño\s+Fuego|Quemadura|Quemados?|Anomalia\s+Fuego|Res\s+Fuego|Resistencia\s+Fuego|Acumulacion\s+de\s+Anomalia\s+Fuego)/gi, color: "text-[#ef4444] font-bold" },
-  { pattern: /(Daño\s+Hielo|Rompehielo|Romper Hielo|Hielo|Congelacion|Congelación\w*|Ruptura|Anomalia\s+Hielo|Res\s+Hielo|Resistencia\s+Hielo|Acumulacion\s+de\s+Anomalia\s+Hielo)/gi, color: "text-[#22d3ee] font-bold" },
-  { pattern: /(Daño\s+Eléctrico|Daño\s+Electrico|Shock|Electrocución|Anomalia\s+Electrica|Res\s+Electrica|Resistencia\s+Electrica|Acumulacion\s+de\s+Anomalia\s+Electrica)/gi, color: "text-[#3b82f6] font-bold" },
-  { pattern: /(Daño\s+Físico|Daño\s+Fisico|Asalto|Anomalia\s+Fisica|Res\s+Fisica|Resistencia\s+Fisica|Acumulacion\s+de\s+Anomalia\s+Fisica|Asalto\s+de\s+Polaridad)/gi, color: "text-[#eab308] font-bold" },
-  { pattern: /(Daño\s+Etéreo|Daño\s+Etereo|Corrupción|Anomalia\s+Eterea|Res\s+Eterea|Resistencia\s+Eterea|Acumulacion\s+de\s+Anomalia\s+Eterea)/gi, color: "text-[#d946ef] font-bold" },
+  { pattern: /(Acumulacion\s+de\s+Anomalia\s+Fuego|Daño\s+Fuego|Quemadura|Quemados?|Anomalia\s+Fuego|Res\s+Fuego|Resistencia\s+Fuego)/gi, color: "text-[#ef4444] font-bold" },
+  { pattern: /(Acumulacion\s+de\s+Anomalia\s+Hielo|Daño\s+Hielo|Rompehielo|Romper\s+Hielo|Congelacion|Congelación\w*|Ruptura|Anomalia\s+Hielo|Res\s+Hielo|Resistencia\s+Hielo|Hielo)/gi, color: "text-[#22d3ee] font-bold" },
+  { pattern: /(Acumulacion\s+de\s+Anomalia\s+Electrica|Daño\s+Eléctrico|Daño\s+Electrico|Shock|Electrocución|Anomalia\s+Electrica|Res\s+Electrica|Resistencia\s+Electrica)/gi, color: "text-[#3b82f6] font-bold" },
+  { pattern: /(Asalto\s+de\s+Polaridad|Acumulacion\s+de\s+Anomalia\s+Fisica|Daño\s+Físico|Daño\s+Fisico|Anomalia\s+Fisica|Res\s+Fisica|Resistencia\s+Fisica|Asalto)/gi, color: "text-[#eab308] font-bold" },
+  { pattern: /(Acumulacion\s+de\s+Anomalia\s+Eterea|Daño\s+Etéreo|Daño\s+Etereo|Corrupción|Anomalia\s+Eterea|Res\s+Eterea|Resistencia\s+Eterea)/gi, color: "text-[#d946ef] font-bold" },
   // Massive / Severe damage – use element colour
   { pattern: /(Daño\s+Masivo|Daño\s+Severo)/gi, color: `text-[${elementColor}] font-bold` },
   // Misc special words
