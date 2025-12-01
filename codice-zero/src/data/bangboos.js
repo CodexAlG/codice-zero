@@ -3,7 +3,7 @@ export const bangboos = [
     // RANGO S
     {
         id: 1,
-        name: "Butler",
+        name: "Mayordomo",
         rank: "S",
         faction: "Victoria Housekeeping",
         image: "/CodiceZero/Bangboo/Butler_Portrait.webp"
@@ -24,37 +24,23 @@ export const bangboos = [
     },
     {
         id: 4,
-        name: "Booressure",
-        rank: "S",
+        name: "Presionboo",
+        rank: "A",
         faction: "Belobog Heavy Industries",
         image: "/CodiceZero/Bangboo/Booressure_Portrait.webp"
     },
     {
         id: 5,
         name: "Resonaboo",
-        rank: "S",
-        faction: "N.E.P.S.",
-        image: "/CodiceZero/Bangboo/Resonaboo_Portrait.webp"
-    },
-    {
-        id: 6,
-        name: "Safety",
-        rank:
-
-            "S",
-        faction: "H.S.O.-6",
-        image: "/CodiceZero/Bangboo/Safety_Portrait.webp"
-    },
-    {
         id: 7,
-        name: "Sharkboo",
+        name: "Tiburonboo",
         rank: "S",
         faction: "Belobog Heavy Industries",
         image: "/CodiceZero/Bangboo/Sharkboo_Portrait.webp"
     },
     {
         id: 8,
-        name: "Rocketboo",
+        name: "Coheteboo",
         rank: "S",
         faction: "Obol Squad",
         image: "/CodiceZero/Bangboo/Rocketboo_Portrait.webp"
@@ -63,21 +49,21 @@ export const bangboos = [
     // RANGO A
     {
         id: 9,
-        name: "Agent Gulliver",
-        rank: "A",
+        name: "Agente Gulliver",
+        rank: "S",
         faction: "N.E.P.S.",
         image: "/CodiceZero/Bangboo/Agent_Gulliver_Portrait.webp"
     },
     {
         id: 10,
-        name: "Avocaboo",
+        name: "Aguacateboo",
         rank: "A",
         faction: "Generic",
         image: "/CodiceZero/Bangboo/Avocaboo_Portrait.webp"
     },
     {
         id: 11,
-        name: "Baddieboo",
+        name: "Malvaboo",
         rank: "A",
         faction: "Generic",
         image: "/CodiceZero/Bangboo/Baddieboo_Portrait.webp"
@@ -85,34 +71,34 @@ export const bangboos = [
     {
         id: 12,
         name: "Birkblick",
-        rank: "A",
+        rank: "S",
         faction: "Generic",
         image: "/CodiceZero/Bangboo/Birkblick_Portrait.webp"
     },
     {
         id: 13,
-        name: "Boollseye",
+        name: "Dianaboo",
         rank: "A",
         faction: "Cunning Hares",
         image: "/CodiceZero/Bangboo/Boollseye_Portrait.webp"
     },
     {
         id: 14,
-        name: "Brawlerboo",
+        name: "Luchaboo",
         rank: "A",
         faction: "Generic",
         image: "/CodiceZero/Bangboo/Brawlerboo_Portrait.webp"
     },
     {
         id: 15,
-        name: "Cryboo",
+        name: "Lloronboo",
         rank: "A",
         faction: "Victoria Housekeeping",
         image: "/CodiceZero/Bangboo/Cryboo_Portrait.webp"
     },
     {
         id: 16,
-        name: "Devilboo",
+        name: "Diabloboo",
         rank: "A",
         faction: "Generic",
         image: "/CodiceZero/Bangboo/Devilboo_Portrait.webp"
@@ -133,21 +119,21 @@ export const bangboos = [
     },
     {
         id: 19,
-        name: "Exploreboo",
+        name: "Exploraboo",
         rank: "A",
         faction: "Generic",
         image: "/CodiceZero/Bangboo/Exploreboo_Portrait.webp"
     },
     {
         id: 20,
-        name: "Knightboo",
+        name: "Caballeroboo",
         rank: "A",
         faction: "Generic",
         image: "/CodiceZero/Bangboo/Knightboo_Portrait.webp"
     },
     {
         id: 21,
-        name: "Luckyboo",
+        name: "Suerteboo",
         rank: "A",
         faction: "Generic",
         image: "/CodiceZero/Bangboo/Luckyboo_Portrait.webp"
@@ -161,43 +147,43 @@ export const bangboos = [
     },
     {
         id: 23,
-        name: "Mercury",
-        rank: "A",
+        name: "Mercurio",
+        rank: "S",
         faction: "Generic",
         image: "/CodiceZero/Bangboo/Mercury_Portrait.webp"
     },
     {
         id: 24,
-        name: "Officer Cui",
-        rank: "A",
+        name: "Oficial Cui",
+        rank: "S",
         faction: "N.E.P.S.",
         image: "/CodiceZero/Bangboo/Officer_Cui_Portrait.webp"
     },
     {
         id: 25,
-        name: "Paperboo",
+        name: "Papelboo",
         rank: "A",
         faction: "Generic",
         image: "/CodiceZero/Bangboo/Paperboo_Portrait.webp"
     },
     {
         id: 26,
-        name: "Penguinboo",
+        name: "Pingüiboo",
         rank: "A",
         faction: "Belobog Heavy Industries",
         image: "/CodiceZero/Bangboo/Penguinboo_Portrait.webp"
     },
     {
         id: 27,
-        name: "Plugboo",
-        rank: "A",
+        name: "Enchufeboo",
+        rank: "S",
         faction: "Generic",
         image: "/CodiceZero/Bangboo/Plugboo_Portrait.webp"
     },
     {
         id: 28,
-        name: "Red Moccus",
-        rank: "A",
+        name: "Moccus Rojo",
+        rank: "S",
         faction: "Sons of Calydon",
         image: "/CodiceZero/Bangboo/Red_Moccus_Portrait.webp"
     },
@@ -210,7 +196,7 @@ export const bangboos = [
     },
     {
         id: 30,
-        name: "Bagboo",
+        name: "Bolsoboo",
         rank: "A",
         faction: "Generic",
         image: "/CodiceZero/Bangboo/Bagboo_Portrait.webp"
@@ -224,14 +210,14 @@ export const bangboos = [
     },
     {
         id: 32,
-        name: "Miss Esme",
-        rank: "A",
+        name: "Srta. Esme",
+        rank: "S",
         faction: "Generic",
         image: "/CodiceZero/Bangboo/Miss_Esme_Portrait.webp"
     },
     {
         id: 33,
-        name: "Overtimeboo",
+        name: "Horasextra",
         rank: "A",
         faction: "Generic",
         image: "/CodiceZero/Bangboo/Overtimeboo_Portrait.webp"
@@ -239,14 +225,14 @@ export const bangboos = [
     {
         id: 34,
         name: "Robin",
-        rank: "A",
+        rank: "S",
         faction: "Generic",
         image: "/CodiceZero/Bangboo/Robin_Portrait.webp"
     },
     {
         id: 35,
         name: "Snap",
-        rank: "A",
+        rank: "S",
         faction: "Generic",
         image: "/CodiceZero/Bangboo/Snap_Portrait.webp"
     }
