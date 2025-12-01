@@ -108,6 +108,12 @@ export default {
       tags: ["Físico", "Técnica Especial EX"]
     },
     {
+      type: "Técnica Especial",
+      name: "Estado: Susto Dulce",
+      description: "El estado (Susto Dulce) dura 40.0s, activaciones repetidas reinician la duración. Cuando un enemigo afectado por (Susto Dulce) es golpeado primero por un personaje activo usando un ataque de su atributo, (Coincidencia de Sabor) se activa contra ese enemigo, cambiando el atributo de (Ataque Basico: Chispas de Estallido de Azucar) y (Ataque Basico: Chispas de Estallido de Azucar - Max) contra ese enemigo para coincidir con el del personaje que activó (Coincidencia de Sabor). Cuando (Susto Dulce) es activado nuevamente en un enemigo, su estado existente de (Coincidencia de Sabor) es removido. El proceso puede repetirse para cambiar el atributo de (Ataque Basico: Chispas de Estallido de Azucar) y (Ataque Basico: Chispas de Estallido de Azucar - Max) de nuevo.",
+      tags: ["Físico", "Técnica Especial"]
+    },
+    {
       type: "Asistencia Rápida",
       name: "Asistencia Rapida: Hora del Postre",
       description: "Cuando el personaje activo es lanzado, presiona [Icono Assist] para activar: Golpea a los enemigos en frente, causando Daño Fisico. El personaje es invulnerable mientras usa esta habilidad.",
