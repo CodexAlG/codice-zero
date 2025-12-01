@@ -44,7 +44,7 @@ export default {
     {
       type: "Evasión",
       name: "Evasion: Silueta Desvanecida",
-      description: "Presiona [Icono Evasión] para activar: Una evasión rápida de carrera. El personaje es invulnerable mientras usa esta habilidad.",
+      description: "Presiona [Icono Dodges] para activar: Una evasión rápida de carrera. El personaje es invulnerable mientras usa esta habilidad.",
       tags: ["Etéreo", "Evasión"]
     },
     {
@@ -62,13 +62,13 @@ export default {
     {
       type: "Asistencia Rápida",
       name: "Asistencia Rapida: Niebla Aplastante",
-      description: "Cuando el personaje activo es lanzado, presiona [Icono Asistencia] para activar: Esta Asistencia Rápida es un (Capricho). Cuando se activa, invoca una figura Etérea que entrega un ataque descendente en un área circular adelante, causando Daño Etereo. Si no está en el estado (Sueño), Lucia gana 20 (Puntos de Sueño) al usar este (Capricho). Este efecto puede activarse una vez cada 5s. El personaje es invulnerable mientras usa esta habilidad.",
+      description: "Cuando el personaje activo es lanzado, presiona [Icono Assist] para activar: Esta Asistencia Rápida es un (Capricho). Cuando se activa, invoca una figura Etérea que entrega un ataque descendente en un área circular adelante, causando Daño Etereo. Si no está en el estado (Sueño), Lucia gana 20 (Puntos de Sueño) al usar este (Capricho). Este efecto puede activarse una vez cada 5s. El personaje es invulnerable mientras usa esta habilidad.",
       tags: ["Etéreo", "Asistencia Rápida", "Asistencia"]
     },
     {
       type: "Asistencia Defensiva",
       name: "Asistencia Defensiva: Voz de Sueños Ilusorios",
-      description: "Cuando el personaje en el campo está a punto de ser atacado, presiona [Icono Asistencia] para activar: Hace parry al ataque del enemigo, causando masivo Aturdimiento. El personaje es invulnerable mientras usa esta habilidad.",
+      description: "Cuando el personaje en el campo está a punto de ser atacado, presiona [Icono Assist] para activar: Hace parry al ataque del enemigo, causando masivo Aturdimiento. El personaje es invulnerable mientras usa esta habilidad.",
       tags: ["Etéreo", "Asistencia Defensiva", "Asistencia"]
     },
     {
@@ -86,7 +86,7 @@ export default {
     {
       type: "Técnica Especial EX",
       name: "Tecnica Especial EX: Sinfonia de la Segadora - Amanecer",
-      description: "Con suficiente Energía, presiona [Icono Especial] para activar: Esta Técnica Especial EX es una (Armonia). Cuando se activa, invoca una figura Etérea que entrega un corte poderoso hacia adelante en línea, causando Daño Etereo. Cuando Lucia usa cualquier (Armonia), todos los miembros del escuadrón ganan el estado (Rompeoscuridad). Mientras está en el estado (Rompeoscuridad), la Fuerza Pura aumenta en 12. Cada 200 puntos de los PV Máximos iniciales de Lucia otorgan 7.4 de Fuerza Pura adicional. El estado (Rompeoscuridad) puede aumentar la Fuerza Pura hasta un máximo de 900.0, durando 20s y activaciones repetidas reinician la duración. Cuando los PV Máximos iniciales de Lucia alcanzan 24,000, el efecto de bono anterior alcanza su valor máximo. Cuando cualquier (Armonia) causa DAÑO, Lucia aumenta el DAÑO del ataque final en un 70.0% adicional de sus PV Máximos. Si activa esta Técnica Especial EX mientras está en el estado (Sueño) y bajo el efecto de (Velo Etereo: Manantial), la duración de (Velo Etereo: Manantial) se extiende por 16s. Después de activar su Técnica Especial EX, Lucia puede seguir inmediatamente con el 5to golpe de su (Ataque Basico). Si no está en el estado (Sueño), Lucia gana 60 (Puntos de Sueño) al usar esta (Armonia). El personaje es invulnerable mientras usa esta habilidad.",
+      description: "Con suficiente Energía, presiona [Icono Especial EX] para activar: Esta Técnica Especial EX es una (Armonia). Cuando se activa, invoca una figura Etérea que entrega un corte poderoso hacia adelante en línea, causando Daño Etereo. Cuando Lucia usa cualquier (Armonia), todos los miembros del escuadrón ganan el estado (Rompeoscuridad). Mientras está en el estado (Rompeoscuridad), la Fuerza Pura aumenta en 12. Cada 200 puntos de los PV Máximos iniciales de Lucia otorgan 7.4 de Fuerza Pura adicional. El estado (Rompeoscuridad) puede aumentar la Fuerza Pura hasta un máximo de 900.0, durando 20s y activaciones repetidas reinician la duración. Cuando los PV Máximos iniciales de Lucia alcanzan 24,000, el efecto de bono anterior alcanza su valor máximo. Cuando cualquier (Armonia) causa DAÑO, Lucia aumenta el DAÑO del ataque final en un 70.0% adicional de sus PV Máximos. Si activa esta Técnica Especial EX mientras está en el estado (Sueño) y bajo el efecto de (Velo Etereo: Manantial), la duración de (Velo Etereo: Manantial) se extiende por 16s. Después de activar su Técnica Especial EX, Lucia puede seguir inmediatamente con el 5to golpe de su (Ataque Basico). Si no está en el estado (Sueño), Lucia gana 60 (Puntos de Sueño) al usar esta (Armonia). El personaje es invulnerable mientras usa esta habilidad.",
       tags: ["Etéreo", "Técnica Especial EX"]
     },
     {

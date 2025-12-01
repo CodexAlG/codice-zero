@@ -54,7 +54,7 @@ export default {
     {
       type: "Evasión",
       name: "Evasion: Hoja Radiante",
-      description: "Presiona [Icono Evasión] para activar: Una evasión rápida de carrera. El personaje es invulnerable mientras usa esta habilidad.",
+      description: "Presiona [Icono Dodges] para activar: Una evasión rápida de carrera. El personaje es invulnerable mientras usa esta habilidad.",
       tags: ["Fuego", "Evasión"]
     },
     {
@@ -84,19 +84,19 @@ export default {
     {
       type: "Técnica Especial EX",
       name: "Tecnica Especial EX: Retorno a las Cenizas - Caida",
-      description: "Mientras está en el estado (Filo Fundido) y con suficiente Adrenalina, presiona [Icono Especial] para activar: Salta y desata un corte descendente sobre los enemigos en frente, causando masivo Daño Fuego. Al activar la habilidad, restaura el 33% de los PV Máx. El personaje es invulnerable mientras usa esta habilidad.",
+      description: "Mientras está en el estado (Filo Fundido) y con suficiente Adrenalina, presiona [Icono Especial EX] para activar: Salta y desata un corte descendente sobre los enemigos en frente, causando masivo Daño Fuego. Al activar la habilidad, restaura el 33% de los PV Máx. El personaje es invulnerable mientras usa esta habilidad.",
       tags: ["Fuego", "Técnica Especial EX"]
     },
     {
       type: "Asistencia Rápida",
       name: "Asistencia Rapida: Sombra Solitaria - Reagrupar",
-      description: "Cuando el personaje activo es lanzado, presiona [Icono Asistencia] para activar: Corta y golpea a los enemigos en frente, causando Daño Fuego. El personaje es invulnerable mientras usa esta habilidad.",
+      description: "Cuando el personaje activo es lanzado, presiona [Icono Assist] para activar: Corta y golpea a los enemigos en frente, causando Daño Fuego. El personaje es invulnerable mientras usa esta habilidad.",
       tags: ["Fuego", "Asistencia Rápida", "Asistencia"]
     },
     {
       type: "Asistencia Defensiva",
       name: "Asistencia Defensiva: Sombra Solitaria - Postura de Montaña",
-      description: "Cuando el personaje en el campo está a punto de ser atacado, presiona [Icono Asistencia] para activar: Hace parry al ataque del enemigo, infligiendo masivo Aturdimiento y causando Daño Fuego. Gana 75 (Corazon Ardiente) al activar esta habilidad. El personaje es invulnerable mientras usa esta habilidad.",
+      description: "Cuando el personaje en el campo está a punto de ser atacado, presiona [Icono Assist] para activar: Hace parry al ataque del enemigo, infligiendo masivo Aturdimiento y causando Daño Fuego. Gana 75 (Corazon Ardiente) al activar esta habilidad. El personaje es invulnerable mientras usa esta habilidad.",
       tags: ["Fuego", "Asistencia Defensiva", "Asistencia"]
     },
     {
