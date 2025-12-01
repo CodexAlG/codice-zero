@@ -2,28 +2,28 @@
 export default {
   baseStats: {
     hp: {
-      min: 610,
-      max: 7550
+      min: 710,
+      max: 8829
     },
     atk: {
-      min: 128,
-      max: 865
+      min: 109,
+      max: 758
     },
     def: {
-      min: 50,
-      max: 625
+      min: 49,
+      max: 612
     },
-    impact: 88,
+    impact: 86,
     crit: "5%",
     critDmg: "50%",
-    anomalyRate: "105",
-    anomalyMastery: "110",
+    anomalyRate: "88",
+    anomalyMastery: "93",
     penRatio: "0%",
     energyRegen: "2.4",
   },
   coreStats: {
-    statName: "energia",
-    valuePerNode: 0.2
+    statName: "tasa",
+    valuePerNode: 12
   },
   coreSkillScaling: [
     ["600", "0.2%", "20%", "0.2%", "20%"],
