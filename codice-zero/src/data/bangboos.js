@@ -32,6 +32,18 @@ export const bangboos = [
     {
         id: 5,
         name: "Resonaboo",
+        rank: "S",
+        faction: "N.E.P.S.",
+        image: "/CodiceZero/Bangboo/Resonaboo_Portrait.webp"
+    },
+    {
+        id: 6,
+        name: "Seguridad",
+        rank: "S",
+        faction: "H.S.O.-6",
+        image: "/CodiceZero/Bangboo/Safety_Portrait.webp"
+    },
+    {
         id: 7,
         name: "Tiburonboo",
         rank: "S",
@@ -235,5 +247,12 @@ export const bangboos = [
         rank: "S",
         faction: "Generic",
         image: "/CodiceZero/Bangboo/Snap_Portrait.webp"
+    },
+    {
+        id: 36,
+        name: "Belion",
+        rank: "S",
+        faction: "Generic",
+        image: "/CodiceZero/Bangboo/Belion_Portrait.webp"
     }
 ];
