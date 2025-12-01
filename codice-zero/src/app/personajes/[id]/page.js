@@ -699,25 +699,27 @@ export default function AgentDetailPage() {
                           // VALOR BASE (Índice 0)
                           const val = details?.coreSkillScaling ? details.coreSkillScaling[0] : "??%";
 
-                          // Inyectar valor en la descripción
-                          // Inyectar valor en la descripción
-                          let desc = passive?.description || "";
-                          if (Array.isArray(val)) {
-                            val.forEach((v, i) => {
-                              desc = desc.replace(`{VALOR_${i + 1}}`, `<span class='text-green-400 font-bold'>${v}</span>`);
-                            });
-                          } else {
-                            desc = desc.replace("{VALOR}", `<span class='text-green-400 font-bold '>${val}</span>`);
-                          }
+                          // Helper para inyectar valores
+                          const injectValues = (text, values) => {
+                            let res = text || "";
+                            if (Array.isArray(values)) {
+                              values.forEach((v, i) => {
+                                res = res.replace(`{VALOR_${i + 1}}`, `<span class='text-green-400 font-bold'>${v}</span>`);
+                              });
+                            } else {
+                              res = res.replace("{VALOR}", `<span class='text-green-400 font-bold'>${values}</span>`);
+                            }
+                            return res;
+                          };
 
                           handleSelect({
                             ...passive,
                             name: `${passive.name} (Nivel Base)`,
                             type: "Core",
-                            description: desc,
+                            description: injectValues(passive?.description, val),
                             additionalSkill: additional ? {
                               name: additional.name,
-                              description: additional.description
+                              description: injectValues(additional.description, val)
                             } : null
                           });
                         }}
@@ -734,14 +736,11 @@ export default function AgentDetailPage() {
                       </button>
 
                       {/* Letras A-F */}
+                      {/* Letras A-F */}
                       {['A', 'B', 'C', 'D', 'E', 'F'].map((letter, idx) => {
                         const reqLevel = idx === 5 ? 60 : 15 + (idx * 10);
                         const isActive = level >= reqLevel;
                         const isSelected = selectedSkill?.name?.includes(`Nodo ${letter}`);
-
-                        // CÁLCULO: 50% base + 8.33% por nivel (aprox para llegar a 100 en 6 pasos)
-                        // 50 -> 58 -> 66 -> 75 -> 83 -> 91 -> 100
-                        const val = Math.min(100, Math.floor(50 + ((idx + 1) * 8.33)));
 
                         return (
                           <button
@@ -751,28 +750,29 @@ export default function AgentDetailPage() {
                               const additional = details?.skills?.find(s => s.type.includes("Adicional"));
 
                               // VALOR ESCALADO (Índice idx + 1)
-                              // A=1, B=2, ..., F=6
                               const val = details?.coreSkillScaling ? details.coreSkillScaling[idx + 1] : "??%";
 
-                              // Inyectar valor
-                              // Inyectar valor
-                              let desc = passive?.description || "";
-                              if (Array.isArray(val)) {
-                                val.forEach((v, i) => {
-                                  desc = desc.replace(`{VALOR_${i + 1}}`, `<span class='text-green-400 font-bold'>${v}</span>`);
-                                });
-                              } else {
-                                desc = desc.replace("{VALOR}", `<span class='text-green-400 font-bold'>${val}</span>`);
-                              }
+                              // Helper para inyectar valores
+                              const injectValues = (text, values) => {
+                                let res = text || "";
+                                if (Array.isArray(values)) {
+                                  values.forEach((v, i) => {
+                                    res = res.replace(`{VALOR_${i + 1}}`, `<span class='text-green-400 font-bold'>${v}</span>`);
+                                  });
+                                } else {
+                                  res = res.replace("{VALOR}", `<span class='text-green-400 font-bold'>${values}</span>`);
+                                }
+                                return res;
+                              };
 
                               handleSelect({
                                 ...passive,
                                 name: `${passive.name} (Nodo ${letter})`,
                                 type: "Core",
-                                description: desc,
+                                description: injectValues(passive?.description, val),
                                 additionalSkill: additional ? {
                                   name: additional.name,
-                                  description: additional.description
+                                  description: injectValues(additional.description, val)
                                 } : null
                               });
                             }}
