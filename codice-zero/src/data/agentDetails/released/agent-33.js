@@ -74,7 +74,7 @@ export default {
     {
       type: "Técnica Especial EX",
       name: "Tecnica Especial EX: Cazador de Almas - Castigo",
-      description: "Con suficiente Energía, presiona [Icono Especial] para activar: Gira la guadaña para atacar y luego ejecuta un poderoso (Movimiento Final), causando masivo Daño Hielo. Esta habilidad no se cuenta como un ataque pesado. Después de que la habilidad es usada, puede ser seguida directamente con el 4to golpe de (Ataque Basico: Cuarteto del Abismo Oscuro). El personaje es invulnerable mientras usa esta habilidad.",
+      description: "Con suficiente Energía, presiona [Icono Especial EX] para activar: Gira la guadaña para atacar y luego ejecuta un poderoso (Movimiento Final), causando masivo Daño Hielo. Esta habilidad no se cuenta como un ataque pesado. Después de que la habilidad es usada, puede ser seguida directamente con el 4to golpe de (Ataque Basico: Cuarteto del Abismo Oscuro). El personaje es invulnerable mientras usa esta habilidad.",
       tags: ["Hielo", "Técnica Especial EX"]
     },
     {
