@@ -122,7 +122,7 @@ export default {
     {
       type: "Habilidad Adicional",
       name: "Habilidad Adicional: Lagrimas Profeticas",
-      description: "Cuando otro personaje en tu escuadrón es un personaje de (Anomalia) o comparte la misma Facción: Cuando otro miembro del escuadrón aplica una (Anomalia de Atributo) a un enemigo, Vivian consumirá 1 (Pluma de Guardia) para lanzar (Ataque Basico: Flor de Pluma) en el objetivo. Este efecto puede activarse una vez cada 0.5s. El Daño de (Corrupcion) causado por todos los miembros del escuadrón y el Daño de (Desorden) del estado (Corrupcion) aumenta en un 12%.",
+      description: "Cuando otro personaje en tu escuadrón es un personaje de (Anomalia) o comparte la misma Facción: Cuando otro miembro del escuadrón aplica una (Anomalia de Atributo) a un enemigo, Vivian consumirá 1 (Pluma de Guardia) para lanzar (Ataque Basico: Flor de Pluma) en el objetivo. Este efecto puede activarse una vez cada 0.5s. El Daño de (Corrupcion) causado por todos los miembros del escuadrón y el Daño de (Desorden) del estado (Corrupcion) aumenta en un {VALOR_6}.",
       tags: ["Habilidad Adicional"]
     },
     {
