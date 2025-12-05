@@ -54,7 +54,7 @@ export default {
       tags: ["Evasión"]
     },
     {
-      type: "Evasion",
+      type: "Evasión",
       name: "Ataque de Carrera: Fantasma - Destrozar",
       description: "Presiona [Icono Ataque] durante una evasión para activar: Lanza un ataque de carrera a los enemigos en frente, causando Daño Fisico.",
       tags: ["Físico", "Ataque de Carrera", "Evasión"]
