@@ -25,6 +25,14 @@ export default {
     statName: "tasa",
     valuePerNode: 12
   },
+  coreSkillScalingColors: [
+    "text-[#d946ef]", // Etéreo (Pink/Magenta)
+    "text-[#3b82f6]", // Eléctrico (Blue)
+    "text-[#ef4444]", // Fuego (Red)
+    "text-[#eab308]", // Físico (Yellow)
+    "text-[#22d3ee]", // Hielo (Cyan)
+    "text-green-400"  // Default/Extra (Green)
+  ],
   coreSkillScaling: [
     ["3.07%", "1.6%", "4%", "0.37%", "0.54%", "12%"],
     ["3.59%", "1.86%", "4.66%", "0.44%", "0.63%", "12%"],

@@ -704,7 +704,10 @@ export default function AgentDetailPage() {
                             let res = text || "";
                             if (Array.isArray(values)) {
                               values.forEach((v, i) => {
-                                res = res.replace(`{VALOR_${i + 1}}`, `<span class='text-green-400 font-bold'>${v}</span>`);
+                                const colorClass = details.coreSkillScalingColors && details.coreSkillScalingColors[i]
+                                  ? details.coreSkillScalingColors[i]
+                                  : 'text-green-400';
+                                res = res.replace(`{VALOR_${i + 1}}`, `<span class='${colorClass} font-bold'>${v}</span>`);
                               });
                             } else {
                               res = res.replace("{VALOR}", `<span class='text-green-400 font-bold'>${values}</span>`);
@@ -757,7 +760,10 @@ export default function AgentDetailPage() {
                                 let res = text || "";
                                 if (Array.isArray(values)) {
                                   values.forEach((v, i) => {
-                                    res = res.replace(`{VALOR_${i + 1}}`, `<span class='text-green-400 font-bold'>${v}</span>`);
+                                    const colorClass = details.coreSkillScalingColors && details.coreSkillScalingColors[i]
+                                      ? details.coreSkillScalingColors[i]
+                                      : 'text-green-400';
+                                    res = res.replace(`{VALOR_${i + 1}}`, `<span class='${colorClass} font-bold'>${v}</span>`);
                                   });
                                 } else {
                                   res = res.replace("{VALOR}", `<span class='text-green-400 font-bold'>${values}</span>`);
