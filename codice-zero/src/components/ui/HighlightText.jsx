@@ -105,9 +105,16 @@ const processHighlightRules = (text, rules) => {
     return placeholder;
   });
 
-  // Step 2: Apply all other rules to the protected text
+
+  // Step 2: Filter out the parentheses rule from the rules array
+  const filteredRules = rules.filter(rule => {
+    // Remove the parentheses rule (it has extract: true and matches parens)
+    return !(rule.extract && rule.pattern.source.includes('\\('));
+  });
+
+  // Step 3: Apply all other rules to the protected text
   let parts = [{ text: protectedText, highlight: false }];
-  rules.forEach(({ pattern, color, extract }) => {
+  filteredRules.forEach(({ pattern, color, extract }) => {
     const newParts = [];
     parts.forEach((part) => {
       if (part.highlight) {
