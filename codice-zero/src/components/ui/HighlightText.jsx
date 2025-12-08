@@ -59,9 +59,14 @@ const processTextWithIconsAndHighlight = (text, skillIcons = {}, skills = [], el
     .join("|");
 
   const dynamicRules = [...createHighlightRules(elementColor)];
+  const parensRule = dynamicRules.shift(); // Remove the first rule (Parens)
+
   if (skillPatterns) {
     dynamicRules.unshift({ pattern: new RegExp(`(${skillPatterns})`, "gi"), color: "text-white font-bold" });
   }
+
+  // Put Parens back at the start to ensure it has highest priority
+  dynamicRules.unshift(parensRule);
 
   // Icon pattern – <span class="inline-flex ..."><img src="..." alt="..." class="w-5 h-5" /></span>
   const iconPattern = /<span class="inline-flex align-middle mx-1"><img src="([^"]+)" alt="([^"]+)" class="w-5 h-5" \/>/g;
