@@ -50,14 +50,14 @@ const AgentCard = memo(({ agent, priority = false }) => {
           </div>
         </div>
 
-        {/* Role Icon - Below Element - Gris claro pero no blanco */}
-        <div className="relative w-6 h-6 flex items-center justify-center bg-gray-400/95 rounded border border-white/40 shadow-lg">
+        {/* Role Icon - Below Element - Matches Element Box Style */}
+        <div className="relative w-6 h-6 flex items-center justify-center bg-black/60 rounded-md border border-white/10 shadow-lg">
           <Image
             src={`/CodiceZero/Agentes/Rol/${normalize(agent.rol)}.webp`}
             alt={agent.rol}
             width={18}
             height={18}
-            className="object-contain brightness-0"
+            className="object-contain"
             unoptimized
           />
         </div>
