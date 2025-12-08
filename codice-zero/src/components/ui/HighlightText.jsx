@@ -92,9 +92,21 @@ const processTextWithIconsAndHighlight = (text, skillIcons = {}, skills = [], el
 };
 
 // Apply a list of highlight rules to a plain string
+// First, extract and protect parentheses content
 const processHighlightRules = (text, rules) => {
   if (!text) return [{ text, highlight: false }];
-  let parts = [{ text, highlight: false }];
+
+  // Step 1: Extract parentheses content and replace with placeholders
+  const parensPattern = /\(([^)]+)\)/g;
+  const parensMatches = [];
+  let protectedText = text.replace(parensPattern, (match, content, offset) => {
+    const placeholder = `__PAREN_${parensMatches.length}__`;
+    parensMatches.push(content);
+    return placeholder;
+  });
+
+  // Step 2: Apply all other rules to the protected text
+  let parts = [{ text: protectedText, highlight: false }];
   rules.forEach(({ pattern, color, extract }) => {
     const newParts = [];
     parts.forEach((part) => {
@@ -124,7 +136,33 @@ const processHighlightRules = (text, rules) => {
     });
     parts = newParts;
   });
-  return parts;
+
+  // Step 3: Restore parentheses content as white/bold highlights
+  const finalParts = [];
+  parts.forEach((part) => {
+    const placeholderPattern = /__PAREN_(\d+)__/g;
+    const matches = [...part.text.matchAll(placeholderPattern)];
+    if (matches.length) {
+      let last = 0;
+      matches.forEach((m) => {
+        const start = m.index;
+        const end = start + m[0].length;
+        const index = parseInt(m[1]);
+        if (start > last) {
+          finalParts.push({ ...part, text: part.text.slice(last, start) });
+        }
+        finalParts.push({ text: parensMatches[index], highlight: true, className: "text-white font-bold" });
+        last = end;
+      });
+      if (last < part.text.length) {
+        finalParts.push({ ...part, text: part.text.slice(last) });
+      }
+    } else {
+      finalParts.push(part);
+    }
+  });
+
+  return finalParts;
 };
 
 // Main component
