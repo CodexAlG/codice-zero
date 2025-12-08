@@ -76,7 +76,7 @@ const AgentCard = memo(({ agent, priority = false }) => {
       </div>
 
       {/* Agent Icon - Cover para llenar mejor */}
-      <div className="absolute inset-0 flex items-center justify-center p-1 group-hover:scale-110 transition-transform duration-300">
+      <div className="absolute inset-0 group-hover:scale-110 transition-transform duration-300">
 
         {/* Skeleton Overlay - Visible until image loads */}
         {!imageLoaded && (
@@ -88,9 +88,8 @@ const AgentCard = memo(({ agent, priority = false }) => {
         <Image
           src={agent.image}
           alt={agent.name}
-          width={140}
-          height={175}
-          className={`object-cover rounded-lg transition-opacity duration-300 ${imageLoaded ? 'opacity-100' : 'opacity-0'}`}
+          fill
+          className={`object-cover transition-opacity duration-300 ${imageLoaded ? 'opacity-100' : 'opacity-0'}`}
           onLoad={() => setImageLoaded(true)}
           loading={priority ? "eager" : "lazy"}
           priority={priority}
