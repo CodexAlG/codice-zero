@@ -33,7 +33,7 @@ export default function TopNavbar({ isVisible }) {
             {/* Logo CZ */}
             <Link href="/" className="flex items-center group relative">
                 <div
-                    className={`text-transparent bg-clip-text bg-gradient-to-br from-yellow-300 to-yellow-600 drop-shadow-[0_0_10px_rgba(234,179,8,0.9)] tracking-tighter transition-all duration-300 group-hover:scale-105 font-display font-black italic text-3xl`}
+                    className={`text-transparent bg-clip-text bg-gradient-to-br from-yellow-300 to-yellow-600 drop-shadow-[0_0_10px_rgba(234,179,8,0.9)] tracking-tighter transition-all duration-300 group-hover:scale-105 font-display font-black italic text-3xl pr-4`}
                 >
                     CZ
                 </div>
