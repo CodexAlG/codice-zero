@@ -1,18 +1,44 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { usePathname } from "next/navigation";
 import Sidebar from "./Sidebar";
 import MobileHeader from "./MobileHeader";
+import TopNavbar from "./TopNavbar";
 
 export default function LayoutWrapper({ children }) {
-  // Removed isExpanded state as sidebar is now static
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+  const [navbarVisible, setNavbarVisible] = useState(true);
+  const mainRef = useRef(null);
+  const lastScrollTopRef = useRef(0);
   const pathname = usePathname();
 
   const toggleDrawer = () => setIsDrawerOpen(prev => !prev);
 
   // Verificar si estamos en la ruta de detalles de materiales
   const isMaterialDetail = pathname?.startsWith("/materiales");
+
+  useEffect(() => {
+    const mainElement = mainRef.current;
+    if (!mainElement) return;
+
+    const handleScroll = () => {
+      const currentScrollTop = mainElement.scrollTop;
+
+      // If scrolling down and past a threshold (e.g. 50px), hide navbar
+      if (currentScrollTop > lastScrollTopRef.current && currentScrollTop > 50) {
+        setNavbarVisible(false);
+      }
+      // If scrolling up, show navbar
+      else if (currentScrollTop < lastScrollTopRef.current) {
+        setNavbarVisible(true);
+      }
+
+      lastScrollTopRef.current = currentScrollTop;
+    };
+
+    mainElement.addEventListener('scroll', handleScroll);
+    return () => mainElement.removeEventListener('scroll', handleScroll);
+  }, []);
 
   if (isMaterialDetail) {
     return (
@@ -23,23 +49,21 @@ export default function LayoutWrapper({ children }) {
   }
 
   return (
-    <div className="flex h-screen w-screen overflow-hidden text-white">
+    <div className="flex flex-col h-screen w-screen overflow-hidden text-white bg-slate-950">
 
       {/* TAREA 1: HEADER MÓVIL (Visible solo en móvil) */}
       <MobileHeader toggleSidebar={toggleDrawer} />
 
-      {/* TAREA 2: SIDEBAR VERTICAL (Desktop/Tablet Grande) */}
-      <div
-        // Fixed width, no hover expansion
-        className="hidden lg:block lg:flex-shrink-0 h-full lg:w-48 transition-all duration-300 ease-in-out"
-      >
-        {/* Always expanded in desktop */}
-        <Sidebar isExpanded={true} isMobile={false} />
-      </div>
+      {/* TAREA 2: TOP NAVBAR (Desktop only) */}
+      <TopNavbar isVisible={navbarVisible} />
 
-      {/* TAREA 3: MAIN CONTENT (Añadir Padding para el Header Móvil) */}
-      <main className="flex-1 h-full overflow-y-auto relative pt-16 lg:pt-0"> {/* pt-16 para Header Móvil */}
-        <div className="w-full h-full relative z-10">
+      {/* TAREA 3: MAIN CONTENT */}
+      {/* We add lg:pt-20 to account for the fixed TopNavbar height */}
+      <main
+        ref={mainRef}
+        className="flex-1 w-full h-full overflow-y-auto relative pt-16 lg:pt-20 scroll-smooth"
+      >
+        <div className="w-full min-h-full relative z-10">
           {children}
         </div>
       </main>
