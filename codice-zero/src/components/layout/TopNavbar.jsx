@@ -1,14 +1,33 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { usePathname } from 'next/navigation';
 import Image from 'next/image';
 import { BookOpen, Home, X } from 'lucide-react';
 import Link from 'next/link';
+import { agents } from '../../data/agents';
+import { weapons } from '../../data/weapons';
+import { bangboos } from '../../data/bangboos';
 
 export default function TopNavbar({ isVisible }) {
     const [activeItem, setActiveItem] = useState(-1);
     const pathname = usePathname();
+
+    // Logic to get latest items
+    const latestAgents = useMemo(() => {
+        // Sort by ID desc (assuming higher ID = newer/beta)
+        return [...agents].sort((a, b) => b.id - a.id).slice(0, 2);
+    }, []);
+
+    const latestWeapons = useMemo(() => {
+        // Filter for S-Rank only to show featured/premium weapons, avoiding B-rank IDs which are numerically higher
+        return [...weapons].filter(w => w.rank === 'S').sort((a, b) => b.id - a.id).slice(0, 2);
+    }, []);
+
+    const latestBangboos = useMemo(() => {
+        return [...bangboos].sort((a, b) => b.id - a.id).slice(0, 2);
+    }, []);
+
 
     // Sincronizar el estado activo con la ruta actual
     useEffect(() => {
@@ -24,6 +43,70 @@ export default function TopNavbar({ isVisible }) {
             setActiveItem(4); // Discos
         }
     }, [pathname]);
+
+    const NavItem = ({ href, index, icon: Icon, label, hasDropdown, latestItems, itemType }) => {
+        const isActive = activeItem === index;
+
+        return (
+            <li className="relative group h-full flex items-center">
+                <Link href={href} className={`relative flex items-center h-10 px-4 rounded-md transition-all duration-200 ${isActive ? 'text-yellow-300 bg-yellow-500/10 shadow-lg shadow-yellow-500/20 border border-yellow-400/30' : 'text-gray-100 hover:bg-cyan-500/10 hover:text-cyan-300 hover:shadow-md hover:shadow-cyan-400/20'} hover:border hover:border-cyan-400/20`}>
+                    {typeof Icon === 'string' ? (
+                        <Image src={Icon} alt={`Icono ${label}`} width={20} height={20} className={`transition-all duration-200 ${isActive ? 'drop-shadow-lg shadow-yellow-400/50 saturate-200 contrast-200' : 'opacity-80 hover:opacity-100 hover:drop-shadow-md hover:shadow-cyan-400/50 saturate-150 hover:saturate-200 hover:contrast-150'}`} />
+                    ) : (
+                        <Icon size={20} className={`transition-all duration-200 ${isActive ? 'text-yellow-300 drop-shadow-lg shadow-yellow-400/50' : 'text-gray-200 opacity-80 hover:text-cyan-300 hover:opacity-100 hover:drop-shadow-md hover:shadow-cyan-400/50'}`} />
+                    )}
+                    <span className="ml-2 font-medium">{label}</span>
+                    {isActive && <div className="absolute bottom-0 left-0 right-0 h-[2px] bg-gradient-to-r from-yellow-300 to-yellow-500 shadow-lg shadow-yellow-500/50"></div>}
+                </Link>
+
+                {/* Dropdown Menu */}
+                {hasDropdown && latestItems && (
+                    <div className="absolute top-full left-1/2 -translate-x-1/2 pt-4 hidden group-hover:block">
+                        <div className="bg-[#0f172a] border border-white/10 rounded-xl shadow-2xl p-4 w-72 backdrop-blur-xl flex flex-col gap-3 relative overflow-hidden">
+                            {/* Decoration */}
+                            <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-yellow-500 to-transparent opacity-50"></div>
+
+                            <span className="text-xs font-bold text-gray-400 uppercase tracking-wider ml-1 mb-1">Lo más nuevo</span>
+
+                            {latestItems.map((item) => (
+                                <Link
+                                    key={item.id}
+                                    href={itemType === 'agente' ? `/agentes/${item.id}` : itemType === 'arma' ? `/armas/${item.id}` : `/bangboos/${item.id}`} // Assuming routes structure
+                                    className="flex items-center p-2 rounded-lg bg-white/5 hover:bg-white/10 transition-colors border border-transparent hover:border-white/10 group/item"
+                                >
+                                    <div className="relative w-12 h-12 rounded-md overflow-hidden bg-black/50 border border-white/5 flex-shrink-0">
+                                        <Image
+                                            src={item.image}
+                                            alt={item.name}
+                                            fill
+                                            className="object-cover group-hover/item:scale-110 transition-transform duration-300"
+                                        />
+                                    </div>
+                                    <div className="ml-3 flex flex-col">
+                                        <span className="text-sm font-bold text-gray-200 group-hover/item:text-yellow-400 transition-colors line-clamp-1">{item.name}</span>
+                                        {item.leak === 'Beta' && (
+                                            <span className="text-[10px] text-black bg-yellow-500 px-1.5 py-0.5 rounded w-fit font-bold">BETA</span>
+                                        )}
+                                        {/* Fallback for non-beta showing rank or element if available, simplistic approach */}
+                                        {!item.leak && item.rank && (
+                                            <span className="text-[10px] text-gray-500">Rango {item.rank}</span>
+                                        )}
+                                    </div>
+                                </Link>
+                            ))}
+
+                            <Link
+                                href={href}
+                                className="mt-2 text-center text-xs font-bold text-yellow-500 hover:text-yellow-400 hover:underline py-2 border-t border-white/5"
+                            >
+                                {label === 'Armas' || label === 'Guías' ? 'Ver todas las' : 'Ver todos los'} {label}
+                            </Link>
+                        </div>
+                    </div>
+                )}
+            </li>
+        );
+    };
 
     return (
         <header
@@ -42,50 +125,53 @@ export default function TopNavbar({ isVisible }) {
             </Link>
 
             {/* Navigation */}
-            <nav>
-                <ul className="flex items-center space-x-4">
-                    <li>
-                        <Link href="/" className={`relative flex items-center h-10 px-4 rounded-md transition-all duration-200 ${activeItem === -1 ? 'text-yellow-300 bg-yellow-500/10 shadow-lg shadow-yellow-500/20 border border-yellow-400/30' : 'text-gray-100 hover:bg-cyan-500/10 hover:text-cyan-300 hover:shadow-md hover:shadow-cyan-400/20'} hover:border hover:border-cyan-400/20`}>
-                            <Home size={20} className={`transition-all duration-200 ${activeItem === -1 ? 'text-yellow-300 drop-shadow-lg shadow-yellow-400/50' : 'text-gray-200 opacity-80 hover:text-cyan-300 hover:opacity-100 hover:drop-shadow-md hover:shadow-cyan-400/50'}`} />
-                            <span className="ml-2 font-medium">Inicio</span>
-                            {activeItem === -1 && <div className="absolute bottom-0 left-0 right-0 h-[2px] bg-gradient-to-r from-yellow-300 to-yellow-500 shadow-lg shadow-yellow-500/50"></div>}
-                        </Link>
-                    </li>
-                    <li>
-                        <Link href="/agentes" className={`relative flex items-center h-10 px-4 rounded-md transition-all duration-200 ${activeItem === 0 ? 'text-yellow-300 bg-yellow-500/10 shadow-lg shadow-yellow-500/20 border border-yellow-400/30' : 'text-gray-100 hover:bg-cyan-500/10 hover:text-cyan-300 hover:shadow-md hover:shadow-cyan-400/20'} hover:border hover:border-cyan-400/20`}>
-                            <Image src="/CodiceZero/Agentes/Icon_Agents.webp" alt="Icono Agentes" width={20} height={20} className={`transition-all duration-200 ${activeItem === 0 ? 'drop-shadow-lg shadow-yellow-400/50 saturate-200 contrast-200' : 'opacity-80 hover:opacity-100 hover:drop-shadow-md hover:shadow-cyan-400/50 saturate-150 hover:saturate-200 hover:contrast-150'}`} />
-                            <span className="ml-2 font-medium">Agentes</span>
-                            {activeItem === 0 && <div className="absolute bottom-0 left-0 right-0 h-[2px] bg-gradient-to-r from-yellow-300 to-yellow-500 shadow-lg shadow-yellow-500/50"></div>}
-                        </Link>
-                    </li>
-                    <li>
-                        <Link href="/armas" className={`relative flex items-center h-10 px-4 rounded-md transition-all duration-200 ${activeItem === 1 ? 'text-yellow-300 bg-yellow-500/10 shadow-lg shadow-yellow-500/20 border border-yellow-400/30' : 'text-gray-100 hover:bg-cyan-500/10 hover:text-cyan-300 hover:shadow-md hover:shadow-cyan-400/20'} hover:border hover:border-cyan-400/20`}>
-                            <Image src="/CodiceZero/Armas/Icon_Storage_W-Engine.webp" alt="Icono Armas" width={20} height={20} className={`transition-all duration-200 ${activeItem === 1 ? 'drop-shadow-lg shadow-yellow-400/50 saturate-200 contrast-200' : 'opacity-80 hover:opacity-100 hover:drop-shadow-md hover:shadow-cyan-400/50 saturate-150 hover:saturate-200 hover:contrast-150'}`} />
-                            <span className="ml-2 font-medium">Armas</span>
-                            {activeItem === 1 && <div className="absolute bottom-0 left-0 right-0 h-[2px] bg-gradient-to-r from-yellow-300 to-yellow-500 shadow-lg shadow-yellow-500/50"></div>}
-                        </Link>
-                    </li>
-                    <li>
-                        <a href="#" className={`relative flex items-center h-10 px-4 rounded-md transition-all duration-200 ${activeItem === 2 ? 'text-yellow-300 bg-yellow-500/10 shadow-lg shadow-yellow-500/20 border border-yellow-400/30' : 'text-gray-100 hover:bg-cyan-500/10 hover:text-cyan-300 hover:shadow-md hover:shadow-cyan-400/20'} hover:border hover:border-cyan-400/20`}>
-                            <BookOpen size={20} className={`transition-all duration-200 ${activeItem === 2 ? 'text-yellow-300 drop-shadow-lg shadow-yellow-400/50' : 'text-gray-200 opacity-80 hover:text-cyan-300 hover:opacity-100 hover:drop-shadow-md hover:shadow-cyan-400/50'}`} />
-                            <span className="ml-2 font-medium">Guías</span>
-                            {activeItem === 2 && <div className="absolute bottom-0 left-0 right-0 h-[2px] bg-gradient-to-r from-yellow-300 to-yellow-500 shadow-lg shadow-yellow-500/50"></div>}
-                        </a>
-                    </li>
-                    <li>
-                        <Link href="/bangboos" className={`relative flex items-center h-10 px-4 rounded-md transition-all duration-200 ${activeItem === 3 ? 'text-yellow-300 bg-yellow-500/10 shadow-lg shadow-yellow-500/20 border border-yellow-400/30' : 'text-gray-100 hover:bg-cyan-500/10 hover:text-cyan-300 hover:shadow-md hover:shadow-cyan-400/20'} hover:border hover:border-cyan-400/20`}>
-                            <Image src="/CodiceZero/Bangboo/INTER-KNOT_Bangboo.webp" alt="Icono Bangboo" width={20} height={20} className={`transition-all duration-200 ${activeItem === 3 ? 'drop-shadow-lg shadow-yellow-400/50 saturate-200 contrast-200' : 'opacity-80 hover:opacity-100 hover:drop-shadow-md hover:shadow-cyan-400/50 saturate-150 hover:saturate-200 hover:contrast-150'}`} />
-                            <span className="ml-2 font-medium">Bangboo</span>
-                            {activeItem === 3 && <div className="absolute bottom-0 left-0 right-0 h-[2px] bg-gradient-to-r from-yellow-300 to-yellow-500 shadow-lg shadow-yellow-500/50"></div>}
-                        </Link>
-                    </li>
-                    <li>
-                        <Link href="/discos" className={`relative flex items-center h-10 px-4 rounded-md transition-all duration-200 ${activeItem === 4 ? 'text-yellow-300 bg-yellow-500/10 shadow-lg shadow-yellow-500/20 border border-yellow-400/30' : 'text-gray-100 hover:bg-cyan-500/10 hover:text-cyan-300 hover:shadow-md hover:shadow-cyan-400/20'} hover:border hover:border-cyan-400/20`}>
-                            <Image src="/CodiceZero/Discos/Icon_Storage_Drive_Disc.webp" alt="Icono Discos" width={20} height={20} className={`transition-all duration-200 ${activeItem === 4 ? 'drop-shadow-lg shadow-yellow-400/50 saturate-200 contrast-200' : 'opacity-80 hover:opacity-100 hover:drop-shadow-md hover:shadow-cyan-400/50 saturate-150 hover:saturate-200 hover:contrast-150'}`} />
-                            <span className="ml-2 font-medium">Discos</span>
-                            {activeItem === 4 && <div className="absolute bottom-0 left-0 right-0 h-[2px] bg-gradient-to-r from-yellow-300 to-yellow-500 shadow-lg shadow-yellow-500/50"></div>}
-                        </Link>
-                    </li>
+            <nav className="h-full">
+                <ul className="flex items-center space-x-2 h-full">
+                    <NavItem
+                        href="/"
+                        index={-1}
+                        icon={Home}
+                        label="Inicio"
+                    />
+                    <NavItem
+                        href="/agentes"
+                        index={0}
+                        icon="/CodiceZero/Agentes/Icon_Agents.webp"
+                        label="Agentes"
+                        hasDropdown={true}
+                        latestItems={latestAgents}
+                        itemType="agente"
+                    />
+                    <NavItem
+                        href="/armas"
+                        index={1}
+                        icon="/CodiceZero/Armas/Icon_Storage_W-Engine.webp"
+                        label="Armas"
+                        hasDropdown={true}
+                        latestItems={latestWeapons}
+                        itemType="arma"
+                    />
+                    <NavItem
+                        href="#"
+                        index={2}
+                        icon={BookOpen}
+                        label="Guías"
+                    />
+                    <NavItem
+                        href="/bangboos"
+                        index={3}
+                        icon="/CodiceZero/Bangboo/INTER-KNOT_Bangboo.webp"
+                        label="Bangboo"
+                        hasDropdown={true}
+                        latestItems={latestBangboos}
+                        itemType="bangboo"
+                    />
+                    <NavItem
+                        href="/discos"
+                        index={4}
+                        icon="/CodiceZero/Discos/Icon_Storage_Drive_Disc.webp"
+                        label="Discos"
+                    />
                 </ul>
             </nav>
         </header>
