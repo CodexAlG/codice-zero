@@ -25,7 +25,7 @@ export default function TopNavbar({ isVisible }) {
     }, []);
 
     const latestBangboos = useMemo(() => {
-        return [...bangboos].sort((a, b) => b.id - a.id).slice(0, 2);
+        return [...bangboos].sort((a, b) => b.id - a.id).slice(0, 1);
     }, []);
 
 
@@ -95,12 +95,6 @@ export default function TopNavbar({ isVisible }) {
                                 </Link>
                             ))}
 
-                            <Link
-                                href={href}
-                                className="mt-2 text-center text-xs font-bold text-yellow-500 hover:text-yellow-400 hover:underline py-2 border-t border-white/5"
-                            >
-                                {label === 'Armas' || label === 'Guías' ? 'Ver todas las' : 'Ver todos los'} {label}
-                            </Link>
                         </div>
                     </div>
                 )}
