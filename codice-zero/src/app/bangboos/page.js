@@ -5,6 +5,7 @@ import { memo } from 'react';
 import Image from 'next/image';
 import { motion, AnimatePresence } from "framer-motion";
 import { bangboos } from '@/data/bangboos';
+import Link from 'next/link';
 import BangbooCard from '@/components/bangboos/BangbooCard';
 import LoadingSpinner from '@/components/ui/LoadingSpinner';
 
@@ -172,7 +173,9 @@ export default function BangboosPage() {
                                     exit={{ opacity: 0 }}
                                     transition={{ duration: 0 }}
                                 >
-                                    <BangbooCard bangboo={bangboo} priority={index < 10} />
+                                    <Link href={`/bangboos/${bangboo.id}`}>
+                                        <BangbooCard bangboo={bangboo} priority={index < 10} />
+                                    </Link>
                                 </motion.div>
                             ))}
                         </AnimatePresence>
