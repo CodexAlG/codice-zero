@@ -14,8 +14,8 @@ export default function Sidebar({ isExpanded, isMobile, toggleDrawer }) {
   useEffect(() => {
     if (pathname === '/') {
       setActiveItem(-1); // Inicio
-    } else if (pathname.startsWith('/personajes')) {
-      setActiveItem(0); // Personajes
+    } else if (pathname.startsWith('/agentes')) {
+      setActiveItem(0); // Agentes
     } else if (pathname.startsWith('/armas')) {
       setActiveItem(1); // Armas
     } else if (pathname.startsWith('/bangboos')) {
@@ -77,11 +77,11 @@ export default function Sidebar({ isExpanded, isMobile, toggleDrawer }) {
             </Link>
           </li>
           <li>
-            <Link href="/personajes" onClick={handleLinkClick} className={`relative flex items-center h-12 py-2 px-2 rounded-md transition-all duration-200 ${activeItem === 0 ? 'text-yellow-300 bg-yellow-500/10 text-yellow-300 shadow-lg shadow-yellow-500/20 border border-yellow-400/30' : 'text-gray-100 hover:bg-cyan-500/10 hover:text-cyan-300 hover:shadow-md hover:shadow-cyan-400/20'} hover:border hover:border-cyan-400/20`}>
+            <Link href="/agentes" onClick={handleLinkClick} className={`relative flex items-center h-12 py-2 px-2 rounded-md transition-all duration-200 ${activeItem === 0 ? 'text-yellow-300 bg-yellow-500/10 text-yellow-300 shadow-lg shadow-yellow-500/20 border border-yellow-400/30' : 'text-gray-100 hover:bg-cyan-500/10 hover:text-cyan-300 hover:shadow-md hover:shadow-cyan-400/20'} hover:border hover:border-cyan-400/20`}>
               {activeItem === 0 && <div className="absolute left-0 top-0 bottom-0 w-[3px] bg-gradient-to-b from-yellow-300 to-yellow-500 shadow-lg shadow-yellow-500/50"></div>}
-              <Image src="/CodiceZero/Agentes/Icon_Agents.webp" alt="Icono Personajes" width={32} height={32} className={`transition-all duration-200 ${activeItem === 0 ? 'drop-shadow-lg shadow-yellow-400/50 saturate-200 contrast-200' : 'opacity-80 hover:opacity-100 hover:drop-shadow-md hover:shadow-cyan-400/50 saturate-150 hover:saturate-200 hover:contrast-150'}`} />
+              <Image src="/CodiceZero/Agentes/Icon_Agents.webp" alt="Icono Agentes" width={32} height={32} className={`transition-all duration-200 ${activeItem === 0 ? 'drop-shadow-lg shadow-yellow-400/50 saturate-200 contrast-200' : 'opacity-80 hover:opacity-100 hover:drop-shadow-md hover:shadow-cyan-400/50 saturate-150 hover:saturate-200 hover:contrast-150'}`} />
               <span className={`ml-3 font-medium transition-opacity`}>
-                Personajes
+                Agentes
               </span>
             </Link>
           </li>

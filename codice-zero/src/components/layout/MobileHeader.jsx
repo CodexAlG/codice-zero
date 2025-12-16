@@ -8,7 +8,7 @@ import { useMemo } from 'react';
 // Mapa simple para mostrar el título de la página actual
 const pathTitles = {
   '/': 'Inicio',
-  '/personajes': 'Personajes',
+  '/agentes': 'Agentes',
   '/armas': 'Armas',
   '/discos': 'Discos',
   '/guias': 'Guías',
