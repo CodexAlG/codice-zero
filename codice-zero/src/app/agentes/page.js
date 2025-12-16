@@ -200,7 +200,7 @@ export default function PersonajesPage() {
         <div className="w-full max-w-7xl mx-auto">
           <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 xl:grid-cols-7 2xl:grid-cols-8 gap-3 justify-center items-start transition-none" style={{ minHeight: '50vh' }}>
             {filteredAgents.map((agent, index) => (
-              <Link key={agent.id} href={`/personajes/${agent.id}`}>
+              <Link key={agent.id} href={`/agentes/${agent.id}`}>
                 <AgentCard agent={agent} priority={index < 8} />
               </Link>
             ))}
