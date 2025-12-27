@@ -10,6 +10,7 @@ import { getAgentDetails } from '@/data/agentDetails/';
 import { calculateStatsWithCore } from '@/utils/statCalculator';
 import StatsTable from '@/components/agents/StatsTable';
 import AscensionMaterials from '@/components/agents/AscensionMaterials';
+import SkillMaterials from '@/components/agents/SkillMaterials';
 import HighlightText from '@/components/ui/HighlightText'; // Import directly here
 
 export default function AgentDetailPage() {
