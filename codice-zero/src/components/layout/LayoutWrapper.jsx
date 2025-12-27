@@ -17,6 +17,11 @@ export default function LayoutWrapper({ children }) {
   // Verificar si estamos en la ruta de detalles de materiales
   const isMaterialDetail = pathname?.startsWith("/materiales");
 
+  // Reset navbar visibility when changing routes
+  useEffect(() => {
+    setNavbarVisible(true);
+  }, [pathname]);
+
   useEffect(() => {
     const mainElement = mainRef.current;
     if (!mainElement) return;
@@ -37,8 +42,13 @@ export default function LayoutWrapper({ children }) {
     };
 
     mainElement.addEventListener('scroll', handleScroll);
-    return () => mainElement.removeEventListener('scroll', handleScroll);
-  }, []);
+
+    return () => {
+      if (mainElement) {
+        mainElement.removeEventListener('scroll', handleScroll);
+      }
+    };
+  }, [pathname]);
 
   if (isMaterialDetail) {
     return (
