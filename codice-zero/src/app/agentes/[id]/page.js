@@ -169,10 +169,10 @@ export default function AgentDetailPage() {
 
   // --- LAYOUT ---
   return (
-    <div className="min-h-screen bg-black text-white selection:bg-yellow-500/30">
+    <div className="min-h-screen bg-[#0b0c15] text-white selection:bg-yellow-500/30">
 
       {/* 1. SECCIÓN SUPERIOR: HERO + STATS (2 Columnas) */}
-      <div className="relative w-full max-w-[1600px] mx-auto p-4 lg:p-12 pb-0 flex flex-col lg:flex-row gap-8 lg:gap-16 min-h-screen lg:min-h-[90vh]">
+      <div className="relative w-full max-w-[1600px] mx-auto p-4 lg:p-8 pb-0 flex flex-col lg:flex-row gap-6 lg:gap-12 min-h-screen lg:min-h-[85vh]">
 
         {/* BOTÓN VOLVER */}
         <Link href="/personajes" className="absolute top-4 left-4 z-50 p-2 bg-black/50 rounded-full border border-white/10 hover:bg-white/10 transition-colors">
@@ -244,7 +244,7 @@ export default function AgentDetailPage() {
           )}
 
           {/* Panel de Estadísticas Estilo "Hakush" (Tarjeta Oscura con Datos) */}
-          <div className="bg-[#0a0a0a] border border-white/10 rounded-2xl p-5 md:p-6 shadow-2xl relative overflow-hidden group max-w-2xl ml-auto">
+          <div className="bg-[#0a0a0a]/80 backdrop-blur-md border border-white/10 rounded-xl p-4 shadow-2xl relative overflow-hidden group max-w-[480px] ml-auto">
             <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-white/5 to-transparent rounded-full -translate-y-1/2 translate-x-1/2 blur-2xl pointer-events-none"></div>
 
             {/* Sub-Header: Materiales */}
