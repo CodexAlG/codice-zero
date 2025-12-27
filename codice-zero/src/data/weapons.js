@@ -148,8 +148,21 @@ export const weapons = [
     name: "Perfección Practicada", // Practiced Perfection
     rank: "S",
     rol: "Anomalia",
-    stats: { main: "Recup. Energía", value: "50%" },
-    effect: "Aumenta la recuperación de energía. Al usar una Especial EX, regenera energía adicional.",
+    detailStats: {
+      baseAtk: { min: 48, max: 713 },     // Nvl 1 -> 60
+      subStat: { name: "Ataque", min: "12%", max: "30%" } // Nvl 1 -> 60
+    },
+    effect: {
+      title: "Regalo de Polvo de Estrellas",
+      description: "La Maestría de Anomalía del portador aumenta en 60. Al infligir Asalto, el Daño Fisico del portador aumenta un 20% por 20s, acumulándose hasta 2 veces. Las activaciones repetidas reinician la duración. Cuando el portador entra en combate, gana inmediatamente 2 acumulaciones.",
+      refinements: [ // Tabla de Mejora (R1 - R5)
+        { level: 1, atk: "60", damage: "20%" },
+        { level: 2, atk: "69", damage: "23%" },
+        { level: 3, atk: "78", damage: "26%" },
+        { level: 4, atk: "87", damage: "29%" },
+        { level: 5, atk: "96", damage: "32%" }
+      ]
+    },
     image: "/CodiceZero/Armas/Anomalia/W-Engine_Practiced_Perfection.webp"
   },
 
