@@ -304,7 +304,7 @@ export default function AgentDetailPage() {
       <div className="relative w-full max-w-[1600px] mx-auto p-4 lg:p-8 pb-0 flex flex-col lg:flex-row gap-6 lg:gap-12 min-h-screen lg:min-h-[85vh]">
 
         {/* BOTÓN VOLVER */}
-        <Link href="/personajes" className="absolute top-4 left-4 z-50 p-2 bg-black/50 rounded-full border border-white/10 hover:bg-white/10 transition-colors">
+        <Link href="/agentes" className="absolute top-4 left-4 z-50 p-2 bg-black/50 rounded-full border border-white/10 hover:bg-white/10 transition-colors">
           <ArrowLeft className="w-6 h-6 text-white" />
         </Link>
 
