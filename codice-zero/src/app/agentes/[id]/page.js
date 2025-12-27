@@ -171,6 +171,16 @@ export default function AgentDetailPage() {
   return (
     <div className="min-h-screen bg-[#0b0c15] text-white selection:bg-yellow-500/30">
 
+      {/* AVISO BETA (Top of Page) */}
+      {agent.leak === "Beta" && (
+        <div className="w-full bg-yellow-500/10 border-b border-yellow-500/20 py-2 px-4 text-center z-50 relative">
+          <p className="text-yellow-200/80 text-xs md:text-sm font-bold flex items-center justify-center gap-2">
+            <TriangleAlert className="text-yellow-500 w-4 h-4" />
+            Este personaje se encuentra en fase Beta. Stats y habilidades sujetas a cambios.
+          </p>
+        </div>
+      )}
+
       {/* 1. SECCIÓN SUPERIOR: HERO + STATS (2 Columnas) */}
       <div className="relative w-full max-w-[1600px] mx-auto p-4 lg:p-8 pb-0 flex flex-col lg:flex-row gap-6 lg:gap-12 min-h-screen lg:min-h-[85vh]">
 
@@ -208,7 +218,7 @@ export default function AgentDetailPage() {
               <Image src={`/CodiceZero/Agentes/Faction/Faction_${agent.faction.replace(/ /g, "_")}_Icon.webp`} width={24} height={24} alt={agent.faction} className="opacity-80" unoptimized onError={(e) => e.target.style.display = 'none'} />
               <span className="font-mono text-sm uppercase tracking-[0.2em]">{agent.faction}</span>
             </div>
-            <h1 className="text-6xl md:text-8xl font-black italic tracking-tighter mb-4 text-transparent bg-clip-text bg-gradient-to-b from-white to-gray-400 drop-shadow-lg">
+            <h1 className="text-5xl md:text-7xl font-black italic tracking-tighter mb-4 text-transparent bg-clip-text bg-gradient-to-b from-white to-gray-400 drop-shadow-lg">
               {agent.name}
             </h1>
 
@@ -233,18 +243,10 @@ export default function AgentDetailPage() {
             </div>
           </div>
 
-          {/* Aviso Beta */}
-          {agent.leak === "Beta" && (
-            <div className="mb-8 p-4 bg-yellow-500/10 border border-yellow-500/20 rounded-lg flex items-start gap-3">
-              <TriangleAlert className="text-yellow-500 mt-1 flex-shrink-0" />
-              <p className="text-yellow-200/80 text-sm leading-relaxed">
-                Este personaje se encuentra en fase Beta. Sus estadísticas y habilidades están sujetas a cambios antes del lanzamiento oficial.
-              </p>
-            </div>
-          )}
+          {/* Aviso Beta REMOVED from here */}
 
           {/* Panel de Estadísticas Estilo "Hakush" (Tarjeta Oscura con Datos) */}
-          <div className="bg-[#0a0a0a]/80 backdrop-blur-md border border-white/10 rounded-xl p-4 shadow-2xl relative overflow-hidden group max-w-[480px] ml-auto">
+          <div className="bg-[#0a0a0a]/80 backdrop-blur-md border border-white/10 rounded-xl p-4 shadow-2xl relative overflow-hidden group max-w-[480px] mx-auto lg:mr-0">
             <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-white/5 to-transparent rounded-full -translate-y-1/2 translate-x-1/2 blur-2xl pointer-events-none"></div>
 
             {/* Sub-Header: Materiales REMOVED */}
