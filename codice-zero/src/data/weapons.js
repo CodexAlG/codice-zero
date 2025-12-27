@@ -104,8 +104,21 @@ export const weapons = [
     name: "Santuario de Granizo", // Miyabi (Hailstorm Shrine)
     rank: "S",
     rol: "Anomalia",
-    stats: { main: "Prob. Crítica", value: "24%" },
-    effect: "Aumenta el Daño Hielo. Los ataques cargados congelan a los enemigos, aumentando el daño crítico.",
+    detailStats: {
+      baseAtk: { min: 50, max: 743 },     // Nvl 1 -> 60
+      subStat: { name: "Prob. Crítica", min: "9.6%", max: "24%" } // Nvl 1 -> 60
+    },
+    effect: {
+      title: "Estrella Manchada de Escarcha",
+      description: "El Daño CRIT aumenta un 50%. Al usar una (Tecnica Especial EX) o cuando cualquier miembro del escuadrón aplica una (Anomalia de Atributo) a un enemigo, el Daño Hielo del portador aumenta un 20%, acumulándose hasta 2 veces y durando 15s. La duración de cada acumulación se calcula por separado.",
+      refinements: [ // Tabla de Mejora (R1 - R5)
+        { level: 1, atk: "50%", damage: "20%" },
+        { level: 2, atk: "57%", damage: "23%" },
+        { level: 3, atk: "65%", damage: "26%" },
+        { level: 4, atk: "72%", damage: "29%" },
+        { level: 5, atk: "80%", damage: "32%" }
+      ]
+    },
     image: "/CodiceZero/Armas/Anomalia/W-Engine_Hailstorm_Shrine.webp"
   },
   {
