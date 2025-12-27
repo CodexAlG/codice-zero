@@ -59,7 +59,7 @@ const processTextWithIconsAndHighlight = (text, skillIcons = {}, skills = [], el
   }
 
   // Icon pattern – <span class="inline-flex ..."><img src="..." alt="..." class="w-5 h-5" /></span>
-  const iconPattern = /<span class="inline-flex align-middle mx-1"><img src="([^"]+)" alt="([^"]+)" class="w-5 h-5" \/>/g;
+  const iconPattern = /<span class="inline-flex align-middle mx-1"><img src="([^"]+)" alt="([^"]+)" class="w-5 h-5" \/><\/span>/g;
   const segments = [];
   let lastIdx = 0;
   let match;
