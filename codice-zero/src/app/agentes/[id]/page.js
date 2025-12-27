@@ -285,16 +285,16 @@ export default function AgentDetailPage() {
       <div className="relative w-full max-w-[1600px] mx-auto p-4 lg:p-8 pb-0 pt-8">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-16">
           {/* Columna 1: Ascensión */}
-          <div className="p-4 pl-8 lg:pl-16">
-            <h3 className="text-sm font-mono text-gray-400 uppercase tracking-widest mb-6">Materiales de Ascensión</h3>
-            <div className="flex justify-start">
+          <div className="p-4 flex flex-col items-center">
+            <h3 className="text-sm font-mono text-gray-400 uppercase tracking-widest mb-6 text-center">Materiales de Ascensión</h3>
+            <div className="flex justify-center w-full">
               <AscensionMaterials level={level} agentRole={agent.rol} themeColor={themeColor} />
             </div>
           </div>
           {/* Columna 2: Habilidades */}
-          <div className="p-4">
-            <h3 className="text-sm font-mono text-gray-400 uppercase tracking-widest mb-6">Materiales de Habilidad</h3>
-            <div className="flex justify-start">
+          <div className="p-4 flex flex-col items-center">
+            <h3 className="text-sm font-mono text-gray-400 uppercase tracking-widest mb-6 text-center">Materiales de Habilidad</h3>
+            <div className="flex justify-center w-full">
               <SkillMaterials agentElement={agent.element} themeColor={themeColor} materials={details?.materials} />
             </div>
           </div>

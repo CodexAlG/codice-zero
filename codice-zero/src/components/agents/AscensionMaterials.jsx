@@ -135,7 +135,7 @@ export default function AscensionMaterials({ level, agentRole, themeColor }) {
 
     return (
         <div className="w-full mb-1 animate-fadeIn">
-            <div className="flex flex-wrap items-end gap-3">
+            <div className="flex flex-wrap items-end justify-center gap-3">
                 {/* Denny siempre primero */}
                 <MaterialItem icon={dennyPath} value={materials.denny} label="Denny" color="#00BFFF" type="currency" />
 
