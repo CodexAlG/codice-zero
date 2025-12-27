@@ -126,8 +126,21 @@ export const weapons = [
     name: "Capricho del Vuelo", // Vivian (Flight of Fancy)
     rank: "S",
     rol: "Anomalia",
-    stats: { main: "Maestría Anomalía", value: "90" },
-    effect: "Aumenta la duración de los estados de anomalía. Al infligir anomalía, el ATK aumenta.",
+    detailStats: {
+      baseAtk: { min: 48, max: 713 },     // Nvl 1 -> 60
+      subStat: { name: "Maestría Anomalía", min: "36", max: "90" } // Nvl 1 -> 60
+    },
+    effect: {
+      title: "Plumas de Punta de Plata",
+      description: "Aumenta la Tasa de Acumulación de Anomalía un 40%. Cuando el portador inflige Daño Etereo, su Maestría de Anomalía aumenta en 20 por 5s, acumulándose hasta 6 veces. Este efecto puede activarse una vez cada 0.5s, y las activaciones repetidas reinician la duración.",
+      refinements: [ // Tabla de Mejora (R1 - R5)
+        { level: 1, atk: "40%", damage: "20" },
+        { level: 2, atk: "46%", damage: "23" },
+        { level: 3, atk: "52%", damage: "26" },
+        { level: 4, atk: "58%", damage: "29" },
+        { level: 5, atk: "64%", damage: "32" }
+      ]
+    },
     image: "/CodiceZero/Armas/Anomalia/W-Engine_Flight_of_Fancy.webp"
   },
   {
