@@ -356,8 +356,21 @@ export const weapons = [
     name: "Azufre", // The Brimstone (Soldier 11)
     rank: "S",
     rol: "Ataque",
-    stats: { main: "ATK %", value: "30%" },
-    effect: "Al golpear con Ataque Básico, Dash o Contraataque, el ATK aumenta un 3.5% por 8s. Se puede apilar hasta 8 veces.",
+    detailStats: {
+      baseAtk: { min: 46, max: 684 },     // Nvl 1 -> 60
+      subStat: { name: "Ataque", min: "12%", max: "30%" } // Nvl 1 -> 60
+    },
+    effect: {
+      title: "Aliento Abrasador",
+      description: "Al golpear a un enemigo con un (Ataque Basico), (Ataque de Carrera) o (Contraataque de Evasion), el ATK del portador aumenta en un 3.5% por 8s, acumulándose hasta 8 veces. Este efecto puede activarse una vez cada 0.5s. La duración de cada acumulación se calcula por separado.",
+      refinements: [ // Tabla de Mejora (R1 - R5)
+        { level: 1, atk: "3.5%" },
+        { level: 2, atk: "4.4%" },
+        { level: 3, atk: "5.2%" },
+        { level: 4, atk: "6%" },
+        { level: 5, atk: "7%" }
+      ]
+    },
     image: "/CodiceZero/Armas/Ataque/W-Engine_The_Brimstone.webp"
   },
   {
