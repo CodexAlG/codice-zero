@@ -88,7 +88,7 @@ export const weapons = [
     },
     effect: {
       title: "Estratagema Devoradora de Tiempo",
-      description: "La Tasa de Acumulación de Anomalia Electrica del portador aumenta un 50%. Cuando una (Tecnica Especial) o (Tecnica Especial EX) golpea a enemigos sufriendo una (Anomalia de Atributo), la Maestría de Anomalía del portador aumenta en 115 por 15s. Cuando la Maestría de Anomalía del portador es mayor o igual a 375, el Daño de (Desorden) infligido por el portador aumenta un 35%.",
+      description: "La Tasa de Acumulación de Anomalia Electrica del portador aumenta un 30%. Cuando una (Tecnica Especial) o (Tecnica Especial EX) golpea a enemigos sufriendo una (Anomalia de Atributo), la Maestría de Anomalía del portador aumenta en 75 por 15s. Cuando la Maestría de Anomalía del portador es mayor o igual a 375, el Daño de (Desorden) infligido por el portador aumenta un 25%.",
       refinements: [ // Tabla de Mejora (R1 - R5)
         { level: 1, atk: "30%", mastery: "75", damage: "25%" },
         { level: 2, atk: "35%", mastery: "85", damage: "27.5%" },
