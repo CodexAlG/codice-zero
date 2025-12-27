@@ -19,6 +19,15 @@ export default function AgentDetailPage() {
   const agentId = parseInt(params.id);
   const agent = agents.find(a => a.id === agentId);
 
+  // RETURN EARLY IF NO AGENT
+  if (!agent) {
+    return (
+      <div className="min-h-screen bg-gray-950 flex items-center justify-center text-white">
+        Agente no encontrado
+      </div>
+    );
+  }
+
   // Helper: Get Full Image
   const getAgentFullImage = (agent) => {
     const imageMap = {
