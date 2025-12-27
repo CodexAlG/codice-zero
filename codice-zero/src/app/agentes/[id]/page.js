@@ -158,6 +158,14 @@ export default function AgentDetailPage() {
     "fisico": "#eab308",
     "etereo": "#d946ef",
   };
+
+  const getElementIcon = () => {
+    const name = agent.name;
+    if (name === "Miyabi") return "/CodiceZero/Agentes/Elemento/Icon_Frost.png";
+    if (name === "Ye Shunguang") return "/CodiceZero/Agentes/Elemento/IconHonedEdge.webp";
+    if (name === "Yixuan") return "/CodiceZero/Agentes/Elemento/Icon_Auric_Ink.webp";
+    return `/CodiceZero/Agentes/Elemento/${normalize(agent.element)}.webp`;
+  };
   const themeColor = elementColors[normalize(agent.element).toLowerCase()] || "#eab308";
 
   // --- STATS CALCULATION ---
@@ -339,7 +347,7 @@ export default function AgentDetailPage() {
                 Rank {agent.rank}
               </span>
               <span className="px-3 py-1 bg-black/40 border border-white/10 rounded text-sm font-bold uppercase flex items-center gap-2" style={{ color: themeColor, borderColor: `${themeColor}40` }}>
-                <Image src={`/CodiceZero/Agentes/Elemento/${normalize(agent.element)}.webp`} width={16} height={16} alt={agent.element} unoptimized onError={(e) => e.target.style.display = 'none'} />
+                <Image src={getElementIcon()} width={16} height={16} alt={agent.element} unoptimized onError={(e) => e.target.style.display = 'none'} />
                 {agent.element}
               </span>
               <span className="px-3 py-1 bg-black/40 border border-white/10 rounded text-sm font-bold uppercase text-gray-300 flex items-center gap-2">
