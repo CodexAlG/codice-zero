@@ -247,18 +247,8 @@ export default function AgentDetailPage() {
           <div className="bg-[#0a0a0a]/80 backdrop-blur-md border border-white/10 rounded-xl p-4 shadow-2xl relative overflow-hidden group max-w-[480px] ml-auto">
             <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-white/5 to-transparent rounded-full -translate-y-1/2 translate-x-1/2 blur-2xl pointer-events-none"></div>
 
-            {/* Sub-Header: Materiales */}
-            <div className="mb-6 space-y-4">
-              <div>
-                <h3 className="text-[10px] font-mono text-gray-500 uppercase tracking-widest mb-3">Materiales de Ascensión</h3>
-                <AscensionMaterials level={level} agentRole={agent.rol} themeColor={themeColor} />
-              </div>
-              <div>
-                <h3 className="text-[10px] font-mono text-gray-500 uppercase tracking-widest mb-3">Materiales de Habilidad</h3>
-                {/* Only show if details loaded to prevent layout shift or empty states if tied to logic */}
-                <SkillMaterials agentElement={agent.element} themeColor={themeColor} materials={details?.materials} />
-              </div>
-            </div>
+            {/* Sub-Header: Materiales REMOVED */}
+
 
             {/* Control de Nivel + Stats */}
             <div className="space-y-4">
@@ -289,8 +279,28 @@ export default function AgentDetailPage() {
         </div>
       </div>
 
-      {/* 2. SECCIÓN INFERIOR: HABILIDADES (Grid 2 Columnas) */}
-      <div className="relative w-full max-w-[1400px] mx-auto p-4 lg:p-12 pt-12 lg:pt-0">
+      {/* 2. SECCIÓN INTERMEDIA: MATERIALES (Grid 2 Columnas) */}
+      <div className="relative w-full max-w-[1200px] mx-auto p-4 lg:p-12 pb-0 pt-0">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-12">
+          {/* Columna 1: Ascensión */}
+          <div className="bg-[#0a0a0a]/40 border border-white/5 rounded-2xl p-6">
+            <h3 className="text-sm font-mono text-gray-400 uppercase tracking-widest mb-6 border-b border-white/5 pb-2">Materiales de Ascensión</h3>
+            <div className="flex justify-center md:justify-start">
+              <AscensionMaterials level={level} agentRole={agent.rol} themeColor={themeColor} />
+            </div>
+          </div>
+          {/* Columna 2: Habilidades */}
+          <div className="bg-[#0a0a0a]/40 border border-white/5 rounded-2xl p-6">
+            <h3 className="text-sm font-mono text-gray-400 uppercase tracking-widest mb-6 border-b border-white/5 pb-2">Materiales de Habilidad</h3>
+            <div className="flex justify-center md:justify-start">
+              <SkillMaterials agentElement={agent.element} themeColor={themeColor} materials={details?.materials} />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* 3. SECCIÓN INFERIOR: HABILIDADES (Grid 2 Columnas) */}
+      <div className="relative w-full max-w-[1400px] mx-auto p-4 lg:p-12 pt-12 lg:pt-8">
 
         {/* Section Title */}
         <div className="flex items-center gap-4 mb-12">
