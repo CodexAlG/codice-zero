@@ -218,9 +218,19 @@ export const weapons = [
     rol: "Anomalia",
     detailStats: {
       baseAtk: { min: 40, max: 594 },     // Nvl 1 -> 60
-      subStat: { name: "Maestría Anomalía", min: "30", max: "75" } // Nvl 1 -> 60
+      subStat: { name: "Ataque", min: "10%", max: "25%" } // Nvl 1 -> 60
     },
-    effect: "Al usar una esquiva perfecta, aumenta la Maestría de Anomalía del equipo.",
+    effect: {
+      title: "Gritos Persistentes",
+      description: "Siempre que un miembro del escuadrón inflige una (Anomalia de Atributo) a un enemigo, el portador gana una mejora que aumenta la Maestría de Anomalía en 30, acumulándose hasta 4 veces. Este efecto expira cuando el objetivo se recupera del Aturdimiento o es derrotado. La duración de cada acumulación se calcula por separado.",
+      refinements: [ // Tabla de Mejora (R1 - R5)
+        { level: 1, atk: "30" },
+        { level: 2, atk: "34" },
+        { level: 3, atk: "38" },
+        { level: 4, atk: "42" },
+        { level: 5, atk: "48" }
+      ]
+    },
     image: "/CodiceZero/Armas/Anomalia/W-Engine_Weeping_Gemini.webp"
   },
   {
