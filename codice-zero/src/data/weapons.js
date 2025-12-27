@@ -286,7 +286,7 @@ export const weapons = [
     rol: "Anomalia",
     detailStats: {
       baseAtk: { min: 32, max: 475 },     // Nvl 1 -> 60
-      subStat: { name: "Ataque", min: "8%", max: "24%" } // Nvl 1 -> 60
+      subStat: { name: "Ataque", min: "8%", max: "20%" } // Nvl 1 -> 60
     },
     effect: {
       title: "Corriente Desordenada",
