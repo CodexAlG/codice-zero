@@ -82,8 +82,21 @@ export const weapons = [
     name: "Tejedor del Tiempo", // Yanagi (Timeweaver)
     rank: "S",
     rol: "Anomalia",
-    stats: { main: "ATK %", value: "30%" },
-    effect: "Aumenta la Anomalía Eléctrica. Al cambiar de postura, gana bonificaciones de daño y maestría.",
+    detailStats: {
+      baseAtk: { min: 48, max: 713 },     // Nvl 1 -> 60
+      subStat: { name: "Ataque", min: "12%", max: "30%" } // Nvl 1 -> 60
+    },
+    effect: {
+      title: "Estratagema Devoradora de Tiempo",
+      description: "La Tasa de Acumulación de (Anomalia Electrica) del portador aumenta un 30%. Cuando una (Tecnica Especial) o (Tecnica Especial EX) golpea a enemigos sufriendo una (Anomalia de Atributo), la Maestría de Anomalía del portador aumenta en 75 por 15s. Cuando la Maestría de Anomalía del portador es mayor o igual a 375, el Daño de (Desorden) infligido por el portador aumenta un 25%.",
+      refinements: [ // Tabla de Mejora (R1 - R5)
+        { level: 1, atk: "30%", mastery: "75", damage: "25%" },
+        { level: 2, atk: "35%", mastery: "85", damage: "27.5%" },
+        { level: 3, atk: "40%", mastery: "95", damage: "30%" },
+        { level: 4, atk: "45%", mastery: "105", damage: "32.5%" },
+        { level: 5, atk: "50%", mastery: "115", damage: "35%" }
+      ]
+    },
     image: "/CodiceZero/Armas/Anomalia/W-Engine_Timeweaver.webp"
   },
   {
