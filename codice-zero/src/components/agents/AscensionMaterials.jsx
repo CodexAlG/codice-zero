@@ -108,7 +108,7 @@ export default function AscensionMaterials({ level, agentRole, themeColor }) {
                 className="flex flex-col items-center gap-1 cursor-pointer group/item"
             >
                 <div
-                    className="relative w-16 h-16 bg-black/60 rounded-xl border border-white/10 flex items-center justify-center shadow-lg group-hover/item:scale-105 transition-transform duration-200"
+                    className="relative w-16 h-16 bg-black/40 rounded-xl border border-white/10 flex items-center justify-center shadow-lg group-hover/item:scale-105 transition-transform duration-200"
                     style={{ borderColor: color ? `${color}60` : 'rgba(255,255,255,0.1)' }}
                 >
                     {/* Glow effect */}
@@ -135,7 +135,7 @@ export default function AscensionMaterials({ level, agentRole, themeColor }) {
 
     return (
         <div className="w-full mb-1 animate-fadeIn">
-            <div className="flex flex-wrap items-end gap-3 p-2 bg-black/20 rounded-xl border border-white/5">
+            <div className="flex flex-wrap items-end gap-3">
                 {/* Denny siempre primero */}
                 <MaterialItem icon={dennyPath} value={materials.denny} label="Denny" color="#00BFFF" type="currency" />
 
