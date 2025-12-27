@@ -93,11 +93,36 @@ export default function AgentDetailPage() {
   useEffect(() => {
     async function loadDetails() {
       setIsLoading(true);
-      const data = await getAgentDetails(agentId);
-      setDetails(data);
-      setIsLoading(false);
+      try {
+        console.log("Fetching details for agent:", agentId);
+        let data = await getAgentDetails(agentId);
+
+        // Fallback: Try dynamic import if static lookup fails
+        if (!data) {
+          console.log("Static lookup failed, attempting dynamic import from /released/...");
+          try {
+            const module = await import(`@/data/agentDetails/released/agent-${agentId}.js`);
+            data = module.default;
+          } catch (e) {
+            console.error("Dynamic import failed:", e);
+          }
+        }
+
+        if (data) {
+          setDetails(data);
+        } else {
+          console.error("No details found for agent:", agentId);
+        }
+      } catch (err) {
+        console.error("Error in loadDetails:", err);
+      } finally {
+        setIsLoading(false);
+      }
     }
-    loadDetails();
+
+    if (agentId) {
+      loadDetails();
+    }
   }, [agentId]);
 
   // Skill Icons Mapping
