@@ -282,19 +282,19 @@ export default function AgentDetailPage() {
       </div>
 
       {/* 2. SECCIÓN INTERMEDIA: MATERIALES (Grid 2 Columnas) */}
-      <div className="relative w-full max-w-[1200px] mx-auto p-4 lg:p-12 pb-0 pt-0">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-12">
+      <div className="relative w-full max-w-[1600px] mx-auto p-4 lg:p-8 pb-0 pt-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-16">
           {/* Columna 1: Ascensión */}
-          <div className="bg-[#0a0a0a]/40 border border-white/5 rounded-2xl p-6">
-            <h3 className="text-sm font-mono text-gray-400 uppercase tracking-widest mb-6 border-b border-white/5 pb-2">Materiales de Ascensión</h3>
-            <div className="flex justify-center md:justify-start">
+          <div className="p-4">
+            <h3 className="text-sm font-mono text-gray-400 uppercase tracking-widest mb-6">Materiales de Ascensión</h3>
+            <div className="flex justify-start">
               <AscensionMaterials level={level} agentRole={agent.rol} themeColor={themeColor} />
             </div>
           </div>
           {/* Columna 2: Habilidades */}
-          <div className="bg-[#0a0a0a]/40 border border-white/5 rounded-2xl p-6">
-            <h3 className="text-sm font-mono text-gray-400 uppercase tracking-widest mb-6 border-b border-white/5 pb-2">Materiales de Habilidad</h3>
-            <div className="flex justify-center md:justify-start">
+          <div className="p-4">
+            <h3 className="text-sm font-mono text-gray-400 uppercase tracking-widest mb-6">Materiales de Habilidad</h3>
+            <div className="flex justify-start">
               <SkillMaterials agentElement={agent.element} themeColor={themeColor} materials={details?.materials} />
             </div>
           </div>
