@@ -68,7 +68,7 @@ export default function PersonajesPage() {
     Hielo: "/CodiceZero/Agentes/Elemento/Hielo.webp",
     Electrico: "/CodiceZero/Agentes/Elemento/Electrico.webp",
     Fisico: "/CodiceZero/Agentes/Elemento/Fisico.webp",
-    Etereo: "/CodiceZero/Agentes/Elemento/Etéreo.webp",
+    Etereo: "/CodiceZero/Agentes/Elemento/Etereo.webp",
 
     // Rangos
     "S": "/CodiceZero/Rango/Icon_Item_Rank_S.webp",

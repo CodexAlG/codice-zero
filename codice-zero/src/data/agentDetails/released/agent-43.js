@@ -68,7 +68,7 @@ export default {
       type: "Ataque Básico",
       name: "Peso Aplastante de la Escarcha",
       description: "Mientras carga o gira durante el (Ataque Básico: Abrazo de Escarcha) si es golpeada por un enemigo, Yidhari puede bloquear con sus tentáculos, reduciendo el Daño recibido en un 25%. Si carga o aún no está a carga completa, Yidhari contraataca con sus tentáculos, volviendo a la postura de carga y ganando instantáneamente 1 nivel de carga, mientras también inflige Daño Glacial a los enemigos en frente. Mientras (Peso Aplastante de la Escarcha) está activo, presionar [Icono Ataque] hace que Yidhari desate inmediatamente el golpe final del (Ataque Básico: Abrazo de Escarcha) basado en su nivel de carga actual. Mientras (Peso Aplastante de la Escarcha) está activo, presionar [Icono Especial] o [Icono Especial EX] hace que Yidhari desate una (Técnica Especial: Frío Creciente) (Persecución Aplastante) que garantiza la activación de (Frío Creciente).",
-      tgas: "Hielo",
+      tags: "Hielo",
     },
     {
       type: "Evasión",
