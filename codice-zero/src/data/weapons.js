@@ -194,8 +194,21 @@ export const weapons = [
     name: "Brillo Electro", // Electro-Lip Gloss
     rank: "A",
     rol: "Anomalia",
-    stats: { main: "Maestría Anomalía", value: "75" },
-    effect: "Al infligir daño eléctrico, aumenta el daño de la siguiente habilidad de anomalía.",
+    detailStats: {
+      baseAtk: { min: 40, max: 594 },     // Nvl 1 -> 60
+      subStat: { name: "Maestría Anomalía", min: "30", max: "75" } // Nvl 1 -> 60
+    },
+    effect: {
+      title: "Beso de la Muerte",
+      description: "Cuando hay enemigos en el campo sufriendo una (Anomalia de Atributo), el ATK del portador aumenta un 10% y este inflige un 15% más de Daño adicional al objetivo.",
+      refinements: [ // Tabla de Mejora (R1 - R5)
+        { level: 1, atk: "10%", damage: "15%" },
+        { level: 2, atk: "11.5%", damage: "17.5%" },
+        { level: 3, atk: "13%", damage: "20%" },
+        { level: 4, atk: "14.5%", damage: "22.5%" },
+        { level: 5, atk: "16%", damage: "25%" }
+      ]
+    },
     image: "/CodiceZero/Armas/Anomalia/W-Engine_Electro-Lip_Gloss.webp"
   },
   {
@@ -203,7 +216,10 @@ export const weapons = [
     name: "Geminis Llorones", // Weeping Gemini
     rank: "A",
     rol: "Anomalia",
-    stats: { main: "ATK %", value: "25%" },
+    detailStats: {
+      baseAtk: { min: 40, max: 594 },     // Nvl 1 -> 60
+      subStat: { name: "Maestría Anomalía", min: "30", max: "75" } // Nvl 1 -> 60
+    },
     effect: "Al usar una esquiva perfecta, aumenta la Maestría de Anomalía del equipo.",
     image: "/CodiceZero/Armas/Anomalia/W-Engine_Weeping_Gemini.webp"
   },
