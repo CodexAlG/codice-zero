@@ -262,8 +262,21 @@ export const weapons = [
     name: "Tormenta Magnética - Charlie", // Magnetic Storm Charlie
     rank: "B",
     rol: "Anomalia",
-    stats: { main: "Maestría Anomalía", value: "60" },
-    effect: "Aumenta la acumulación de anomalía eléctrica.",
+    detailStats: {
+      baseAtk: { min: 32, max: 475 },     // Nvl 1 -> 60
+      subStat: { name: "PEN Ratio", min: "6.4%", max: "16%" } // Nvl 1 -> 60
+    },
+    effect: {
+      title: "Sobrecarga de Carga",
+      description: "Siempre que un miembro del escuadrón inflige una (Anomalia de Atributo) a un enemigo, el portador genera 3.5 de Energía. Este efecto puede activarse una vez cada 12s.",
+      refinements: [ // Tabla de Mejora (R1 - R5)
+        { level: 1, energy: "3.5" },
+        { level: 2, energy: "4.0" },
+        { level: 3, energy: "4.5" },
+        { level: 4, energy: "5.0" },
+        { level: 5, energy: "5.5" }
+      ]
+    },
     image: "/CodiceZero/Armas/Anomalia/W-Engine_(Magnetic_Storm)_Charlie.webp"
   },
   {
@@ -271,7 +284,10 @@ export const weapons = [
     name: "Tormenta Magnética - Alpha", // Magnetic Storm Alpha
     rank: "B",
     rol: "Anomalia",
-    stats: { main: "Maestría Anomalía", value: "60" },
+    detailStats: {
+      baseAtk: { min: 32, max: 475 },     // Nvl 1 -> 60
+      subStat: { name: "PEN Ratio", min: "6.4%", max: "16%" } // Nvl 1 -> 60
+    },
     effect: "Aumenta la duración de los efectos de anomalía.",
     image: "/CodiceZero/Armas/Anomalia/W-Engine_(Magnetic_Storm)_Alpha.png" // Es PNG
   },
