@@ -334,8 +334,21 @@ export const weapons = [
     name: "Cojín de Acero", // Steel Cushion (Nekomata)
     rank: "S",
     rol: "Ataque",
-    stats: { main: "Prob. Crítica", value: "24%" },
-    effect: "Aumenta el Daño Físico un 20%. El daño aumenta un 25% adicional si se ataca al enemigo por la espalda.",
+    detailStats: {
+      baseAtk: { min: 46, max: 684 },     // Nvl 1 -> 60
+      subStat: { name: "Prob. Crítica", min: "9.6%", max: "24%" } // Nvl 1 -> 60
+    },
+    effect: {
+      title: "Garras de Gato de Metal",
+      description: "Aumenta el Daño Fisico en un 20%. El DAÑO del portador aumenta en un 25% al golpear al enemigo desde atrás.",
+      refinements: [ // Tabla de Mejora (R1 - R5)
+        { level: 1, atk: "20%", atkBack: "25%" },
+        { level: 2, atk: "25%", atkBack: "31.5%" },
+        { level: 3, atk: "30%", atkBack: "38%" },
+        { level: 4, atk: "35%", atkBack: "44%" },
+        { level: 5, atk: "40%", atkBack: "50%" }
+      ]
+    },
     image: "/CodiceZero/Armas/Ataque/W-Engine_Steel_Cushion.webp"
   },
   {
