@@ -286,9 +286,19 @@ export const weapons = [
     rol: "Anomalia",
     detailStats: {
       baseAtk: { min: 32, max: 475 },     // Nvl 1 -> 60
-      subStat: { name: "PEN Ratio", min: "6.4%", max: "16%" } // Nvl 1 -> 60
+      subStat: { name: "Ataque", min: "8%", max: "24%" } // Nvl 1 -> 60
     },
-    effect: "Aumenta la duración de los efectos de anomalía.",
+    effect: {
+      title: "Corriente Desordenada",
+      description: "Acumular Acumulación de Anomalía aumenta la Maestría de Anomalía del portador en 25 por 10s. Este efecto puede activarse una vez cada 20s.",
+      refinements: [ // Tabla de Mejora (R1 - R5)
+        { level: 1, atk: "25" },
+        { level: 2, atk: "28" },
+        { level: 3, atk: "32" },
+        { level: 4, atk: "36" },
+        { level: 5, atk: "40" }
+      ]
+    },
     image: "/CodiceZero/Armas/Anomalia/W-Engine_(Magnetic_Storm)_Alpha.png" // Es PNG
   },
   {
@@ -296,8 +306,21 @@ export const weapons = [
     name: "Tormenta Magnética - Bravo", // Magnetic Storm Bravo
     rank: "B",
     rol: "Anomalia",
-    stats: { main: "Maestría Anomalía", value: "60" },
-    effect: "Reduce la resistencia de los enemigos a la anomalía eléctrica.",
+    detailStats: {
+      baseAtk: { min: 32, max: 475 },     // Nvl 1 -> 60
+      subStat: { name: "Maestría Anomalía", min: "24", max: "60" } // Nvl 1 -> 60
+    },
+    effect: {
+      title: "Oleada de Alto Voltaje",
+      description: "Acumular Acumulación de Anomalía aumenta la Maestría de Anomalía del portador en 25 por 10s. Este efecto puede activarse una vez cada 20s..",
+      refinements: [ // Tabla de Mejora (R1 - R5)
+        { level: 1, atk: "25" },
+        { level: 2, atk: "28" },
+        { level: 3, atk: "32" },
+        { level: 4, atk: "36" },
+        { level: 5, atk: "40" }
+      ]
+    },
     image: "/CodiceZero/Armas/Anomalia/W-Engine_(Magnetic_Storm)_Bravo.webp"
   },
 
