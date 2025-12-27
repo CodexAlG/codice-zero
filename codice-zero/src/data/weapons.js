@@ -178,15 +178,15 @@ export const weapons = [
     },
     effect: {
       title: "¡La Cena Esta Lista!",
-      description: "Por cada 10 de Energía consumida, el portador gana un efecto que aumenta el ATK en un 2.5% por 10s, acumulándose hasta 10 veces. La duración de cada acumulación se calcula por separado."
+      description: "Por cada 10 de Energía consumida, el portador gana un efecto que aumenta el ATK en un 2.5% por 10s, acumulándose hasta 10 veces. La duración de cada acumulación se calcula por separado.",
+      refinements: [ // Tabla de Mejora (R1 - R5)
+        { level: 1, atk: "2.5%" },
+        { level: 2, atk: "2.8%" },
+        { level: 3, atk: "3.2%" },
+        { level: 4, atk: "3.6%" },
+        { level: 5, atk: "4.0%" }
+      ]
     },
-    refinements: [ // Tabla de Mejora (R1 - R5)
-      { level: 1, atk: "2.5%" },
-      { level: 2, atk: "2.8%" },
-      { level: 3, atk: "3.2%" },
-      { level: 4, atk: "3.6%" },
-      { level: 5, atk: "4.0%" }
-    ],
     image: "/CodiceZero/Armas/Anomalia/W-Engine_Rainforest_Gourmet.webp"
   },
   {
