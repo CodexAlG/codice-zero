@@ -282,22 +282,26 @@ export default function AgentDetailPage() {
       </div>
 
       {/* 2. SECCIÓN INTERMEDIA: MATERIALES (Grid 2 Columnas) */}
+      {/* 2. SECCIÓN INTERMEDIA: MATERIALES (Flex Centrado) */}
       <div className="relative w-full max-w-[1600px] mx-auto p-4 lg:p-8 pb-0 pt-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-16">
-          {/* Columna 1: Ascensión */}
-          <div className="p-4 flex flex-col items-center">
-            <h3 className="text-sm font-mono text-gray-400 uppercase tracking-widest mb-6 text-center">Materiales de Ascensión</h3>
-            <div className="flex justify-center w-full">
+        <div className="flex flex-col lg:flex-row justify-center items-start gap-12 lg:gap-24">
+
+          {/* Bloque 1: Ascensión (Alineado a la derecha hacia el centro) */}
+          <div className="flex flex-col items-center lg:items-end">
+            <h3 className="text-sm font-mono text-gray-400 uppercase tracking-widest mb-6 text-center lg:text-right">Materiales de Ascensión</h3>
+            <div className="flex justify-center lg:justify-end w-full">
               <AscensionMaterials level={level} agentRole={agent.rol} themeColor={themeColor} />
             </div>
           </div>
-          {/* Columna 2: Habilidades */}
-          <div className="p-4 flex flex-col items-center">
-            <h3 className="text-sm font-mono text-gray-400 uppercase tracking-widest mb-6 text-center">Materiales de Habilidad</h3>
-            <div className="flex justify-center w-full">
+
+          {/* Bloque 2: Habilidades (Alineado a la izquierda desde el centro) */}
+          <div className="flex flex-col items-center lg:items-start">
+            <h3 className="text-sm font-mono text-gray-400 uppercase tracking-widest mb-6 text-center lg:text-left">Materiales de Habilidad</h3>
+            <div className="flex justify-center lg:justify-start w-full">
               <SkillMaterials agentElement={agent.element} themeColor={themeColor} materials={details?.materials} />
             </div>
           </div>
+
         </div>
       </div>
 

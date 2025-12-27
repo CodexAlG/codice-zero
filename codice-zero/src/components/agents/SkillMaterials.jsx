@@ -94,7 +94,7 @@ export default function SkillMaterials({ agentElement, themeColor, materials: bo
 
     return (
         <div className="w-full mb-6 animate-fadeIn">
-            <div className="flex flex-wrap items-start justify-center gap-4">
+            <div className="flex flex-wrap items-start justify-center lg:justify-start gap-4">
                 {/* Denny */}
                 <MaterialItem icon={dennyPath} value={materials.denny} label="Denny" color="#00BFFF" type="currency" />
 
