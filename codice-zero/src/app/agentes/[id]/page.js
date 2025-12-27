@@ -439,7 +439,7 @@ export default function AgentDetailPage() {
         <div className="mt-8 pt-8 border-t border-white/10">
           <h2 className="text-2xl font-display italic font-bold text-center tracking-widest mb-8">MINDSCAPE CINEMA</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {details.skills.filter(s => s.type && s.type.startsWith("Mindscape")).map((skill, idx) => (
+            {(details?.skills || []).filter(s => s.type && s.type.startsWith("Mindscape")).map((skill, idx) => (
               <div key={idx} className="bg-[#0a0a0a] border border-white/5 rounded-xl p-6 relative overflow-hidden group hover:border-white/20 transition-all">
                 {/* Número Grande de Fondo */}
                 <div className="absolute -right-4 -bottom-4 text-9xl font-black text-white/5 select-none pointer-events-none group-hover:text-white/10 transition-colors">
