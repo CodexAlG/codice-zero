@@ -244,32 +244,32 @@ export default function AgentDetailPage() {
           )}
 
           {/* Panel de Estadísticas Estilo "Hakush" (Tarjeta Oscura con Datos) */}
-          <div className="bg-[#0a0a0a] border border-white/10 rounded-2xl p-6 md:p-8 shadow-2xl relative overflow-hidden group">
+          <div className="bg-[#0a0a0a] border border-white/10 rounded-2xl p-5 md:p-6 shadow-2xl relative overflow-hidden group max-w-2xl ml-auto">
             <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-white/5 to-transparent rounded-full -translate-y-1/2 translate-x-1/2 blur-2xl pointer-events-none"></div>
 
             {/* Sub-Header: Materiales */}
-            <div className="mb-8 space-y-6">
+            <div className="mb-6 space-y-4">
               <div>
-                <h3 className="text-xs font-mono text-gray-500 uppercase tracking-widest mb-4">Materiales de Ascensión</h3>
+                <h3 className="text-[10px] font-mono text-gray-500 uppercase tracking-widest mb-3">Materiales de Ascensión</h3>
                 <AscensionMaterials level={level} agentRole={agent.rol} themeColor={themeColor} />
               </div>
               <div>
-                <h3 className="text-xs font-mono text-gray-500 uppercase tracking-widest mb-4">Materiales de Habilidad</h3>
+                <h3 className="text-[10px] font-mono text-gray-500 uppercase tracking-widest mb-3">Materiales de Habilidad</h3>
                 {/* Only show if details loaded to prevent layout shift or empty states if tied to logic */}
                 <SkillMaterials agentElement={agent.element} themeColor={themeColor} materials={details?.materials} />
               </div>
             </div>
 
             {/* Control de Nivel + Stats */}
-            <div className="space-y-6">
-              <div className="flex justify-between items-center border-b border-white/10 pb-4">
-                <h3 className="text-xl font-display italic font-bold">ATRIBUTOS BASE</h3>
+            <div className="space-y-4">
+              <div className="flex justify-between items-center border-b border-white/10 pb-3">
+                <h3 className="text-lg font-display italic font-bold">ATRIBUTOS BASE</h3>
                 <div className="flex items-center gap-4">
-                  <span className="text-sm font-mono text-gray-400">Nv.{level}</span>
+                  <span className="text-xs font-mono text-gray-400">Nv.{level}</span>
                   <input
                     type="range" min="1" max="60" value={level}
                     onChange={(e) => setLevel(Number(e.target.value))}
-                    className="w-32 h-1 bg-gray-800 rounded-lg appearance-none cursor-pointer accent-white"
+                    className="w-24 h-1 bg-gray-800 rounded-lg appearance-none cursor-pointer accent-white"
                   />
                 </div>
               </div>
@@ -289,8 +289,8 @@ export default function AgentDetailPage() {
         </div>
       </div>
 
-      {/* 2. SECCIÓN INFERIOR: HABILIDADES (Scroll Vertical Completo) */}
-      <div className="relative w-full max-w-[1200px] mx-auto p-4 lg:p-12 pt-12 lg:pt-0">
+      {/* 2. SECCIÓN INFERIOR: HABILIDADES (Grid 2 Columnas) */}
+      <div className="relative w-full max-w-[1400px] mx-auto p-4 lg:p-12 pt-12 lg:pt-0">
 
         {/* Section Title */}
         <div className="flex items-center gap-4 mb-12">
@@ -299,65 +299,113 @@ export default function AgentDetailPage() {
           <div className="h-px bg-white/20 flex-1"></div>
         </div>
 
-        {/* Lista de Habilidades "Wiki Style" */}
-        <div className="flex flex-col gap-12 text-left">
-          {details?.skills?.map((skill, index) => (
-            <div key={index} className="flex flex-col md:flex-row gap-6 md:gap-12 group">
+        {/* Grid de Habilidades Agrupadas */}
+        {details?.skills && (
+          <div className="flex flex-col gap-8">
 
-              {/* Columna Izquierda: Icono y Tipo (Sticky relative to section) */}
-              <div className="w-full md:w-1/4 flex flex-row md:flex-col items-center md:items-start gap-4 flex-shrink-0">
-                <div className="w-16 h-16 bg-gray-900 rounded-xl flex items-center justify-center border border-white/10 shadow-lg group-hover:border-white/30 transition-colors">
-                  <Image
-                    src={skillIcons[skill.type] || skillIcons["Ataque"]}
-                    alt={skill.type}
-                    width={40} height={40}
-                    className="object-contain opacity-80 group-hover:opacity-100"
-                    unoptimized
-                  />
-                </div>
-                <div className="flex flex-col">
-                  <span className="text-xs font-mono text-gray-500 uppercase tracking-widest mb-1">{skill.type}</span>
-                  <h3 className="text-xl md:text-2xl font-bold text-white leading-tight">{skill.name}</h3>
-                </div>
-              </div>
+            {/* Helper para renderizar un grupo de habilidades */}
+            {(() => {
+              const renderGroup = (title, typeFilter, iconKey) => {
+                const groupSkills = details.skills.filter(s => {
+                  if (Array.isArray(typeFilter)) return typeFilter.includes(s.type);
+                  return s.type === typeFilter || (typeFilter === "Pasiva" && (s.type === "Pasiva Central" || s.type === "Habilidad Adicional"));
+                });
 
-              {/* Columna Derecha: Descripción Detallada */}
-              <div className="w-full md:w-3/4 bg-[#0a0a0a] border border-white/5 rounded-2xl p-6 md:p-8 hover:bg-white/[0.02] transition-colors relative overflow-hidden">
-                {/* Accento de color lateral basado en elemento */}
-                <div className="absolute left-0 top-0 bottom-0 w-1" style={{ backgroundColor: themeColor }}></div>
+                if (groupSkills.length === 0) return null;
 
-                <div className="text-gray-300 text-base md:text-lg leading-relaxed space-y-4 font-sans">
-                  {/* Usamos el componente HighlightText para procesar la descripción rica */}
-                  <HighlightText
-                    text={skill.description}
-                    skills={details.skills}
-                    skillIcons={skillIcons}
-                    elementColor={themeColor}
-                  />
-                </div>
+                return (
+                  <div className="flex flex-col gap-4">
+                    {/* Header del Grupo */}
+                    <div className="flex items-center gap-3 pb-2 border-b border-white/10">
+                      <div className="w-8 h-8 rounded bg-white/5 flex items-center justify-center">
+                        <Image
+                          src={skillIcons[iconKey] || skillIcons["Ataque"]}
+                          alt={title} width={20} height={20} className="object-contain opacity-80" unoptimized
+                        />
+                      </div>
+                      <h3 className="text-xl font-bold uppercase tracking-wide text-white/90">{title}</h3>
+                    </div>
 
-                {/* Matriz de Multiplicadores (Si existe) */}
-                {skill.attributes && skill.attributes.length > 0 && (
-                  <div className="mt-8 pt-6 border-t border-white/10">
-                    <h4 className="text-xs font-mono text-gray-500 uppercase mb-4">Atributos de Habilidad (Nv. Max)</h4>
-                    <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-                      {skill.attributes.map((attr, idx) => (
-                        <div key={idx} className="bg-white/5 p-3 rounded-lg text-center">
-                          <div className="text-xs text-gray-400 mb-1">{attr.label}</div>
-                          <div className="text-sm font-bold text-white font-mono">
-                            {/* Mostrar último valor para "Wiki View" por defecto o rango */}
-                            {attr.values[attr.values.length - 1]}
+                    {/* Lista de Habilidades del Grupo */}
+                    <div className="flex flex-col gap-6">
+                      {groupSkills.map((skill, idx) => (
+                        <div key={idx} className="bg-[#0a0a0a] border border-white/5 rounded-xl p-5 hover:bg-white/[0.02] transition-colors relative overflow-hidden">
+                          <div className="absolute left-0 top-0 bottom-0 w-1" style={{ backgroundColor: themeColor }}></div>
+
+                          <h4 className="text-lg font-bold text-white mb-2">{skill.name || "Sin nombre"}</h4>
+
+                          <div className="text-gray-300 text-sm leading-relaxed space-y-2 font-sans">
+                            <HighlightText text={skill.description} skills={details.skills} skillIcons={skillIcons} elementColor={themeColor} />
+                          </div>
+
+                          {/* Multiplicadores Compactos */}
+                          {skill.attributes && skill.attributes.length > 0 && (
+                            <div className="mt-4 pt-3 border-t border-white/5 grid grid-cols-2 gap-2">
+                              {skill.attributes.slice(0, 4).map((attr, aIdx) => (
+                                <div key={aIdx} className="flex justify-between text-xs text-gray-500">
+                                  <span>{attr.label}</span>
+                                  <span className="font-mono text-gray-300">{attr.values[attr.values.length - 1]}</span>
+                                </div>
+                              ))}
+                            </div>
+                          )}
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                );
+              };
+
+              return (
+                <>
+                  {/* FILAS PRINCIPALES (2 Columnas) */}
+                  <div className="grid grid-cols-1 xl:grid-cols-2 gap-x-8 gap-y-12 items-start">
+                    {/* Columna 1 */}
+                    <div className="flex flex-col gap-12">
+                      {renderGroup("Ataque Básico", ["Ataque Básico", "Ataque Normal"], "Ataque Básico")}
+                      {renderGroup("Asistencia", "Asistencia", "Asistencia")}
+                      {renderGroup("Técnica Definitiva", ["Técnica Definitiva", "Definitiva"], "Técnica Definitiva")}
+                    </div>
+
+                    {/* Columna 2 */}
+                    <div className="flex flex-col gap-12">
+                      {renderGroup("Evasión", "Evasión", "Evasión")}
+                      {renderGroup("Técnica Especial", ["Técnica Especial", "Técnica Especial EX", "Habilidad Especial", "Habilidad Especial EX"], "Técnica Especial")}
+                      {renderGroup("Talento Pasivo", "Pasiva", "Pasiva Central")}
+                    </div>
+                  </div>
+
+                  {/* MINDSCAPES (Full Width) */}
+                  <div className="mt-8 pt-8 border-t border-white/10">
+                    <h2 className="text-2xl font-display italic font-bold text-center tracking-widest mb-8">MINDSCAPE CINEMA</h2>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                      {details.skills.filter(s => s.type && s.type.startsWith("Mindscape")).map((skill, idx) => (
+                        <div key={idx} className="bg-[#0a0a0a] border border-white/5 rounded-xl p-6 relative overflow-hidden group hover:border-white/20 transition-all">
+                          {/* Número Grande de Fondo */}
+                          <div className="absolute -right-4 -bottom-4 text-9xl font-black text-white/5 select-none pointer-events-none group-hover:text-white/10 transition-colors">
+                            {skill.type.replace("Mindscape ", "")}
+                          </div>
+
+                          <div className="flex items-center gap-4 mb-4">
+                            <div className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center border border-white/10 font-bold text-white">
+                              {skill.type.replace("Mindscape ", "")}
+                            </div>
+                            <h4 className="text-xl font-bold text-white">{skill.name || "Mindscape"}</h4>
+                          </div>
+
+                          <div className="text-gray-300 text-sm leading-relaxed relative z-10">
+                            <HighlightText text={skill.description} skills={details.skills} skillIcons={skillIcons} elementColor={themeColor} />
                           </div>
                         </div>
                       ))}
                     </div>
                   </div>
-                )}
-              </div>
+                </>
+              );
+            })()}
 
-            </div>
-          ))}
-        </div>
+          </div>
+        )}
 
         {/* Espaciador Final */}
         <div className="h-32"></div>
