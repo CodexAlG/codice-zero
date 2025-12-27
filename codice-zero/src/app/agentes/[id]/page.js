@@ -88,6 +88,7 @@ export default function AgentDetailPage() {
 
   // States
   const [level, setLevel] = useState(60);
+  const [coreSkillLevel, setCoreSkillLevel] = useState(0); // 0=Default, 1-6=A-F
   const [details, setDetails] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -167,6 +168,105 @@ export default function AgentDetailPage() {
   };
   const currentStats = calculateCurrentStats();
 
+
+  // --- RENDER GROUP FUNCTION ---
+  const renderGroup = (title, keyOrKeys, iconKey) => {
+    let groupSkills = [];
+    if (Array.isArray(keyOrKeys)) {
+      keyOrKeys.forEach(k => {
+        const found = details?.skills?.filter(s => s.type === k) || [];
+        groupSkills = [...groupSkills, ...found];
+      });
+    } else {
+      groupSkills = details?.skills?.filter(s => s.type === keyOrKeys) || [];
+    }
+
+    if (groupSkills.length === 0) return null;
+
+    // Check if this is the Passive Talent group
+    const isPassiveGroup = title.includes("Pasivo") || title.includes("Pasiva");
+    const coreLevels = ['0', 'A', 'B', 'C', 'D', 'E', 'F'];
+
+    // Helper to process scaling placeholders {VALOR_1}
+    const processScaling = (text) => {
+      if (!details?.coreSkillScaling || !text) return text;
+      // coreSkillLevel 0 corresponds to index 0 in scaling array
+      const currentScalingValues = details.coreSkillScaling[coreSkillLevel];
+      if (!currentScalingValues) return text;
+
+      return text.replace(/\{VALOR_(\d+)\}/g, (_, number) => {
+        const index = parseInt(number) - 1;
+        return currentScalingValues[index] !== undefined ? currentScalingValues[index] : `{VALOR_${number}}`;
+      });
+    };
+
+    return (
+      <div className="flex flex-col gap-4">
+        {/* Header del Grupo */}
+        <div className="flex items-center gap-3 pb-2 border-b border-white/10 justify-between">
+          <div className="flex items-center gap-3">
+            <div className="w-8 h-8 rounded bg-white/5 flex items-center justify-center">
+              <Image
+                src={skillIcons[iconKey] || skillIcons["Ataque"]}
+                alt={title} width={20} height={20} className="object-contain opacity-80" unoptimized
+              />
+            </div>
+            <h3 className="text-xl font-bold uppercase tracking-wide text-white/90">{title}</h3>
+          </div>
+
+          {/* Selector de Nivel Para Pasiva */}
+          {isPassiveGroup && details?.coreSkillScaling && (
+            <div className="flex bg-black/40 rounded-lg p-1 border border-white/10">
+              {coreLevels.map((lvl, idx) => (
+                <button
+                  key={lvl}
+                  onClick={() => setCoreSkillLevel(idx)}
+                  className={`px-3 py-1 rounded text-xs font-bold font-mono transition-all ${coreSkillLevel === idx
+                    ? 'bg-white text-black shadow-lg scale-105'
+                    : 'text-gray-500 hover:text-white hover:bg-white/10'
+                    }`}
+                >
+                  {lvl}
+                </button>
+              ))}
+            </div>
+          )}
+        </div>
+
+        {/* Lista de Habilidades del Grupo */}
+        <div className="flex flex-col gap-6">
+          {groupSkills.map((skill, idx) => {
+            // Apply scaling if it's passive group, otherwise just raw description
+            const description = isPassiveGroup ? processScaling(skill.description) : skill.description;
+
+            return (
+              <div key={idx} className="bg-[#0a0a0a] border border-white/5 rounded-xl p-5 hover:bg-white/[0.02] transition-colors relative overflow-hidden">
+                <div className="absolute left-0 top-0 bottom-0 w-1" style={{ backgroundColor: themeColor }}></div>
+
+                <h4 className="text-lg font-bold text-white mb-2">{skill.name || "Sin nombre"}</h4>
+
+                <div className="text-gray-300 text-sm leading-relaxed space-y-2 font-sans">
+                  <HighlightText text={replaceIcons(description)} skills={details.skills} skillIcons={skillIcons} elementColor={themeColor} />
+                </div>
+
+                {/* Multiplicadores Compactos */}
+                {skill.attributes && skill.attributes.length > 0 && (
+                  <div className="mt-4 pt-3 border-t border-white/5 grid grid-cols-2 gap-2">
+                    {skill.attributes.slice(0, 4).map((attr, aIdx) => (
+                      <div key={aIdx} className="flex justify-between text-xs text-gray-500">
+                        <span>{attr.label}</span>
+                        <span className="font-mono text-gray-300">{attr.values[attr.values.length - 1]}</span>
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    );
+  };
 
   // --- LAYOUT ---
   return (
@@ -318,116 +418,54 @@ export default function AgentDetailPage() {
 
         {/* Grid de Habilidades Agrupadas */}
         {details?.skills && (
-          <div className="flex flex-col gap-8">
+          <div className="grid grid-cols-1 xl:grid-cols-2 gap-x-8 gap-y-12 items-start">
+            {/* Columna 1 */}
+            <div className="flex flex-col gap-12">
+              {renderGroup("Ataque Básico", ["Ataque Básico", "Ataque Normal"], "Ataque Básico")}
+              {renderGroup("Asistencia", "Asistencia", "Asistencia")}
+              {renderGroup("Técnica Definitiva", ["Técnica Definitiva", "Definitiva"], "Técnica Definitiva")}
+            </div>
 
-            {/* Helper para renderizar un grupo de habilidades */}
-            {(() => {
-              const renderGroup = (title, typeFilter, iconKey) => {
-                const groupSkills = details.skills.filter(s => {
-                  if (Array.isArray(typeFilter)) return typeFilter.includes(s.type);
-                  return s.type === typeFilter || (typeFilter === "Pasiva" && (s.type === "Pasiva Central" || s.type === "Habilidad Adicional"));
-                });
-
-                if (groupSkills.length === 0) return null;
-
-                return (
-                  <div className="flex flex-col gap-4">
-                    {/* Header del Grupo */}
-                    <div className="flex items-center gap-3 pb-2 border-b border-white/10">
-                      <div className="w-8 h-8 rounded bg-white/5 flex items-center justify-center">
-                        <Image
-                          src={skillIcons[iconKey] || skillIcons["Ataque"]}
-                          alt={title} width={20} height={20} className="object-contain opacity-80" unoptimized
-                        />
-                      </div>
-                      <h3 className="text-xl font-bold uppercase tracking-wide text-white/90">{title}</h3>
-                    </div>
-
-                    {/* Lista de Habilidades del Grupo */}
-                    <div className="flex flex-col gap-6">
-                      {groupSkills.map((skill, idx) => (
-                        <div key={idx} className="bg-[#0a0a0a] border border-white/5 rounded-xl p-5 hover:bg-white/[0.02] transition-colors relative overflow-hidden">
-                          <div className="absolute left-0 top-0 bottom-0 w-1" style={{ backgroundColor: themeColor }}></div>
-
-                          <h4 className="text-lg font-bold text-white mb-2">{skill.name || "Sin nombre"}</h4>
-
-                          <div className="text-gray-300 text-sm leading-relaxed space-y-2 font-sans">
-                            <HighlightText text={replaceIcons(skill.description)} skills={details.skills} skillIcons={skillIcons} elementColor={themeColor} />
-                          </div>
-
-                          {/* Multiplicadores Compactos */}
-                          {skill.attributes && skill.attributes.length > 0 && (
-                            <div className="mt-4 pt-3 border-t border-white/5 grid grid-cols-2 gap-2">
-                              {skill.attributes.slice(0, 4).map((attr, aIdx) => (
-                                <div key={aIdx} className="flex justify-between text-xs text-gray-500">
-                                  <span>{attr.label}</span>
-                                  <span className="font-mono text-gray-300">{attr.values[attr.values.length - 1]}</span>
-                                </div>
-                              ))}
-                            </div>
-                          )}
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                );
-              };
-
-              return (
-                <>
-                  {/* FILAS PRINCIPALES (2 Columnas) */}
-                  <div className="grid grid-cols-1 xl:grid-cols-2 gap-x-8 gap-y-12 items-start">
-                    {/* Columna 1 */}
-                    <div className="flex flex-col gap-12">
-                      {renderGroup("Ataque Básico", ["Ataque Básico", "Ataque Normal"], "Ataque Básico")}
-                      {renderGroup("Asistencia", "Asistencia", "Asistencia")}
-                      {renderGroup("Técnica Definitiva", ["Técnica Definitiva", "Definitiva"], "Técnica Definitiva")}
-                    </div>
-
-                    {/* Columna 2 */}
-                    <div className="flex flex-col gap-12">
-                      {renderGroup("Evasión", "Evasión", "Evasión")}
-                      {renderGroup("Técnica Especial", ["Técnica Especial", "Técnica Especial EX", "Habilidad Especial", "Habilidad Especial EX"], "Técnica Especial")}
-                      {renderGroup("Talento Pasivo", "Pasiva", "Pasiva Central")}
-                    </div>
-                  </div>
-
-                  {/* MINDSCAPES (Full Width) */}
-                  <div className="mt-8 pt-8 border-t border-white/10">
-                    <h2 className="text-2xl font-display italic font-bold text-center tracking-widest mb-8">MINDSCAPE CINEMA</h2>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                      {details.skills.filter(s => s.type && s.type.startsWith("Mindscape")).map((skill, idx) => (
-                        <div key={idx} className="bg-[#0a0a0a] border border-white/5 rounded-xl p-6 relative overflow-hidden group hover:border-white/20 transition-all">
-                          {/* Número Grande de Fondo */}
-                          <div className="absolute -right-4 -bottom-4 text-9xl font-black text-white/5 select-none pointer-events-none group-hover:text-white/10 transition-colors">
-                            {skill.type.replace("Mindscape ", "")}
-                          </div>
-
-                          <div className="flex items-center gap-4 mb-4">
-                            <div className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center border border-white/10 font-bold text-white">
-                              {skill.type.replace("Mindscape ", "")}
-                            </div>
-                            <h4 className="text-xl font-bold text-white">{skill.name || "Mindscape"}</h4>
-                          </div>
-
-                          <div className="text-gray-300 text-sm leading-relaxed relative z-10">
-                            <HighlightText text={skill.description} skills={details.skills} skillIcons={skillIcons} elementColor={themeColor} />
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                </>
-              );
-            })()}
-
+            {/* Columna 2 */}
+            <div className="flex flex-col gap-12">
+              {renderGroup("Evasión", "Evasión", "Evasión")}
+              {renderGroup("Técnica Especial", ["Técnica Especial", "Técnica Especial EX", "Habilidad Especial", "Habilidad Especial EX"], "Técnica Especial")}
+              {renderGroup("Talento Pasivo", ["Pasiva", "Pasiva Central", "Habilidad Adicional"], "Pasiva Central")}
+            </div>
           </div>
         )}
 
+        {/* MINDSCAPES (Full Width) */}
+        <div className="mt-8 pt-8 border-t border-white/10">
+          <h2 className="text-2xl font-display italic font-bold text-center tracking-widest mb-8">MINDSCAPE CINEMA</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {details.skills.filter(s => s.type && s.type.startsWith("Mindscape")).map((skill, idx) => (
+              <div key={idx} className="bg-[#0a0a0a] border border-white/5 rounded-xl p-6 relative overflow-hidden group hover:border-white/20 transition-all">
+                {/* Número Grande de Fondo */}
+                <div className="absolute -right-4 -bottom-4 text-9xl font-black text-white/5 select-none pointer-events-none group-hover:text-white/10 transition-colors">
+                  {skill.type.replace("Mindscape ", "")}
+                </div>
+
+                <div className="flex items-center gap-4 mb-4">
+                  <div className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center border border-white/10 font-bold text-white">
+                    {skill.type.replace("Mindscape ", "")}
+                  </div>
+                  <h4 className="text-xl font-bold text-white">{skill.name || "Mindscape"}</h4>
+                </div>
+
+                <div className="text-gray-300 text-sm leading-relaxed relative z-10">
+                  <HighlightText text={skill.description} skills={details.skills} skillIcons={skillIcons} elementColor={themeColor} />
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+
         {/* Espaciador Final */}
         <div className="h-32"></div>
-      </div>
+      </div >
 
-    </div>
+    </div >
   );
 }
