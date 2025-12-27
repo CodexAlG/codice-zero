@@ -21,7 +21,7 @@ const AgentCard = memo(({ agent, priority = false }) => {
       "hielo": "Hielo.webp",
       "electrico": "Electrico.webp",
       "fisico": "Fisico.webp",
-      "etereo": "Etéreo.webp",
+      "etereo": "Etereo.webp",
     };
     const normalizedElement = agent.element.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
     return `/CodiceZero/Agentes/Elemento/${iconMap[normalizedElement] || "Fisico.webp"}`;

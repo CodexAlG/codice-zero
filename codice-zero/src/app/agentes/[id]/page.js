@@ -457,25 +457,36 @@ export default function AgentDetailPage() {
         <div className="mt-8 pt-8 border-t border-white/10">
           <h2 className="text-2xl font-display italic font-bold text-center tracking-widest mb-8">MINDSCAPE CINEMA</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {(details?.skills || []).filter(s => s.type && s.type.startsWith("Mindscape")).map((skill, idx) => (
-              <div key={idx} className="bg-[#0a0a0a] border border-white/5 rounded-xl p-6 relative overflow-hidden group hover:border-white/20 transition-all">
-                {/* Número Grande de Fondo */}
-                <div className="absolute -right-4 -bottom-4 text-9xl font-black text-white/5 select-none pointer-events-none group-hover:text-white/10 transition-colors">
-                  {skill.type.replace("Mindscape ", "")}
-                </div>
+            {(details?.skills || []).filter(s => {
+              if (!s.type) return false;
+              if (typeof s.type === 'string') return s.type.startsWith("Mindscape");
+              if (Array.isArray(s.type)) return s.type.includes("Mindscape");
+              return false;
+            }).map((skill, idx) => {
+              const mindscapeNumber = Array.isArray(skill.type)
+                ? (idx + 1)
+                : skill.type.replace("Mindscape ", "");
 
-                <div className="flex items-center gap-4 mb-4">
-                  <div className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center border border-white/10 font-bold text-white">
-                    {skill.type.replace("Mindscape ", "")}
+              return (
+                <div key={idx} className="bg-[#0a0a0a] border border-white/5 rounded-xl p-6 relative overflow-hidden group hover:border-white/20 transition-all">
+                  {/* Número Grande de Fondo */}
+                  <div className="absolute -right-4 -bottom-4 text-9xl font-black text-white/5 select-none pointer-events-none group-hover:text-white/10 transition-colors">
+                    {mindscapeNumber}
                   </div>
-                  <h4 className="text-xl font-bold text-white">{skill.name || "Mindscape"}</h4>
-                </div>
 
-                <div className="text-gray-300 text-sm leading-relaxed relative z-10">
-                  <HighlightText text={skill.description} skills={details.skills} skillIcons={skillIcons} elementColor={themeColor} />
+                  <div className="flex items-center gap-4 mb-4">
+                    <div className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center border border-white/10 font-bold text-white">
+                      {mindscapeNumber}
+                    </div>
+                    <h4 className="text-xl font-bold text-white">{skill.name || "Mindscape"}</h4>
+                  </div>
+
+                  <div className="text-gray-300 text-sm leading-relaxed relative z-10">
+                    <HighlightText text={skill.description} skills={details.skills} skillIcons={skillIcons} elementColor={themeColor} />
+                  </div>
                 </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
 
