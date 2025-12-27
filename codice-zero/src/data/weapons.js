@@ -172,8 +172,21 @@ export const weapons = [
     name: "Gourmet de la Selva", // Rainforest Gourmet
     rank: "A",
     rol: "Anomalia",
-    stats: { main: "Maestría Anomalía", value: "75" },
-    effect: "Por cada 10 de energía consumida, aumenta el ATK un 2.5% (acumulable hasta 10 veces).",
+    detailStats: {
+      baseAtk: { min: 40, max: 594 },     // Nvl 1 -> 60
+      subStat: { name: "Maestría Anomalía", min: "30", max: "75" } // Nvl 1 -> 60
+    },
+    effect: {
+      title: "¡La Cena Esta Lista!",
+      description: "Por cada 10 de Energía consumida, el portador gana un efecto que aumenta el ATK en un 2.5% por 10s, acumulándose hasta 10 veces. La duración de cada acumulación se calcula por separado."
+    },
+    refinements: [ // Tabla de Mejora (R1 - R5)
+      { level: 1, atk: "2.5%" },
+      { level: 2, atk: "2.8%" },
+      { level: 3, atk: "3.2%" },
+      { level: 4, atk: "3.6%" },
+      { level: 5, atk: "4.0%" }
+    ],
     image: "/CodiceZero/Armas/Anomalia/W-Engine_Rainforest_Gourmet.webp"
   },
   {
