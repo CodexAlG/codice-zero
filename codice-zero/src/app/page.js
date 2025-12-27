@@ -20,7 +20,7 @@ export default function Home() {
     {
       name: "Discord",
       icon: "/CodiceZero/Redes/Discord.png",
-      link: "#", // Sin servidor por el momento
+      link: "https://discord.gg/RBzdz2Bn4u",
       customClass: "scale-110"
     },
     {
