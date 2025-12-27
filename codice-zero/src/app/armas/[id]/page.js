@@ -50,22 +50,28 @@ export default function WeaponDetail({ params }) {
 
     let desc = weapon.effect.description;
 
-    // Reemplazo de VALORES DINÁMICOS
-    Object.keys(baseRef).forEach(key => {
+    // PASO 1: Crear un mapa de reemplazos (baseVal -> placeholder -> currentVal)
+    const replacements = [];
+    Object.keys(baseRef).forEach((key, index) => {
       if (key === 'level') return;
 
-      const baseVal = String(baseRef[key]); // Asegurar string "12%"
-      const currentVal = String(currentRef[key]); // "24%"
+      const baseVal = String(baseRef[key]);
+      const currentVal = String(currentRef[key]);
+      const placeholder = `__PLACEHOLDER_${index}__`;
 
-      // Escapar caracteres especiales (como el % o +) para la Regex
+      replacements.push({ baseVal, currentVal, placeholder });
+    });
+
+    // PASO 2: Reemplazar valores base por placeholders (evita conflictos)
+    replacements.forEach(({ baseVal, placeholder }) => {
       const escapedBaseVal = baseVal.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-
-      // Regex: Busca el valor base como NÚMERO COMPLETO
-      // Debe estar precedido y seguido por no-dígitos (o principio/fin de string)
-      // Esto evita que "75" coincida dentro de "375"
       const regex = new RegExp(`(?<!\\d)${escapedBaseVal}(?!\\d)`, 'g');
+      desc = desc.replace(regex, placeholder);
+    });
 
-      // Reemplazamos por el span verde
+    // PASO 3: Reemplazar placeholders por valores actuales con estilo
+    replacements.forEach(({ placeholder, currentVal }) => {
+      const regex = new RegExp(placeholder, 'g');
       desc = desc.replace(regex, `<span class="text-emerald-400 font-bold text-lg">${currentVal}</span>`);
     });
 
