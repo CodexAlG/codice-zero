@@ -238,8 +238,21 @@ export const weapons = [
     name: "Rugido", // Roaring Ride
     rank: "A",
     rol: "Anomalia",
-    stats: { main: "ATK %", value: "25%" },
-    effect: "Al golpear a un enemigo con un estado de anomalía, aumenta el daño del portador.",
+    detailStats: {
+      baseAtk: { min: 42, max: 624 },     // Nvl 1 -> 60
+      subStat: { name: "Ataque", min: "10%", max: "25%" } // Nvl 1 -> 60
+    },
+    effect: {
+      title: "Potencial de Colisión",
+      description: "Cuando (Tecnica Especial EX) golpea a un enemigo, uno de tres efectos posibles es activado aleatoriamente por 5 segundos. Este efecto puede activarse una vez cada 0.3s. Los mismos tipos de efectos no pueden acumularse. Activaciones repetidas reinician la duración, permitiendo que varios efectos estén activos a la vez: Aumenta el ATK del portador en un 8%, aumenta la Maestría de Anomalía del portador en 40, o aumenta la Tasa de Acumulación de Anomalía del portador en un 25%.",
+      refinements: [ // Tabla de Mejora (R1 - R5)
+        { level: 1, atk: "8%", damage: "40", atkSpeed: "25%" },
+        { level: 2, atk: "9.2%", damage: "46", atkSpeed: "28%" },
+        { level: 3, atk: "10.4%", damage: "52", atkSpeed: "32%" },
+        { level: 4, atk: "11.6%", damage: "58", atkSpeed: "36%" },
+        { level: 5, atk: "12.8%", damage: "64", atkSpeed: "40%" }
+      ]
+    },
     image: "/CodiceZero/Armas/Anomalia/W-Engine_Roaring_Ride.webp"
   },
 
