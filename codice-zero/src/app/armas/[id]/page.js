@@ -60,10 +60,10 @@ export default function WeaponDetail({ params }) {
       // Escapar caracteres especiales (como el % o +) para la Regex
       const escapedBaseVal = baseVal.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 
-      // Regex: Busca el valor base pero asegura que no sea parte de otro número mayor
-      // (Ej: Evita cambiar "1" dentro de "100")
-      // Usamos límites de palabra (\b) o validación simple si tiene símbolos
-      const regex = new RegExp(escapedBaseVal, 'g');
+      // Regex: Busca el valor base como NÚMERO COMPLETO
+      // Debe estar precedido y seguido por no-dígitos (o principio/fin de string)
+      // Esto evita que "75" coincida dentro de "375"
+      const regex = new RegExp(`(?<!\\d)${escapedBaseVal}(?!\\d)`, 'g');
 
       // Reemplazamos por el span verde
       desc = desc.replace(regex, `<span class="text-emerald-400 font-bold text-lg">${currentVal}</span>`);
