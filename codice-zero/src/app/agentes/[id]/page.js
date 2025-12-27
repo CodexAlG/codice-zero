@@ -196,7 +196,8 @@ export default function AgentDetailPage() {
 
       return text.replace(/\{VALOR_(\d+)\}/g, (_, number) => {
         const index = parseInt(number) - 1;
-        return currentScalingValues[index] !== undefined ? currentScalingValues[index] : `{VALOR_${number}}`;
+        // Wrap in [VAL]...[/VAL] for green highlighting
+        return currentScalingValues[index] !== undefined ? `[VAL]${currentScalingValues[index]}[/VAL]` : `{VALOR_${number}}`;
       });
     };
 
@@ -216,14 +217,14 @@ export default function AgentDetailPage() {
 
           {/* Selector de Nivel Para Pasiva */}
           {isPassiveGroup && details?.coreSkillScaling && (
-            <div className="flex bg-black/40 rounded-lg p-1 border border-white/10">
+            <div className="flex bg-black/60 rounded-lg p-1 border border-white/10 gap-0.5">
               {coreLevels.map((lvl, idx) => (
                 <button
                   key={lvl}
                   onClick={() => setCoreSkillLevel(idx)}
-                  className={`px-3 py-1 rounded text-xs font-bold font-mono transition-all ${coreSkillLevel === idx
-                    ? 'bg-white text-black shadow-lg scale-105'
-                    : 'text-gray-500 hover:text-white hover:bg-white/10'
+                  className={`px-3 py-1 rounded-md text-xs font-bold font-mono transition-all border border-transparent ${coreSkillLevel === idx
+                      ? 'bg-white text-black shadow-md border-white/50'
+                      : 'text-gray-500 hover:text-white hover:bg-white/10'
                     }`}
                 >
                   {lvl}

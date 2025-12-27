@@ -34,6 +34,12 @@ const createHighlightRules = (elementColor = "#facc15") => [
     color: "text-emerald-400 font-bold text-lg",
     extract: true,
   },
+  // Dynamic scaling values (Green)
+  {
+    pattern: /\[VAL\](.*?)\[\/VAL\]/g,
+    color: "text-[#86efac] font-bold",
+    extract: true,
+  },
 ];
 
 // Process text, icons and apply highlight rules
