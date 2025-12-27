@@ -215,21 +215,30 @@ export default function AgentDetailPage() {
             <h3 className="text-xl font-bold uppercase tracking-wide text-white/90">{title}</h3>
           </div>
 
-          {/* Selector de Nivel Para Pasiva */}
+          {/* Selector de Nivel Para Pasiva (Barra Deslizante) */}
           {isPassiveGroup && details?.coreSkillScaling && (
-            <div className="flex bg-black/60 rounded-lg p-1 border border-white/10 gap-0.5">
-              {coreLevels.map((lvl, idx) => (
-                <button
-                  key={lvl}
-                  onClick={() => setCoreSkillLevel(idx)}
-                  className={`px-3 py-1 rounded-md text-xs font-bold font-mono transition-all border border-transparent ${coreSkillLevel === idx
-                      ? 'bg-white text-black shadow-md border-white/50'
-                      : 'text-gray-500 hover:text-white hover:bg-white/10'
-                    }`}
-                >
-                  {lvl}
-                </button>
-              ))}
+            <div className="flex flex-col w-48 lg:w-64 mr-2">
+              <div className="relative h-6 flex items-center">
+                <input
+                  type="range"
+                  min="0"
+                  max="6"
+                  step="1"
+                  value={coreSkillLevel}
+                  onChange={(e) => setCoreSkillLevel(parseInt(e.target.value))}
+                  className="w-full h-1 bg-white/20 rounded-lg appearance-none cursor-pointer accent-white hover:bg-white/30 transition-colors"
+                />
+              </div>
+              <div className="flex justify-between px-1">
+                {coreLevels.map((lvl, idx) => (
+                  <span
+                    key={lvl}
+                    className={`text-[10px] font-mono font-bold transition-colors ${coreSkillLevel === idx ? 'text-white scale-125' : 'text-gray-600'}`}
+                  >
+                    {lvl}
+                  </span>
+                ))}
+              </div>
             </div>
           )}
         </div>
