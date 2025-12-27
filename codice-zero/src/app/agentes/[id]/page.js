@@ -11,6 +11,7 @@ import { calculateStatsWithCore } from '@/utils/statCalculator';
 import StatsTable from '@/components/agents/StatsTable';
 import AscensionMaterials from '@/components/agents/AscensionMaterials';
 import SkillMaterials from '@/components/agents/SkillMaterials';
+import { replaceIcons } from '@/components/utils/TextWithIcons';
 import HighlightText from '@/components/ui/HighlightText'; // Import directly here
 
 export default function AgentDetailPage() {
@@ -351,7 +352,7 @@ export default function AgentDetailPage() {
                           <h4 className="text-lg font-bold text-white mb-2">{skill.name || "Sin nombre"}</h4>
 
                           <div className="text-gray-300 text-sm leading-relaxed space-y-2 font-sans">
-                            <HighlightText text={skill.description} skills={details.skills} skillIcons={skillIcons} elementColor={themeColor} />
+                            <HighlightText text={replaceIcons(skill.description)} skills={details.skills} skillIcons={skillIcons} elementColor={themeColor} />
                           </div>
 
                           {/* Multiplicadores Compactos */}
