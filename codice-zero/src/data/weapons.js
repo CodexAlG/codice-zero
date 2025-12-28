@@ -872,8 +872,21 @@ export const weapons = [
     name: "Laurel Ardiente", // Lighter (Blazing Laurel)
     rank: "S",
     rol: "Aturdidor",
-    stats: { main: "Impacto", value: "18%" },
-    effect: "Aumenta el Aturdimiento un 15%. Al causar aturdimiento, reduce la resistencia del enemigo.",
+    detailStats: {
+      baseAtk: { min: 48, max: 713 },     // Nvl 1 -> 60
+      subStat: { name: "Impacto", min: "7.2%", max: "18%" } // Nvl 1 -> 60
+    },
+    effect: {
+      title: "Llama Fluyente",
+      description: "Al lanzar una (Asistencia Rapida) o (Asistencia Perfecta), el Impacto del portador aumenta en un 25% por 8s. Cuando el portador lanza y golpea a un enemigo con un (Ataque Basico), aplica (Marchitamiento) al objetivo por 30s, acumulándose hasta 20 veces, las activaciones repetidas reinician la duración. Cuando cualquier miembro del escuadrón golpea a un enemigo, por cada acumulación de (Marchitamiento) aplicada al objetivo, el Daño CRIT del Daño Hielo y Daño de Fuego infligido por ese ataque aumenta en un 1.5%. Solo puede existir una instancia de este efecto en el mismo escuadrón.",
+      refinements: [ // Tabla de Mejora (R1 - R5)
+        { level: 1, Impacto: "25%", daño: "1.5%" },
+        { level: 2, Impacto: "28.75%", daño: "1.72%" },
+        { level: 3, Impacto: "32.5%", daño: "1.95%" },
+        { level: 4, Impacto: "36.25%", daño: "2.17%" },
+        { level: 5, Impacto: "40%", daño: "2.5%" }
+      ]
+    },
     image: "/CodiceZero/Armas/Aturdidor/W-Engine_Blazing_Laurel.webp"
   },
   {
