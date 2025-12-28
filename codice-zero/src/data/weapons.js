@@ -828,8 +828,21 @@ export const weapons = [
     name: "Engranajes Infernales", // Koleda (Hellfire Gears)
     rank: "S",
     rol: "Aturdidor",
-    stats: { main: "Recup. Energía", value: "60%" },
-    effect: "Mientras está en reserva, la recuperación de energía aumenta. Al usar Especial EX, el Impacto aumenta un 10% (se apila 2 veces).",
+    detailStats: {
+      baseAtk: { min: 46, max: 684 },     // Nvl 1 -> 60
+      subStat: { name: "Impacto", min: "7.2%", max: "18%" } // Nvl 1 -> 60
+    },
+    effect: {
+      title: "Construcción Apasionada",
+      description: "Mientras está fuera del campo, la Regeneración de Energía del portador aumenta en 0.6/s. Al usar una (Tecnica Especial EX), el Impacto del portador aumenta en un 10% por 10s, acumulándose hasta 2 veces. La duración de cada acumulación se calcula por separado.",
+      refinements: [ // Tabla de Mejora (R1 - R5)
+        { level: 1, RegeneracionEnergy: "0.6/s", impacto: "10%" },
+        { level: 2, RegeneracionEnergy: "0.75/s", impacto: "12.5%" },
+        { level: 3, RegeneracionEnergy: "0.9/s", impacto: "15%" },
+        { level: 4, RegeneracionEnergy: "1.05/s", impacto: "17.5%" },
+        { level: 5, RegeneracionEnergy: "1.2/s", impacto: "20%" }
+      ]
+    },
     image: "/CodiceZero/Armas/Aturdidor/W-Engine_Hellfire_Gears.webp"
   },
   {
