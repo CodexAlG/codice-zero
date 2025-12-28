@@ -10,15 +10,17 @@ const createHighlightRules = (elementColor = "#facc15") => [
   },
   // Damage types
   // Fuego
-  { pattern: /(Acumulaci[oó]n\s+de\s+Anomal[ií]a\s+Fuego|Daño\s+Fuego|Quemadura|Quemados?|Anomal[ií]a\s+Fuego|Res\s+Fuego|Resistencia\s+Fuego|Fuego)/gi, color: "text-[#ef4444] font-bold" },
+  // Damage types - Updated to include "Puro" suffix
+  // Fuego
+  { pattern: /(Acumulaci[oó]n\s+de\s+Anomal[ií]a\s+Fuego|Daño\s+Fuego(?:\s+Puro)?|Quemadura|Quemados?|Anomal[ií]a\s+Fuego|Res\s+Fuego|Resistencia\s+Fuego|Fuego(?:\s+Puro)?)/gi, color: "text-[#ef4444] font-bold" },
   // Hielo
-  { pattern: /(Acumulaci[oó]n\s+de\s+Anomal[ií]a\s+Hielo|Daño\s+Hielo|Daño\s+Hielo\s+Puro|Hielo\s+Puro|Rompehielo|Romper\s+Hielo|Congelaci[oó]n\w*|Anomal[ií]a\s+Hielo|Res\s+Hielo|Resistencia\s+Hielo|Hielo|Hielo\s+Puro)/gi, color: "text-[#22d3ee] font-bold" },
+  { pattern: /(Acumulaci[oó]n\s+de\s+Anomal[ií]a\s+Hielo|Daño\s+Hielo(?:\s+Puro)?|Rompehielo|Romper\s+Hielo|Congelaci[oó]n\w*|Anomal[ií]a\s+Hielo|Res\s+Hielo|Resistencia\s+Hielo|Hielo(?:\s+Puro)?)/gi, color: "text-[#22d3ee] font-bold" },
   // Eléctrico
-  { pattern: /(Acumulaci[oó]n\s+de\s+Anomal[ií]a\s+El[eé]ctrica|Daño\s+El[eé]ctrico|Shock|Electrocuci[oó]n|Anomal[ií]a\s+El[eé]ctrica|Res\s+El[eé]ctrica|Resistencia\s+El[eé]ctrica|El[eé]ctrico|El[eé]ctrica)/gi, color: "text-[#3b82f6] font-bold" },
+  { pattern: /(Acumulaci[oó]n\s+de\s+Anomal[ií]a\s+El[eé]ctrica|Daño\s+El[eé]ctrico(?:\s+Puro)?|Shock|Electrocuci[oó]n|Anomal[ií]a\s+El[eé]ctrica|Res\s+El[eé]ctrica|Resistencia\s+El[eé]ctrica|El[eé]ctrico|El[eé]ctrica(?:\s+Pura)?)/gi, color: "text-[#3b82f6] font-bold" },
   // Físico
-  { pattern: /(Asalto\s+de\s+Polaridad|Acumulaci[oó]n\s+de\s+Anomal[ií]a\s+F[ií]sica|Daño\s+F[ií]sico|Anomal[ií]a\s+F[ií]sica|Res\s+F[ií]sica|Resistencia\s+F[ií]sica|Asalto|F[ií]sico|F[ií]sica)/gi, color: "text-[#eab308] font-bold" },
+  { pattern: /(Asalto\s+de\s+Polaridad|Acumulaci[oó]n\s+de\s+Anomal[ií]a\s+F[ií]sica|Daño\s+F[ií]sico(?:\s+Puro)?|Anomal[ií]a\s+F[ií]sica|Res\s+F[ií]sica|Resistencia\s+F[ií]sica|Asalto|F[ií]sico|F[ií]sica(?:\s+Pura)?)/gi, color: "text-[#eab308] font-bold" },
   // Etéreo
-  { pattern: /(Acumulaci[oó]n\s+de\s+Anomal[ií]a\s+(?:Et[eé]rea|Tinta\s+Aurica)|Daño\s+(?:Et[eé]reo|Daño\s+Et[eé]reo\s+Puro|Tinta\s+Aurica)|Corrupci[oó]n|Anomal[ií]a\s+(?:Et[eé]rea|Tinta\s+Aurica|Et[eé]reo)|Res\s+(?:Et[eé]rea|Tinta\s+Aurica)|Resistencia\s+(?:Et[eé]rea|Tinta\s+Aurica)|Tinta\s+Aurica|Et[eé]reo|Et[eé]rea|Et[eé]reo\s+Puro)/gi, color: "text-[#d946ef] font-bold" },
+  { pattern: /(Acumulaci[oó]n\s+de\s+Anomal[ií]a\s+(?:Et[eé]rea|Tinta\s+Aurica)|Daño\s+(?:Et[eé]reo|Tinta\s+Aurica)(?:\s+Puro)?|Corrupci[oó]n|Anomal[ií]a\s+(?:Et[eé]rea|Tinta\s+Aurica|Et[eé]reo)|Res\s+(?:Et[eé]rea|Tinta\s+Aurica)|Resistencia\s+(?:Et[eé]rea|Tinta\s+Aurica)|Tinta\s+Aurica(?:\s+Pura)?|Et[eé]reo(?:\s+Puro)?|Et[eé]rea(?:\s+Pura)?)/gi, color: "text-[#d946ef] font-bold" },
   // Massive / Severe damage – use element colour
   { pattern: /(Daño\s+Masivo|Daño\s+Severo)/gi, color: `text-[${elementColor}] font-bold` },
   // Skill and mechanic names – without generic "Cadena"

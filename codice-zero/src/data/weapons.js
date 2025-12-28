@@ -1272,8 +1272,21 @@ export const weapons = [
     name: "Ignición Fatua", // Grill O'Wisp
     rank: "A",
     rol: "Ruptura",
-    stats: { main: "ATK %", value: "25%" },
-    effect: "Aumenta el daño contra enemigos aturdidos.",
+    detailStats: {
+      baseAtk: { min: 42, max: 624 },     // Nvl 1 -> 60
+      subStat: { name: "HP %", min: "10%", max: "25%" } // Nvl 1 -> 60
+    },
+    effect: {
+      title: "Fuego Enjaulado",
+      description: "El Daño Fuego del portador aumenta en un 15%. Cuando los PV del portador disminuyen, su Probabilidad de CRIT aumenta en un 15% por 5s.",
+      refinements: [ // Tabla de Mejora (R1 - R5)
+        { level: 1, TasaCrit: "15%", DañoFuego: "15%" },
+        { level: 2, TasaCrit: "17.25%", DañoFuego: "17.25%" },
+        { level: 3, TasaCrit: "19.5%", DañoFuego: "19.5%" },
+        { level: 4, TasaCrit: "21.75%", DañoFuego: "21.75%" },
+        { level: 5, TasaCrit: "24%", DañoFuego: "24%" }
+      ]
+    },
     image: "/CodiceZero/Armas/Ruptura/W-Engine_Grill_O'Wisp.webp"
   },
   {
