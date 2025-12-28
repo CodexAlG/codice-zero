@@ -1075,8 +1075,21 @@ export const weapons = [
     name: "Vórtice - Hacha", // Vortex Hatchet
     rank: "B",
     rol: "Aturdidor",
-    stats: { main: "Impacto", value: "12%" },
-    effect: "Aumenta el aturdimiento de ataques de salto.",
+    detailStats: {
+      baseAtk: { min: 32, max: 475 },     // Nvl 1 -> 60
+      subStat: { name: "Recup. Energía", min: "16%", max: "40%" } // Nvl 1 -> 60
+    },
+    effect: {
+      title: "Corriente de Resaca",
+      description: "Al convertirse en el personaje activo en combate, el Impacto del portador aumenta en un 9% por 10s. Este efecto puede activarse una vez cada 20s.",
+      refinements: [ // Tabla de Mejora (R1 - R5)
+        { level: 1, Impacto: "9%" },
+        { level: 2, Impacto: "10%" },
+        { level: 3, Impacto: "11%" },
+        { level: 4, Impacto: "12%" },
+        { level: 5, Impacto: "13%" }
+      ]
+    },
     image: "/CodiceZero/Armas/Aturdidor/W-Engine_(Vortex)_Hatchet.webp"
   },
   {
