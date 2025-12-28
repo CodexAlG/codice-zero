@@ -1125,8 +1125,21 @@ export const weapons = [
     name: "Colmillos de Furia", // Tusks of Fury (Caesar)
     rank: "S",
     rol: "Defensa",
-    stats: { main: "Impacto", value: "18%" },
-    effect: "Aumenta el escudo generado. Al bloquear o interrumpir, aumenta el daño de todo el equipo un 18%.",
+    detailStats: {
+      baseAtk: { min: 48, max: 713 },     // Nvl 1 -> 60
+      subStat: { name: "Impacto", min: "7.2%", max: "18%" } // Nvl 1 -> 60
+    },
+    effect: {
+      title: "Jinete Invencible",
+      description: "El valor del Escudo proporcionado por el portador aumenta en un 30%. Cuando cualquier miembro del escuadrón activa (Interrupcion) o (Evasion Perfecta), el DAÑO de todos los miembros del escuadrón aumenta en un 18% y el Aturdimiento infligido aumenta en un 12% por 20s. Los efectos pasivos del mismo nombre no se acumulan..",
+      refinements: [ // Tabla de Mejora (R1 - R5)
+        { level: 1, Escudo: "30%", Daño: "18%", Daze: "12%" },
+        { level: 2, Escudo: "38%", Daño: "22.5%", Daze: "15%" },
+        { level: 3, Escudo: "46%", Daño: "27%", Daze: "18%" },
+        { level: 4, Escudo: "54%", Daño: "31.5%", Daze: "21%" },
+        { level: 5, Escudo: "62%", Daño: "36%", Daze: "24%" }
+      ]
+    },
     image: "/CodiceZero/Armas/Defensa/W-Engine_Tusks_of_Fury.webp"
   },
 
