@@ -441,11 +441,24 @@ export const weapons = [
   },
   {
     id: 5513,
-    name: "Eclipse Infinito", // Myriad Eclipse (Harumasa)
+    name: "Eclipse Infinito", // Myriad Eclipse (Hugo)
     rank: "S",
     rol: "Ataque",
-    stats: { main: "Daño Crítico", value: "48%" },
-    effect: "Aumenta el daño Etéreo. Al usar Especial EX, aumenta el ATK un 20% por 10s.",
+    detailStats: {
+      baseAtk: { min: 48, max: 713 },     // Nvl 1 -> 60
+      subStat: { name: "Prob. Crítica", min: "9.6%", max: "24%" } // Nvl 1 -> 60
+    },
+    effect: {
+      title: "Personas Falsas",
+      description: "Aumenta el Daño CRIT en un 45%. Al usar una (Tecnica Especial EX), (Ataque en Cadena) o (Definitiva) para causar Daño Hielo, el portador gana el efecto (Sentencia de Muerte de Cero Absoluto) por 3s. Mientras (Sentencia de Muerte de Cero Absoluto) está activo, el personaje ignora el 25% de la DEF del enemigo al asestar un golpe.",
+      refinements: [ // Tabla de Mejora (R1 - R5)
+        { level: 1, DañoCrit: "45%", DEF: "25%" },
+        { level: 2, DañoCrit: "51.75%", DEF: "28.75%" },
+        { level: 3, DañoCrit: "58.5%", DEF: "32.5%" },
+        { level: 4, DañoCrit: "65.25%", DEF: "36.25%" },
+        { level: 5, DañoCrit: "72%", DEF: "40%" }
+      ]
+    },
     image: "/CodiceZero/Armas/Ataque/W-Engine_Myriad_Eclipse.webp"
   },
   {
@@ -453,7 +466,10 @@ export const weapons = [
     name: "Llama Belicosa", // Bellicose Blaze (Soldier 11 - no es Anomalia)
     rank: "S",
     rol: "Ataque",
-    stats: { main: "ATK %", value: "30%" },
+    detailStats: {
+      baseAtk: { min: 48, max: 713 },     // Nvl 1 -> 60
+      subStat: { name: "Daño Crítico", min: "19.2%", max: "48%" } // Nvl 1 -> 60
+    },
     effect: "Aumenta el daño crítico un 20%. Al entrar en combate, regenera energía.",
     image: "/CodiceZero/Armas/Ataque/W-Engine_Bellicose_Blaze.webp"
   },
