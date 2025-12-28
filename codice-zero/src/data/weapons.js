@@ -644,8 +644,21 @@ export const weapons = [
     name: "Taladro - Eje Rojo", // Drill Rig - Red Axis
     rank: "A",
     rol: "Ataque",
-    stats: { main: "Recup. Energía", value: "50%" },
-    effect: "Aumenta la Prob. Crítica. Al usar una Especial EX, aumenta el Daño Crítico.",
+    detailStats: {
+      baseAtk: { min: 42, max: 624 },     // Nvl 1 -> 60
+      subStat: { name: "Recup. Energía", min: "20%", max: "50%" } // Nvl 1 -> 60
+    },
+    effect: {
+      title: "Generador del Infierno",
+      description: "Al lanzar una (Tecnica Especial EX) o (Ataque en Cadena), el Daño Electrico de (Ataques Basicos) y (Ataques de Carrera) aumenta en un 50% por 10s. Este efecto puede activarse una vez cada 15s.",
+      refinements: [ // Tabla de Mejora (R1 - R5)
+        { level: 1, dañoElectrico: "50%" },
+        { level: 2, dañoElectrico: "57.5%" },
+        { level: 3, dañoElectrico: "65%" },
+        { level: 4, dañoElectrico: "72.5%" },
+        { level: 5, dañoElectrico: "80%" }
+      ]
+    },
     image: "/CodiceZero/Armas/Ataque/W-Engine_Drill_Rig_-_Red_Axis.webp"
   },
   {
