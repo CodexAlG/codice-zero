@@ -1277,7 +1277,7 @@ export const weapons = [
     },
     effect: {
       title: "Alma de Jade, Corazón Congelado",
-      description: "El DAÑO del portador ignora el 20% de la RES a Fisico del objetivo. Cuando el portador activa un (Velo Etereo), el DAÑO del portador aumenta en un 25% y el Daño CRIT aumenta en un 25% por 40s. Las activaciones repetidas reinician la duración.",
+      description: "El DAÑO del portador ignora el 20% de la Res Fisico del objetivo. Cuando el portador activa un (Velo Etereo), el DAÑO del portador aumenta en un 25% y el Daño CRIT aumenta en un 25% por 40s. Las activaciones repetidas reinician la duración.",
       refinements: [ // Tabla de Mejora (R1 - R5)
         { level: 1, DañoIgnored: "20%", Daño: "25%", DañoCritico: "25%" },
         { level: 2, DañoIgnored: "22%", Daño: "28.7%", DañoCritico: "28.7%" },
