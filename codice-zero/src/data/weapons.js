@@ -1743,8 +1743,19 @@ export const weapons = [
     leak: "Beta",
     // Info para el Detalle (Vista completa)
     detailStats: {
-      baseAtk: { min: 55, max: 713 },     // Nvl 1 -> 60
-      subStat: { name: "hp", min: "12%", max: "30%" } // Nvl 1 -> 60
+      baseAtk: { min: 48, max: 713 },     // Nvl 1 -> 60
+      subStat: { name: "HP %", min: "12%", max: "30%" } // Nvl 1 -> 60
+    },
+    effect: {
+      title: "Dulzura Frágil",
+      description: "La Regeneración de Energía del portador aumenta en 0.46/s. Todos los miembros del escuadrón ganan un 10% de ATK y un 10% de PV Máx. Solo puede existir una instancia de este efecto en el mismo escuadrón. Cuando el portador activa o extiende un (Velo Etéreo), todo el escuadrón gana un 30% de Daño CRIT por 60s. Las activaciones repetidas reinician la duración.",
+      refinements: [ // Tabla de Mejora (R1 - R5)
+        { level: 1, Energia: "0.46/s", ATK: "10%", PVMax: "10%", DañoCrit: "30%" },
+        { level: 2, Energia: "0.53/s", ATK: "11.5%", PVMax: "11.5%", DañoCrit: "34.5%" },
+        { level: 3, Energia: "0.60/s", ATK: "13%", PVMax: "13%", DañoCrit: "39%" },
+        { level: 4, Energia: "0.67/s", ATK: "14.5%", PVMax: "14.5%", DañoCrit: "43.5%" },
+        { level: 5, Energia: "0.74/s", ATK: "16%", PVMax: "16%", DañoCrit: "48%" }
+      ]
     },
     image: "/CodiceZero/Armas/Defensa/Weapon_S_1341Big.png"
   },
