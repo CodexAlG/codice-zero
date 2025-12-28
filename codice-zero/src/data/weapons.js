@@ -1097,8 +1097,21 @@ export const weapons = [
     name: "Vórtice - Flecha", // Vortex Arrow
     rank: "B",
     rol: "Aturdidor",
-    stats: { main: "Impacto", value: "12%" },
-    effect: "Aumenta el aturdimiento de ataques EX.",
+    detailStats: {
+      baseAtk: { min: 32, max: 475 },     // Nvl 1 -> 60
+      subStat: { name: "Impacto", min: "4.8%", max: "12%" } // Nvl 1 -> 60
+    },
+    effect: {
+      title: "Tsunami",
+      description: "Los ataques del portador infligen un 8% más de Aturdimiento a su objetivo principal.",
+      refinements: [ // Tabla de Mejora (R1 - R5)
+        { level: 1, Daze: "8%" },
+        { level: 2, Daze: "9%" },
+        { level: 3, Daze: "10%" },
+        { level: 4, Daze: "11%" },
+        { level: 5, Daze: "12%" }
+      ]
+    },
     image: "/CodiceZero/Armas/Aturdidor/W-Engine_(Vortex)_Arrow.webp"
   },
 
