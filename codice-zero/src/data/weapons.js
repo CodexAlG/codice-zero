@@ -984,8 +984,21 @@ export const weapons = [
     name: "Horno de Vapor", // Steam Oven
     rank: "A",
     rol: "Aturdidor",
-    stats: { main: "Recup. Energía", value: "50%" },
-    effect: "Acumula energía. Por cada 10 de energía, el Impacto aumenta un 2% (hasta 8 veces).",
+    detailStats: {
+      baseAtk: { min: 40, max: 594 },     // Nvl 1 -> 60
+      subStat: { name: "Recup. Energía", min: "20%", max: "50%" } // Nvl 1 -> 60
+    },
+    effect: {
+      title: "Caldo Espeso",
+      description: "Por cada 10 de Energía acumulada, el Impacto del portador aumenta en un 2%, acumulándose hasta 8 veces. Después de consumir Energía, esta bonificación permanece por 8 segundos más. La duración de cada acumulación se calcula por separado.",
+      refinements: [ // Tabla de Mejora (R1 - R5)
+        { level: 1, Impacto: "2%" },
+        { level: 2, Impacto: "2.3%" },
+        { level: 3, Impacto: "2.6%" },
+        { level: 4, Impacto: "2.9%" },
+        { level: 5, Impacto: "3.2%" }
+      ]
+    },
     image: "/CodiceZero/Armas/Aturdidor/W-Engine_Steam_Oven.webp"
   },
   {
