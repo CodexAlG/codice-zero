@@ -1266,18 +1266,27 @@ export const weapons = [
   },
   {
     id: 5539, //arma Ye Shunguang
-    name: "Lone Light in the Clouds",
+    name: "Resplandor Partenubes",
     rank: "S",
     rol: "Ataque",
-    // Info para la Tarjeta (Vista rápida)
-    stats: { main: "Ataque", value: "743" },
     leak: "Beta",
     // Info para el Detalle (Vista completa)
     detailStats: {
       baseAtk: { min: 50, max: 743 },     // Nvl 1 -> 60
-      subStat: { name: "Crit Dmg", min: "19.2%", max: "48%" } // Nvl 1 -> 60
+      subStat: { name: "Daño Critico", min: "19.2%", max: "48%" } // Nvl 1 -> 60
     },
-    image: "/CodiceZero/Armas/Aturdidor/W-Engine_Yesterday_Calls.webp"
+    effect: {
+      title: "Alma de Jade, Corazón Congelado",
+      description: "El DAÑO del portador ignora el 20% de la RES a Fisico del objetivo. Cuando el portador activa un (Velo Etereo), el DAÑO del portador aumenta en un 25% y el Daño CRIT aumenta en un 25% por 40s. Las activaciones repetidas reinician la duración.",
+      refinements: [ // Tabla de Mejora (R1 - R5)
+        { level: 1, DañoIgnored: "20%", Daño: "25%", DañoCritico: "25%" },
+        { level: 2, DañoIgnored: "22%", Daño: "28.7%", DañoCritico: "28.7%" },
+        { level: 3, DañoIgnored: "24%", Daño: "32.5%", DañoCritico: "32.5%" },
+        { level: 4, DañoIgnored: "26%", Daño: "36.2%", DañoCritico: "36.2%" },
+        { level: 5, DañoIgnored: "28%", Daño: "40%", DañoCritico: "40%" }
+      ]
+    },
+    image: "/CodiceZero/Armas/Ataque/W-Engine_Cloudcleave_Radiance.webp"
   },
 
 ];
