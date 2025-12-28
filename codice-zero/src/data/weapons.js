@@ -378,8 +378,21 @@ export const weapons = [
     name: "Visitante de las Profundidades", // Deep Sea Visitor (Ellen)
     rank: "S",
     rol: "Ataque",
-    stats: { main: "Prob. Crítica", value: "24%" },
-    effect: "Aumenta el Daño Hielo un 25%. Al golpear con Ataque Básico, aumenta la Prob. Crítica un 10% por 8s. Al infligir Daño Hielo con Dash, +10% Prob. Crítica adicional.",
+    detailStats: {
+      baseAtk: { min: 48, max: 713 },     // Nvl 1 -> 60
+      subStat: { name: "Prob. Crítica", min: "9.6%", max: "24%" } // Nvl 1 -> 60
+    },
+    effect: {
+      title: "Señor de los Mares",
+      description: "Aumenta el Daño Hielo en un 25%. Al golpear a un enemigo con un (Ataque Basico), la Probabilidad de CRIT del portador aumenta en un 10% por 8s. Al infligir Daño Hielo con un (Ataque de Carrera), la Probabilidad de CRIT del portador aumenta en un 10% adicional por 15s. La duración de cada efecto se calcula por separado.",
+      refinements: [ // Tabla de Mejora (R1 - R5)
+        { level: 1, damage: "25%", prob: "10%", probDash: "10%" },
+        { level: 2, damage: "31.5%", prob: "12.5%", probDash: "12.5%" },
+        { level: 3, damage: "38%", prob: "15%", probDash: "15%" },
+        { level: 4, damage: "44.5%", prob: "17.5%", probDash: "17.5%" },
+        { level: 5, damage: "50%", prob: "20%", probDash: "20%" }
+      ]
+    },
     image: "/CodiceZero/Armas/Ataque/W-Engine_Deep_Sea_Visitor.webp"
   },
   {
