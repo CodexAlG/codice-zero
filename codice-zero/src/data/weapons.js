@@ -1217,12 +1217,19 @@ export const weapons = [
     rank: "A",
     rol: "Defensa",
     detailStats: {
-      baseAtk: { min: 42, max: 624 },     // Nvl 1 -> 60
-      subStat: { name: "DEF %", min: "16%", max: "40%" } // Nvl 1 -> 60
+      baseAtk: { min: 40, max: 594 },     // Nvl 1 -> 60
+      subStat: { name: "ATK %", min: "12%", max: "25%" } // Nvl 1 -> 60
     },
     effect: {
-      title: "Abrazo Primaveral",
-      description: "Reduce daño recibido. Al ser atacado, gana generación de energía.",
+      title: "Sopa de Aguas Termales",
+      description: "Reduce el DAÑO recibido en un 7.5%. Al ser atacado, la Tasa de Generación de Energía del portador aumenta en un 10% por 12s. Cuando el portador sale del campo, esta mejora se transfiere al nuevo personaje en el campo con su duración reiniciada. Los efectos pasivos del mismo nombre no se acumulan.",
+      refinements: [ // Tabla de Mejora (R1 - R5)
+        { level: 1, DEF: "7.5%", Energia: "10%" },
+        { level: 2, DEF: "8.5%", Energia: "11.5%" },
+        { level: 3, DEF: "9.5%", Energia: "13%" },
+        { level: 4, DEF: "10.5%", Energia: "14.5%" },
+        { level: 5, DEF: "11.5%", Energia: "16%" }
+      ]
     },
     image: "/CodiceZero/Armas/Defensa/W-Engine_Spring_Embrace.webp"
   },
