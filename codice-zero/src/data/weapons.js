@@ -600,8 +600,21 @@ export const weapons = [
     name: "Flor Dorada", // Gilded Blossom
     rank: "A",
     rol: "Ataque",
-    stats: { main: "ATK %", value: "25%" },
-    effect: "Aumenta el Daño Físico. Al derrotar a un enemigo, recupera un porcentaje de HP.",
+    detailStats: {
+      baseAtk: { min: 40, max: 594 },     // Nvl 1 -> 60
+      subStat: { name: "ATK%", min: "10%", max: "25%" } // Nvl 1 -> 60
+    },
+    effect: {
+      title: "Medidas Antirrobo Extraordinarias",
+      description: "El ATQ aumenta en un 6%, y el DAÑO infligido por (Tecnica Especial EX) aumenta en un 15%.",
+      refinements: [ // Tabla de Mejora (R1 - R5)
+        { level: 1, ATK: "6%", atkadd: "15%" },
+        { level: 2, ATK: "6.9%", atkadd: "17.2%" },
+        { level: 3, ATK: "7.8%", atkadd: "19.5%" },
+        { level: 4, ATK: "8.7%", atkadd: "21.8%" },
+        { level: 5, ATK: "9.6%", atkadd: "24%" }
+      ]
+    },
     image: "/CodiceZero/Armas/Ataque/W-Engine_Gilded_Blossom.webp"
   },
   {
