@@ -532,8 +532,21 @@ export const weapons = [
     name: "Cordis Germina", // Cordis Germina (Seed)
     rank: "S",
     rol: "Ataque",
-    stats: { main: "Daño Crítico", value: "48%" },
-    effect: "Aumenta el Daño Físico. Al golpear con Ataque Básico, acumula cargas que aumentan el daño explosivo.",
+    detailStats: {
+      baseAtk: { min: 48, max: 713 },     // Nvl 1 -> 60
+      subStat: { name: "Prob. CRIT", min: "9.6%", max: "24%" } // Nvl 1 -> 60
+    },
+    effect: {
+      title: "Núcleo Brotante",
+      description: "Aumenta la Probabilidad de CRIT en un 15%. Cuando el portador inflige DAÑO con un (Ataque Basico) o (Tecnica Especial EX), gana 1 acumulación de una mejora. Cada acumulación aumenta el Daño Electrico del portador en un 12.5%, hasta 2 acumulaciones. Cada acumulación dura 40s. La duración de cada acumulación se calcula por separado. Puede activarse una vez por uso de una habilidad. Al tener 2 acumulaciones, el DAÑO de (Ataque Basico) y (Definitiva) del portador ignora el 20% de la DEF del enemigo.",
+      refinements: [ // Tabla de Mejora (R1 - R5)
+        { level: 1, ProbCrit: "15%", DañoElectrico: "12.5%", DEF: "20%" },
+        { level: 2, ProbCrit: "17%", DañoElectrico: "14.5%", DEF: "23%" },
+        { level: 3, ProbCrit: "19%", DañoElectrico: "16.5%", DEF: "26%" },
+        { level: 4, ProbCrit: "21%", DañoElectrico: "18.5%", DEF: "29%" },
+        { level: 5, ProbCrit: "23%", DañoElectrico: "20%", DEF: "32%" }
+      ]
+    },
     image: "/CodiceZero/Armas/Ataque/W-Engine_Cordis_Germina.webp"
   },
 
