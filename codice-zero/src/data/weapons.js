@@ -397,11 +397,24 @@ export const weapons = [
   },
   {
     id: 5511,
-    name: "Caja de Hierbas Zanshin", // Zanshin Herb Case (Anby)
+    name: "Caja de Hierbas Zanshin", // Zanshin Herb Case (Harumasa)
     rank: "S",
     rol: "Ataque",
-    stats: { main: "ATK %", value: "30%" },
-    effect: "Al usar una Cadena, aumenta el Daño Físico. Al golpear con Ataque Básico, recupera energía.",
+    detailStats: {
+      baseAtk: { min: 48, max: 713 },     // Nvl 1 -> 60
+      subStat: { name: "Daño Crítico", min: "19.2%", max: "48%" } // Nvl 1 -> 60
+    },
+    effect: {
+      title: "Crecimiento a Través de la Adversidad",
+      description: "La Probabilidad de CRIT aumenta en un 10%. El Daño Electrico de (Ataque de Carrera) aumenta en un 40%. Cuando cualquier miembro del escuadrón aplica una (Anomalia de Atributo) o Aturde a un enemigo, la Probabilidad de CRIT del portador aumenta en un 10% adicional por 15s.",
+      refinements: [ // Tabla de Mejora (R1 - R5)
+        { level: 1, prob: "10%", damageDash: "40%", probadd: "10%" },
+        { level: 2, prob: "11.5%", damageDash: "46%", probadd: "11.5%" },
+        { level: 3, prob: "13%", damageDash: "52%", probadd: "13%" },
+        { level: 4, prob: "14.5%", damageDash: "58%", probadd: "14.5%" },
+        { level: 5, prob: "16%", damageDash: "64%", probadd: "16%" }
+      ]
+    },
     image: "/CodiceZero/Armas/Ataque/W-Engine_Zanshin_Herb_Case.webp"
   },
   {
