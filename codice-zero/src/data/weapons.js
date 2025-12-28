@@ -688,8 +688,21 @@ export const weapons = [
     name: "Estrella de la Calle", // Street Superstar
     rank: "A",
     rol: "Ataque",
-    stats: { main: "ATK %", value: "25%" },
-    effect: "Al usar una Cadena, gana cargas. La Definitiva consume cargas para aumentar su daño un 15% por carga.",
+    detailStats: {
+      baseAtk: { min: 40, max: 594 },     // Nvl 1 -> 60
+      subStat: { name: "ATK%", min: "10%", max: "25%" } // Nvl 1 -> 60
+    },
+    effect: {
+      title: "Barras Ardientes",
+      description: "Siempre que un miembro del escuadrón lanza un (Ataque en Cadena), el portador gana 1 acumulación de Carga, acumulándose hasta 3 veces. Al activar su propia (Definitiva), el portador consume todas las acumulaciones de Carga, y cada acumulación aumenta el DAÑO de la habilidad en un 15%.",
+      refinements: [ // Tabla de Mejora (R1 - R5)
+        { level: 1, Daño: "15%" },
+        { level: 2, Daño: "17.2%" },
+        { level: 3, Daño: "19.5%" },
+        { level: 4, Daño: "21.7%" },
+        { level: 5, Daño: "24%" }
+      ]
+    },
     image: "/CodiceZero/Armas/Ataque/W-Engine_Street_Superstar.webp"
   },
   {
