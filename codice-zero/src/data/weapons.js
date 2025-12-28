@@ -1307,12 +1307,19 @@ export const weapons = [
     rank: "B",
     rol: "Defensa",
     detailStats: {
-      baseAtk: { min: 42, max: 624 },     // Nvl 1 -> 60
-      subStat: { name: "DEF %", min: "16%", max: "40%" } // Nvl 1 -> 60
+      baseAtk: { min: 32, max: 475 },     // Nvl 1 -> 60
+      subStat: { name: "DEF %", min: "12.8%", max: "32%" } // Nvl 1 -> 60
     },
     effect: {
-      title: "Identidad - Base",
-      description: "Aumenta la defensa cuando la vida es baja.",
+      title: "Golpe de Hundimiento",
+      description: "Al ser atacado, la DEF del portador aumenta en un 20% por 8s.",
+      refinements: [ // Tabla de Mejora (R1 - R5)
+        { level: 1, DEF: "20%" },
+        { level: 2, DEF: "23%" },
+        { level: 3, DEF: "26%" },
+        { level: 4, DEF: "29%" },
+        { level: 5, DEF: "32%" }
+      ]
     },
     image: "/CodiceZero/Armas/Defensa/W-Engine_(Identity)_Base.webp"
   },
