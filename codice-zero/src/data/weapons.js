@@ -1329,12 +1329,19 @@ export const weapons = [
     rank: "B",
     rol: "Defensa",
     detailStats: {
-      baseAtk: { min: 42, max: 624 },     // Nvl 1 -> 60
-      subStat: { name: "DEF %", min: "16%", max: "40%" } // Nvl 1 -> 60
+      baseAtk: { min: 32, max: 475 },     // Nvl 1 -> 60
+      subStat: { name: "DEF %", min: "12.8%", max: "32%" } // Nvl 1 -> 60
     },
     effect: {
-      title: "Identidad - Inflexión",
-      description: "Al ser atacado, reduce el daño del siguiente ataque recibido.",
+      title: "Deslumbramiento",
+      description: "Al ser atacado, reduce el DAÑO del atacante en un 6% por 12s.",
+      refinements: [ // Tabla de Mejora (R1 - R5)
+        { level: 1, DEF: "6%" },
+        { level: 2, DEF: "7%" },
+        { level: 3, DEF: "8%" },
+        { level: 4, DEF: "9%" },
+        { level: 5, DEF: "10%" }
+      ]
     },
     image: "/CodiceZero/Armas/Defensa/W-Engine_(Identity)_Inflection.webp"
   },
