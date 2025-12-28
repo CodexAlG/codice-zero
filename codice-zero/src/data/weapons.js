@@ -1150,8 +1150,21 @@ export const weapons = [
     name: "Gran Cilindro", // Big Cylinder
     rank: "A",
     rol: "Defensa",
-    stats: { main: "DEF %", value: "40%" },
-    effect: "Reduce el daño recibido. Al ser atacado, el siguiente golpe será Crítico garantizado.",
+    detailStats: {
+      baseAtk: { min: 42, max: 624 },     // Nvl 1 -> 60
+      subStat: { name: "DEF %", min: "16%", max: "40%" } // Nvl 1 -> 60
+    },
+    effect: {
+      title: "Trompo de Diez Toneladas",
+      description: "Reduce el DAÑO recibido en un 7.5%. Tras ser atacado, el siguiente ataque que golpee a un enemigo activará un golpe crítico e infligirá un 600% de la DEF del portador como DAÑO adicional. Este efecto puede activarse una vez cada 7.5s.",
+      refinements: [ // Tabla de Mejora (R1 - R5)
+        { level: 1, DañoReducido: "7.5%", GolpeCritico: "600%" },
+        { level: 2, DañoReducido: "8.5%", GolpeCritico: "690%" },
+        { level: 3, DañoReducido: "9.5%", GolpeCritico: "780%" },
+        { level: 4, DañoReducido: "10.5%", GolpeCritico: "870%" },
+        { level: 5, DañoReducido: "11.5%", GolpeCritico: "960%" }
+      ]
+    },
     image: "/CodiceZero/Armas/Defensa/W-Engine_Big_Cylinder.png" // Ojo: PNG
   },
   {
