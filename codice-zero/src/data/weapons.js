@@ -756,8 +756,21 @@ export const weapons = [
     name: "Fase Lunar - Noviluna", // Lunar Noviluna
     rank: "B",
     rol: "Ataque",
-    stats: { main: "ATK %", value: "20%" },
-    effect: "Aumenta la Prob. Crítica de Ataques Básicos.",
+    detailStats: {
+      baseAtk: { min: 32, max: 475 },     // Nvl 1 -> 60
+      subStat: { name: "Prob. Crítico", min: "6.4%", max: "16%" } // Nvl 1 -> 60
+    },
+    effect: {
+      title: "Luna Nueva",
+      description: "Lanzar una (Tecnica Especial EX) genera 3 de Energía para el portador. Este efecto puede activarse una vez cada 12s.",
+      refinements: [ // Tabla de Mejora (R1 - R5)
+        { level: 1, Energia: "3" },
+        { level: 2, Energia: "3.5" },
+        { level: 3, Energia: "4" },
+        { level: 4, Energia: "4.5" },
+        { level: 5, Energia: "5" }
+      ]
+    },
     image: "/CodiceZero/Armas/Ataque/W-Engine_(Lunar)_Noviluna.webp"
   },
   {
