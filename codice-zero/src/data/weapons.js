@@ -1239,12 +1239,19 @@ export const weapons = [
     rank: "A",
     rol: "Defensa",
     detailStats: {
-      baseAtk: { min: 42, max: 624 },     // Nvl 1 -> 60
-      subStat: { name: "DEF %", min: "16%", max: "40%" } // Nvl 1 -> 60
+      baseAtk: { min: 40, max: 594 },     // Nvl 1 -> 60
+      subStat: { name: "Impacto", min: "6%", max: "15%" } // Nvl 1 -> 60
     },
     effect: {
-      title: "Proyector de Celuloide",
-      description: "Al activar una Asistencia Defensiva, aumenta el daño del equipo.",
+      title: "Grabado Relámpago",
+      description: "Cuando los PV de un miembro del escuadrón son superiores o iguales al 50%, recibe un 7.5% menos de DAÑO y un 10% menos de Contaminación de Miasma. Solo puede existir una instancia de este efecto en el mismo escuadrón.",
+      refinements: [ // Tabla de Mejora (R1 - R5)
+        { level: 1, DEF: "7.5%", Energia: "10%" },
+        { level: 2, DEF: "8.6%", Energia: "11.5%" },
+        { level: 3, DEF: "9.7%", Energia: "13%" },
+        { level: 4, DEF: "10.8%", Energia: "14.5%" },
+        { level: 5, DEF: "12%", Energia: "16%" }
+      ]
     },
     image: "/CodiceZero/Armas/Defensa/W-Engine_Reel_Projector.webp"
   },
