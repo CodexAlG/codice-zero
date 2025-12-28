@@ -1007,18 +1007,18 @@ export const weapons = [
     rank: "A",
     rol: "Aturdidor",
     detailStats: {
-      baseAtk: { min: 40, max: 594 },     // Nvl 1 -> 60
-      subStat: { name: "Recup. Energía", min: "20%", max: "50%" } // Nvl 1 -> 60
+      baseAtk: { min: 42, max: 624 },     // Nvl 1 -> 60
+      subStat: { name: "Impacto", min: "6%", max: "15%" } // Nvl 1 -> 60
     },
     effect: {
-      title: "Caldo Espeso",
-      description: "Por cada 10 de Energía acumulada, el Impacto del portador aumenta en un 2%, acumulándose hasta 8 veces. Después de consumir Energía, esta bonificación permanece por 8 segundos más. La duración de cada acumulación se calcula por separado.",
+      title: "En un Destello de Luz",
+      description: "Aumenta el Daño Electrico en un 15%. Cuando el portador golpea a un enemigo con un (Contraataque de Evasion) o (Ataque de Asistencia), su Tasa de Generación de Energía aumenta en un 18% por 8s.",
       refinements: [ // Tabla de Mejora (R1 - R5)
-        { level: 1, Impacto: "2%" },
-        { level: 2, Impacto: "2.3%" },
-        { level: 3, Impacto: "2.6%" },
-        { level: 4, Impacto: "2.9%" },
-        { level: 5, Impacto: "3.2%" }
+        { level: 1, Electrico: "15%", Energy: "18%" },
+        { level: 2, Electrico: "17.5%", Energy: "20.5%" },
+        { level: 3, Electrico: "20%", Energy: "23%" },
+        { level: 4, Electrico: "22%", Energy: "25%" },
+        { level: 5, Electrico: "24%", Energy: "27.5%" }
       ]
     },
     image: "/CodiceZero/Armas/Aturdidor/W-Engine_Demara_Battery_Mark_II.webp"
