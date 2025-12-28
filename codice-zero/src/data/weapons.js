@@ -1295,7 +1295,7 @@ export const weapons = [
     rank: "A",
     rol: "Ruptura",
     detailStats: {
-      baseAtk: { min: 40, max: 592 },     // Nvl 1 -> 60
+      baseAtk: { min: 40, max: 594 },     // Nvl 1 -> 60
       subStat: { name: "ATK %", min: "10%", max: "25%" } // Nvl 1 -> 60
     },
     effect: {
@@ -1316,8 +1316,21 @@ export const weapons = [
     name: "Tránsito Herciano", // Radiowave Journey
     rank: "A",
     rol: "Ruptura",
-    stats: { main: "Recup. Energía", value: "50%" },
-    effect: "Aumenta la recuperación de energía al estar fuera del campo.",
+    detailStats: {
+      baseAtk: { min: 40, max: 594 },     // Nvl 1 -> 60
+      subStat: { name: "HP %", min: "10%", max: "25%" } // Nvl 1 -> 60
+    },
+    effect: {
+      title: "Zancadas Ligeras",
+      description: "Al lanzar un (Ataque en Cadena) o (Definitiva), el portador gana 1 acumulación de un efecto de mejora. Cada acumulación aumenta la Fuerza Pura del portador en 80, acumulándose hasta 3 veces, y durando 12s. La duración de cada acumulación se calcula por separado.",
+      refinements: [ // Tabla de Mejora (R1 - R5)
+        { level: 1, FuerzaPura: "80" },
+        { level: 2, FuerzaPura: "92" },
+        { level: 3, FuerzaPura: "104" },
+        { level: 4, FuerzaPura: "116" },
+        { level: 5, FuerzaPura: "128" }
+      ]
+    },
     image: "/CodiceZero/Armas/Ruptura/W-Engine_Radiowave_Journey.webp"
   },
 
