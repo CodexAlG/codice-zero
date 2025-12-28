@@ -710,8 +710,21 @@ export const weapons = [
     name: "Motor Estelar", // Starlight Engine (Tipo S - Versión completa)
     rank: "A",
     rol: "Ataque",
-    stats: { main: "ATK %", value: "30%" },
-    effect: "Aumenta el ATK base. Cada vez que inflige daño, aumenta el Daño Crítico del siguiente ataque.",
+    detailStats: {
+      baseAtk: { min: 40, max: 594 },     // Nvl 1 -> 60
+      subStat: { name: "ATK %", min: "10%", max: "25%" } // Nvl 1 -> 60
+    },
+    effect: {
+      title: "Combo de Caballero",
+      description: "Lanzar un (Contraataque de Evasion) o (Asistencia Rapida) aumenta el ATK del portador en un 12% por 12s.",
+      refinements: [ // Tabla de Mejora (R1 - R5)
+        { level: 1, ATK: "12%" },
+        { level: 2, ATK: "13.8%" },
+        { level: 3, ATK: "15.6%" },
+        { level: 4, ATK: "17.4%" },
+        { level: 5, ATK: "19.2%" }
+      ]
+    },
     image: "/CodiceZero/Armas/Ataque/W-Engine_Starlight_Engine.webp"
   },
 
