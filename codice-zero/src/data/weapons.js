@@ -850,8 +850,21 @@ export const weapons = [
     name: "Tetera de Jade Helado", // Qingyi (Ice-Jade Teapot)
     rank: "S",
     rol: "Aturdidor",
-    stats: { main: "Impacto", value: "18%" },
-    effect: "Al lanzar un Ataque Básico, gana cargas 'Té'. Cada carga aumenta el Impacto un 0.7%. Al usar Especial EX, el objetivo recibe 20% más de daño.",
+    detailStats: {
+      baseAtk: { min: 48, max: 713 },     // Nvl 1 -> 60
+      subStat: { name: "Impacto", min: "7.2%", max: "18%" } // Nvl 1 -> 60
+    },
+    effect: {
+      title: "Melodía Resonante",
+      description: "Cuando un (Ataque Basico) golpea a un enemigo, gana 1 acumulación de (Té-rífico). Cada acumulación de (Té-rífico) aumenta el Impacto del usuario en un 0.7%, acumulándose hasta 30 veces, y durando 8s. La duración de cada acumulación se calcula por separado. Al adquirir (Té-rífico), si el portador posee acumulaciones de (Té-rífico) mayores o iguales a 15, el DAÑO de todos los miembros del escuadrón aumenta en un 20% por 10s. Los efectos pasivos del mismo nombre no se acumulan.",
+      refinements: [ // Tabla de Mejora (R1 - R5)
+        { level: 1, Impacto: "0.7%", daño: "20%" },
+        { level: 2, Impacto: "0.88%", daño: "23%" },
+        { level: 3, Impacto: "1.05%", daño: "26%" },
+        { level: 4, Impacto: "1.22%", daño: "29%" },
+        { level: 5, Impacto: "1.4%", daño: "32%" }
+      ]
+    },
     image: "/CodiceZero/Armas/Aturdidor/W-Engine_Ice-Jade_Teapot.webp"
   },
   {
