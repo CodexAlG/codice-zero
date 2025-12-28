@@ -422,8 +422,21 @@ export const weapons = [
     name: "Agente Antidisturbios", // Riot Suppressor Mark VI (Zhu Yuan)
     rank: "S",
     rol: "Ataque",
-    stats: { main: "Daño Crítico", value: "48%" },
-    effect: "Aumenta el Daño Crítico un 15%. Al usar un Ataque Reforzado, el usuario inflige un 35% más de daño durante el siguiente ataque.",
+    detailStats: {
+      baseAtk: { min: 48, max: 713 },     // Nvl 1 -> 60
+      subStat: { name: "Daño Crítico", min: "19.2%", max: "48%" } // Nvl 1 -> 60
+    },
+    effect: {
+      title: "Patrulla de Seguridad",
+      description: "Aumenta la Probabilidad de CRIT en un 15%. Lanzar una (Tecnica Especial EX) otorga al portador 8 acumulaciones de Carga, hasta un máximo de 8 acumulaciones. Siempre que el (Ataque Basico) o (Ataque de Carrera) del portador causa Daño Etereo, consume una acumulación de Carga y aumenta el DAÑO de la habilidad en un 35%.",
+      refinements: [ // Tabla de Mejora (R1 - R5)
+        { level: 1, prob: "15%", damageDash: "35%" },
+        { level: 2, prob: "18.8%", damageDash: "43.5%" },
+        { level: 3, prob: "22.6%", damageDash: "52%" },
+        { level: 4, prob: "26.4%", damageDash: "60.5%" },
+        { level: 5, prob: "30%", damageDash: "70%" }
+      ]
+    },
     image: "/CodiceZero/Armas/Ataque/W-Engine_Riot_Suppressor_Mark_VI.webp"
   },
   {
