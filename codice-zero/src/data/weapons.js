@@ -1248,8 +1248,21 @@ export const weapons = [
     name: "Jaula Qingming", // Qingming Birdcage
     rank: "S",
     rol: "Ruptura",
-    stats: { main: "ATK %", value: "25%" },
-    effect: "Al usar una Habilidad Definitiva, aumenta el daño de ruptura.",
+    detailStats: {
+      baseAtk: { min: 48, max: 713 },     // Nvl 1 -> 60
+      subStat: { name: "HP %", min: "12%", max: "30%" } // Nvl 1 -> 60
+    },
+    effect: {
+      title: "Flujo de Nubes",
+      description: "La Probabilidad de CRIT aumenta en un 20%. Cuando el portador lanza una (Técnica Especial EX), el personaje gana el efecto (Compañero Qingming), acumulándose hasta 2 veces y durando 15s. Al entrar en combate, gana inmediatamente 2 acumulaciones. Las activaciones repetidas reinician la duración. Cada acumulación del efecto (Compañero Qingming) aumenta el Daño Etéreo del portador en un 8%, y aumenta el Daño Etéreo Puro de la (Definitiva) y (Técnica Especial EX) en un 10%.",
+      refinements: [ // Tabla de Mejora (R1 - R5)
+        { level: 1, TasaCrit: "20%", DañoEtéreo: "8%", DañoPuro: "10%" },
+        { level: 2, TasaCrit: "23%", DañoEtéreo: "9.2%", DañoPuro: "11.5%" },
+        { level: 3, TasaCrit: "26%", DañoEtéreo: "10.4%", DañoPuro: "13%" },
+        { level: 4, TasaCrit: "29%", DañoEtéreo: "11.6%", DañoPuro: "14.5%" },
+        { level: 5, TasaCrit: "32%", DañoEtéreo: "12.8%", DañoPuro: "16%" }
+      ]
+    },
     image: "/CodiceZero/Armas/Ruptura/W-Engine_Qingming_Birdcage.webp"
   },
   // --- RANGO A (Desde 5628 para evitar conflictos) ---
