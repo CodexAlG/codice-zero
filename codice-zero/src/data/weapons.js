@@ -778,8 +778,21 @@ export const weapons = [
     name: "Fase Lunar - Decrescente", // Lunar Decrescent
     rank: "B",
     rol: "Ataque",
-    stats: { main: "ATK %", value: "20%" },
-    effect: "Aumenta el Daño Crítico de Ataques Básicos.",
+    detailStats: {
+      baseAtk: { min: 32, max: 475 },     // Nvl 1 -> 60
+      subStat: { name: "ATK %", min: "8%", max: "20%" } // Nvl 1 -> 60
+    },
+    effect: {
+      title: "Luna Menguante",
+      description: "Lanzar un (Ataque en Cadena) o (Definitiva) aumenta el DAÑO del portador en un 15% por 6s.",
+      refinements: [ // Tabla de Mejora (R1 - R5)
+        { level: 1, ATK: "15%" },
+        { level: 2, ATK: "17.5%" },
+        { level: 3, ATK: "20%" },
+        { level: 4, ATK: "22.5%" },
+        { level: 5, ATK: "25%" }
+      ]
+    },
     image: "/CodiceZero/Armas/Ataque/W-Engine_(Lunar)_Decrescent.webp"
   },
 
