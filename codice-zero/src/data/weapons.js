@@ -1565,6 +1565,7 @@ export const weapons = [
     name: "Caldero de la claridad",
     rank: "A",
     rol: "Ruptura",
+    leak: "Beta",
     detailStats: {
       baseAtk: { min: 42, max: 594 },     // Nvl 1 -> 60
       subStat: { name: "HP %", min: "12%", max: "30%" } // Nvl 1 -> 60
