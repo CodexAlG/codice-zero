@@ -1028,8 +1028,21 @@ export const weapons = [
     name: "Cortador de Cajas", // Box Cutter
     rank: "A",
     rol: "Aturdidor",
-    stats: { main: "ATK %", value: "25%" },
-    effect: "Al atacar por la espalda, el daño de aturdimiento aumenta un 20%.",
+    detailStats: {
+      baseAtk: { min: 42, max: 624 },     // Nvl 1 -> 60
+      subStat: { name: "Impacto", min: "6%", max: "15%" } // Nvl 1 -> 60
+    },
+    effect: {
+      title: "Cuidado con los Dedos",
+      description: "Al lanzar una (Replica), el Daño Fisico del portador aumenta en un 15% y el Aturdimiento aumenta en un 10%, por 10s.",
+      refinements: [ // Tabla de Mejora (R1 - R5)
+        { level: 1, DañoFisico: "15%", Daze: "10%" },
+        { level: 2, DañoFisico: "17.3%", Daze: "11.5%" },
+        { level: 3, DañoFisico: "19.5%", Daze: "13%" },
+        { level: 4, DañoFisico: "21.8%", Daze: "14.5%" },
+        { level: 5, DañoFisico: "24%", Daze: "16%" }
+      ]
+    },
     image: "/CodiceZero/Armas/Aturdidor/W-Engine_Box_Cutter.webp"
   },
 
