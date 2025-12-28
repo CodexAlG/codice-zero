@@ -507,22 +507,22 @@ export const weapons = [
   },
   {
     id: 5516,
-    name: "Inocencia Cortada", // Severed Innocence (Aisha)
+    name: "Inocencia Cortada", // Severed Innocence (Sanby)
     rank: "S",
     rol: "Ataque",
     detailStats: {
       baseAtk: { min: 48, max: 713 },     // Nvl 1 -> 60
-      subStat: { name: "Prob. Crítica", min: "9.6%", max: "24%" } // Nvl 1 -> 60
+      subStat: { name: "Daño CRIT", min: "19.2%", max: "48%" } // Nvl 1 -> 60
     },
     effect: {
-      title: "Inocencia Cortada",
-      description: "Aumenta el Daño Anómalo. Al usar una Especial EX, reduce la resistencia física de los enemigos.",
+      title: "Flor Tranquila",
+      description: "El Daño CRIT aumenta en un 30%. Cuando el portador asesta un golpe con un (Ataque Basico), (Tecnica Especial) o (Replica), gana 1 acumulación de una mejora. Cada acumulación aumenta el Daño CRIT del portador en un 10% adicional, acumulándose hasta 3 veces. El efecto dura 30s, la duración de cada acumulación se calcula por separado, y solo puede activarse una vez por uso de una habilidad. Con las 3 acumulaciones, el Daño Electrico del portador aumenta en un 20%.",
       refinements: [ // Tabla de Mejora (R1 - R5)
-        { level: 1, DañoAnomalo: "50%", DEF: "12.5%" },
-        { level: 2, DañoAnomalo: "57.5%", DEF: "14.5%" },
-        { level: 3, DañoAnomalo: "65%", DEF: "16.5%" },
-        { level: 4, DañoAnomalo: "72.5%", DEF: "18.5%" },
-        { level: 5, DañoAnomalo: "80%", DEF: "20%" }
+        { level: 1, DañoCrit: "30%", dañocritadd: "10%", Electrico: "20%" },
+        { level: 2, DañoCrit: "34.5%", dañocritadd: "11.5%", Electrico: "23%" },
+        { level: 3, DañoCrit: "39%", dañocritadd: "13%", Electrico: "26%" },
+        { level: 4, DañoCrit: "43.5%", dañocritadd: "14.5%", Electrico: "29%" },
+        { level: 5, DañoAnomalo: "48%", dañocritadd: "16%", Electrico: "32%" }
       ]
     },
     image: "/CodiceZero/Armas/Ataque/W-Engine_Severed_Innocence.webp"
