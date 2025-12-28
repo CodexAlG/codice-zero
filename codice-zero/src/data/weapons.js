@@ -622,8 +622,21 @@ export const weapons = [
     name: "Cámara de la Casa", // Housekeeper
     rank: "A",
     rol: "Ataque",
-    stats: { main: "ATK %", value: "25%" },
-    effect: "Mientras está fuera del campo, la recuperación de energía aumenta. Al entrar, el daño físico aumenta un 35%.",
+    detailStats: {
+      baseAtk: { min: 42, max: 624 },     // Nvl 1 -> 60
+      subStat: { name: "ATK%", min: "10%", max: "25%" } // Nvl 1 -> 60
+    },
+    effect: {
+      title: "Sierra Doméstica Segura",
+      description: "Mientras está fuera del campo, la Regeneración de Energía del portador aumenta en 0.45/s. Cuando una (Tecnica Especial EX) golpea a un enemigo, el Daño Fisico del portador aumenta en un 3%, acumulándose hasta 15 veces y durando 1s. Las activaciones repetidas reinician la duración.",
+      refinements: [ // Tabla de Mejora (R1 - R5)
+        { level: 1, RecupEnergia: "0.45", dañoFisico: "3%" },
+        { level: 2, RecupEnergia: "0.52", dañoFisico: "3.5%" },
+        { level: 3, RecupEnergia: "0.58", dañoFisico: "4%" },
+        { level: 4, RecupEnergia: "0.65", dañoFisico: "4.4%" },
+        { level: 5, RecupEnergia: "0.72", dañoFisico: "4.8%" }
+      ]
+    },
     image: "/CodiceZero/Armas/Ataque/W-Engine_Housekeeper.webp"
   },
   {
