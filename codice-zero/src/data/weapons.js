@@ -1560,6 +1560,29 @@ export const weapons = [
     image: "/CodiceZero/Armas/Ataque/W-Engine_Cloudcleave_Radiance.webp"
   },
 
+  {
+    id: 5638,
+    name: "Caldero de la claridad",
+    rank: "A",
+    rol: "Ruptura",
+    detailStats: {
+      baseAtk: { min: 42, max: 594 },     // Nvl 1 -> 60
+      subStat: { name: "HP %", min: "12%", max: "30%" } // Nvl 1 -> 60
+    },
+    effect: {
+      title: "Arcano de Invocación",
+      description: "Cuando el portador activa una (Técnica Especial EX), gana 1 acumulación de un efecto de mejora. Cada acumulación aumenta el DAÑO del portador en un 4%, hasta 3 acumulaciones, y dura 20s. Este efecto puede activarse una vez cada 0.5s, y las activaciones repetidas reinician la duración. Con 3 acumulaciones, la Probabilidad de CRIT del portador aumenta en un 6.5%.",
+      refinements: [ // Tabla de Mejora (R1 - R5)
+        { level: 1, Daño: "4%", ProbCrit: "6.5%" },
+        { level: 2, Daño: "4.6%", ProbCrit: "7.5%" },
+        { level: 3, Daño: "5.2%", ProbCrit: "8.5%" },
+        { level: 4, Daño: "5.8%", ProbCrit: "9.4%" },
+        { level: 5, Daño: "6.4%", ProbCrit: "10.4%" }
+      ]
+    },
+    image: "/CodiceZero/Armas/Ruptura/Weapon_A_Common_19.webp"
+  }
+
 ];
 
 // Función para obtener armas por rango
