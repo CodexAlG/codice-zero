@@ -1195,12 +1195,19 @@ export const weapons = [
     rank: "A",
     rol: "Defensa",
     detailStats: {
-      baseAtk: { min: 42, max: 624 },     // Nvl 1 -> 60
+      baseAtk: { min: 40, max: 594 },     // Nvl 1 -> 60
       subStat: { name: "DEF %", min: "16%", max: "40%" } // Nvl 1 -> 60
     },
     effect: {
-      title: "Banda de Conejo",
-      description: "Aumenta la vida máxima. Al esquivar, gana un escudo temporal.",
+      title: "Acaricia al Conejo",
+      description: "Aumenta los PV Máx en un 8%. Aumenta el ATK del portador en un 10% cuando tiene un escudo.",
+      refinements: [ // Tabla de Mejora (R1 - R5)
+        { level: 1, HP: "8%", ATK: "10%" },
+        { level: 2, HP: "9.2%", ATK: "11.5%" },
+        { level: 3, HP: "10.4%", ATK: "13%" },
+        { level: 4, HP: "11.6%", ATK: "14.5%" },
+        { level: 5, HP: "12.8%", ATK: "16%" }
+      ]
     },
     image: "/CodiceZero/Armas/Defensa/W-Engine_Bunny_Band.webp"
   },
