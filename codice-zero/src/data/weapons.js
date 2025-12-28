@@ -1284,11 +1284,18 @@ export const weapons = [
     rol: "Defensa",
     detailStats: {
       baseAtk: { min: 42, max: 624 },     // Nvl 1 -> 60
-      subStat: { name: "DEF %", min: "16%", max: "40%" } // Nvl 1 -> 60
+      subStat: { name: "ATK %", min: "12%", max: "25%" } // Nvl 1 -> 60
     },
     effect: {
-      title: "Pacificador Especializado",
-      description: "Mientras el escudo está activo, la recuperación de energía aumenta. Al perder el escudo, aumenta el ATK.",
+      title: "Técnica de Bloqueo Estándar",
+      description: "Mientras tiene un Escudo, la Regeneración de Energía del portador aumenta en 0.4/s. La Acumulación de Anomalía de las (Técnicas Especiales EX) y los (Seguimientos de Asistencia) aumenta en un 36%.",
+      refinements: [ // Tabla de Mejora (R1 - R5)
+        { level: 1, Energia: "0.4/s", Anomalía: "36%" },
+        { level: 2, Energia: "0.46/s", Anomalía: "40%" },
+        { level: 3, Energia: "0.52/s", Anomalía: "45%" },
+        { level: 4, Energia: "0.58/s", Anomalía: "50%" },
+        { level: 5, Energia: "0.64/s", Anomalía: "55%" }
+      ]
     },
     image: "/CodiceZero/Armas/Defensa/W-Engine_Peacekeeper_-_Specialized.png" // Ojo: PNG
   },
