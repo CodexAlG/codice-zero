@@ -916,8 +916,21 @@ export const weapons = [
     name: "Rugiente urna de la fortuna", // Jufufu
     rank: "S",
     rol: "Aturdidor",
-    stats: { main: "ATK %", value: "25%" },
-    effect: "",
+    detailStats: {
+      baseAtk: { min: 48, max: 713 },     // Nvl 1 -> 60
+      subStat: { name: "ATK %", min: "12%", max: "30%" } // Nvl 1 -> 60
+    },
+    effect: {
+      title: "Espíritu del Tigre Naciente",
+      description: "El Aturdimiento infligido por la (Tecnica Especial EX), (Ataque en Cadena) y (Definitiva) del portador aumenta en un 28%. Al usar un (Ataque en Cadena) o (Definitiva) para infligir Daño de Fuego, el DAÑO infligido por todos los miembros del escuadrón aumenta en un 10%, acumulándose hasta 2 veces y durando 30s. La duración de cada acumulación se calcula por separado. Se activa una vez por uso de una habilidad. Solo puede existir una instancia de este efecto en el mismo escuadrón.",
+      refinements: [ // Tabla de Mejora (R1 - R5)
+        { level: 1, Daze: "28%", Damage: "10%" },
+        { level: 2, Daze: "32.2%", Damage: "11.5%" },
+        { level: 3, Daze: "36.4%", Damage: "13%" },
+        { level: 4, Daze: "40.6%", Damage: "14.5%" },
+        { level: 5, Daze: "44.8%", Damage: "16%" }
+      ]
+    },
     image: "/CodiceZero/Armas/Aturdidor/W-Engine_Roaring_Fur-nace.webp"
   },
 
