@@ -485,11 +485,24 @@ export const weapons = [
   },
   {
     id: 5515,
-    name: "Nocturno del Corazón", // Heartstring Nocturne (Alice)
+    name: "Nocturno del Corazón", // Heartstring Nocturne (Evelyn)
     rank: "S",
     rol: "Ataque",
-    stats: { main: "ATK %", value: "30%" },
-    effect: "Aumenta el daño de ataque cargado. Al realizar un Dash, aumenta la Prob. Crítica del siguiente ataque.",
+    detailStats: {
+      baseAtk: { min: 48, max: 713 },     // Nvl 1 -> 60
+      subStat: { name: "Prob. Crítica", min: "9.6%", max: "24%" } // Nvl 1 -> 60
+    },
+    effect: {
+      title: "Cuerda y Melodía",
+      description: "El Daño CRIT aumenta un 50%. Cuando el portador entra en combate, o activa un (Ataque en Cadena) o (Definitiva), gana 1 acumulación de (Cuerda del Corazon). Cada acumulación de (Cuerda del Corazon) permite que el (Ataque en Cadena) y la (Definitiva) del portador ignoren el 12.5% de la RES a Fuego del objetivo, acumulándose hasta 2 veces y durando 30s. Las activaciones repetidas reinician la duración.",
+      refinements: [ // Tabla de Mejora (R1 - R5)
+        { level: 1, DañoCrit: "50%", FireRes: "12.5%" },
+        { level: 2, DañoCrit: "57.5%", FireRes: "14.5%" },
+        { level: 3, DañoCrit: "65%", FireRes: "16.5%" },
+        { level: 4, DañoCrit: "72.5%", FireRes: "18.5%" },
+        { level: 5, DañoCrit: "80%", FireRes: "20%" }
+      ]
+    },
     image: "/CodiceZero/Armas/Ataque/W-Engine_Heartstring_Nocturne.webp"
   },
   {
