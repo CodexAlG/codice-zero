@@ -806,8 +806,21 @@ export const weapons = [
     name: "El Sometido", // Lycaon (The Restrained)
     rank: "S",
     rol: "Aturdidor",
-    stats: { main: "Impacto", value: "18%" },
-    effect: "Aumenta el daño y aturdimiento de Ataques Básicos un 6%. Al atacar, aumenta el ATK un 6% (hasta 5 cargas).",
+    detailStats: {
+      baseAtk: { min: 46, max: 684 },     // Nvl 1 -> 60
+      subStat: { name: "Impacto", min: "7.2%", max: "18%" } // Nvl 1 -> 60
+    },
+    effect: {
+      title: "Cadenas Vinculantes",
+      description: "Cuando un ataque golpea a un enemigo, el DAÑO y el Aturdimiento de los (Ataques Basicos) aumentan en un 6% por 8s, acumulándose hasta 5 veces. Este efecto puede activarse como máximo una vez durante cada habilidad. La duración de cada acumulación se calcula por separado.",
+      refinements: [ // Tabla de Mejora (R1 - R5)
+        { level: 1, ATK: "6%" },
+        { level: 2, ATK: "7.5%" },
+        { level: 3, ATK: "9%" },
+        { level: 4, ATK: "10.5%" },
+        { level: 5, ATK: "12%" }
+      ]
+    },
     image: "/CodiceZero/Armas/Aturdidor/W-Engine_The_Restrained.webp"
   },
   {
