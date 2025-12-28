@@ -1172,8 +1172,21 @@ export const weapons = [
     name: "Transmorfo Original", // Original Transmorpher
     rank: "A",
     rol: "Defensa",
-    stats: { main: "HP %", value: "25%" },
-    effect: "Aumenta la vida máxima. Al recibir daño, aumenta el impacto.",
+    detailStats: {
+      baseAtk: { min: 40, max: 594 },     // Nvl 1 -> 60
+      subStat: { name: "HP %", min: "10%", max: "25%" } // Nvl 1 -> 60
+    },
+    effect: {
+      title: "Patada Voladora del Caballero de la Luz Estelar",
+      description: "Aumenta los PV Máx en un 8%. Al ser atacado, el Impacto del portador aumenta en un 10% por 12s.",
+      refinements: [ // Tabla de Mejora (R1 - R5)
+        { level: 1, HP: "8%", Impacto: "10%" },
+        { level: 2, HP: "9%", Impacto: "11.5%" },
+        { level: 3, HP: "10%", Impacto: "13%" },
+        { level: 4, HP: "11%", Impacto: "14.5%" },
+        { level: 5, HP: "12%", Impacto: "16%" }
+      ]
+    },
     image: "/CodiceZero/Armas/Defensa/W-Engine_Original_Transmorpher.png" // Ojo: PNG
   },
   {
@@ -1181,8 +1194,14 @@ export const weapons = [
     name: "Banda de Conejo", // Bunny Band
     rank: "A",
     rol: "Defensa",
-    stats: { main: "HP %", value: "25%" },
-    effect: "Aumenta la vida máxima. Al esquivar, gana un escudo temporal.",
+    detailStats: {
+      baseAtk: { min: 42, max: 624 },     // Nvl 1 -> 60
+      subStat: { name: "DEF %", min: "16%", max: "40%" } // Nvl 1 -> 60
+    },
+    effect: {
+      title: "Banda de Conejo",
+      description: "Aumenta la vida máxima. Al esquivar, gana un escudo temporal.",
+    },
     image: "/CodiceZero/Armas/Defensa/W-Engine_Bunny_Band.webp"
   },
   {
@@ -1190,8 +1209,14 @@ export const weapons = [
     name: "Abrazo Primaveral", // Spring Embrace
     rank: "A",
     rol: "Defensa",
-    stats: { main: "ATK %", value: "25%" },
-    effect: "Reduce daño recibido. Al ser atacado, gana generación de energía.",
+    detailStats: {
+      baseAtk: { min: 42, max: 624 },     // Nvl 1 -> 60
+      subStat: { name: "DEF %", min: "16%", max: "40%" } // Nvl 1 -> 60
+    },
+    effect: {
+      title: "Abrazo Primaveral",
+      description: "Reduce daño recibido. Al ser atacado, gana generación de energía.",
+    },
     image: "/CodiceZero/Armas/Defensa/W-Engine_Spring_Embrace.webp"
   },
   {
@@ -1199,8 +1224,14 @@ export const weapons = [
     name: "Proyector de Celuloide", // Reel Projector (Nuevo A)
     rank: "A",
     rol: "Defensa",
-    stats: { main: "DEF %", value: "40%" },
-    effect: "Al activar una Asistencia Defensiva, aumenta el daño del equipo.",
+    detailStats: {
+      baseAtk: { min: 42, max: 624 },     // Nvl 1 -> 60
+      subStat: { name: "DEF %", min: "16%", max: "40%" } // Nvl 1 -> 60
+    },
+    effect: {
+      title: "Proyector de Celuloide",
+      description: "Al activar una Asistencia Defensiva, aumenta el daño del equipo.",
+    },
     image: "/CodiceZero/Armas/Defensa/W-Engine_Reel_Projector.webp"
   },
   {
@@ -1208,8 +1239,14 @@ export const weapons = [
     name: "Vasija del Temblor", // Tremor Trigram Vessel (Yixuan)
     rank: "A",
     rol: "Defensa",
-    stats: { main: "DEF %", value: "48%" },
-    effect: "Al recibir daño, refleja una parte al atacante. Aumenta la defensa base.",
+    detailStats: {
+      baseAtk: { min: 42, max: 624 },     // Nvl 1 -> 60
+      subStat: { name: "DEF %", min: "16%", max: "40%" } // Nvl 1 -> 60
+    },
+    effect: {
+      title: "Vasija del Temblor",
+      description: "Al recibir daño, refleja una parte al atacante. Aumenta la defensa base.",
+    },
     image: "/CodiceZero/Armas/Defensa/W-Engine_Tremor_Trigram_Vessel.webp"
   },
   {
@@ -1217,8 +1254,14 @@ export const weapons = [
     name: "Pacificador Especializado", // Peacekeeper - Specialized
     rank: "A",
     rol: "Defensa",
-    stats: { main: "Recup. Energía", value: "60%" },
-    effect: "Mientras el escudo está activo, la recuperación de energía aumenta. Al perder el escudo, aumenta el ATK.",
+    detailStats: {
+      baseAtk: { min: 42, max: 624 },     // Nvl 1 -> 60
+      subStat: { name: "DEF %", min: "16%", max: "40%" } // Nvl 1 -> 60
+    },
+    effect: {
+      title: "Pacificador Especializado",
+      description: "Mientras el escudo está activo, la recuperación de energía aumenta. Al perder el escudo, aumenta el ATK.",
+    },
     image: "/CodiceZero/Armas/Defensa/W-Engine_Peacekeeper_-_Specialized.png" // Ojo: PNG
   },
 
@@ -1228,8 +1271,14 @@ export const weapons = [
     name: "Identidad - Base", // Identity Base
     rank: "B",
     rol: "Defensa",
-    stats: { main: "DEF %", value: "32%" },
-    effect: "Aumenta la defensa cuando la vida es baja.",
+    detailStats: {
+      baseAtk: { min: 42, max: 624 },     // Nvl 1 -> 60
+      subStat: { name: "DEF %", min: "16%", max: "40%" } // Nvl 1 -> 60
+    },
+    effect: {
+      title: "Identidad - Base",
+      description: "Aumenta la defensa cuando la vida es baja.",
+    },
     image: "/CodiceZero/Armas/Defensa/W-Engine_(Identity)_Base.webp"
   },
   {
@@ -1237,8 +1286,14 @@ export const weapons = [
     name: "Identidad - Inflexión", // Identity Inflection
     rank: "B",
     rol: "Defensa",
-    stats: { main: "DEF %", value: "32%" },
-    effect: "Al ser atacado, reduce el daño del siguiente ataque recibido.",
+    detailStats: {
+      baseAtk: { min: 42, max: 624 },     // Nvl 1 -> 60
+      subStat: { name: "DEF %", min: "16%", max: "40%" } // Nvl 1 -> 60
+    },
+    effect: {
+      title: "Identidad - Inflexión",
+      description: "Al ser atacado, reduce el daño del siguiente ataque recibido.",
+    },
     image: "/CodiceZero/Armas/Defensa/W-Engine_(Identity)_Inflection.webp"
   },
 
@@ -1394,8 +1449,14 @@ export const weapons = [
     name: "Cuna de Lágrimas", // Weeping Cradle (Rina)
     rank: "S",
     rol: "Soporte",
-    stats: { main: "PEN Ratio", value: "24%" },
-    effect: "Mientras está en reserva, la recuperación de energía aumenta. Al atacar, aumenta el daño elemental del equipo.",
+    detailStats: {
+      baseAtk: { min: 42, max: 624 },     // Nvl 1 -> 60
+      subStat: { name: "DEF %", min: "16%", max: "40%" } // Nvl 1 -> 60
+    },
+    effect: {
+      title: "Cuna de Lágrimas",
+      description: "Mientras está en reserva, la recuperación de energía aumenta. Al atacar, aumenta el daño elemental del equipo.",
+    },
     image: "/CodiceZero/Armas/Soporte/W-Engine_Weeping_Cradle.webp"
   },
   {
@@ -1403,8 +1464,14 @@ export const weapons = [
     name: "Hogar de Ensueño", // Dreamlit Hearth (Lucia)
     rank: "S",
     rol: "Soporte",
-    stats: { main: "Recup. Energía", value: "60%" },
-    effect: "Aumenta el ATK de todo el equipo tras usar una Definitiva. Recupera energía al cambiar.",
+    detailStats: {
+      baseAtk: { min: 42, max: 624 },     // Nvl 1 -> 60
+      subStat: { name: "DEF %", min: "16%", max: "40%" } // Nvl 1 -> 60
+    },
+    effect: {
+      title: "Hogar de Ensueño",
+      description: "Aumenta el ATK de todo el equipo tras usar una Definitiva. Recupera energía al cambiar.",
+    },
     image: "/CodiceZero/Armas/Soporte/W-Engine_Dreamlit_Hearth.webp"
   },
   {
@@ -1412,8 +1479,14 @@ export const weapons = [
     name: "Vanidad Elegante", // Elegant Vanity
     rank: "S",
     rol: "Soporte",
-    stats: { main: "Recup. Energía", value: "60%" },
-    effect: "Al esquivar, aumenta la recuperación de energía de todo el equipo.",
+    detailStats: {
+      baseAtk: { min: 42, max: 624 },     // Nvl 1 -> 60
+      subStat: { name: "DEF %", min: "16%", max: "40%" } // Nvl 1 -> 60
+    },
+    effect: {
+      title: "Vanidad Elegante",
+      description: "Al esquivar, aumenta la recuperación de energía de todo el equipo.",
+    },
     image: "/CodiceZero/Armas/Soporte/W-Engine_Elegant_Vanity.webp"
   },
   {
@@ -1421,8 +1494,14 @@ export const weapons = [
     name: "Metanukimorfosis", // Metanukimorphosis
     rank: "S",
     rol: "Soporte",
-    stats: { main: "HP %", value: "25%" },
-    effect: "Aumenta la vida máxima y la curación realizada.",
+    detailStats: {
+      baseAtk: { min: 42, max: 624 },     // Nvl 1 -> 60
+      subStat: { name: "DEF %", min: "16%", max: "40%" } // Nvl 1 -> 60
+    },
+    effect: {
+      title: "Metanukimorfosis",
+      description: "Aumenta la vida máxima y la curación realizada.",
+    },
     image: "/CodiceZero/Armas/Soporte/W-Engine_Metanukimorphosis.webp"
   },
 
@@ -1432,8 +1511,14 @@ export const weapons = [
     name: "Bola de Juego", // Unfettered Game Ball
     rank: "A",
     rol: "Soporte",
-    stats: { main: "Recup. Energía", value: "50%" },
-    effect: "Al activar una ventaja elemental, aumenta la Prob. Crítica de todo el equipo.",
+    detailStats: {
+      baseAtk: { min: 42, max: 624 },     // Nvl 1 -> 60
+      subStat: { name: "DEF %", min: "16%", max: "40%" } // Nvl 1 -> 60
+    },
+    effect: {
+      title: "Bola de Juego",
+      description: "Al activar una ventaja elemental, aumenta la Prob. Crítica de todo el equipo.",
+    },
     image: "/CodiceZero/Armas/Soporte/W-Engine_Unfettered_Game_Ball.webp"
   },
   {
@@ -1441,8 +1526,14 @@ export const weapons = [
     name: "La Bóveda", // The Vault (Nicole)
     rank: "A",
     rol: "Soporte",
-    stats: { main: "Recup. Energía", value: "50%" },
-    effect: "Al infligir daño Etéreo, aumenta el daño del equipo contra ese objetivo y regenera energía.",
+    detailStats: {
+      baseAtk: { min: 42, max: 624 },     // Nvl 1 -> 60
+      subStat: { name: "DEF %", min: "16%", max: "40%" } // Nvl 1 -> 60
+    },
+    effect: {
+      title: "La Bóveda",
+      description: "Al infligir daño Etéreo, aumenta el daño del equipo contra ese objetivo y regenera energía.",
+    },
     image: "/CodiceZero/Armas/Soporte/W-Engine_The_Vault.webp"
   },
   {
@@ -1450,8 +1541,14 @@ export const weapons = [
     name: "Kaboom el Cañón", // Kaboom the Cannon
     rank: "A",
     rol: "Soporte",
-    stats: { main: "ATK %", value: "25%" },
-    effect: "Al atacar enemigos, reduce su ataque.",
+    detailStats: {
+      baseAtk: { min: 42, max: 624 },     // Nvl 1 -> 60
+      subStat: { name: "DEF %", min: "16%", max: "40%" } // Nvl 1 -> 60
+    },
+    effect: {
+      title: "Kaboom el Cañón",
+      description: "Al atacar enemigos, reduce su ataque.",
+    },
     image: "/CodiceZero/Armas/Soporte/W-Engine_Kaboom_the_Cannon.webp"
   },
   {
@@ -1459,8 +1556,14 @@ export const weapons = [
     name: "Rebanada de Tiempo", // Slice of Time
     rank: "A",
     rol: "Soporte",
-    stats: { main: "PEN Ratio", value: "20%" },
-    effect: "Al usar Especial EX, reduce el tiempo de reutilización de la Definitiva.",
+    detailStats: {
+      baseAtk: { min: 42, max: 624 },     // Nvl 1 -> 60
+      subStat: { name: "DEF %", min: "16%", max: "40%" } // Nvl 1 -> 60
+    },
+    effect: {
+      title: "Rebanada de Tiempo",
+      description: "Al usar Especial EX, reduce el tiempo de reutilización de la Definitiva.",
+    },
     image: "/CodiceZero/Armas/Soporte/W-Engine_Slice_of_Time.webp"
   },
   {
@@ -1468,8 +1571,14 @@ export const weapons = [
     name: "Demonio Tímido", // Bashful Demon (Soukaku)
     rank: "A",
     rol: "Soporte",
-    stats: { main: "ATK %", value: "25%" },
-    effect: "Al usar Especial EX, aumenta el ATK de todo el equipo.",
+    detailStats: {
+      baseAtk: { min: 42, max: 624 },     // Nvl 1 -> 60
+      subStat: { name: "DEF %", min: "16%", max: "40%" } // Nvl 1 -> 60
+    },
+    effect: {
+      title: "Demonio Tímido",
+      description: "Al usar Especial EX, aumenta el ATK de todo el equipo.",
+    },
     image: "/CodiceZero/Armas/Soporte/W-Engine_Bashful_Demon.webp"
   },
 
@@ -1480,8 +1589,14 @@ export const weapons = [
     name: "Reverberación - Modelo I", // Reverb Mark I
     rank: "B",
     rol: "Soporte",
-    stats: { main: "Recup. Energía", value: "40%" },
-    effect: "Aumenta la energía obtenida por asistencias.",
+    detailStats: {
+      baseAtk: { min: 42, max: 624 },     // Nvl 1 -> 60
+      subStat: { name: "DEF %", min: "16%", max: "40%" } // Nvl 1 -> 60
+    },
+    effect: {
+      title: "Reverberación - Modelo I",
+      description: "Aumenta la energía obtenida por asistencias.",
+    },
     image: "/CodiceZero/Armas/Soporte/W-Engine_(Reverb)_Mark_I.webp"
   },
   {
@@ -1489,8 +1604,14 @@ export const weapons = [
     name: "Reverberación - Modelo II", // Reverb Mark II
     rank: "B",
     rol: "Soporte",
-    stats: { main: "Recup. Energía", value: "40%" },
-    effect: "Aumenta la energía obtenida por ataques básicos.",
+    detailStats: {
+      baseAtk: { min: 42, max: 624 },     // Nvl 1 -> 60
+      subStat: { name: "DEF %", min: "16%", max: "40%" } // Nvl 1 -> 60
+    },
+    effect: {
+      title: "Reverberación - Modelo II",
+      description: "Aumenta la energía obtenida por ataques básicos.",
+    },
     image: "/CodiceZero/Armas/Soporte/W-Engine_(Reverb)_Mark_II.webp"
   },
   {
@@ -1498,8 +1619,14 @@ export const weapons = [
     name: "Reverberación - Modelo III", // Reverb Mark III
     rank: "B",
     rol: "Soporte",
-    stats: { main: "Recup. Energía", value: "40%" },
-    effect: "Aumenta la energía obtenida por ataques especiales.",
+    detailStats: {
+      baseAtk: { min: 42, max: 624 },     // Nvl 1 -> 60
+      subStat: { name: "DEF %", min: "16%", max: "40%" } // Nvl 1 -> 60
+    },
+    effect: {
+      title: "Reverberación - Modelo III",
+      description: "Aumenta la energía obtenida por ataques especiales.",
+    },
     image: "/CodiceZero/Armas/Soporte/W-Engine_(Reverb)_Mark_III.webp"
   },
 
