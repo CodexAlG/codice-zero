@@ -666,8 +666,21 @@ export const weapons = [
     name: "Rotor de Cañón", // Cannon Rotor
     rank: "A",
     rol: "Ataque",
-    stats: { main: "Prob. Crítica", value: "20%" },
-    effect: "Aumenta el ATK un 7.5%. Al asestar un crítico, inflige un 200% de ATK como daño adicional (Cooldown corto).",
+    detailStats: {
+      baseAtk: { min: 40, max: 594 },     // Nvl 1 -> 60
+      subStat: { name: "Prob. Crítico", min: "9.6%", max: "20%" } // Nvl 1 -> 60
+    },
+    effect: {
+      title: "Cañón Sobredimensionado",
+      description: "Aumenta el ATQ en un 7.5%. Al asestar un golpe crítico a un enemigo, se infligirá un 200% adicional del ATQ como DAÑO. Este efecto puede activarse una vez cada 8s.",
+      refinements: [ // Tabla de Mejora (R1 - R5)
+        { level: 1, ATK: "7.5%", segundos: "8s" },
+        { level: 2, ATK: "8.6%", segundos: "7.5s" },
+        { level: 3, ATK: "9.7%", segundos: "7s" },
+        { level: 4, ATK: "10.8%", segundos: "6.5s" },
+        { level: 5, ATK: "12%", segundos: "6s" }
+      ]
+    },
     image: "/CodiceZero/Armas/Ataque/W-Engine_Cannon_Rotor.webp"
   },
   {
