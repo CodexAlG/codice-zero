@@ -962,8 +962,21 @@ export const weapons = [
     name: "Seis Tiros", // Six Shooter
     rank: "A",
     rol: "Aturdidor",
-    stats: { main: "Impacto", value: "15%" },
-    effect: "Gana una carga cada 3s. Al usar Especial EX, consume cargas para aumentar el aturdimiento un 4% por carga.",
+    detailStats: {
+      baseAtk: { min: 40, max: 594 },     // Nvl 1 -> 60
+      subStat: { name: "Impacto", min: "6%", max: "15%" } // Nvl 1 -> 60
+    },
+    effect: {
+      title: "¡Fuego!",
+      description: "El portador gana 1 acumulación de Carga cada 3s, acumulándose hasta 6 veces. Al lanzar una (Tecnica Especial EX), consume todas las acumulaciones de Carga y cada acumulación consumida aumenta el Aturdimiento infligido por la habilidad en un 4%.",
+      refinements: [ // Tabla de Mejora (R1 - R5)
+        { level: 1, Daze: "4%" },
+        { level: 2, Daze: "4.6%" },
+        { level: 3, Daze: "5.2%" },
+        { level: 4, Daze: "5.8%" },
+        { level: 5, Daze: "6.4%" }
+      ]
+    },
     image: "/CodiceZero/Armas/Aturdidor/W-Engine_Six_Shooter.webp"
   },
   {
