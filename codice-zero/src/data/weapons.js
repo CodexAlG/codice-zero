@@ -1226,8 +1226,21 @@ export const weapons = [
     name: "Cuna del Kraken", // Kraken's Cradle (Yidhari)
     rank: "S",
     rol: "Ruptura",
-    stats: { main: "Impacto", value: "20%" },
-    effect: "Aumenta el Daño de Ruptura. Al romper la defensa enemiga, aumenta el daño de todo el equipo.",
+    detailStats: {
+      baseAtk: { min: 48, max: 713 },     // Nvl 1 -> 60
+      subStat: { name: "HP %", min: "12%", max: "30%" } // Nvl 1 -> 60
+    },
+    effect: {
+      title: "Caricia Sincera",
+      description: "Cuando los PV del portador disminuyen, su Daño de Hielo Puro aumenta en un 6%, acumulándose hasta 3 veces y durando 25s. La duración de cada acumulación se calcula por separado. Este efecto puede activarse una vez cada 0.5s. Cuando los PV del portador caen al 50% de los PV Máx o menos, la Probabilidad de CRIT aumenta en un 20%.",
+      refinements: [ // Tabla de Mejora (R1 - R5)
+        { level: 1, DañoHieloPuro: "6%", ProbabilidadCrit: "20%" },
+        { level: 2, DañoHieloPuro: "7%", ProbabilidadCrit: "23%" },
+        { level: 3, DañoHieloPuro: "8%", ProbabilidadCrit: "26%" },
+        { level: 4, DañoHieloPuro: "9%", ProbabilidadCrit: "29%" },
+        { level: 5, DañoHieloPuro: "10%", ProbabilidadCrit: "32%" }
+      ]
+    },
     image: "/CodiceZero/Armas/Ruptura/W-Engine_Kraken's_Cradle.webp"
   },
   {
