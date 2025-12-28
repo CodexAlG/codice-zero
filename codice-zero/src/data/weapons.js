@@ -894,8 +894,21 @@ export const weapons = [
     name: "Mirada Espectral", // Spectral Gaze Trigger
     rank: "S",
     rol: "Aturdidor",
-    stats: { main: "ATK %", value: "25%" },
-    effect: "Cuando hay Anomalía de Atributo, el Impacto aumenta.",
+    detailStats: {
+      baseAtk: { min: 48, max: 713 },     // Nvl 1 -> 60
+      subStat: { name: "Prob. Crítico", min: "9.6%", max: "24%" } // Nvl 1 -> 60
+    },
+    effect: {
+      title: "Buscador de Viento",
+      description: "Cuando la (Replica) del portador golpea a un enemigo causando Daño Electrico, la DEF del objetivo se reduce en un 25% por 5s. Los efectos pasivos del mismo nombre no se acumulan. Cuando se activa este efecto, si el portador no es el personaje activo, gana 1 acumulación de (Bloqueo Espiritual), hasta un máximo de 3 acumulaciones. Esto solo puede activarse una vez por uso de una habilidad. Cada acumulación de (Bloqueo Espiritual) aumenta el Impacto del portador en un 4%, durando 12s. La duración de cada acumulación se calcula por separado. Con las acumulaciones completas de (Bloqueo Espiritual), el Impacto del portador aumenta en un 8% adicional.",
+      refinements: [ // Tabla de Mejora (R1 - R5)
+        { level: 1, DEF: "25%", Impacto: "4%", ImpactAdd: "8%" },
+        { level: 2, DEF: "28.75%", Impacto: "4.6%", ImpactAdd: "9.2%" },
+        { level: 3, DEF: "32.5%", Impacto: "5.2%", ImpactAdd: "10.4%" },
+        { level: 4, DEF: "36.25%", Impacto: "5.8%", ImpactAdd: "11.6%" },
+        { level: 5, DEF: "40%", Impacto: "6.4%", ImpactAdd: "12.8%" }
+      ]
+    },
     image: "/CodiceZero/Armas/Aturdidor/W-Engine_Spectral_Gaze.webp"
   },
   {
