@@ -563,14 +563,14 @@ export const weapons = [
     effect: {
       title: "Rayo de Caballero: Cambio",
       description: "Aumenta el Daño Fisico del portador contra el objetivo en un 36% por 8s al golpear a un enemigo al menos a 6 metros de distancia con un (Ataque Basico) o (Ataque de Carrera).",
+      refinements: [ // Tabla de Mejora (R1 - R5)
+        { level: 1, ATK: "36%" },
+        { level: 2, ATK: "41%" },
+        { level: 3, ATK: "46.5%" },
+        { level: 4, ATK: "52%" },
+        { level: 5, ATK: "57.5%" }
+      ]
     },
-    refinements: [ // Tabla de Mejora (R1 - R5)
-      { level: 1, ATK: "36%" },
-      { level: 2, ATK: "41%" },
-      { level: 3, ATK: "46.5%" },
-      { level: 4, ATK: "52%" },
-      { level: 5, ATK: "57.5%" }
-    ],
     image: "/CodiceZero/Armas/Ataque/W-Engine_Starlight_Engine_Replica.webp"
   },
   {
