@@ -1516,7 +1516,18 @@ export const weapons = [
     // Info para el Detalle (Vista completa)
     detailStats: {
       baseAtk: { min: 55, max: 713 },     // Nvl 1 -> 60
-      subStat: { name: "hp", min: "12%", max: "30%" } // Nvl 1 -> 60
+      subStat: { name: "HP %", min: "12%", max: "30%" } // Nvl 1 -> 60
+    },
+    effect: {
+      title: "Fuego Kármico Purificador",
+      description: "La Probabilidad de CRIT aumenta en un 20%. Cuando el portador lanza una (Técnica Especial EX), su Daño Fuego Puro aumenta en un 9%, acumulándose hasta 2 veces y durando 20s. La duración de cada acumulación se calcula por separado.",
+      refinements: [ // Tabla de Mejora (R1 - R5)
+        { level: 1, ProbCrit: "20%", DañoFuegoPuro: "9%" },
+        { level: 2, ProbCrit: "23%", DañoFuegoPuro: "10.35%" },
+        { level: 3, ProbCrit: "26%", DañoFuegoPuro: "11.7%" },
+        { level: 4, ProbCrit: "29%", DañoFuegoPuro: "13.05%" },
+        { level: 5, ProbCrit: "32%", DañoFuegoPuro: "14.4%" }
+      ]
     },
     image: "/CodiceZero/Armas/Ruptura/Weapon_S_1471.webp"
   },
