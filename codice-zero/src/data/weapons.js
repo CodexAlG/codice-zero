@@ -878,7 +878,7 @@ export const weapons = [
     },
     effect: {
       title: "Llama Fluyente",
-      description: "Al lanzar una (Asistencia Rapida) o (Asistencia Perfecta), el Impacto del portador aumenta en un 25% por 8s. Cuando el portador lanza y golpea a un enemigo con un (Ataque Basico), aplica (Marchitamiento) al objetivo por 30s, acumulándose hasta 20 veces, las activaciones repetidas reinician la duración. Cuando cualquier miembro del escuadrón golpea a un enemigo, por cada acumulación de (Marchitamiento) aplicada al objetivo, el Daño CRIT del Daño Hielo y Daño de Fuego infligido por ese ataque aumenta en un 1.5%. Solo puede existir una instancia de este efecto en el mismo escuadrón.",
+      description: "Al lanzar una (Asistencia Rapida) o (Asistencia Perfecta), el Impacto del portador aumenta en un 25% por 8s. Cuando el portador lanza y golpea a un enemigo con un (Ataque Basico), aplica (Marchitamiento) al objetivo por 30s, acumulándose hasta 20 veces, las activaciones repetidas reinician la duración. Cuando cualquier miembro del escuadrón golpea a un enemigo, por cada acumulación de (Marchitamiento) aplicada al objetivo, el Daño CRIT del Daño Hielo y Daño Fuego infligido por ese ataque aumenta en un 1.5%. Solo puede existir una instancia de este efecto en el mismo escuadrón.",
       refinements: [ // Tabla de Mejora (R1 - R5)
         { level: 1, Impacto: "25%", daño: "1.5%" },
         { level: 2, Impacto: "28.75%", daño: "1.72%" },
