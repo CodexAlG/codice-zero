@@ -578,8 +578,21 @@ export const weapons = [
     name: "Anhelo Marcato", // Marcato Desire
     rank: "A",
     rol: "Ataque",
-    stats: { main: "Recup. Energía", value: "50%" },
-    effect: "Al golpear a un enemigo con un Ataque Básico, recupera energía. La recuperación aumenta si el enemigo tiene poca vida.",
+    detailStats: {
+      baseAtk: { min: 40, max: 594 },     // Nvl 1 -> 60
+      subStat: { name: "Prob. CRIT", min: "8%", max: "20%" } // Nvl 1 -> 60
+    },
+    effect: {
+      title: "¡Que Todos se Animen!",
+      description: "Cuando una (Tecnica Especial EX) o (Ataque en Cadena) golpea a un enemigo, el ATK del portador aumenta un 6% por 8s. Mientras el objetivo está bajo una (Anomalia de Atributo), este efecto aumenta en un 6% adicional.",
+      refinements: [ // Tabla de Mejora (R1 - R5)
+        { level: 1, ATK: "6%", atkadd: "6%" },
+        { level: 2, ATK: "6.9%", atkadd: "6.9%" },
+        { level: 3, ATK: "7.8%", atkadd: "7.8%" },
+        { level: 4, ATK: "8.7%", atkadd: "8.7%" },
+        { level: 5, ATK: "9.6%", atkadd: "9.6%" }
+      ]
+    },
     image: "/CodiceZero/Armas/Ataque/W-Engine_Marcato_Desire.webp"
   },
   {
