@@ -1340,8 +1340,21 @@ export const weapons = [
     name: "Ceniza - Cobalto", // [Cinder] Cobalt
     rank: "B",
     rol: "Ruptura",
-    stats: { main: "ATK %", value: "20%" },
-    effect: "Aumenta el daño de ruptura básico.",
+    detailStats: {
+      baseAtk: { min: 32, max: 475 },     // Nvl 1 -> 60
+      subStat: { name: "HP %", min: "8%", max: "20%" } // Nvl 1 -> 60
+    },
+    effect: {
+      title: "Llama Tenue",
+      description: "Al convertirse en el personaje activo en combate, el ATK del portador aumenta en un 7.2% por 10s. Este efecto puede activarse una vez cada 20s.",
+      refinements: [ // Tabla de Mejora (R1 - R5)
+        { level: 1, ATK: "7.2%" },
+        { level: 2, ATK: "8.2%" },
+        { level: 3, ATK: "9.3%" },
+        { level: 4, ATK: "10.4%" },
+        { level: 5, ATK: "11.5%" }
+      ]
+    },
     image: "/CodiceZero/Armas/Ruptura/W-Engine_(Cinder)_Cobalt.webp"
   },
 
