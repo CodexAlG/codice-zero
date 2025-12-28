@@ -1053,8 +1053,21 @@ export const weapons = [
     name: "Vórtice - Revólver", // Vortex Revolver
     rank: "B",
     rol: "Aturdidor",
-    stats: { main: "Impacto", value: "12%" },
-    effect: "Aumenta el aturdimiento de ataques básicos.",
+    detailStats: {
+      baseAtk: { min: 32, max: 475 },     // Nvl 1 -> 60
+      subStat: { name: "ATK %", min: "8%", max: "20%" } // Nvl 1 -> 60
+    },
+    effect: {
+      title: "Corriente Subyacente",
+      description: "Las (Tecnicas Especiales EX) infligen un 10% más de Aturdimiento.",
+      refinements: [ // Tabla de Mejora (R1 - R5)
+        { level: 1, Daze: "10%" },
+        { level: 2, Daze: "11.5%" },
+        { level: 3, Daze: "13%" },
+        { level: 4, Daze: "14.5%" },
+        { level: 5, Daze: "16%" }
+      ]
+    },
     image: "/CodiceZero/Armas/Aturdidor/W-Engine_(Vortex)_Revolver.webp"
   },
   {
