@@ -940,8 +940,21 @@ export const weapons = [
     name: "Cilindro Precioso", // Precious Fossilized Core
     rank: "A",
     rol: "Aturdidor",
-    stats: { main: "Impacto", value: "15%" },
-    effect: "Reduce el daño recibido. Aumenta el aturdimiento infligido a enemigos con HP alto.",
+    detailStats: {
+      baseAtk: { min: 40, max: 594 },     // Nvl 1 -> 60
+      subStat: { name: "Impacto", min: "6%", max: "15%" } // Nvl 1 -> 60
+    },
+    effect: {
+      title: "Cazador de Bestias",
+      description: "Cuando los PV del objetivo no son inferiores al 50%, el portador inflige un 10% más de Aturdimiento al objetivo. Cuando los PV del objetivo no son inferiores al 75%, esta bonificación aumenta en un 10% adicional.",
+      refinements: [ // Tabla de Mejora (R1 - R5)
+        { level: 1, Daze: "10%", DazeAdd: "10%" },
+        { level: 2, Daze: "11.5%", DazeAdd: "11.5%" },
+        { level: 3, Daze: "13%", DazeAdd: "13%" },
+        { level: 4, Daze: "14.5%", DazeAdd: "14.5%" },
+        { level: 5, Daze: "16%", DazeAdd: "16%" }
+      ]
+    },
     image: "/CodiceZero/Armas/Aturdidor/W-Engine_Precious_Fossilized_Core.webp"
   },
   {
