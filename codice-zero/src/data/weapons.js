@@ -1414,6 +1414,17 @@ export const weapons = [
       baseAtk: { min: 48, max: 713 },     // Nvl 1 -> 60
       subStat: { name: "Porb. Critica", min: "9.6%", max: "24%" } // Nvl 1 -> 60
     },
+    effect: {
+      title: "24/7",
+      description: "Mientras está fuera del campo, la Regeneración de Energía del portador aumenta en 1.5/s. Cuando el portador inflige Daño Fisico con una (Tecnica Especial EX), el Aturdimiento infligido por los ataques del portador aumenta en un 9% por 10s, acumulándose hasta 3 veces. Con 3 acumulaciones, todos los miembros del escuadrón ganan un 30% de Daño CRIT adicional por 40s. Las activaciones repetidas reinician la duración. Solo puede existir una instancia de este efecto de aumento de Daño CRIT en el mismo escuadrón.",
+      refinements: [ // Tabla de Mejora (R1 - R5)
+        { level: 1, RegenEnergia: "1.5/s", Daze: "9%", DañoCrit: "30%" },
+        { level: 2, RegenEnergia: "1.7/s", Daze: "10.3%", DañoCrit: "34.5%" },
+        { level: 3, RegenEnergia: "1.9/s", Daze: "11.7%", DañoCrit: "39%" },
+        { level: 4, RegenEnergia: "2.1/s", Daze: "13%", DañoCrit: "43.5%" },
+        { level: 5, RegenEnergia: "2.3/s", Daze: "14.5%", DañoCrit: "48%" }
+      ]
+    },
     image: "/CodiceZero/Armas/Aturdidor/W-Engine_Yesterday_Calls.webp"
   },
   {
