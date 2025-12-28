@@ -1262,11 +1262,18 @@ export const weapons = [
     rol: "Defensa",
     detailStats: {
       baseAtk: { min: 42, max: 624 },     // Nvl 1 -> 60
-      subStat: { name: "DEF %", min: "16%", max: "40%" } // Nvl 1 -> 60
+      subStat: { name: "ATK %", min: "12%", max: "25%" } // Nvl 1 -> 60
     },
     effect: {
-      title: "Vasija del Temblor",
-      description: "Al recibir daño, refleja una parte al atacante. Aumenta la defensa base.",
+      title: "Mapeo de Meridianos",
+      description: "El DAÑO de la (Técnica Especial EX) y la (Definitiva) del portador aumenta en un 25%. Cada vez que cualquier miembro del escuadrón recibe DAÑO o recupera PV, el portador gana 2 de Energía. Este efecto puede activarse una vez cada 5s..",
+      refinements: [ // Tabla de Mejora (R1 - R5)
+        { level: 1, Daño: "25%", Energia: "2" },
+        { level: 2, Daño: "28.7%", Energia: "2.3" },
+        { level: 3, Daño: "32.5%", Energia: "2.6" },
+        { level: 4, Daño: "36.2%", Energia: "2.9" },
+        { level: 5, Daño: "40%", Energia: "3.2" }
+      ]
     },
     image: "/CodiceZero/Armas/Defensa/W-Engine_Tremor_Trigram_Vessel.webp"
   },
