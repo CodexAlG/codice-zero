@@ -463,14 +463,24 @@ export const weapons = [
   },
   {
     id: 5514,
-    name: "Llama Belicosa", // Bellicose Blaze (Soldier 11 - no es Anomalia)
+    name: "Llama Belicosa", // Bellicose Blaze (Orphie)
     rank: "S",
     rol: "Ataque",
     detailStats: {
       baseAtk: { min: 48, max: 713 },     // Nvl 1 -> 60
-      subStat: { name: "Daño Crítico", min: "19.2%", max: "48%" } // Nvl 1 -> 60
+      subStat: { name: "Recup. Energía", min: "24%", max: "60%" } // Nvl 1 -> 60
     },
-    effect: "Aumenta el daño crítico un 20%. Al entrar en combate, regenera energía.",
+    effect: {
+      title: "Coro Devorador de Llamas",
+      description: "Aumenta la Probabilidad de CRIT en un 20%. Cuando el portador activa una (Replica) que causa Daño de Fuego, sus ataques ignoran un 15% de la DEF del objetivo por 8s. Puede acumularse una vez cada 3s, hasta 2 veces. Las activaciones repetidas reinician la duración.",
+      refinements: [ // Tabla de Mejora (R1 - R5)
+        { level: 1, prob: "20%", DEF: "15%" },
+        { level: 2, prob: "23%", DEF: "17.2%" },
+        { level: 3, prob: "26%", DEF: "19.5%" },
+        { level: 4, prob: "29%", DEF: "21.7%" },
+        { level: 5, prob: "32%", DEF: "24%" }
+      ]
+    },
     image: "/CodiceZero/Armas/Ataque/W-Engine_Bellicose_Blaze.webp"
   },
   {
