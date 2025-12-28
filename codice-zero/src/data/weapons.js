@@ -1294,8 +1294,21 @@ export const weapons = [
     name: "Esfera Rompecabezas", // Puzzle Sphere
     rank: "A",
     rol: "Ruptura",
-    stats: { main: "Impacto", value: "15%" },
-    effect: "Al golpear con un ataque básico, aumenta el impacto del siguiente ataque especial.",
+    detailStats: {
+      baseAtk: { min: 40, max: 592 },     // Nvl 1 -> 60
+      subStat: { name: "ATK %", min: "10%", max: "25%" } // Nvl 1 -> 60
+    },
+    effect: {
+      title: "Artesanía Ingeniosa",
+      description: "Al lanzar una (Técnica Especial EX), el Daño CRIT del portador aumenta en un 16% por 12s. Además, si los PV actuales del objetivo son inferiores al 50% de sus PV Máx, el Daño de la (Técnica Especial EX) aumenta en un 20%.",
+      refinements: [ // Tabla de Mejora (R1 - R5)
+        { level: 1, DañoCrit: "16%", Daño: "20%" },
+        { level: 2, DañoCrit: "18.4%", Daño: "23%" },
+        { level: 3, DañoCrit: "20.8%", Daño: "26%" },
+        { level: 4, DañoCrit: "23.2%", Daño: "29%" },
+        { level: 5, DañoCrit: "25.6%", Daño: "32%" }
+      ]
+    },
     image: "/CodiceZero/Armas/Ruptura/W-Engine_Puzzle_Sphere.webp"
   },
   {
