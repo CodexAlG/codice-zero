@@ -494,7 +494,7 @@ export const weapons = [
     },
     effect: {
       title: "Cuerda y Melodía",
-      description: "El Daño CRIT aumenta un 50%. Cuando el portador entra en combate, o activa un (Ataque en Cadena) o (Definitiva), gana 1 acumulación de (Cuerda del Corazon). Cada acumulación de (Cuerda del Corazon) permite que el (Ataque en Cadena) y la (Definitiva) del portador ignoren el 12.5% de la RES a Fuego del objetivo, acumulándose hasta 2 veces y durando 30s. Las activaciones repetidas reinician la duración.",
+      description: "El Daño CRIT aumenta un 50%. Cuando el portador entra en combate, o activa un (Ataque en Cadena) o (Definitiva), gana 1 acumulación de (Cuerda del Corazon). Cada acumulación de (Cuerda del Corazon) permite que el (Ataque en Cadena) y la (Definitiva) del portador ignoren el 12.5% de la Res Fuego del objetivo, acumulándose hasta 2 veces y durando 30s. Las activaciones repetidas reinician la duración.",
       refinements: [ // Tabla de Mejora (R1 - R5)
         { level: 1, DañoCrit: "50%", FireRes: "12.5%" },
         { level: 2, DañoCrit: "57.5%", FireRes: "14.5%" },
@@ -510,8 +510,21 @@ export const weapons = [
     name: "Inocencia Cortada", // Severed Innocence (Aisha)
     rank: "S",
     rol: "Ataque",
-    stats: { main: "PEN Ratio", value: "24%" },
-    effect: "Aumenta el Daño Anómalo. Al usar una Especial EX, reduce la resistencia física de los enemigos.",
+    detailStats: {
+      baseAtk: { min: 48, max: 713 },     // Nvl 1 -> 60
+      subStat: { name: "Prob. Crítica", min: "9.6%", max: "24%" } // Nvl 1 -> 60
+    },
+    effect: {
+      title: "Inocencia Cortada",
+      description: "Aumenta el Daño Anómalo. Al usar una Especial EX, reduce la resistencia física de los enemigos.",
+      refinements: [ // Tabla de Mejora (R1 - R5)
+        { level: 1, DañoAnomalo: "50%", DEF: "12.5%" },
+        { level: 2, DañoAnomalo: "57.5%", DEF: "14.5%" },
+        { level: 3, DañoAnomalo: "65%", DEF: "16.5%" },
+        { level: 4, DañoAnomalo: "72.5%", DEF: "18.5%" },
+        { level: 5, DañoAnomalo: "80%", DEF: "20%" }
+      ]
+    },
     image: "/CodiceZero/Armas/Ataque/W-Engine_Severed_Innocence.webp"
   },
   {
