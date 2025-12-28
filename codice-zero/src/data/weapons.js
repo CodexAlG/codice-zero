@@ -734,8 +734,21 @@ export const weapons = [
     name: "Fase Lunar - Pleniluna", // Lunar Pleniluna
     rank: "B",
     rol: "Ataque",
-    stats: { main: "ATK %", value: "20%" },
-    effect: "Aumenta el daño de Ataque Básico.",
+    detailStats: {
+      baseAtk: { min: 32, max: 475 },     // Nvl 1 -> 60
+      subStat: { name: "ATK %", min: "8%", max: "20%" } // Nvl 1 -> 60
+    },
+    effect: {
+      title: "Luna Llena",
+      description: "El DAÑO de (Ataque Basico), (Ataque de Carrera) y (Contraataque de Evasion) aumenta en un 12%.",
+      refinements: [ // Tabla de Mejora (R1 - R5)
+        { level: 1, ATK: "12%" },
+        { level: 2, ATK: "14%" },
+        { level: 3, ATK: "16%" },
+        { level: 4, ATK: "18%" },
+        { level: 5, ATK: "20%" }
+      ]
+    },
     image: "/CodiceZero/Armas/Ataque/W-Engine_(Lunar)_Pleniluna.webp"
   },
   {
