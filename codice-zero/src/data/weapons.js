@@ -1232,7 +1232,7 @@ export const weapons = [
     },
     effect: {
       title: "Caricia Sincera",
-      description: "Cuando los PV del portador disminuyen, su Daño de Hielo Puro aumenta en un 6%, acumulándose hasta 3 veces y durando 25s. La duración de cada acumulación se calcula por separado. Este efecto puede activarse una vez cada 0.5s. Cuando los PV del portador caen al 50% de los PV Máx o menos, la Probabilidad de CRIT aumenta en un 20%.",
+      description: "Cuando los PV del portador disminuyen, su Daño Hielo Puro aumenta en un 6%, acumulándose hasta 3 veces y durando 25s. La duración de cada acumulación se calcula por separado. Este efecto puede activarse una vez cada 0.5s. Cuando los PV del portador caen al 50% de los PV Máx o menos, la Probabilidad de CRIT aumenta en un 20%.",
       refinements: [ // Tabla de Mejora (R1 - R5)
         { level: 1, DañoHieloPuro: "6%", ProbabilidadCrit: "20%" },
         { level: 2, DañoHieloPuro: "7%", ProbabilidadCrit: "23%" },
