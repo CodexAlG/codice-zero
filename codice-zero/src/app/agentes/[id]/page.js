@@ -40,49 +40,27 @@ const SidebarNav = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      const scrollPosition = window.scrollY + 200; // Punto de activación (200px desde arriba)
+      const scrollPosition = window.scrollY;
+      const offset = 300; // Margen para considerar que ya entraste en la sección
 
-      // Verificar secciones de abajo hacia arriba para capturar la última válida
-      for (let i = navItems.length - 1; i >= 0; i--) {
-        const item = navItems[i];
-        const element = document.getElementById(item.id);
+      let currentSection = 'stats'; // Default
 
-        if (element) {
-          const { offsetTop, offsetHeight } = element;
-          // Si el scroll está dentro de esta sección o más abajo de su inicio
-          if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight + 300) { // +300 margen de error
-            setActiveSection(item.id);
-            return; // Encontrado, salir
-          }
-          // Fallback simple: si es el último elemento y estamos al final
-          if (i === navItems.length - 1 && window.innerHeight + window.scrollY >= document.body.offsetHeight - 50) {
-            setActiveSection(item.id);
-            return;
-          }
-        }
-      }
-
-      // Lógica alternativa más simple si la anterior falla: el que esté más cerca del top
-      let currentSection = 'stats';
-      let minDistance = Infinity;
-
-      navItems.forEach(item => {
+      // Recorrer de arriba a abajo. La última sección que cumpla la condición será la activa.
+      navItems.forEach((item) => {
         const element = document.getElementById(item.id);
         if (element) {
-          const rect = element.getBoundingClientRect();
-          // Distancia del top del elemento al top del viewport (usando 150px como línea de mira)
-          const distance = Math.abs(rect.top - 150);
-          if (distance < minDistance) {
-            minDistance = distance;
+          // Si hemos scrolleado más allá del inicio de esta sección (menos un margen)
+          if (scrollPosition >= element.offsetTop - offset) {
             currentSection = item.id;
-          }
-          // Prioridad especial si el elemento está visible y ocupa gran parte de la pantalla
-          if (rect.top <= 200 && rect.bottom >= 200) {
-            currentSection = item.id;
-            minDistance = -1; // Prioridad máxima
           }
         }
       });
+
+      // Control especial para el final de página (si llegamos al fondo, activar el último sí o sí)
+      if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 50) {
+        currentSection = navItems[navItems.length - 1].id;
+      }
+
       setActiveSection(currentSection);
     };
 
