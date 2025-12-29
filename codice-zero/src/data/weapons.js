@@ -1521,12 +1521,19 @@ export const weapons = [
     rank: "S",
     rol: "Soporte",
     detailStats: {
-      baseAtk: { min: 42, max: 624 },     // Nvl 1 -> 60
+      baseAtk: { min: 48, max: 713 },     // Nvl 1 -> 60
       subStat: { name: "DEF %", min: "16%", max: "40%" } // Nvl 1 -> 60
     },
     effect: {
-      title: "Hogar de Ensueño",
-      description: "Aumenta el ATK de todo el equipo tras usar una Definitiva. Recupera energía al cambiar.",
+      title: "Épica de la Marea Lunar",
+      description: "La Regeneración de Energía del portador aumenta en 0.4/s. Cuando el portador activa un (Velo Etéreo) o extiende su duración, todos los miembros del escuadrón ganan un 25% de DAÑO aumentado y un 15% de PV Máx aumentados por 45s. Las activaciones repetidas reinician la duración. Solo puede existir una instancia de este efecto en el mismo escuadrón.",
+      refinements: [ // Tabla de Mejora (R1 - R5)
+        { level: 1, Energia: "0.4/s", Daño: "25%", PVMax: "15%" },
+        { level: 2, Energia: "0.46/s", Daño: "28.8%", PVMax: "17.3%" },
+        { level: 3, Energia: "0.52/s", Daño: "32.5%", PVMax: "19.5%" },
+        { level: 4, Energia: "0.58/s", Daño: "36.3%", PVMax: "21.8%" },
+        { level: 5, Energia: "0.64/s", Daño: "40%", PVMax: "24%" }
+      ]
     },
     image: "/CodiceZero/Armas/Soporte/W-Engine_Dreamlit_Hearth.webp"
   },
@@ -1536,11 +1543,11 @@ export const weapons = [
     rank: "S",
     rol: "Soporte",
     detailStats: {
-      baseAtk: { min: 42, max: 624 },     // Nvl 1 -> 60
-      subStat: { name: "DEF %", min: "16%", max: "40%" } // Nvl 1 -> 60
+      baseAtk: { min: 48, max: 713 },     // Nvl 1 -> 60
+      subStat: { name: "HP %", min: "12%", max: "30%" } // Nvl 1 -> 60
     },
     effect: {
-      title: "Vanidad Elegante",
+      title: "Épica de la Marea Lunar",
       description: "Al esquivar, aumenta la recuperación de energía de todo el equipo.",
     },
     image: "/CodiceZero/Armas/Soporte/W-Engine_Elegant_Vanity.webp"
