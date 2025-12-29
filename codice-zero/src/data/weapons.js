@@ -1678,11 +1678,18 @@ export const weapons = [
     rol: "Soporte",
     detailStats: {
       baseAtk: { min: 42, max: 624 },     // Nvl 1 -> 60
-      subStat: { name: "DEF %", min: "16%", max: "40%" } // Nvl 1 -> 60
+      subStat: { name: "ATK %", min: "10%", max: "25%" } // Nvl 1 -> 60
     },
     effect: {
-      title: "Demonio Tímido",
-      description: "Al usar Especial EX, aumenta el ATK de todo el equipo.",
+      title: "Rostro de Avaricia",
+      description: "Aumenta el Daño de Hielo en un 15%. Al lanzar una (Técnica Especial EX), el ATK de todos los miembros del escuadrón aumenta en un 2% por 12s, acumulándose hasta 4 veces. Las activaciones repetidas reinician la duración. Los efectos pasivos del mismo nombre no se acumulan.",
+      refinements: [ // Tabla de Mejora (R1 - R5)
+        { level: 1, DañoHielo: "15%", ATK: "2%" },
+        { level: 2, DañoHielo: "17.5%", ATK: "2.3%" },
+        { level: 3, DañoHielo: "20%", ATK: "2.6%" },
+        { level: 4, DañoHielo: "22%", ATK: "2.9%" },
+        { level: 5, DañoHielo: "24%", ATK: "3.2%" }
+      ]
     },
     image: "/CodiceZero/Armas/Soporte/W-Engine_Bashful_Demon.webp"
   },
