@@ -1662,11 +1662,11 @@ export const weapons = [
       title: "¡Di patata!",
       description: "El (Contraataque de Evasión), (Técnica Especial EX), (Ataque de Asistencia) o (Ataque en Cadena) de cualquier miembro del escuadrón genera respectivamente 20/25/30/35 más de Decibelios y genera 0.7 de Energía para el portador. Este efecto puede activarse una vez cada 12s. El tiempo de espera para cada tipo de ataque es independiente de los otros. Los efectos pasivos del mismo nombre no se acumulan.",
       refinements: [ // Tabla de Mejora (R1 - R5)
-        { level: 1, Decibelios: "20", Decibelios: "25", Decibelios: "30", Decibelios: "35", Energia: "0.7" },
-        { level: 2, Decibelios: "23", Decibelios: "28.5", Decibelios: "34.5", Decibelios: "40.5", Energia: "0.8" },
-        { level: 3, Decibelios: "26", Decibelios: "32", Decibelios: "39", Decibelios: "45", Energia: "0.9" },
-        { level: 4, Decibelios: "29", Decibelios: "35.5", Decibelios: "43.5", Decibelios: "50", Energia: "1" },
-        { level: 5, Decibelios: "32", Decibelios: "40", Decibelios: "48", Decibelios: "55", Energia: "1.1" }
+        { level: 1, Decibelios1: "20", Decibelios2: "25", Decibelios3: "30", Decibelios4: "35", Energia: "0.7" },
+        { level: 2, Decibelios1: "23", Decibelios2: "28.5", Decibelios3: "34.5", Decibelios4: "40.5", Energia: "0.8" },
+        { level: 3, Decibelios1: "26", Decibelios2: "32", Decibelios3: "39", Decibelios4: "45", Energia: "0.9" },
+        { level: 4, Decibelios1: "29", Decibelios2: "35.5", Decibelios3: "43.5", Decibelios4: "50", Energia: "1" },
+        { level: 5, Decibelios1: "32", Decibelios2: "40", Decibelios3: "48", Decibelios4: "55", Energia: "1.1" }
       ]
     },
     image: "/CodiceZero/Armas/Soporte/W-Engine_Slice_of_Time.webp"
