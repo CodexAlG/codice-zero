@@ -27,50 +27,57 @@ const SidebarNav = () => {
   const scrollToSection = (id) => {
     const element = document.getElementById(id);
     if (element) {
-      const offset = 120; // Ajuste para cabecera
-      const elementPosition = element.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.pageYOffset - offset;
+      // Cálculo preciso del offset para el scroll
+      const yCoordinate = element.getBoundingClientRect().top + window.pageYOffset;
+      const yOffset = -100; // Margen superior para que no quede pegado
 
       window.scrollTo({
-        top: offsetPosition,
-        behavior: "smooth"
+        top: yCoordinate + yOffset,
+        behavior: 'smooth'
       });
     }
   };
 
   useEffect(() => {
     const handleScroll = () => {
-      const scrollPosition = window.scrollY;
-      const offset = 300; // Margen para considerar que ya entraste en la sección
+      // Línea de lectura (donde miran los ojos del usuario, aprox 30% desde arriba)
+      const buffer = window.innerHeight * 0.3;
 
-      let currentSection = 'stats'; // Default
+      let current = '';
 
-      // Recorrer de arriba a abajo. La última sección que cumpla la condición será la activa.
-      navItems.forEach((item) => {
+      // Iterar secciones
+      for (const item of navItems) {
         const element = document.getElementById(item.id);
         if (element) {
-          // Si hemos scrolleado más allá del inicio de esta sección (menos un margen)
-          if (scrollPosition >= element.offsetTop - offset) {
-            currentSection = item.id;
+          const rect = element.getBoundingClientRect();
+          // Si el tope del elemento está por encima de la línea de lectura, es un candidato
+          // (significa que ya empezamos a ver esta sección o estamos dentro de ella)
+          if (rect.top <= buffer) {
+            current = item.id;
           }
         }
-      });
-
-      // Control especial para el final de página (si llegamos al fondo, activar el último sí o sí)
-      if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 50) {
-        currentSection = navItems[navItems.length - 1].id;
       }
 
-      setActiveSection(currentSection);
+      // Si estamos al final de la página, forzar el último
+      if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 50) {
+        current = navItems[navItems.length - 1].id;
+      }
+
+      // Si no hay ninguno (estamos muy arriba), default a stats
+      if (!current) current = 'stats';
+
+      setActiveSection(current);
     };
 
     window.addEventListener('scroll', handleScroll);
-    handleScroll(); // Check inicial
+    // Ejecutar inmediatamente para setear estado inicial correcto
+    handleScroll();
+
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   return (
-    <div className="fixed left-8 top-1/2 -translate-y-1/2 z-50 hidden 2xl:flex flex-col gap-6">
+    <div className="fixed left-8 top-1/2 -translate-y-1/2 z-50 hidden 2xl:flex flex-col gap-6 pointer-events-auto">
       {/* Línea guía vertical */}
       <div className="absolute left-[7px] top-0 bottom-0 w-[2px] bg-white/5 rounded-full"></div>
 
@@ -81,7 +88,7 @@ const SidebarNav = () => {
           <button
             key={item.id}
             onClick={() => scrollToSection(item.id)}
-            className="group flex items-center gap-4 text-left transition-all relative"
+            className="group flex items-center gap-4 text-left transition-all relative cursor-pointer"
           >
             {/* Indicador (Punto) */}
             <div
