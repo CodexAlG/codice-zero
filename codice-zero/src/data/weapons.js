@@ -1612,11 +1612,18 @@ export const weapons = [
     rol: "Soporte",
     detailStats: {
       baseAtk: { min: 42, max: 624 },     // Nvl 1 -> 60
-      subStat: { name: "DEF %", min: "16%", max: "40%" } // Nvl 1 -> 60
+      subStat: { name: "Recuperación de Energía", min: "20%", max: "50%" } // Nvl 1 -> 60
     },
     effect: {
-      title: "La Bóveda",
-      description: "Al infligir daño Etéreo, aumenta el daño del equipo contra ese objetivo y regenera energía.",
+      title: "Amante del Dinero",
+      description: "Infligir Daño Etéreo usando una (Técnica Especial EX), (Ataque en Cadena) o (Definitiva) aumenta el DAÑO de todas las unidades contra el objetivo en un 15% y aumenta la Recuperación de Energía del portador en 0.5/s por 2s. Los efectos pasivos del mismo nombre no se acumulan.",
+      refinements: [ // Tabla de Mejora (R1 - R5)
+        { level: 1, Energia: "0.5/s", Daño: "15%" },
+        { level: 2, Energia: "0.58/s", Daño: "17.5%" },
+        { level: 3, Energia: "0.65/s", Daño: "20%" },
+        { level: 4, Energia: "0.72/s", Daño: "22%" },
+        { level: 5, Energia: "0.8/s", Daño: "24%" }
+      ]
     },
     image: "/CodiceZero/Armas/Soporte/W-Engine_The_Vault.webp"
   },
