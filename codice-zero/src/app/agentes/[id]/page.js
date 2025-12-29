@@ -30,13 +30,22 @@ const SidebarNav = ({ agentId }) => {
     isManualScrolling.current = true;
     setActiveSection(id); // Feedback instantáneo
 
-    // 2. Ejecutar Scroll
+    // 2. Ejecutar Scroll con posicionamiento preciso
     if (id === 'stats') {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      // Para estadísticas: ir al inicio absoluto de la página
+      window.scrollTo(0, 0);
+      // Fallback con smooth por si el anterior no se nota
+      setTimeout(() => window.scrollTo({ top: 0, behavior: 'smooth' }), 10);
     } else {
       const element = document.getElementById(id);
       if (element) {
-        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        // Calcular posición absoluta y restar offset para el header
+        const elementTop = element.getBoundingClientRect().top + window.pageYOffset;
+        const offset = 80; // Espacio para el header fijo
+        window.scrollTo({
+          top: elementTop - offset,
+          behavior: 'smooth'
+        });
       }
     }
 
