@@ -30,45 +30,47 @@ const SidebarNav = ({ agentId }) => {
     isManualScrolling.current = true;
     setActiveSection(id); // Feedback instantáneo
 
-    // 2. Ejecutar Scroll con posicionamiento preciso
+    // 2. Obtener el contenedor scrollable (main element del layout)
+    const scrollContainer = document.querySelector('main');
+
+    // 3. Ejecutar Scroll
     if (id === 'stats') {
-      // Para estadísticas: ir al inicio absoluto de la página
-      window.scrollTo(0, 0);
-      // Fallback con smooth por si el anterior no se nota
-      setTimeout(() => window.scrollTo({ top: 0, behavior: 'smooth' }), 10);
+      // Para estadísticas: ir al inicio del contenedor
+      if (scrollContainer) {
+        scrollContainer.scrollTo({ top: 0, behavior: 'smooth' });
+      }
     } else {
       const element = document.getElementById(id);
       if (element) {
-        // Calcular posición absoluta y restar offset para el header
-        const elementTop = element.getBoundingClientRect().top + window.pageYOffset;
-        const offset = 80; // Espacio para el header fijo
-        window.scrollTo({
-          top: elementTop - offset,
-          behavior: 'smooth'
-        });
+        // scrollIntoView funciona con cualquier contenedor scrollable
+        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
       }
     }
 
-    // 3. Desbloquear Spy después de la animación (aprox 1s)
+    // 4. Desbloquear Spy después de la animación (aprox 1s)
     setTimeout(() => {
       isManualScrolling.current = false;
     }, 1000);
   };
 
   useEffect(() => {
+    // El contenedor scrollable es 'main', no 'window'
+    const scrollContainer = document.querySelector('main');
+    if (!scrollContainer) return;
+
     const handleScroll = () => {
-      // Si el usuario acaba de hacer click, ignorar el spy temporalmente para evitar saltos
+      // Si el usuario acaba de hacer click, ignorar el spy temporalmente
       if (isManualScrolling.current) return;
 
-      const scrollY = window.scrollY;
+      const scrollTop = scrollContainer.scrollTop;
 
       // Protección de inicio
-      if (scrollY < 100) {
-        if (activeSection !== 'stats') setActiveSection('stats');
+      if (scrollTop < 100) {
+        setActiveSection('stats');
         return;
       }
 
-      // Umbral visual: Centro de la pantalla (más robusto)
+      // Umbral visual: 50% desde la parte superior de la pantalla
       const threshold = window.innerHeight * 0.5;
       let current = 'stats';
 
@@ -86,12 +88,12 @@ const SidebarNav = ({ agentId }) => {
       setActiveSection(current);
     };
 
-    window.addEventListener('scroll', handleScroll, { passive: true });
+    scrollContainer.addEventListener('scroll', handleScroll, { passive: true });
     // Check inicial
     handleScroll();
 
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []); // Sin dependencia en activeSection para no recrear listener
+    return () => scrollContainer.removeEventListener('scroll', handleScroll);
+  }, []);
 
   return (
     <div className="fixed left-8 top-1/2 -translate-y-1/2 z-[9999] hidden 2xl:flex flex-col gap-6 pointer-events-auto">
