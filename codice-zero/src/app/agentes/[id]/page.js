@@ -14,6 +14,51 @@ import SkillMaterials from '@/components/agents/SkillMaterials';
 import { replaceIcons } from '@/components/utils/TextWithIcons';
 import HighlightText from '@/components/ui/HighlightText'; // Import directly here
 
+const SidebarNav = () => {
+  const scrollToSection = (id) => {
+    const element = document.getElementById(id);
+    if (element) {
+      // Offset de 100px para que no quede pegado arriba o tapado por headers fijos si los hay
+      const y = element.getBoundingClientRect().top + window.scrollY - 100;
+      window.scrollTo({ top: y, behavior: 'smooth' });
+    }
+  };
+
+  const navItems = [
+    { id: 'stats', label: 'Estadísticas' },
+    { id: 'materials', label: 'Materiales' },
+    { id: 'skills', label: 'Habilidades' },
+    { id: 'mindscape', label: 'Mindscape' },
+  ];
+
+  return (
+    <div className="fixed left-6 top-1/2 -translate-y-1/2 z-50 hidden 2xl:flex flex-col gap-8">
+      {/* Línea decorativa vertical */}
+      <div className="absolute left-[5px] top-0 bottom-0 w-[1px] bg-gradient-to-b from-transparent via-white/10 to-transparent"></div>
+
+      <div className="flex flex-col gap-6 relative">
+        {navItems.map((item) => (
+          <button
+            key={item.id}
+            onClick={() => scrollToSection(item.id)}
+            className="group flex items-center gap-4 text-left transition-all pl-0"
+          >
+            {/* Punto indicador */}
+            <div className="w-2.5 h-2.5 bg-black border border-white/20 rounded-full group-hover:bg-yellow-400 group-hover:border-yellow-400 group-hover:scale-125 transition-all shadow-lg z-10 relative">
+              <div className="absolute inset-0 bg-yellow-400 rounded-full opacity-0 group-hover:animate-ping"></div>
+            </div>
+
+            {/* Etiqueta */}
+            <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-white/30 group-hover:text-white transition-colors duration-300 translate-x-[-10px] opacity-0 group-hover:opacity-100 group-hover:translate-x-0">
+              {item.label}
+            </span>
+          </button>
+        ))}
+      </div>
+    </div>
+  );
+};
+
 export default function AgentDetailPage() {
   const params = useParams();
   const router = useRouter();
@@ -290,6 +335,9 @@ export default function AgentDetailPage() {
   return (
     <div className="min-h-screen bg-[#0b0c15] text-white selection:bg-yellow-500/30">
 
+      {/* NAVEGACIÓN LATERAL FLOTANTE */}
+      <SidebarNav />
+
       {/* AVISO BETA (Top of Page) */}
       {agent.leak === "Beta" && (
         <div className="w-full bg-yellow-500/10 border-b border-yellow-500/20 py-2 px-4 text-center z-50 relative">
@@ -365,7 +413,7 @@ export default function AgentDetailPage() {
           {/* Aviso Beta REMOVED from here */}
 
           {/* Panel de Estadísticas Estilo "Hakush" (Tarjeta Oscura con Datos) */}
-          <div className="bg-[#0a0a0a]/80 backdrop-blur-md border border-white/10 rounded-xl p-4 shadow-2xl relative overflow-hidden group max-w-[480px] mx-auto lg:mr-0">
+          <div id="stats" className="bg-[#0a0a0a]/80 backdrop-blur-md border border-white/10 rounded-xl p-4 shadow-2xl relative overflow-hidden group max-w-[480px] mx-auto lg:mr-0">
             <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-white/5 to-transparent rounded-full -translate-y-1/2 translate-x-1/2 blur-2xl pointer-events-none"></div>
 
             {/* Sub-Header: Materiales REMOVED */}
@@ -402,7 +450,7 @@ export default function AgentDetailPage() {
 
       {/* 2. SECCIÓN INTERMEDIA: MATERIALES (Grid 2 Columnas) */}
       {/* 2. SECCIÓN INTERMEDIA: MATERIALES (Flex Centrado) */}
-      <div className="relative w-full max-w-[1600px] mx-auto p-4 lg:p-8 pb-0 pt-8">
+      <div id="materials" className="relative w-full max-w-[1600px] mx-auto p-4 lg:p-8 pb-0 pt-8">
         <div className="flex flex-col lg:flex-row justify-center items-start gap-12 lg:gap-24">
 
           {/* Bloque 1: Ascensión (Alineado a la derecha hacia el centro) */}
@@ -425,7 +473,7 @@ export default function AgentDetailPage() {
       </div>
 
       {/* 3. SECCIÓN INFERIOR: HABILIDADES (Grid 2 Columnas) */}
-      <div className="relative w-full max-w-[1400px] mx-auto p-4 lg:p-12 pt-12 lg:pt-8">
+      <div id="skills" className="relative w-full max-w-[1400px] mx-auto p-4 lg:p-12 pt-12 lg:pt-8">
 
         {/* Section Title */}
         <div className="flex items-center gap-4 mb-12">
@@ -454,7 +502,7 @@ export default function AgentDetailPage() {
         )}
 
         {/* MINDSCAPES (Full Width) */}
-        <div className="mt-8 pt-8 border-t border-white/10">
+        <div id="mindscape" className="mt-8 pt-8 border-t border-white/10">
           <h2 className="text-2xl font-display italic font-bold text-center tracking-widest mb-8">MINDSCAPE CINEMA</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {(details?.skills || []).filter(s => {
