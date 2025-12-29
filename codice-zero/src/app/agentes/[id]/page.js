@@ -25,15 +25,21 @@ const SidebarNav = ({ agentId }) => {
   ];
 
   const scrollToSection = (id) => {
+    // Caso especial: Estadísticas lleva al tope absoluto para ver el nombre
+    if (id === 'stats') {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      setActiveSection('stats');
+      return;
+    }
+
     const element = document.getElementById(id);
     if (element) {
-      // Intento 1: API Estándar (lo más robusto para contenedores anidados)
-      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-
-      // Fallback manual (por si el scroll es en window y scrollIntoView falla visualmente)
-      // const top = element.getBoundingClientRect().top + window.pageYOffset;
-      // window.scrollTo({ top: top - 80, behavior: 'smooth' });
-
+      // Cálculo manual con offset generoso para que no quede pegado al header
+      const top = element.getBoundingClientRect().top + window.pageYOffset;
+      window.scrollTo({
+        top: top - 140, // 140px de margen superior
+        behavior: 'smooth'
+      });
       setActiveSection(id);
     }
   };
@@ -44,44 +50,58 @@ const SidebarNav = ({ agentId }) => {
     const handleScroll = () => {
       const scrollY = window.scrollY;
 
-      // 1. PROTECCIÓN DE INICIO ROBUSTA
-      // Si el scroll es pequeño, forzamos Stats y salimos.
+      // 1. PROTECCIÓN DE INICIO
       if (scrollY < 100) {
         setActiveSection('stats');
         return;
       }
 
-      // 2. DETECCIÓN DE SECCIÓN
-      // Umbral: 35% desde la parte superior de la pantalla
-      const threshold = window.innerHeight * 0.35;
+      // 2. DETECCIÓN POR RANGOS
+      // Definimos un offset de detección (punto de corte visual)
+      const detectOffset = window.innerHeight * 0.3; // 30% pantalla
+      const currentScroll = scrollY + detectOffset;
+
+      // Obtener posiciones actuales de todas las secciones
+      const positions = navItems.map(item => {
+        const el = document.getElementById(item.id);
+        return {
+          id: item.id,
+          top: el ? el.offsetTop : 0,
+          valid: !!el
+        };
+      }).filter(p => p.valid);
+
       let current = 'stats';
 
-      for (const item of navItems) {
-        const element = document.getElementById(item.id);
-        if (element) {
-          const rect = element.getBoundingClientRect();
-          // La sección activa es la última que haya cruzado (subido por encima de) el umbral
-          if (rect.top < threshold) {
-            current = item.id;
+      for (let i = 0; i < positions.length; i++) {
+        const section = positions[i];
+        const nextSection = positions[i + 1];
+
+        // ¿Estoy dentro de esta sección?
+        // (Scroll es mayor que el inicio de esta, y menor que el inicio de la siguiente)
+        if (currentScroll >= section.top) {
+          if (!nextSection || currentScroll < nextSection.top) {
+            current = section.id;
           }
         }
       }
 
-      // ELIMINADO: Detección de final de página automática (causaba bugs al cargar)
+      // Fallback final de página
+      if ((window.innerHeight + scrollY) >= document.body.offsetHeight - 50) {
+        current = 'mindscape';
+      }
 
       setActiveSection(current);
     };
 
-    // Debounce ligero para el evento scroll (opcional, pero bueno para rendimiento)
     const onScroll = () => {
       if (timeoutId) cancelAnimationFrame(timeoutId);
       timeoutId = requestAnimationFrame(handleScroll);
     };
 
     window.addEventListener('scroll', onScroll, { passive: true });
-
-    // Check inicial retardado para permitir renderizado
-    setTimeout(handleScroll, 500);
+    // Check inicial
+    timeoutId = requestAnimationFrame(handleScroll);
 
     return () => {
       window.removeEventListener('scroll', onScroll);
