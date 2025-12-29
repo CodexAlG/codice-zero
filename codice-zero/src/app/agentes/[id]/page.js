@@ -14,7 +14,7 @@ import SkillMaterials from '@/components/agents/SkillMaterials';
 import { replaceIcons } from '@/components/utils/TextWithIcons';
 import HighlightText from '@/components/ui/HighlightText'; // Import directly here
 
-const SidebarNav = () => {
+const SidebarNav = ({ agentId }) => {
   const [activeSection, setActiveSection] = useState('stats');
 
   const navItems = [
@@ -27,54 +27,55 @@ const SidebarNav = () => {
   const scrollToSection = (id) => {
     const element = document.getElementById(id);
     if (element) {
-      // Cálculo preciso del offset para el scroll
-      const yCoordinate = element.getBoundingClientRect().top + window.pageYOffset;
-      const yOffset = -100; // Margen superior para que no quede pegado
-
+      const top = element.getBoundingClientRect().top + window.pageYOffset;
       window.scrollTo({
-        top: yCoordinate + yOffset,
+        top: top - 100, // Offset para header
         behavior: 'smooth'
       });
+      // Actualizar manualmente para feedback instantáneo
+      setActiveSection(id);
     }
   };
 
   useEffect(() => {
     const handleScroll = () => {
-      // Línea de lectura (donde miran los ojos del usuario, aprox 30% desde arriba)
-      const buffer = window.innerHeight * 0.3;
+      const scrollY = window.scrollY;
 
-      let current = '';
+      // 1. PROTECCIÓN DE INICIO: Si estamos arriba, siempre es Stats.
+      if (scrollY < 150) {
+        if (activeSection !== 'stats') setActiveSection('stats');
+        return;
+      }
 
-      // Iterar secciones
+      // 2. DETECCIÓN DE SECCIÓN (Punto de mira en el tercio superior de la pantalla)
+      const lookAtLine = scrollY + (window.innerHeight * 0.3);
+      let current = 'stats';
+
+      // Iteramos secciones para ver cuál "posee" la línea de mira
       for (const item of navItems) {
         const element = document.getElementById(item.id);
         if (element) {
-          const rect = element.getBoundingClientRect();
-          // Si el tope del elemento está por encima de la línea de lectura, es un candidato
-          // (significa que ya empezamos a ver esta sección o estamos dentro de ella)
-          if (rect.top <= buffer) {
+          // Si la sección empieza antes de la línea de mira...
+          if (element.offsetTop <= lookAtLine) {
             current = item.id;
           }
         }
       }
 
-      // Si estamos al final de la página, forzar el último
-      if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 50) {
-        current = navItems[navItems.length - 1].id;
+      // 3. DETECCIÓN DE FINAL DE PÁGINA (Fallback para pantallas grandes o secciones cortas al final)
+      if ((window.innerHeight + scrollY) >= document.body.offsetHeight - 20) {
+        current = 'mindscape';
       }
-
-      // Si no hay ninguno (estamos muy arriba), default a stats
-      if (!current) current = 'stats';
 
       setActiveSection(current);
     };
 
-    window.addEventListener('scroll', handleScroll);
-    // Ejecutar inmediatamente para setear estado inicial correcto
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    // Llamada inicial
     handleScroll();
 
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, []); // Dependencias vacías para mount/unmount
 
   return (
     <div className="fixed left-8 top-1/2 -translate-y-1/2 z-50 hidden 2xl:flex flex-col gap-6 pointer-events-auto">
@@ -83,29 +84,29 @@ const SidebarNav = () => {
 
       {navItems.map((item) => {
         const isActive = activeSection === item.id;
-
         return (
           <button
             key={item.id}
             onClick={() => scrollToSection(item.id)}
-            className="group flex items-center gap-4 text-left transition-all relative cursor-pointer"
+            className="group flex items-center gap-4 text-left transition-all relative cursor-pointer outline-none"
+            aria-label={`Ir a sección ${item.label}`}
           >
             {/* Indicador (Punto) */}
             <div
               className={`
-                w-4 h-4 rounded-full border-2 transition-all duration-500 z-10 box-border
+                w-4 h-4 rounded-full border-2 transition-all duration-300 z-10 box-border
                 ${isActive
-                  ? 'bg-yellow-400 border-yellow-400 scale-125 shadow-[0_0_15px_rgba(250,204,21,0.6)]'
+                  ? 'bg-yellow-400 border-yellow-400 scale-110 shadow-[0_0_15px_rgba(250,204,21,0.5)]'
                   : 'bg-[#0b0c15] border-white/20 group-hover:border-white/60'}
               `}
             >
-              {isActive && <div className="absolute inset-0 rounded-full animate-ping bg-yellow-400/50"></div>}
+              {isActive && <div className="absolute inset-0 rounded-full bg-yellow-400 opacity-50 animate-ping"></div>}
             </div>
 
             {/* Texto (Siempre visible) */}
             <span
               className={`
-                text-xs font-bold tracking-[0.15em] transition-all duration-300
+                text-[10px] font-bold tracking-[0.2em] transition-all duration-300 uppercase
                 ${isActive
                   ? 'text-yellow-400 translate-x-1'
                   : 'text-white/30 group-hover:text-white/70'}
