@@ -27,18 +27,14 @@ export default function LayoutWrapper({ children }) {
     if (!mainElement) return;
 
     const handleScroll = () => {
-      const currentScrollTop = mainElement.scrollTop;
-
-      // If scrolling down and past a threshold (e.g. 50px), hide navbar
-      if (currentScrollTop > lastScrollTopRef.current && currentScrollTop > 50) {
-        setNavbarVisible(false);
-      }
-      // If scrolling up, show navbar
-      else if (currentScrollTop < lastScrollTopRef.current) {
-        setNavbarVisible(true);
-      }
-
-      lastScrollTopRef.current = currentScrollTop;
+      // Navbar siempre visible según solicitud del usuario
+      // const currentScrollTop = mainElement.scrollTop;
+      // if (currentScrollTop > lastScrollTopRef.current && currentScrollTop > 50) {
+      //   setNavbarVisible(false);
+      // } else if (currentScrollTop < lastScrollTopRef.current) {
+      //   setNavbarVisible(true);
+      // }
+      // lastScrollTopRef.current = currentScrollTop;
     };
 
     mainElement.addEventListener('scroll', handleScroll);

@@ -16,6 +16,7 @@ import HighlightText from '@/components/ui/HighlightText'; // Import directly he
 
 const SidebarNav = ({ agentId }) => {
   const [activeSection, setActiveSection] = useState('stats');
+  const isManualScrolling = useRef(false);
 
   const navItems = [
     { id: 'stats', label: 'ESTADÍSTICAS' },
@@ -25,40 +26,48 @@ const SidebarNav = ({ agentId }) => {
   ];
 
   const scrollToSection = (id) => {
-    // FIX: Estadísticas lleva al tope para ver el nombre completo
+    // 1. Bloquear Spy temporalmente
+    isManualScrolling.current = true;
+    setActiveSection(id); // Feedback instantáneo
+
+    // 2. Ejecutar Scroll
     if (id === 'stats') {
       window.scrollTo({ top: 0, behavior: 'smooth' });
-      setActiveSection('stats');
-      return;
+    } else {
+      const element = document.getElementById(id);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
     }
 
-    const element = document.getElementById(id);
-    if (element) {
-      // Método robusto para los demás
-      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      setActiveSection(id);
-    }
+    // 3. Desbloquear Spy después de la animación (aprox 1s)
+    setTimeout(() => {
+      isManualScrolling.current = false;
+    }, 1000);
   };
 
   useEffect(() => {
     const handleScroll = () => {
+      // Si el usuario acaba de hacer click, ignorar el spy temporalmente para evitar saltos
+      if (isManualScrolling.current) return;
+
       const scrollY = window.scrollY;
 
-      // 1. Protección de inicio (evita que se marque Mindscape al cargar)
+      // Protección de inicio
       if (scrollY < 100) {
         if (activeSection !== 'stats') setActiveSection('stats');
         return;
       }
 
-      // 2. Lógica de Spy Simple y Robusta (Umbral visual)
-      const threshold = window.innerHeight * 0.4; // 40% de la pantalla
+      // Umbral visual: Centro de la pantalla (más robusto)
+      const threshold = window.innerHeight * 0.5;
       let current = 'stats';
 
       for (const item of navItems) {
         const element = document.getElementById(item.id);
         if (element) {
           const rect = element.getBoundingClientRect();
-          // Si el elemento ha subido y cruzado el umbral, es el candidato actual
+          // El elemento activo es el último cuyo inicio ha pasado el umbral
           if (rect.top < threshold) {
             current = item.id;
           }
@@ -69,11 +78,11 @@ const SidebarNav = ({ agentId }) => {
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
-    // Check inicial simple y diferido
-    setTimeout(handleScroll, 100);
+    // Check inicial
+    handleScroll();
 
     return () => window.removeEventListener('scroll', handleScroll);
-  }, [activeSection]); // Dependencia para actualizar si cambia externamente
+  }, []); // Sin dependencia en activeSection para no recrear listener
 
   return (
     <div className="fixed left-8 top-1/2 -translate-y-1/2 z-[9999] hidden 2xl:flex flex-col gap-6 pointer-events-auto">
