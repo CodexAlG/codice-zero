@@ -27,44 +27,66 @@ const SidebarNav = ({ agentId }) => {
   const scrollToSection = (id) => {
     const element = document.getElementById(id);
     if (element) {
-      const top = element.getBoundingClientRect().top + window.pageYOffset;
-      window.scrollTo({
-        top: top - 80, // Offset para header
-        behavior: 'smooth'
-      });
+      // Intento 1: API Estándar (lo más robusto para contenedores anidados)
+      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+      // Fallback manual (por si el scroll es en window y scrollIntoView falla visualmente)
+      // const top = element.getBoundingClientRect().top + window.pageYOffset;
+      // window.scrollTo({ top: top - 80, behavior: 'smooth' });
+
       setActiveSection(id);
     }
   };
 
   useEffect(() => {
+    let timeoutId;
+
     const handleScroll = () => {
-      // Umbral: 40% desde la parte superior de la pantalla
-      const threshold = window.innerHeight * 0.4;
+      const scrollY = window.scrollY;
+
+      // 1. PROTECCIÓN DE INICIO ROBUSTA
+      // Si el scroll es pequeño, forzamos Stats y salimos.
+      if (scrollY < 100) {
+        setActiveSection('stats');
+        return;
+      }
+
+      // 2. DETECCIÓN DE SECCIÓN
+      // Umbral: 35% desde la parte superior de la pantalla
+      const threshold = window.innerHeight * 0.35;
       let current = 'stats';
 
       for (const item of navItems) {
         const element = document.getElementById(item.id);
         if (element) {
           const rect = element.getBoundingClientRect();
-          // Si el elemento ha subido lo suficiente para cruzar el umbral
+          // La sección activa es la última que haya cruzado (subido por encima de) el umbral
           if (rect.top < threshold) {
             current = item.id;
           }
         }
       }
 
-      // Chequeo especial para el fondo de la página
-      if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 50) {
-        current = 'mindscape';
-      }
+      // ELIMINADO: Detección de final de página automática (causaba bugs al cargar)
 
       setActiveSection(current);
     };
 
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    handleScroll(); // Init
+    // Debounce ligero para el evento scroll (opcional, pero bueno para rendimiento)
+    const onScroll = () => {
+      if (timeoutId) cancelAnimationFrame(timeoutId);
+      timeoutId = requestAnimationFrame(handleScroll);
+    };
 
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', onScroll, { passive: true });
+
+    // Check inicial retardado para permitir renderizado
+    setTimeout(handleScroll, 500);
+
+    return () => {
+      window.removeEventListener('scroll', onScroll);
+      if (timeoutId) cancelAnimationFrame(timeoutId);
+    };
   }, []);
 
   return (
