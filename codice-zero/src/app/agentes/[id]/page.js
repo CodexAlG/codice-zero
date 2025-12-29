@@ -25,7 +25,7 @@ const SidebarNav = ({ agentId }) => {
   ];
 
   const scrollToSection = (id) => {
-    // Caso especial: Estadísticas lleva al tope absoluto para ver el nombre
+    // FIX: Estadísticas lleva al tope para ver el nombre completo
     if (id === 'stats') {
       window.scrollTo({ top: 0, behavior: 'smooth' });
       setActiveSection('stats');
@@ -34,80 +34,46 @@ const SidebarNav = ({ agentId }) => {
 
     const element = document.getElementById(id);
     if (element) {
-      // Cálculo manual con offset generoso para que no quede pegado al header
-      const top = element.getBoundingClientRect().top + window.pageYOffset;
-      window.scrollTo({
-        top: top - 140, // 140px de margen superior
-        behavior: 'smooth'
-      });
+      // Método robusto para los demás
+      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
       setActiveSection(id);
     }
   };
 
   useEffect(() => {
-    let timeoutId;
-
     const handleScroll = () => {
       const scrollY = window.scrollY;
 
-      // 1. PROTECCIÓN DE INICIO
+      // 1. Protección de inicio (evita que se marque Mindscape al cargar)
       if (scrollY < 100) {
-        setActiveSection('stats');
+        if (activeSection !== 'stats') setActiveSection('stats');
         return;
       }
 
-      // 2. DETECCIÓN POR RANGOS
-      // Definimos un offset de detección (punto de corte visual)
-      const detectOffset = window.innerHeight * 0.3; // 30% pantalla
-      const currentScroll = scrollY + detectOffset;
-
-      // Obtener posiciones actuales de todas las secciones
-      const positions = navItems.map(item => {
-        const el = document.getElementById(item.id);
-        return {
-          id: item.id,
-          top: el ? el.offsetTop : 0,
-          valid: !!el
-        };
-      }).filter(p => p.valid);
-
+      // 2. Lógica de Spy Simple y Robusta (Umbral visual)
+      const threshold = window.innerHeight * 0.4; // 40% de la pantalla
       let current = 'stats';
 
-      for (let i = 0; i < positions.length; i++) {
-        const section = positions[i];
-        const nextSection = positions[i + 1];
-
-        // ¿Estoy dentro de esta sección?
-        // (Scroll es mayor que el inicio de esta, y menor que el inicio de la siguiente)
-        if (currentScroll >= section.top) {
-          if (!nextSection || currentScroll < nextSection.top) {
-            current = section.id;
+      for (const item of navItems) {
+        const element = document.getElementById(item.id);
+        if (element) {
+          const rect = element.getBoundingClientRect();
+          // Si el elemento ha subido y cruzado el umbral, es el candidato actual
+          if (rect.top < threshold) {
+            current = item.id;
           }
         }
-      }
-
-      // Fallback final de página
-      if ((window.innerHeight + scrollY) >= document.body.offsetHeight - 50) {
-        current = 'mindscape';
       }
 
       setActiveSection(current);
     };
 
-    const onScroll = () => {
-      if (timeoutId) cancelAnimationFrame(timeoutId);
-      timeoutId = requestAnimationFrame(handleScroll);
-    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    // Check inicial simple y diferido
+    setTimeout(handleScroll, 100);
 
-    window.addEventListener('scroll', onScroll, { passive: true });
-    // Check inicial
-    timeoutId = requestAnimationFrame(handleScroll);
-
-    return () => {
-      window.removeEventListener('scroll', onScroll);
-      if (timeoutId) cancelAnimationFrame(timeoutId);
-    };
-  }, []);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [activeSection]); // Dependencia para actualizar si cambia externamente
 
   return (
     <div className="fixed left-8 top-1/2 -translate-y-1/2 z-[9999] hidden 2xl:flex flex-col gap-6 pointer-events-auto">
