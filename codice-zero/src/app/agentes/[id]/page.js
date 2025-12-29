@@ -29,41 +29,32 @@ const SidebarNav = ({ agentId }) => {
     if (element) {
       const top = element.getBoundingClientRect().top + window.pageYOffset;
       window.scrollTo({
-        top: top - 100, // Offset para header
+        top: top - 80, // Offset para header
         behavior: 'smooth'
       });
-      // Actualizar manualmente para feedback instantáneo
       setActiveSection(id);
     }
   };
 
   useEffect(() => {
     const handleScroll = () => {
-      const scrollY = window.scrollY;
-
-      // 1. PROTECCIÓN DE INICIO: Si estamos arriba, siempre es Stats.
-      if (scrollY < 150) {
-        if (activeSection !== 'stats') setActiveSection('stats');
-        return;
-      }
-
-      // 2. DETECCIÓN DE SECCIÓN (Punto de mira en el tercio superior de la pantalla)
-      const lookAtLine = scrollY + (window.innerHeight * 0.3);
+      // Umbral: 40% desde la parte superior de la pantalla
+      const threshold = window.innerHeight * 0.4;
       let current = 'stats';
 
-      // Iteramos secciones para ver cuál "posee" la línea de mira
       for (const item of navItems) {
         const element = document.getElementById(item.id);
         if (element) {
-          // Si la sección empieza antes de la línea de mira...
-          if (element.offsetTop <= lookAtLine) {
+          const rect = element.getBoundingClientRect();
+          // Si el elemento ha subido lo suficiente para cruzar el umbral
+          if (rect.top < threshold) {
             current = item.id;
           }
         }
       }
 
-      // 3. DETECCIÓN DE FINAL DE PÁGINA (Fallback para pantallas grandes o secciones cortas al final)
-      if ((window.innerHeight + scrollY) >= document.body.offsetHeight - 20) {
+      // Chequeo especial para el fondo de la página
+      if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 50) {
         current = 'mindscape';
       }
 
@@ -71,14 +62,13 @@ const SidebarNav = ({ agentId }) => {
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
-    // Llamada inicial
-    handleScroll();
+    handleScroll(); // Init
 
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []); // Dependencias vacías para mount/unmount
+  }, []);
 
   return (
-    <div className="fixed left-8 top-1/2 -translate-y-1/2 z-50 hidden 2xl:flex flex-col gap-6 pointer-events-auto">
+    <div className="fixed left-8 top-1/2 -translate-y-1/2 z-[9999] hidden 2xl:flex flex-col gap-6 pointer-events-auto">
       {/* Línea guía vertical */}
       <div className="absolute left-[7px] top-0 bottom-0 w-[2px] bg-white/5 rounded-full"></div>
 
