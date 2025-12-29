@@ -163,7 +163,7 @@ export default function ArmasPage() {
         <div className="w-full max-w-7xl mx-auto">
           <motion.div
             layout
-            className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8 xl:grid-cols-9 gap-3 justify-center transition-none"
+            className="flex flex-wrap justify-center gap-4 content-start transition-none"
             style={{ minHeight: '80vh' }}
           >
             <AnimatePresence mode="popLayout">
@@ -171,6 +171,7 @@ export default function ArmasPage() {
                 <Link key={weapon.id} href={`/armas/${weapon.id}`}>
                   <motion.div
                     layout // Animación suave de movimiento
+                    className="w-[29%] sm:w-[140px] md:w-[150px] lg:w-[160px]"
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
