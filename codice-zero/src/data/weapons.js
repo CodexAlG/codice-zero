@@ -1544,11 +1544,18 @@ export const weapons = [
     rol: "Soporte",
     detailStats: {
       baseAtk: { min: 48, max: 713 },     // Nvl 1 -> 60
-      subStat: { name: "HP %", min: "12%", max: "30%" } // Nvl 1 -> 60
+      subStat: { name: "ATK %", min: "12%", max: "30%" } // Nvl 1 -> 60
     },
     effect: {
-      title: "Épica de la Marea Lunar",
-      description: "Al esquivar, aumenta la recuperación de energía de todo el equipo.",
+      title: "Belleza Indescriptible",
+      description: "Cuando cualquier miembro del escuadrón entra al campo a través de una (Asistencia Rápida), (Ataque en Cadena), (Asistencia Defensiva) o (Asistencia Evasiva), el portador gana 5 de Energía. Este efecto puede activarse una vez cada 5s. Cuando el portador consume 25 o más de Energía, el DAÑO infligido por todos los miembros del escuadrón aumenta en un 10%, acumulándose hasta 2 veces y durando 20s. Las activaciones repetidas reinician la duración. Solo puede existir una instancia de este efecto en el mismo escuadrón.",
+      refinements: [ // Tabla de Mejora (R1 - R5)
+        { level: 1, Energia: "5", Daño: "10%" },
+        { level: 2, Energia: "5.5", Daño: "11.5%" },
+        { level: 3, Energia: "6", Daño: "13%" },
+        { level: 4, Energia: "6.5", Daño: "14.5%" },
+        { level: 5, Energia: "7", Daño: "16%" }
+      ]
     },
     image: "/CodiceZero/Armas/Soporte/W-Engine_Elegant_Vanity.webp"
   },
