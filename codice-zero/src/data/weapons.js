@@ -1499,12 +1499,19 @@ export const weapons = [
     rank: "S",
     rol: "Soporte",
     detailStats: {
-      baseAtk: { min: 42, max: 624 },     // Nvl 1 -> 60
-      subStat: { name: "DEF %", min: "16%", max: "40%" } // Nvl 1 -> 60
+      baseAtk: { min: 46, max: 684 },     // Nvl 1 -> 60
+      subStat: { name: "Tasa de Perforación", min: "9.6%", max: "24%" } // Nvl 1 -> 60
     },
     effect: {
-      title: "Cuna de Lágrimas",
-      description: "Mientras está en reserva, la recuperación de energía aumenta. Al atacar, aumenta el daño elemental del equipo.",
+      title: "Castigo",
+      description: "Mientras está fuera del campo, la Regeneración de Energía del portador aumenta en 0.6/s. Los ataques del portador aumentan el DAÑO de todas las unidades contra un objetivo golpeado en un 10% por 3s. Durante este periodo, este efecto aumenta adicionalmente en un 1.7% cada 0.5s, hasta un aumento adicional máximo del 10.2%. Las activaciones repetidas solo reinician la duración sin reiniciar el efecto de aumento de DAÑO. Los efectos pasivos del mismo nombre no se acumulan.",
+      refinements: [ // Tabla de Mejora (R1 - R5)
+        { level: 1, Energia: "0.6/s", Daño: "10%", Adicional: "1.7%", Maximo: "10.2%" },
+        { level: 2, Energia: "0.75/s", Daño: "12.5%", Adicional: "2%", Maximo: "12%" },
+        { level: 3, Energia: "0.9/s", Daño: "15%", Adicional: "2.5%", Maximo: "15%" },
+        { level: 4, Energia: "1.05/s", Daño: "17.5%", Adicional: "3%", Maximo: "18%" },
+        { level: 5, Energia: "1.2/s", Daño: "20%", Adicional: "3.3%", Maximo: "19.8%" }
+      ]
     },
     image: "/CodiceZero/Armas/Soporte/W-Engine_Weeping_Cradle.webp"
   },
