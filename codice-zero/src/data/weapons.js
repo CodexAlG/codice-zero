@@ -1724,12 +1724,19 @@ export const weapons = [
     rank: "B",
     rol: "Soporte",
     detailStats: {
-      baseAtk: { min: 42, max: 624 },     // Nvl 1 -> 60
-      subStat: { name: "DEF %", min: "16%", max: "40%" } // Nvl 1 -> 60
+      baseAtk: { min: 32, max: 475 },     // Nvl 1 -> 60
+      subStat: { name: "Recuperación de Energía", min: "16%", max: "40%" } // Nvl 1 -> 60
     },
     effect: {
-      title: "Reverberación - Modelo II",
-      description: "Aumenta la energía obtenida por ataques básicos.",
+      title: "Olas Rugientes",
+      description: "Al lanzar una (Técnica Especial EX) o un (Ataque en Cadena), la Tasa de Anomalía y la Maestría de Anomalía de todos los miembros del escuadrón aumentan en 10 por 10s. Este efecto puede activarse una vez cada 20s. Los efectos pasivos del mismo nombre no se acumulan.",
+      refinements: [ // Tabla de Mejora (R1 - R5)
+        { level: 1, Anomalia: "10" },
+        { level: 2, Anomalia: "12" },
+        { level: 3, Anomalia: "13" },
+        { level: 4, Anomalia: "15" },
+        { level: 5, Anomalia: "16" }
+      ]
     },
     image: "/CodiceZero/Armas/Soporte/W-Engine_(Reverb)_Mark_II.webp"
   },
@@ -1739,12 +1746,19 @@ export const weapons = [
     rank: "B",
     rol: "Soporte",
     detailStats: {
-      baseAtk: { min: 42, max: 624 },     // Nvl 1 -> 60
-      subStat: { name: "DEF %", min: "16%", max: "40%" } // Nvl 1 -> 60
+      baseAtk: { min: 32, max: 475 },     // Nvl 1 -> 60
+      subStat: { name: "HP %", min: "8%", max: "20%" } // Nvl 1 -> 60
     },
     effect: {
-      title: "Reverberación - Modelo III",
-      description: "Aumenta la energía obtenida por ataques especiales.",
+      title: "Sonido Atronador",
+      description: "Lanzar un (Ataque en Cadena) o (Definitiva) aumenta el ATK de todos los miembros del escuadrón en un 8% por 10s. Este efecto puede activarse una vez cada 20s. Los efectos pasivos del mismo nombre no se acumulan.",
+      refinements: [ // Tabla de Mejora (R1 - R5)
+        { level: 1, ATK: "8%" },
+        { level: 2, ATK: "9%" },
+        { level: 3, ATK: "10%" },
+        { level: 4, ATK: "11%" },
+        { level: 5, ATK: "12%" }
+      ]
     },
     image: "/CodiceZero/Armas/Soporte/W-Engine_(Reverb)_Mark_III.webp"
   },
