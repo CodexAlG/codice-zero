@@ -65,7 +65,7 @@ export default function WeaponDetail({ params }) {
     // PASO 2: Reemplazar valores base por placeholders (evita conflictos)
     replacements.forEach(({ baseVal, placeholder }) => {
       const escapedBaseVal = baseVal.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-      const regex = new RegExp(`(?<!\\d)${escapedBaseVal}(?!\\d)`, 'g');
+      const regex = new RegExp(`(?<!\\d)${escapedBaseVal}(?!\\d)`); // Sin flag 'g' para reemplazar solo la primera ocurrencia por key
       desc = desc.replace(regex, placeholder);
     });
 
