@@ -15,46 +15,88 @@ import { replaceIcons } from '@/components/utils/TextWithIcons';
 import HighlightText from '@/components/ui/HighlightText'; // Import directly here
 
 const SidebarNav = () => {
+  const [activeSection, setActiveSection] = useState('');
+
+  const navItems = [
+    { id: 'stats', label: 'ESTADÍSTICAS' },
+    { id: 'materials', label: 'MATERIALES' },
+    { id: 'skills', label: 'HABILIDADES' },
+    { id: 'mindscape', label: 'MINDSCAPE' },
+  ];
+
   const scrollToSection = (id) => {
     const element = document.getElementById(id);
     if (element) {
-      // Offset de 100px para que no quede pegado arriba o tapado por headers fijos si los hay
       const y = element.getBoundingClientRect().top + window.scrollY - 100;
       window.scrollTo({ top: y, behavior: 'smooth' });
     }
   };
 
-  const navItems = [
-    { id: 'stats', label: 'Estadísticas' },
-    { id: 'materials', label: 'Materiales' },
-    { id: 'skills', label: 'Habilidades' },
-    { id: 'mindscape', label: 'Mindscape' },
-  ];
+  useEffect(() => {
+    const observerOptions = {
+      root: null,
+      rootMargin: '-20% 0px -60% 0px', // Activa la sección cuando está en el centro-arriba de la pantalla
+      threshold: 0
+    };
+
+    const observerCallback = (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          setActiveSection(entry.target.id);
+        }
+      });
+    };
+
+    const observer = new IntersectionObserver(observerCallback, observerOptions);
+
+    navItems.forEach((item) => {
+      const element = document.getElementById(item.id);
+      if (element) observer.observe(element);
+    });
+
+    return () => observer.disconnect();
+  }, []);
 
   return (
-    <div className="fixed left-6 top-1/2 -translate-y-1/2 z-50 hidden 2xl:flex flex-col gap-8">
-      {/* Línea decorativa vertical */}
-      <div className="absolute left-[5px] top-0 bottom-0 w-[1px] bg-gradient-to-b from-transparent via-white/10 to-transparent"></div>
+    <div className="fixed left-8 top-1/2 -translate-y-1/2 z-50 hidden 2xl:flex flex-col gap-6">
+      {/* Línea guía vertical */}
+      <div className="absolute left-[7px] top-0 bottom-0 w-[2px] bg-white/5 rounded-full"></div>
 
-      <div className="flex flex-col gap-6 relative">
-        {navItems.map((item) => (
+      {navItems.map((item) => {
+        const isActive = activeSection === item.id;
+
+        return (
           <button
             key={item.id}
             onClick={() => scrollToSection(item.id)}
-            className="group flex items-center gap-4 text-left transition-all pl-0"
+            className="group flex items-center gap-4 text-left transition-all relative"
           >
-            {/* Punto indicador */}
-            <div className="w-2.5 h-2.5 bg-black border border-white/20 rounded-full group-hover:bg-yellow-400 group-hover:border-yellow-400 group-hover:scale-125 transition-all shadow-lg z-10 relative">
-              <div className="absolute inset-0 bg-yellow-400 rounded-full opacity-0 group-hover:animate-ping"></div>
+            {/* Indicador (Punto) */}
+            <div
+              className={`
+                w-4 h-4 rounded-full border-2 transition-all duration-500 z-10 box-border
+                ${isActive
+                  ? 'bg-yellow-400 border-yellow-400 scale-125 shadow-[0_0_15px_rgba(250,204,21,0.6)]'
+                  : 'bg-[#0b0c15] border-white/20 group-hover:border-white/60'}
+              `}
+            >
+              {isActive && <div className="absolute inset-0 rounded-full animate-ping bg-yellow-400/50"></div>}
             </div>
 
-            {/* Etiqueta */}
-            <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-white/30 group-hover:text-white transition-colors duration-300 translate-x-[-10px] opacity-0 group-hover:opacity-100 group-hover:translate-x-0">
+            {/* Texto (Siempre visible) */}
+            <span
+              className={`
+                text-xs font-bold tracking-[0.15em] transition-all duration-300
+                ${isActive
+                  ? 'text-yellow-400 translate-x-1'
+                  : 'text-white/30 group-hover:text-white/70'}
+              `}
+            >
               {item.label}
             </span>
           </button>
-        ))}
-      </div>
+        );
+      })}
     </div>
   );
 };
