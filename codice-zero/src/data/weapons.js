@@ -1634,11 +1634,18 @@ export const weapons = [
     rol: "Soporte",
     detailStats: {
       baseAtk: { min: 42, max: 624 },     // Nvl 1 -> 60
-      subStat: { name: "DEF %", min: "16%", max: "40%" } // Nvl 1 -> 60
+      subStat: { name: "Recuperación de Energía", min: "20%", max: "50%" } // Nvl 1 -> 60
     },
     effect: {
-      title: "Kaboom el Cañón",
-      description: "Al atacar enemigos, reduce su ataque.",
+      title: "Accidente de Estampida",
+      description: "Cuando cualquier unidad aliada en el escuadrón ataca y golpea a un enemigo, el ATK de todas las unidades aliadas aumenta en un 2.5% por 8s, acumulándose hasta 4 veces. La duración de cada acumulación se calcula por separado, y cada unidad aliada puede proporcionar 1 acumulación de la mejora. Los efectos pasivos del mismo nombre no se acumulan.",
+      refinements: [ // Tabla de Mejora (R1 - R5)
+        { level: 1, ATK: "2.5%" },
+        { level: 2, ATK: "2.8%" },
+        { level: 3, ATK: "3.2%" },
+        { level: 4, ATK: "3.6%" },
+        { level: 5, ATK: "4%" }
+      ]
     },
     image: "/CodiceZero/Armas/Soporte/W-Engine_Kaboom_the_Cannon.webp"
   },
