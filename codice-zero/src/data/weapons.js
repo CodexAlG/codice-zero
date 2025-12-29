@@ -1576,7 +1576,7 @@ export const weapons = [
         { level: 2, Tasa: "34", Maestría: "69" },
         { level: 3, Tasa: "39", Maestría: "78" },
         { level: 4, Tasa: "43", Maestría: "87" },
-        { level: 5, Tasa: "49", Maestría: "96" }
+        { level: 5, Tasa: "48", Maestría: "96" }
       ]
     },
     image: "/CodiceZero/Armas/Soporte/W-Engine_Metanukimorphosis.webp"
@@ -1589,12 +1589,19 @@ export const weapons = [
     rank: "A",
     rol: "Soporte",
     detailStats: {
-      baseAtk: { min: 42, max: 624 },     // Nvl 1 -> 60
-      subStat: { name: "DEF %", min: "16%", max: "40%" } // Nvl 1 -> 60
+      baseAtk: { min: 40, max: 594 },     // Nvl 1 -> 60
+      subStat: { name: "Recuperación de Energía", min: "20%", max: "50%" } // Nvl 1 -> 60
     },
     effect: {
-      title: "Bola de Juego",
-      description: "Al activar una ventaja elemental, aumenta la Prob. Crítica de todo el equipo.",
+      title: "¡Empieza el Juego!",
+      description: "Siempre que el ataque del portador active un efecto de (Contraataque de Atributo), la Probabilidad de CRIT de todas las unidades contra el enemigo golpeado aumenta en un 12% por 12s. Los efectos pasivos del mismo nombre no se acumulan.",
+      refinements: [ // Tabla de Mejora (R1 - R5)
+        { level: 1, Crítico: "12%" },
+        { level: 2, Crítico: "13.5%" },
+        { level: 3, Crítico: "15.5%" },
+        { level: 4, Crítico: "17.5%" },
+        { level: 5, Crítico: "20%" }
+      ]
     },
     image: "/CodiceZero/Armas/Soporte/W-Engine_Unfettered_Game_Ball.webp"
   },
