@@ -1682,7 +1682,7 @@ export const weapons = [
     },
     effect: {
       title: "Rostro de Avaricia",
-      description: "Aumenta el Daño de Hielo en un 15%. Al lanzar una (Técnica Especial EX), el ATK de todos los miembros del escuadrón aumenta en un 2% por 12s, acumulándose hasta 4 veces. Las activaciones repetidas reinician la duración. Los efectos pasivos del mismo nombre no se acumulan.",
+      description: "Aumenta el Daño Hielo en un 15%. Al lanzar una (Técnica Especial EX), el ATK de todos los miembros del escuadrón aumenta en un 2% por 12s, acumulándose hasta 4 veces. Las activaciones repetidas reinician la duración. Los efectos pasivos del mismo nombre no se acumulan.",
       refinements: [ // Tabla de Mejora (R1 - R5)
         { level: 1, DañoHielo: "15%", ATK: "2%" },
         { level: 2, DañoHielo: "17.5%", ATK: "2.3%" },
@@ -1702,12 +1702,19 @@ export const weapons = [
     rank: "B",
     rol: "Soporte",
     detailStats: {
-      baseAtk: { min: 42, max: 624 },     // Nvl 1 -> 60
-      subStat: { name: "DEF %", min: "16%", max: "40%" } // Nvl 1 -> 60
+      baseAtk: { min: 32, max: 475 },     // Nvl 1 -> 60
+      subStat: { name: "ATK %", min: "8%", max: "20%" } // Nvl 1 -> 60
     },
     effect: {
-      title: "Reverberación - Modelo I",
-      description: "Aumenta la energía obtenida por asistencias.",
+      title: "Mareas Cambiantes",
+      description: "Lanzar una (Técnica Especial EX) aumenta el Impacto de todos los miembros del escuadrón en un 8% por 10s. Este efecto puede activarse una vez cada 20s. Los efectos pasivos del mismo nombre no se acumulan.",
+      refinements: [ // Tabla de Mejora (R1 - R5)
+        { level: 1, Impacto: "8%" },
+        { level: 2, Impacto: "9%" },
+        { level: 3, Impacto: "10%" },
+        { level: 4, Impacto: "11%" },
+        { level: 5, Impacto: "12%" }
+      ]
     },
     image: "/CodiceZero/Armas/Soporte/W-Engine_(Reverb)_Mark_I.webp"
   },
