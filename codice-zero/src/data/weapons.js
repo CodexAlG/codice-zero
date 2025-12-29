@@ -1565,12 +1565,19 @@ export const weapons = [
     rank: "S",
     rol: "Soporte",
     detailStats: {
-      baseAtk: { min: 42, max: 624 },     // Nvl 1 -> 60
-      subStat: { name: "DEF %", min: "16%", max: "40%" } // Nvl 1 -> 60
+      baseAtk: { min: 48, max: 713 },     // Nvl 1 -> 60
+      subStat: { name: "Recuperación de Energía", min: "24%", max: "60%" } // Nvl 1 -> 60
     },
     effect: {
-      title: "Metanukimorfosis",
-      description: "Aumenta la vida máxima y la curación realizada.",
+      title: "Exquisitamente Ingenioso",
+      description: "Cuando la (Técnica Especial EX) o (Definitiva) del portador inflige Daño Físico, su Tasa de Anomalía aumenta en 30 por 40s. Cuando la (Réplica) del portador golpea a un enemigo, la Maestría de Anomalía de todos los miembros del escuadrón aumenta en 60 por 40s. Solo puede existir una instancia de este efecto en el mismo escuadrón.",
+      refinements: [ // Tabla de Mejora (R1 - R5)
+        { level: 1, Tasa: "30", Maestría: "60" },
+        { level: 2, Tasa: "34", Maestría: "69" },
+        { level: 3, Tasa: "39", Maestría: "78" },
+        { level: 4, Tasa: "43", Maestría: "87" },
+        { level: 5, Tasa: "49", Maestría: "96" }
+      ]
     },
     image: "/CodiceZero/Armas/Soporte/W-Engine_Metanukimorphosis.webp"
   },
