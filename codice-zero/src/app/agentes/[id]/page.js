@@ -15,7 +15,7 @@ import { replaceIcons } from '@/components/utils/TextWithIcons';
 import HighlightText from '@/components/ui/HighlightText'; // Import directly here
 
 const SidebarNav = () => {
-  const [activeSection, setActiveSection] = useState('');
+  const [activeSection, setActiveSection] = useState('stats');
 
   const navItems = [
     { id: 'stats', label: 'ESTADÍSTICAS' },
@@ -27,34 +27,68 @@ const SidebarNav = () => {
   const scrollToSection = (id) => {
     const element = document.getElementById(id);
     if (element) {
-      const y = element.getBoundingClientRect().top + window.scrollY - 100;
-      window.scrollTo({ top: y, behavior: 'smooth' });
+      const offset = 120; // Ajuste para cabecera
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - offset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth"
+      });
     }
   };
 
   useEffect(() => {
-    const observerOptions = {
-      root: null,
-      rootMargin: '-20% 0px -60% 0px', // Activa la sección cuando está en el centro-arriba de la pantalla
-      threshold: 0
-    };
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY + 200; // Punto de activación (200px desde arriba)
 
-    const observerCallback = (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          setActiveSection(entry.target.id);
+      // Verificar secciones de abajo hacia arriba para capturar la última válida
+      for (let i = navItems.length - 1; i >= 0; i--) {
+        const item = navItems[i];
+        const element = document.getElementById(item.id);
+
+        if (element) {
+          const { offsetTop, offsetHeight } = element;
+          // Si el scroll está dentro de esta sección o más abajo de su inicio
+          if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight + 300) { // +300 margen de error
+            setActiveSection(item.id);
+            return; // Encontrado, salir
+          }
+          // Fallback simple: si es el último elemento y estamos al final
+          if (i === navItems.length - 1 && window.innerHeight + window.scrollY >= document.body.offsetHeight - 50) {
+            setActiveSection(item.id);
+            return;
+          }
+        }
+      }
+
+      // Lógica alternativa más simple si la anterior falla: el que esté más cerca del top
+      let currentSection = 'stats';
+      let minDistance = Infinity;
+
+      navItems.forEach(item => {
+        const element = document.getElementById(item.id);
+        if (element) {
+          const rect = element.getBoundingClientRect();
+          // Distancia del top del elemento al top del viewport (usando 150px como línea de mira)
+          const distance = Math.abs(rect.top - 150);
+          if (distance < minDistance) {
+            minDistance = distance;
+            currentSection = item.id;
+          }
+          // Prioridad especial si el elemento está visible y ocupa gran parte de la pantalla
+          if (rect.top <= 200 && rect.bottom >= 200) {
+            currentSection = item.id;
+            minDistance = -1; // Prioridad máxima
+          }
         }
       });
+      setActiveSection(currentSection);
     };
 
-    const observer = new IntersectionObserver(observerCallback, observerOptions);
-
-    navItems.forEach((item) => {
-      const element = document.getElementById(item.id);
-      if (element) observer.observe(element);
-    });
-
-    return () => observer.disconnect();
+    window.addEventListener('scroll', handleScroll);
+    handleScroll(); // Check inicial
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   return (
