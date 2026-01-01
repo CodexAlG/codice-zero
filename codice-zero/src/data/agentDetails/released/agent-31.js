@@ -61,13 +61,13 @@ export default {
       tags: ["Evasión"]
     },
     {
-      type: "Ataque de Carrera",
+      type: "Evasion",
       name: "Ataque de Carrera: Espectro Vengativo",
       description: "Presiona [Icono Ataque] durante una evasión para activar: Levanta rápidamente el arma y dispara, causando Daño Fisico.",
       tags: ["Físico", "Ataque de Carrera", "Evasión"]
     },
     {
-      type: "Contraataque de Evasión",
+      type: "Evasion",
       name: "Contraataque de Evasion: Alma Condenada",
       description: "Presiona [Icono Ataque] durante una (Evasion Perfecta) para activar: Gira y dispara un tiro rápido a los enemigos en frente, causando Daño Electrico. El personaje es invulnerable mientras usa esta habilidad.",
       tags: ["Eléctrico", "Contraataque de Evasión", "Evasión"]
@@ -103,7 +103,7 @@ export default {
       tags: ["Eléctrico", "Ataque de Asistencia", "Asistencia"]
     },
     {
-      type: "Ataque en Cadena",
+      type: "Tecnica Definitiva",
       name: "Ataque en Cadena: Guia Estigio",
       description: "Cuando un (Ataque en Cadena) es activado, selecciona el personaje para activar: Desata disparos poderosos continuos hacia adelante, causando masivo Daño Electrico. El personaje es invulnerable mientras usa esta habilidad.",
       tags: ["Eléctrico", "Ataque en Cadena"]
@@ -111,13 +111,13 @@ export default {
     {
       type: "Técnica Definitiva",
       name: "Definitiva: Requiem del Inframundo",
-      description: "Cuando el Nivel de Decibelios está al [Maximo], presiona [Icono Definitiva] para activar: Entrega un poderoso disparo a los enemigos en un área grande adelante, causando masivo Daño Electrico. El personaje es invulnerable mientras usa esta habilidad. Cuando esta habilidad golpea a un enemigo, activa la (Asistencia Rapida) del personaje anterior en el escuadrón. Cuando la habilidad golpea a un enemigo, Trigger entra en (Soporte Coordinado). Mientras está en este estado, cuando otro personaje activo en el escuadrón golpea a un enemigo con cualquier ataque, activa un (Ataque Basico: Disparo Armonizador) sin consumir (Purga) y sin restricciones de enfriamiento. Este estado dura 12s y el efecto puede activarse hasta 6 veces. Entrar repetidamente en (Soporte Coordinado) extiende la duración y otorga activaciones adicionales, durando un máximo de 20s y activándose hasta un máximo de 10 veces.",
+      description: "Cuando el Nivel de Decibelios está al (Maximo), presiona [Icono Definitiva] para activar: Entrega un poderoso disparo a los enemigos en un área grande adelante, causando masivo Daño Electrico. El personaje es invulnerable mientras usa esta habilidad. Cuando esta habilidad golpea a un enemigo, activa la (Asistencia Rapida) del personaje anterior en el escuadrón. Cuando la habilidad golpea a un enemigo, Trigger entra en (Soporte Coordinado). Mientras está en este estado, cuando otro personaje activo en el escuadrón golpea a un enemigo con cualquier ataque, activa un (Ataque Basico: Disparo Armonizador) sin consumir (Purga) y sin restricciones de enfriamiento. Este estado dura 12s y el efecto puede activarse hasta 6 veces. Entrar repetidamente en (Soporte Coordinado) extiende la duración y otorga activaciones adicionales, durando un máximo de 20s y activándose hasta un máximo de 10 veces.",
       tags: ["Eléctrico", "Técnica Definitiva"]
     },
     {
       type: "Pasiva Central",
       name: "Pasiva Principal: Mirada Escudriñadora del Alma",
-      description: "Cuando el (Aftershock) de Trigger golpea a un enemigo, el Multiplicador de Daño de Aturdimiento del objetivo aumenta en un 35% por 5s. Este aumento del Multiplicador de Daño de Aturdimiento se aplicará incluso si el objetivo no está Aturdido.",
+      description: "Cuando el (Aftershock) de Trigger golpea a un enemigo, el Multiplicador de Daño de Aturdimiento del objetivo aumenta en un {VALOR_1} por 5s. Este aumento del Multiplicador de Daño de Aturdimiento se aplicará incluso si el objetivo no está Aturdido.",
       tags: ["Pasiva Central"]
     },
     {
