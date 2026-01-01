@@ -157,7 +157,7 @@ export default {
     },
     {
       type: "Evasión",
-      name: "Ataque de Carrera: Arenas Dispersas",
+      name: "Evasión: Arenas Dispersas",
       description: "Durante una evasión, presiona [Icono Ataque], o durante (Evasion: Grito de Batalla), mantén [Icono Ataque] para activar: Lanza cuentas hacia adelante, causando Daño Fuego. Después de usar esta habilidad, se puede seguir con el 2do golpe de (Ataque Basico: Cumbres Imponentes) o el 2do golpe de (Ataque Basico: Cumbre Majestuosa).",
       tags: [
         "Fuego",
@@ -166,7 +166,7 @@ export default {
     },
     {
       type: "Evasión",
-      name: "Contraataque de Evasión: Estallido de Piedra",
+      name: "Evasión: Estallido de Piedra",
       description: "Después de que una (Evasion Perfecta) se active a través de (Evasion: Superar Cumbres), presiona [Icono Ataque], o después de que una (Evasion Perfecta) se active a través de (Evasion: Grito de Batalla), mantén [Icono Ataque] para activar: Lanza un ataque hacia adelante que causa Daño Fuego. Después de usar esta habilidad, se puede encadenar en el 3er golpe de (Ataque Basico: Cumbres Imponentes) o el 3er golpe de (Ataque Basico: Cumbre Majestuosa). El personaje es invulnerable mientras usa esta habilidad.",
       tags: [
         "Fuego",
@@ -271,8 +271,8 @@ export default {
       ]
     },
     {
-      type: "Ataque en Cadena",
-      name: "Ira Ardiente",
+      type: "Técnica Definitiva",
+      name: "Ataque en Cadena: Ira Ardiente",
       description: "Al activar (Ataque en Cadena), selecciona el personaje correspondiente para activar: Lanza un ataque de gran área en frente, causando masivo Daño Fuego. Si Banyue tiene más de 120 (Fuegos Iracundos), entra automáticamente en el estado (Semblante de Ira) después del ataque. El personaje es invulnerable mientras usa esta habilidad.",
       tags: [
         "Fuego",

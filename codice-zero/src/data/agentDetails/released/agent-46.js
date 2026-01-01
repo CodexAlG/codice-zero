@@ -94,7 +94,7 @@ export default {
     },
     {
       type: "Evasión",
-      name: "Ataque de Carrera",
+      name: "Evasión",
       description: "Al usar (Evasión), Clic [Icono Ataque] para activar: Causa Daño Hielo.",
       tags: [
         "Hielo",
@@ -103,7 +103,7 @@ export default {
     },
     {
       type: "Evasión",
-      name: "Contraataque de Evasión",
+      name: "Evasión",
       description: "Tras activar (Evasión Perfecta), Clic [Icono Ataque] para activar: Causa Daño Hielo. Posee efecto de invencibilidad durante la activación.",
       tags: [
         "Hielo",
@@ -163,7 +163,7 @@ export default {
       ]
     },
     {
-      type: "Ataque en Cadena",
+      type: "Técnica Definitiva",
       name: "Ataque en Cadena",
       description: "Al activar (Ataque en Cadena), selecciona el personaje correspondiente para activar: Causa gran cantidad de Daño Hielo; Al activar el movimiento, acumula 15 puntos de (Valor de Escarcha); Posee efecto de invencibilidad durante la activación.",
       tags: [

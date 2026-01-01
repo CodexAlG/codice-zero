@@ -48,31 +48,31 @@ export default {
       tags: ["Etéreo", "Evasión"]
     },
     {
-      type: "Ataque de Carrera",
-      name: "Ataque de Carrera: Refraccion",
+      type: "Evasión",
+      name: "Evasión: Refraccion",
       description: "Presiona [Icono Ataque] durante una evasión para activar: Entrega un golpe rápido hacia adelante, causando Daño Etereo.",
-      tags: ["Etéreo", "Ataque de Carrera", "Evasión"]
+      tags: ["Etéreo", "Evasión", "Evasión"]
     },
     {
-      type: "Contraataque de Evasión",
+      type: "Evasión",
       name: "Contraataque de Evasion: Eco de Polvo Estelar",
-      description: "Presiona [Icono Ataque] durante una (Evasion Perfecta) para activar: Este Contraataque de Evasión es un (Capricho). Cuando se activa, invoca una figura Etérea que entrega un ataque descendente en un área circular adelante, causando Daño Etereo. Si no está en el estado (Sueño), Lucia gana 20 (Puntos de Sueño) al usar este (Capricho). Este efecto puede activarse una vez cada 5s. El personaje es invulnerable mientras usa esta habilidad.",
-      tags: ["Etéreo", "Contraataque de Evasión", "Evasión"]
+      description: "Presiona [Icono Ataque] durante una (Evasion Perfecta) para activar: Este Evasión es un (Capricho). Cuando se activa, invoca una figura Etérea que entrega un ataque descendente en un área circular adelante, causando Daño Etereo. Si no está en el estado (Sueño), Lucia gana 20 (Puntos de Sueño) al usar este (Capricho). Este efecto puede activarse una vez cada 5s. El personaje es invulnerable mientras usa esta habilidad.",
+      tags: ["Etéreo", "Evasión", "Evasión"]
     },
     {
-      type: "Asistencia Rápida",
+      type: "Asistencia",
       name: "Asistencia Rapida: Niebla Aplastante",
       description: "Cuando el personaje activo es lanzado, presiona [Icono Assist] para activar: Esta Asistencia Rápida es un (Capricho). Cuando se activa, invoca una figura Etérea que entrega un ataque descendente en un área circular adelante, causando Daño Etereo. Si no está en el estado (Sueño), Lucia gana 20 (Puntos de Sueño) al usar este (Capricho). Este efecto puede activarse una vez cada 5s. El personaje es invulnerable mientras usa esta habilidad.",
       tags: ["Etéreo", "Asistencia Rápida", "Asistencia"]
     },
     {
-      type: "Asistencia Defensiva",
+      type: "Asistencia",
       name: "Asistencia Defensiva: Voz de Sueños Ilusorios",
       description: "Cuando el personaje en el campo está a punto de ser atacado, presiona [Icono Assist] para activar: Hace parry al ataque del enemigo, causando masivo Aturdimiento. El personaje es invulnerable mientras usa esta habilidad.",
       tags: ["Etéreo", "Asistencia Defensiva", "Asistencia"]
     },
     {
-      type: "Ataque de Asistencia",
+      type: "Asistencia",
       name: "Ataque de Asistencia: Armonia de Sueños Pintados",
       description: "Presiona [Icono Ataque] después de una (Asistencia Defensiva) para activar: Este Ataque de Asistencia es una (Armonia). Cuando se activa, invoca una figura Etérea que entrega un ataque descendente en un área circular adelante, causando Daño Etereo. Si no está en el estado (Sueño), Lucia gana 40 (Puntos de Sueño) al usar esta (Armonia). El personaje es invulnerable mientras usa esta habilidad.",
       tags: ["Etéreo", "Ataque de Asistencia", "Asistencia"]
@@ -90,7 +90,7 @@ export default {
       tags: ["Etéreo", "Técnica Especial EX"]
     },
     {
-      type: "Ataque en Cadena",
+      type: "Técnica Definitiva",
       name: "Ataque en Cadena: Etapa de Brillantez",
       description: "Cuando un (Ataque en Cadena) es activado, selecciona el personaje para activar: Este Ataque en Cadena es una (Armonia). Cuando se activa, invoca una figura Etérea que atrae enemigos en un área circular adelante y causa Daño Etereo. Si no está en el estado (Sueño), Lucia gana 40 (Puntos de Sueño) al usar esta (Armonia). El personaje es invulnerable mientras usa esta habilidad.",
       tags: ["Etéreo", "Ataque en Cadena"]

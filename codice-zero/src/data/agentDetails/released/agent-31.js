@@ -51,7 +51,7 @@ export default {
     {
       type: "Ataque Básico",
       name: "Ataque Basico: Disparo Armonizador",
-      description: "Cuando Trigger tiene (Purga), usar otro personaje activo en el escuadrón para golpear a un enemigo con un (Ataque Basico), (Contraataque de Evasion), (Tecnica Especial), (Ataque de Carrera) o (Asistencia Rapida) para activar: Mientras entra en combate, rápidamente dispara dos tiros al enemigo, causando Daño Electrico. Al activar esta habilidad, consume 3 (Purga). El personaje es invulnerable mientras usa esta habilidad. (Ataque Basico: Disparo Armonizador) es un ataque de (Aftershock). El escuadrón puede activar (Ataque Basico: Disparo Armonizador) una vez cada 3s. La misma habilidad puede activar (Ataque Basico: Disparo Armonizador - Tartarus) hasta 2 veces en 2s para todo el escuadrón. Durante (Ataque Basico: Disparo Armonizador), (Ataque Basico: Disparo Armonizador - Tartarus) se activará inmediatamente en su lugar si se activa.",
+      description: "Cuando Trigger tiene (Purga), usar otro personaje activo en el escuadrón para golpear a un enemigo con un (Ataque Basico), (Contraataque de Evasion), (Tecnica Especial), (Evasión) o (Asistencia Rapida) para activar: Mientras entra en combate, rápidamente dispara dos tiros al enemigo, causando Daño Electrico. Al activar esta habilidad, consume 3 (Purga). El personaje es invulnerable mientras usa esta habilidad. (Ataque Basico: Disparo Armonizador) es un ataque de (Aftershock). El escuadrón puede activar (Ataque Basico: Disparo Armonizador) una vez cada 3s. La misma habilidad puede activar (Ataque Basico: Disparo Armonizador - Tartarus) hasta 2 veces en 2s para todo el escuadrón. Durante (Ataque Basico: Disparo Armonizador), (Ataque Basico: Disparo Armonizador - Tartarus) se activará inmediatamente en su lugar si se activa.",
       tags: ["Eléctrico", "Ataque Básico"]
     },
     {
@@ -67,16 +67,16 @@ export default {
       tags: ["Evasión"]
     },
     {
-      type: "Evasion",
+      type: "Evasión",
       name: "Ataque de Carrera: Espectro Vengativo",
       description: "Presiona [Icono Ataque] durante una evasión para activar: Levanta rápidamente el arma y dispara, causando Daño Fisico.",
-      tags: ["Físico", "Ataque de Carrera", "Evasión"]
+      tags: ["Físico", "Evasión"]
     },
     {
-      type: "Evasion",
+      type: "Evasión",
       name: "Contraataque de Evasion: Alma Condenada",
       description: "Presiona [Icono Ataque] durante una (Evasion Perfecta) para activar: Gira y dispara un tiro rápido a los enemigos en frente, causando Daño Electrico. El personaje es invulnerable mientras usa esta habilidad.",
-      tags: ["Eléctrico", "Contraataque de Evasión", "Evasión"]
+      tags: ["Eléctrico", "Evasión", "Evasión"]
     },
     {
       type: "Técnica Especial",
@@ -91,25 +91,25 @@ export default {
       tags: ["Eléctrico", "Técnica Especial EX"]
     },
     {
-      type: "Asistencia Rápida",
+      type: "Asistencia",
       name: "Asistencia Rapida: Fuego de Cobertura de Cañón Frío",
       description: "Cuando el personaje activo es lanzado, presiona [Icono Assist] para activar: Gira y dispara un tiro rápido a los enemigos en frente, causando Daño Electrico. El personaje es invulnerable mientras usa esta habilidad.",
       tags: ["Eléctrico", "Asistencia Rápida", "Asistencia"]
     },
     {
-      type: "Asistencia Defensiva",
+      type: "Asistencia",
       name: "Asistencia Defensiva: Demora de la Muerte",
       description: "Cuando el personaje en el campo está a punto de ser atacado, presiona [Icono Assist] para activar: Hace parry al ataque del enemigo, causando masivo Aturdimiento. El personaje es invulnerable mientras usa esta habilidad.",
       tags: ["Asistencia Defensiva", "Asistencia"]
     },
     {
-      type: "Ataque de Asistencia",
+      type: "Asistencia",
       name: "Ataque de Asistencia: Trueno Perforante",
       description: "Presiona [Icono Ataque] después de una (Asistencia Defensiva) para activar: Desata una serie de cortes a los enemigos en frente, seguido de un poderoso disparo cargado al aterrizar, causando Daño Electrico. El personaje es invulnerable mientras usa esta habilidad.",
       tags: ["Eléctrico", "Ataque de Asistencia", "Asistencia"]
     },
     {
-      type: "Tecnica Definitiva",
+      type: "Técnica Definitiva",
       name: "Ataque en Cadena: Guia Estigio",
       description: "Cuando un (Ataque en Cadena) es activado, selecciona el personaje para activar: Desata disparos poderosos continuos hacia adelante, causando masivo Daño Electrico. El personaje es invulnerable mientras usa esta habilidad.",
       tags: ["Eléctrico", "Ataque en Cadena"]

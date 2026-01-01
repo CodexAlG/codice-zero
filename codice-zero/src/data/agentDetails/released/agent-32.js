@@ -77,13 +77,13 @@ export default {
       type: "Evasión",
       name: "Ataque de Carrera: Melodia de Espina de Plata",
       description: "Presiona [Icono Ataque] durante una evasión para activar: Lanza un ataque de empuje a los enemigos en frente, causando Daño Fisico.",
-      tags: ["Físico", "Ataque de Carrera", "Evasión"]
+      tags: ["Físico", "Evasión"]
     },
     {
-      type: "Contraataque de Evasión",
+      type: "Evasión",
       name: "Contraataque de Evasion: Reverberacion de Hoja de Ala",
       description: "Presiona [Icono Ataque] durante una (Evasion Perfecta) para activar: Lanza un ataque a los enemigos en frente, causando Daño Fisico y Daño Etereo. El personaje es invulnerable mientras usa esta habilidad. Después de activar la habilidad, entra en el estado (Mujer Noble). Cuando hay (Plumas de Vuelo) disponibles, mantener [Icono Ataque] durante la activación de la habilidad permite entrar en el estado (Vestido Aleteante).",
-      tags: ["Físico", "Etéreo", "Contraataque de Evasión", "Evasión"]
+      tags: ["Físico", "Etéreo", "Evasión"]
     },
     {
       type: "Evasión",
@@ -104,22 +104,22 @@ export default {
       tags: ["Etéreo", "Técnica Especial EX"]
     },
     {
-      type: "Asistencia Rápida",
+      type: "Asistencia",
       name: "Asistencia Rapida: Guardia de Escarcha",
       description: "Cuando el personaje activo es lanzado, presiona [Icono Assist] para activar: Lanza un ataque a los enemigos en frente, causando Daño Fisico y Daño Etereo. El personaje es invulnerable mientras usa esta habilidad. Después de que la habilidad se activa, entra en el estado (Mujer Noble). Con (Plumas de Vuelo) disponibles, mantén presionado [Icono Ataque] durante la activación de la habilidad para entrar en el estado (Vestido Aleteante).",
-      tags: ["Físico", "Etéreo", "Asistencia Rápida", "Asistencia"]
+      tags: ["Físico", "Etéreo", "Asistencia"]
     },
     {
-      type: "Asistencia Defensiva",
+      type: "Asistencia",
       name: "Asistencia Defensiva: Formacion de Paraguas de Plata",
       description: "Cuando el personaje en el campo está a punto de ser atacado, presiona [Icono Assist] para activar: Bloquea el ataque del enemigo, causando masivo Aturdimiento. El personaje es invulnerable mientras usa esta habilidad.",
-      tags: ["Asistencia Defensiva", "Asistencia"]
+      tags: ["Asistencia"]
     },
     {
-      type: "Ataque de Asistencia",
+      type: "Asistencia",
       name: "Ataque de Asistencia: Ejecucion de Hoja de Pluma",
       description: "Presiona [Icono Ataque] después de una (Asistencia Defensiva) para activar: Lanza un ataque a los enemigos en frente, causando Daño Etereo y ganando 2 (Plumas de Vuelo). El personaje es invulnerable mientras usa esta habilidad. Después de que la habilidad se activa, entra en el estado (Vestido Aleteante), el cual puede ser cancelado manteniendo presionado [Icono Dodges] durante la habilidad.",
-      tags: ["Etéreo", "Ataque de Asistencia", "Asistencia"]
+      tags: ["Etéreo", "Asistencia"]
     },
     {
       type: "Pasiva Central",
@@ -134,7 +134,7 @@ export default {
       tags: ["Habilidad Adicional"]
     },
     {
-      type: "Ataque en Cadena",
+      type: "Técnica Definitiva",
       name: "Ataque en Cadena: Coro de Alas Celestiales",
       description: "Cuando un (Ataque en Cadena) es activado, selecciona el personaje para activar: Lanza un poderoso ataque en un área grande de enemigos adelante, causando masivo Daño Etereo y ganando 3 (Plumas de Vuelo). El personaje es invulnerable mientras usa esta habilidad. Después de que la habilidad se activa, entra en el estado (Vestido Aleteante), el cual puede ser cancelado manteniendo presionado [Icono Dodges] durante la habilidad.",
       tags: ["Etéreo", "Ataque en Cadena"]

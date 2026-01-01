@@ -54,16 +54,16 @@ export default {
       tags: ["Físico", "Evasión"]
     },
     {
-      type: "Ataque de Carrera",
-      name: "Ataque de Carrera: Vendaval del Bailarin de la Espada",
+      type: "Evasión",
+      name: "Evasión: Vendaval del Bailarin de la Espada",
       description: "Presiona [Icono Ataque] durante una evasión para activar: Corta a los enemigos en frente, causando Daño Fisico.",
-      tags: ["Físico", "Ataque de Carrera", "Evasión"]
+      tags: ["Físico", "Evasión", "Evasión"]
     },
     {
-      type: "Contraataque de Evasión",
+      type: "Evasión",
       name: "Contraataque de Evasion: Ceremonia de Luz de Espada",
       description: "Presiona [Icono Ataque] durante una (Evasion Perfecta) para activar: Corta y patea a los enemigos en frente, causando Daño Fisico. El personaje es invulnerable mientras usa esta habilidad.",
-      tags: ["Físico", "Contraataque de Evasión", "Evasión"]
+      tags: ["Físico", "Evasión", "Evasión"]
     },
     {
       type: "Técnica Especial",
@@ -84,19 +84,19 @@ export default {
       tags: ["Físico", "Técnica Especial EX"]
     },
     {
-      type: "Asistencia Rápida",
+      type: "Asistencia",
       name: "Asistencia Rapida: Puñalada Entrelazada",
       description: "Cuando el personaje activo es lanzado, presiona [Icono Assist] para activar: Corta y patea a los enemigos en frente, causando Daño Fisico. El personaje es invulnerable mientras usa esta habilidad.",
       tags: ["Físico", "Asistencia Rápida", "Asistencia"]
     },
     {
-      type: "Asistencia Defensiva",
+      type: "Asistencia",
       name: "Asistencia Defensiva: Guardia de Parry",
       description: "Cuando el personaje en el campo está a punto de ser atacado, presiona [Icono Assist] para activar: Hace parry al ataque del enemigo, causando masivo Aturdimiento. El personaje es invulnerable mientras usa esta habilidad.",
       tags: ["Físico", "Asistencia Defensiva", "Asistencia"]
     },
     {
-      type: "Ataque de Asistencia",
+      type: "Asistencia",
       name: "Ataque de Asistencia: Riposta Cruzada",
       description: "Presiona [Icono Ataque] después de una (Asistencia Defensiva) para activar: Carga hacia adelante y corta a los enemigos en frente, causando Daño Fisico. El personaje es invulnerable mientras usa esta habilidad.",
       tags: ["Físico", "Ataque de Asistencia", "Asistencia"]
@@ -114,7 +114,7 @@ export default {
       tags: ["Habilidad Adicional"]
     },
     {
-      type: "Ataque en Cadena",
+      type: "Técnica Definitiva",
       name: "Ataque en Cadena: Intermedio de Lluvia de Estrellas",
       description: "Cuando un (Ataque en Cadena) es activado, selecciona el personaje para activar: Desata poderosos cortes consecutivos a los enemigos adelante, causando masivo Daño Fisico. El personaje es invulnerable mientras usa esta habilidad.",
       tags: ["Físico", "Ataque en Cadena"]

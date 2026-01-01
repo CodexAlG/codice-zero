@@ -78,16 +78,16 @@ export default {
       tags: ["Físico", "Evasión"]
     },
     {
-      type: "Ataque de Carrera",
-      name: "Ataque de Carrera: ¡No Tienes Suerte!",
+      type: "Evasión",
+      name: "Evasión: ¡No Tienes Suerte!",
       description: "Presiona [Icono Ataque] durante una evasión para activar: Golpea rápidamente a los enemigos en frente, causando Daño Fisico.",
-      tags: ["Físico", "Ataque de Carrera", "Evasión"]
+      tags: ["Físico", "Evasión", "Evasión"]
     },
     {
-      type: "Contraataque de Evasión",
+      type: "Evasión",
       name: "Contraataque de Evasion: Hora de la Venganza~",
       description: "Presiona [Icono Ataque] durante una (Evasion Perfecta) para activar: Entrega un golpe rápido hacia adelante, causando Daño Fisico. El personaje es invulnerable mientras usa esta habilidad.",
-      tags: ["Físico", "Contraataque de Evasión", "Evasión"]
+      tags: ["Físico", "Evasión", "Evasión"]
     },
     {
       type: "Técnica Especial",
@@ -114,28 +114,28 @@ export default {
       tags: ["Físico", "Técnica Especial"]
     },
     {
-      type: "Asistencia Rápida",
+      type: "Asistencia",
       name: "Asistencia Rapida: Hora del Postre",
       description: "Cuando el personaje activo es lanzado, presiona [Icono Assist] para activar: Golpea a los enemigos en frente, causando Daño Fisico. El personaje es invulnerable mientras usa esta habilidad.",
-      tags: ["Físico", "Asistencia Rápida", "Asistencia"]
+      tags: ["Físico", "Asistencia"]
     },
     {
-      type: "Asistencia Defensiva",
+      type: "Asistencia",
       name: "Asistencia Defensiva: Reponer Tu Diversion",
       description: "Cuando el personaje en el campo está a punto de ser atacado, presiona [Icono Assist] para activar: Hace parry al ataque del enemigo, causando masivo Aturdimiento. Tras un parry exitoso, gana 1 (Punto de Azucar). El personaje es invulnerable mientras usa esta habilidad.",
-      tags: ["Físico", "Asistencia Defensiva", "Asistencia"]
+      tags: ["Físico", "Asistencia"]
     },
     {
-      type: "Ataque de Asistencia",
+      type: "Asistencia",
       name: "Ataque de Seguimiento: Tenemos Galletas",
       description: "Después de activar una (Asistencia Defensiva) o hacer parry exitosamente a un ataque enemigo con (Ataque Basico: Capa de Tanuki), presiona [Icono Ataque] para activar: Golpea a los enemigos en frente, causando Daño Fisico. El personaje es invulnerable mientras usa esta habilidad.",
-      tags: ["Físico", "Ataque de Asistencia", "Asistencia"]
+      tags: ["Físico", "Asistencia"]
     },
     {
-      type: "Ataque de Asistencia",
+      type: "Asistencia",
       name: "Ataque de Seguimiento: Disparo de Caramelo Duro Relleno",
       description: "Después de activar una (Asistencia Defensiva) o hacer parry exitosamente a un ataque enemigo con (Ataque Basico: Capa de Tanuki), presiona [Icono Ataque] en el momento correcto para activar: Siguiendo un ataque de paraguas giratorio continuo, dispara un poderoso proyectil que causa Daño Fisico. El personaje es invulnerable mientras usa esta habilidad.",
-      tags: ["Físico", "Ataque de Asistencia", "Asistencia"]
+      tags: ["Físico", "Asistencia"]
     },
     {
       type: "Pasiva Central",
@@ -150,7 +150,7 @@ export default {
       tags: ["Habilidad Adicional"]
     },
     {
-      type: "Ataque en Cadena",
+      type: "Técnica Definitiva",
       name: "Ataque en Cadena: Asalto de Broma",
       description: "Cuando un (Ataque en Cadena) es activado, selecciona el personaje para activar: Desata un golpe poderoso en enemigos en un área pequeña adelante, causando masivo Daño Fisico. Gana 1 (Punto de Azucar) cuando es usado. Una (Asistencia Rapida) es activada cuando esta habilidad golpea a un enemigo. El personaje es invulnerable mientras usa esta habilidad.",
       tags: ["Físico", "Ataque en Cadena"]

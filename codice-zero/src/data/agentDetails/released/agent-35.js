@@ -70,10 +70,10 @@ export default {
       tags: ["Evasión"]
     },
     {
-      type: "Ataque de Carrera",
-      name: "Ataque de Carrera: Rompecielos",
-      description: "Presiona [Icono Ataque] durante una evasión para activar: Lanza un ataque de carrera hacia adelante, causando Daño Tinta Aurica.",
-      tags: ["Etéreo", "Ataque de Carrera", "Evasión"]
+      type: "Evasión",
+      name: "Ataque de Carrera: Mandato Espectral de la Espada",
+      description: "Presiona [Icono Ataque] durante una evasión para activar: Entrega un golpe rápido hacia adelante, causando Daño Electrico.",
+      tags: ["Eléctrico", "Evasión"]
     },
     {
       type: "Evasión",
@@ -82,10 +82,10 @@ export default {
       tags: ["Evasión"]
     },
     {
-      type: "Contraataque de Evasión",
+      type: "Evasión",
       name: "Contraataque de Evasion: Golpe de Destierro",
       description: "Presiona [Icono Ataque] durante una (Evasion Perfecta) para activar: Lanza una serie de ataques a los enemigos en frente, causando Daño Tinta Aurica. El personaje es invulnerable mientras usa esta habilidad.",
-      tags: ["Etéreo", "Contraataque de Evasión", "Evasión"]
+      tags: ["Etéreo", "Evasión", "Evasión"]
     },
     {
       type: "Técnica Especial",
@@ -112,22 +112,22 @@ export default {
       tags: ["Etéreo", "Técnica Especial EX"]
     },
     {
-      type: "Asistencia Rápida",
-      name: "Asistencia Rapida: Sombra de Corriente de Nube",
-      description: "Cuando el personaje activo es lanzado, presiona [Icono Assist] para activar: Lanza una serie de ataques a los enemigos en frente, causando Daño Tinta Aurica. El personaje es invulnerable mientras usa esta habilidad.",
-      tags: ["Etéreo", "Asistencia Rápida", "Asistencia"]
+      type: "Asistencia",
+      name: "Asistencia Rapida: Armonia de la Aurora",
+      description: "Cuando el personaje activo es lanzado, presiona [Icono Assist] para activar: Entrega ataques rapidos hacia adelante, causando Daño Electrico. El personaje es invulnerable mientras usa esta habilidad.",
+      tags: ["Eléctrico", "Asistencia"]
     },
     {
-      type: "Asistencia Defensiva",
-      name: "Asistencia Defensiva: Oleada de Cielo Claro",
+      type: "Asistencia",
+      name: "Asistencia Defensiva: Devocion Inmutable",
       description: "Cuando el personaje en el campo está a punto de ser atacado, presiona [Icono Assist] para activar: Hace parry al ataque del enemigo, causando masivo Aturdimiento. El personaje es invulnerable mientras usa esta habilidad.",
-      tags: ["Asistencia Defensiva", "Asistencia"]
+      tags: ["Asistencia"]
     },
     {
-      type: "Ataque de Asistencia",
-      name: "Ataque de Asistencia: Bombardeo de Nube Celestial",
-      description: "Presiona [Icono Ataque] después de una (Asistencia Defensiva) para activar: Corre rápidamente hacia adelante y ataca, causando Daño Tinta Aurica. El personaje es invulnerable mientras usa esta habilidad.",
-      tags: ["Etéreo", "Ataque de Asistencia", "Asistencia"]
+      type: "Asistencia",
+      name: "Ataque de Asistencia: Danza del Lobo Celestial",
+      description: "Presiona [Icono Ataque] después de una (Asistencia Defensiva) para activar: Entrega ataques rapidos hacia adelante, causando Daño Electrico. El personaje es invulnerable mientras usa esta habilidad.",
+      tags: ["Eléctrico", "Asistencia"]
     },
     {
       type: "Pasiva Central",
@@ -142,10 +142,10 @@ export default {
       tags: ["Habilidad Adicional"]
     },
     {
-      type: "Ataque en Cadena",
-      name: "Ataque en Cadena: Embestida de Tinta Aurica",
-      description: "Cuando un (Ataque en Cadena) es activado, selecciona el personaje para activar: Se lanza rápidamente hacia adelante y ataca, seguido de un estallido explosivo de alas, causando masivo Daño Tinta Aurica. El personaje es invulnerable mientras usa esta habilidad.",
-      tags: ["Etéreo", "Ataque en Cadena"]
+      type: "Técnica Definitiva",
+      name: "Ataque en Cadena: Inmerso en la Tormenta de Hojas de Espada",
+      description: "Cuando un (Ataque en Cadena) es activado, selecciona el personaje para activar: Desata un aluvion de ataques a los enemigos en frente, causando masivo Daño Electrico. Cada (Cabello de Espada) aumenta el DAÑO de esta habilidad en un 10%. El personaje es invulnerable mientras usa esta habilidad.",
+      tags: ["Eléctrico", "Ataque en Cadena"]
     },
     {
       type: "Técnica Definitiva",

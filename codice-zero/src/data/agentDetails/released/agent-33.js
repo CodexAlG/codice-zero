@@ -57,13 +57,13 @@ export default {
       type: "Evasión",
       name: "Ataque de Carrera: Fantasma - Destrozar",
       description: "Presiona [Icono Ataque] durante una evasión para activar: Lanza un ataque de carrera a los enemigos en frente, causando Daño Fisico.",
-      tags: ["Físico", "Ataque de Carrera", "Evasión"]
+      tags: ["Físico", "Evasión"]
     },
     {
-      type: "Contraataque de Evasión",
+      type: "Evasión",
       name: "Contraataque de Evasion: Fantasma - Corte",
       description: "Presiona [Icono Ataque] durante una (Evasion Perfecta) para activar: Realiza una serie de ataques a los enemigos en frente, causando Daño Hielo. Durante la habilidad, mantén [Icono Ataque] para lanzar un disparo. Durante el disparo, mantén [Icono Ataque] para cargar y realizar un disparo cargado. El disparo es considerado un (Ataque Basico), con su DAÑO tratado como DAÑO de (Ataque Basico). Después de que la habilidad es usada, puede ser seguida directamente con el 4to golpe de (Ataque Basico: Cuarteto del Abismo Oscuro). Durante la fase a distancia de la habilidad, el nivel de Anti-Interrupción aumenta, y el Daño recibido se reduce un 40%. Invulnerable durante los cortes y la retirada a distancia de la habilidad.",
-      tags: ["Hielo", "Contraataque de Evasión", "Evasión"]
+      tags: ["Hielo", "Evasión", "Evasión"]
     },
     {
       type: "Técnica Especial",
@@ -78,22 +78,22 @@ export default {
       tags: ["Hielo", "Técnica Especial EX"]
     },
     {
-      type: "Asistencia Rápida",
+      type: "Asistencia",
       name: "Asistencia Rapida: Elegia",
       description: "Cuando el personaje activo es lanzado, presiona [Icono Assist] para activar: Realiza una serie de ataques a los enemigos en frente, causando Daño Hielo. Durante la habilidad, mantén [Icono Ataque] para lanzar un disparo. Durante el disparo, mantén [Icono Ataque] para cargar y realizar un disparo cargado. El disparo es considerado un (Ataque Basico), con su DAÑO tratado como DAÑO de (Ataque Basico). Después de que la habilidad es usada, puede ser seguida directamente con el 4to golpe de (Ataque Basico: Cuarteto del Abismo Oscuro). Durante la fase a distancia de la habilidad, el nivel de Anti-Interrupción aumenta, y el Daño recibido se reduce un 40%. Invulnerable durante los cortes y la retirada a distancia de la habilidad.",
-      tags: ["Hielo", "Asistencia Rápida", "Asistencia"]
+      tags: ["Hielo", "Asistencia"]
     },
     {
-      type: "Asistencia Defensiva",
+      type: "Asistencia",
       name: "Asistencia Defensiva: El Fin No Ha Llegado",
       description: "Cuando el personaje en el campo está a punto de ser atacado, presiona [Icono Assist] para activar: Hace parry al ataque del enemigo, causando masivo Aturdimiento. El personaje es invulnerable mientras usa esta habilidad.",
-      tags: ["Asistencia Defensiva", "Asistencia"]
+      tags: ["Asistencia"]
     },
     {
-      type: "Ataque de Asistencia",
+      type: "Asistencia",
       name: "Ataque de Asistencia: Reversion de As",
       description: "Presiona [Icono Ataque] después de una (Asistencia Defensiva) para activar: Corre hacia adelante y realiza dos cortes, causando Daño Hielo. Después de que la habilidad es usada, puede ser seguida directamente con el 4to golpe de (Ataque Basico: Cuarteto del Abismo Oscuro). El personaje es invulnerable mientras usa esta habilidad.",
-      tags: ["Hielo", "Ataque de Asistencia", "Asistencia"]
+      tags: ["Hielo", "Asistencia"]
     },
     {
       type: "Pasiva Central",
@@ -108,7 +108,7 @@ export default {
       tags: ["Habilidad Adicional"]
     },
     {
-      type: "Ataque en Cadena",
+      type: "Técnica Definitiva",
       name: "Ataque en Cadena: Truco del Destino",
       description: "Cuando un (Ataque en Cadena) es activado, selecciona el personaje para activar: Corre hacia adelante para realizar un corte a través de un área grande, luego lanza un disparo, causando masivo Daño Hielo. El disparo activado por esta habilidad es considerado un disparo cargado. El personaje es invulnerable mientras usa esta habilidad.",
       tags: ["Hielo", "Ataque en Cadena"]

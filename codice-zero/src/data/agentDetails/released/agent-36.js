@@ -54,22 +54,22 @@ export default {
       tags: ["Evasión"]
     },
     {
-      type: "Ataque de Carrera",
-      name: "Ataque de Carrera: Siete Formas de Tigre - Carga de Tigre",
+      type: "Evasión",
+      name: "Evasión: Siete Formas de Tigre - Carga de Tigre",
       description: "Presiona [Icono Ataque] durante una evasión para activar: Realiza un corte rápido hacia adelante, causando Daño Fisico.",
-      tags: ["Físico", "Ataque de Carrera", "Evasión"]
+      tags: ["Físico", "Evasión", "Evasión"]
     },
     {
-      type: "Ataque de Carrera",
-      name: "Ataque de Carrera: Siete Formas de Tigre - Juego del Rey de la Montaña",
-      description: "Después de usar (Ataque de Carrera: Siete Formas de Tigre - Carga de Tigre), mantén [Icono Ataque] para activar: Entra en un estado de giro de alta velocidad. Mientras está en este estado, usa la palanca/joystick para moverte y causar Daño Fisico al contacto con enemigos. Después de que Ju Fufu gana (Impulso) de otras habilidades, estará rodeada de llamas en el estado de giro de alta velocidad. Al contacto con enemigos, 1 punto de (Impulso) es consumido, cambiando el DAÑO a Daño Fuego y otorgando 25 puntos de (Poder). El máximo de (Impulso) es 15. Al consumir (Impulso) para causar Daño Fuego, si el (Poder) está por encima de 100 puntos, 100 puntos de (Poder) serán consumidos automáticamente para activar (Ataque en Cadena: Caldero de Tigre Supresor). Soltar [Icono Ataque] hará que Ju Fufu salga del estado de giro y lance a Hu Wei para atacar a los enemigos, causando Daño Fuego. Al cambiar a otro personaje, Ju Fufu permanecerá en el estado de giro e intentará chocar con el enemigo más cercano. Mientras Ju Fufu es el personaje activo actual, el Daño recibido durante la habilidad se reduce en un 40%, y el Nivel de Anti-Interrupción aumenta. Si no es el personaje activo, se vuelve Invulnerable.",
-      tags: ["Físico", "Fuego", "Ataque de Carrera", "Evasión"]
+      type: "Evasión",
+      name: "Evasión: Siete Formas de Tigre - Juego del Rey de la Montaña",
+      description: "Después de usar (Evasión: Siete Formas de Tigre - Carga de Tigre), mantén [Icono Ataque] para activar: Entra en un estado de giro de alta velocidad. Mientras está en este estado, usa la palanca/joystick para moverte y causar Daño Fisico al contacto con enemigos. Después de que Ju Fufu gana (Impulso) de otras habilidades, estará rodeada de llamas en el estado de giro de alta velocidad. Al contacto con enemigos, 1 punto de (Impulso) es consumido, cambiando el DAÑO a Daño Fuego y otorgando 25 puntos de (Poder). El máximo de (Impulso) es 15. Al consumir (Impulso) para causar Daño Fuego, si el (Poder) está por encima de 100 puntos, 100 puntos de (Poder) serán consumidos automáticamente para activar (Ataque en Cadena: Caldero de Tigre Supresor). Soltar [Icono Ataque] hará que Ju Fufu salga del estado de giro y lance a Hu Wei para atacar a los enemigos, causando Daño Fuego. Al cambiar a otro personaje, Ju Fufu permanecerá en el estado de giro e intentará chocar con el enemigo más cercano. Mientras Ju Fufu es el personaje activo actual, el Daño recibido durante la habilidad se reduce en un 40%, y el Nivel de Anti-Interrupción aumenta. Si no es el personaje activo, se vuelve Invulnerable.",
+      tags: ["Físico", "Fuego", "Evasión", "Evasión"]
     },
     {
-      type: "Contraataque de Evasión",
+      type: "Evasión",
       name: "Contraataque de Evasion: Siete Formas de Tigre - Montaña Reavivada",
       description: "Presiona [Icono Ataque] durante una (Evasion Perfecta) para activar: Realiza múltiples cortes a los enemigos en frente, causando Daño Fuego. El personaje es invulnerable mientras usa esta habilidad.",
-      tags: ["Fuego", "Contraataque de Evasión", "Evasión"]
+      tags: ["Fuego", "Evasión", "Evasión"]
     },
     {
       type: "Técnica Especial",
@@ -84,19 +84,19 @@ export default {
       tags: ["Fuego", "Técnica Especial EX"]
     },
     {
-      type: "Asistencia Rápida",
+      type: "Asistencia",
       name: "Asistencia Rapida: Pisotón Decisivo",
       description: "Cuando el personaje activo es lanzado, presiona [Icono Assist] para activar: Corta a los enemigos en frente, causando Daño Fuego. El personaje es invulnerable mientras usa esta habilidad.",
       tags: ["Fuego", "Asistencia Rápida", "Asistencia"]
     },
     {
-      type: "Asistencia Defensiva",
+      type: "Asistencia",
       name: "Asistencia Defensiva: Tigre Agazapado Firme",
       description: "Cuando el personaje en el campo está a punto de ser atacado, presiona [Icono Assist] para activar: Hace parry al ataque del enemigo, causando masivo Aturdimiento. El personaje es invulnerable mientras usa esta habilidad.",
       tags: ["Asistencia Defensiva", "Asistencia"]
     },
     {
-      type: "Ataque de Asistencia",
+      type: "Asistencia",
       name: "Ataque de Asistencia: Fauces Ardientes Ferales",
       description: "Presiona [Icono Ataque] después de una (Asistencia Defensiva) para activar: Corta hacia adelante a los enemigos, luego usa a Hu Wei para seguir con un ataque descendente, causando Daño Fuego. Gana 1 punto de (Impulso) al activarse como máximo una vez cada 10s. El personaje es invulnerable mientras usa esta habilidad.",
       tags: ["Fuego", "Ataque de Asistencia", "Asistencia"]
@@ -114,7 +114,7 @@ export default {
       tags: ["Habilidad Adicional"]
     },
     {
-      type: "Ataque en Cadena",
+      type: "Técnica Definitiva",
       name: "Ataque en Cadena: Colapso de Caldero de Tigre",
       description: "Cuando un (Ataque en Cadena) es activado, selecciona el personaje para activar: Gira a Hu Wei para entregar un golpe poderoso a los enemigos en un área pequeña adelante, causando masivo Daño Fuego. El personaje es invulnerable mientras usa esta habilidad.",
       tags: ["Fuego", "Ataque en Cadena"]

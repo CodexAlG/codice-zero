@@ -60,16 +60,16 @@ export default {
       tags: ["Eléctrico", "Evasión"]
     },
     {
-      type: "Ataque de Carrera",
-      name: "Ataque de Carrera: Danza de Rueda Magnetica",
+      type: "Evasión",
+      name: "Evasión: Danza de Rueda Magnetica",
       description: "Presiona [Icono Ataque] durante una evasión para activar: Arroja ruedas de acero hacia adelante, causando Daño Fisico.",
-      tags: ["Físico", "Ataque de Carrera", "Evasión"]
+      tags: ["Físico", "Evasión", "Evasión"]
     },
     {
-      type: "Contraataque de Evasión",
+      type: "Evasión",
       name: "Contraataque de Evasion: Estallido de Flores",
       description: "Presiona [Icono Ataque] durante una (Evasion Perfecta) para activar: Desata un aluvión de láseres a los enemigos en frente, causando Daño Electrico. El personaje es invulnerable mientras usa esta habilidad.",
-      tags: ["Eléctrico", "Contraataque de Evasión", "Evasión"]
+      tags: ["Eléctrico", "Evasión", "Evasión"]
     },
     {
       type: "Técnica Especial",
@@ -90,19 +90,19 @@ export default {
       tags: ["Eléctrico", "Técnica Especial EX"]
     },
     {
-      type: "Asistencia Rápida",
+      type: "Asistencia",
       name: "Asistencia Rapida: Aluvion de Flores Lloviendo",
       description: "Cuando el personaje activo es lanzado, presiona [Icono Assist] para activar: Desata un aluvión de láseres a los enemigos en frente, causando Daño Electrico. El personaje es invulnerable mientras usa esta habilidad.",
       tags: ["Eléctrico", "Asistencia Rápida", "Asistencia"]
     },
     {
-      type: "Asistencia Defensiva",
+      type: "Asistencia",
       name: "Asistencia Defensiva: Barrera Brotante",
       description: "Cuando el personaje en el campo está a punto de ser atacado, presiona [Icono Assist] para activar: Hace parry al ataque del enemigo, causando masivo Aturdimiento. El personaje es invulnerable mientras usa esta habilidad.",
       tags: ["Eléctrico", "Asistencia Defensiva", "Asistencia"]
     },
     {
-      type: "Ataque de Asistencia",
+      type: "Asistencia",
       name: "Ataque de Asistencia: Estallido de Nucleo Carmesi",
       description: "Presiona [Icono Ataque] después de una (Asistencia Defensiva) para activar: Desata ataques continuos de torretas flotantes a los enemigos en frente, causando Daño Electrico. El personaje es invulnerable mientras usa esta habilidad.",
       tags: ["Eléctrico", "Ataque de Asistencia", "Asistencia"]
@@ -120,7 +120,7 @@ export default {
       tags: ["Habilidad Adicional"]
     },
     {
-      type: "Ataque en Cadena",
+      type: "Técnica Definitiva",
       name: "Ataque en Cadena: Tempestad de Petalos Helados",
       description: "Cuando un (Ataque en Cadena) es activado, selecciona el personaje para activar: Invoca a su mecha para protección, luego lanza disparos de cañón y un aluvión de misiles, causando masivo Daño Electrico. El personaje es invulnerable mientras usa esta habilidad.",
       tags: ["Eléctrico", "Ataque en Cadena"]

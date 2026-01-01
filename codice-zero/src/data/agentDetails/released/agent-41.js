@@ -58,16 +58,16 @@ export default {
       tags: ["Fuego", "Evasión"]
     },
     {
-      type: "Ataque de Carrera",
-      name: "Ataque de Carrera: Hoja Radiante - Zanshin",
+      type: "Evasión",
+      name: "Evasión: Hoja Radiante - Zanshin",
       description: "Presiona [Icono Ataque] durante una evasión para activar: Realiza un golpe de hombro hacia adelante, causando Daño Fisico.",
-      tags: ["Físico", "Ataque de Carrera", "Evasión"]
+      tags: ["Físico", "Evasión", "Evasión"]
     },
     {
-      type: "Contraataque de Evasión",
+      type: "Evasión",
       name: "Contraataque de Evasion: Hoja Radiante - Barrido de Batalla",
       description: "Presiona [Icono Ataque] durante una (Evasion Perfecta) para activar: Realiza un corte seguido de un puñetazo a los enemigos en frente, causando Daño Fuego. El personaje es invulnerable mientras usa esta habilidad.",
-      tags: ["Fuego", "Contraataque de Evasión", "Evasión"]
+      tags: ["Fuego", "Evasión", "Evasión"]
     },
     {
       type: "Técnica Especial",
@@ -88,19 +88,19 @@ export default {
       tags: ["Fuego", "Técnica Especial EX"]
     },
     {
-      type: "Asistencia Rápida",
+      type: "Asistencia",
       name: "Asistencia Rapida: Sombra Solitaria - Reagrupar",
       description: "Cuando el personaje activo es lanzado, presiona [Icono Assist] para activar: Corta y golpea a los enemigos en frente, causando Daño Fuego. El personaje es invulnerable mientras usa esta habilidad.",
       tags: ["Fuego", "Asistencia Rápida", "Asistencia"]
     },
     {
-      type: "Asistencia Defensiva",
+      type: "Asistencia",
       name: "Asistencia Defensiva: Sombra Solitaria - Postura de Montaña",
       description: "Cuando el personaje en el campo está a punto de ser atacado, presiona [Icono Assist] para activar: Hace parry al ataque del enemigo, infligiendo masivo Aturdimiento y causando Daño Fuego. Gana 75 (Corazon Ardiente) al activar esta habilidad. El personaje es invulnerable mientras usa esta habilidad.",
       tags: ["Fuego", "Asistencia Defensiva", "Asistencia"]
     },
     {
-      type: "Ataque de Asistencia",
+      type: "Asistencia",
       name: "Ataque de Asistencia: Sombra Solitaria - Colmillo Rompedor",
       description: "Presiona [Icono Ataque] después de una (Asistencia Defensiva) para activar: Desata múltiples cortes a los enemigos en frente, causando Daño Fuego. Presionar repetidamente permite hasta 7 cortes consecutivos extra. Mientras encadena cortes, si los PV de Manato están por encima del 30%, se consume un 2% de los PV Máx. El personaje es invulnerable mientras usa esta habilidad.",
       tags: ["Fuego", "Ataque de Asistencia", "Asistencia"]
@@ -118,7 +118,7 @@ export default {
       tags: ["Habilidad Adicional"]
     },
     {
-      type: "Ataque en Cadena",
+      type: "Técnica Definitiva",
       name: "Ataque en Cadena: Erupcion Abrasadora",
       description: "Cuando un (Ataque en Cadena) es activado, selecciona el personaje para activar: Arroja su espada hacia adelante, luego carga contra el enemigo para activar una explosión, causando masivo Daño Fuego. El personaje es invulnerable mientras usa esta habilidad.",
       tags: ["Fuego", "Ataque en Cadena"]

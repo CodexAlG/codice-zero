@@ -48,16 +48,16 @@ export default {
       tags: ["Fuego", "Evasión"]
     },
     {
-      type: "Ataque de Carrera",
-      name: "Ataque de Carrera: Comando de Prisa",
+      type: "Evasión",
+      name: "Evasión: Comando de Prisa",
       description: "Presiona [Icono Ataque] durante una evasión para activar: Realiza un ataque rápido hacia adelante, causando Daño Fisico.",
-      tags: ["Físico", "Ataque de Carrera", "Evasión"]
+      tags: ["Físico", "Evasión", "Evasión"]
     },
     {
-      type: "Contraataque de Evasión",
+      type: "Evasión",
       name: "Contraataque de Evasion: Oportunidad de Contraataque",
       description: "Presiona [Icono Ataque] durante una (Evasion Perfecta) para activar: Lanza una serie de ataques contra los enemigos en frente, causando Daño Fisico y Daño Fuego. El personaje es invulnerable mientras usa esta habilidad.",
-      tags: ["Fuego", "Físico", "Contraataque de Evasión", "Evasión"]
+      tags: ["Fuego", "Físico", "Evasión", "Evasión"]
     },
     {
       type: "Técnica Especial",
@@ -96,19 +96,19 @@ export default {
       tags: ["Fuego", "Técnica Especial EX"]
     },
     {
-      type: "Asistencia Rápida",
+      type: "Asistencia",
       name: "Asistencia Rapida: Corte Abrasador",
       description: "Cuando el personaje activo es lanzado, presiona [Icono Assist] para activar: Desata una serie de ataques contra los enemigos en frente, causando Daño Fisico y Daño Fuego. El personaje es invulnerable mientras usa esta habilidad.",
       tags: ["Fuego", "Físico", "Asistencia Rápida", "Asistencia"]
     },
     {
-      type: "Asistencia Defensiva",
+      type: "Asistencia",
       name: "Asistencia Defensiva: Sable Pistola Abrasador",
       description: "Cuando el personaje en el campo está a punto de ser atacado, presiona [Icono Assist] para activar: Hace parry al ataque del enemigo, causando masivo Aturdimiento. El personaje es invulnerable mientras usa esta habilidad.",
       tags: ["Fuego", "Asistencia Defensiva", "Asistencia"]
     },
     {
-      type: "Ataque de Asistencia",
+      type: "Asistencia",
       name: "Ataque de Asistencia: Perforacion Hirviente",
       description: "Presiona [Icono Ataque] después de una (Asistencia Defensiva) para activar: Desata múltiples ataques contra los enemigos en frente, causando Daño Fuego. El personaje es invulnerable mientras usa esta habilidad.",
       tags: ["Fuego", "Ataque de Asistencia", "Asistencia"]
@@ -126,7 +126,7 @@ export default {
       tags: ["Habilidad Adicional"]
     },
     {
-      type: "Ataque en Cadena",
+      type: "Técnica Definitiva",
       name: "Ataque en Cadena: Cañon Sobrecalentado",
       description: "Cuando un (Ataque en Cadena) es activado, selecciona el personaje para activar: Realiza un ataque giratorio hacia adelante, luego dispara un láser hacia adelante, causando Daño Fuego. Al activar esta habilidad, restaura 20 puntos de (Calor Embotellado). El personaje es invulnerable mientras usa esta habilidad.",
       tags: ["Fuego", "Ataque en Cadena"]

@@ -51,13 +51,13 @@ export default {
       type: "Evasión",
       name: "Ataque de Carrera: Aceite Hirviendo Supremo",
       description: "Presiona [Icono Ataque] durante una evasión para activar: Realiza un ataque cuerpo a cuerpo rápido hacia adelante, causando Daño Fisico.",
-      tags: ["Físico", "Ataque de Carrera", "Evasión"]
+      tags: ["Físico", "Evasión"]
     },
     {
-      type: "Contraataque de Evasión",
+      type: "Evasión",
       name: "Contraataque de Evasion: Moviendo Montañas y Mares",
       description: "Presiona [Icono Ataque] durante una (Evasion Perfecta) para activar: Realiza un ataque cuerpo a cuerpo a los enemigos en frente, causando Daño Fisico. El personaje es invulnerable mientras usa esta habilidad.",
-      tags: ["Físico", "Contraataque de Evasión", "Evasión"]
+      tags: ["Físico", "Evasión", "Evasión"]
     },
     {
       type: "Técnica Especial",
@@ -78,22 +78,22 @@ export default {
       tags: ["Físico", "Técnica Especial EX"]
     },
     {
-      type: "Asistencia Rápida",
+      type: "Asistencia",
       name: "Asistencia Rapida: Levanta tu Mirada a la Buena Fortuna",
       description: "Cuando el personaje activo es lanzado, presiona [Icono Assist] para activar: Realiza un ataque cuerpo a cuerpo a los enemigos en frente, causando Daño Fisico. El personaje es invulnerable mientras usa esta habilidad.",
-      tags: ["Físico", "Asistencia Rápida", "Asistencia"]
+      tags: ["Físico", "Asistencia"]
     },
     {
-      type: "Asistencia Defensiva",
+      type: "Asistencia",
       name: "Asistencia Defensiva: Presencia Intimidante",
       description: "Cuando el personaje en el campo está a punto de ser atacado, presiona [Icono Assist] para activar: Hace parry al ataque del enemigo, causando masivo Aturdimiento. Esta habilidad sobresale al hacer parry a ataques enemigos y reduce el consumo de (Puntos de Asistencia) cuando el personaje está bajo ataques intensos. El personaje es invulnerable mientras usa esta habilidad.",
-      tags: ["Asistencia Defensiva", "Asistencia"]
+      tags: ["Asistencia"]
     },
     {
-      type: "Ataque de Asistencia",
+      type: "Asistencia",
       name: "Ataque de Asistencia: Montar el Impulso",
       description: "Presiona [Icono Ataque] después de una (Asistencia Defensiva) para activar: Realiza un ataque cuerpo a cuerpo a los enemigos en frente, causando Daño Fisico. El personaje es invulnerable mientras usa esta habilidad.",
-      tags: ["Físico", "Ataque de Asistencia", "Asistencia"]
+      tags: ["Físico", "Asistencia"]
     },
     {
       type: "Pasiva Central",
@@ -108,7 +108,7 @@ export default {
       tags: ["Habilidad Adicional"]
     },
     {
-      type: "Ataque en Cadena",
+      type: "Técnica Definitiva",
       name: "Ataque en Cadena: Ungido con Vapor de Wok",
       description: "Cuando un (Ataque en Cadena) es activado, selecciona el personaje para activar: Salta sobre el Wok de Hierro y gira rápidamente para embestir a los enemigos, causando masivo Daño Fisico a todos los enemigos en el camino. El personaje es invulnerable mientras usa esta habilidad.",
       tags: ["Físico", "Ataque en Cadena"]

@@ -94,7 +94,7 @@ export default {
     },
     {
       type: "Evasión",
-      name: "Ataque de Carrera: Llamada Repentina",
+      name: "Evasión: Llamada Repentina",
       description: "Presiona [Icono Ataque] durante una evasión para activar: Lanza un ataque de embestida a los enemigos en frente, causando Daño Físico.",
       tags: [
         "Físico",
@@ -103,7 +103,7 @@ export default {
     },
     {
       type: "Evasión",
-      name: "Contraataque de Evasión: Numero No Disponible",
+      name: "Evasión: Numero No Disponible",
       description: "Presiona [Icono Ataque] durante una (Evasion Perfecta) para activar: Lanza ataques consecutivos contra los enemigos en frente, causando Daño Físico. Después de usar esta habilidad, puede seguir inmediatamente con el 4to golpe de (Ataque Basico: Encantada de Servirle). El personaje es invulnerable mientras usa esta habilidad.",
       tags: [
         "Físico",
@@ -197,7 +197,7 @@ export default {
       ]
     },
     {
-      type: "Ataque en Cadena",
+      type: "Técnica Definitiva",
       name: "Felpudo de Bienvenida",
       description: "Cuando un (Ataque en Cadena) es activado, selecciona el personaje para activar: Lanza patadas consecutivas contra los enemigos en frente, causando masivo Daño Físico. Después de usar esta habilidad, puede seguir inmediatamente con el 4to golpe de (Ataque Basico: Encantada de Servirle). El personaje es invulnerable mientras usa esta habilidad.",
       tags: [

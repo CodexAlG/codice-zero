@@ -80,14 +80,14 @@ export default {
       ]
     },
     {
-      type: "Ataque de Evasión",
+      type: "Evasión",
       name: "Impacto de Flor de Escarcha",
       description: "Presiona [Icono Ataque] durante una (evasión) para activar: Golpea hacia adelante, infligiendo Daño Glacial.",
       tags: "Evasión",
     },
     {
-      type: "Contraatque de Evasión",
-      name: "Reverberación de Arrastre Helado",
+      type: "Evasión",
+      name: "Contraataque de Evasion: Reverberacion de Arrastre Helado",
       description: "Presiona [Icono Ataque] durante una (Evasión Perfecta) para activar: Golpea a los enemigos en frente, infligiendo Daño Glacial. El personaje es invulnerable mientras usa esta habilidad.",
       tags: "Evasión",
     },
@@ -152,8 +152,8 @@ export default {
       ]
     },
     {
-      type: "Ataque en Cadena",
-      name: "Juramento Helado",
+      type: "Técnica Definitiva",
+      name: "Ataque en Cadena: Juramento Helado",
       description: "Cuando se activa un (Ataque en Cadena), selecciona al personaje para activar: Desata un golpe poderoso contra los enemigos en un área pequeña frente a ella, infligiendo daño masivo de Daño Glacial. Si está dentro de (Velo Etéreo: Manantial), los tentáculos se unen al asalto, mejorando aún más el poder de la habilidad. El personaje es invulnerable mientras usa esta habilidad.",
       tags: [
         "Cadena",
@@ -161,8 +161,8 @@ export default {
       ]
     },
     {
-      type: "Ataque en Cadena",
-      name: "Velo Etéreo: Manantial",
+      type: "Técnica Definitiva",
+      name: "Ataque en Cadena: Velo Etéreo: Manantial",
       description: "Cuando la Puntuación de Decibelios está al Máximo, el golpe final del (Ataque Básico: Abrazo de Escarcha), (Técnica Especial EX: Espiral de Escarcha), (Técnica Especial EX: Aplastamiento Glacial) y (Ataque en Cadena: Juramento Helado) consumirá 3,000 Decibelios para activar un (Velo Etéreo: Manantial). Mientras (Velo Etéreo: Manantial) está activo, los PV Máx. de todos los miembros del escuadrón aumentan un 5% durante 30s. Las activaciones repetidas extienden la duración, hasta un máximo de 300s. Mientras Yidhari está dentro de (Velo Etéreo: Manantial), la velocidad de carga del (Ataque Básico: Abrazo de Escarcha aumenta) y los PV se consumen más rápido durante la carga.",
       tags: [
         "Cadena",

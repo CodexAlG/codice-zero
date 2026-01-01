@@ -147,19 +147,19 @@ export default {
         },
         {
             type: "Evasión",
-            name: "Ataque de Carrera",
+            name: "Evasión",
             description: "Al usar (Evasión), Clic [Icono Ataque] para activar: Causa Daño Físico.",
-            tags: ["Físico", "Ataque de Carrera", "Evasión"],
+            tags: ["Físico", "Evasión", "Evasión"],
         },
         {
             type: "Evasión",
-            name: "Ataque de Carrera: Corte de Retirada",
+            name: "Evasión: Corte de Retirada",
             description: "Bajo (Forma de Empuñadura), sin mover el joystick/palanca Clic [Icono Dodges] para activar: Lanza un rápido corte de retirada, si durante el periodo activa una (evasión perfecta), Clic [Icono Ataque] para activar rápidamente (Ataque Básico: Forma de Empuñadura Tierra Definitiva). Posee estado de invencibilidad durante la activación.",
-            tags: ["Físico", "Ataque de Carrera", "Forma de Empuñadura", "Evasión"],
+            tags: ["Físico", "Evasión", "Forma de Empuñadura", "Evasión"],
         },
         {
             type: "Evasión",
-            name: "Contraataque de Evasión",
+            name: "Evasión",
             description: "Tras activar (Evasión Perfecta), Clic [Icono Ataque] para activar: Causa Daño Físico; Posee efecto de invencibilidad durante la activación.",
             tags: ["Físico", "Evasión"],
         },
@@ -230,9 +230,9 @@ export default {
             tags: ["Físico", "Ataque en Cadena", "Forma de Empuñadura"],
         },
         {
-            type: "Ataque en Cadena",
-            name: "Forma de Empuñadura",
-            description: "Bajo (Forma de Empuñad ura), al activar (Ataque en Cadena), selecciona el personaje correspondiente para activar: Lanza un poderoso corte a una amplia gama de enemigos en frente, causando gran cantidad de Daño Físico; Posee efecto de invencibilidad durante la activación.",
+            type: "Técnica Definitiva",
+            name: "Ataque en Cadena: Forma de Empuñadura",
+            description: "Bajo (Forma de Empuñadura), al activar (Ataque en Cadena), selecciona el personaje correspondiente para activar: Lanza un poderoso corte a una amplia gama de enemigos en frente, causando gran cantidad de Daño Físico; Posee efecto de invencibilidad durante la activación.",
             tags: ["Físico", "Ataque en Cadena", "Forma de Empuñadura"],
         },
         {
@@ -243,7 +243,7 @@ export default {
         },
         {
             type: "Técnica Definitiva",
-            name: "Forma de Empuñadura",
+            name: "Definitiva: Forma de Empuñadura",
             description: "Bajo (Forma de Empuñadura), cuando el nivel de Decibelios llega a (Máximo), Clic [Icono Definitiva] para activar: Invoca una espada gigante, causando gran cantidad de Daño Físico a los enemigos; Tras activar el movimiento, cerrará el (Velo Etéreo: ZhuXie) y saldrá de la (Forma de Empuñadura), y obtendrá 4 puntos de (Intención de Espada). Posee efecto de invencibilidad durante la activación.",
             tags: ["Físico", "Técnica Definitiva", "Forma de Empuñadura"],
         },
