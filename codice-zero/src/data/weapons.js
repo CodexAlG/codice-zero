@@ -1824,7 +1824,7 @@ export const weapons = [
     rol: "Defensa",
     // Info para la Tarjeta (Vista rápida)
     stats: { main: "Ataque", value: "713" },
-    leak: "Beta",
+
     // Info para el Detalle (Vista completa)
     detailStats: {
       baseAtk: { min: 48, max: 713 },     // Nvl 1 -> 60
@@ -1848,7 +1848,7 @@ export const weapons = [
     name: "Resplandor Partenubes",
     rank: "S",
     rol: "Ataque",
-    leak: "Beta",
+
     // Info para el Detalle (Vista completa)
     detailStats: {
       baseAtk: { min: 50, max: 743 },     // Nvl 1 -> 60
@@ -1873,7 +1873,7 @@ export const weapons = [
     name: "Caldero de la claridad",
     rank: "A",
     rol: "Ruptura",
-    leak: "Beta",
+
     detailStats: {
       baseAtk: { min: 42, max: 594 },     // Nvl 1 -> 60
       subStat: { name: "HP %", min: "12%", max: "30%" } // Nvl 1 -> 60

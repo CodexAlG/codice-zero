@@ -6,7 +6,6 @@ export const driveDiscs = [
     twoPiece: "Daño Físico +10%",
     fourPiece: "Cuando el portador se encuentra en cualquier (Velo Ether), su Probabilidad de CRIT aumenta en 12%. Después de salir de la (Velo Ether), este bono se mantiene durante 15 segundos. Si el portador es un personaje de Atacante, al activar o extender la duración del (Velo Ether), su Probabilidad de CRIT aumenta 12% adicional durante 30 segundos, y la duración se restablece si se vuelve a activar repetidamente",
     image: "/CodiceZero/Discos/SuitWhiteWaterBallad.png",
-    leak: "Beta"
   },
   {
     id: 9925,
@@ -14,7 +13,6 @@ export const driveDiscs = [
     twoPiece: "Daño Etereo +10%",
     fourPiece: "Cuando el portador realiza un Ataque Básico y golpea a un enemigo, su Maestría de anomalía aumenta en 36 puntos, con una duración de 8 segundos. La duración se restablece si se activa repetidamente. Cuando un enemigo en el campo entra en estado aturdido, el daño infligido por el portador aumenta en 25%, con una duración de 18 segundos. La duración se restablece si se activa repetidamente.",
     image: "/CodiceZero/Discos/SuitShiningAria.png",
-    leak: "Beta"
   },
   {
     id: 9924,
