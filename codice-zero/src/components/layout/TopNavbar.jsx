@@ -15,12 +15,10 @@ export default function TopNavbar({ isVisible }) {
 
     // Logic to get latest items
     const latestAgents = useMemo(() => {
-        // Sort by ID desc (assuming higher ID = newer/beta)
         return [...agents].sort((a, b) => b.id - a.id).slice(0, 2);
     }, []);
 
     const latestWeapons = useMemo(() => {
-        // Filter for S-Rank only to show featured/premium weapons, avoiding B-rank IDs which are numerically higher
         return [...weapons].filter(w => w.rank === 'S').sort((a, b) => b.id - a.id).slice(0, 2);
     }, []);
 
@@ -48,30 +46,44 @@ export default function TopNavbar({ isVisible }) {
         const isActive = activeItem === index;
 
         return (
-            <li className="relative group h-full flex items-center">
-                <Link href={href} className={`relative flex items-center h-10 px-4 rounded-md transition-all duration-200 ${isActive ? 'text-yellow-300 bg-yellow-500/10 shadow-lg shadow-yellow-500/20 border border-yellow-400/30' : 'text-gray-100 hover:bg-cyan-500/10 hover:text-cyan-300 hover:shadow-md hover:shadow-cyan-400/20'} hover:border hover:border-cyan-400/20`}>
+            <li className="relative group w-full flex justify-center py-2">
+                <Link
+                    href={href}
+                    className={`relative flex items-center justify-center w-12 h-12 rounded-xl transition-all duration-200 
+                    ${isActive
+                            ? 'text-yellow-300 bg-yellow-500/10 shadow-lg shadow-yellow-500/20 border border-yellow-400/30'
+                            : 'text-gray-400 hover:bg-white/5 hover:text-white hover:shadow-cyan-400/20'} 
+                    hover:border hover:border-white/10 group`}
+                    aria-label={label}
+                >
                     {typeof Icon === 'string' ? (
-                        <Image src={Icon} alt={`Icono ${label}`} width={20} height={20} className={`transition-all duration-200 ${isActive ? 'drop-shadow-lg shadow-yellow-400/50 saturate-200 contrast-200' : 'opacity-80 hover:opacity-100 hover:drop-shadow-md hover:shadow-cyan-400/50 saturate-150 hover:saturate-200 hover:contrast-150'}`} />
+                        <Image src={Icon} alt={`Icono ${label}`} width={24} height={24} className={`transition-all duration-200 ${isActive ? 'drop-shadow-lg shadow-yellow-400/50 saturate-200 contrast-200' : 'opacity-70 group-hover:opacity-100 group-hover:saturate-150'}`} />
                     ) : (
-                        <Icon size={20} className={`transition-all duration-200 ${isActive ? 'text-yellow-300 drop-shadow-lg shadow-yellow-400/50' : 'text-gray-200 opacity-80 hover:text-cyan-300 hover:opacity-100 hover:drop-shadow-md hover:shadow-cyan-400/50'}`} />
+                        <Icon size={24} className={`transition-all duration-200 ${isActive ? 'text-yellow-300 drop-shadow-lg shadow-yellow-400/50' : 'text-current opacity-70 group-hover:opacity-100'}`} />
                     )}
-                    <span className="ml-2 font-medium">{label}</span>
-                    {isActive && <div className="absolute bottom-0 left-0 right-0 h-[2px] bg-gradient-to-r from-yellow-300 to-yellow-500 shadow-lg shadow-yellow-500/50"></div>}
+
+                    {/* Tooltip Label (Shows on Hover) */}
+                    <span className="absolute left-full ml-4 px-2 py-1 bg-black/80 border border-white/10 rounded text-xs font-bold text-white opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap z-50 pointer-events-none">
+                        {label}
+                    </span>
+
+                    {/* Active Indicator Bar (Left vertical) */}
+                    {isActive && <div className="absolute left-0 top-1/2 -translate-y-1/2 h-8 w-[3px] bg-gradient-to-b from-yellow-300 to-yellow-500 rounded-r-full shadow-lg shadow-yellow-500/50"></div>}
                 </Link>
 
-                {/* Dropdown Menu */}
+                {/* Dropdown Menu (Opens to Right) */}
                 {hasDropdown && latestItems && (
-                    <div className="absolute top-full left-1/2 -translate-x-1/2 pt-4 hidden group-hover:block">
+                    <div className="absolute top-0 left-full ml-4 hidden group-hover:block z-50 pl-2">
                         <div className="bg-[#0f172a] border border-white/10 rounded-xl shadow-2xl p-4 w-72 backdrop-blur-xl flex flex-col gap-3 relative overflow-hidden">
                             {/* Decoration */}
                             <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-yellow-500 to-transparent opacity-50"></div>
 
-                            <span className="text-xs font-bold text-gray-400 uppercase tracking-wider ml-1 mb-1">Lo más nuevo</span>
+                            <span className="text-xs font-bold text-gray-400 uppercase tracking-wider ml-1 mb-1">{label} - Lo más nuevo</span>
 
                             {latestItems.map((item) => (
                                 <Link
                                     key={item.id}
-                                    href={itemType === 'agente' ? `/agentes/${item.id}` : itemType === 'arma' ? `/armas/${item.id}` : `/bangboos/${item.id}`} // Assuming routes structure
+                                    href={itemType === 'agente' ? `/agentes/${item.id}` : itemType === 'arma' ? `/armas/${item.id}` : `/bangboos/${item.id}`}
                                     className="flex items-center p-2 rounded-lg bg-white/5 hover:bg-white/10 transition-colors border border-transparent hover:border-white/10 group/item"
                                 >
                                     <div className="relative w-12 h-12 rounded-md overflow-hidden bg-black/50 border border-white/5 flex-shrink-0">
@@ -87,7 +99,6 @@ export default function TopNavbar({ isVisible }) {
                                         {item.leak === 'Beta' && (
                                             <span className="text-[10px] text-black bg-yellow-500 px-1.5 py-0.5 rounded w-fit font-bold">BETA</span>
                                         )}
-                                        {/* Fallback for non-beta showing rank or element if available, simplistic approach */}
                                         {!item.leak && item.rank && (
                                             <span className="text-[10px] text-gray-500">Rango {item.rank}</span>
                                         )}
@@ -104,23 +115,23 @@ export default function TopNavbar({ isVisible }) {
 
     return (
         <header
-            className={`fixed top-0 left-0 w-full z-50 bg-[#0f172a]/90 backdrop-blur-md border-b border-white/5 shadow-md transition-transform duration-300 ease-in-out ${isVisible ? 'translate-y-0' : '-translate-y-full'
-                } hidden lg:flex items-center justify-between px-8 h-20`}
+            className={`fixed top-0 left-0 h-full w-20 z-50 bg-[#0b0c15]/95 backdrop-blur-md border-r border-white/5 shadow-2xl transition-transform duration-300 ease-in-out ${isVisible ? 'translate-x-0' : '-translate-x-full'
+                } hidden lg:flex flex-col items-center py-8`}
         >
             {/* Logo CZ */}
-            <Link href="/" className="flex items-center group relative">
+            <Link href="/" className="flex items-center justify-center group relative mb-12">
                 <div
-                    className={`text-transparent bg-clip-text bg-gradient-to-br from-yellow-300 to-yellow-600 drop-shadow-[0_0_10px_rgba(234,179,8,0.9)] tracking-tighter transition-all duration-300 group-hover:scale-105 font-display font-black italic text-3xl pr-4`}
+                    className={`text-transparent bg-clip-text bg-gradient-to-br from-yellow-300 to-yellow-600 drop-shadow-[0_0_10px_rgba(234,179,8,0.9)] tracking-tighter transition-all duration-300 group-hover:scale-110 font-display font-black italic text-2xl`}
                 >
                     CZ
                 </div>
                 {/* Overlay de Brillo para el hover */}
-                <div className="absolute inset-0 bg-yellow-500/0 group-hover:bg-yellow-500/10 transition-colors duration-200 rounded-full blur-xl -z-10"></div>
+                <div className="absolute inset-0 bg-yellow-500/0 group-hover:bg-yellow-500/10 transition-colors duration-200 rounded-full blur-xl -z-10 w-12 h-12"></div>
             </Link>
 
             {/* Navigation */}
-            <nav className="h-full">
-                <ul className="flex items-center space-x-2 h-full">
+            <nav className="flex-1 w-full">
+                <ul className="flex flex-col items-center gap-4 w-full">
                     <NavItem
                         href="/"
                         index={-1}
@@ -168,6 +179,9 @@ export default function TopNavbar({ isVisible }) {
                     />
                 </ul>
             </nav>
+
+            {/* Bottom Decoration or Settings if needed */}
+            <div className="mt-auto w-10 h-[1px] bg-white/10"></div>
         </header>
     );
 }
