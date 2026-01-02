@@ -62,10 +62,12 @@ export default function TopNavbar({ isVisible }) {
                         <Icon size={24} className={`transition-all duration-200 ${isActive ? 'text-yellow-300 drop-shadow-lg shadow-yellow-400/50' : 'text-current opacity-70 group-hover:opacity-100'}`} />
                     )}
 
-                    {/* Tooltip Label (Shows on Hover) */}
-                    <span className="absolute left-full ml-4 px-2 py-1 bg-black/80 border border-white/10 rounded text-xs font-bold text-white opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap z-50 pointer-events-none">
-                        {label}
-                    </span>
+                    {/* Tooltip Label (Shows on Hover - Hidden if Dropdown exists) */}
+                    {!hasDropdown && (
+                        <span className="absolute left-full ml-4 px-2 py-1 bg-black/80 border border-white/10 rounded text-xs font-bold text-white opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap z-50 pointer-events-none">
+                            {label}
+                        </span>
+                    )}
 
                     {/* Active Indicator Bar (Left vertical) */}
                     {isActive && <div className="absolute left-0 top-1/2 -translate-y-1/2 h-8 w-[3px] bg-gradient-to-b from-yellow-300 to-yellow-500 rounded-r-full shadow-lg shadow-yellow-500/50"></div>}

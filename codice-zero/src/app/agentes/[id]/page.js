@@ -96,9 +96,9 @@ const SidebarNav = ({ agentId }) => {
   }, []);
 
   return (
-    <div className="fixed right-8 top-1/2 -translate-y-1/2 z-[9999] hidden 2xl:flex flex-col gap-6 pointer-events-auto">
+    <div className="fixed left-8 top-1/2 -translate-y-1/2 z-[9999] hidden 2xl:flex flex-col gap-6 pointer-events-auto">
       {/* Línea guía vertical */}
-      <div className="absolute right-[7px] top-0 bottom-0 w-[2px] bg-white/5 rounded-full"></div>
+      <div className="absolute left-[7px] top-0 bottom-0 w-[2px] bg-white/5 rounded-full"></div>
 
       {navItems.map((item) => {
         const isActive = activeSection === item.id;
@@ -106,7 +106,7 @@ const SidebarNav = ({ agentId }) => {
           <button
             key={item.id}
             onClick={() => scrollToSection(item.id)}
-            className="group flex flex-row-reverse items-center gap-4 text-right transition-all relative cursor-pointer outline-none"
+            className="group flex items-center gap-4 text-left transition-all relative cursor-pointer outline-none"
             aria-label={`Ir a sección ${item.label}`}
           >
             {/* Indicador (Punto) */}
@@ -126,7 +126,7 @@ const SidebarNav = ({ agentId }) => {
               className={`
                 text-[10px] font-bold tracking-[0.2em] transition-all duration-300 uppercase
                 ${isActive
-                  ? 'text-yellow-400 -translate-x-1'
+                  ? 'text-yellow-400 translate-x-1'
                   : 'text-white/30 group-hover:text-white/70'}
               `}
             >
