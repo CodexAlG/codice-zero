@@ -379,8 +379,8 @@ export default function AgentDetailPage() {
         {/* Lista de Habilidades del Grupo */}
         <div className="flex flex-col gap-6">
           {groupSkills.map((skill, idx) => {
-            // Apply scaling if it's passive group, otherwise just raw description
-            const description = isPassiveGroup ? processScaling(skill.description) : skill.description;
+            // Apply scaling to all groups, not just passive
+            const description = processScaling(skill.description);
 
             return (
               <div key={idx} className="bg-[#0a0a0a] border border-white/5 rounded-xl p-5 hover:bg-white/[0.02] transition-colors relative overflow-hidden">
