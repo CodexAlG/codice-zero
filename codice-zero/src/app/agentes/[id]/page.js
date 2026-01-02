@@ -96,7 +96,7 @@ const SidebarNav = ({ agentId }) => {
   }, []);
 
   return (
-    <div className="fixed left-8 top-1/2 -translate-y-1/2 z-[9999] hidden 2xl:flex flex-col gap-6 pointer-events-auto">
+    <div className="fixed left-24 top-1/2 -translate-y-1/2 z-[9999] hidden 2xl:flex flex-col gap-6 pointer-events-auto">
       {/* Línea guía vertical */}
       <div className="absolute left-[7px] top-0 bottom-0 w-[2px] bg-white/5 rounded-full"></div>
 
