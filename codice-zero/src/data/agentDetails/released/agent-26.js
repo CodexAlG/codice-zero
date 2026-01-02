@@ -38,13 +38,13 @@ export default {
     {
       type: "Ataque Básico",
       name: "Ataque Básico: Kazahana",
-      description: "Presiona [Icono Ataque] para activar: Desata hasta 5 cortes hacia adelante, los primeros dos causan Daño Físico, y los últimos tres causan Daño Hielo. Bloquea ataques enemigos durante el 5to golpe del (Ataque Básico).",
+      description: "Presiona [Icono Ataque] para activar: Desata hasta 5 cortes hacia adelante, los primeros dos causan Daño Físico, y los últimos tres causan Daño Congelación. Bloquea ataques enemigos durante el 5to golpe del (Ataque Básico).",
       tags: ["Físico", "Hielo", "Ataque Básico"]
     },
     {
       type: "Ataque Básico",
       name: "Ataque Básico: Shimotsuki",
-      description: "Con al menos 2 puntos de (Escarcha Caída), mantén [Icono Ataque] para activar: Hoshimi Miyabi envaina su espada, entra en (Postura Shimotsuki) y comienza a cargar. Cada nivel de carga consumirá 2 puntos de (Escarcha Caída), hasta un máximo de tres niveles de carga. Al soltar [Icono Ataque], o cuando (Escarcha Caída) se agote completamente, Hoshimi Miyabi desenvainará su espada y desatará un poderoso corte hacia adelante basado en el nivel de carga actual, causando masivo Daño Hielo. Luego sale de la (Postura Shimotsuki). El personaje es invulnerable durante (Postura Shimotsuki). Hoshimi Miyabi puede tener hasta 6 puntos de (Escarcha Caída). Al entrar al campo de batalla, Hoshimi Miyabi obtiene inmediatamente 3 puntos de (Escarcha Caída).",
+      description: "Con al menos 2 puntos de (Escarcha Caída), mantén [Icono Ataque] para activar: Hoshimi Miyabi envaina su espada, entra en (Postura Shimotsuki) y comienza a cargar. Cada nivel de carga consumirá 2 puntos de (Escarcha Caída), hasta un máximo de tres niveles de carga. Al soltar [Icono Ataque], o cuando (Escarcha Caída) se agote completamente, Hoshimi Miyabi desenvainará su espada y desatará un poderoso corte hacia adelante basado en el nivel de carga actual, causando masivo Daño Congelación. Luego sale de la (Postura Shimotsuki). El personaje es invulnerable durante (Postura Shimotsuki). Hoshimi Miyabi puede tener hasta 6 puntos de (Escarcha Caída). Al entrar al campo de batalla, Hoshimi Miyabi obtiene inmediatamente 3 puntos de (Escarcha Caída).",
       tags: ["Hielo", "Ataque Básico"]
     },
     {
@@ -62,49 +62,49 @@ export default {
     {
       type: "Evasión",
       name: "Contraataque de Evasión: Kan Suzume",
-      description: "Presiona [Icono Ataque] durante una (Evasión Perfecta) para activar: Corta a enemigos en frente, causando Daño Hielo. El personaje es invulnerable mientras usa esta habilidad.",
+      description: "Presiona [Icono Ataque] durante una (Evasión Perfecta) para activar: Corta a enemigos en frente, causando Daño Congelación. El personaje es invulnerable mientras usa esta habilidad.",
       tags: ["Hielo", "Evasión"]
     },
     {
       type: "Técnica Especial",
       name: "Técnica Especial: Miyuki",
-      description: "Presiona [Icono Especial] para activar: Rápidamente desenvaina su espada y corta hacia adelante, causando Daño Hielo. El nivel de Anti-Interrupción aumenta mientras usa esta habilidad.",
+      description: "Presiona [Icono Especial] para activar: Rápidamente desenvaina su espada y corta hacia adelante, causando Daño Congelación. El nivel de Anti-Interrupción aumenta mientras usa esta habilidad.",
       tags: ["Hielo", "Técnica Especial"]
     },
     {
       type: "Técnica Especial EX",
       name: "Técnica Especial EX: Hisetsu",
-      description: "Con suficiente Energía, presiona [Icono Especial] para activar: Arremete hacia adelante, desatando poderosos cortes contra enemigos en el camino, causando masivo Daño Hielo. Al activar esta habilidad, gana 2 puntos de (Escarcha Caída). El personaje es invulnerable mientras usa esta habilidad. Después de usar esta habilidad, con suficiente Energía, presiona [Icono Especial] de nuevo para activar: Consume Energía extra y desata un poderoso ataque de seguimiento contra enemigos en frente, causando masivo Daño Hielo. Al activar esta habilidad, gana 2 puntos de (Escarcha Caída). El personaje es invulnerable mientras usa esta habilidad.",
+      description: "Con suficiente Energía, presiona [Icono Especial] para activar: Arremete hacia adelante, desatando poderosos cortes contra enemigos en el camino, causando masivo Daño Congelación. Al activar esta habilidad, gana 2 puntos de (Escarcha Caída). El personaje es invulnerable mientras usa esta habilidad. Después de usar esta habilidad, con suficiente Energía, presiona [Icono Especial] de nuevo para activar: Consume Energía extra y desata un poderoso ataque de seguimiento contra enemigos en frente, causando masivo Daño Congelación. Al activar esta habilidad, gana 2 puntos de (Escarcha Caída). El personaje es invulnerable mientras usa esta habilidad.",
       tags: ["Hielo", "Técnica Especial EX"]
     },
     {
       type: "Técnica Definitiva",
       name: "Ataque en Cadena: Llamada de la Primavera",
-      description: "Cuando un (Ataque en Cadena) es activado, selecciona el personaje para activar: Desata un poderoso corte a enemigos en frente en una gran área, causando masivo Daño Hielo. El personaje es invulnerable mientras usa esta habilidad.",
+      description: "Cuando un (Ataque en Cadena) es activado, selecciona el personaje para activar: Desata un poderoso corte a enemigos en frente en una gran área, causando masivo Daño Congelación. El personaje es invulnerable mientras usa esta habilidad.",
       tags: ["Hielo", "Ataque en Cadena"]
     },
     {
       type: "Técnica Definitiva",
       name: "Definitiva: Nieve Persistente",
-      description: "Cuando el Nivel de Decibelios está al [Maximo], presiona [Icono Definitiva] para activar: Desata un poderoso corte a enemigos en frente en una gran área, causando masivo Daño Hielo. Al activar esta habilidad, gana 3 puntos de (Escarcha Caída). Hoshimi Miyabi regenera 10 de Energía si esta habilidad golpea a un enemigo. El personaje es invulnerable mientras usa esta habilidad.",
+      description: "Cuando el Nivel de Decibelios está al [Maximo], presiona [Icono Definitiva] para activar: Desata un poderoso corte a enemigos en frente en una gran área, causando masivo Daño Congelación. Al activar esta habilidad, gana 3 puntos de (Escarcha Caída). Hoshimi Miyabi regenera 10 de Energía si esta habilidad golpea a un enemigo. El personaje es invulnerable mientras usa esta habilidad.",
       tags: ["Hielo", "Técnica Definitiva"]
     },
     {
       type: "Pasiva Central",
       name: "Pasiva Principal: Frío Abrasador",
-      description: "Cuando Hoshimi Miyabi causa Daño Hielo, aplica (Fuego Helado) al objetivo, durando 30s. Cuando acumula (Acumulación de Anomalía de Hielo) contra objetivos con (Fuego Helado), aumenta la Tasa de (Acumulación de Anomalía de Hielo) en un 100% de la Prob. Crítica de Hoshimi Miyabi, hasta un aumento máximo del 80%. A medida que Hoshimi Miyabi acumula (Acumulación de Anomalía de Hielo), tiene su propio medidor de Acumulación de Anomalía de Atributo independiente y activa (Congelación), (Rompehielo), y (Quemadura por Frío) que pueden reaccionar con otras Anomalías de Atributo, incluyendo (Anomalía de Atributo de Hielo), para activar (Desorden). Cuando Hoshimi Miyabi aplica (Quemadura por Frío) a enemigos con (Fuego Helado), consumirá el (Fuego Helado) para activar (Quemadura Gélida - Ruptura), causando Daño Hielo igual al {VALOR_1} del ATK de Hoshimi Miyabi y causando que el objetivo entre en el estado (Quemadura Gélida). Todas las unidades acumulan {VALOR_2} más de Acumulación de Anomalía contra enemigos bajo el estado (Quemadura Gélida), pero Hoshimi Miyabi no puede volver a aplicar (Fuego Helado) a estos enemigos. El estado (Quemadura Gélida) termina cuando (Quemadura por Frío) expira. Mientras este estado permanece activo, activar otra Anomalía de Atributo sobrescribirá (Quemadura por Frío) y eliminará (Quemadura Gélida). Al activar (Quemadura Gélida - Ruptura), Hoshimi Miyabi obtiene 1 punto de (Escarcha Caída). Este efecto puede activarse una vez cada 10s.",
+      description: "Cuando Hoshimi Miyabi causa Daño Congelación, aplica (Fuego Helado) al objetivo, durando 30s. Cuando acumula (Acumulación de Anomalía de Congelación) contra objetivos con (Fuego Helado), aumenta la Tasa de (Acumulación de Anomalía de Congelación) en un 100% de la Prob. Crítica de Hoshimi Miyabi, hasta un aumento máximo del 80%. A medida que Hoshimi Miyabi acumula (Acumulación de Anomalía de Congelación), tiene su propio medidor de Acumulación de Anomalía de Atributo independiente y activa (Congelación), (Rompehielo), y (Quemadura por Frío) que pueden reaccionar con otras Anomalías de Atributo, incluyendo (Anomalía de Atributo de Hielo), para activar (Desorden). Cuando Hoshimi Miyabi aplica (Quemadura por Frío) a enemigos con (Fuego Helado), consumirá el (Fuego Helado) para activar (Quemadura Gélida - Ruptura), causando Daño Congelación igual al {VALOR_1} del ATK de Hoshimi Miyabi y causando que el objetivo entre en el estado (Quemadura Gélida). Todas las unidades acumulan {VALOR_2} más de Acumulación de Anomalía contra enemigos bajo el estado (Quemadura Gélida), pero Hoshimi Miyabi no puede volver a aplicar (Fuego Helado) a estos enemigos. El estado (Quemadura Gélida) termina cuando (Quemadura por Frío) expira. Mientras este estado permanece activo, activar otra Anomalía de Atributo sobrescribirá (Quemadura por Frío) y eliminará (Quemadura Gélida). Al activar (Quemadura Gélida - Ruptura), Hoshimi Miyabi obtiene 1 punto de (Escarcha Caída). Este efecto puede activarse una vez cada 10s.",
       tags: ["Pasiva Central"]
     },
     {
       type: "Habilidad Adicional",
       name: "Habilidad Adicional: Disfrutar en el Frío",
-      description: "Cuando otro personaje en tu escuadrón es un personaje de (Soporte) o comparte la misma Facción: El DAÑO de (Ataque Básico: Shimotsuki) aumenta en un 60%. Cuando cualquier miembro del escuadrón activa (Desorden), Hoshimi Miyabi obtiene 2 puntos de (Escarcha Caída) y (Ataque Básico: Shimotsuki) durante la siguiente (Postura Shimotsuki) ignorará 30% de la RES al Hielo del objetivo.",
+      description: "Cuando otro personaje en tu escuadrón es un personaje de (Soporte) o comparte la misma Facción: El DAÑO de (Ataque Básico: Shimotsuki) aumenta en un 60%. Cuando cualquier miembro del escuadrón activa (Desorden), Hoshimi Miyabi obtiene 2 puntos de (Escarcha Caída) y (Ataque Básico: Shimotsuki) durante la siguiente (Postura Shimotsuki) ignorará 30% de la Res Hielo del objetivo.",
       tags: ["Habilidad Adicional"]
     },
     {
       type: "Asistencia",
       name: "Asistencia Rápida: Pétalos Danzantes",
-      description: "Cuando el personaje activo es lanzado, presiona [Icono Assist] para activar: Corta a enemigos en frente, causando Daño Hielo. El personaje es invulnerable mientras usa esta habilidad.",
+      description: "Cuando el personaje activo es lanzado, presiona [Icono Assist] para activar: Corta a enemigos en frente, causando Daño Congelación. El personaje es invulnerable mientras usa esta habilidad.",
       tags: ["Hielo", "Asistencia"]
     },
     {
@@ -116,7 +116,7 @@ export default {
     {
       type: "Asistencia",
       name: "Ataque de Asistencia: Pétalos Cayendo",
-      description: "Presiona [Icono Ataque] después de una (Asistencia Defensiva) para activar: Carga y corta a enemigos en frente, causando Daño Hielo. El personaje es invulnerable mientras usa esta habilidad.",
+      description: "Presiona [Icono Ataque] después de una (Asistencia Defensiva) para activar: Carga y corta a enemigos en frente, causando Daño Congelación. El personaje es invulnerable mientras usa esta habilidad.",
       tags: ["Hielo", "Asistencia"]
     },
     {
