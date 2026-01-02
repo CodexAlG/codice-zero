@@ -229,7 +229,7 @@ export const agents = [
   },
   // --- VERSIÓN 1.5 (Futuro / Screenshot) ---
   {
-    id: 27,
+    id: 28,
     name: "Astra Yao",
     rank: "S",
     element: "Etereo",
@@ -241,7 +241,7 @@ export const agents = [
 
   },
   {
-    id: 28,
+    id: 27,
     name: "Evelyn",
     rank: "S",
     element: "Fuego",
