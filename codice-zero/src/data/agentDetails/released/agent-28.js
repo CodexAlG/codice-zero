@@ -2,175 +2,181 @@
 export default {
   baseStats: {
     hp: {
-      min: 692,
-      max: 8609
+      min: 626,
+      max: 7788
     },
     atk: {
-      min: 103,
-      max: 715
+      min: 134,
+      max: 929
     },
     def: {
-      min: 48,
-      max: 600
+      min: 49,
+      max: 612
     },
-    impact: 83,
+    impact: 93,
     crit: "5%",
     critDmg: "50%",
-    anomalyRate: "93",
-    anomalyMastery: "92",
+    anomalyRate: "92",
+    anomalyMastery: "90",
     penRatio: "0%",
     energyRegen: "1.2",
   },
   coreStats: {
-    statName: "energia",
-    valuePerNode: 0.12
+    statName: "crit rate",
+    valuePerNode: 4.8
   },
   coreSkillScaling: [
-    ["20%", "25.0%", "2950.0", "22%"],
-    ["20%", "25.0%", "2950.0", "24%"],
-    ["20%", "25.0%", "2950.0", "26%"],
-    ["20%", "25.0%", "2950.0", "28%"],
-    ["20%", "25.0%", "2950.0", "30%"],
-    ["20%", "25.0%", "2950.0", "32%"],
-    ["20%", "25.0%", "2950.0", "35%"],
+    ["12.5%"],
+    ["14.6%"],
+    ["16.7%"],
+    ["18.8%"],
+    ["20.8%"],
+    ["23%"],
+    ["25%"],
   ],
   skills: [
     {
       type: "Ataque Básico",
-      name: "Ataque Básico: Capricho",
-      description: "Presiona [Icono Ataque] para activar: Realiza hasta tres ataques hacia adelante, causando Daño Etéreo. Durante el 3er golpe, mantén [Icono Ataque] para cargar, atrayendo enemigos y expandiendo el rango de ataque para un ataque más fuerte. Después de usar otras habilidades, mantén [Icono Ataque] para iniciar el 3er golpe directamente.",
-      tags: ["Etéreo", "Ataque Básico"]
+      name: "Ataque Básico: Alambre de Navaja",
+      description: "Presiona [Icono Ataque] para activar: Lanza hasta cinco ataques hacia adelante, causando Daño Físico y Daño de Fuego. Cuando el 5to golpe asesta contra un enemigo, Evelyn usará su (Garrote Lunalux) para atar el objetivo primario y entrar en (Sello Vinculante).",
+      tags: ["Físico", "Fuego", "Ataque Básico"]
     },
     {
       type: "Ataque Básico",
-      name: "Ataque Básico: Interludio",
-      description: "Mientras está en el estado (Cadencia Idílica), presiona [Icono Ataque] para activar: Libera (Trémolo) hacia adelante para atacar, causando Daño Etéreo. Una (Asistencia Rápida) se activará cuando esta habilidad golpee a un enemigo.",
-      tags: ["Etéreo", "Ataque Básico"]
+      name: "Pasiva: Atadura",
+      description: "Cuando Evelyn usa sus habilidades para causar DAÑO a enemigos, acumulará (Ascuas Ardientes). Cuando Evelyn consume (Ascuas Ardientes) para activar (Garrote) o consume Decibelios para realizar una (Definitiva), gana 1 (Punto de Atadura Ardiente). Una vez que Evelyn tiene 3 (Puntos de Atadura Ardiente), su siguiente uso de (Garrote) consumirá todos los (Puntos de Atadura Ardiente) para usar una versión de menor Nivel de Anti-Interrupción de (Ataque en Cadena: Lunalux - Trampa).",
+      tags: ["Pasiva"]
     },
     {
       type: "Ataque Básico",
-      name: "Ataque Básico: Coro",
-      description: "Mientras está en el estado (Cadencia Idílica), presiona [Icono Ataque] durante una (Evasión Perfecta) para activar: Lanza múltiples ataques de (Trémolo) a enemigos en frente, causando masivo Daño Etéreo. Una (Asistencia Rápida) se activará cuando esta habilidad golpee a un enemigo. El personaje es invulnerable mientras usa esta habilidad.",
-      tags: ["Etéreo", "Ataque Básico"]
+      name: "Ataque Básico: Garrote - Primera Forma",
+      description: "Cuando (Ascuas Ardientes) está al 50% o más, mantén [Icono Ataque] o [Icono Especial] para activar: Consume 50% (Ascuas Ardientes) para usar (Garrote Lunalux) para realizar un ataque de corte, causando Daño de Fuego. Durante la activación de la habilidad, el nivel de Anti-Interrupción aumenta, y el DAÑO recibido se reduce en un 40%. Después de usar esta habilidad, gana 1 (Punto de Atadura Ardiente).",
+      tags: ["Fuego", "Ataque Básico"]
     },
     {
       type: "Ataque Básico",
-      name: "Ataque Básico: Final",
-      description: "Mientras está en el estado (Cadencia Idílica), mantén [Icono Ataque] para activar: Libera (Trémolo) hacia adelante para atacar, causando Daño Etéreo y saliendo del estado (Cadencia Idílica). Al activar la habilidad, otorga un buffo de la Pasiva Principal: Andante Agraciado. Con suficiente Energía, consume Energía para seguir con 1 (Trémolo) y 3 (Cúmulos Tonales). Este ataque de (Trémolo) lanzado es considerado una (Técnica Especial EX).",
-      tags: ["Etéreo", "Ataque Básico"]
+      name: "Ataque Básico: Garrote - Segunda Forma",
+      description: "Cuando (Ascuas Ardientes) está al 50% o más, después de usar (Ataque Básico: Garrote - Primera Forma), continúa manteniendo [Icono Ataque] o [Icono Especial] para activar: Consume 50% (Ascuas Ardientes) para usar (Garrote Lunalux) para realizar un ataque de seguimiento, causando Daño de Fuego. Durante la activación de la habilidad, el nivel de Anti-Interrupción aumenta, y el DAÑO recibido se reduce en un 40%. Después de usar esta habilidad, gana 1 (Punto de Atadura Ardiente).",
+      tags: ["Fuego", "Ataque Básico"]
     },
     {
       type: "Evasión",
-      name: "Evasión: Mini Vals",
+      name: "Evasión: Paso de Arco",
       description: "Presiona [Icono Dodges] para activar: Una evasión rápida de carrera. El personaje es invulnerable mientras usa esta habilidad.",
       tags: ["Evasión"]
     },
     {
       type: "Evasión",
-      name: "Ataque de Carrera: Melodía de Eclipse Lunar",
-      description: "Presiona [Icono Ataque] durante una evasión para activar: Ataca hacia adelante, causando Daño Etéreo. Al activarse, arrastrar el stick/joystick permite movimiento en la dirección correspondiente.",
-      tags: ["Etéreo", "Evasión"]
+      name: "Ataque de Carrera: Emboscada Perforante",
+      description: "Presiona [Icono Ataque] durante una evasión para activar: Lanza una patada al enemigo en frente, causando Daño Físico.",
+      tags: ["Físico", "Evasión"]
     },
     {
       type: "Evasión",
-      name: "Contraataque de Evasión: Vals del Paraguas",
-      description: "Presiona [Icono Ataque] durante una (Evasión Perfecta) para activar: Ataca a enemigos en frente, causando Daño Etéreo. El personaje es invulnerable mientras usa esta habilidad.",
-      tags: ["Etéreo", "Evasión"]
+      name: "Contraataque de Evasión: Inversión Estranguladora",
+      description: "Presiona [Icono Ataque] durante una (Evasión Perfecta) para activar: Usa (Garrote Lunalux) para cortar a enemigos circundantes, causando Daño de Fuego. Cuando el ataque golpea a un enemigo, Evelyn usará (Garrote Lunalux) para atar el objetivo primario y entrar en (Sello Vinculante). El personaje es invulnerable mientras usa esta habilidad.",
+      tags: ["Fuego", "Evasión"]
     },
     {
       type: "Técnica Especial",
-      name: "Técnica Especial: Campanillas y Juramentos",
-      description: "Presiona [Icono Especial] para activar: Se mueve rápidamente, luego libera (Trémolo), causando Daño Etéreo, y entra en el estado (Cadencia Idílica). Durante la activación, arrastrar el stick/joystick permite movimiento en la dirección mantenida. Mantén [Icono Especial] para cargar durante la activación, atrayendo enemigos, y sigue con 1 a 4 (Trémolos) dependiendo de la duración de la carga. Una (Asistencia Rápida) se activará cuando esta habilidad golpee a un enemigo. El personaje es invulnerable mientras se mueve rápidamente.",
-      tags: ["Etéreo", "Técnica Especial"]
+      name: "Técnica Especial: Posición Bloqueada",
+      description: "Antes de entrar en (Sello Vinculante), presiona [Icono Especial] o [Icono Especial EX] para activar: Usa (Garrote Lunalux) para jalar al enemigo y carga hacia adelante con una patada, causando Daño de Fuego. Cuando el ataque golpea al enemigo, Evelyn usará (Garrote Lunalux) para atar el objetivo primario y entrar en (Sello Vinculante). El nivel de Anti-Interrupción aumenta mientras usa esta habilidad.",
+      tags: ["Fuego", "Técnica Especial"]
     },
     {
       type: "Técnica Especial",
-      name: "Cadencia Idílica",
-      description: "Después de entrar en el estado (Cadencia Idílica), Astra Yao aumenta el DAÑO de todos los miembros del escuadrón en un {VALOR_1} y el Daño CRIT en un {VALOR_2}. Mientras está en el estado (Cadencia Idílica), Astra Yao no puede moverse, pero presionando [Icono Dodges] activará (Ataque Básico: Interludio), y presionando [Icono Dodges] activará una evasión. Después de activar una (Evasión Perfecta), presiona [Icono Ataque] para activar (Ataque Básico: Coro). Mientras está en este estado, el nivel de Anti-Interrupción de Astra Yao aumenta, y el DAÑO que recibe se reduce en un 40%. Después de cambiar a otro personaje, Astra Yao permanecerá en el campo y se volverá Invulnerable. Al cambiar de nuevo a ella, automáticamente seguirá con (Técnica Especial: Campanillas y Juramentos). Durante este estado, mantén [Icono Ataque] para activar (Ataque Básico: Final), saliendo del estado (Cadencia Idílica), o mantén [Icono Dodges] para salir del estado (Cadencia Idílica) directamente.",
-      tags: ["Etéreo", "Técnica Especial"]
+      name: "Técnica Especial: Separación Vinculante - Primera Forma",
+      description: "Después de entrar en (Sello Vinculante), presiona o mantén [Icono Especial] para activar: Centrado en el objetivo afectado por (Sello Vinculante), ata a enemigos circundantes y detona una explosión, causando Daño de Fuego. (Sello Vinculante) terminará después de la detonación. Esquiva ataques enemigos al activar la habilidad, y si una (Evasión Perfecta) se activa, gana un 25% de (Ascuas Ardientes) adicional. Después de atar a enemigos circundantes, presiona [Icono Dodges] para cancelar la detonación y seguir inmediatamente con el 3er golpe del (Ataque Básico). El nivel de Anti-Interrupción aumenta mientras usa esta habilidad.",
+      tags: ["Fuego", "Técnica Especial"]
     },
     {
-      type: "Técnica Especial",
-      name: "Acorde",
-      description: "Astra Yao tendrá 1 (Acorde) por cada 25 de Energía. Mientras está en el estado (Cadencia Idílica), cuando Astra Yao tiene (Acordes), una (Asistencia Rápida) puede activarse en las siguientes situaciones:  • Cuando el ataque del personaje activo golpea a un enemigo, una vez por 3s.  • Cuando el ataque pesado del personaje activo golpea a un enemigo, una vez por 1s.  Cuando otros miembros del escuadrón cambian a través de (Asistencia Rápida), (Ataque en Cadena), (Asistencia Defensiva), o (Asistencia Evasiva), Astra Yao consumirá 25 de Energía y lanzará 1 (Trémolo) para atacar. Este ataque de (Trémolo) lanzado es considerado un (Técnica Especial EX). Después de activar una (Asistencia Rápida), presiona rápidamente [Icono Assist] para cambiar de personaje y activar una (Asistencia Precisa), causando que Astra Yao siga con hasta 3 (Cúmulos Tonales) para atacar. Cuando otros miembros del escuadrón cambian a través de un (Ataque en Cadena), (Asistencia Defensiva), o (Asistencia Evasiva), activará automáticamente una (Asistencia Precisa).",
-      tags: ["Técnica Especial"]
+      type: "Técnica Especial EX",
+      name: "Técnica Especial EX: Separación Vinculante - Forma Final",
+      description: "Después de entrar en (Sello Vinculante) y con suficiente Energía, presiona o mantén [Icono Especial EX] para activar: Centrado en el objetivo afectado por (Sello Vinculante), ata a enemigos circundantes y detona una explosión, causando masivo Daño de Fuego. (Sello Vinculante) terminará después de la detonación. Esquiva ataques enemigos al activar la habilidad, y si una (Evasión Perfecta) se activa, gana un 25% de (Ascuas Ardientes) adicional. Después de jalar a enemigos circundantes, presiona [Icono Dodges] para cancelar la detonación y seguir inmediatamente con el 3er golpe del (Ataque Básico). El personaje es invulnerable mientras usa esta habilidad.",
+      tags: ["Fuego", "Técnica Especial EX"]
     },
     {
       type: "Asistencia",
-      name: "Asistencia Rápida: Un Cielo Luminoso",
-      description: "Cuando el personaje activo es lanzado, presiona [Icono Assist] para activar: Ataca a enemigos en frente, causando Daño Etéreo. El personaje es invulnerable mientras usa esta habilidad.",
-      tags: ["Etéreo", "Asistencia"]
+      name: "Asistencia Rápida: Hoja Feroz",
+      description: "Cuando el personaje activo es lanzado, presiona [Icono Assist] para activar: Usa (Garrote Lunalux) para cortar a enemigos circundantes, causando Daño de Fuego. Cuando el ataque golpea a un enemigo, Evelyn usará (Garrote Lunalux) para atar el objetivo primario y entrar en (Sello Vinculante). El personaje es invulnerable mientras usa esta habilidad.",
+      tags: ["Fuego", "Asistencia"]
     },
     {
       type: "Asistencia",
-      name: "Asistencia Evasiva: Dos Corazones",
-      description: "Cuando el personaje en el campo está a punto de ser atacado, presiona [Icono Assist] para activar: Esquiva el ataque enemigo y activa (Visión Vital). El personaje es invulnerable mientras usa esta habilidad.",
+      name: "Asistencia Defensiva: Protección Silenciosa",
+      description: "Cuando el personaje en el campo está a punto de ser atacado, presiona [Icono Assist] para activar: Bloquea el ataque enemigo, causando masivo Aturdimiento. El personaje es invulnerable mientras usa esta habilidad.",
       tags: ["Asistencia"]
     },
     {
       type: "Asistencia",
-      name: "Ataque de Asistencia: Tres Vidas de Destino",
-      description: "Presiona [Icono Ataque] después de una (Asistencia Evasiva) para activar: Libera un haz de energía hacia adelante, causando Daño Etéreo. El personaje es invulnerable mientras usa esta habilidad.",
-      tags: ["Etéreo", "Asistencia"]
+      name: "Ataque de Asistencia: Interrupción del Curso",
+      description: "Presiona [Icono Ataque] después de una (Asistencia Defensiva) para activar: Evelyn corta con (Garrote Lunalux), luego activa una explosión adelante, causando Daño de Fuego. Cuando el ataque golpea a un enemigo, Evelyn usará (Garrote Lunalux) para atar el objetivo primario y entrar en (Sello Vinculante). El personaje es invulnerable mientras usa esta habilidad.",
+      tags: ["Fuego", "Asistencia"]
     },
     {
       type: "Técnica Definitiva",
-      name: "Ataque en Cadena: Concierto Embriagador",
-      description: "Cuando un (Ataque en Cadena) es activado, selecciona el personaje para activar: Usa una canción para canalizar energía en una explosión, causando masivo Daño Etéreo. El personaje es invulnerable mientras usa esta habilidad. Una (Asistencia Rápida) se activa cuando esta habilidad golpea a un enemigo. Después de la habilidad, Astra Yao entra en el estado (Cadencia Idílica).",
-      tags: ["Etéreo", "Ataque en Cadena"]
+      name: "Ataque en Cadena: Lunalux - Trampa",
+      description: "Cuando un (Ataque en Cadena) es activado, selecciona el personaje para activar: Evelyn corta en frente con múltiples (Garrotes Lunalux) y detona una explosión, causando masivo Daño de Fuego a enemigos en el área. Cuando el ataque golpea un enemigo, Evelyn usa (Garrote Lunalux) para atar el objetivo primario y entra en (Sello Vinculante). El personaje es invulnerable mientras usa esta habilidad.",
+      tags: ["Fuego", "Ataque en Cadena"]
     },
     {
       type: "Técnica Definitiva",
-      name: "Definitiva: Sonata Fantasía",
-      description: "Cuando el Nivel de Decibelios está al [Maximo], presiona [Icono Definitiva] para activar: Usa una canción para canalizar energía en una explosión, causando masivo Daño Etéreo, y restaurando {VALOR_3} de PS a todos los miembros del escuadrón. El personaje es invulnerable mientras usa esta habilidad. Una (Asistencia Rápida) se activa cuando esta habilidad golpea a un enemigo. Después de la habilidad, Astra Yao entra en el estado (Cadencia Idílica). Después de la habilidad, las siguientes dos (Asistencias Rápidas) serán reemplazadas por (Ataques en Cadena). Antes de que todas las cargas de reemplazo se usen, una (Asistencia Rápida) se activa siempre que cualquier miembro del escuadrón golpea a un enemigo con un (Ataque en Cadena) o (Definitiva).",
-      tags: ["Etéreo", "Técnica Definitiva"]
+      name: "Definitiva: Garrote Lunalux - Timbre",
+      description: "Cuando el Nivel de Decibelios está al [Maximo], presiona [Icono Definitiva] para activar: Evelyn corta en frente con múltiples (Garrotes Lunalux) y detona una explosión, causando masivo Daño de Fuego a enemigos en el área. Al activar esta habilidad, Evelyn se quita su chaqueta y entra en el estado (Danza del Fuego Despertado), que dura toda la batalla. Mientras está en el estado (Danza del Fuego Despertado), cuando Evelyn consume (Puntos de Atadura Ardiente) para activar (Ataque en Cadena: Lunalux - Trampa), retendrá 1 punto de (Punto de Atadura Ardiente). Cuando el ataque golpea un enemigo, Evelyn usa (Garrote Lunalux) para atar el objetivo primario, entrando en (Sello Vinculante). El personaje es invulnerable mientras usa esta habilidad. Después de usar esta habilidad, gana 1 (Punto de Atadura Ardiente).",
+      tags: ["Fuego", "Técnica Definitiva"]
+    },
+    {
+      type: "Técnica Definitiva",
+      name: "Definitiva: Garrote Lunalux - Sombra",
+      description: "Mientras está bajo el estado (Danza del Fuego Despertado), y cuando el Nivel de Decibelios está al [Maximo], presiona [Icono Definitiva] para activar: Evelyn corta en frente con múltiples (Garrotes Lunalux) y detona una explosión, causando masivo Daño de Fuego a enemigos en el área. Cuando el ataque golpea un enemigo, Evelyn usa (Garrote Lunalux) para atar el objetivo primario y entra en (Sello Vinculante). El personaje es invulnerable mientras usa esta habilidad. Después de usar esta habilidad, gana 1 (Punto de Atadura Ardiente).",
+      tags: ["Fuego", "Técnica Definitiva"]
     },
     {
       type: "Pasiva Central",
-      name: "Pasiva Principal: Andante Agraciado",
-      description: "Durante el estado de (Cadencia Idílica), cuando otros miembros del escuadrón cambian a través de una (Asistencia Rápida), (Ataque en Cadena), (Asistencia Defensiva), o (Asistencia Evasiva), y cuando Astra Yao gasta Energía para liberar (Trémolo) para atacar, tanto Astra Yao como el ATK del personajeentrante aumentan. El aumento es igual al {VALOR_4} del ATK inicial de Astra Yao, hasta un máximo de 1,200. El efecto dura por 20s y puede extenderse hasta 30s con activaciones repetidas.",
+      name: "Pasiva Principal: Enredo",
+      description: "Al entrar en (Sello Vinculante), la Probabilidad de CRIT de Evelyn aumenta en un {VALOR_1}. Después de dejar (Sello Vinculante), retiene el buff por 10s. Si Evelyn cambia a otro personaje mientras está en (Sello Vinculante), automáticamente seguirá con (Técnica Especial: Separación Vinculante - Primera Forma).",
       tags: ["Pasiva Central"]
     },
     {
       type: "Habilidad Adicional",
-      name: "Habilidad Adicional: Frenesí a la Luz de la Luna",
-      description: "Cuando otro personaje en tu escuadrón es un personaje de (Ataque), (Anomalía), o (Soporte): Cuando se consume Energía para activar una (Asistencia Precisa) o (Ataque Básico: Final), Astra Yao seguirá adicionalmente con 1 (Trémolo) y 3 (Cúmulos Tonales).",
+      name: "Habilidad Adicional: Punto de Emboscada",
+      description: "Cuando otro personaje en tu escuadrón es un personaje de (Aturdimiento) o (Soporte): El DAÑO de (Ataque en Cadena) y (Definitiva) de Evelyn aumenta en un 30%. Cuando la Probabilidad de CRIT de Evelyn está al 80% o más, el multiplicador de DAÑO para su (Ataque en Cadena: Lunalux - Trampa), (Definitiva: Garrote Lunalux - Timbre) y (Definitiva: Garrote Lunalux - Sombra) aumenta al 125% del valor original.",
       tags: ["Habilidad Adicional"]
     },
     {
       type: "Mindscape 1",
-      name: "Temperamento Igual de 12 Tonos",
-      description: "Cuando el ataque de Astra Yao golpea a un enemigo, la RES a Todo Tipo del objetivo se reduce en 6%, acumulándose hasta 3 veces y durando 30s. Activaciones repetidas reinician la duración. Al entrar en el campo de batalla, Astra Yao gana inmediatamente 1,000 Decibelios. Cuando activa su (Definitiva), todos los miembros del escuadrón ganan 1 acumulación de (Canción de Protección) por 60s. Al ser atacado por un enemigo, consume (Canción de Protección), otorgando Invulnerabilidad por 1s.",
+      name: "Tejido de Sueños",
+      description: "Al entrar en el campo de batalla, Evelyn gana inmediatamente 1,500 Decibelios. Enemigos afectados por (Sello Vinculante) serán (Atados). Cuando Evelyn ataca enemigos (Atados), ignora 12% de su DEF. Cuando Evelyn usa (Técnica Especial: Separación Vinculante - Primera Forma) o (Técnica Especial EX: Separación Vinculante - Forma Final), el efecto (Atado) se propaga a todos los enemigos golpeados por la habilidad. Este efecto (Atado) propagado dura por 10s.",
       tags: ["Mindscape 1"]
     },
     {
       type: "Mindscape 2",
-      name: "Arte de la Avaricia",
-      description: "El buff de ATK de la Pasiva Principal: Andante Agraciado aumenta adicionalmente en un 19%, con un máximo aumentado de 400. Mientras está en el estado (Cadencia Idílica), cuando otros miembros del escuadrón cambian a través de una (Asistencia Rápida), (Ataque en Cadena), (Asistencia Defensiva), o (Asistencia Evasiva), Astra Yao seguirá adicionalmente con 1 (Trémolo) y 3 (Cúmulos Tonales) para atacar. Este efecto puede activarse una vez cada 3s.",
+      name: "Danza de Fuego",
+      description: "El ATK de Evelyn aumenta en un 15%. Cuando Evelyn usa (Ataque Básico: Garrote - Primera Forma) o (Ataque Básico: Garrote - Segunda Forma), las (Ascuas Ardientes) consumidas serán devueltas. Este efecto puede activarse una vez cada 25s. Cuando Evelyn consume (Punto de Atadura Ardiente) para activar (Ataque en Cadena: Lunalux - Trampa), el nivel de Interrupción de la habilidad aumenta.",
       tags: ["Mindscape 2"]
     },
     {
       type: "Mindscape 3",
-      name: "Notación de Pentagrama Entrelazado",
+      name: "Metamorfosis",
       description: "Nivel de (Ataque Básico), (Evasión), (Asistencia), (Técnica Especial) y (Ataque en Cadena) +2",
       tags: ["Mindscape 3"]
     },
     {
       type: "Mindscape 4",
-      name: "Cabello en tu Nuca",
-      description: "Después de activar un (Ataque en Cadena) o (Definitiva), dentro de 15s, Astra Yao puede activar una (Asistencia Rápida) incluso si no tiene (Acordes). Cuando el ataque golpea a un enemigo, el intervalo para activar una (Asistencia Rápida) se reduce a 1s. Mientras está en el estado (Cadencia Idílica), cuando otros miembros del escuadrón entran al campo vía una (Asistencia Rápida), recibirán diferentes buffs basados en su especialidad, y este efecto puede activarse una vez cada 3s para todo el escuadrón: (Ataque): El siguiente ataque pesado de (Asistencia Rápida) en un enemigo causará DAÑO extra igual al 300% del ATK de Astra Yao; (Anomalía): La siguiente (Asistencia Rápida) tendrá 50% de Tasa de Buildup de Anomalía aumentada; (Aturdimiento): La siguiente (Asistencia Rápida) infligirá 50% de Aturdimiento aumentado.",
+      name: "Melodía del Destino",
+      description: "Al activar un (Ataque en Cadena) o (Definitiva), Evelyn gana inmediatamente un escudo igual al 10% de su HP Máx. Mientras este escudo existe, el Daño CRIT de Evelyn aumenta en un 40%.",
       tags: ["Mindscape 4"]
     },
     {
       type: "Mindscape 5",
-      name: "Proxy y Cuerda de Seda",
+      name: "Hilos Carmesí como el Amanecer",
       description: "Nivel de (Ataque Básico), (Evasión), (Asistencia), (Técnica Especial) y (Ataque en Cadena) +2",
       tags: ["Mindscape 5"]
     },
     {
       type: "Mindscape 6",
-      name: "Somos el Mundo",
-      description: "Mientras está en el estado (Cadencia Idílica), el multiplicador de DAÑO para (Trémolo) y (Cúmulos Tonales) lanzados o seguidos aumentará al 200% del original, y la Probabilidad de CRIT aumenta en un 80%. Cuando se activa una (Asistencia Precisa), Astra Yao seguirá automáticamente con el 3er golpe cargado de (Ataque Básico: Capricho), con una Probabilidad de CRIT aumentada en un 80%. Este efecto puede activarse una vez cada 10s.",
+      name: "Vínculo de Luz y Sombra",
+      description: "Al lanzar un (Ataque en Cadena) o (Definitiva), Evelyn gana (Filo de Cuerda de Sombra) por 20s. Durante (Filo de Cuerda de Sombra), cuando Evelyn golpea su objetivo primario con un (Ataque Básico), (Ataque de Carrera), (Técnica Especial) o (Técnica Especial EX), ejecuta adicionalmente un ataque de seguimiento de (Garrote Lunalux), causando Daño de Fuego igual al 375% de su ATK a enemigos en el área. Este DAÑO es considerado DAÑO de (Ataque en Cadena) y puede activarse hasta 16 veces. Ganar otro (Filo de Cuerda de Sombra) refrescará el conteo de activación.",
       tags: ["Mindscape 6"]
     }
   ]
