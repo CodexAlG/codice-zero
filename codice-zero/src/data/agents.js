@@ -228,8 +228,20 @@ export const agents = [
 
   },
   // --- VERSIÓN 1.5 (Futuro / Screenshot) ---
+
   {
     id: 28,
+    name: "Evelyn",
+    rank: "S",
+    element: "Fuego",
+    rol: "Ataque",
+    faction: "Stars of Lyra",
+    version: "1.5",
+    image: "/CodiceZero/ICONOS/Agent_Evelyn_Chevalier_Icon.webp",
+    customStyle: "scale-[1.00] group-hover:scale-[1.10] object-[center_top]",
+  },
+  {
+    id: 27,
     name: "Astra Yao",
     rank: "S",
     element: "Etereo",
@@ -240,18 +252,6 @@ export const agents = [
     customStyle: "scale-[1.00] group-hover:scale-[1.10] object-[center_top]",
 
   },
-  {
-    id: 27,
-    name: "Evelyn",
-    rank: "S",
-    element: "Fuego",
-    rol: "Ataque",
-    faction: "Stars of Lyra",
-    version: "1.5",
-    image: "/CodiceZero/ICONOS/Agent_Evelyn_Chevalier_Icon.webp",
-    customStyle: "scale-[1.00] group-hover:scale-[1.10] object-[center_top]",
-  },
-
   // --- VERSIÓN 1.4 (Section 6) ---
   {
     id: 26,
@@ -280,6 +280,17 @@ export const agents = [
 
   // --- VERSIÓN 1.3 (Virtual Revenge) ---
   {
+    id: 24,
+    name: "Lighter",
+    rank: "S",
+    element: "Fuego",
+    rol: "Aturdidor",
+    faction: "Sons of Calydon",
+    version: "1.3",
+    image: "/CodiceZero/ICONOS/Agent_Lighter_Icon.webp",
+    customStyle: "scale-[1.00] group-hover:scale-[1.10] object-[center_top]",
+  },
+  {
     id: 23,
     name: "Yanagi",
     rank: "S",
@@ -291,18 +302,6 @@ export const agents = [
     customStyle: "scale-[1.00] group-hover:scale-[1.10] object-[center_top]",
 
   },
-  {
-    id: 24,
-    name: "Lighter",
-    rank: "S",
-    element: "Fuego",
-    rol: "Aturdidor",
-    faction: "Sons of Calydon",
-    version: "1.3",
-    image: "/CodiceZero/ICONOS/Agent_Lighter_Icon.webp",
-    customStyle: "scale-[1.00] group-hover:scale-[1.10] object-[center_top]",
-  },
-
   //VERSION 1.2
   {
     id: 22,
