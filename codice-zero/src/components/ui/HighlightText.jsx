@@ -9,12 +9,11 @@ const createHighlightRules = (elementColor = "#facc15") => [
     color: "text-white font-bold",
   },
   // Damage types
-  // Fuego
-  // Damage types - Updated to include "Puro" suffix
+  // Damage types
+  // Hielo (Moved before Fuego to prioritize 'Quemadura por Frío' over 'Quemadura')
+  { pattern: /(Acumulaci[oó]n\s+de\s+Anomal[ií]a\s+Hielo|Daño\s+Hielo(?:\s+Puro)?|Daño\s+Congelaci[oó]n|Rompehielo|Romper\s+Hielo|Congelaci[oó]n\w*|Anomal[ií]a\s+Hielo|Res\s+Hielo|Resistencia\s+Hielo|Hielo(?:\s+Puro)?|Quemadura\s+por\s+Fr[ií]o|Anomal[ií]a\s+de\s+Congelaci[oó]n|Acumulaci[oó]n\s+de\s+Anomal[ií]a\s+de\s+Congelaci[oó]n)/gi, color: "text-[#22d3ee] font-bold" },
   // Fuego
   { pattern: /(Acumulaci[oó]n\s+de\s+Anomal[ií]a\s+Fuego|Daño\s+Fuego(?:\s+Puro)?|Quemadura|Quemados?|Anomal[ií]a\s+Fuego|Res\s+Fuego|Resistencia\s+Fuego|Fuego(?:\s+Puro)?)/gi, color: "text-[#ef4444] font-bold" },
-  // Hielo
-  { pattern: /(Acumulaci[oó]n\s+de\s+Anomal[ií]a\s+Hielo|Daño\s+Hielo(?:\s+Puro)?|Daño\s+Congelaci[oó]n|Rompehielo|Romper\s+Hielo|Congelaci[oó]n\w*|Anomal[ií]a\s+Hielo|Res\s+Hielo|Resistencia\s+Hielo|Hielo(?:\s+Puro)?|Quemadura\s+por\s+Fr[ií]o|Anomal[ií]a\s+de\s+Congelaci[oó]n|Acumulaci[oó]n\s+de\s+Anomal[ií]a\s+de\s+Congelaci[oó]n)/gi, color: "text-[#22d3ee] font-bold" },
   // Eléctrico
   { pattern: /(Acumulaci[oó]n\s+de\s+Anomal[ií]a\s+El[eé]ctrica|Daño\s+El[eé]ctrico(?:\s+Puro)?|Shock|Electrocuci[oó]n|Anomal[ií]a\s+El[eé]ctrica|Res\s+El[eé]ctrica|Resistencia\s+El[eé]ctrica|El[eé]ctrico|El[eé]ctrica(?:\s+Pura)?)/gi, color: "text-[#3b82f6] font-bold" },
   // Físico
@@ -126,9 +125,6 @@ const processWithParenthesesPriority = (text, rules) => {
     // Default to white/bold if no rule matches
     const contentSegments = applyHighlightRules(paren.content, rules);
 
-    // Add opening parenthesis
-    result.push({ text: "(", highlight: true, className: "text-white font-bold" });
-
     contentSegments.forEach(seg => {
       if (!seg.highlight) {
         result.push({
@@ -140,9 +136,6 @@ const processWithParenthesesPriority = (text, rules) => {
         result.push(seg); // Keep specific highlight (e.g. Cyan for Ice)
       }
     });
-
-    // Add closing parenthesis
-    result.push({ text: ")", highlight: true, className: "text-white font-bold" });
 
     currentPos = paren.end;
   });
