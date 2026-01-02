@@ -26,7 +26,7 @@ export default {
     valuePerNode: 6
   },
   coreSkillScaling: [
-    ["15"],
+    ["15%"],
     ["17.5%"],
     ["20%"],
     ["22.5%"],
