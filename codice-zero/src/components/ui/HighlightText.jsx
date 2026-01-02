@@ -4,22 +4,22 @@ import React from "react";
 // Create dynamic highlight rules based on the character element color
 const createHighlightRules = (elementColor = "#facc15") => [
   // Misc special words - specific terms that should be white/bold
+  // Misc special words - specific terms that should be white/bold
   {
-    pattern: /(¡No te muevas! \[Modo Asalto\]|¡Por favor, no se resista! \[Modo Supresivo\]|Flash Freeze|Congelación Relámpago|Recorte de Dientes de Sierra|Invierno Eterno|Dientes Afilados|Emboscada Ártica|Barrido de Cola|Coleatazo|Ofensiva de Fuego|Poder de Fuego Abrumador|Disparo de Perdigones|Aluvión Completo|Modo de Erradicación|Modo de Erradicación Máxima|Recarga Rápida|Ascua Etérea|Perforación Etérea|Paquete de Energía Expandido III|Velo Etéreo|Campo de Corrupción)/gi,
+    pattern: /(¡No te muevas! \[Modo Asalto\]|¡Por favor, no se resista! \[Modo Supresivo\]|Flash Freeze|Congelación Relámpago|Recorte de Dientes de Sierra|Invierno Eterno|Dientes Afilados|Emboscada Ártica|Barrido de Cola|Coleatazo|Ofensiva de Fuego|Poder de Fuego Abrumador|Disparo de Perdigones|Aluvión Completo|Modo de Erradicación|Modo de Erradicación Máxima|Recarga Rápida|Ascua Etérea|Perforación Etérea|Paquete de Energía Expandido III|Velo Etéreo|Campo de Corrupción|Fuego\s+Helado|Quemadura\s+Gélida(?:\s+-\s+Ruptura)?)/gi,
     color: "text-white font-bold",
   },
   // Damage types
-  // Damage types
   // Hielo (Moved before Fuego to prioritize 'Quemadura por Frío' over 'Quemadura')
-  { pattern: /(Acumulaci[oó]n\s+de\s+Anomal[ií]a\s+Hielo|Daño\s+Hielo(?:\s+Puro)?|Daño\s+Congelaci[oó]n|Rompehielo|Romper\s+Hielo|Congelaci[oó]n\w*|Anomal[ií]a\s+Hielo|Res\s+Hielo|Resistencia\s+Hielo|Hielo(?:\s+Puro)?|Quemadura\s+por\s+Fr[ií]o|Anomal[ií]a\s+de\s+Congelaci[oó]n|Acumulaci[oó]n\s+de\s+Anomal[ií]a\s+de\s+Congelaci[oó]n)/gi, color: "text-[#22d3ee] font-bold" },
+  { pattern: /(Acumulaci[oó]n\s+de\s+Anomal[ií]a\s+Hielo|Daño\s+Hielo(?:\s+Puro)?|Daño\s+Congelaci[oó]n|Rompehielo|Romper\s+Hielo|Congelaci[oó]n\w*|Anomal[ií]a\s+Hielo|Res\s+Hielo|Resistencia\s+Hielo|Hielo(?:\s+Puro)?|Quemadura\s+por\s+Fr[ií]o|Anomal[ií]a\s+de\s+Congelaci[oó]n|Acumulaci[oó]n\s+de\s+Anomal[ií]a\s+de\s+Congelaci[oó]n|Anomal[ií]a\s+de\s+Atributo\s+de\s+Hielo)/gi, color: "text-[#22d3ee] font-bold" },
   // Fuego
-  { pattern: /(Acumulaci[oó]n\s+de\s+Anomal[ií]a\s+Fuego|Daño\s+Fuego(?:\s+Puro)?|Quemadura|Quemados?|Anomal[ií]a\s+Fuego|Res\s+Fuego|Resistencia\s+Fuego|Fuego(?:\s+Puro)?)/gi, color: "text-[#ef4444] font-bold" },
+  { pattern: /(Acumulaci[oó]n\s+de\s+Anomal[ií]a\s+Fuego|Daño\s+Fuego(?:\s+Puro)?|Quemadura|Quemados?|Anomal[ií]a\s+Fuego|Res\s+Fuego|Resistencia\s+Fuego|Fuego(?:\s+Puro)?|Anomal[ií]a\s+de\s+Atributo\s+de\s+Fuego)/gi, color: "text-[#ef4444] font-bold" },
   // Eléctrico
-  { pattern: /(Acumulaci[oó]n\s+de\s+Anomal[ií]a\s+El[eé]ctrica|Daño\s+El[eé]ctrico(?:\s+Puro)?|Shock|Electrocuci[oó]n|Anomal[ií]a\s+El[eé]ctrica|Res\s+El[eé]ctrica|Resistencia\s+El[eé]ctrica|El[eé]ctrico|El[eé]ctrica(?:\s+Pura)?)/gi, color: "text-[#3b82f6] font-bold" },
+  { pattern: /(Acumulaci[oó]n\s+de\s+Anomal[ií]a\s+El[eé]ctrica|Daño\s+El[eé]ctrico(?:\s+Puro)?|Shock|Electrocuci[oó]n|Anomal[ií]a\s+El[eé]ctrica|Res\s+El[eé]ctrica|Resistencia\s+El[eé]ctrica|El[eé]ctrico|El[eé]ctrica(?:\s+Pura)?|Anomal[ií]a\s+de\s+Atributo\s+de\s+El[eé]ctric[oa])/gi, color: "text-[#3b82f6] font-bold" },
   // Físico
-  { pattern: /(Asalto\s+de\s+Polaridad|Acumulaci[oó]n\s+de\s+Anomal[ií]a\s+F[ií]sica|Daño\s+F[ií]sico(?:\s+Puro)?|Anomal[ií]a\s+F[ií]sica|Res\s+F[ií]sic[oa]|Resistencia\s+F[ií]sica|Asalto|F[ií]sico|F[ií]sica(?:\s+Pura)?)/gi, color: "text-[#eab308] font-bold" },
+  { pattern: /(Asalto\s+de\s+Polaridad|Acumulaci[oó]n\s+de\s+Anomal[ií]a\s+F[ií]sica|Daño\s+F[ií]sico(?:\s+Puro)?|Anomal[ií]a\s+F[ií]sica|Res\s+F[ií]sic[oa]|Resistencia\s+F[ií]sica|Asalto|F[ií]sico|F[ií]sica(?:\s+Pura)?|Anomal[ií]a\s+de\s+Atributo\s+de\s+F[ií]sic[oa])/gi, color: "text-[#eab308] font-bold" },
   // Etéreo
-  { pattern: /(Acumulaci[oó]n\s+de\s+Anomal[ií]a\s+(?:Et[eé]rea|Tinta\s+Aurica)|Daño\s+(?:Et[eé]reo|Tinta\s+Aurica)(?:\s+Puro)?|Corrupci[oó]n|Anomal[ií]a\s+(?:Et[eé]rea|Tinta\s+Aurica|Et[eé]reo)|Res\s+(?:Et[eé]rea|Tinta\s+Aurica)|Resistencia\s+(?:Et[eé]rea|Tinta\s+Aurica)|Tinta\s+Aurica(?:\s+Pura)?|Et[eé]reo(?:\s+Puro)?|Et[eé]rea(?:\s+Pura)?)/gi, color: "text-[#d946ef] font-bold" },
+  { pattern: /(Acumulaci[oó]n\s+de\s+Anomal[ií]a\s+(?:Et[eé]rea|Tinta\s+Aurica)|Daño\s+(?:Et[eé]reo|Tinta\s+Aurica)(?:\s+Puro)?|Corrupci[oó]n|Anomal[ií]a\s+(?:Et[eé]rea|Tinta\s+Aurica|Et[eé]reo)|Res\s+(?:Et[eé]rea|Tinta\s+Aurica)|Resistencia\s+(?:Et[eé]rea|Tinta\s+Aurica)|Tinta\s+Aurica(?:\s+Pura)?|Et[eé]reo(?:\s+Puro)?|Et[eé]rea(?:\s+Pura)?|Anomal[ií]a\s+de\s+Atributo\s+de\s+(?:Et[eé]re[oa]|Tinta\s+Aurica))/gi, color: "text-[#d946ef] font-bold" },
   // Massive / Severe damage – use element colour
   { pattern: /(Daño\s+Masivo|Daño\s+Severo)/gi, color: `text-[${elementColor}] font-bold` },
   // Skill and mechanic names – without generic "Cadena"
