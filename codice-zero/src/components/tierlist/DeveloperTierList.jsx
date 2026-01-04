@@ -21,54 +21,126 @@ const TIER_COLORS = {
     "T5": "#ff7fff", // Violet
 };
 
-// Map old Ranks (S-F) to new Tiers (T0-T5)
-const RANK_MAPPING = {
-    S: "T0",
-    A: "T0.5",
-    B: "T1",
-    C: "T2",
-    D: "T3",
-    E: "T4",
-    F: "T5"
-};
+// --- MANUAL CONFIGURATION ---
+// Add Agent IDs to the corresponding arrays to place them.
+// DPS: Ataque, Ruptura
+// SUB-DPS: Anomalia
+// STUN: Aturdidor
+// SUPPORT: Soporte, Defensa
 
-// Helper to map agent role to column ID
-const getAgentRoleColumn = (agent) => {
-    const r = agent.rol;
-    if (r === "Ataque" || r === "Ruptura") return "dps";
-    if (r === "Anomalia") return "subdps";
-    if (r === "Aturdidor") return "stun";
-    if (r === "Soporte" || r === "Defensa") return "support";
-    return null;
+const TIER_DATA = {
+    "T0": {
+        "dps": [
+            47, // Ye Shunguang
+            45, // Banyue
+            43, // Yidhari Murphy
+            40, // Orphie & Magus
+            39, // Seed
+            35, // Yixuan
+            33, // Hugo Vlad
+            30, // Soldier 0 - Anby
+            28, // Evelyn
+            25, // Harumasa
+            2,  // Zhu Yuan
+            1,  // Ellen
+            5,  // Soldier 11
+            8   // Nekomata
+        ],
+        "subdps": [
+            38, // Alice
+            32, // Vivian Banshee
+            26, // Miyabi
+            23, // Yanagi
+            22, // Burnice
+            10, // Jane Doe
+            7   // Grace
+        ],
+        "stun": [
+            44, // Dialyn
+            36, // JuFuFu
+            31, // Trigger
+            24, // Lighter
+            9,  // Qingyi
+            3,  // Lycaon
+            4   // Koleda
+        ],
+        "support": [
+            46, // Zhao
+            42, // Lucia Elowen
+            37, // Ukinami Yuzuha
+            27, // Astra Yao
+            21, // Caesar
+            6   // Rina
+        ]
+    },
+    "T0.5": {
+        "dps": [
+            41, // Komano Manato
+            13, // Billy
+            14, // Corin
+            17  // Anton
+        ],
+        "subdps": [
+            19  // Piper
+        ],
+        "stun": [
+            29, // Pulchra
+            11  // Anby
+        ],
+        "support": [
+            34, // Pan Yinhu
+            20, // Seth
+            18, // Lucy
+            15, // Soukaku
+            12, // Nicole
+            16  // Ben
+        ]
+    },
+    "T1": {
+        "dps": [],
+        "subdps": [],
+        "stun": [],
+        "support": []
+    },
+    "T2": {
+        "dps": [],
+        "subdps": [],
+        "stun": [],
+        "support": []
+    },
+    "T3": {
+        "dps": [],
+        "subdps": [],
+        "stun": [],
+        "support": []
+    },
+    "T4": {
+        "dps": [],
+        "subdps": [],
+        "stun": [],
+        "support": []
+    },
+    "T5": {
+        "dps": [],
+        "subdps": [],
+        "stun": [],
+        "support": []
+    }
 };
 
 export default function DeveloperTierList() {
-
-    // Group agents by Tier + Role
-    const getAgentsForCell = (tier, roleId) => {
-        return agents.filter(agent => {
-            // 1. Check Rank (Row)
-            const mappedRank = RANK_MAPPING[agent.rank];
-            if (mappedRank !== tier) return false;
-
-            // 2. Check Role (Column)
-            const col = getAgentRoleColumn(agent);
-            return col === roleId;
-        });
-    };
-
     return (
         <div className="w-full max-w-7xl mx-auto overflow-x-auto pb-10">
             <div className="text-center mb-8">
                 <p className="text-gray-400 max-w-2xl mx-auto italic">
-                    "Esta tier list fue creada por el desarrollador. Se clasificó en base a daño, equipos, versatilidad y coste."
+                    &quot;Esta tier list fue creada por el desarrollador. Se clasificó en base a daño, equipos, versatilidad y coste.&quot;
                 </p>
             </div>
 
             {/* Grid Container */}
             <div className="min-w-[800px] border border-white/10 rounded-lg overflow-hidden bg-[#0a0a0a]">
 
-                {/* Beader Row (Roles) */}
+                {/* Header Row (Roles) */}
                 <div className="grid grid-cols-[100px_1fr_1fr_1fr_1fr] md:grid-cols-[120px_1fr_1fr_1fr_1fr]">
                     <div className="bg-gray-900/80 p-4 border-b border-r border-white/10 flex items-center justify-center">
                         <span className="font-bold text-gray-500 text-xs uppercase">Rango</span>
@@ -98,7 +170,8 @@ export default function DeveloperTierList() {
 
                         {/* Role Cells */}
                         {ROLES.map(role => {
-                            const cellAgents = getAgentsForCell(tier, role.id);
+                            const agentIds = TIER_DATA[tier]?.[role.id] || [];
+                            const cellAgents = agentIds.map(id => agents.find(a => a.id === id)).filter(Boolean);
 
                             return (
                                 <div key={`${tier}-${role.id}`} className="bg-gray-900/30 p-2 flex flex-wrap gap-2 content-center justify-center border-l border-white/5">
@@ -108,7 +181,7 @@ export default function DeveloperTierList() {
                                                 src={agent.image || agent.icon}
                                                 alt={agent.name}
                                                 fill
-                                                className={`object-cover ${agent.customStyle ? agent.customStyle.replace('scale-[1.00] group-hover:scale-[1.10]', '') : ''}`} // Strip hover scale to avoid clipping issues if needed, or keep it.
+                                                className={`object-cover ${agent.customStyle ? agent.customStyle.replace('scale-[1.00] group-hover:scale-[1.10]', '') : ''}`}
                                             />
                                             {/* Tooltip */}
                                             <div className="absolute bottom-0 left-0 right-0 bg-black/80 text-[9px] text-center py-0.5 truncate px-1 opacity-0 group-hover:opacity-100 transition-opacity">
