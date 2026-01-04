@@ -164,10 +164,43 @@ const TIER_DATA = {
 export default function DeveloperTierList() {
     return (
         <div className="w-full max-w-7xl mx-auto overflow-x-auto pb-10">
-            <div className="text-center mb-8">
-                <p className="text-gray-400 max-w-2xl mx-auto italic">
-                    &quot;Esta tier list fue creada por el desarrollador. Se clasificó en base a daño, equipos, versatilidad y coste.&quot;
-                </p>
+
+            {/* Header Content */}
+            <div className="mb-8 space-y-6">
+
+                {/* Title */}
+                <h2 className="text-3xl font-bold text-white mb-4">Tier List</h2>
+
+                {/* Disclaimer Box */}
+                <div className="bg-red-900/40 border border-red-500/50 rounded-lg p-4 text-red-200 text-sm leading-relaxed shadow-[0_0_15px_rgba(239,68,68,0.2)]">
+                    <p>
+                        Las Tier lists tienen como objetivo informar sobre el estado del meta en el juego, pero reflejan opiniones subjetivas y pueden variar según diferentes interpretaciones y experiencias de juego.
+                        Se ruega respetar las opiniones y análisis proporcionados por los autores, ya que están basados en observaciones personales y/o cálculos de los personajes.
+                    </p>
+                </div>
+
+                {/* Description Box */}
+                <div className="bg-[#1e1e1e] border border-white/10 rounded-lg p-6 text-gray-300">
+                    <h3 className="text-white font-bold text-lg mb-3">Descripción</h3>
+                    <ul className="space-y-2 text-sm">
+                        <li className="flex items-center gap-2">
+                            <span className="w-1 h-1 bg-gray-500 rounded-full"></span>
+                            Rangos S: M0W1
+                        </li>
+                        <li className="flex items-center gap-2">
+                            <span className="w-1 h-1 bg-gray-500 rounded-full"></span>
+                            Rangos A: M6
+                        </li>
+                        <li className="flex items-center gap-2">
+                            <span className="w-1 h-1 bg-gray-500 rounded-full"></span>
+                            Se valora desempeño en todos los Endgames
+                        </li>
+                        <li className="flex items-center gap-2">
+                            <span className="w-1 h-1 bg-gray-500 rounded-full"></span>
+                            Se valora Nivel de poder general, Pull Value y Razón de uso
+                        </li>
+                    </ul>
+                </div>
             </div>
 
             {/* Grid Container */}
