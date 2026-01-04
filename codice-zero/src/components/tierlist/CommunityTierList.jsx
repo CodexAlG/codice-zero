@@ -60,7 +60,7 @@ export default function CommunityTierList() {
             }
         } catch (err) {
             console.error("Error downloading:", err);
-            alert("Error al descargar. Verifica que html2canvas esté instalado.");
+            alert(`Error al descargar: ${err.message}`);
         }
     };
 
