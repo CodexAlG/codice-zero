@@ -19,7 +19,7 @@ const createHighlightRules = (elementColor = "#facc15") => [
   // Físico
   { pattern: /(Asalto\s+de\s+Polaridad|Acumulaci[oó]n\s+de\s+Anomal[ií]a\s+F[ií]sica|Daño\s+F[ií]sico(?:\s+Puro)?|Anomal[ií]a\s+F[ií]sica|Res\s+F[ií]sic[oa]|Resistencia\s+F[ií]sica|Asalto|F[ií]sico|F[ií]sica(?:\s+Pura)?|Anomal[ií]a\s+de\s+Atributo\s+(?:de\s+)?F[ií]sic[oa])/gi, color: "text-[#eab308] font-bold" },
   // Etéreo
-  { pattern: /(Acumulaci[oó]n\s+de\s+Anomal[ií]a\s+(?:Et[eé]rea|Tinta\s+Aurica)|Daño\s+(?:Et[eé]reo|Tinta\s+Aurica)(?:\s+Puro)?|Corrupci[oó]n|Anomal[ií]a\s+(?:Et[eé]rea|Tinta\s+Aurica|Et[eé]reo)|Res\s+(?:Et[eé]rea|Tinta\s+Aurica)|Resistencia\s+(?:Et[eé]rea|Tinta\s+Aurica)|Tinta\s+Aurica(?:\s+Pura)?|Et[eé]reo(?:\s+Puro)?|Et[eé]rea(?:\s+Pura)?|Anomal[ií]a\s+de\s+Atributo\s+(?:de\s+)?(?:Et[eé]re[oa]|Tinta\s+Aurica))/gi, color: "text-[#d946ef] font-bold" },
+  { pattern: /(Acumulaci[oó]n\s+de\s+Anomal[ií]a\s+(?:Et[é]rea|Tinta\s+Aurica)|Daño\s+(?:Et[é]reo|Tinta\s+Aurica)(?:\s+Puro)?|Corrupci[oó]n|Anomal[ií]a\s+(?:Et[é]rea|Tinta\s+Aurica|Et[é]reo)|Res\s+(?:Et[é]rea|Tinta\s+Aurica)|Resistencia\s+(?:Et[é]rea|Tinta\s+Aurica)|Tinta\s+Aurica(?:\s+Pura)?|Et[é]reo(?:\s+Puro)?|Et[é]rea(?:\s+Pura)?|Anomal[ií]a\s+de\s+Atributo\s+(?:de\s+)?(?:Et[é]re[oa]|Tinta\s+Aurica))/gi, color: "text-[#d946ef] font-bold" },
   // Massive / Severe damage – use element colour
 
   // Skill and mechanic names – without generic "Cadena"

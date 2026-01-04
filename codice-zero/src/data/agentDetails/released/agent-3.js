@@ -17,7 +17,7 @@ export default {
     crit: "5%",
     critDmg: "50%",
     anomalyRate: "91",
-    anomalyMastery: "9904",
+    anomalyMastery: "90",
     penRatio: "0%",
     energyRegen: "1.2",
   },
@@ -32,7 +32,7 @@ export default {
     {
       type: "Ataque Básico",
       name: "Ataque Básico: Cazador de Luna",
-      description: "Presiona [Icono Ataque] para activar: Desata hasta 5 golpes en frente, infligiendo Daño Físico. Mantén presionado [Icono Ataque] para cargar, aumentando el poder del ataque e infligiendo Daño de Hielo.",
+      description: "Presiona [Icono Ataque] para activar: Desata hasta 5 golpes en frente, infligiendo Daño Físico. Mantén presionado [Icono Ataque] para cargar, aumentando el poder del ataque e infligiendo Daño Hielo.",
       tags: ["Físico", "Hielo", "Ataque Básico"]
     },
     {
@@ -50,13 +50,13 @@ export default {
     {
       type: "Evasión",
       name: "Contraataque de Evasión: Manual de Etiqueta",
-      description: "Presiona [Icono Ataque] durante una (Evasión Perfecta) para activar: Golpea enemigos en frente, infligiendo Daño de Hielo. El personaje es invulnerable mientras usa esta habilidad.",
+      description: "Presiona [Icono Ataque] durante una (Evasión Perfecta) para activar: Golpea enemigos en frente, infligiendo Daño Hielo. El personaje es invulnerable mientras usa esta habilidad.",
       tags: ["Hielo", "Evasión"]
     },
     {
       type: "Asistencia",
       name: "Asistencia Rápida: Manada de Lobos",
-      description: "Cuando el personaje activo es lanzado, presiona [Icono Assist] para activar: Golpea enemigos en frente, infligiendo Daño de Hielo. El personaje es invulnerable mientras usa esta habilidad.",
+      description: "Cuando el personaje activo es lanzado, presiona [Icono Assist] para activar: Golpea enemigos en frente, infligiendo Daño Hielo. El personaje es invulnerable mientras usa esta habilidad.",
       tags: ["Hielo", "Asistencia"]
     },
     {
@@ -68,37 +68,37 @@ export default {
     {
       type: "Asistencia",
       name: "Ataque de Asistencia: Contraataque Vengativo",
-      description: "Presiona [Icono Ataque] después de una (Asistencia Defensiva) para activar: Crea un carámbano en frente, que golpea a todos los enemigos dentro del rango, infligiendo Daño de Hielo. El personaje es invulnerable mientras usa esta habilidad.",
+      description: "Presiona [Icono Ataque] después de una (Asistencia Defensiva) para activar: Crea un carámbano en frente, que golpea a todos los enemigos dentro del rango, infligiendo Daño Hielo. El personaje es invulnerable mientras usa esta habilidad.",
       tags: ["Hielo", "Asistencia"]
     },
     {
       type: "Técnica Especial",
       name: "Técnica Especial: Hora de Cazar",
-      description: "Presiona [Icono Especial] para activar: Desata una serie de golpes en frente, infligiendo Daño de Hielo. Mantén presionado [Icono Especial] para cargar, aumentando su poder. El nivel de Anti-Interrupción aumenta mientras usa esta habilidad.",
+      description: "Presiona [Icono Especial] para activar: Desata una serie de golpes en frente, infligiendo Daño Hielo. Mantén presionado [Icono Especial] para cargar, aumentando su poder. El nivel de Anti-Interrupción aumenta mientras usa esta habilidad.",
       tags: ["Hielo", "Técnica Especial"]
     },
     {
       type: "Técnica Especial EX",
       name: "Técnica Especial EX: Emoción de la Caza",
-      description: "Con suficiente Energía, presiona [Icono Especial EX] para activar: Desata una serie de poderosos golpes en frente, infligiendo masivo Daño de Hielo. Mantén presionado [Icono Especial EX] para cargar, consumiendo Energía y mejorando el poder del ataque. El personaje es invulnerable mientras usa esta habilidad.",
+      description: "Con suficiente Energía, presiona [Icono Especial EX] para activar: Desata una serie de poderosos golpes en frente, infligiendo masivo Daño Hielo. Mantén presionado [Icono Especial EX] para cargar, consumiendo Energía y mejorando el poder del ataque. El personaje es invulnerable mientras usa esta habilidad.",
       tags: ["Hielo", "Técnica Especial EX"]
     },
     {
       type: "Técnica Definitiva",
       name: "Ataque en Cadena: Como Desee",
-      description: "Cuando se activa un (Ataque en Cadena), selecciona al personaje para activar: Desata una serie de poderosos golpes a enemigos en una pequeña área en frente, infligiendo masivo Daño de Hielo. El personaje es invulnerable mientras usa esta habilidad.",
+      description: "Cuando se activa un (Ataque en Cadena), selecciona al personaje para activar: Desata una serie de poderosos golpes a enemigos en una pequeña área en frente, infligiendo masivo Daño Hielo. El personaje es invulnerable mientras usa esta habilidad.",
       tags: ["Hielo", "Ataque en Cadena"]
     },
     {
       type: "Técnica Definitiva",
       name: "Definitiva: Misión Cumplida",
-      description: "Cuando el Nivel de Decibelios está al [Máximo], presiona [Icono Definitiva] para activar: Desata múltiples golpes poderosos a enemigos en una gran área, infligiendo masivo Daño de Hielo. El personaje es invulnerable mientras usa esta habilidad.",
+      description: "Cuando el Nivel de Decibelios está al [Máximo], presiona [Icono Definitiva] para activar: Desata múltiples golpes poderosos a enemigos en una gran área, infligiendo masivo Daño Hielo. El personaje es invulnerable mientras usa esta habilidad.",
       tags: ["Hielo", "Técnica Definitiva"]
     },
     {
       type: "Pasiva Central",
       name: "Pasiva Principal: Garras Metálicas",
-      description: "Cuando Lycaon carga su (Ataque Básico) hasta completarlo, el ataque inflige {VALOR_1} más de Aturdimiento. Cuando (Técnica Especial EX: Emoción de la Caza) o (Ataque de Asistencia: Contraataque Vengativo) golpea a un enemigo, la RES al Daño de Hielo del objetivo disminuye un 25% por 30s.",
+      description: "Cuando Lycaon carga su (Ataque Básico) hasta completarlo, el ataque inflige {VALOR_1} más de Aturdimiento. Cuando (Técnica Especial EX: Emoción de la Caza) o (Ataque de Asistencia: Contraataque Vengativo) golpea a un enemigo, la RES al Daño Hielo del objetivo disminuye un 25% por 30s.",
       tags: ["Pasiva Central"]
     },
     {
