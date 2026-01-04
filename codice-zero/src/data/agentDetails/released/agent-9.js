@@ -128,7 +128,7 @@ export default {
     {
       type: "Mindscape 1",
       name: "Desglose de Aislamiento",
-      description: "Cuando Qingyi entra en combate, el (Voltaje de Conexión Flash) se restaura instantáneamente a su máximo, y la tasa de acumulación aumenta en un 30%. Cuando usa su (Ataque Básico: Flores de Luna Encantadas), si el (Voltaje de Conexión Flash) está en su máximo, el ataque reducirá la DEF del enemigo que golpea en un 15%, y la Tasa Crítica de Qingyi contra ese enemigo aumentará en un 20% por 15s.",
+      description: "Cuando Qingyi entra en combate, el (Voltaje de Conexión Flash) se restaura instantáneamente a su máximo, y la tasa de acumulación aumenta en un 30%. Cuando usa su (Ataque Básico: Flores de Luna Encantadas), si el (Voltaje de Conexión Flash) está en su máximo, el ataque reducirá la DEF del enemigo que golpea en un 15%, y la Probabilidad de Crit de Qingyi contra ese enemigo aumentará en un 20% por 15s.",
       tags: ["Mindscape 1"]
     },
     {
@@ -158,7 +158,7 @@ export default {
     {
       type: "Mindscape 6",
       name: "Ocho Meridianos",
-      description: "El Nivel de Interrupción de (Ataque Básico: Flores de Luna Encantadas) aumenta enormemente, y la Tasa Crítica aumenta en un 20% adicional. Cuando golpea a un enemigo con su (Ataque Básico: Flores de Luna Encantadas), la RES de Daño de Atributo del objetivo se reduce en un 20% por 15s.",
+      description: "El Nivel de Interrupción de (Ataque Básico: Flores de Luna Encantadas) aumenta enormemente, y la Probabilidad de Crit aumenta en un 20% adicional. Cuando golpea a un enemigo con su (Ataque Básico: Flores de Luna Encantadas), la RES de Daño de Atributo del objetivo se reduce en un 20% por 15s.",
       tags: ["Mindscape 6"]
     }
   ]

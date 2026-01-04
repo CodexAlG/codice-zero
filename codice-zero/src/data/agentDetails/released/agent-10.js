@@ -134,7 +134,7 @@ export default {
     {
       type: "Pasiva Central",
       name: "Pasiva Principal: Perspicacia",
-      description: "Cuando los ataques de Jane golpean a un enemigo, hace que entren en el estado de (Roído), durando 10s. Si cualquier miembro del escuadrón activa (Asalto) en un enemigo en el estado de (Roído) y causa el efecto de (Retroceso), la duración del efecto de (Retroceso) se extiende por 5s. El Daño de (Asalto) tiene una probabilidad de activar un golpe crítico contra enemigos en el estado de (Roído), con una Tasa Crítica base del {VALOR_1} y Daño Crítico del 50%. Cada punto de la Maestría de Anomalía de Jane aumenta adicionalmente esta Tasa Crítica en un {VALOR_2}.",
+      description: "Cuando los ataques de Jane golpean a un enemigo, hace que entren en el estado de (Roído), durando 10s. Si cualquier miembro del escuadrón activa (Asalto) en un enemigo en el estado de (Roído) y causa el efecto de (Retroceso), la duración del efecto de (Retroceso) se extiende por 5s. El Daño de (Asalto) tiene una probabilidad de activar un golpe crítico contra enemigos en el estado de (Roído), con una Probabilidad de Crit base del {VALOR_1} y Daño Crítico del 50%. Cada punto de la Maestría de Anomalía de Jane aumenta adicionalmente esta Probabilidad de Crit en un {VALOR_2}.",
       tags: ["Pasiva Central"]
     },
     {
@@ -176,7 +176,7 @@ export default {
     {
       type: "Mindscape 6",
       name: "Técnica \"Sospechosa\"",
-      description: "Mientras está en el estado de (Pasión), la Tasa Crítica de Jane aumenta en un 20%, y el Daño Crítico en un 40%. Después de que cualquier miembro del escuadrón inflige (Asalto), Jane entra instantáneamente en el estado de (Pasión) y gana el máximo de (Corriente de Pasión). Cuando esa instancia de (Asalto) activa un golpe crítico, Jane realiza un ataque adicional al objetivo, infligiendo Daño Físico igual al 1,600% de su Maestría de Anomalía.",
+      description: "Mientras está en el estado de (Pasión), la Probabilidad de Crit de Jane aumenta en un 20%, y el Daño Crítico en un 40%. Después de que cualquier miembro del escuadrón inflige (Asalto), Jane entra instantáneamente en el estado de (Pasión) y gana el máximo de (Corriente de Pasión). Cuando esa instancia de (Asalto) activa un golpe crítico, Jane realiza un ataque adicional al objetivo, infligiendo Daño Físico igual al 1,600% de su Maestría de Anomalía.",
       tags: ["Mindscape 6"]
     }
   ]

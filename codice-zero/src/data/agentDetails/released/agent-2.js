@@ -32,7 +32,7 @@ export default {
     {
       type: "Ataque Básico",
       name: "Ataque Básico: ¡No te Muevas! [Modo Asalto]",
-      description: "Presiona [Icono Ataque] para activar: Desata una ráfaga de artes marciales, balas y Perdigones Etéreos en frente, infligiendo Daño Físico y Daño Etéreo. Cuando el 4to golpe impacta a un enemigo, obtén 1 (Perdigón Mejorado) por golpe. Un máximo de 1 puede obtenerse al activar esta habilidad sobre el escenario de una sola vez. Mientras usa esta habilidad, arrastra el joystick/stick y presiona [Icono Ataque] para activar (Ataque de Carrera: Ofensiva de Fuego) y reajustar para enfrentar la dirección seleccionada. Mientras está bajo (Modo Asalto), mantén [Icono Ataque] para cambiar a (Modo Supresivo).",
+      description: "Presiona [Icono Ataque] para activar: Desata una ráfaga de artes marciales, balas y Perdigones Etereos en frente, infligiendo Daño Físico y Daño Etéreo. Cuando el 4to golpe impacta a un enemigo, obtén 1 (Perdigón Mejorado) por golpe. Un máximo de 1 puede obtenerse al activar esta habilidad sobre el escenario de una sola vez. Mientras usa esta habilidad, arrastra el joystick/stick y presiona [Icono Ataque] para activar (Ataque de Carrera: Ofensiva de Fuego) y reajustar para enfrentar la dirección seleccionada. Mientras está bajo (Modo Asalto), mantén [Icono Ataque] para cambiar a (Modo Supresivo).",
       tags: ["Físico", "Etéreo", "Ataque Básico"]
     },
     {
@@ -62,13 +62,13 @@ export default {
     {
       type: "Evasión",
       name: "Contraataque de Evasión: Ráfaga de Fuego",
-      description: "Presiona [Icono Ataque] durante una (Evasión Perfecta) para activar: Dispara enemigos en frente con un Perdigón Etéreo, infligiendo Daño Etéreo. Gana 1 (Perdigón Mejorado) al usar habilidad. El personaje es invulnerable mientras usa esta habilidad.",
+      description: "Presiona [Icono Ataque] durante una (Evasión Perfecta) para activar: Dispara enemigos en frente con un Perdigón Etereo, infligiendo Daño Etéreo. Gana 1 (Perdigón Mejorado) al usar habilidad. El personaje es invulnerable mientras usa esta habilidad.",
       tags: ["Etéreo", "Evasión"]
     },
     {
       type: "Asistencia",
       name: "Asistencia Rápida: Disparo de Cobertura",
-      description: "Cuando el personaje activo es lanzado, presiona [Icono Assist] para activar: Dispara enemigos en frente con un Perdigón Etéreo, infligiendo Daño Etéreo. Gana 1 (Perdigón Mejorado) al usar habilidad. El personaje es invulnerable mientras usa esta habilidad.",
+      description: "Cuando el personaje activo es lanzado, presiona [Icono Assist] para activar: Dispara enemigos en frente con un Perdigón Etereo, infligiendo Daño Etéreo. Gana 1 (Perdigón Mejorado) al usar habilidad. El personaje es invulnerable mientras usa esta habilidad.",
       tags: ["Etéreo", "Asistencia"]
     },
     {
@@ -86,13 +86,13 @@ export default {
     {
       type: "Técnica Especial",
       name: "Técnica Especial: Explosión de Perdigones",
-      description: "Presiona [Icono Especial] para activar: Dispara Perdigones Etéreos que infligen Daño Etéreo. Esto puede repetirse 3 veces presionando repetidamente [Icono Especial]. El nivel de Anti-Interrupción aumenta mientras usa esta habilidad.",
+      description: "Presiona [Icono Especial] para activar: Dispara Perdigones Etereos que infligen Daño Etéreo. Esto puede repetirse 3 veces presionando repetidamente [Icono Especial]. El nivel de Anti-Interrupción aumenta mientras usa esta habilidad.",
       tags: ["Etéreo", "Técnica Especial"]
     },
     {
       type: "Técnica Especial EX",
       name: "Técnica Especial EX: Andanada Completa",
-      description: "Con suficiente Energía, presiona [Icono Especial EX] para activar: Dispara una serie de Perdigones Etéreos, que explotan e infligen daño masivo de Daño Etéreo. Al activar, gana 3 (Perdigones Mejorados). El personaje es invulnerable mientras usa esta habilidad.",
+      description: "Con suficiente Energía, presiona [Icono Especial EX] para activar: Dispara una serie de Perdigones Etereos, que explotan e infligen daño masivo de Daño Etéreo. Al activar, gana 3 (Perdigones Mejorados). El personaje es invulnerable mientras usa esta habilidad.",
       tags: ["Etéreo", "Técnica Especial EX"]
     },
     {
@@ -116,7 +116,7 @@ export default {
     {
       type: "Habilidad Adicional",
       name: "Habilidad Adicional: Coordinación Táctica",
-      description: "Cuando otro personaje en tu escuadrón es un personaje de (Apoyo) o comparte la misma Facción: La Tasa Crítica de Zhu Yuan aumenta en un 30% por 10s después de usar una (Técnica Especial EX), (Ataque en Cadena), o (Definitiva).",
+      description: "Cuando otro personaje en tu escuadrón es un personaje de (Apoyo) o comparte la misma Facción: La Probabilidad de Crit de Zhu Yuan aumenta en un 30% por 10s después de usar una (Técnica Especial EX), (Ataque en Cadena), o (Definitiva).",
       tags: ["Habilidad Adicional"]
     },
     {
@@ -152,7 +152,7 @@ export default {
     {
       type: "Mindscape 6",
       name: "Paquete de Energía Expandido III",
-      description: "Cuando Zhu Yuan consume un total de 12 (Perdigones Mejorados), recibe el efecto de (Resplandor Etéreo), y el costo de Energía de la próxima (Técnica Especial EX) se reduce en 30. Lanzar (Técnica Especial EX) con el efecto de (Resplandor Etéreo) disparará adicionalmente un Perdigón Etéreo adicional de 4 balas. Cada bala extra inflige Daño igual al 220% del ATK de Zhu Yuan.",
+      description: "Cuando Zhu Yuan consume un total de 12 (Perdigones Mejorados), recibe el efecto de (Resplandor Etereo), y el costo de Energía de la próxima (Técnica Especial EX) se reduce en 30. Lanzar (Técnica Especial EX) con el efecto de (Resplandor Etereo) disparará adicionalmente un Perdigón Etereo adicional de 4 balas. Cada bala extra inflige Daño igual al 220% del ATK de Zhu Yuan.",
       tags: ["Mindscape 6"]
     }
   ]

@@ -171,7 +171,7 @@ export default {
     {
       type: "Mindscape 6",
       name: "Voluntad del Señor Supremo",
-      description: "(Técnica Especial EX: Golpe de Escudo Abrumador) y (Ataque de Asistencia: Espada de Ayuda) garantizan un golpe crítico. El daño de golpe crítico aumenta en un 50% e inflige un 50% adicional de DAÑO al objetivo principal. Cuando Caesar usa (Técnica Especial EX: Golpe de Escudo Abrumador) o (Ataque de Asistencia: Espada de Ayuda), su Tasa Crítica aumenta en un 30% y su Daño Crítico aumenta en un 60% por 15s.",
+      description: "(Técnica Especial EX: Golpe de Escudo Abrumador) y (Ataque de Asistencia: Espada de Ayuda) garantizan un golpe crítico. El daño de golpe crítico aumenta en un 50% e inflige un 50% adicional de DAÑO al objetivo principal. Cuando Caesar usa (Técnica Especial EX: Golpe de Escudo Abrumador) o (Ataque de Asistencia: Espada de Ayuda), su Probabilidad de Crit aumenta en un 30% y su Daño Crítico aumenta en un 60% por 15s.",
       tags: ["Mindscape 6"]
     }
   ]
