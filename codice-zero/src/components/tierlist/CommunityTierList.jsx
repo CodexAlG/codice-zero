@@ -3,12 +3,12 @@
 import { useState, useRef } from "react";
 import Image from "next/image";
 import { agents } from "@/data/agents";
-import { Download, RotateCcw, Plus } from "lucide-react";
+import { Download, RotateCcw, Plus, Trash2, Columns, Rows } from "lucide-react";
 
 // Updated Tiers T0-T5
 const TIERS = ["T0", "T0.5", "T1", "T2", "T3", "T4", "T5"];
 
-const ROLES = [
+const DEFAULT_ROLES = [
     { id: "dps", label: "DPS" },
     { id: "subdps", label: "SUB-DPS" },
     { id: "stun", label: "ATURDIDOR" },
@@ -26,6 +26,7 @@ const DEFAULT_TIER_COLORS = [
 ];
 
 export default function CommunityTierList() {
+    // Rows State
     const [tierRows, setTierRows] = useState(
         TIERS.map((label, index) => ({
             id: label,
@@ -33,6 +34,9 @@ export default function CommunityTierList() {
             color: DEFAULT_TIER_COLORS[index] || "#faceless",
         }))
     );
+
+    // Columns State
+    const [tierCols, setTierCols] = useState(DEFAULT_ROLES);
 
     // Placements: { agentId: number, tierId: string, roleId: string }
     const [placements, setPlacements] = useState([]);
@@ -42,6 +46,8 @@ export default function CommunityTierList() {
     const isInPool = (agentId) => !placements.find(p => p.agentId === agentId);
 
     const captureRef = useRef(null);
+
+    // --- Actions ---
 
     const handleDownload = async () => {
         try {
@@ -78,8 +84,10 @@ export default function CommunityTierList() {
             label: label,
             color: DEFAULT_TIER_COLORS[index] || "#cccccc",
         })));
+        setTierCols(DEFAULT_ROLES);
     };
 
+    // Row Actions
     const addRow = () => {
         const newId = `tier-${Date.now()}`;
         setTierRows([...tierRows, {
@@ -94,8 +102,26 @@ export default function CommunityTierList() {
         setTierRows(prev => prev.filter(r => r.id !== rowId));
     };
 
-    const updateLabel = (rowId, newLabel) => {
+    const updateRowLabel = (rowId, newLabel) => {
         setTierRows(prev => prev.map(r => r.id === rowId ? { ...r, label: newLabel } : r));
+    };
+
+    // Column Actions
+    const addCol = () => {
+        const newId = `col-${Date.now()}`;
+        setTierCols([...tierCols, {
+            id: newId,
+            label: "NEW"
+        }]);
+    };
+
+    const removeCol = (colId) => {
+        setPlacements(prev => prev.filter(p => p.roleId !== colId));
+        setTierCols(prev => prev.filter(c => c.id !== colId));
+    };
+
+    const updateColLabel = (colId, newLabel) => {
+        setTierCols(prev => prev.map(c => c.id === colId ? { ...c, label: newLabel } : c));
     };
 
     // --- Drag & Drop ---
@@ -128,24 +154,41 @@ export default function CommunityTierList() {
         setPlacements(prev => prev.filter(p => p.agentId !== agentId));
     };
 
+    // Dynamic Grid Style
+    // 120px for Row Header + 1fr for each column
+    // We use a CSS variable or inline style for the template columns.
+    // Mobile: 100px header. Desktop: 120px header.
+    const gridStyle = {
+        display: 'grid',
+        gridTemplateColumns: `minmax(100px, 120px) repeat(${tierCols.length}, minmax(140px, 1fr))`,
+    };
+
 
     return (
         <div className="w-full max-w-7xl mx-auto pb-20">
 
             {/* Toolbar */}
             <div className="flex flex-wrap items-center justify-between mb-6 gap-4 bg-gray-900/50 p-4 rounded-xl border border-white/5">
+                {/* Left: Reset */}
                 <div className="space-x-2">
-                    <button onClick={addRow} className="px-4 py-2 bg-blue-600 hover:bg-blue-500 rounded-lg text-white font-bold text-sm flex items-center gap-2 transition-colors">
-                        <Plus size={16} /> Añadir Fila
-                    </button>
                     <button onClick={handleReset} className="px-4 py-2 bg-red-600/20 hover:bg-red-600 text-red-200 hover:text-white rounded-lg font-bold text-sm flex items-center gap-2 transition-colors">
                         <RotateCcw size={16} /> Reset
                     </button>
                 </div>
 
-                <button onClick={handleDownload} className="px-6 py-2 bg-yellow-500 hover:bg-yellow-400 text-black rounded-lg font-bold flex items-center gap-2 shadow-lg shadow-yellow-500/20 transition-all transform hover:scale-105">
-                    <Download size={18} /> Descargar Imagen
-                </button>
+                {/* Right: Actions */}
+                <div className="flex flex-wrap items-center gap-2">
+                    <button onClick={addRow} className="px-4 py-2 bg-blue-600/20 hover:bg-blue-600/80 hover:text-white text-blue-300 rounded-lg font-bold text-sm flex items-center gap-2 transition-colors border border-blue-500/30">
+                        <Rows size={16} /> + Fila
+                    </button>
+                    <button onClick={addCol} className="px-4 py-2 bg-purple-600/20 hover:bg-purple-600/80 hover:text-white text-purple-300 rounded-lg font-bold text-sm flex items-center gap-2 transition-colors border border-purple-500/30">
+                        <Columns size={16} /> + Columna
+                    </button>
+                    <div className="w-[1px] h-8 bg-white/10 mx-2 hidden md:block"></div>
+                    <button onClick={handleDownload} className="px-6 py-2 bg-yellow-500 hover:bg-yellow-400 text-black rounded-lg font-bold flex items-center gap-2 shadow-lg shadow-yellow-500/20 transition-all transform hover:scale-105">
+                        <Download size={18} /> Descargar Imagen
+                    </button>
+                </div>
             </div>
 
             {/* Capture Area */}
@@ -153,31 +196,42 @@ export default function CommunityTierList() {
                 <div ref={captureRef} className="min-w-[800px] border border-white/10 rounded-lg overflow-hidden bg-[#0a0a0a] inline-block w-full">
 
                     {/* Header */}
-                    <div className="grid grid-cols-[100px_1fr_1fr_1fr_1fr] md:grid-cols-[120px_1fr_1fr_1fr_1fr]">
+                    <div className="" style={gridStyle}>
                         <div className="bg-gray-900/80 p-4 border-b border-r border-white/10 flex items-center justify-center">
                             <span className="font-bold text-gray-500 text-xs uppercase">Rango</span>
                         </div>
-                        {ROLES.map(role => (
-                            <div key={role.id} className="bg-gray-900/80 p-4 border-b border-white/10 border-l border-white/5 text-center flex items-center justify-center">
-                                <span className="font-black italic text-yellow-500 text-lg md:text-xl drop-shadow-sm tracking-wider">
-                                    {role.label}
-                                </span>
+                        {tierCols.map(col => (
+                            <div key={col.id} className="bg-gray-900/80 border-b border-white/10 border-l border-white/5 text-center flex items-center justify-center relative group p-2">
+                                {/* Editable Column Label */}
+                                <input
+                                    value={col.label}
+                                    onChange={(e) => updateColLabel(col.id, e.target.value)}
+                                    className="bg-transparent font-black italic text-yellow-500 text-lg md:text-xl drop-shadow-sm tracking-wider text-center w-full focus:outline-none uppercase placeholder-white/20"
+                                />
+                                {/* Delete Column Button */}
+                                <button
+                                    onClick={() => removeCol(col.id)}
+                                    className="absolute top-1 right-1 text-red-500/50 hover:text-red-500 hover:bg-red-500/10 rounded-full w-5 h-5 flex items-center justify-center transition-all font-bold text-xs opacity-0 group-hover:opacity-100 z-10"
+                                    title="Eliminar Columna"
+                                >
+                                    <Trash2 size={12} />
+                                </button>
                             </div>
                         ))}
                     </div>
 
                     {/* Rows */}
                     {tierRows.map((tier) => (
-                        <div key={tier.id} className="grid grid-cols-[100px_1fr_1fr_1fr_1fr] md:grid-cols-[120px_1fr_1fr_1fr_1fr] border-b border-white/5 last:border-0 min-h-[140px]">
+                        <div key={tier.id} className="" style={gridStyle}>
 
                             {/* Row Label (Editable) - Smaller text */}
                             <div
-                                className="flex flex-col items-center justify-center border-r border-black/20 relative overflow-hidden group p-1"
+                                className="flex flex-col items-center justify-center border-r border-black/20 relative overflow-hidden group p-1 min-h-[140px] border-b border-white/5"
                                 style={{ backgroundColor: tier.color }}
                             >
                                 <input
                                     value={tier.label}
-                                    onChange={(e) => updateLabel(tier.id, e.target.value)}
+                                    onChange={(e) => updateRowLabel(tier.id, e.target.value)}
                                     className="bg-transparent text-black font-black text-2xl md:text-3xl font-display italic text-center w-full focus:outline-none uppercase placeholder-black/30"
                                 />
                                 {/* Delete Row */}
@@ -191,22 +245,22 @@ export default function CommunityTierList() {
                             </div>
 
                             {/* Cells */}
-                            {ROLES.map(role => {
-                                const cellPlacements = placements.filter(p => p.tierId === tier.id && p.roleId === role.id);
+                            {tierCols.map(col => {
+                                const cellPlacements = placements.filter(p => p.tierId === tier.id && p.roleId === col.id);
                                 const itemsInCell = cellPlacements.map(p => agents.find(a => a.id === p.agentId)).filter(Boolean);
 
                                 return (
                                     <div
-                                        key={`${tier.id}-${role.id}`}
+                                        key={`${tier.id}-${col.id}`}
                                         onDragOver={onDragOver}
-                                        onDrop={(e) => onDropCell(e, tier.id, role.id)}
-                                        className="bg-gray-900/30 p-2 flex flex-wrap gap-2 content-center justify-center border-l border-white/5 transition-colors hover:bg-white/5"
+                                        onDrop={(e) => onDropCell(e, tier.id, col.id)}
+                                        className="bg-gray-900/30 p-2 flex flex-wrap gap-2 content-center justify-center border-l border-white/5 border-b transition-colors hover:bg-white/5"
                                     >
                                         {itemsInCell.map(agent => (
                                             <div
                                                 key={agent.id}
                                                 draggable
-                                                onDragStart={(e) => onDragStart(e, agent.id, { type: 'cell', tierId: tier.id, roleId: role.id })}
+                                                onDragStart={(e) => onDragStart(e, agent.id, { type: 'cell', tierId: tier.id, roleId: col.id })}
                                                 className="relative group w-16 h-16 md:w-20 md:h-20 bg-gray-800 rounded-lg overflow-hidden border border-white/10 hover:border-yellow-500/50 transition-colors shadow-lg cursor-grab active:cursor-grabbing hover:scale-110 z-10"
                                             >
                                                 <Image
