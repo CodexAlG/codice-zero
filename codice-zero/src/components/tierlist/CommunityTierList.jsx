@@ -249,7 +249,7 @@ export default function CommunityTierList() {
                             key={agent.id}
                             draggable
                             onDragStart={(e) => onDragStart(e, agent.id, { type: 'pool' })}
-                            className="w-14 h-14 md:w-16 md:h-16 bg-gray-800 rounded-lg overflow-hidden border border-white/10 hover:border-yellow-500/50 transition-colors shadow-lg cursor-grab hover:scale-105 active:scale-95"
+                            className="relative w-14 h-14 md:w-16 md:h-16 bg-gray-800 rounded-lg overflow-hidden border border-white/10 hover:border-yellow-500/50 transition-colors shadow-lg cursor-grab hover:scale-105 active:scale-95"
                         >
                             <Image
                                 src={agent.image || agent.icon}
