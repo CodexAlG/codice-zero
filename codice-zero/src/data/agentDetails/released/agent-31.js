@@ -51,13 +51,13 @@ export default {
     {
       type: "Ataque Básico",
       name: "Ataque Basico: Disparo Armonizador",
-      description: "Cuando Trigger tiene (Purga), usar otro personaje activo en el escuadrón para golpear a un enemigo con un (Ataque Basico), (Contraataque de Evasion), (Tecnica Especial), (Evasión) o (Asistencia Rapida) para activar: Mientras entra en combate, rápidamente dispara dos tiros al enemigo, causando Daño Electrico. Al activar esta habilidad, consume 3 (Purga). El personaje es invulnerable mientras usa esta habilidad. (Ataque Basico: Disparo Armonizador) es un ataque de (Aftershock). El escuadrón puede activar (Ataque Basico: Disparo Armonizador) una vez cada 3s. La misma habilidad puede activar (Ataque Basico: Disparo Armonizador - Tartarus) hasta 2 veces en 2s para todo el escuadrón. Durante (Ataque Basico: Disparo Armonizador), (Ataque Basico: Disparo Armonizador - Tartarus) se activará inmediatamente en su lugar si se activa.",
+      description: "Cuando Trigger tiene (Purga), usar otro personaje activo en el escuadrón para golpear a un enemigo con un (Ataque Basico), (Contraataque de Evasion), (Tecnica Especial), (Evasión) o (Asistencia Rapida) para activar: Mientras entra en combate, rápidamente dispara dos tiros al enemigo, causando Daño Electrico. Al activar esta habilidad, consume 3 (Purga). El personaje es invulnerable mientras usa esta habilidad. (Ataque Basico: Disparo Armonizador) es un ataque de (replica). El escuadrón puede activar (Ataque Basico: Disparo Armonizador) una vez cada 3s. La misma habilidad puede activar (Ataque Basico: Disparo Armonizador - Tartarus) hasta 2 veces en 2s para todo el escuadrón. Durante (Ataque Basico: Disparo Armonizador), (Ataque Basico: Disparo Armonizador - Tartarus) se activará inmediatamente en su lugar si se activa.",
       tags: ["Eléctrico", "Ataque Básico"]
     },
     {
       type: "Ataque Básico",
       name: "Ataque Basico: Disparo Armonizador - Tartarus",
-      description: "Cuando Trigger tiene (Purga), usar otro personaje activo en el escuadrón para golpear a un enemigo con un (Tecnica Especial EX), (Ataque de Asistencia) o (Definitiva) para activar: Mientras entra en combate, rápidamente dispara tres tiros al enemigo, seguido de un (Movimiento Final), causando Daño Electrico. Al activar esta habilidad, consume 5 (Purga). El personaje es invulnerable mientras usa esta habilidad. (Ataque Basico: Disparo Armonizador - Tartarus) es un ataque de (Aftershock). La misma habilidad puede activar (Ataque Basico: Disparo Armonizador - Tartarus) hasta 2 veces en 2s para todo el escuadrón. Durante (Ataque Basico: Disparo Armonizador), (Ataque Basico: Disparo Armonizador - Tartarus) se activará inmediatamente en su lugar si se activa.",
+      description: "Cuando Trigger tiene (Purga), usar otro personaje activo en el escuadrón para golpear a un enemigo con un (Tecnica Especial EX), (Ataque de Asistencia) o (Definitiva) para activar: Mientras entra en combate, rápidamente dispara tres tiros al enemigo, seguido de un (Movimiento Final), causando Daño Electrico. Al activar esta habilidad, consume 5 (Purga). El personaje es invulnerable mientras usa esta habilidad. (Ataque Basico: Disparo Armonizador - Tartarus) es un ataque de (replica). La misma habilidad puede activar (Ataque Basico: Disparo Armonizador - Tartarus) hasta 2 veces en 2s para todo el escuadrón. Durante (Ataque Basico: Disparo Armonizador), (Ataque Basico: Disparo Armonizador - Tartarus) se activará inmediatamente en su lugar si se activa.",
       tags: ["Eléctrico", "Ataque Básico"]
     },
     {
@@ -123,13 +123,13 @@ export default {
     {
       type: "Pasiva Central",
       name: "Pasiva Principal: Mirada Escudriñadora del Alma",
-      description: "Cuando el (Aftershock) de Trigger golpea a un enemigo, el Multiplicador de Daño de Aturdimiento del objetivo aumenta en un {VALOR_1} por 5s. Este aumento del Multiplicador de Daño de Aturdimiento se aplicará incluso si el objetivo no está Aturdido.",
+      description: "Cuando el (replica) de Trigger golpea a un enemigo, el Multiplicador de Daño de Aturdimiento del objetivo aumenta en un {VALOR_1} por 5s. Este aumento del Multiplicador de Daño de Aturdimiento se aplicará incluso si el objetivo no está Aturdido.",
       tags: ["Pasiva Central"]
     },
     {
       type: "Habilidad Adicional",
       name: "Habilidad Adicional: Mirada de la Linterna Plateada",
-      description: "Cuando otro personaje en tu escuadrón es un personaje de (Ataque) o comparte el mismo atributo: Cuando la Probabilidad de CRIT de Trigger excede el 40%, cada 1% de Probabilidad de CRIT por encima de este umbral aumenta el Aturdimiento infligido por sus (Aftershocks) en un 1.5%, hasta un aumento máximo del 75%.",
+      description: "Cuando otro personaje en tu escuadrón es un personaje de (Ataque) o comparte el mismo atributo: Cuando la Probabilidad de CRIT de Trigger excede el 40%, cada 1% de Probabilidad de CRIT por encima de este umbral aumenta el Aturdimiento infligido por sus (replicas) en un 1.5%, hasta un aumento máximo del 75%.",
       tags: ["Habilidad Adicional"]
     },
     {
@@ -141,7 +141,7 @@ export default {
     {
       type: "Mindscape 2",
       name: "Vision Eterea",
-      description: "Al usar un (Aftershock), Trigger gana 1 acumulación de (Mirada del Cazador). Cuando ejecuta un (Movimiento Final) en (Postura de Francotirador), Trigger gana 2 acumulaciones de (Mirada del Cazador). Cada acumulación de (Mirada del Cazador) aumenta el Daño CRIT de todos los miembros del escuadrón en un 6%, acumulándose hasta 4 veces, durando 10s. Activaciones repetidas reinician la duración.",
+      description: "Al usar un (replica), Trigger gana 1 acumulación de (Mirada del Cazador). Cuando ejecuta un (Movimiento Final) en (Postura de Francotirador), Trigger gana 2 acumulaciones de (Mirada del Cazador). Cada acumulación de (Mirada del Cazador) aumenta el Daño CRIT de todos los miembros del escuadrón en un 6%, acumulándose hasta 4 veces, durando 10s. Activaciones repetidas reinician la duración.",
       tags: ["Mindscape 2"]
     },
     {
