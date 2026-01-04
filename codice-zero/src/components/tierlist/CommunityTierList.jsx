@@ -36,13 +36,12 @@ export default function CommunityTierList() {
 
     // Placements: { agentId: number, tierId: string, roleId: string }
     const [placements, setPlacements] = useState([]);
+    const [previewImage, setPreviewImage] = useState(null);
 
     // Pool logic: Agents not in placements are in the pool
     const isInPool = (agentId) => !placements.find(p => p.agentId === agentId);
 
     const captureRef = useRef(null);
-
-    // --- Handlers ---
 
     const handleDownload = async () => {
         try {
@@ -51,19 +50,24 @@ export default function CommunityTierList() {
                 const dataUrl = await toPng(captureRef.current, {
                     backgroundColor: "#020617",
                     pixelRatio: 2,
-                    skipFonts: true, // Bypass font embedding to fix 'trim' error
-                    filter: (node) => {
-                        return node.tagName !== 'LINK' && node.tagName !== 'STYLE';
-                    },
+                    skipFonts: true,
+                    filter: (node) => node.tagName !== 'LINK' && node.tagName !== 'STYLE',
                 });
-                const link = document.createElement('a');
-                link.download = 'mi-tierlist-codicezero.png';
-                link.href = dataUrl;
-                link.click();
+                setPreviewImage(dataUrl);
             }
         } catch (err) {
             console.error("Error downloading:", err);
             alert(`Error al descargar: ${err.message}`);
+        }
+    };
+
+    const confirmDownload = () => {
+        if (previewImage) {
+            const link = document.createElement('a');
+            link.download = 'mi-tierlist-codicezero.png';
+            link.href = previewImage;
+            link.click();
+            setPreviewImage(null);
         }
     };
 
@@ -253,6 +257,34 @@ export default function CommunityTierList() {
                     ))}
                 </div>
             </div>
+
+            {/* Download Preview Modal */}
+            {previewImage && (
+                <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/80 backdrop-blur-sm p-4">
+                    <div className="bg-[#0f172a] border border-white/10 rounded-xl p-6 max-w-4xl w-full max-h-[90vh] flex flex-col shadow-2xl">
+                        <h3 className="text-xl font-bold text-white mb-4">Vista Previa</h3>
+
+                        <div className="flex-1 overflow-auto bg-[#020617] rounded-lg border border-white/5 mb-6 flex items-center justify-center p-4">
+                            <img src={previewImage} alt="Tier List Preview" className="max-w-full h-auto rounded shadow-lg" />
+                        </div>
+
+                        <div className="flex justify-end gap-4">
+                            <button
+                                onClick={() => setPreviewImage(null)}
+                                className="px-6 py-2 rounded-lg font-bold text-gray-300 hover:text-white hover:bg-white/10 transition-colors"
+                            >
+                                Regresar
+                            </button>
+                            <button
+                                onClick={confirmDownload}
+                                className="px-6 py-2 bg-yellow-500 hover:bg-yellow-400 text-black rounded-lg font-bold shadow-lg shadow-yellow-500/20 transition-transform hover:scale-105"
+                            >
+                                Descargar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            )}
         </div>
     );
 }
