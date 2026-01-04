@@ -3,7 +3,7 @@
 import { useState, useEffect, useMemo } from 'react';
 import { usePathname } from 'next/navigation';
 import Image from 'next/image';
-import { BookOpen, Home, X } from 'lucide-react';
+import { BookOpen, Home, X, List } from 'lucide-react';
 import Link from 'next/link';
 import { agents } from '../../data/agents';
 import { weapons } from '../../data/weapons';
@@ -39,6 +39,8 @@ export default function TopNavbar({ isVisible }) {
             setActiveItem(3); // Bangboo
         } else if (pathname.startsWith('/discos')) {
             setActiveItem(4); // Discos
+        } else if (pathname.startsWith('/tierlist')) {
+            setActiveItem(5); // Tier List
         }
     }, [pathname]);
 
@@ -178,6 +180,12 @@ export default function TopNavbar({ isVisible }) {
                         index={4}
                         icon="/CodiceZero/Discos/Icon_Storage_Drive_Disc.webp"
                         label="Discos"
+                    />
+                    <NavItem
+                        href="/tierlist"
+                        index={5}
+                        icon={List}
+                        label="Tier List"
                     />
                 </ul>
             </nav>
