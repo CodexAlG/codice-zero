@@ -56,11 +56,7 @@ export default {
     {
       type: "Evasión",
       name: "Evasión: Fantasma",
-<<<<<<< HEAD
       description: "Presiona [Icono Dodges] para activar: Una evasión rápida y deslizante. El personaje es invulnerable mientras usa esta habilidad. Jane tiene una evasión extra. Antes de entrar en el estado de (Pasión), alterna entre las dos (evasiones). Después de entrar en el estado de (Pasión), Jane puede pasar a través de enemigos al evadir hacia delante.",
-=======
-      description: "Presiona [Icono Dodges] para activar: Una evasión rápida y deslizante. El personaje es invulnerable mientras usa esta habilidad. Jane tiene una evasión extra. Antes de entrar en el estado de (Pasión), alterna entre las dos evasiones. Después de entrar en el estado de (Pasión), Jane puede pasar a través de enemigos al evadir hacia delante.",
->>>>>>> 8682a9142ec4f1b8b7c9005bd63b55f7d67449df
       tags: ["Evasión"]
     },
     {
