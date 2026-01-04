@@ -52,7 +52,7 @@ export default {
     {
       type: "Ataque Básico",
       name: "Golpe Aplastante",
-      description: "Presiona [Icono Ataque] para activar: Desata hasta 3 golpes, infligiendo Daño Glacial. En el 3er golpe, Yidhari recupera un 10% de PV.",
+      description: "Presiona [Icono Ataque] para activar: Desata hasta 3 golpes, infligiendo Daño Hielo. En el 3er golpe, Yidhari recupera un 10% de PV.",
       tags: [
         "Hielo",
         "Físico"
@@ -61,13 +61,13 @@ export default {
     {
       type: "Ataque Básico",
       name: "Abrazo de Escarcha",
-      description: "Mantén presionado [Icono Ataque] para activar: Yidhari comienza a cargar, consumiendo continuamente PV para alcanzar hasta tres niveles de carga. Cuando se suelta [Icono Ataque], Yidhari desata un poderoso ataque de martillo cargado frente a ella basado en el nivel de carga actual, infligiendo daño masivo de Daño Glacial. Cuanto más altos sean los PV de Yidhari, más rápido los consume al cargar. El consumo de PV reducirá como máximo los PV de Yidhari al 25% de los PV Máx. Con 2 niveles de carga, después de usar la habilidad, presiona [Icono Ataque] para seguir inmediatamente con el 3er golpe del (Ataque Básico: Golpe Aplastante) El Daño de un (Ataque Básico: Golpe Aplastante) activado de esta manera aumenta según el nivel de carga actual, hasta un 30%. Con 3 niveles de carga, Yidhari gana un nivel de Anti-interrupción aumentado durante la habilidad cargada. Presiona [Icono Ataque] para encadenar anticipadamente con el golpe final.",
+      description: "Mantén presionado [Icono Ataque] para activar: Yidhari comienza a cargar, consumiendo continuamente PV para alcanzar hasta tres niveles de carga. Cuando se suelta [Icono Ataque], Yidhari desata un poderoso ataque de martillo cargado frente a ella basado en el nivel de carga actual, infligiendo daño masivo de Daño Hielo. Cuanto más altos sean los PV de Yidhari, más rápido los consume al cargar. El consumo de PV reducirá como máximo los PV de Yidhari al 25% de los PV Máx. Con 2 niveles de carga, después de usar la habilidad, presiona [Icono Ataque] para seguir inmediatamente con el 3er golpe del (Ataque Básico: Golpe Aplastante) El Daño de un (Ataque Básico: Golpe Aplastante) activado de esta manera aumenta según el nivel de carga actual, hasta un 30%. Con 3 niveles de carga, Yidhari gana un nivel de Anti-interrupción aumentado durante la habilidad cargada. Presiona [Icono Ataque] para encadenar anticipadamente con el golpe final.",
       tags: "Hielo",
     },
     {
       type: "Ataque Básico",
       name: "Peso Aplastante de la Escarcha",
-      description: "Mientras carga o gira durante el (Ataque Básico: Abrazo de Escarcha) si es golpeada por un enemigo, Yidhari puede bloquear con sus tentáculos, reduciendo el Daño recibido en un 25%. Si carga o aún no está a carga completa, Yidhari contraataca con sus tentáculos, volviendo a la postura de carga y ganando instantáneamente 1 nivel de carga, mientras también inflige Daño Glacial a los enemigos en frente. Mientras (Peso Aplastante de la Escarcha) está activo, presionar [Icono Ataque] hace que Yidhari desate inmediatamente el golpe final del (Ataque Básico: Abrazo de Escarcha) basado en su nivel de carga actual. Mientras (Peso Aplastante de la Escarcha) está activo, presionar [Icono Especial] o [Icono Especial EX] hace que Yidhari desate una (Técnica Especial: Frío Creciente) (Persecución Aplastante) que garantiza la activación de (Frío Creciente).",
+      description: "Mientras carga o gira durante el (Ataque Básico: Abrazo de Escarcha) si es golpeada por un enemigo, Yidhari puede bloquear con sus tentáculos, reduciendo el Daño recibido en un 25%. Si carga o aún no está a carga completa, Yidhari contraataca con sus tentáculos, volviendo a la postura de carga y ganando instantáneamente 1 nivel de carga, mientras también inflige Daño Hielo a los enemigos en frente. Mientras (Peso Aplastante de la Escarcha) está activo, presionar [Icono Ataque] hace que Yidhari desate inmediatamente el golpe final del (Ataque Básico: Abrazo de Escarcha) basado en su nivel de carga actual. Mientras (Peso Aplastante de la Escarcha) está activo, presionar [Icono Especial] o [Icono Especial EX] hace que Yidhari desate una (Técnica Especial: Frío Creciente) (Persecución Aplastante) que garantiza la activación de (Frío Creciente).",
       tags: "Hielo",
     },
     {
@@ -82,19 +82,19 @@ export default {
     {
       type: "Evasión",
       name: "Impacto de Flor de Escarcha",
-      description: "Presiona [Icono Ataque] durante una (evasión) para activar: Golpea hacia adelante, infligiendo Daño Glacial.",
+      description: "Presiona [Icono Ataque] durante una (evasión) para activar: Golpea hacia adelante, infligiendo Daño Hielo.",
       tags: "Evasión",
     },
     {
       type: "Evasión",
       name: "Contraataque de Evasion: Reverberacion de Arrastre Helado",
-      description: "Presiona [Icono Ataque] durante una (Evasión Perfecta) para activar: Golpea a los enemigos en frente, infligiendo Daño Glacial. El personaje es invulnerable mientras usa esta habilidad.",
+      description: "Presiona [Icono Ataque] durante una (Evasión Perfecta) para activar: Golpea a los enemigos en frente, infligiendo Daño Hielo. El personaje es invulnerable mientras usa esta habilidad.",
       tags: "Evasión",
     },
     {
       type: "Asistencia Rápida",
       name: "Refuerzo de Choque Helado",
-      description: "Cuando el personaje activo es lanzado por los aires, presiona [Icono Assist] para activar: Golpea a los enemigos en frente, infligiendo Daño Glacial. El personaje es invulnerable mientras usa esta habilidad.",
+      description: "Cuando el personaje activo es lanzado por los aires, presiona [Icono Assist] para activar: Golpea a los enemigos en frente, infligiendo Daño Hielo. El personaje es invulnerable mientras usa esta habilidad.",
       tags: [
         "Asistencia"
       ]
@@ -110,7 +110,7 @@ export default {
     {
       type: "Ataque de Asistencia",
       name: "Asalto Glacial",
-      description: "Presiona [Icono Ataque] después de una (Asistencia Defensiva) para activar: Ejecuta un ataque de martillo de fragmentos de hielo contra los enemigos en frente, infligiendo Daño Glacial. El personaje es invulnerable mientras usa esta habilidad.",
+      description: "Presiona [Icono Ataque] después de una (Asistencia Defensiva) para activar: Ejecuta un ataque de martillo de fragmentos de hielo contra los enemigos en frente, infligiendo Daño Hielo. El personaje es invulnerable mientras usa esta habilidad.",
       tags: [
         "Asistencia"
       ]
@@ -118,7 +118,7 @@ export default {
     {
       type: "Técnica Especial",
       name: "Cese de Pensamientos",
-      description: "Presiona [Icono Especial] para activar: Lanza a los enemigos frente a ella por el aire, infligiendo Daño Glacial. El nivel de Anti-interrupción aumenta mientras se usa esta habilidad.",
+      description: "Presiona [Icono Especial] para activar: Lanza a los enemigos frente a ella por el aire, infligiendo Daño Hielo. El nivel de Anti-interrupción aumenta mientras se usa esta habilidad.",
       tags: [
         "AoE",
         "Interrupción"
@@ -127,7 +127,7 @@ export default {
     {
       type: "Técnica Especial EX",
       name: "Espiral de Escarcha",
-      description: "Con suficiente Adrenalina, presiona [Icono Especial] para activar: Realiza dos golpes ascendentes consecutivos, luego libera una niebla helada, infligiendo daño masivo de Daño Glacial. Si la (Técnica Especial EX: Espiral de Escarcha) golpea a un enemigo, Yidhari recupera PV al final de la habilidad equivalente al 33% de sus PV faltantes. El personaje es invulnerable mientras usa esta habilidad.",
+      description: "Con suficiente Adrenalina, presiona [Icono Especial] para activar: Realiza dos golpes ascendentes consecutivos, luego libera una niebla helada, infligiendo daño masivo de Daño Hielo. Si la (Técnica Especial EX: Espiral de Escarcha) golpea a un enemigo, Yidhari recupera PV al final de la habilidad equivalente al 33% de sus PV faltantes. El personaje es invulnerable mientras usa esta habilidad.",
       tags: [
         "AoE",
         "Interrupción"
@@ -136,7 +136,7 @@ export default {
     {
       type: "Técnica Especial",
       name: "Frío Creciente, Persecución Aplastante",
-      description: "Presiona [Icono Especial] o [Icono Especial EX] mientras cargas o giras durante el (Ataque Básico: Abrazo de Escarcha) o presiona [Icono Dodges] mientras mantienes [Icono Ataque] para activar: Lanza a los enemigos frente a ella por el aire, infligiendo Daño Glacial. Cuando el ataque de la habilidad choca con el ataque de un enemigo, activa (Frío Creciente). Si la habilidad golpea a un enemigo Aturdido, y con suficiente Adrenalina, activa (Persecución Aplastante). Activar (Frío Creciente) o (Persecución Aplastante) eleva instantáneamente el nivel de carga al máximo. Durante esta habilidad, presiona [Icono Ataque] y Yidhari desatará inmediatamente el golpe final del (Ataque Básico: Abrazo de Escarcha) basado en el nivel de carga actual. El nivel de Anti-interrupción aumenta mientras se usa esta habilidad.",
+      description: "Presiona [Icono Especial] o [Icono Especial EX] mientras cargas o giras durante el (Ataque Básico: Abrazo de Escarcha) o presiona [Icono Dodges] mientras mantienes [Icono Ataque] para activar: Lanza a los enemigos frente a ella por el aire, infligiendo Daño Hielo. Cuando el ataque de la habilidad choca con el ataque de un enemigo, activa (Frío Creciente). Si la habilidad golpea a un enemigo Aturdido, y con suficiente Adrenalina, activa (Persecución Aplastante). Activar (Frío Creciente) o (Persecución Aplastante) eleva instantáneamente el nivel de carga al máximo. Durante esta habilidad, presiona [Icono Ataque] y Yidhari desatará inmediatamente el golpe final del (Ataque Básico: Abrazo de Escarcha) basado en el nivel de carga actual. El nivel de Anti-interrupción aumenta mientras se usa esta habilidad.",
       tags: [
         "AoE",
         "Interrupción"
@@ -145,7 +145,7 @@ export default {
     {
       type: "Técnica Especial EX",
       name: "Aplastamiento Glacial",
-      description: "Al activar (Frío Creciente) o (Persecución Aplastante), y con suficiente Adrenalina, presiona [Icono Especial EX] o [Icono Ataque] para activar: Se lanza hacia adelante con un ataque ascendente, luego salta en el aire antes de propinar un poderoso golpe descendente, infligiendo daño masivo de Daño Glacial. Si la (Técnica Especial EX: Aplastamiento Glacial) golpea a un enemigo, Yidhari se cura al final de la habilidad un 33% de sus PV faltantes. Si la habilidad se usa después de (Frío Creciente), otorga 15 de Adrenalina adicional. Este efecto puede activarse una vez cada 1s. Después de usar esta habilidad, presiona [Icono Ataque] para desatar inmediatamente el golpe final del (Ataque Básico: Abrazo de Escarcha) basado en el nivel de carga actual. El personaje es invulnerable mientras usa esta habilidad.",
+      description: "Al activar (Frío Creciente) o (Persecución Aplastante), y con suficiente Adrenalina, presiona [Icono Especial EX] o [Icono Ataque] para activar: Se lanza hacia adelante con un ataque ascendente, luego salta en el aire antes de propinar un poderoso golpe descendente, infligiendo daño masivo de Daño Hielo. Si la (Técnica Especial EX: Aplastamiento Glacial) golpea a un enemigo, Yidhari se cura al final de la habilidad un 33% de sus PV faltantes. Si la habilidad se usa después de (Frío Creciente), otorga 15 de Adrenalina adicional. Este efecto puede activarse una vez cada 1s. Después de usar esta habilidad, presiona [Icono Ataque] para desatar inmediatamente el golpe final del (Ataque Básico: Abrazo de Escarcha) basado en el nivel de carga actual. El personaje es invulnerable mientras usa esta habilidad.",
       tags: [
         "AoE",
         "Interrupción"
@@ -154,7 +154,7 @@ export default {
     {
       type: "Técnica Definitiva",
       name: "Ataque en Cadena: Juramento Helado",
-      description: "Cuando se activa un (Ataque en Cadena), selecciona al personaje para activar: Desata un golpe poderoso contra los enemigos en un área pequeña frente a ella, infligiendo daño masivo de Daño Glacial. Si está dentro de (Velo Etereo: Manantial), los tentáculos se unen al asalto, mejorando aún más el poder de la habilidad. El personaje es invulnerable mientras usa esta habilidad.",
+      description: "Cuando se activa un (Ataque en Cadena), selecciona al personaje para activar: Desata un golpe poderoso contra los enemigos en un área pequeña frente a ella, infligiendo daño masivo de Daño Hielo. Si está dentro de (Velo Etereo: Manantial), los tentáculos se unen al asalto, mejorando aún más el poder de la habilidad. El personaje es invulnerable mientras usa esta habilidad.",
       tags: [
         "Cadena",
         "Campo"
@@ -172,7 +172,7 @@ export default {
     {
       type: "Técnica Definitiva",
       name: "Acto Final - Cruzando el Río del Arrepentimiento",
-      description: "Después de que Yidhari gaste Decibelios para activar (Velo Etereo: Manantial), presiona [Icono Definitiva] dentro de los siguientes 30s para activar: Asesta un golpe poderoso a los enemigos en un área grande frente a ella, infligiendo daño masivo de Daño Glacial. El personaje es invulnerable mientras usa esta habilidad. Cada vez que Yidhari gasta Decibelios para activar un (Velo Etereo: Manantial), puede usar la (Técnica Definitiva: Acto Final - Cruzando el Río del Arrepentimiento) una vez.",
+      description: "Después de que Yidhari gaste Decibelios para activar (Velo Etereo: Manantial), presiona [Icono Definitiva] dentro de los siguientes 30s para activar: Asesta un golpe poderoso a los enemigos en un área grande frente a ella, infligiendo daño masivo de Daño Hielo. El personaje es invulnerable mientras usa esta habilidad. Cada vez que Yidhari gasta Decibelios para activar un (Velo Etereo: Manantial), puede usar la (Técnica Definitiva: Acto Final - Cruzando el Río del Arrepentimiento) una vez.",
       tags: [
         "Ultimate",
         "Campo"
@@ -181,7 +181,7 @@ export default {
     {
       type: "Pasiva Central",
       name: "Colección de Paisajes Oníricos",
-      description: "Yidhari gana Fuerza Pura (Sheer Force) adicional basada en sus PV Máx., donde cada 1 punto de PV Máx. aumenta la Fuerza Pura en 0.1. Todo el Daño Glacial infligido por Yidhari se inflige como Daño Puro, ignorando la DEF del enemigo y usando su estadística de Fuerza Pura como Multiplicador de Daño. Cuando Yidhari entra en combate, gana inmediatamente 60 de Adrenalina. En el modo Zona de Investigación, este efecto puede activarse una vez cada 180s. El Daño de habilidad de Yidhari aumenta a medida que disminuye su porcentaje de PV actuales. Cuando sus PV caen por debajo del 50%, el buff alcanza su valor máximo, aumentando su Daño hasta un {VALOR_1}. Una vez que sus PV se restauran al 50%, la bonificación máxima permanece durante 5s más. Yidhari gana menos Decibelios al asestar habilidades. En su lugar, gana Decibelios a medida que sus PV disminuyen; cada 1% de PV perdido otorga 10 Decibelios",
+      description: "Yidhari gana Fuerza Pura (Sheer Force) adicional basada en sus PV Máx., donde cada 1 punto de PV Máx. aumenta la Fuerza Pura en 0.1. Todo el Daño Hielo infligido por Yidhari se inflige como Daño Puro, ignorando la DEF del enemigo y usando su estadística de Fuerza Pura como Multiplicador de Daño. Cuando Yidhari entra en combate, gana inmediatamente 60 de Adrenalina. En el modo Zona de Investigación, este efecto puede activarse una vez cada 180s. El Daño de habilidad de Yidhari aumenta a medida que disminuye su porcentaje de PV actuales. Cuando sus PV caen por debajo del 50%, el buff alcanza su valor máximo, aumentando su Daño hasta un {VALOR_1}. Una vez que sus PV se restauran al 50%, la bonificación máxima permanece durante 5s más. Yidhari gana menos Decibelios al asestar habilidades. En su lugar, gana Decibelios a medida que sus PV disminuyen; cada 1% de PV perdido otorga 10 Decibelios",
       tags: [
         "Pasiva",
         "Buff"
