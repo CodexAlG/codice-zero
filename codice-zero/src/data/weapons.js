@@ -1526,7 +1526,7 @@ export const weapons = [
     },
     effect: {
       title: "Épica de la Marea Lunar",
-      description: "La Regeneración de Energía del portador aumenta en 0.4/s. Cuando el portador activa un (Velo Etéreo) o extiende su duración, todos los miembros del escuadrón ganan un 25% de DAÑO aumentado y un 15% de PV Máx aumentados por 45s. Las activaciones repetidas reinician la duración. Solo puede existir una instancia de este efecto en el mismo escuadrón.",
+      description: "La Regeneración de Energía del portador aumenta en 0.4/s. Cuando el portador activa un (Velo Etereo) o extiende su duración, todos los miembros del escuadrón ganan un 25% de DAÑO aumentado y un 15% de PV Máx aumentados por 45s. Las activaciones repetidas reinician la duración. Solo puede existir una instancia de este efecto en el mismo escuadrón.",
       refinements: [ // Tabla de Mejora (R1 - R5)
         { level: 1, Energia: "0.4/s", Daño: "25%", PVMax: "15%" },
         { level: 2, Energia: "0.46/s", Daño: "28.8%", PVMax: "17.3%" },
@@ -1832,7 +1832,7 @@ export const weapons = [
     },
     effect: {
       title: "Dulzura Frágil",
-      description: "La Regeneración de Energía del portador aumenta en 0.46/s. Todos los miembros del escuadrón ganan un 10% de ATK y un 10% de PV Máx. Solo puede existir una instancia de este efecto en el mismo escuadrón. Cuando el portador activa o extiende un (Velo Etéreo), todo el escuadrón gana un 30% de Daño CRIT por 60s. Las activaciones repetidas reinician la duración.",
+      description: "La Regeneración de Energía del portador aumenta en 0.46/s. Todos los miembros del escuadrón ganan un 10% de ATK y un 10% de PV Máx. Solo puede existir una instancia de este efecto en el mismo escuadrón. Cuando el portador activa o extiende un (Velo Etereo), todo el escuadrón gana un 30% de Daño CRIT por 60s. Las activaciones repetidas reinician la duración.",
       refinements: [ // Tabla de Mejora (R1 - R5)
         { level: 1, Energia: "0.46/s", ATK: "10%", PVMax: "10%", DañoCrit: "30%" },
         { level: 2, Energia: "0.53/s", ATK: "11.5%", PVMax: "11.5%", DañoCrit: "34.5%" },

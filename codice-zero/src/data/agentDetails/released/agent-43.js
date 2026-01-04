@@ -154,7 +154,7 @@ export default {
     {
       type: "Técnica Definitiva",
       name: "Ataque en Cadena: Juramento Helado",
-      description: "Cuando se activa un (Ataque en Cadena), selecciona al personaje para activar: Desata un golpe poderoso contra los enemigos en un área pequeña frente a ella, infligiendo daño masivo de Daño Glacial. Si está dentro de (Velo Etéreo: Manantial), los tentáculos se unen al asalto, mejorando aún más el poder de la habilidad. El personaje es invulnerable mientras usa esta habilidad.",
+      description: "Cuando se activa un (Ataque en Cadena), selecciona al personaje para activar: Desata un golpe poderoso contra los enemigos en un área pequeña frente a ella, infligiendo daño masivo de Daño Glacial. Si está dentro de (Velo Etereo: Manantial), los tentáculos se unen al asalto, mejorando aún más el poder de la habilidad. El personaje es invulnerable mientras usa esta habilidad.",
       tags: [
         "Cadena",
         "Campo"
@@ -162,17 +162,17 @@ export default {
     },
     {
       type: "Técnica Definitiva",
-      name: "Ataque en Cadena: Velo Etéreo: Manantial",
-      description: "Cuando la Puntuación de Decibelios está al Máximo, el golpe final del (Ataque Básico: Abrazo de Escarcha), (Técnica Especial EX: Espiral de Escarcha), (Técnica Especial EX: Aplastamiento Glacial) y (Ataque en Cadena: Juramento Helado) consumirá 3,000 Decibelios para activar un (Velo Etéreo: Manantial). Mientras (Velo Etéreo: Manantial) está activo, los PV Máx. de todos los miembros del escuadrón aumentan un 5% durante 30s. Las activaciones repetidas extienden la duración, hasta un máximo de 300s. Mientras Yidhari está dentro de (Velo Etéreo: Manantial), la velocidad de carga del (Ataque Básico: Abrazo de Escarcha aumenta) y los PV se consumen más rápido durante la carga.",
+      name: "Ataque en Cadena: Velo Etereo: Manantial",
+      description: "Cuando la Puntuación de Decibelios está al Máximo, el golpe final del (Ataque Básico: Abrazo de Escarcha), (Técnica Especial EX: Espiral de Escarcha), (Técnica Especial EX: Aplastamiento Glacial) y (Ataque en Cadena: Juramento Helado) consumirá 3,000 Decibelios para activar un (Velo Etereo: Manantial). Mientras (Velo Etereo: Manantial) está activo, los PV Máx. de todos los miembros del escuadrón aumentan un 5% durante 30s. Las activaciones repetidas extienden la duración, hasta un máximo de 300s. Mientras Yidhari está dentro de (Velo Etereo: Manantial), la velocidad de carga del (Ataque Básico: Abrazo de Escarcha aumenta) y los PV se consumen más rápido durante la carga.",
       tags: [
         "Cadena",
-        "Velo Etéreo"
+        "Velo Etereo"
       ]
     },
     {
       type: "Técnica Definitiva",
       name: "Acto Final - Cruzando el Río del Arrepentimiento",
-      description: "Después de que Yidhari gaste Decibelios para activar (Velo Etéreo: Manantial), presiona [Icono Definitiva] dentro de los siguientes 30s para activar: Asesta un golpe poderoso a los enemigos en un área grande frente a ella, infligiendo daño masivo de Daño Glacial. El personaje es invulnerable mientras usa esta habilidad. Cada vez que Yidhari gasta Decibelios para activar un (Velo Etéreo: Manantial), puede usar la (Técnica Definitiva: Acto Final - Cruzando el Río del Arrepentimiento) una vez.",
+      description: "Después de que Yidhari gaste Decibelios para activar (Velo Etereo: Manantial), presiona [Icono Definitiva] dentro de los siguientes 30s para activar: Asesta un golpe poderoso a los enemigos en un área grande frente a ella, infligiendo daño masivo de Daño Glacial. El personaje es invulnerable mientras usa esta habilidad. Cada vez que Yidhari gasta Decibelios para activar un (Velo Etereo: Manantial), puede usar la (Técnica Definitiva: Acto Final - Cruzando el Río del Arrepentimiento) una vez.",
       tags: [
         "Ultimate",
         "Campo"
@@ -190,7 +190,7 @@ export default {
     {
       type: "Habilidad Adicional",
       name: "Narrativa Completa",
-      description: "Se activa cuando hay otro personaje en tu escuadrón que es (Aturdidor) o (Soporte): Cuando los PV de Yidhari caen por debajo del 50%, el Daño Crítico aumenta un 30% y el daño recibido se reduce un 25%. Mientras Yidhari está dentro de (Velo Etéreo: Manantial), obtiene el siguiente efecto adicional: Tras el ataque cargado de nivel 3 del (Ataque Básico: Abrazo de Escarcha) o la (Técnica Especial EX: Aplastamiento Glacial), se invoca un tentáculo helado para atacar, infligiendo daño extra. Este efecto puede activarse una vez cada 12s. La habilidad anterior se considera una (Técnica Especial EX), el multiplicador de Daño aumenta según el nivel de la (Técnica Especial EX).",
+      description: "Se activa cuando hay otro personaje en tu escuadrón que es (Aturdidor) o (Soporte): Cuando los PV de Yidhari caen por debajo del 50%, el Daño Crítico aumenta un 30% y el daño recibido se reduce un 25%. Mientras Yidhari está dentro de (Velo Etereo: Manantial), obtiene el siguiente efecto adicional: Tras el ataque cargado de nivel 3 del (Ataque Básico: Abrazo de Escarcha) o la (Técnica Especial EX: Aplastamiento Glacial), se invoca un tentáculo helado para atacar, infligiendo daño extra. Este efecto puede activarse una vez cada 12s. La habilidad anterior se considera una (Técnica Especial EX), el multiplicador de Daño aumenta según el nivel de la (Técnica Especial EX).",
       tags: [
         "Adicional",
         "Pasiva",
@@ -227,7 +227,7 @@ export default {
         "Dupe"
       ],
       name: "Floreciendo en Silencio",
-      description: "Yidhari gana un 10% más de Decibelios al perder PV por la (Pasiva Principal: Colección de Paisajes Oníricos). Mientras está en (Velo Etéreo: Manantial), los PV Máx. de Yidhari aumentan adicionalmente un 5%.",
+      description: "Yidhari gana un 10% más de Decibelios al perder PV por la (Pasiva Principal: Colección de Paisajes Oníricos). Mientras está en (Velo Etereo: Manantial), los PV Máx. de Yidhari aumentan adicionalmente un 5%.",
     },
     {
       type: [
@@ -243,7 +243,7 @@ export default {
         "Dupe"
       ],
       name: "Al Fin, un Sueño Pacífico",
-      description: "Después de que Yidhari gaste Decibelios para activar o extender (Velo Etéreo: Manantial), gana (Erudición) durante 30s. Mientras (Erudición) está activa, su Daño Puro (Sheer DMG) aumenta un 25%. Además, al recibir daño fatal por primera vez, sus PV se reducen como máximo a 1, y durante los siguientes 5s, no puede ser derrotada y restaurará un 25% de sus PV con el tiempo.",
+      description: "Después de que Yidhari gaste Decibelios para activar o extender (Velo Etereo: Manantial), gana (Erudición) durante 30s. Mientras (Erudición) está activa, su Daño Puro (Sheer DMG) aumenta un 25%. Además, al recibir daño fatal por primera vez, sus PV se reducen como máximo a 1, y durante los siguientes 5s, no puede ser derrotada y restaurará un 25% de sus PV con el tiempo.",
     }
   ]
 };

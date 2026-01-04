@@ -220,7 +220,7 @@ export default {
         {
             type: "Técnica Especial EX",
             name: "Forma de Empuñadura Extinción",
-            description: "Tras (Técnica Especial EX: Forma de Empuñadura Destello), si la (Intención de Espada) se agota, Clic o Mantener [Icono Especial] para activar: Causa gran cantidad de Daño Físico a una amplia gama de enemigos; Tras activar el movimiento, cierra el (Velo Etéreo: ZhuXie) y sale de la (Forma de Empuñadura).",
+            description: "Tras (Técnica Especial EX: Forma de Empuñadura Destello), si la (Intención de Espada) se agota, Clic o Mantener [Icono Especial] para activar: Causa gran cantidad de Daño Físico a una amplia gama de enemigos; Tras activar el movimiento, cierra el (Velo Etereo: ZhuXie) y sale de la (Forma de Empuñadura).",
             tags: ["Físico", "Técnica Especial", "Forma de Empuñadura"],
         },
         {
@@ -238,25 +238,25 @@ export default {
         {
             type: "Técnica Definitiva",
             name: "Técnica Definitiva",
-            description: "Cuando el nivel de Decibelios llega a (Máximo), Clic [Icono Definitiva] para activar: Invoca una formación de espadas, causando gran cantidad de Daño Físico a los enemigos; Tras activar el movimiento, abrirá el (Velo Etéreo: ZhuXie) entrando en (Forma de Empuñadura), y obteniendo 4 puntos de (Intención de Espada), la (Forma de Empuñadura) y el (Velo Etéreo: ZhuXie) duran 12 segundos; Posee efecto de invencibilidad durante la activación.",
+            description: "Cuando el nivel de Decibelios llega a (Máximo), Clic [Icono Definitiva] para activar: Invoca una formación de espadas, causando gran cantidad de Daño Físico a los enemigos; Tras activar el movimiento, abrirá el (Velo Etereo: ZhuXie) entrando en (Forma de Empuñadura), y obteniendo 4 puntos de (Intención de Espada), la (Forma de Empuñadura) y el (Velo Etereo: ZhuXie) duran 12 segundos; Posee efecto de invencibilidad durante la activación.",
             tags: ["Físico", "Técnica Definitiva", "Forma de Empuñadura"],
         },
         {
             type: "Técnica Definitiva",
             name: "Definitiva: Forma de Empuñadura",
-            description: "Bajo (Forma de Empuñadura), cuando el nivel de Decibelios llega a (Máximo), Clic [Icono Definitiva] para activar: Invoca una espada gigante, causando gran cantidad de Daño Físico a los enemigos; Tras activar el movimiento, cerrará el (Velo Etéreo: ZhuXie) y saldrá de la (Forma de Empuñadura), y obtendrá 4 puntos de (Intención de Espada). Posee efecto de invencibilidad durante la activación.",
+            description: "Bajo (Forma de Empuñadura), cuando el nivel de Decibelios llega a (Máximo), Clic [Icono Definitiva] para activar: Invoca una espada gigante, causando gran cantidad de Daño Físico a los enemigos; Tras activar el movimiento, cerrará el (Velo Etereo: ZhuXie) y saldrá de la (Forma de Empuñadura), y obtendrá 4 puntos de (Intención de Espada). Posee efecto de invencibilidad durante la activación.",
             tags: ["Físico", "Técnica Definitiva", "Forma de Empuñadura"],
         },
         {
             type: "Pasiva Central",
             name: "",
-            description: "Tras lanzar (Técnica Definitiva) o (Técnica de Entrada), Ye Shunguang entrará en (Forma de Empuñadura), obteniendo 4 puntos de (Intención de Espada), y abriendo el (Velo Etéreo: ZhuXie), durando hasta 12 segundos; Estando bajo (Forma de Empuñadura), Ye Shunguang usará movimientos más poderosos, lanzar (Ataque Básico) otorgará efecto (Tendencia Celestial), lanzar (Ataque Básico: Forma de Empuñadura Tierra Tercera Postura), (Ataque Básico: Forma de Empuñadura Tierra Definitiva) y (Ataque Básico: Forma de Empuñadura Cielo Tercera Postura) consumirá todo el efecto (Tendencia Celestial), cada capa aumenta el daño de dicho movimiento en un 20%, acumulándose hasta 4 capas, dura hasta que termine la (Forma de Empuñadura); Durante la existencia de (Velo Etéreo: ZhuXie), se aplicará Vulnerabilidad de Aturdimiento a los enemigos, el daño de Aturdimiento falla; si el enemigo no está en estado de Aturdimiento, el multiplicador de vulnerabilidad es el mismo que el multiplicador inicial de vulnerabilidad de Aturdimiento del enemigo, si el enemigo está en estado de Aturdimiento, el multiplicador de vulnerabilidad es el mismo que el multiplicador de vulnerabilidad de Aturdimiento del enemigo, el multiplicador de vulnerabilidad no puede exceder el 80%; Bajo (Forma de Empuñadura), la eficiencia de purificación contra (Escudos) aumenta un 50%.",
+            description: "Tras lanzar (Técnica Definitiva) o (Técnica de Entrada), Ye Shunguang entrará en (Forma de Empuñadura), obteniendo 4 puntos de (Intención de Espada), y abriendo el (Velo Etereo: ZhuXie), durando hasta 12 segundos; Estando bajo (Forma de Empuñadura), Ye Shunguang usará movimientos más poderosos, lanzar (Ataque Básico) otorgará efecto (Tendencia Celestial), lanzar (Ataque Básico: Forma de Empuñadura Tierra Tercera Postura), (Ataque Básico: Forma de Empuñadura Tierra Definitiva) y (Ataque Básico: Forma de Empuñadura Cielo Tercera Postura) consumirá todo el efecto (Tendencia Celestial), cada capa aumenta el daño de dicho movimiento en un 20%, acumulándose hasta 4 capas, dura hasta que termine la (Forma de Empuñadura); Durante la existencia de (Velo Etereo: ZhuXie), se aplicará Vulnerabilidad de Aturdimiento a los enemigos, el daño de Aturdimiento falla; si el enemigo no está en estado de Aturdimiento, el multiplicador de vulnerabilidad es el mismo que el multiplicador inicial de vulnerabilidad de Aturdimiento del enemigo, si el enemigo está en estado de Aturdimiento, el multiplicador de vulnerabilidad es el mismo que el multiplicador de vulnerabilidad de Aturdimiento del enemigo, el multiplicador de vulnerabilidad no puede exceder el 80%; Bajo (Forma de Empuñadura), la eficiencia de purificación contra (Escudos) aumenta un 50%.",
             tags: ["Pasiva Central"],
         },
         {
             type: "Habilidad Adicional",
             name: "",
-            description: "Se activa cuando hay personajes de (Soporte) o (Defensa) en el equipo: Después de que un compañero active cualquier (Velo Etéreo) o un enemigo active un (Campo de Corrupción), Ye Shunguang obtendrá el efecto (Listo para la Acción), durando hasta que terminen todos los (Velo Etéreo) y (Campo de Corrupción), no acumulable. Cuando Ye Shunguang posee el efecto (Listo para la Acción), la próxima vez que entre al campo en combate consumirá el efecto (Listo para la Acción), y lanzará (Técnica de Entrada), abriendo (Velo Etéreo: ZhuXie) entrando en (Forma de Empuñadura) y obteniendo al mismo tiempo 4 puntos de (Intención de Espada).",
+            description: "Se activa cuando hay personajes de (Soporte) o (Defensa) en el equipo: Después de que un compañero active cualquier (Velo Etereo) o un enemigo active un (Campo de Corrupción), Ye Shunguang obtendrá el efecto (Listo para la Acción), durando hasta que terminen todos los (Velo Etereo) y (Campo de Corrupción), no acumulable. Cuando Ye Shunguang posee el efecto (Listo para la Acción), la próxima vez que entre al campo en combate consumirá el efecto (Listo para la Acción), y lanzará (Técnica de Entrada), abriendo (Velo Etereo: ZhuXie) entrando en (Forma de Empuñadura) y obteniendo al mismo tiempo 4 puntos de (Intención de Espada).",
             tags: ["Habilidad Adicional"],
         },
         {
