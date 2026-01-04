@@ -21,7 +21,7 @@ const createHighlightRules = (elementColor = "#facc15") => [
   // Etéreo
   { pattern: /(Acumulaci[oó]n\s+de\s+Anomal[ií]a\s+(?:Et[eé]rea|Tinta\s+Aurica)|Daño\s+(?:Et[eé]reo|Tinta\s+Aurica)(?:\s+Puro)?|Corrupci[oó]n|Anomal[ií]a\s+(?:Et[eé]rea|Tinta\s+Aurica|Et[eé]reo)|Res\s+(?:Et[eé]rea|Tinta\s+Aurica)|Resistencia\s+(?:Et[eé]rea|Tinta\s+Aurica)|Tinta\s+Aurica(?:\s+Pura)?|Et[eé]reo(?:\s+Puro)?|Et[eé]rea(?:\s+Pura)?|Anomal[ií]a\s+de\s+Atributo\s+(?:de\s+)?(?:Et[eé]re[oa]|Tinta\s+Aurica))/gi, color: "text-[#d946ef] font-bold" },
   // Massive / Severe damage – use element colour
-  { pattern: /(Daño\s+Masivo|Daño\s+Severo)/gi, color: `text-[${elementColor}] font-bold` },
+
   // Skill and mechanic names – without generic "Cadena"
   {
     pattern: /((?:Técnica )?Especial(?: EX)?|Definitiva|Asistencia(?: Rápida|Defensiva|Evasiva)?|Ataque(?:s)? Básico(?:s)?|Básico|Basico|Dash|Contraataque|Réplica|Astral|Aturdir|Evadir|Evasión|Evasion|Aturdimiento)/gi,
