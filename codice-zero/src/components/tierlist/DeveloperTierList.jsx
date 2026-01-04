@@ -172,34 +172,55 @@ export default function DeveloperTierList() {
                 <h2 className="text-3xl font-bold text-white mb-4">Tier List</h2>
 
                 {/* Disclaimer Box */}
-                <div className="bg-red-900/40 border border-red-500/50 rounded-lg p-4 text-red-200 text-sm leading-relaxed shadow-[0_0_15px_rgba(239,68,68,0.2)]">
-                    <p>
-                        Las Tier lists tienen como objetivo informar sobre el estado del meta en el juego, pero reflejan opiniones subjetivas y pueden variar según diferentes interpretaciones y experiencias de juego.
-                        Se ruega respetar las opiniones y análisis proporcionados por los autores, ya que están basados en observaciones personales y/o cálculos de los personajes.
-                    </p>
+                <div className="bg-red-500/10 border border-red-500/20 rounded-xl p-5 backdrop-blur-sm">
+                    <div className="flex items-start gap-3">
+                        <div className="mt-1 min-w-[4px] h-12 bg-red-500 rounded-full"></div>
+                        <div>
+                            <h3 className="text-red-400 font-bold mb-1 uppercase text-xs tracking-widest">Aviso Importante</h3>
+                            <p className="text-gray-300 text-sm leading-relaxed">
+                                Esta clasificación es una guía referencial basada en análisis detallados del meta actual.
+                                Recuerda que la efectividad de cada agente puede variar según la composición de tu equipo
+                                y tu estilo de juego personal. No tomes esto como una verdad absoluta.
+                            </p>
+                        </div>
+                    </div>
                 </div>
 
-                {/* Description Box */}
-                <div className="bg-[#1e1e1e] border border-white/10 rounded-lg p-6 text-gray-300">
-                    <h3 className="text-white font-bold text-lg mb-3">Descripción</h3>
-                    <ul className="space-y-2 text-sm">
-                        <li className="flex items-center gap-2">
-                            <span className="w-1 h-1 bg-gray-500 rounded-full"></span>
-                            Rangos S: M0W1
-                        </li>
-                        <li className="flex items-center gap-2">
-                            <span className="w-1 h-1 bg-gray-500 rounded-full"></span>
-                            Rangos A: M6
-                        </li>
-                        <li className="flex items-center gap-2">
-                            <span className="w-1 h-1 bg-gray-500 rounded-full"></span>
-                            Se valora desempeño en todos los Endgames
-                        </li>
-                        <li className="flex items-center gap-2">
-                            <span className="w-1 h-1 bg-gray-500 rounded-full"></span>
-                            Se valora Nivel de poder general, Pull Value y Razón de uso
-                        </li>
-                    </ul>
+                {/* Criteria Box */}
+                <div className="bg-white/5 border border-white/10 rounded-xl p-6 relative overflow-hidden">
+                    <div className="absolute top-0 right-0 w-32 h-32 bg-yellow-500/5 rounded-full blur-3xl -mr-16 -mt-16 pointer-events-none"></div>
+
+                    <h3 className="text-white font-bold text-lg mb-4 flex items-center gap-2">
+                        <span className="w-1.5 h-6 bg-yellow-500 rounded-full"></span>
+                        Criterios de Evaluación
+                    </h3>
+
+                    <div className="grid md:grid-cols-2 gap-4 text-sm">
+                        <ul className="space-y-3">
+                            <li className="flex items-center gap-3 text-gray-300 group">
+                                <span className="w-8 h-8 rounded-lg bg-black/50 border border-white/10 flex items-center justify-center font-bold text-yellow-500 group-hover:border-yellow-500/50 transition-colors">S</span>
+                                <span>Evaluados en base (M0) + Arma (W1)</span>
+                            </li>
+                            <li className="flex items-center gap-3 text-gray-300 group">
+                                <span className="w-8 h-8 rounded-lg bg-black/50 border border-white/10 flex items-center justify-center font-bold text-purple-400 group-hover:border-purple-400/50 transition-colors">A</span>
+                                <span>Evaluados a máximo potencial (M6)</span>
+                            </li>
+                        </ul>
+                        <ul className="space-y-3">
+                            <li className="flex items-center gap-2 text-gray-400">
+                                <span className="text-yellow-500">❖</span>
+                                Desempeño general en End-Game
+                            </li>
+                            <li className="flex items-center gap-2 text-gray-400">
+                                <span className="text-yellow-500">❖</span>
+                                Coste de inversión vs Beneficio
+                            </li>
+                            <li className="flex items-center gap-2 text-gray-400">
+                                <span className="text-yellow-500">❖</span>
+                                Versatilidad en equipos
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
 
