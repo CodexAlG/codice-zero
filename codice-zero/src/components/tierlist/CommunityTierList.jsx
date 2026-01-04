@@ -46,16 +46,15 @@ export default function CommunityTierList() {
 
     const handleDownload = async () => {
         try {
-            const html2canvas = (await import('html2canvas')).default;
+            const { toPng } = await import('html-to-image');
             if (captureRef.current) {
-                const canvas = await html2canvas(captureRef.current, {
+                const dataUrl = await toPng(captureRef.current, {
                     backgroundColor: "#020617",
-                    scale: 2,
-                    useCORS: true,
+                    pixelRatio: 2,
                 });
                 const link = document.createElement('a');
                 link.download = 'mi-tierlist-codicezero.png';
-                link.href = canvas.toDataURL();
+                link.href = dataUrl;
                 link.click();
             }
         } catch (err) {
