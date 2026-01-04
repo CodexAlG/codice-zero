@@ -32,7 +32,7 @@ export default {
     ["900%", "900", "400", "20.0%", "100.0%"],
     ["1100%", "1100", "650", "20.0%", "100.0%"],
     ["1300%", "1300", "900", "20.0%", "100.0%"],
-    ["1400%", "1400", "100", "20.0%", "100.0%"],
+    ["1400%", "1400", "1000", "20.0%", "100.0%"],
   ],
   skills: [
     {
@@ -119,6 +119,7 @@ export default {
       description: "Cuando se activa un (Ataque en Cadena), selecciona al personaje para activar: Desata un poderoso golpe descendente a los enemigos en frente, infligiendo daño masivo de Daño Físico. El personaje es invulnerable mientras usa esta habilidad.",
       tags: ["Físico", "Ataque en Cadena"]
     },
+
     {
       type: "Técnica Definitiva",
       name: "Definitiva: Aplastamiento Salvaje",
