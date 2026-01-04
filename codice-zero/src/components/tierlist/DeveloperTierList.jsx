@@ -32,99 +32,132 @@ const TIER_DATA = {
     "T0": {
         "dps": [
             47, // Ye Shunguang
-            45, // Banyue
-            43, // Yidhari Murphy
-            40, // Orphie & Magus
-            39, // Seed
+            26, // Miyabi
             35, // Yixuan
-            33, // Hugo Vlad
-            30, // Soldier 0 - Anby
-            28, // Evelyn
-            25, // Harumasa
-            2,  // Zhu Yuan
-            1,  // Ellen
-            5,  // Soldier 11
-            8   // Nekomata
+
+
+
+
         ],
         "subdps": [
-            38, // Alice
-            32, // Vivian Banshee
-            26, // Miyabi
-            23, // Yanagi
-            22, // Burnice
-            10, // Jane Doe
-            7   // Grace
+
+
+
+
         ],
         "stun": [
             44, // Dialyn
-            36, // JuFuFu
-            31, // Trigger
-            24, // Lighter
-            9,  // Qingyi
-            3,  // Lycaon
-            4   // Koleda
+
+
+
+
+
         ],
         "support": [
+            27, // Astra Yao
             46, // Zhao
             42, // Lucia Elowen
             37, // Ukinami Yuzuha
-            27, // Astra Yao
-            21, // Caesar
-            6   // Rina
         ]
     },
     "T0.5": {
         "dps": [
-            41, // Komano Manato
-            13, // Billy
-            14, // Corin
-            17  // Anton
+            38, // Alice
+            39, // Seed
+            30, // Soldier 0 - Anby
+            45, // Banyue
+
         ],
         "subdps": [
-            19  // Piper
+            32, // Vivian Banshee
+            40, // Orphie & Magus
         ],
         "stun": [
-            29, // Pulchra
-            11  // Anby
+            24, // Lighter
+            31, // Trigger
+            36, // JuFuFu
+
         ],
         "support": [
-            34, // Pan Yinhu
-            20, // Seth
-            18, // Lucy
-            15, // Soukaku
             12, // Nicole
-            16  // Ben
+
         ]
     },
     "T1": {
-        "dps": [],
+        "dps": [
+            28, // Evelyn
+            23, // Yanagi
+            43, // Yidhari Murphy
+            33, // Hugo Vlad
+            41, // Komano Manato
+            40, // Orphie & Magus
+            10, // Jane Doe
+        ],
         "subdps": [],
-        "stun": [],
-        "support": []
+        "stun": [
+            3,  // Lycaon
+            9,  // Qingyi
+        ],
+        "support": [
+            34, // Pan Yinhu
+        ]
     },
     "T2": {
-        "dps": [],
-        "subdps": [],
-        "stun": [],
-        "support": []
+        "dps": [
+            5,  // Soldier 11
+            1,  // Ellen
+            2,  // Zhu Yuan
+            19,  // Piper
+            25, // Harumasa
+        ],
+        "subdps": [
+            7,   // Grace
+            22, // Burnice
+        ],
+        "stun": [
+            29, // Pulchra
+        ],
+        "support": [
+            21, // Caesar
+            6,  // Rina
+            18, // Lucy
+
+        ]
     },
     "T3": {
         "dps": [],
         "subdps": [],
-        "stun": [],
-        "support": []
+        "stun": [
+            4,   // Koleda
+        ],
+        "support": [
+            15, // Soukaku
+        ]
     },
     "T4": {
-        "dps": [],
+        "dps": [
+            17,  // Anton
+            14, // Corin
+        ],
         "subdps": [],
-        "stun": [],
-        "support": []
+        "stun": [
+            11,  // Anby
+        ],
+        "support": [
+            20, // Seth
+        ]
     },
     "T5": {
-        "dps": [],
+        "dps": [
+            8,  // Nekomata
+            13, // Billy
+        ],
         "subdps": [],
         "stun": [],
-        "support": []
+        "support": [
+            16 // Ben
+
+        ]
     }
 };
 
