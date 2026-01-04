@@ -1,13 +1,22 @@
 "use client";
 
-import { useState, useRef, useEffect } from "react";
-import { Reorder } from "framer-motion";
+import { useState, useRef } from "react";
 import Image from "next/image";
-import TierRow from "@/components/tierlist/TierRow";
 import { agents } from "@/data/agents";
-import { Download, Plus, Trash2, RotateCcw } from "lucide-react";
+import { Download, RotateCcw, Plus, Trash2 } from "lucide-react";
 
-// TIER COLORS
+const TIERS = ["S", "A", "B", "C", "D", "E", "F"];
+// For Community, let's keep the standard tiers fixed as per user request (S-F).
+// "la tier sera por default S-A-B-C-D-E-F" and "pondras que se puedan agregar mas filas".
+// So we need dynamic tiers.
+
+const ROLES = [
+    { id: "dps", label: "DPS" },
+    { id: "subdps", label: "SUB-DPS" },
+    { id: "stun", label: "ATURDIDOR" },
+    { id: "support", label: "SOPORTE" },
+];
+
 const DEFAULT_TIER_COLORS = [
     "#ff7f7f", // S
     "#ffbf7f", // A
@@ -19,141 +28,112 @@ const DEFAULT_TIER_COLORS = [
 ];
 
 export default function CommunityTierList() {
-    const [tiers, setTiers] = useState([
-        { id: "S", label: "S", color: "#ff7f7f", items: [] },
-        { id: "A", label: "A", color: "#ffbf7f", items: [] },
-        { id: "B", label: "B", color: "#ffff7f", items: [] },
-        { id: "C", label: "C", color: "#7fff7f", items: [] },
-        { id: "D", label: "D", color: "#7fbfff", items: [] },
-    ]);
+    const [tierRows, setTierRows] = useState(
+        TIERS.map((label, index) => ({
+            id: label, // Using label as ID for defaults
+            label: label,
+            color: DEFAULT_TIER_COLORS[index] || "#faceless",
+        }))
+    );
 
-    // Pool of unranked agents
-    // We need a unique ID for drag and drop to work perfectly if we duplicate, 
-    // but here we just move them.
-    const [pool, setPool] = useState(agents);
+    // Placements: { agentId: number, tierId: string, roleId: string }
+    const [placements, setPlacements] = useState([]);
+
+    // Pool logic: Agents not in placements are in the pool
+    const isInPool = (agentId) => !placements.find(p => p.agentId === agentId);
 
     const captureRef = useRef(null);
 
-    // Download Handler
+    // --- Handlers ---
+
     const handleDownload = async () => {
-        // Dynamically import html2canvas to avoid SSR issues if any
         try {
             const html2canvas = (await import('html2canvas')).default;
             if (captureRef.current) {
+                // Temporarily hide the "DRAG HERE" placeholders or buttons if desired
+                // But for MVP we just capture as is.
                 const canvas = await html2canvas(captureRef.current, {
                     backgroundColor: "#020617",
-                    scale: 2, // Check for high res
+                    scale: 2,
                     useCORS: true,
                 });
                 const link = document.createElement('a');
-                link.download = 'my-tierlist-codicezero.png';
+                link.download = 'mi-tierlist-codicezero.png';
                 link.href = canvas.toDataURL();
                 link.click();
             }
         } catch (err) {
-            console.error("Error downloading tier list:", err);
-            alert("Error al descargar la imagen. Asegúrate de que html2canvas esté instalado.");
+            console.error("Error downloading:", err);
+            alert("Error al descargar. Verifica que html2canvas esté instalado.");
         }
     };
 
-    const handleLabelChange = (id, newLabel) => {
-        setTiers(tiers.map(t => t.id === id ? { ...t, label: newLabel } : t));
+    const handleReset = () => {
+        setPlacements([]);
+        setTierRows(TIERS.map((label, index) => ({
+            id: label,
+            label: label,
+            color: DEFAULT_TIER_COLORS[index] || "#cccccc",
+        })));
     };
 
     const addRow = () => {
         const newId = `tier-${Date.now()}`;
-        setTiers([...tiers, { id: newId, label: "NEW", color: "#333333", items: [] }]);
+        setTierRows([...tierRows, {
+            id: newId,
+            label: "NEW",
+            color: "#333333"
+        }]);
     };
 
-    const removeRow = (id) => {
-        // Return items to pool
-        const tierToRemove = tiers.find(t => t.id === id);
-        if (tierToRemove && tierToRemove.items.length > 0) {
-            setPool(prev => [...prev, ...tierToRemove.items]);
-        }
-        setTiers(tiers.filter(t => t.id !== id));
+    const removeRow = (rowId) => {
+        // Return items in this row to pool (by removing placement)
+        setPlacements(prev => prev.filter(p => p.tierId !== rowId));
+        setTierRows(prev => prev.filter(r => r.id !== rowId));
     };
 
-    const handleReset = () => {
-        setTiers([
-            { id: "S", label: "S", color: "#ff7f7f", items: [] },
-            { id: "A", label: "A", color: "#ffbf7f", items: [] },
-            { id: "B", label: "B", color: "#ffff7f", items: [] },
-            { id: "C", label: "C", color: "#7fff7f", items: [] },
-            { id: "D", label: "D", color: "#7fbfff", items: [] },
-        ]);
-        setPool(agents);
+    const updateLabel = (rowId, newLabel) => {
+        setTierRows(prev => prev.map(r => r.id === rowId ? { ...r, label: newLabel } : r));
     };
 
-    // Reorder Logic for Pool
-    // Ensure we can drag from pool to tiers and back? 
-    // Reorder.Group works for lists. Moving betwen lists in Framer Motion requires shareLayout or specific Reorder structure.
-    // Implementing full drag-and-drop across multiple lists in pure Framer Motion can be tricky without dnd-kit or react-beautiful-dnd.
-    // HOWEVER, user asked for drag and drop. Reorder is mainly for sorting WITHIN a list.
-    // Creating a robust multi-list drag and drop with just framer-motion Reorder might be limited.
-    // BUT, sticking to simple Reorder.Group for now? 
-    // Wait, Reorder.Group does not support dragging between different Groups easily out of the box unless we manage state carefully.
-    // Let's implement a simple "click to move" or ensure we use a library if available.
-    // Checked package.json: standard framer-motion is there.
-    // I'll try to use a single Reorder.Group context if possible or handle it with custom onDragEnd matching.
+    // --- Drag & Drop ---
 
-    // ALTERNATIVE: Since complex DnD might be buggy without proper library setup, 
-    // and I cannot install new heavy libs easily if npm fails...
-    // I will assume for this MVP, I will implement a custom DnD or use the "click to move" fallback if DnD is too hard.
-    // BUT user explicitly asked "que ellos puedan arrastrar las imagenes".
-
-    // Let's try to mock the DnD between lists by checking drop position.
-    // Actually, for a quick implementation, `framer-motion` Reorder is single-list.
-    // I will use standard HTML5 Drag and Drop API for cross-list dropping if Reorder is insufficient, 
-    // OR I will just use Reorder for sorting and assume I can move items between lists.
-
-    // Let's use native HTML5 DnD for simplicity and robustness across lists without extra deps.
-
-    const onDragStart = (e, agent, sourceId) => {
-        e.dataTransfer.setData("agentId", agent.id);
-        e.dataTransfer.setData("sourceId", sourceId);
-    };
-
-    const onDrop = (e, targetTierId) => {
-        const agentId = parseInt(e.dataTransfer.getData("agentId"));
-        const sourceId = e.dataTransfer.getData("sourceId");
-
-        // Find agent
-        let agent;
-        let newPool = [...pool];
-        let newTiers = tiers.map(t => ({ ...t, items: [...t.items] }));
-
-        if (sourceId === "pool") {
-            agent = pool.find(a => a.id === agentId);
-            if (!agent) return;
-            newPool = newPool.filter(a => a.id !== agentId);
-        } else {
-            // From another tier
-            const sourceTier = newTiers.find(t => t.id === sourceId);
-            if (!sourceTier) return;
-            agent = sourceTier.items.find(a => a.id === agentId);
-            sourceTier.items = sourceTier.items.filter(a => a.id !== agentId);
-        }
-
-        if (targetTierId === "pool") {
-            setPool([...newPool, agent]);
-            setTiers(newTiers);
-        } else {
-            const targetTier = newTiers.find(t => t.id === targetTierId);
-            if (targetTier) {
-                targetTier.items.push(agent);
-                setTiers(newTiers);
-                setPool(newPool);
-            }
-        }
+    const onDragStart = (e, agentId, source) => {
+        e.dataTransfer.setData("agentId", agentId);
+        e.dataTransfer.setData("source", JSON.stringify(source)); // { type: 'pool' } or { type: 'cell', tierId, roleId }
     };
 
     const onDragOver = (e) => {
-        e.preventDefault();
+        e.preventDefault(); // Allow drop
     };
 
+    const onDropCell = (e, tierId, roleId) => {
+        e.preventDefault();
+        const agentId = parseInt(e.dataTransfer.getData("agentId"));
+        if (!agentId) return;
+
+        // Update placement
+        setPlacements(prev => {
+            // Remove existing placement for this agent if any
+            const filtered = prev.filter(p => p.agentId !== agentId);
+            // Add new placement
+            return [...filtered, { agentId, tierId, roleId }];
+        });
+    };
+
+    const onDropPool = (e) => {
+        e.preventDefault();
+        const agentId = parseInt(e.dataTransfer.getData("agentId"));
+        if (!agentId) return;
+
+        // Remove from placements (back to pool)
+        setPlacements(prev => prev.filter(p => p.agentId !== agentId));
+    };
+
+
     return (
-        <div className="w-full max-w-6xl mx-auto pb-20">
+        <div className="w-full max-w-7xl mx-auto pb-20">
+
             {/* Toolbar */}
             <div className="flex flex-wrap items-center justify-between mb-6 gap-4 bg-gray-900/50 p-4 rounded-xl border border-white/5">
                 <div className="space-x-2">
@@ -171,39 +151,88 @@ export default function CommunityTierList() {
             </div>
 
             {/* Capture Area */}
-            <div ref={captureRef} className="bg-[#020617] p-4 rounded-lg">
-                <div className="flex flex-col gap-1 min-h-[200px]">
-                    {tiers.map((tier) => (
-                        <div
-                            key={tier.id}
-                            onDragOver={onDragOver}
-                            onDrop={(e) => onDrop(e, tier.id)}
-                        >
-                            <TierRow
-                                id={tier.id}
-                                label={tier.label}
-                                color={tier.color}
-                                items={tier.items}
-                                isEditable={true}
-                                onLabelChange={handleLabelChange}
-                                onRemove={removeRow}
-                                isDragEnabled={false} // Using Native DnD wrapper instead of Reorder for cross-list
-                            />
-                            {/* We need to render the items so they are draggable */}
-                            {/* Wait, TierRow renders items. We need to pass a wrapping component that makes them draggable? 
-                      Or modify TierRow to accept onDragStart. 
-                      Let's modify this slightly to manually render items here or pass props.
-                      
-                      Actually, TierRow is designed to render its items. I need to make sure the items inside TierRow are draggable.
-                      I will pass a custom render prop or just handle it by making TierRow smarter.
-                      
-                      Let's refactor TierRow in memory? 
-                      No, I'll pass a `renderItem` prop or just modify TierRow to support native DnD props.
-                      
-                      Let's update TierRow usage.
-                   */}
+            <div className="overflow-x-auto">
+                <div ref={captureRef} className="min-w-[800px] border border-white/10 rounded-lg overflow-hidden bg-[#0a0a0a] inline-block w-full">
+
+                    {/* Header */}
+                    <div className="grid grid-cols-[100px_1fr_1fr_1fr_1fr] md:grid-cols-[120px_1fr_1fr_1fr_1fr]">
+                        <div className="bg-gray-900/80 p-4 border-b border-r border-white/10 flex items-center justify-center">
+                            <span className="font-bold text-gray-500 text-xs uppercase">Rango</span>
+                        </div>
+                        {ROLES.map(role => (
+                            <div key={role.id} className="bg-gray-900/80 p-4 border-b border-white/10 border-l border-white/5 text-center flex items-center justify-center">
+                                <span className="font-black italic text-yellow-500 text-lg md:text-xl drop-shadow-sm tracking-wider">
+                                    {role.label}
+                                </span>
+                            </div>
+                        ))}
+                    </div>
+
+                    {/* Rows */}
+                    {tierRows.map((tier) => (
+                        <div key={tier.id} className="grid grid-cols-[100px_1fr_1fr_1fr_1fr] md:grid-cols-[120px_1fr_1fr_1fr_1fr] border-b border-white/5 last:border-0 min-h-[120px]">
+
+                            {/* Row Label (Editable) */}
+                            <div
+                                className="flex flex-col items-center justify-center border-r border-black/20 relative overflow-hidden group p-1"
+                                style={{ backgroundColor: tier.color }}
+                            >
+                                <input
+                                    value={tier.label}
+                                    onChange={(e) => updateLabel(tier.id, e.target.value)}
+                                    className="bg-transparent text-black font-black text-4xl md:text-5xl font-display italic text-center w-full focus:outline-none uppercase placeholder-black/30"
+                                />
+                                {/* Delete Row */}
+                                <button
+                                    onClick={() => removeRow(tier.id)}
+                                    className="absolute top-1 right-1 text-black/30 hover:text-black hover:bg-black/10 rounded-full w-5 h-5 flex items-center justify-center transition-all font-bold text-xs opacity-0 group-hover:opacity-100"
+                                    title="Eliminar Fila"
+                                >
+                                    ✕
+                                </button>
+                            </div>
+
+                            {/* Cells */}
+                            {ROLES.map(role => {
+                                // Find items in this cell
+                                const cellPlacements = placements.filter(p => p.tierId === tier.id && p.roleId === role.id);
+                                const itemsInCell = cellPlacements.map(p => agents.find(a => a.id === p.agentId)).filter(Boolean);
+
+                                return (
+                                    <div
+                                        key={`${tier.id}-${role.id}`}
+                                        onDragOver={onDragOver}
+                                        onDrop={(e) => onDropCell(e, tier.id, role.id)}
+                                        className="bg-gray-900/30 p-2 flex flex-wrap gap-2 content-center justify-center border-l border-white/5 transition-colors hover:bg-white/5"
+                                    >
+                                        {itemsInCell.map(agent => (
+                                            <div
+                                                key={agent.id}
+                                                draggable
+                                                onDragStart={(e) => onDragStart(e, agent.id, { type: 'cell', tierId: tier.id, roleId: role.id })}
+                                                className="relative group w-14 h-14 md:w-16 md:h-16 bg-gray-800 rounded-lg overflow-hidden border border-white/10 hover:border-yellow-500/50 transition-colors shadow-lg cursor-grab active:cursor-grabbing hover:scale-110 z-10"
+                                            >
+                                                <Image
+                                                    src={agent.image || agent.icon}
+                                                    alt={agent.name}
+                                                    fill
+                                                    className="object-cover pointer-events-none"
+                                                />
+                                            </div>
+                                        ))}
+
+                                        {/* Visual hint for empty cell */}
+                                        {itemsInCell.length === 0 && (
+                                            <div className="w-full h-full flex items-center justify-center pointer-events-none opacity-5">
+                                                <span className="text-xs font-mono uppercase text-white">Drop</span>
+                                            </div>
+                                        )}
+                                    </div>
+                                );
+                            })}
                         </div>
                     ))}
+
                 </div>
             </div>
 
@@ -211,19 +240,19 @@ export default function CommunityTierList() {
             <div
                 className="mt-12 bg-gray-900/80 p-6 rounded-xl border border-white/10 min-h-[150px]"
                 onDragOver={onDragOver}
-                onDrop={(e) => onDrop(e, "pool")}
+                onDrop={onDropPool}
             >
-                <h3 className="text-gray-400 font-bold mb-4 uppercase tracking-widest text-sm">Banco de Agentes (Arrástralos)</h3>
-                <div className="flex flex-wrap gap-2">
-                    {pool.map((agent) => (
+                <h3 className="text-gray-400 font-bold mb-4 uppercase tracking-widest text-sm text-center">Banco de Agentes (Arrástralos a la tabla)</h3>
+                <div className="flex flex-wrap gap-2 justify-center">
+                    {agents.filter(a => isInPool(a.id)).map((agent) => (
                         <div
                             key={agent.id}
                             draggable
-                            onDragStart={(e) => onDragStart(e, agent, "pool")}
-                            className="w-16 h-16 md:w-20 md:h-20 bg-gray-800 rounded-lg overflow-hidden border border-white/10 hover:border-yellow-500/50 transition-colors shadow-lg cursor-grab hover:scale-105 active:scale-95"
+                            onDragStart={(e) => onDragStart(e, agent.id, { type: 'pool' })}
+                            className="w-14 h-14 md:w-16 md:h-16 bg-gray-800 rounded-lg overflow-hidden border border-white/10 hover:border-yellow-500/50 transition-colors shadow-lg cursor-grab hover:scale-105 active:scale-95"
                         >
                             <Image
-                                src={agent.image || agent.icon} // agent.js has 'image', page.js had 'icon'. Consistency needed. Agents.js has 'image'.
+                                src={agent.image || agent.icon}
                                 alt={agent.name}
                                 fill
                                 className="object-cover pointer-events-none"
