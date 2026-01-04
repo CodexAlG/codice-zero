@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import { usePathname } from 'next/navigation';
 import Image from 'next/image';
-import { BookOpen, Home, X } from 'lucide-react';
+import { BookOpen, Home, X, List } from 'lucide-react';
 import Link from 'next/link';
 
 export default function Sidebar({ isExpanded, isMobile, toggleDrawer }) {
@@ -22,6 +22,8 @@ export default function Sidebar({ isExpanded, isMobile, toggleDrawer }) {
       setActiveItem(3); // Bangboo
     } else if (pathname.startsWith('/discos')) {
       setActiveItem(4); // Discos
+    } else if (pathname.startsWith('/tierlist')) {
+      setActiveItem(5); // Tier List
     }
   }, [pathname]);
 
@@ -118,6 +120,24 @@ export default function Sidebar({ isExpanded, isMobile, toggleDrawer }) {
               <Image src="/CodiceZero/Discos/Icon_Storage_Drive_Disc.webp" alt="Icono Discos" width={32} height={32} className={`transition-all duration-200 ${activeItem === 4 ? 'drop-shadow-lg shadow-yellow-400/50 saturate-200 contrast-200' : 'opacity-80 hover:opacity-100 hover:drop-shadow-md hover:shadow-cyan-400/50 saturate-150 hover:saturate-200 hover:contrast-150'}`} />
               <span className={`ml-3 font-medium transition-opacity`}>
                 Discos
+              </span>
+            </Link>
+          </li>
+          <li>
+            <Link href="/tierlist" onClick={handleLinkClick} className={`relative flex items-center h-12 py-2 px-2 rounded-md transition-all duration-200 ${activeItem === 5 ? 'text-yellow-300 bg-yellow-500/10 text-yellow-300 shadow-lg shadow-yellow-500/20 border border-yellow-400/30' : 'text-gray-100 hover:bg-cyan-500/10 hover:text-cyan-300 hover:shadow-md hover:shadow-cyan-400/20'} hover:border hover:border-cyan-400/20`}>
+              {activeItem === 5 && <div className="absolute left-0 top-0 bottom-0 w-[3px] bg-gradient-to-b from-yellow-300 to-yellow-500 shadow-lg shadow-yellow-500/50"></div>}
+              <List size={32} className={`transition-all duration-200 ${activeItem === 5 ? 'text-yellow-300 drop-shadow-lg shadow-yellow-400/50' : 'text-gray-200 opacity-80 hover:text-cyan-300 hover:opacity-100 hover:drop-shadow-md hover:shadow-cyan-400/50'}`} />
+              <span className={`ml-3 font-medium transition-opacity`}>
+                Tier List
+              </span>
+            </Link>
+          </li>
+          <li>
+            <Link href="/tierlist" onClick={handleLinkClick} className={`relative flex items-center h-12 py-2 px-2 rounded-md transition-all duration-200 ${activeItem === 5 ? 'text-yellow-300 bg-yellow-500/10 text-yellow-300 shadow-lg shadow-yellow-500/20 border border-yellow-400/30' : 'text-gray-100 hover:bg-cyan-500/10 hover:text-cyan-300 hover:shadow-md hover:shadow-cyan-400/20'} hover:border hover:border-cyan-400/20`}>
+              {activeItem === 5 && <div className="absolute left-0 top-0 bottom-0 w-[3px] bg-gradient-to-b from-yellow-300 to-yellow-500 shadow-lg shadow-yellow-500/50"></div>}
+              <List size={32} className={`transition-all duration-200 ${activeItem === 5 ? 'text-yellow-300 drop-shadow-lg shadow-yellow-400/50' : 'text-gray-200 opacity-80 hover:text-cyan-300 hover:opacity-100 hover:drop-shadow-md hover:shadow-cyan-400/50'}`} />
+              <span className={`ml-3 font-medium transition-opacity`}>
+                Tier List
               </span>
             </Link>
           </li>
