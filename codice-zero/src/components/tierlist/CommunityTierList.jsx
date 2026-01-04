@@ -6,7 +6,7 @@ import { agents } from "@/data/agents";
 import { Download, RotateCcw, Plus, Trash2, Columns, Rows } from "lucide-react";
 
 // Updated Tiers T0-T5
-const TIERS = ["T0", "T0.5", "T1", "T2", "T3", "T4", "T5"];
+const TIERS = ["T0", "T0.5", "T1", "T2"];
 
 const DEFAULT_ROLES = [
     { id: "dps", label: "DPS" },
@@ -20,9 +20,6 @@ const DEFAULT_TIER_COLORS = [
     "#ffbf7f", // T0.5
     "#ffff7f", // T1
     "#7fff7f", // T2
-    "#7fbfff", // T3
-    "#7f7fff", // T4
-    "#ff7fff", // T5
 ];
 
 export default function CommunityTierList() {
