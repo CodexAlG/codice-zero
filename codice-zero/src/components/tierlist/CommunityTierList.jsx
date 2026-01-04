@@ -124,6 +124,10 @@ export default function CommunityTierList() {
         setTierCols(prev => prev.map(c => c.id === colId ? { ...c, label: newLabel } : c));
     };
 
+    const updateRowColor = (rowId, newColor) => {
+        setTierRows(prev => prev.map(r => r.id === rowId ? { ...r, color: newColor } : r));
+    };
+
     // --- Drag & Drop ---
 
     const onDragStart = (e, agentId, source) => {
@@ -155,9 +159,6 @@ export default function CommunityTierList() {
     };
 
     // Dynamic Grid Style
-    // 120px for Row Header + 1fr for each column
-    // We use a CSS variable or inline style for the template columns.
-    // Mobile: 100px header. Desktop: 120px header.
     const gridStyle = {
         display: 'grid',
         gridTemplateColumns: `minmax(100px, 120px) repeat(${tierCols.length}, minmax(140px, 1fr))`,
@@ -211,10 +212,10 @@ export default function CommunityTierList() {
                                 {/* Delete Column Button */}
                                 <button
                                     onClick={() => removeCol(col.id)}
-                                    className="absolute top-1 right-1 text-white/30 hover:text-red-500 hover:bg-red-500/10 rounded-full w-6 h-6 flex items-center justify-center transition-all z-10"
+                                    className="absolute top-1 right-1 text-red-500 hover:text-red-400 hover:scale-110 drop-shadow-[0_0_8px_rgba(239,68,68,0.5)] rounded-full w-6 h-6 flex items-center justify-center transition-all z-10"
                                     title="Eliminar Columna"
                                 >
-                                    <Trash2 size={14} />
+                                    <Trash2 size={16} strokeWidth={2.5} />
                                 </button>
                             </div>
                         ))}
@@ -232,16 +233,29 @@ export default function CommunityTierList() {
                                 <input
                                     value={tier.label}
                                     onChange={(e) => updateRowLabel(tier.id, e.target.value)}
-                                    className="bg-transparent text-black font-black text-2xl md:text-3xl font-display italic text-center w-full focus:outline-none uppercase placeholder-black/30"
+                                    className="bg-transparent text-black font-black text-2xl md:text-3xl font-display italic text-center w-full focus:outline-none uppercase placeholder-black/30 resize-none"
                                 />
-                                {/* Delete Row */}
-                                <button
-                                    onClick={() => removeRow(tier.id)}
-                                    className="absolute top-1 right-1 text-black/30 hover:text-red-700 hover:bg-red-600/10 rounded-full w-6 h-6 flex items-center justify-center transition-all"
-                                    title="Eliminar Fila"
-                                >
-                                    <Trash2 size={14} />
-                                </button>
+
+                                {/* Controls Container */}
+                                <div className="absolute top-1 right-1 flex flex-col gap-1 items-center">
+                                    {/* Delete Row */}
+                                    <button
+                                        onClick={() => removeRow(tier.id)}
+                                        className="text-red-600 hover:text-red-500 hover:scale-110 drop-shadow-[0_0_2px_rgba(255,255,255,0.5)] w-6 h-6 flex items-center justify-center transition-all"
+                                        title="Eliminar Fila"
+                                    >
+                                        <Trash2 size={16} strokeWidth={2.5} />
+                                    </button>
+
+                                    {/* Color Picker */}
+                                    <input
+                                        type="color"
+                                        value={tier.color}
+                                        onChange={(e) => updateRowColor(tier.id, e.target.value)}
+                                        className="w-5 h-5 opacity-50 hover:opacity-100 cursor-pointer rounded overflow-hidden border-0 p-0"
+                                        title="Cambiar Color"
+                                    />
+                                </div>
                             </div>
 
                             {/* Cells */}
