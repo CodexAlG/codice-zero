@@ -327,10 +327,23 @@ export default function AgentDetailPage() {
       const currentScalingValues = details.coreSkillScaling[coreSkillLevel];
       if (!currentScalingValues) return text;
 
+      // START: Custom Colors Logic
+      const scalingColors = details.coreSkillScalingColors || [];
+      // END: Custom Colors Logic
+
       return text.replace(/\{VALOR_(\d+)\}/g, (_, number) => {
         const index = parseInt(number) - 1;
-        // Wrap in [VAL]...[/VAL] for green highlighting
-        return currentScalingValues[index] !== undefined ? `[VAL]${currentScalingValues[index]}[/VAL]` : `{VALOR_${number}}`;
+        const val = currentScalingValues[index];
+
+        if (val !== undefined) {
+          // Check if a specific color is defined for this value index
+          if (scalingColors[index]) {
+            return `[CV="${scalingColors[index]}"]${val}[/CV]`;
+          }
+          // Default Green Highlight
+          return `[VAL]${val}[/VAL]`;
+        }
+        return `{VALOR_${number}}`;
       });
     };
 

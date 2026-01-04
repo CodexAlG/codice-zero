@@ -41,6 +41,12 @@ const createHighlightRules = (elementColor = "#facc15") => [
     color: "text-[#86efac] font-bold",
     extract: true,
   },
+  // Custom Colored Values [CV="text-red-500"]value[/CV]
+  {
+    pattern: /\[CV="(.*?)"\](.*?)\[\/CV\]/g,
+    color: (m) => `${m[1]} font-bold`,
+    extract: 2, // Extract the second group (value)
+  },
 ];
 
 // Process text, icons and apply highlight rules
@@ -172,7 +178,16 @@ const applyHighlightRules = (text, rules) => {
           if (start > last) {
             newParts.push({ text: part.text.slice(last, start), highlight: false });
           }
-          newParts.push({ text: extract ? m[1] : m[0], highlight: true, className: color });
+
+          // Determine text content based on extract property
+          let content = m[0];
+          if (extract === true) content = m[1];
+          else if (typeof extract === 'number') content = m[extract];
+
+          // Determine color class
+          const className = typeof color === 'function' ? color(m) : color;
+
+          newParts.push({ text: content, highlight: true, className });
           last = end;
         });
         if (last < part.text.length) {
