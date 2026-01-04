@@ -211,7 +211,7 @@ export default function CommunityTierList() {
                                 {/* Delete Column Button */}
                                 <button
                                     onClick={() => removeCol(col.id)}
-                                    className="absolute top-1 right-1 text-white/20 hover:text-red-500 hover:bg-red-500/10 rounded-full w-6 h-6 flex items-center justify-center transition-all opacity-0 group-hover:opacity-100 z-10"
+                                    className="absolute top-1 right-1 text-white/30 hover:text-red-500 hover:bg-red-500/10 rounded-full w-6 h-6 flex items-center justify-center transition-all z-10"
                                     title="Eliminar Columna"
                                 >
                                     <Trash2 size={14} />
@@ -237,7 +237,7 @@ export default function CommunityTierList() {
                                 {/* Delete Row */}
                                 <button
                                     onClick={() => removeRow(tier.id)}
-                                    className="absolute top-1 right-1 text-black/40 hover:text-red-700 hover:bg-red-600/10 rounded-full w-6 h-6 flex items-center justify-center transition-all opacity-0 group-hover:opacity-100"
+                                    className="absolute top-1 right-1 text-black/30 hover:text-red-700 hover:bg-red-600/10 rounded-full w-6 h-6 flex items-center justify-center transition-all"
                                     title="Eliminar Fila"
                                 >
                                     <Trash2 size={14} />
