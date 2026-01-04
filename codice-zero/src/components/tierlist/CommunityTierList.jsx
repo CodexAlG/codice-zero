@@ -3,12 +3,10 @@
 import { useState, useRef } from "react";
 import Image from "next/image";
 import { agents } from "@/data/agents";
-import { Download, RotateCcw, Plus, Trash2 } from "lucide-react";
+import { Download, RotateCcw, Plus } from "lucide-react";
 
-const TIERS = ["S", "A", "B", "C", "D", "E", "F"];
-// For Community, let's keep the standard tiers fixed as per user request (S-F).
-// "la tier sera por default S-A-B-C-D-E-F" and "pondras que se puedan agregar mas filas".
-// So we need dynamic tiers.
+// Updated Tiers T0-T5
+const TIERS = ["T0", "T0.5", "T1", "T2", "T3", "T4", "T5"];
 
 const ROLES = [
     { id: "dps", label: "DPS" },
@@ -18,19 +16,19 @@ const ROLES = [
 ];
 
 const DEFAULT_TIER_COLORS = [
-    "#ff7f7f", // S
-    "#ffbf7f", // A
-    "#ffff7f", // B
-    "#7fff7f", // C
-    "#7fbfff", // D
-    "#7f7fff", // E
-    "#ff7fff", // F
+    "#ff7f7f", // T0
+    "#ffbf7f", // T0.5
+    "#ffff7f", // T1
+    "#7fff7f", // T2
+    "#7fbfff", // T3
+    "#7f7fff", // T4
+    "#ff7fff", // T5
 ];
 
 export default function CommunityTierList() {
     const [tierRows, setTierRows] = useState(
         TIERS.map((label, index) => ({
-            id: label, // Using label as ID for defaults
+            id: label,
             label: label,
             color: DEFAULT_TIER_COLORS[index] || "#faceless",
         }))
@@ -50,8 +48,6 @@ export default function CommunityTierList() {
         try {
             const html2canvas = (await import('html2canvas')).default;
             if (captureRef.current) {
-                // Temporarily hide the "DRAG HERE" placeholders or buttons if desired
-                // But for MVP we just capture as is.
                 const canvas = await html2canvas(captureRef.current, {
                     backgroundColor: "#020617",
                     scale: 2,
@@ -87,7 +83,6 @@ export default function CommunityTierList() {
     };
 
     const removeRow = (rowId) => {
-        // Return items in this row to pool (by removing placement)
         setPlacements(prev => prev.filter(p => p.tierId !== rowId));
         setTierRows(prev => prev.filter(r => r.id !== rowId));
     };
@@ -100,11 +95,11 @@ export default function CommunityTierList() {
 
     const onDragStart = (e, agentId, source) => {
         e.dataTransfer.setData("agentId", agentId);
-        e.dataTransfer.setData("source", JSON.stringify(source)); // { type: 'pool' } or { type: 'cell', tierId, roleId }
+        e.dataTransfer.setData("source", JSON.stringify(source));
     };
 
     const onDragOver = (e) => {
-        e.preventDefault(); // Allow drop
+        e.preventDefault();
     };
 
     const onDropCell = (e, tierId, roleId) => {
@@ -112,11 +107,8 @@ export default function CommunityTierList() {
         const agentId = parseInt(e.dataTransfer.getData("agentId"));
         if (!agentId) return;
 
-        // Update placement
         setPlacements(prev => {
-            // Remove existing placement for this agent if any
             const filtered = prev.filter(p => p.agentId !== agentId);
-            // Add new placement
             return [...filtered, { agentId, tierId, roleId }];
         });
     };
@@ -126,7 +118,6 @@ export default function CommunityTierList() {
         const agentId = parseInt(e.dataTransfer.getData("agentId"));
         if (!agentId) return;
 
-        // Remove from placements (back to pool)
         setPlacements(prev => prev.filter(p => p.agentId !== agentId));
     };
 
@@ -170,9 +161,9 @@ export default function CommunityTierList() {
 
                     {/* Rows */}
                     {tierRows.map((tier) => (
-                        <div key={tier.id} className="grid grid-cols-[100px_1fr_1fr_1fr_1fr] md:grid-cols-[120px_1fr_1fr_1fr_1fr] border-b border-white/5 last:border-0 min-h-[120px]">
+                        <div key={tier.id} className="grid grid-cols-[100px_1fr_1fr_1fr_1fr] md:grid-cols-[120px_1fr_1fr_1fr_1fr] border-b border-white/5 last:border-0 min-h-[140px]">
 
-                            {/* Row Label (Editable) */}
+                            {/* Row Label (Editable) - Smaller text */}
                             <div
                                 className="flex flex-col items-center justify-center border-r border-black/20 relative overflow-hidden group p-1"
                                 style={{ backgroundColor: tier.color }}
@@ -180,7 +171,7 @@ export default function CommunityTierList() {
                                 <input
                                     value={tier.label}
                                     onChange={(e) => updateLabel(tier.id, e.target.value)}
-                                    className="bg-transparent text-black font-black text-4xl md:text-5xl font-display italic text-center w-full focus:outline-none uppercase placeholder-black/30"
+                                    className="bg-transparent text-black font-black text-2xl md:text-3xl font-display italic text-center w-full focus:outline-none uppercase placeholder-black/30"
                                 />
                                 {/* Delete Row */}
                                 <button
@@ -194,7 +185,6 @@ export default function CommunityTierList() {
 
                             {/* Cells */}
                             {ROLES.map(role => {
-                                // Find items in this cell
                                 const cellPlacements = placements.filter(p => p.tierId === tier.id && p.roleId === role.id);
                                 const itemsInCell = cellPlacements.map(p => agents.find(a => a.id === p.agentId)).filter(Boolean);
 
@@ -210,7 +200,7 @@ export default function CommunityTierList() {
                                                 key={agent.id}
                                                 draggable
                                                 onDragStart={(e) => onDragStart(e, agent.id, { type: 'cell', tierId: tier.id, roleId: role.id })}
-                                                className="relative group w-14 h-14 md:w-16 md:h-16 bg-gray-800 rounded-lg overflow-hidden border border-white/10 hover:border-yellow-500/50 transition-colors shadow-lg cursor-grab active:cursor-grabbing hover:scale-110 z-10"
+                                                className="relative group w-16 h-16 md:w-20 md:h-20 bg-gray-800 rounded-lg overflow-hidden border border-white/10 hover:border-yellow-500/50 transition-colors shadow-lg cursor-grab active:cursor-grabbing hover:scale-110 z-10"
                                             >
                                                 <Image
                                                     src={agent.image || agent.icon}
@@ -221,7 +211,6 @@ export default function CommunityTierList() {
                                             </div>
                                         ))}
 
-                                        {/* Visual hint for empty cell */}
                                         {itemsInCell.length === 0 && (
                                             <div className="w-full h-full flex items-center justify-center pointer-events-none opacity-5">
                                                 <span className="text-xs font-mono uppercase text-white">Drop</span>
@@ -249,7 +238,7 @@ export default function CommunityTierList() {
                             key={agent.id}
                             draggable
                             onDragStart={(e) => onDragStart(e, agent.id, { type: 'pool' })}
-                            className="relative w-14 h-14 md:w-16 md:h-16 bg-gray-800 rounded-lg overflow-hidden border border-white/10 hover:border-yellow-500/50 transition-colors shadow-lg cursor-grab hover:scale-105 active:scale-95"
+                            className="relative w-16 h-16 md:w-20 md:h-20 bg-gray-800 rounded-lg overflow-hidden border border-white/10 hover:border-yellow-500/50 transition-colors shadow-lg cursor-grab hover:scale-105 active:scale-95"
                         >
                             <Image
                                 src={agent.image || agent.icon}
