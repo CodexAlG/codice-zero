@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import { Send } from "lucide-react";
+import { Send, Coffee } from "lucide-react";
 import { agents } from "@/data/agents";
 
 export default function Home() {
@@ -47,6 +47,13 @@ export default function Home() {
       link: "https://t.me/CodiceZeroZZZ",
       isComponent: true,
       customClass: "text-gray-300 group-hover:text-blue-400 p-1"
+    },
+    {
+      name: "Ko-Fi",
+      icon: Coffee,
+      link: "https://ko-fi.com/codicezero",
+      isComponent: true,
+      customClass: "text-gray-300 group-hover:text-cyan-400 p-1"
     },
   ];
 
