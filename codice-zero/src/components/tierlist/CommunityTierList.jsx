@@ -6,7 +6,7 @@ import { agents } from "@/data/agents";
 import { Download, RotateCcw, Plus, Trash2, Columns, Rows } from "lucide-react";
 
 // Updated Tiers T0-T5
-const TIERS = ["T0", "T0.5", "T1", "T2"];
+const TIERS = ["S", "A", "B", "C"];
 
 const DEFAULT_ROLES = [
     { id: "dps", label: "DPS" },
