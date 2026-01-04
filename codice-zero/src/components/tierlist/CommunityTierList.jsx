@@ -51,9 +51,8 @@ export default function CommunityTierList() {
                 const dataUrl = await toPng(captureRef.current, {
                     backgroundColor: "#020617",
                     pixelRatio: 2,
+                    skipFonts: true, // Bypass font embedding to fix 'trim' error
                     filter: (node) => {
-                        // Exclude external stylesheets to avoid 'trim' error on font parsing
-                        // and exclude any node that might be causing issues.
                         return node.tagName !== 'LINK' && node.tagName !== 'STYLE';
                     },
                 });
