@@ -122,7 +122,7 @@ export default {
     {
       type: "Técnica Definitiva",
       name: "Ataque en Cadena: Caldero de Tigre Supresor",
-      description: "Con al menos 100 puntos de (Poder), después de activar un (Ataque en Cadena), activa automáticamente: Consume 100 de (Poder) para abrir a Hu Wei y disparar llamas y palomitas a los enemigos, golpeándolos en un área pequeña adelante, causando masivo Daño Fuego. Si (Impulso) está disponible, y mientras no sea el personaje activo, el estado de giro de alta velocidad se activará después de que la habilidad termine. Esto es un (Replicas). El personaje es invulnerable mientras usa esta habilidad.",
+      description: "Con al menos 100 puntos de (Poder), después de activar un (Ataque en Cadena), activa automáticamente: Consume 100 de (Poder) para abrir a Hu Wei y disparar llamas y palomitas a los enemigos, golpeándolos en un área pequeña adelante, causando masivo Daño Fuego. Si (Impulso) está disponible, y mientras no sea el personaje activo, el estado de giro de alta velocidad se activará después de que la habilidad termine. Esto es un (replica). El personaje es invulnerable mientras usa esta habilidad.",
       tags: ["Fuego", "Ataque en Cadena"]
     },
     {

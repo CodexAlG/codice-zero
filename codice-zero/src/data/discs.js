@@ -54,7 +54,7 @@ export const driveDiscs = [
   {
     id: 9919,
     name: "Armonía de Sombras (Shadow Harmony)",
-    twoPiece: "El Daño de (Replicas) y (Ataques de Carrera) aumenta un 15%.",
+    twoPiece: "El Daño de (replica) y (Ataques de Carrera) aumenta un 15%.",
     fourPiece: "Al golpear a un enemigo con una (Replica) o (Ataque de Carrera), si el daño infligido se alinea con el atributo del portador, el portador gana 1 acumulación de un efecto de mejora, como máximo una vez por uso de una habilidad. Por cada acumulación, el ATK del portador aumenta un 4%, y la Probabilidad de CRIT aumenta un 4%. El efecto puede acumularse hasta 3 veces y dura 15s. Activaciones repetidas reinician la duración.",
     image: "/CodiceZero/Discos/Drive_Disc_Shadow_Harmony_Icon.webp"
   },

@@ -50,7 +50,7 @@ export default {
     {
       type: "Ataque Básico",
       name: "Ataque Basico: Disparo de Caramelo Duro",
-      description: "Cuando Yuzuha tiene (Puntos de Azucar), asestar un golpe con los ataques de otros personajes activos hará que Yuzuha gire continuamente su paraguas y ataque centrada alrededor del objetivo antes de lanzar un poderoso proyectil, causando Daño Fisico. Cuando este ataque asesta un ataque pesado, Yuzuha consume 1 (Punto de Azucar). (Ataque Basico: Disparo de Caramelo Duro) es considerado un (Replicas). (Ataque Basico: Disparo de Caramelo Duro) puede activarse una vez cada 8s. El personaje es invulnerable mientras usa esta habilidad.",
+      description: "Cuando Yuzuha tiene (Puntos de Azucar), asestar un golpe con los ataques de otros personajes activos hará que Yuzuha gire continuamente su paraguas y ataque centrada alrededor del objetivo antes de lanzar un poderoso proyectil, causando Daño Fisico. Cuando este ataque asesta un ataque pesado, Yuzuha consume 1 (Punto de Azucar). (Ataque Basico: Disparo de Caramelo Duro) es considerado un (replica). (Ataque Basico: Disparo de Caramelo Duro) puede activarse una vez cada 8s. El personaje es invulnerable mientras usa esta habilidad.",
       tags: ["Físico", "Ataque Básico"]
     },
     {

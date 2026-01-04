@@ -129,7 +129,7 @@ export default {
     {
       type: "Habilidad Adicional",
       name: "Habilidad Adicional: Mirada de la Linterna Plateada",
-      description: "Cuando otro personaje en tu escuadrón es un personaje de (Ataque) o comparte el mismo atributo: Cuando la Probabilidad de CRIT de Trigger excede el 40%, cada 1% de Probabilidad de CRIT por encima de este umbral aumenta el Aturdimiento infligido por sus (replicas) en un 1.5%, hasta un aumento máximo del 75%.",
+      description: "Cuando otro personaje en tu escuadrón es un personaje de (Ataque) o comparte el mismo atributo: Cuando la Probabilidad de CRIT de Trigger excede el 40%, cada 1% de Probabilidad de CRIT por encima de este umbral aumenta el Aturdimiento infligido por sus (replica) en un 1.5%, hasta un aumento máximo del 75%.",
       tags: ["Habilidad Adicional"]
     },
     {
