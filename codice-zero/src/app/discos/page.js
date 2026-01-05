@@ -62,7 +62,7 @@ export default function DiscsPage() {
                 <motion.div
                   key={disc.id}
                   layout
-                  className="flex flex-row h-full bg-[#0f0f0f] border border-white/10 rounded-md overflow-hidden"
+                  className="flex flex-row h-full bg-slate-900/80 border border-white/5 rounded-md overflow-hidden hover:bg-slate-900 transition-colors"
                 >
                   {/* Columna Izquierda: Identidad */}
                   <div className="w-32 flex-shrink-0 bg-black/20 border-r border-white/5 p-4 flex flex-col items-center justify-center gap-2 relative">
@@ -74,7 +74,7 @@ export default function DiscsPage() {
                         className="object-contain drop-shadow-lg"
                       />
                     </div>
-                    <span className="text-yellow-500 font-bold text-xs text-center uppercase tracking-wide leading-tight">
+                    <span className="text-white font-bold text-[10px] text-center uppercase tracking-wide leading-tight">
                       {disc.name}
                     </span>
                   </div>
@@ -83,17 +83,17 @@ export default function DiscsPage() {
                   <div className="flex-1 p-4 flex flex-col justify-center gap-3 min-w-0">
                     {/* 2 Piezas */}
                     <div className="flex flex-col gap-1">
-                      <span className="text-[10px] text-yellow-600/80 uppercase font-black tracking-widest">
+                      <span className="text-[10px] text-yellow-500/90 uppercase font-black tracking-widest">
                         2 Piezas
                       </span>
-                      <p className="text-xs font-bold text-yellow-500">
-                        {disc.twoPiece}
-                      </p>
+                      <div className="text-xs text-gray-300 font-medium">
+                        <HighlightText text={disc.twoPiece} />
+                      </div>
                     </div>
 
                     {/* 4 Piezas */}
                     <div className="flex flex-col gap-1 border-t border-white/5 pt-2">
-                      <span className="text-[10px] text-gray-600 uppercase font-black tracking-widest">
+                      <span className="text-[10px] text-yellow-500/90 uppercase font-black tracking-widest">
                         4 Piezas
                       </span>
                       <div className="text-sm text-gray-300 leading-snug">
