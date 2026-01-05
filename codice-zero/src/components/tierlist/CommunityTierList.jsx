@@ -292,12 +292,13 @@ export default function CommunityTierList() {
                                 className="flex flex-col items-center justify-center border-b md:border-b-0 md:border-r border-black/20 relative overflow-hidden group p-4 md:p-1 min-h-[140px]"
                                 style={{ backgroundColor: tier.color }}
                             >
-                                <textarea
-                                    value={tier.label}
-                                    onChange={(e) => updateRowLabel(tier.id, e.target.value)}
-                                    className={`bg-transparent text-black font-black font-display italic text-center w-full focus:outline-none uppercase placeholder-black/30 resize-none overflow-hidden leading-tight break-words whitespace-pre-wrap ${getFontSize(tier.label)}`}
-                                    style={{ fieldSizing: "content" }} // Modern CSS for auto-height
-                                    rows={getRows(tier.label)}
+                                <div
+                                    contentEditable
+                                    suppressContentEditableWarning
+                                    dangerouslySetInnerHTML={{ __html: tier.label }}
+                                    onBlur={(e) => updateRowLabel(tier.id, e.currentTarget.innerText)}
+                                    className={`bg-transparent text-black font-black font-display italic text-center w-full focus:outline-none uppercase placeholder-black/30 outline-none border-none whitespace-pre-wrap leading-tight break-words ${getFontSize(tier.label)}`}
+                                    style={{ minHeight: '1.5em' }}
                                 />
 
                                 <div className="absolute top-1 right-1 flex md:flex-col gap-2 md:gap-1 items-center bg-white/20 md:bg-transparent rounded px-1 md:px-0">
