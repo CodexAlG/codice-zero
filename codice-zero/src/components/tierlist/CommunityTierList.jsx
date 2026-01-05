@@ -47,17 +47,23 @@ export default function CommunityTierList() {
     const isInPool = (agentId) => !placements.find(p => p.agentId === agentId);
 
     const captureRef = useRef(null);
+    const exportRef = useRef(null); // Ref for the hidden desktop view
 
     // --- Actions ---
 
     const handleDownload = async () => {
         try {
             const { toPng } = await import('html-to-image');
-            if (captureRef.current) {
-                const dataUrl = await toPng(captureRef.current, {
+            // Capture the HIDDEN EXPORT view instead of the visible one
+            if (exportRef.current) {
+                // Ensure the export view is momentarily "visible" for the capture if needed, 
+                // but usually absolute positioning off-screen works fine.
+                // We use a fixed width container for PC layout.
+                const dataUrl = await toPng(exportRef.current, {
                     backgroundColor: "#020617",
                     pixelRatio: 2,
                     skipFonts: true,
+                    width: 1280, // Force width just in case
                     filter: (node) => node.tagName !== 'LINK' && node.tagName !== 'STYLE',
                 });
                 setPreviewImage(dataUrl);
@@ -166,7 +172,6 @@ export default function CommunityTierList() {
     const onDragStart = (e, agentId, source) => {
         e.dataTransfer.setData("agentId", agentId);
         e.dataTransfer.setData("source", JSON.stringify(source));
-        // Use timeout to allow drag image to render before hiding if we were to hide it
     };
 
     const onDragOver = (e) => {
@@ -225,7 +230,7 @@ export default function CommunityTierList() {
                 </div>
             </div>
 
-            {/* Capture Area */}
+            {/* Capture Area (VISIBLE RESPONSIVE VERSION) */}
             <div className="overflow-x-auto">
                 <div ref={captureRef} className="w-full border border-white/10 rounded-lg overflow-hidden bg-[#0a0a0a] inline-block">
 
@@ -236,17 +241,14 @@ export default function CommunityTierList() {
                         </div>
                         {tierCols.map(col => (
                             <div key={col.id} className="bg-gray-900/80 border-b border-white/10 border-l border-white/5 text-center flex items-center justify-center relative group p-2">
-                                {/* Editable Column Label */}
                                 <input
                                     value={col.label}
                                     onChange={(e) => updateColLabel(col.id, e.target.value)}
                                     className="bg-transparent font-black italic text-yellow-500 text-xl drop-shadow-sm tracking-wider text-center w-full focus:outline-none uppercase placeholder-white/20"
                                 />
-                                {/* Delete Column Button */}
                                 <button
                                     onClick={() => removeCol(col.id)}
                                     className="absolute top-1 right-1 text-red-500 hover:text-red-400 hover:scale-110 drop-shadow-[0_0_8px_rgba(239,68,68,0.5)] rounded-full w-6 h-6 flex items-center justify-center transition-all z-10"
-                                    title="Eliminar Columna"
                                 >
                                     <Trash2 size={16} strokeWidth={2.5} />
                                 </button>
@@ -258,7 +260,7 @@ export default function CommunityTierList() {
                     {tierRows.map((tier) => (
                         <div key={tier.id} className="flex flex-col md:grid" style={gridColsStyle}>
 
-                            {/* Row Label (Editable) - Smaller text */}
+                            {/* Row Label */}
                             <div
                                 className="flex flex-col items-center justify-center border-b md:border-b-0 md:border-r border-black/20 relative overflow-hidden group p-4 md:p-1 min-h-[140px]"
                                 style={{ backgroundColor: tier.color }}
@@ -269,24 +271,18 @@ export default function CommunityTierList() {
                                     className="bg-transparent text-black font-black text-4xl md:text-3xl font-display italic text-center w-full focus:outline-none uppercase placeholder-black/30 resize-none"
                                 />
 
-                                {/* Controls Container */}
                                 <div className="absolute top-1 right-1 flex md:flex-col gap-2 md:gap-1 items-center bg-white/20 md:bg-transparent rounded px-1 md:px-0">
-                                    {/* Delete Row */}
                                     <button
                                         onClick={() => removeRow(tier.id)}
                                         className="text-red-600 hover:text-red-500 hover:scale-110 drop-shadow-[0_0_2px_rgba(255,255,255,0.5)] w-6 h-6 flex items-center justify-center transition-all"
-                                        title="Eliminar Fila"
                                     >
                                         <Trash2 size={16} strokeWidth={2.5} />
                                     </button>
-
-                                    {/* Color Picker */}
                                     <input
                                         type="color"
                                         value={tier.color}
                                         onChange={(e) => updateRowColor(tier.id, e.target.value)}
                                         className="w-5 h-5 opacity-50 hover:opacity-100 cursor-pointer rounded overflow-hidden border-0 p-0"
-                                        title="Cambiar Color"
                                     />
                                 </div>
                             </div>
@@ -299,7 +295,7 @@ export default function CommunityTierList() {
                                 return (
                                     <div
                                         key={`${tier.id}-${col.id}`}
-                                        onClick={() => handleCellClick(tier.id, col.id)} // Click to Move
+                                        onClick={() => handleCellClick(tier.id, col.id)}
                                         onDragOver={onDragOver}
                                         onDrop={(e) => onDropCell(e, tier.id, col.id)}
                                         className={`bg-gray-900/30 p-2 flex flex-col md:flex-row flex-wrap gap-2 content-center md:justify-center border-l-0 md:border-l border-white/5 border-b transition-colors ${selectedAgent ? 'hover:bg-yellow-500/10 cursor-pointer' : 'hover:bg-white/5'}`}
@@ -345,6 +341,71 @@ export default function CommunityTierList() {
                 </div>
             </div>
 
+            {/* HIDDEN DESKTOP EXPORT VIEW (FIXED WIDTH, ALWAYS GRID) */}
+            <div style={{ position: 'absolute', top: '-10000px', left: '-10000px', width: '1280px' }}>
+                <div ref={exportRef} className="w-[1280px] border border-white/10 rounded-lg overflow-hidden bg-[#0a0a0a]">
+
+                    {/* PC Header (Always Visible) */}
+                    <div className="grid" style={gridColsStyle}>
+                        <div className="bg-gray-900/80 p-4 border-b border-r border-white/10 flex items-center justify-center">
+                            <span className="font-bold text-gray-500 text-xs uppercase">Rango</span>
+                        </div>
+                        {tierCols.map(col => (
+                            <div key={col.id} className="bg-gray-900/80 border-b border-white/10 border-l border-white/5 text-center flex items-center justify-center p-2">
+                                <span className="font-black italic text-yellow-500 text-xl drop-shadow-sm tracking-wider uppercase">{col.label}</span>
+                            </div>
+                        ))}
+                    </div>
+
+                    {/* PC Rows (Always Grid) */}
+                    {tierRows.map((tier) => (
+                        <div key={tier.id} className="grid" style={gridColsStyle}>
+                            <div
+                                className="flex flex-col items-center justify-center border-r border-black/20 p-1 min-h-[140px]"
+                                style={{ backgroundColor: tier.color }}
+                            >
+                                <span className="text-black font-black text-4xl font-display italic uppercase text-center">{tier.label}</span>
+                            </div>
+
+                            {tierCols.map(col => {
+                                const cellPlacements = placements.filter(p => p.tierId === tier.id && p.roleId === col.id);
+                                const itemsInCell = cellPlacements.map(p => agents.find(a => a.id === p.agentId)).filter(Boolean);
+
+                                return (
+                                    <div
+                                        key={`${tier.id}-${col.id}`}
+                                        className="bg-gray-900/30 p-2 flex flex-wrap gap-2 content-center justify-center border-l border-white/5 border-b"
+                                    >
+                                        <div className="flex flex-wrap gap-2 justify-center">
+                                            {itemsInCell.map(agent => (
+                                                <div
+                                                    key={agent.id}
+                                                    className="relative w-20 h-20 bg-gray-800 rounded-lg overflow-hidden border border-white/10 shadow-lg"
+                                                >
+                                                    <Image
+                                                        src={agent.image || agent.icon}
+                                                        alt={agent.name}
+                                                        fill
+                                                        className="object-cover"
+                                                    />
+                                                </div>
+                                            ))}
+                                            {itemsInCell.length === 0 && (
+                                                <div className="w-full h-full flex items-center justify-center opacity-5">
+                                                    <span className="text-xs font-mono uppercase text-white">Drop</span>
+                                                </div>
+                                            )}
+                                        </div>
+                                    </div>
+                                );
+                            })}
+                        </div>
+                    ))}
+                    {/* Watermark / Logo could go here if requested */}
+                </div>
+            </div>
+
+
             {/* Pool Area */}
             <div
                 className={`mt-12 bg-gray-900/80 p-6 rounded-xl border transition-colors min-h-[150px] ${selectedAgent ? 'border-yellow-500/30 bg-yellow-900/5 cursor-pointer' : 'border-white/10'}`}
@@ -385,8 +446,13 @@ export default function CommunityTierList() {
                     <div className="bg-[#0f172a] border border-white/10 rounded-xl p-6 max-w-4xl w-full max-h-[90vh] flex flex-col shadow-2xl">
                         <h3 className="text-xl font-bold text-white mb-4">Vista Previa</h3>
 
-                        <div className="flex-1 overflow-auto bg-[#020617] rounded-lg border border-white/5 mb-6 flex items-center justify-center p-4">
-                            <img src={previewImage} alt="Tier List Preview" className="max-w-full h-auto rounded shadow-lg" />
+                        {/* Fixed: Image container scaling */}
+                        <div className="flex-1 overflow-hidden bg-[#020617] rounded-lg border border-white/5 mb-6 flex items-center justify-center p-4">
+                            <img
+                                src={previewImage}
+                                alt="Tier List Preview"
+                                className="max-w-full max-h-[60vh] object-contain rounded shadow-lg"
+                            />
                         </div>
 
                         <div className="flex justify-end gap-4">
