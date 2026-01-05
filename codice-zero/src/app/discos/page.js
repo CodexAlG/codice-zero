@@ -50,66 +50,60 @@ export default function DiscsPage() {
 
           {hasBetaContent && <BetaWarning />}
 
-          {/* Discs List View */}
-          <div className="flex flex-col gap-4 w-full max-w-7xl mx-auto pb-12">
-            {driveDiscs.map((disc) => (
-              <motion.div
-                key={disc.id}
-                layout
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                className="w-full bg-[#0a0a0a] border border-white/10 rounded-xl overflow-hidden flex flex-col md:flex-row group hover:border-yellow-400 hover:bg-white/5 transition-all duration-300 relative"
-              >
-                {/* Decoración Esquina */}
-                <div className="absolute top-0 right-0 w-16 h-16 bg-gradient-to-bl from-white/5 to-transparent pointer-events-none" />
-                <div className="absolute top-0 right-0 w-2 h-2 bg-white/10 group-hover:bg-yellow-400 transition-colors" />
-
-                {/* Columna Izquierda: Identidad */}
-                <div className="w-full md:w-64 flex-shrink-0 bg-white/5 md:bg-transparent border-b md:border-b-0 md:border-r border-white/10 p-6 flex flex-col items-center justify-center gap-4 relative">
-                  {/* Icono */}
-                  <div className="relative w-24 h-24 filter drop-shadow-[0_0_10px_rgba(0,0,0,0.5)] group-hover:scale-110 transition-transform duration-300">
-                    <Image
-                      src={disc.image}
-                      alt={disc.name}
-                      fill
-                      className="object-contain"
-                    />
-                  </div>
-                  {/* Nombre */}
-                  <h3 className="text-yellow-400 font-bold text-base text-center uppercase tracking-wider font-display leading-tight px-2">
-                    {disc.name}
-                  </h3>
-                </div>
-
-                {/* Columna Derecha: Stats */}
-                <div className="flex-1 p-6 flex flex-col gap-6 justify-center">
-                  {/* 2 Piezas */}
-                  <div className="flex flex-col gap-2">
-                    <span className="text-[10px] font-bold text-yellow-500 uppercase tracking-widest bg-yellow-500/10 px-2 py-1 rounded w-fit border border-yellow-500/20">
-                      2 Piezas
+          {/* Discs Grid Layout (Dense 2-Col) */}
+          <div className="w-full max-w-7xl mx-auto pb-12">
+            <motion.div
+              layout
+              className="grid grid-cols-1 xl:grid-cols-2 gap-4"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+            >
+              {driveDiscs.map((disc) => (
+                <motion.div
+                  key={disc.id}
+                  layout
+                  className="flex flex-row h-full bg-[#0f0f0f] border border-white/10 rounded-md overflow-hidden"
+                >
+                  {/* Columna Izquierda: Identidad */}
+                  <div className="w-32 flex-shrink-0 bg-black/20 border-r border-white/5 p-4 flex flex-col items-center justify-center gap-2 relative">
+                    <div className="relative w-16 h-16">
+                      <Image
+                        src={disc.image}
+                        alt={disc.name}
+                        fill
+                        className="object-contain drop-shadow-lg"
+                      />
+                    </div>
+                    <span className="text-yellow-500 font-bold text-xs text-center uppercase tracking-wide leading-tight">
+                      {disc.name}
                     </span>
-                    <p className="text-sm font-mono text-white/90 pl-1">
-                      {disc.twoPiece}
-                    </p>
                   </div>
 
-                  {/* 4 Piezas */}
-                  <div className="flex flex-col gap-2">
-                    <span className="text-[10px] font-bold text-gray-500 uppercase tracking-widest px-1">
-                      4 Piezas
-                    </span>
-                    <p className="text-sm text-gray-300 leading-relaxed pl-1">
-                      {/* Simple parsing for paren keywords */}
-                      {disc.fourPiece.split(/(\(.*?\))/g).map((part, i) => (
-                        part.startsWith('(') && part.endsWith(')') ?
-                          <span key={i} className="text-yellow-200 font-semibold">{part.slice(1, -1)}</span> :
-                          <span key={i}>{part}</span>
-                      ))}
-                    </p>
+                  {/* Columna Derecha: Stats */}
+                  <div className="flex-1 p-4 flex flex-col justify-center gap-3 min-w-0">
+                    {/* 2 Piezas */}
+                    <div className="flex flex-col gap-1">
+                      <span className="text-[10px] text-yellow-600/80 uppercase font-black tracking-widest">
+                        2 Piezas
+                      </span>
+                      <p className="text-xs font-bold text-yellow-500">
+                        {disc.twoPiece}
+                      </p>
+                    </div>
+
+                    {/* 4 Piezas */}
+                    <div className="flex flex-col gap-1 border-t border-white/5 pt-2">
+                      <span className="text-[10px] text-gray-600 uppercase font-black tracking-widest">
+                        4 Piezas
+                      </span>
+                      <div className="text-sm text-gray-300 leading-snug">
+                        <HighlightText text={disc.fourPiece} />
+                      </div>
+                    </div>
                   </div>
-                </div>
-              </motion.div>
-            ))}
+                </motion.div>
+              ))}
+            </motion.div>
           </div>
         </div>
       </div>
