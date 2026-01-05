@@ -123,10 +123,11 @@ export default function CommunityTierList() {
 
     const getRows = (text) => {
         const len = text.length;
-        if (len <= 8) return 1;
-        if (len <= 16) return 2;
-        if (len <= 35) return 3;
-        return 5;
+        if (len <= 2) return 1;
+        if (len <= 8) return 2;
+        if (len <= 16) return 3;
+        if (len <= 35) return 5;
+        return 10; // Maximize usage for small font
     };
 
     // Column Actions
