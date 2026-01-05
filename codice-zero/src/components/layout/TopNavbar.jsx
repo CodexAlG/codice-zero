@@ -49,36 +49,34 @@ export default function TopNavbar({ isVisible }) {
         const isActive = activeItem === index;
 
         return (
-            <li className="relative group w-full flex justify-center py-2">
+            <li className="relative group w-full px-4 py-1">
                 <Link
                     href={href}
-                    className={`relative flex items-center justify-center w-12 h-12 rounded-xl transition-all duration-200 
+                    className={`relative flex items-center h-12 rounded-xl transition-all duration-200 px-4 gap-4
                     ${isActive
                             ? 'text-yellow-300 bg-yellow-500/10 shadow-lg shadow-yellow-500/20 border border-yellow-400/30'
                             : 'text-gray-400 hover:bg-white/5 hover:text-white hover:shadow-cyan-400/20'} 
                     hover:border hover:border-white/10 group`}
                     aria-label={label}
                 >
-                    {typeof Icon === 'string' ? (
-                        <Image src={Icon} alt={`Icono ${label}`} width={24} height={24} className={`transition-all duration-200 ${isActive ? 'drop-shadow-lg shadow-yellow-400/50 saturate-200 contrast-200' : 'opacity-70 group-hover:opacity-100 group-hover:saturate-150'}`} />
-                    ) : (
-                        <Icon size={24} className={`transition-all duration-200 ${isActive ? 'text-yellow-300 drop-shadow-lg shadow-yellow-400/50' : 'text-current opacity-70 group-hover:opacity-100'}`} />
-                    )}
-
-                    {/* Tooltip Label (Shows on Hover - Hidden if Dropdown exists) */}
-                    {!hasDropdown && (
-                        <span className="absolute left-full ml-4 px-2 py-1 bg-black/80 border border-white/10 rounded text-xs font-bold text-white opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap z-50 pointer-events-none">
-                            {label}
-                        </span>
-                    )}
-
-                    {/* Active Indicator Bar (Left vertical) */}
                     {isActive && <div className="absolute left-0 top-1/2 -translate-y-1/2 h-8 w-[3px] bg-gradient-to-b from-yellow-300 to-yellow-500 rounded-r-full shadow-lg shadow-yellow-500/50"></div>}
+
+                    <div className="flex-shrink-0 flex items-center justify-center w-8 h-8">
+                        {typeof Icon === 'string' ? (
+                            <Image src={Icon} alt={`Icono ${label}`} width={32} height={32} className={`transition-all duration-200 object-contain ${isActive ? 'drop-shadow-lg shadow-yellow-400/50 saturate-200 contrast-200' : 'opacity-70 group-hover:opacity-100 group-hover:saturate-150'}`} />
+                        ) : (
+                            <Icon size={32} className={`transition-all duration-200 ${isActive ? 'text-yellow-300 drop-shadow-lg shadow-yellow-400/50' : 'text-current opacity-70 group-hover:opacity-100'}`} />
+                        )}
+                    </div>
+
+                    <span className={`font-medium tracking-wide text-sm transition-colors duration-200 ${isActive ? 'text-yellow-300 font-bold' : 'text-gray-300 group-hover:text-white'}`}>
+                        {label}
+                    </span>
                 </Link>
 
                 {/* Dropdown Menu (Opens to Right) */}
                 {hasDropdown && latestItems && (
-                    <div className="absolute top-0 left-full ml-4 hidden group-hover:block z-50 pl-2">
+                    <div className="absolute top-0 left-full ml-2 hidden group-hover:block z-50 pl-2">
                         <div className="bg-[#0f172a] border border-white/10 rounded-xl shadow-2xl p-4 w-72 backdrop-blur-xl flex flex-col gap-3 relative overflow-hidden">
                             {/* Decoration */}
                             <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-yellow-500 to-transparent opacity-50"></div>
@@ -120,24 +118,24 @@ export default function TopNavbar({ isVisible }) {
 
     return (
         <header
-            className={`fixed top-0 left-0 h-full w-20 z-50 bg-[#0b0c15]/95 backdrop-blur-md border-r border-white/5 shadow-2xl transition-transform duration-300 ease-in-out ${isVisible ? 'translate-x-0' : '-translate-x-full'
+            className={`fixed top-0 left-0 h-full w-64 z-50 bg-[#0b0c15]/95 backdrop-blur-md border-r border-white/5 shadow-2xl transition-transform duration-300 ease-in-out ${isVisible ? 'translate-x-0' : '-translate-x-full'
                 } hidden lg:flex flex-col items-center py-8`}
         >
             {/* Logo CZ */}
-            <Link href="/" className="flex flex-col items-center justify-center group relative mb-8 gap-2">
-                <div className="relative w-14 h-14 transition-transform duration-300 group-hover:scale-110">
+            <Link href="/" className="flex flex-col items-center justify-center group relative mb-8 gap-2 w-full px-6">
+                <div className="relative w-16 h-16 transition-transform duration-300 group-hover:scale-110">
                     <div className="absolute inset-0 bg-yellow-400 blur-xl opacity-40 rounded-full animate-pulse"></div>
                     <Image
                         src={appIcon}
                         alt="CodiceZero Logo"
-                        width={56}
-                        height={56}
+                        width={64}
+                        height={64}
                         className="object-contain relative z-10 drop-shadow-[0_0_12px_rgba(250,204,21,0.8)]"
                     />
                 </div>
 
                 {/* Texto CodiceZero */}
-                <span className="text-[11px] uppercase font-bold tracking-widest text-yellow-300 drop-shadow-[0_0_5px_rgba(234,179,8,0.8)] font-display text-center leading-none">
+                <span className="text-xs uppercase font-bold tracking-widest text-yellow-300 drop-shadow-[0_0_5px_rgba(234,179,8,0.8)] font-display text-center leading-none mt-2">
                     Codice<br />Zero
                 </span>
 
@@ -146,8 +144,8 @@ export default function TopNavbar({ isVisible }) {
             </Link>
 
             {/* Navigation */}
-            <nav className="flex-1 w-full">
-                <ul className="flex flex-col items-center gap-4 w-full">
+            <nav className="flex-1 w-full overflow-y-auto custom-scrollbar">
+                <ul className="flex flex-col gap-2 w-full">
                     <NavItem
                         href="/"
                         index={-1}
@@ -203,7 +201,12 @@ export default function TopNavbar({ isVisible }) {
             </nav>
 
             {/* Bottom Decoration or Settings if needed */}
-            <div className="mt-auto w-10 h-[1px] bg-white/10"></div>
+            <div className="mt-auto w-full px-6 flex flex-col gap-4">
+                <div className="w-full h-[1px] bg-white/10"></div>
+                <div className="flex justify-center opacity-50 text-[10px] text-gray-500 font-mono">
+                    v2.5
+                </div>
+            </div>
         </header>
     );
 }
