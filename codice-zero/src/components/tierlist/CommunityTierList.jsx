@@ -39,6 +39,10 @@ export default function CommunityTierList() {
     const [placements, setPlacements] = useState([]);
     const [previewImage, setPreviewImage] = useState(null);
 
+    // Selection State for Click-to-Move
+    const [selectedAgent, setSelectedAgent] = useState(null); // { id: number, source: 'pool' | 'cell' }
+
+
     // Pool logic: Agents not in placements are in the pool
     const isInPool = (agentId) => !placements.find(p => p.agentId === agentId);
 
@@ -82,6 +86,7 @@ export default function CommunityTierList() {
             color: DEFAULT_TIER_COLORS[index] || "#cccccc",
         })));
         setTierCols(DEFAULT_ROLES);
+        setSelectedAgent(null);
     };
 
     // Row Actions
@@ -125,11 +130,43 @@ export default function CommunityTierList() {
         setTierRows(prev => prev.map(r => r.id === rowId ? { ...r, color: newColor } : r));
     };
 
+    // --- Interaction Logic (Click / Touch) ---
+    const handleAgentClick = (e, agentId, source) => {
+        e.stopPropagation(); // Prevent cell click
+        if (selectedAgent?.id === agentId) {
+            setSelectedAgent(null); // Deselect
+        } else {
+            setSelectedAgent({ id: agentId, source });
+        }
+    };
+
+    const handleCellClick = (tierId, roleId) => {
+        if (!selectedAgent) return;
+
+        // Move to Cell
+        setPlacements(prev => {
+            // Remove from old position if exists
+            const filtered = prev.filter(p => p.agentId !== selectedAgent.id);
+            return [...filtered, { agentId: selectedAgent.id, tierId, roleId }];
+        });
+        setSelectedAgent(null);
+    };
+
+    const handlePoolClick = () => {
+        if (!selectedAgent) return;
+
+        // Remove from placements (Back to Pool)
+        setPlacements(prev => prev.filter(p => p.agentId !== selectedAgent.id));
+        setSelectedAgent(null);
+    };
+
+
     // --- Drag & Drop ---
 
     const onDragStart = (e, agentId, source) => {
         e.dataTransfer.setData("agentId", agentId);
         e.dataTransfer.setData("source", JSON.stringify(source));
+        // Use timeout to allow drag image to render before hiding if we were to hide it
     };
 
     const onDragOver = (e) => {
@@ -155,10 +192,9 @@ export default function CommunityTierList() {
         setPlacements(prev => prev.filter(p => p.agentId !== agentId));
     };
 
-    // Dynamic Grid Style
-    const gridStyle = {
-        display: 'grid',
-        gridTemplateColumns: `minmax(100px, 120px) repeat(${tierCols.length}, minmax(140px, 1fr))`,
+    // Dynamic Grid Style for Columns
+    const gridColsStyle = {
+        gridTemplateColumns: `minmax(120px, 140px) repeat(${tierCols.length}, minmax(140px, 1fr))`,
     };
 
 
@@ -191,10 +227,10 @@ export default function CommunityTierList() {
 
             {/* Capture Area */}
             <div className="overflow-x-auto">
-                <div ref={captureRef} className="min-w-[800px] border border-white/10 rounded-lg overflow-hidden bg-[#0a0a0a] inline-block w-full">
+                <div ref={captureRef} className="w-full border border-white/10 rounded-lg overflow-hidden bg-[#0a0a0a] inline-block">
 
-                    {/* Header */}
-                    <div className="" style={gridStyle}>
+                    {/* Header (Roles) - Hidden on Mobile */}
+                    <div className="hidden md:grid" style={gridColsStyle}>
                         <div className="bg-gray-900/80 p-4 border-b border-r border-white/10 flex items-center justify-center">
                             <span className="font-bold text-gray-500 text-xs uppercase">Rango</span>
                         </div>
@@ -204,7 +240,7 @@ export default function CommunityTierList() {
                                 <input
                                     value={col.label}
                                     onChange={(e) => updateColLabel(col.id, e.target.value)}
-                                    className="bg-transparent font-black italic text-yellow-500 text-lg md:text-xl drop-shadow-sm tracking-wider text-center w-full focus:outline-none uppercase placeholder-white/20"
+                                    className="bg-transparent font-black italic text-yellow-500 text-xl drop-shadow-sm tracking-wider text-center w-full focus:outline-none uppercase placeholder-white/20"
                                 />
                                 {/* Delete Column Button */}
                                 <button
@@ -220,21 +256,21 @@ export default function CommunityTierList() {
 
                     {/* Rows */}
                     {tierRows.map((tier) => (
-                        <div key={tier.id} className="" style={gridStyle}>
+                        <div key={tier.id} className="flex flex-col md:grid" style={gridColsStyle}>
 
                             {/* Row Label (Editable) - Smaller text */}
                             <div
-                                className="flex flex-col items-center justify-center border-r border-black/20 relative overflow-hidden group p-1 min-h-[140px] border-b border-white/5"
+                                className="flex flex-col items-center justify-center border-b md:border-b-0 md:border-r border-black/20 relative overflow-hidden group p-4 md:p-1 min-h-[140px]"
                                 style={{ backgroundColor: tier.color }}
                             >
                                 <input
                                     value={tier.label}
                                     onChange={(e) => updateRowLabel(tier.id, e.target.value)}
-                                    className="bg-transparent text-black font-black text-2xl md:text-3xl font-display italic text-center w-full focus:outline-none uppercase placeholder-black/30 resize-none"
+                                    className="bg-transparent text-black font-black text-4xl md:text-3xl font-display italic text-center w-full focus:outline-none uppercase placeholder-black/30 resize-none"
                                 />
 
                                 {/* Controls Container */}
-                                <div className="absolute top-1 right-1 flex flex-col gap-1 items-center">
+                                <div className="absolute top-1 right-1 flex md:flex-col gap-2 md:gap-1 items-center bg-white/20 md:bg-transparent rounded px-1 md:px-0">
                                     {/* Delete Row */}
                                     <button
                                         onClick={() => removeRow(tier.id)}
@@ -263,31 +299,43 @@ export default function CommunityTierList() {
                                 return (
                                     <div
                                         key={`${tier.id}-${col.id}`}
+                                        onClick={() => handleCellClick(tier.id, col.id)} // Click to Move
                                         onDragOver={onDragOver}
                                         onDrop={(e) => onDropCell(e, tier.id, col.id)}
-                                        className="bg-gray-900/30 p-2 flex flex-wrap gap-2 content-center justify-center border-l border-white/5 border-b transition-colors hover:bg-white/5"
+                                        className={`bg-gray-900/30 p-2 flex flex-col md:flex-row flex-wrap gap-2 content-center md:justify-center border-l-0 md:border-l border-white/5 border-b transition-colors ${selectedAgent ? 'hover:bg-yellow-500/10 cursor-pointer' : 'hover:bg-white/5'}`}
                                     >
-                                        {itemsInCell.map(agent => (
-                                            <div
-                                                key={agent.id}
-                                                draggable
-                                                onDragStart={(e) => onDragStart(e, agent.id, { type: 'cell', tierId: tier.id, roleId: col.id })}
-                                                className="relative group w-16 h-16 md:w-20 md:h-20 bg-gray-800 rounded-lg overflow-hidden border border-white/10 hover:border-yellow-500/50 transition-colors shadow-lg cursor-grab active:cursor-grabbing hover:scale-110 z-10"
-                                            >
-                                                <Image
-                                                    src={agent.image || agent.icon}
-                                                    alt={agent.name}
-                                                    fill
-                                                    className="object-cover pointer-events-none"
-                                                />
-                                            </div>
-                                        ))}
+                                        {/* Mobile Role Label */}
+                                        <span className="md:hidden text-yellow-500/80 font-bold text-xs uppercase tracking-wider text-center border-b border-white/5 pb-1 mb-2 w-full">
+                                            {col.label}
+                                        </span>
 
-                                        {itemsInCell.length === 0 && (
-                                            <div className="w-full h-full flex items-center justify-center pointer-events-none opacity-5">
-                                                <span className="text-xs font-mono uppercase text-white">Drop</span>
-                                            </div>
-                                        )}
+                                        <div className="flex flex-wrap gap-2 justify-center">
+                                            {itemsInCell.map(agent => (
+                                                <div
+                                                    key={agent.id}
+                                                    draggable
+                                                    onDragStart={(e) => onDragStart(e, agent.id, { type: 'cell', tierId: tier.id, roleId: col.id })}
+                                                    onClick={(e) => handleAgentClick(e, agent.id, 'cell')}
+                                                    className={`relative group w-16 h-16 md:w-20 md:h-20 bg-gray-800 rounded-lg overflow-hidden border transition-all shadow-lg cursor-grab active:cursor-grabbing hover:scale-110 z-10 
+                                                        ${selectedAgent?.id === agent.id
+                                                            ? 'border-yellow-400 ring-2 ring-yellow-400 ring-offset-2 ring-offset-black scale-110'
+                                                            : 'border-white/10 hover:border-yellow-500/50'}`}
+                                                >
+                                                    <Image
+                                                        src={agent.image || agent.icon}
+                                                        alt={agent.name}
+                                                        fill
+                                                        className="object-cover pointer-events-none"
+                                                    />
+                                                </div>
+                                            ))}
+
+                                            {itemsInCell.length === 0 && (
+                                                <div className="w-full h-8 md:h-full flex items-center justify-center pointer-events-none opacity-5">
+                                                    <span className="text-xs font-mono uppercase text-white">Drop</span>
+                                                </div>
+                                            )}
+                                        </div>
                                     </div>
                                 );
                             })}
@@ -299,18 +347,25 @@ export default function CommunityTierList() {
 
             {/* Pool Area */}
             <div
-                className="mt-12 bg-gray-900/80 p-6 rounded-xl border border-white/10 min-h-[150px]"
+                className={`mt-12 bg-gray-900/80 p-6 rounded-xl border transition-colors min-h-[150px] ${selectedAgent ? 'border-yellow-500/30 bg-yellow-900/5 cursor-pointer' : 'border-white/10'}`}
                 onDragOver={onDragOver}
                 onDrop={onDropPool}
+                onClick={handlePoolClick} // Click to return to pool
             >
-                <h3 className="text-gray-400 font-bold mb-4 uppercase tracking-widest text-sm text-center">Banco de Agentes (Arrástralos a la tabla)</h3>
+                <h3 className="text-gray-400 font-bold mb-4 uppercase tracking-widest text-sm text-center">
+                    {selectedAgent ? "Toca aquí para devolver al banco" : "Banco de Agentes (Arrastra o Toca para mover)"}
+                </h3>
                 <div className="flex flex-wrap gap-2 justify-center">
                     {agents.filter(a => isInPool(a.id)).map((agent) => (
                         <div
                             key={agent.id}
                             draggable
                             onDragStart={(e) => onDragStart(e, agent.id, { type: 'pool' })}
-                            className="relative w-16 h-16 md:w-20 md:h-20 bg-gray-800 rounded-lg overflow-hidden border border-white/10 hover:border-yellow-500/50 transition-colors shadow-lg cursor-grab hover:scale-105 active:scale-95"
+                            onClick={(e) => handleAgentClick(e, agent.id, 'pool')}
+                            className={`relative w-16 h-16 md:w-20 md:h-20 bg-gray-800 rounded-lg overflow-hidden border transition-all shadow-lg cursor-grab hover:scale-105 active:scale-95
+                                ${selectedAgent?.id === agent.id
+                                    ? 'border-yellow-400 ring-2 ring-yellow-400 ring-offset-2 ring-offset-black scale-110'
+                                    : 'border-white/10 hover:border-yellow-500/50'}`}
                         >
                             <Image
                                 src={agent.image || agent.icon}
@@ -322,6 +377,7 @@ export default function CommunityTierList() {
                     ))}
                 </div>
             </div>
+
 
             {/* Download Preview Modal */}
             {previewImage && (

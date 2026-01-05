@@ -225,16 +225,16 @@ export default function DeveloperTierList() {
             </div>
 
             {/* Grid Container */}
-            <div className="min-w-[800px] border border-white/10 rounded-lg overflow-hidden bg-[#0a0a0a]">
+            <div className="w-full border border-white/10 rounded-lg overflow-hidden bg-[#0a0a0a]">
 
-                {/* Header Row (Roles) */}
-                <div className="grid grid-cols-[100px_1fr_1fr_1fr_1fr] md:grid-cols-[120px_1fr_1fr_1fr_1fr]">
+                {/* Header Row (Roles) - Hidden on Mobile */}
+                <div className="hidden md:grid md:grid-cols-[120px_1fr_1fr_1fr_1fr]">
                     <div className="bg-gray-900/80 p-4 border-b border-r border-white/10 flex items-center justify-center">
                         <span className="font-bold text-gray-500 text-xs uppercase">Rango</span>
                     </div>
                     {ROLES.map(role => (
                         <div key={role.id} className="bg-gray-900/80 p-4 border-b border-white/10 border-l border-white/5 text-center flex items-center justify-center">
-                            <span className="font-black italic text-yellow-500 text-lg md:text-xl drop-shadow-sm tracking-wider">
+                            <span className="font-black italic text-yellow-500 text-xl drop-shadow-sm tracking-wider">
                                 {role.label}
                             </span>
                         </div>
@@ -243,14 +243,14 @@ export default function DeveloperTierList() {
 
                 {/* Tier Rows */}
                 {TIERS.map(tier => (
-                    <div key={tier} className="grid grid-cols-[100px_1fr_1fr_1fr_1fr] md:grid-cols-[120px_1fr_1fr_1fr_1fr] border-b border-white/5 last:border-0 min-h-[140px]">
+                    <div key={tier} className="flex flex-col md:grid md:grid-cols-[120px_1fr_1fr_1fr_1fr] border-b border-white/5 last:border-0 min-h-[140px]">
 
-                        {/* Row Header (Tier Label) - Smaller Font */}
+                        {/* Row Header (Tier Label) */}
                         <div
-                            className="flex items-center justify-center border-r border-black/20 relative overflow-hidden p-2"
+                            className="flex items-center justify-center border-b md:border-b-0 md:border-r border-black/20 relative overflow-hidden p-4 md:p-2 w-full md:w-auto"
                             style={{ backgroundColor: TIER_COLORS[tier] }}
                         >
-                            <span className="text-black font-black text-2xl md:text-3xl font-display italic shadow-black/10 drop-shadow-md">
+                            <span className="text-black font-black text-4xl md:text-3xl font-display italic shadow-black/10 drop-shadow-md">
                                 {tier}
                             </span>
                         </div>
@@ -261,21 +261,28 @@ export default function DeveloperTierList() {
                             const cellAgents = agentIds.map(id => agents.find(a => a.id === id)).filter(Boolean);
 
                             return (
-                                <div key={`${tier}-${role.id}`} className="bg-gray-900/30 p-2 flex flex-wrap gap-2 content-center justify-center border-l border-white/5">
-                                    {cellAgents.map(agent => (
-                                        <div key={agent.id} className="relative group w-16 h-16 md:w-20 md:h-20 bg-gray-800 rounded-lg overflow-hidden border border-white/10 hover:border-yellow-500/50 transition-colors shadow-lg">
-                                            <Image
-                                                src={agent.image || agent.icon}
-                                                alt={agent.name}
-                                                fill
-                                                className={`object-cover ${agent.customStyle ? agent.customStyle.replace('scale-[1.00] group-hover:scale-[1.10]', '') : ''}`}
-                                            />
-                                            {/* Tooltip */}
-                                            <div className="absolute bottom-0 left-0 right-0 bg-black/80 text-[9px] text-center py-0.5 truncate px-1 opacity-0 group-hover:opacity-100 transition-opacity">
-                                                {agent.name}
+                                <div key={`${tier}-${role.id}`} className="bg-gray-900/30 p-4 flex flex-col md:justify-center border-l-0 md:border-l border-white/5 border-b md:border-b-0 border-white/5 last:border-b-0">
+                                    {/* Mobile Role Label */}
+                                    <span className="md:hidden text-yellow-500 font-bold text-sm mb-3 uppercase tracking-wider text-center border-b border-white/10 pb-1">
+                                        {role.label}
+                                    </span>
+
+                                    <div className="flex flex-wrap gap-3 justify-center">
+                                        {cellAgents.map(agent => (
+                                            <div key={agent.id} className="relative group w-16 h-16 md:w-20 md:h-20 bg-gray-800 rounded-lg overflow-hidden border border-white/10 hover:border-yellow-500/50 transition-colors shadow-lg">
+                                                <Image
+                                                    src={agent.image || agent.icon}
+                                                    alt={agent.name}
+                                                    fill
+                                                    className={`object-cover ${agent.customStyle ? agent.customStyle.replace('scale-[1.00] group-hover:scale-[1.10]', '') : ''}`}
+                                                />
+                                                {/* Tooltip */}
+                                                <div className="absolute bottom-0 left-0 right-0 bg-black/80 text-[9px] text-center py-0.5 truncate px-1 opacity-0 group-hover:opacity-100 transition-opacity">
+                                                    {agent.name}
+                                                </div>
                                             </div>
-                                        </div>
-                                    ))}
+                                        ))}
+                                    </div>
                                 </div>
                             );
                         })}
