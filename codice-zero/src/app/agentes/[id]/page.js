@@ -115,7 +115,7 @@ const SidebarNav = ({ agentId }) => {
                 w-4 h-4 rounded-full border-2 transition-all duration-300 z-10 box-border
                 ${isActive
                   ? 'bg-yellow-400 border-yellow-400 scale-110 shadow-[0_0_15px_rgba(250,204,21,0.5)]'
-                  : 'bg-[#0b0c15] border-white/20 group-hover:border-white/60'}
+                  : 'bg-[#18181b] border-white/20 group-hover:border-white/60'}
               `}
             >
               {isActive && <div className="absolute inset-0 rounded-full bg-yellow-400 opacity-50 animate-ping"></div>}
@@ -149,7 +149,7 @@ export default function AgentDetailPage() {
   // RETURN EARLY IF NO AGENT
   if (!agent) {
     return (
-      <div className="min-h-screen bg-gray-950 flex items-center justify-center text-white">
+      <div className="min-h-screen bg-[#09090b] flex items-center justify-center text-white">
         Agente no encontrado
       </div>
     );
@@ -275,7 +275,7 @@ export default function AgentDetailPage() {
   };
 
   if (!agent) {
-    return <div className="min-h-screen bg-gray-950 flex items-center justify-center text-white">Agente no encontrado</div>;
+    return <div className="min-h-screen bg-[#09090b] flex items-center justify-center text-white">Agente no encontrado</div>;
   }
 
   // --- THEME & COLORS ---
@@ -386,7 +386,7 @@ export default function AgentDetailPage() {
 
           {/* Contenido Potencial - Solo visible si Nivel > 0 */}
           {potentialLevel > 0 ? (
-            <div className="bg-[#0a0a0a] border border-white/5 rounded-xl p-5 hover:bg-white/[0.02] transition-colors relative overflow-hidden animate-fadeIn">
+            <div className="bg-[#18181b] border border-white/5 rounded-xl p-5 hover:bg-white/[0.02] transition-colors relative overflow-hidden animate-fadeIn">
               <div className="absolute left-0 top-0 bottom-0 w-1" style={{ backgroundColor: themeColor }}></div>
               <h4 className="text-lg font-bold text-white mb-2">{details.potential.name || "Sin nombre"}</h4>
               <div className="text-gray-300 text-sm leading-relaxed space-y-2 font-sans">
@@ -394,7 +394,7 @@ export default function AgentDetailPage() {
               </div>
             </div>
           ) : (
-            <div className="h-24 bg-[#0a0a0a]/50 border border-white/5 rounded-xl flex items-center justify-center text-gray-600 italic border-dashed">
+            <div className="h-24 bg-[#18181b]/50 border border-white/5 rounded-xl flex items-center justify-center text-gray-600 italic border-dashed">
               Potencial inactivo
             </div>
           )}
@@ -497,7 +497,7 @@ export default function AgentDetailPage() {
             const description = processScaling(skill.description);
 
             return (
-              <div key={idx} className="bg-[#0a0a0a] border border-white/5 rounded-xl p-5 hover:bg-white/[0.02] transition-colors relative overflow-hidden">
+              <div key={idx} className="bg-[#18181b] border border-white/5 rounded-xl p-5 hover:bg-white/[0.02] transition-colors relative overflow-hidden">
                 <div className="absolute left-0 top-0 bottom-0 w-1" style={{ backgroundColor: themeColor }}></div>
 
                 <h4 className="text-lg font-bold text-white mb-2">{skill.name || "Sin nombre"}</h4>
@@ -527,7 +527,7 @@ export default function AgentDetailPage() {
 
   // --- LAYOUT ---
   return (
-    <div className="min-h-screen bg-[#0b0c15] text-white selection:bg-yellow-500/30">
+    <div className="min-h-screen bg-[#09090b] text-white selection:bg-yellow-500/30">
 
       {/* NAVEGACIÓN LATERAL FLOTANTE */}
       <SidebarNav agentId={agentId} hasPotential={!!details?.potential} />
@@ -607,7 +607,7 @@ export default function AgentDetailPage() {
           {/* Aviso Beta REMOVED from here */}
 
           {/* Panel de Estadísticas Estilo "Hakush" (Tarjeta Oscura con Datos) */}
-          <div id="stats" className="bg-[#0a0a0a]/80 backdrop-blur-md border border-white/10 rounded-xl p-4 shadow-2xl relative overflow-hidden group max-w-[480px] mx-auto lg:mr-0">
+          <div id="stats" className="bg-[#18181b]/80 backdrop-blur-md border border-white/10 rounded-xl p-4 shadow-2xl relative overflow-hidden group max-w-[480px] mx-auto lg:mr-0">
             <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-white/5 to-transparent rounded-full -translate-y-1/2 translate-x-1/2 blur-2xl pointer-events-none"></div>
 
             {/* Sub-Header: Materiales REMOVED */}
@@ -713,7 +713,7 @@ export default function AgentDetailPage() {
                 : skill.type.replace("Mindscape ", "");
 
               return (
-                <div key={idx} className="bg-[#0a0a0a] border border-white/5 rounded-xl p-6 relative overflow-hidden group hover:border-white/20 transition-all">
+                <div key={idx} className="bg-[#18181b] border border-white/5 rounded-xl p-6 relative overflow-hidden group hover:border-white/20 transition-all">
                   {/* Número Grande de Fondo */}
                   <div className="absolute -right-4 -bottom-4 text-9xl font-black text-white/5 select-none pointer-events-none group-hover:text-white/10 transition-colors">
                     {mindscapeNumber}

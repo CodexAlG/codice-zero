@@ -225,15 +225,15 @@ export default function DeveloperTierList() {
             </div>
 
             {/* Grid Container */}
-            <div className="w-full border border-white/10 rounded-lg overflow-hidden bg-[#0a0a0a]">
+            <div className="w-full border border-white/10 rounded-lg overflow-hidden bg-[#09090b]">
 
                 {/* Header Row (Roles) - Hidden on Mobile */}
                 <div className="hidden md:grid md:grid-cols-[120px_1fr_1fr_1fr_1fr]">
-                    <div className="bg-gray-900/80 p-4 border-b border-r border-white/10 flex items-center justify-center">
+                    <div className="bg-[#18181b] p-4 border-b border-r border-white/10 flex items-center justify-center">
                         <span className="font-bold text-gray-500 text-xs uppercase">Rango</span>
                     </div>
                     {ROLES.map(role => (
-                        <div key={role.id} className="bg-gray-900/80 p-4 border-b border-white/10 border-l border-white/5 text-center flex items-center justify-center">
+                        <div key={role.id} className="bg-[#18181b] p-4 border-b border-white/10 border-l border-white/5 text-center flex items-center justify-center">
                             <span className="font-black italic text-yellow-500 text-xl drop-shadow-sm tracking-wider">
                                 {role.label}
                             </span>
@@ -261,7 +261,7 @@ export default function DeveloperTierList() {
                             const cellAgents = agentIds.map(id => agents.find(a => a.id === id)).filter(Boolean);
 
                             return (
-                                <div key={`${tier}-${role.id}`} className="bg-gray-900/30 p-4 flex flex-col md:justify-center border-l-0 md:border-l border-white/5 border-b md:border-b-0 border-white/5 last:border-b-0">
+                                <div key={`${tier}-${role.id}`} className="bg-[#09090b]/50 p-4 flex flex-col md:justify-center border-l-0 md:border-l border-white/5 border-b md:border-b-0 border-white/5 last:border-b-0">
                                     {/* Mobile Role Label */}
                                     <span className="md:hidden text-yellow-500 font-bold text-sm mb-3 uppercase tracking-wider text-center border-b border-white/10 pb-1">
                                         {role.label}
@@ -269,7 +269,7 @@ export default function DeveloperTierList() {
 
                                     <div className="flex flex-wrap gap-3 justify-center">
                                         {cellAgents.map(agent => (
-                                            <div key={agent.id} className="relative group w-16 h-16 md:w-20 md:h-20 bg-gray-800 rounded-lg overflow-hidden border border-white/10 hover:border-yellow-500/50 transition-colors shadow-lg">
+                                            <div key={agent.id} className="relative group w-16 h-16 md:w-20 md:h-20 bg-[#18181b] rounded-lg overflow-hidden border border-white/10 hover:border-yellow-500/50 transition-colors shadow-lg">
                                                 <Image
                                                     src={agent.image || agent.icon}
                                                     alt={agent.name}

@@ -18,7 +18,7 @@ export default function TierRow({
 }) {
 
     return (
-        <div className="flex w-full min-h-[100px] mb-1 bg-gray-900/50 border-b border-white/5">
+        <div className="flex w-full min-h-[100px] mb-1 bg-[#09090b]/50 border-b border-white/5">
             {/* Tier Label */}
             <div
                 className="w-24 md:w-32 flex-shrink-0 flex flex-col items-center justify-center p-2 text-center relative overflow-hidden group border-r border-black/20"
@@ -67,7 +67,7 @@ export default function TierRow({
                             key={item.id}
                             draggable
                             onDragStart={(e) => onDragStart && onDragStart(e, item, id)}
-                            className="relative group w-16 h-16 md:w-20 md:h-20 bg-gray-800 rounded-lg overflow-hidden border border-white/10 hover:border-yellow-500/50 transition-colors shadow-lg cursor-grab active:cursor-grabbing hover:scale-105 active:scale-95 z-10"
+                            className="relative group w-16 h-16 md:w-20 md:h-20 bg-[#18181b] rounded-lg overflow-hidden border border-white/10 hover:border-yellow-500/50 transition-colors shadow-lg cursor-grab active:cursor-grabbing hover:scale-105 active:scale-95 z-10"
                         >
                             <Image
                                 src={item.image || item.icon}
@@ -84,7 +84,7 @@ export default function TierRow({
                 ) : (
                     // Static Mode (Developer or fallback)
                     items.map((item) => (
-                        <div key={item.id} className="relative group w-16 h-16 md:w-20 md:h-20 bg-gray-800 rounded-lg overflow-hidden border border-white/10 hover:border-yellow-500/50 transition-colors shadow-lg">
+                        <div key={item.id} className="relative group w-16 h-16 md:w-20 md:h-20 bg-[#18181b] rounded-lg overflow-hidden border border-white/10 hover:border-yellow-500/50 transition-colors shadow-lg">
                             <Image
                                 src={item.image || item.icon}
                                 alt={item.name}

@@ -83,7 +83,7 @@ export default function WeaponDetail({ params }) {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-900 via-gray-950 to-black">
+    <div className="min-h-screen bg-[#09090b]">
       {/* Botón Volver Flotante */}
       <Link href="/armas" className="absolute top-8 left-8 z-50 inline-flex items-center text-gray-400 hover:text-yellow-400 transition-colors group">
         <ArrowLeft className="w-6 h-6 mr-2 group-hover:-translate-x-1 transition-transform" />
@@ -152,7 +152,7 @@ export default function WeaponDetail({ params }) {
           </div>
 
           {/* 2. Panel de Stats (Expandido) */}
-          <div className="bg-gray-900/50 border border-white/10 rounded-xl p-6 backdrop-blur-sm relative overflow-hidden w-full">
+          <div className="bg-[#18181b]/80 border border-white/10 rounded-xl p-6 backdrop-blur-sm relative overflow-hidden w-full">
             <div className="space-y-2">
               <div className="flex justify-between text-sm font-mono text-gray-400">
                 <span>Nivel {level}</span>

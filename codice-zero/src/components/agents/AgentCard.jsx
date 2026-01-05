@@ -28,7 +28,7 @@ const AgentCard = memo(({ agent, priority = false }) => {
   };
 
   return (
-    <div className={`relative w-full max-w-[140px] mx-auto aspect-[4/5] bg-gray-900/80 rounded-lg border-b-4 ${rankColor} overflow-hidden group hover:scale-[1.02] hover:shadow-xl transition-none`}>
+    <div className={`relative w-full max-w-[140px] mx-auto aspect-[4/5] bg-[#18181b] rounded-lg border-b-4 ${rankColor} overflow-hidden group hover:scale-[1.02] hover:shadow-xl transition-none`}>
 
       {/* Element Icon with Aura - Top Left */}
       <div className="absolute top-1.5 left-1.5 z-20 flex flex-col gap-0.5">

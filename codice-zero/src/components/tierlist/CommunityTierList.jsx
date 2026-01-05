@@ -230,7 +230,7 @@ export default function CommunityTierList() {
             </div>
 
             {/* Toolbar */}
-            <div className="flex flex-wrap items-center justify-between mb-6 gap-4 bg-gray-900/50 p-4 rounded-xl border border-white/5">
+            <div className="flex flex-wrap items-center justify-between mb-6 gap-4 bg-[#18181b]/50 p-4 rounded-xl border border-white/5">
                 {/* Left: Reset */}
                 <div className="space-x-2">
                     <button onClick={handleReset} className="px-4 py-2 bg-red-600/20 hover:bg-red-600 text-red-200 hover:text-white rounded-lg font-bold text-sm flex items-center gap-2 transition-colors">
@@ -255,15 +255,15 @@ export default function CommunityTierList() {
 
             {/* Capture Area (VISIBLE RESPONSIVE VERSION) */}
             <div className="overflow-x-auto">
-                <div ref={captureRef} className="w-full border border-white/10 rounded-lg overflow-hidden bg-[#0a0a0a] inline-block">
+                <div ref={captureRef} className="w-full border border-white/10 rounded-lg overflow-hidden bg-[#09090b] inline-block">
 
                     {/* Header (Roles) - Hidden on Mobile */}
                     <div className="hidden md:grid" style={gridColsStyle}>
-                        <div className="bg-gray-900/80 p-4 border-b border-r border-white/10 flex items-center justify-center">
+                        <div className="bg-[#18181b] p-4 border-b border-r border-white/10 flex items-center justify-center">
                             <span className="font-bold text-gray-500 text-xs uppercase">Rango</span>
                         </div>
                         {tierCols.map(col => (
-                            <div key={col.id} className="bg-gray-900/80 border-b border-white/10 border-l border-white/5 text-center flex items-center justify-center relative group p-2">
+                            <div key={col.id} className="bg-[#18181b] border-b border-white/10 border-l border-white/5 text-center flex items-center justify-center relative group p-2">
                                 <input
                                     value={col.label}
                                     onChange={(e) => updateColLabel(col.id, e.target.value)}
@@ -324,7 +324,7 @@ export default function CommunityTierList() {
                                         onClick={() => handleCellClick(tier.id, col.id)}
                                         onDragOver={onDragOver}
                                         onDrop={(e) => onDropCell(e, tier.id, col.id)}
-                                        className={`bg-gray-900/30 p-2 flex flex-col md:flex-row flex-wrap gap-2 content-center md:justify-center border-l-0 md:border-l border-white/5 border-b transition-colors ${selectedAgent ? 'hover:bg-yellow-500/10 cursor-pointer' : 'hover:bg-white/5'}`}
+                                        className={`bg-[#09090b]/50 p-2 flex flex-col md:flex-row flex-wrap gap-2 content-center md:justify-center border-l-0 md:border-l border-white/5 border-b transition-colors ${selectedAgent ? 'hover:bg-yellow-500/10 cursor-pointer' : 'hover:bg-white/5'}`}
                                     >
                                         {/* Mobile Role Label */}
                                         <span className="md:hidden text-yellow-500/80 font-bold text-xs uppercase tracking-wider text-center border-b border-white/5 pb-1 mb-2 w-full">
@@ -338,7 +338,7 @@ export default function CommunityTierList() {
                                                     draggable
                                                     onDragStart={(e) => onDragStart(e, agent.id, { type: 'cell', tierId: tier.id, roleId: col.id })}
                                                     onClick={(e) => handleAgentClick(e, agent.id, 'cell')}
-                                                    className={`relative group w-16 h-16 md:w-20 md:h-20 bg-gray-800 rounded-lg overflow-hidden border transition-all shadow-lg cursor-grab active:cursor-grabbing hover:scale-110 z-10 
+                                                    className={`relative group w-16 h-16 md:w-20 md:h-20 bg-[#18181b] rounded-lg overflow-hidden border transition-all shadow-lg cursor-grab active:cursor-grabbing hover:scale-110 z-10
                                                         ${selectedAgent?.id === agent.id
                                                             ? 'border-yellow-400 ring-2 ring-yellow-400 ring-offset-2 ring-offset-black scale-110'
                                                             : 'border-white/10 hover:border-yellow-500/50'}`}
@@ -369,10 +369,10 @@ export default function CommunityTierList() {
 
             {/* HIDDEN DESKTOP EXPORT VIEW (FIXED WIDTH, ALWAYS GRID) */}
             <div style={{ position: 'absolute', top: '-10000px', left: '-10000px', width: '1280px' }}>
-                <div ref={exportRef} className="w-[1280px] border border-white/10 rounded-lg overflow-hidden bg-[#0a0a0a]">
+                <div ref={exportRef} className="w-[1280px] border border-white/10 rounded-lg overflow-hidden bg-[#09090b]">
 
                     {/* NEW: Export Title */}
-                    <div className="bg-[#0f172a] p-6 border-b border-white/10 flex items-center justify-center">
+                    <div className="bg-[#18181b] p-6 border-b border-white/10 flex items-center justify-center">
                         <h1 className="text-5xl font-black italic text-white uppercase font-display tracking-wider drop-shadow-lg">
                             {tierListTitle || "My Tier List"}
                         </h1>
@@ -443,7 +443,7 @@ export default function CommunityTierList() {
 
             {/* Pool Area */}
             <div
-                className={`mt-12 bg-gray-900/80 p-6 rounded-xl border transition-colors min-h-[150px] ${selectedAgent ? 'border-yellow-500/30 bg-yellow-900/5 cursor-pointer' : 'border-white/10'}`}
+                className={`mt-12 bg-[#09090b]/80 p-6 rounded-xl border transition-colors min-h-[150px] ${selectedAgent ? 'border-yellow-500/30 bg-yellow-900/5 cursor-pointer' : 'border-white/10'}`}
                 onDragOver={onDragOver}
                 onDrop={onDropPool}
                 onClick={handlePoolClick} // Click to return to pool
@@ -458,7 +458,7 @@ export default function CommunityTierList() {
                             draggable
                             onDragStart={(e) => onDragStart(e, agent.id, { type: 'pool' })}
                             onClick={(e) => handleAgentClick(e, agent.id, 'pool')}
-                            className={`relative w-16 h-16 md:w-20 md:h-20 bg-gray-800 rounded-lg overflow-hidden border transition-all shadow-lg cursor-grab hover:scale-105 active:scale-95
+                            className={`relative w-16 h-16 md:w-20 md:h-20 bg-[#18181b] rounded-lg overflow-hidden border transition-all shadow-lg cursor-grab hover:scale-105 active:scale-95
                                 ${selectedAgent?.id === agent.id
                                     ? 'border-yellow-400 ring-2 ring-yellow-400 ring-offset-2 ring-offset-black scale-110'
                                     : 'border-white/10 hover:border-yellow-500/50'}`}
@@ -478,7 +478,7 @@ export default function CommunityTierList() {
             {/* Download Preview Modal */}
             {previewImage && (
                 <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/80 backdrop-blur-sm p-4">
-                    <div className="bg-[#0f172a] border border-white/10 rounded-xl p-6 max-w-4xl w-full max-h-[90vh] flex flex-col shadow-2xl">
+                    <div className="bg-[#09090b] border border-white/10 rounded-xl p-6 max-w-4xl w-full max-h-[90vh] flex flex-col shadow-2xl">
                         <h3 className="text-xl font-bold text-white mb-4">Vista Previa</h3>
 
                         {/* Fixed: Image container scaling */}
