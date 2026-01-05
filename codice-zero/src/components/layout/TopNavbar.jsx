@@ -3,7 +3,7 @@
 import { useState, useEffect, useMemo } from 'react';
 import { usePathname } from 'next/navigation';
 import Image from 'next/image';
-import { BookOpen, Home, X, List } from 'lucide-react';
+import { BookOpen, Home, X, List, GitCompare } from 'lucide-react';
 import Link from 'next/link';
 import appIcon from '@/app/icon.png';
 import { agents } from '../../data/agents';
@@ -42,6 +42,8 @@ export default function TopNavbar({ isVisible }) {
             setActiveItem(4); // Discos
         } else if (pathname.startsWith('/tierlist')) {
             setActiveItem(5); // Tier List
+        } else if (pathname.startsWith('/diff')) {
+            setActiveItem(6); // Diferencias
         }
     }, [pathname]);
 
@@ -196,6 +198,12 @@ export default function TopNavbar({ isVisible }) {
                         index={5}
                         icon={List}
                         label="Tier List"
+                    />
+                    <NavItem
+                        href="/diff"
+                        index={6}
+                        icon={GitCompare}
+                        label="Diferencias"
                     />
                 </ul>
             </nav>
