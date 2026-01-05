@@ -307,19 +307,23 @@ export default function AgentDetailPage() {
   // --- HELPER: Process Potential Scaling ---
   const processPotentialScaling = (text) => {
     if (!details?.potentialSkillScaling || !text) return text;
-    const currentScalingValues = details.potentialSkillScaling[potentialLevel];
+    // potentialLevel 0 = hidden/inactive. Levels 1-5 correspond to array indices 0-4.
+    if (potentialLevel === 0) return text;
+
+    const index = potentialLevel - 1;
+    const currentScalingValues = details.potentialSkillScaling[index];
     if (!currentScalingValues) return text;
 
     // START: Custom Colors Logic (reuse core one or make new if needed)
     const scalingColors = details.potentialSkillScalingColors || [];
 
     return text.replace(/\{VALOR_(\d+)\}/g, (_, number) => {
-      const index = parseInt(number) - 1;
-      const val = currentScalingValues[index];
+      const valIndex = parseInt(number) - 1;
+      const val = currentScalingValues[valIndex];
 
       if (val !== undefined) {
-        if (scalingColors[index]) {
-          return `[CV="${scalingColors[index]}"]${val}[/CV]`;
+        if (scalingColors[valIndex]) {
+          return `[CV="${scalingColors[valIndex]}"]${val}[/CV]`;
         }
         return `[VAL]${val}[/VAL]`;
       }
@@ -343,7 +347,7 @@ export default function AgentDetailPage() {
               <div className="w-8 h-8 rounded bg-white/5 flex items-center justify-center">
                 {/* Reuse Core Skill Icon for now or get a specific one */}
                 <Image
-                  src={skillIcons["Pasiva Central"]}
+                  src={skillIcons["Potencial"] || skillIcons["Pasiva Central"]}
                   alt="Potencial" width={20} height={20} className="object-contain opacity-80" unoptimized
                 />
               </div>
@@ -378,14 +382,20 @@ export default function AgentDetailPage() {
             )}
           </div>
 
-          {/* Contenido Potencial */}
-          <div className="bg-[#0a0a0a] border border-white/5 rounded-xl p-5 hover:bg-white/[0.02] transition-colors relative overflow-hidden">
-            <div className="absolute left-0 top-0 bottom-0 w-1" style={{ backgroundColor: themeColor }}></div>
-            <h4 className="text-lg font-bold text-white mb-2">{details.potential.name || "Sin nombre"}</h4>
-            <div className="text-gray-300 text-sm leading-relaxed space-y-2 font-sans">
-              <HighlightText text={replaceIcons(description)} skills={details.skills} skillIcons={skillIcons} elementColor={themeColor} />
+          {/* Contenido Potencial - Solo visible si Nivel > 0 */}
+          {potentialLevel > 0 ? (
+            <div className="bg-[#0a0a0a] border border-white/5 rounded-xl p-5 hover:bg-white/[0.02] transition-colors relative overflow-hidden animate-fadeIn">
+              <div className="absolute left-0 top-0 bottom-0 w-1" style={{ backgroundColor: themeColor }}></div>
+              <h4 className="text-lg font-bold text-white mb-2">{details.potential.name || "Sin nombre"}</h4>
+              <div className="text-gray-300 text-sm leading-relaxed space-y-2 font-sans">
+                <HighlightText text={replaceIcons(description)} skills={details.skills} skillIcons={skillIcons} elementColor={themeColor} />
+              </div>
             </div>
-          </div>
+          ) : (
+            <div className="h-24 bg-[#0a0a0a]/50 border border-white/5 rounded-xl flex items-center justify-center text-gray-600 italic border-dashed">
+              Potencial inactivo
+            </div>
+          )}
         </div>
       </div>
     );
