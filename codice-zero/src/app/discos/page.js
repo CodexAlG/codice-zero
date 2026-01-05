@@ -6,7 +6,6 @@ import SectionTitle from "@/components/ui/SectionTitle";
 import HighlightText from "@/components/ui/HighlightText";
 import { driveDiscs } from "@/data/discs";
 import LoadingSpinner from '@/components/ui/LoadingSpinner';
-import DiscCard from '@/components/discs/DiscCard';
 import BetaWarning from "@/components/ui/BetaWarning";
 
 export default function DiscsPage() {
@@ -51,17 +50,66 @@ export default function DiscsPage() {
 
           {hasBetaContent && <BetaWarning />}
 
-          {/* Discs Grid */}
-          <div className="w-full max-w-7xl mx-auto">
-            <motion.div
-              layout
-              className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 justify-center transition-none"
-              style={{ minHeight: '80vh' }}
-            >
-              {driveDiscs.map((disc, index) => (
-                <DiscCard key={disc.id} disc={disc} priority={index < 8} />
-              ))}
-            </motion.div>
+          {/* Discs List View */}
+          <div className="flex flex-col gap-4 w-full max-w-7xl mx-auto pb-12">
+            {driveDiscs.map((disc) => (
+              <motion.div
+                key={disc.id}
+                layout
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="w-full bg-[#0a0a0a] border border-white/10 rounded-xl overflow-hidden flex flex-col md:flex-row group hover:border-yellow-400 hover:bg-white/5 transition-all duration-300 relative"
+              >
+                {/* Decoración Esquina */}
+                <div className="absolute top-0 right-0 w-16 h-16 bg-gradient-to-bl from-white/5 to-transparent pointer-events-none" />
+                <div className="absolute top-0 right-0 w-2 h-2 bg-white/10 group-hover:bg-yellow-400 transition-colors" />
+
+                {/* Columna Izquierda: Identidad */}
+                <div className="w-full md:w-64 flex-shrink-0 bg-white/5 md:bg-transparent border-b md:border-b-0 md:border-r border-white/10 p-6 flex flex-col items-center justify-center gap-4 relative">
+                  {/* Icono */}
+                  <div className="relative w-24 h-24 filter drop-shadow-[0_0_10px_rgba(0,0,0,0.5)] group-hover:scale-110 transition-transform duration-300">
+                    <Image
+                      src={disc.image}
+                      alt={disc.name}
+                      fill
+                      className="object-contain"
+                    />
+                  </div>
+                  {/* Nombre */}
+                  <h3 className="text-yellow-400 font-bold text-base text-center uppercase tracking-wider font-display leading-tight px-2">
+                    {disc.name}
+                  </h3>
+                </div>
+
+                {/* Columna Derecha: Stats */}
+                <div className="flex-1 p-6 flex flex-col gap-6 justify-center">
+                  {/* 2 Piezas */}
+                  <div className="flex flex-col gap-2">
+                    <span className="text-[10px] font-bold text-yellow-500 uppercase tracking-widest bg-yellow-500/10 px-2 py-1 rounded w-fit border border-yellow-500/20">
+                      2 Piezas
+                    </span>
+                    <p className="text-sm font-mono text-white/90 pl-1">
+                      {disc.twoPiece}
+                    </p>
+                  </div>
+
+                  {/* 4 Piezas */}
+                  <div className="flex flex-col gap-2">
+                    <span className="text-[10px] font-bold text-gray-500 uppercase tracking-widest px-1">
+                      4 Piezas
+                    </span>
+                    <p className="text-sm text-gray-300 leading-relaxed pl-1">
+                      {/* Simple parsing for paren keywords */}
+                      {disc.fourPiece.split(/(\(.*?\))/g).map((part, i) => (
+                        part.startsWith('(') && part.endsWith(')') ?
+                          <span key={i} className="text-yellow-200 font-semibold">{part.slice(1, -1)}</span> :
+                          <span key={i}>{part}</span>
+                      ))}
+                    </p>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
           </div>
         </div>
       </div>
