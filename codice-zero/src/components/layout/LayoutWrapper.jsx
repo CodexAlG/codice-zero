@@ -56,7 +56,7 @@ export default function LayoutWrapper({ children }) {
   }
 
   return (
-    <div className="flex flex-col h-screen w-screen overflow-hidden text-white bg-slate-950">
+    <div className="flex flex-col h-screen w-screen overflow-hidden text-white bg-[#09090b]">
 
       {/* TAREA 1: HEADER MÓVIL (Visible solo en móvil) */}
       <MobileHeader toggleSidebar={toggleDrawer} />

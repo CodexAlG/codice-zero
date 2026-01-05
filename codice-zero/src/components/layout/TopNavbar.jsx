@@ -79,7 +79,7 @@ export default function TopNavbar({ isVisible }) {
                 {/* Dropdown Menu (Opens to Right) */}
                 {hasDropdown && latestItems && (
                     <div className="absolute top-0 left-full ml-2 hidden group-hover:block z-50 pl-2">
-                        <div className="bg-[#0f172a] border border-white/10 rounded-xl shadow-2xl p-4 w-72 backdrop-blur-xl flex flex-col gap-3 relative overflow-hidden">
+                        <div className="bg-[#09090b] border border-white/10 rounded-xl shadow-2xl p-4 w-72 backdrop-blur-xl flex flex-col gap-3 relative overflow-hidden">
                             {/* Decoration */}
                             <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-yellow-500 to-transparent opacity-50"></div>
 
@@ -120,7 +120,7 @@ export default function TopNavbar({ isVisible }) {
 
     return (
         <header
-            className={`fixed top-0 left-0 h-full w-56 z-50 bg-slate-950 backdrop-blur-md border-r border-white/5 shadow-2xl transition-transform duration-300 ease-in-out ${isVisible ? 'translate-x-0' : '-translate-x-full'
+            className={`fixed top-0 left-0 h-full w-56 z-50 bg-[#09090b] backdrop-blur-md border-r border-white/5 shadow-2xl transition-transform duration-300 ease-in-out ${isVisible ? 'translate-x-0' : '-translate-x-full'
                 } hidden lg:flex flex-col items-center py-8`}
         >
             {/* Logo CZ */}
