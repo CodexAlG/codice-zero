@@ -49,10 +49,10 @@ export default function TopNavbar({ isVisible }) {
         const isActive = activeItem === index;
 
         return (
-            <li className="relative group w-full px-4 py-1">
+            <li className="relative group w-full px-3 py-1">
                 <Link
                     href={href}
-                    className={`relative flex items-center h-12 rounded-xl transition-all duration-200 px-4 gap-4
+                    className={`relative flex items-center h-12 rounded-xl transition-all duration-200 px-3 gap-3
                     ${isActive
                             ? 'text-yellow-300 bg-yellow-500/10 shadow-lg shadow-yellow-500/20 border border-yellow-400/30'
                             : 'text-gray-400 hover:bg-white/5 hover:text-white hover:shadow-cyan-400/20'} 
@@ -118,24 +118,24 @@ export default function TopNavbar({ isVisible }) {
 
     return (
         <header
-            className={`fixed top-0 left-0 h-full w-64 z-50 bg-[#0b0c15]/95 backdrop-blur-md border-r border-white/5 shadow-2xl transition-transform duration-300 ease-in-out ${isVisible ? 'translate-x-0' : '-translate-x-full'
+            className={`fixed top-0 left-0 h-full w-56 z-50 bg-[#0b0c15]/95 backdrop-blur-md border-r border-white/5 shadow-2xl transition-transform duration-300 ease-in-out ${isVisible ? 'translate-x-0' : '-translate-x-full'
                 } hidden lg:flex flex-col items-center py-8`}
         >
             {/* Logo CZ */}
             <Link href="/" className="flex flex-col items-center justify-center group relative mb-8 gap-2 w-full px-6">
-                <div className="relative w-16 h-16 transition-transform duration-300 group-hover:scale-110">
+                <div className="relative w-20 h-20 transition-transform duration-300 group-hover:scale-110">
                     <div className="absolute inset-0 bg-yellow-400 blur-xl opacity-40 rounded-full animate-pulse"></div>
                     <Image
                         src={appIcon}
                         alt="CodiceZero Logo"
-                        width={64}
-                        height={64}
+                        width={80}
+                        height={80}
                         className="object-contain relative z-10 drop-shadow-[0_0_12px_rgba(250,204,21,0.8)]"
                     />
                 </div>
 
                 {/* Texto CodiceZero */}
-                <span className="text-xs uppercase font-bold tracking-widest text-yellow-300 drop-shadow-[0_0_5px_rgba(234,179,8,0.8)] font-display text-center leading-none mt-2">
+                <span className="text-sm uppercase font-bold tracking-widest text-yellow-300 drop-shadow-[0_0_5px_rgba(234,179,8,0.8)] font-display text-center leading-none mt-2">
                     Codice<br />Zero
                 </span>
 
