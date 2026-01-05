@@ -116,7 +116,7 @@ export default {
     {
       type: "Técnica Definitiva",
       name: "Definitiva: Blasfemia",
-      description: "Cuando el Nivel de Decibelios está al [Maximo], presiona [Icono Definitiva] para activar: Arroja la guadaña en un poderoso ataque giratorio, luego lanza un (Movimiento Final), causando masivo Daño Hielo. Esta habilidad no se cuenta como un ataque pesado. Después de que la habilidad es usada, puede ser seguida directamente con el 4to golpe de (Ataque Basico: Cuarteto del Abismo Oscuro). El personaje es invulnerable mientras usa esta habilidad.",
+      description: "Cuando el Nivel de Decibelios está al (Máximo), presiona [Icono Definitiva] para activar: Arroja la guadaña en un poderoso ataque giratorio, luego lanza un (Movimiento Final), causando masivo Daño Hielo. Esta habilidad no se cuenta como un ataque pesado. Después de que la habilidad es usada, puede ser seguida directamente con el 4to golpe de (Ataque Basico: Cuarteto del Abismo Oscuro). El personaje es invulnerable mientras usa esta habilidad.",
       tags: ["Hielo", "Técnica Definitiva"]
     },
     {

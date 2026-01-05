@@ -208,7 +208,7 @@ export default {
     {
       type: "Técnica Definitiva",
       name: "Servicio Detenido por Numero Marcado",
-      description: "Cuando el Nivel de Decibelios está al [Maximo], presiona [Icono Definitiva] para activar: Corre hacia adelante y realiza un ataque de golpe de dedo, causando masivo Daño Físico. Después de usar esta habilidad, puede seguir inmediatamente con el 4to golpe de (Ataque Basico: Encantada de Servirle). El personaje es invulnerable mientras usa esta habilidad.",
+      description: "Cuando el Nivel de Decibelios está al (Máximo), presiona [Icono Definitiva] para activar: Corre hacia adelante y realiza un ataque de golpe de dedo, causando masivo Daño Físico. Después de usar esta habilidad, puede seguir inmediatamente con el 4to golpe de (Ataque Basico: Encantada de Servirle). El personaje es invulnerable mientras usa esta habilidad.",
       tags: [
         "Físico",
         "Técnica Definitiva"

@@ -122,7 +122,7 @@ export default {
     {
       type: "Técnica Definitiva",
       name: "Definitiva: Final de Lluvia de Estrellas",
-      description: "Cuando el Nivel de Decibelios está al [Maximo], presiona [Icono Definitiva] para activar: Desata poderosos cortes a los enemigos en un área grande adelante, causando masivo Daño Fisico. Activar esta habilidad restaura 200 (Etiqueta de Hoja). (Etiqueta de Hoja) no se acumula al golpear a un enemigo. El personaje es invulnerable mientras usa esta habilidad.",
+      description: "Cuando el Nivel de Decibelios está al (Máximo), presiona [Icono Definitiva] para activar: Desata poderosos cortes a los enemigos en un área grande adelante, causando masivo Daño Fisico. Activar esta habilidad restaura 200 (Etiqueta de Hoja). (Etiqueta de Hoja) no se acumula al golpear a un enemigo. El personaje es invulnerable mientras usa esta habilidad.",
       tags: ["Físico", "Técnica Definitiva"]
     },
     {

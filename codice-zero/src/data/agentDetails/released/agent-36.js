@@ -128,7 +128,7 @@ export default {
     {
       type: "Técnica Definitiva",
       name: "Definitiva: Siete Formas de Tigre - Explosion de Tigre Furioso",
-      description: "Cuando el Nivel de Decibelios está al [Maximo], presiona [Icono Definitiva] para activar: Realiza dos ataques descendentes con Hu Wei, causando masivo Daño Fuego. Al activarse, gana 6 puntos de (Impulso) y 100 puntos de (Poder). El personaje es invulnerable mientras usa esta habilidad.",
+      description: "Cuando el Nivel de Decibelios está al (Máximo), presiona [Icono Definitiva] para activar: Realiza dos ataques descendentes con Hu Wei, causando masivo Daño Fuego. Al activarse, gana 6 puntos de (Impulso) y 100 puntos de (Poder). El personaje es invulnerable mientras usa esta habilidad.",
       tags: ["Fuego", "Técnica Definitiva"]
     },
     {

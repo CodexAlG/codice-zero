@@ -80,7 +80,7 @@ export default {
     {
       type: "Técnica Definitiva",
       name: "Definitiva: Infierno Coronado Forma-W",
-      description: "Cuando el Nivel de Decibelios está al [Maximo], presiona [Icono Definitiva] para activar: Desata un golpe poderoso en una gran área alrededor, causando masivo Daño Fuego. El personaje es invulnerable mientras usa esta habilidad.",
+      description: "Cuando el Nivel de Decibelios está al (Máximo), presiona [Icono Definitiva] para activar: Desata un golpe poderoso en una gran área alrededor, causando masivo Daño Fuego. El personaje es invulnerable mientras usa esta habilidad.",
       tags: ["Fuego", "Técnica Definitiva"]
     },
     {

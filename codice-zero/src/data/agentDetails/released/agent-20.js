@@ -104,7 +104,7 @@ export default {
     {
       type: "Técnica Definitiva",
       name: "Definitiva: La Justicia Prevalece",
-      description: "Cuando el Nivel de Decibelios está al [Máximo], presiona [Icono Definitiva] para activar: Lanza una serie de ataques ascendentes en frente, seguida de un Movimiento Final, infligiendo masivo Daño Eléctrico. Activar el movimiento acumula 75% de (Resolución), y otorga 3 Puntos de Asistencia adicionales. Después del movimiento, mantén [Icono Especial EX] para encadenar en (Técnica Especial EX: Embestida de Escudo de Trueno - Alto Voltaje), permitiendo carga más rápida. El personaje es invulnerable mientras usa esta habilidad.",
+      description: "Cuando el Nivel de Decibelios está al (Máximo), presiona [Icono Definitiva] para activar: Lanza una serie de ataques ascendentes en frente, seguida de un Movimiento Final, infligiendo masivo Daño Eléctrico. Activar el movimiento acumula 75% de (Resolución), y otorga 3 Puntos de Asistencia adicionales. Después del movimiento, mantén [Icono Especial EX] para encadenar en (Técnica Especial EX: Embestida de Escudo de Trueno - Alto Voltaje), permitiendo carga más rápida. El personaje es invulnerable mientras usa esta habilidad.",
       tags: ["Eléctrico", "Técnica Definitiva"]
     },
     {

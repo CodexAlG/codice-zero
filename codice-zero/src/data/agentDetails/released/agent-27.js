@@ -122,7 +122,7 @@ export default {
     {
       type: "Técnica Definitiva",
       name: "Definitiva: Sonata Fantasía",
-      description: "Cuando el Nivel de Decibelios está al [Maximo], presiona [Icono Definitiva] para activar: Usa una canción para canalizar energía en una explosión, causando masivo Daño Etéreo, y restaurando {VALOR_3} de PS a todos los miembros del escuadrón. El personaje es invulnerable mientras usa esta habilidad. Una (Asistencia Rápida) se activa cuando esta habilidad golpea a un enemigo. Después de la habilidad, Astra Yao entra en el estado (Cadencia Idílica). Después de la habilidad, las siguientes dos (Asistencias Rápidas) serán reemplazadas por (Ataques en Cadena). Antes de que todas las cargas de reemplazo se usen, una (Asistencia Rápida) se activa siempre que cualquier miembro del escuadrón golpea a un enemigo con un (Ataque en Cadena) o (Definitiva).",
+      description: "Cuando el Nivel de Decibelios está al (Máximo), presiona [Icono Definitiva] para activar: Usa una canción para canalizar energía en una explosión, causando masivo Daño Etéreo, y restaurando {VALOR_3} de PS a todos los miembros del escuadrón. El personaje es invulnerable mientras usa esta habilidad. Una (Asistencia Rápida) se activa cuando esta habilidad golpea a un enemigo. Después de la habilidad, Astra Yao entra en el estado (Cadencia Idílica). Después de la habilidad, las siguientes dos (Asistencias Rápidas) serán reemplazadas por (Ataques en Cadena). Antes de que todas las cargas de reemplazo se usen, una (Asistencia Rápida) se activa siempre que cualquier miembro del escuadrón golpea a un enemigo con un (Ataque en Cadena) o (Definitiva).",
       tags: ["Etéreo", "Técnica Definitiva"]
     },
     {

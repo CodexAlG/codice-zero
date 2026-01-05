@@ -86,7 +86,7 @@ export default {
     {
       type: "Técnica Definitiva",
       name: "Definitiva: Aplastamiento de Garra",
-      description: "Cuando el Nivel de Decibelios está al [Máximo], presiona [Icono Definitiva] para activar: Desata cortes poderosos a enemigos en frente en una gran área, infligiendo masivo Daño Físico. El personaje es invulnerable mientras usa esta habilidad.",
+      description: "Cuando el Nivel de Decibelios está al (Máximo), presiona [Icono Definitiva] para activar: Desata cortes poderosos a enemigos en frente en una gran área, infligiendo masivo Daño Físico. El personaje es invulnerable mientras usa esta habilidad.",
       tags: ["Físico", "Técnica Definitiva"]
     },
     {

@@ -86,7 +86,7 @@ export default {
     {
       type: "Técnica Definitiva",
       name: "Definitiva: Las Sirvientas de la Reina",
-      description: "Cuando el Nivel de Decibelios está al [Máximo], presiona [Icono Definitiva] para activar: Ordena a Drusilla y Anastella girar hacia adelante, infligiendo masivo Daño Eléctrico. Durante esta habilidad, Drusilla y Anastella son incapaces de responder a comandos de (Ataque Básico), (Ataque de Carrera), (Técnica Especial), o (Técnica Especial EX), pero pueden ser llamadas al lado de Rina mediante (Ataque Básico: Ahuyentar al Necio). Al activar esta habilidad, los otros miembros del escuadrón recuperan 10 de Energía. El siguiente personaje en cambiar recupera 20 de Energía adicional. El personaje es invulnerable mientras usa esta habilidad. Una (Asistencia Rápida) se activa cuando esta habilidad golpea a un enemigo.",
+      description: "Cuando el Nivel de Decibelios está al (Máximo), presiona [Icono Definitiva] para activar: Ordena a Drusilla y Anastella girar hacia adelante, infligiendo masivo Daño Eléctrico. Durante esta habilidad, Drusilla y Anastella son incapaces de responder a comandos de (Ataque Básico), (Ataque de Carrera), (Técnica Especial), o (Técnica Especial EX), pero pueden ser llamadas al lado de Rina mediante (Ataque Básico: Ahuyentar al Necio). Al activar esta habilidad, los otros miembros del escuadrón recuperan 10 de Energía. El siguiente personaje en cambiar recupera 20 de Energía adicional. El personaje es invulnerable mientras usa esta habilidad. Una (Asistencia Rápida) se activa cuando esta habilidad golpea a un enemigo.",
       tags: ["Eléctrico", "Técnica Definitiva"]
     },
     {

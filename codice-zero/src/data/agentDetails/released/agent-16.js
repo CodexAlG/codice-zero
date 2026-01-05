@@ -56,7 +56,7 @@ export default {
     {
       type: "Evasión",
       name: "Contraataque de Evasión: Cuentas Saldadas",
-      description: "Presiona [Icono Ataque] durante una (Evasión Perfecta) para activar: Golpea enemigos en frente, infligiendo Daño de Fuego. El personaje es invulnerable mientras usa esta habilidad.",
+      description: "Presiona [Icono Ataque] durante una (Evasión Perfecta) para activar: Golpea enemigos en frente, infligiendo Daño Fuego. El personaje es invulnerable mientras usa esta habilidad.",
       tags: ["Fuego", "Evasión"]
     },
     {
@@ -68,19 +68,19 @@ export default {
     {
       type: "Técnica Especial EX",
       name: "Técnica Especial EX: Contador de Flujo de Caja",
-      description: "Con suficiente Energía, presiona [Icono Especial EX] para activar: Ben levanta su arma, bloqueando los ataques del enemigo antes de desatar un golpe hacia adelante, infligiendo Daño de Fuego. Bloquear exitosamente un ataque mejora el poder de esta habilidad y activa (Contraataque de Bloqueo), infligiendo masivo Daño de Fuego. Mantén presionado [Icono Especial EX] para permanecer en la postura de (Bloqueo). Mientras está en la postura de (Bloqueo), Ben gana un (Escudo) que se debilita con el tiempo. Después de dejar la postura de bloqueo, el (Escudo) se remueve y se recupera con el tiempo. El (Escudo) no puede exceder el 16% del HP Máx de Ben. Cuando esta habilidad es activada, el (Escudo) se restaura a su valor máximo. Después de activar la habilidad, presiona [Icono Especial EX] de nuevo para seguir con un poderoso golpe hacia adelante, infligiendo masivo Daño de Fuego. Ben es invulnerable cuando activa (Bloqueo). Ben es invulnerable mientras lanza golpes.",
+      description: "Con suficiente Energía, presiona [Icono Especial EX] para activar: Ben levanta su arma, bloqueando los ataques del enemigo antes de desatar un golpe hacia adelante, infligiendo Daño Fuego. Bloquear exitosamente un ataque mejora el poder de esta habilidad y activa (Contraataque de Bloqueo), infligiendo masivo Daño Fuego. Mantén presionado [Icono Especial EX] para permanecer en la postura de (Bloqueo). Mientras está en la postura de (Bloqueo), Ben gana un (Escudo) que se debilita con el tiempo. Después de dejar la postura de bloqueo, el (Escudo) se remueve y se recupera con el tiempo. El (Escudo) no puede exceder el 16% del HP Máx de Ben. Cuando esta habilidad es activada, el (Escudo) se restaura a su valor máximo. Después de activar la habilidad, presiona [Icono Especial EX] de nuevo para seguir con un poderoso golpe hacia adelante, infligiendo masivo Daño Fuego. Ben es invulnerable cuando activa (Bloqueo). Ben es invulnerable mientras lanza golpes.",
       tags: ["Fuego", "Técnica Especial EX", "Bloqueo", "Escudo"]
     },
     {
       type: "Técnica Definitiva",
       name: "Ataque en Cadena: Firmado y Sellado",
-      description: "Cuando se activa un (Ataque en Cadena), selecciona al personaje para activar: Desata un poderoso golpe a enemigos en frente en un área grande, infligiendo masivo Daño de Fuego. El personaje es invulnerable mientras usa esta habilidad.",
+      description: "Cuando se activa un (Ataque en Cadena), selecciona al personaje para activar: Desata un poderoso golpe a enemigos en frente en un área grande, infligiendo masivo Daño Fuego. El personaje es invulnerable mientras usa esta habilidad.",
       tags: ["Fuego", "Ataque en Cadena"]
     },
     {
       type: "Técnica Definitiva",
       name: "Definitiva: Reembolso Completo",
-      description: "Cuando el Nivel de Decibelios está al [Máximo], presiona [Icono Definitiva] para activar: Desata un poderoso golpe a enemigos en frente en un área grande, infligiendo masivo Daño de Fuego. Cuando activa la habilidad, recupera adicionalmente 3 (Puntos de Asistencia). El personaje es invulnerable mientras usa esta habilidad.",
+      description: "Cuando el Nivel de Decibelios está al (Máximo), presiona [Icono Definitiva] para activar: Desata un poderoso golpe a enemigos en frente en un área grande, infligiendo masivo Daño Fuego. Cuando activa la habilidad, recupera adicionalmente 3 (Puntos de Asistencia). El personaje es invulnerable mientras usa esta habilidad.",
       tags: ["Fuego", "Técnica Definitiva"]
     },
     {
@@ -98,7 +98,7 @@ export default {
     {
       type: "Asistencia",
       name: "Asistencia Rápida: Cuenta Conjunta",
-      description: "Cuando el personaje activo es lanzado, presiona [Icono Assist] para activar: Golpea enemigos en frente, infligiendo Daño de Fuego. El personaje es invulnerable durante el ataque.",
+      description: "Cuando el personaje activo es lanzado, presiona [Icono Assist] para activar: Golpea enemigos en frente, infligiendo Daño Fuego. El personaje es invulnerable durante el ataque.",
       tags: ["Fuego", "Asistencia"]
     },
     {
@@ -110,7 +110,7 @@ export default {
     {
       type: "Asistencia",
       name: "Ataque de Asistencia: No Rompas el Contrato",
-      description: "Presiona [Icono Ataque] después de una (Asistencia Defensiva) para activar: Carga y golpea enemigos en frente, infligiendo Daño de Fuego. El personaje es invulnerable mientras usa esta habilidad.",
+      description: "Presiona [Icono Ataque] después de una (Asistencia Defensiva) para activar: Carga y golpea enemigos en frente, infligiendo Daño Fuego. El personaje es invulnerable mientras usa esta habilidad.",
       tags: ["Fuego", "Asistencia"]
     },
     {

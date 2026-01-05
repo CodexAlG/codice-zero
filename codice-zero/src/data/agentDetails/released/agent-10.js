@@ -128,7 +128,7 @@ export default {
     {
       type: "Técnica Definitiva",
       name: "Definitiva: Telón Final",
-      description: "Cuando el Nivel de Decibelios está al [Máximo], presiona [Icono Definitiva] para activar: Teje entre y corta a los enemigos con un poderoso ataque en una gran área en frente, seguido de un Movimiento Final, infligiendo masivo Daño Físico. Jane entra directamente en el estado de (Pasión) al activar la habilidad, y gana el máximo de (Corriente de Pasión). El personaje es invulnerable mientras usa esta habilidad.",
+      description: "Cuando el Nivel de Decibelios está al (Máximo), presiona [Icono Definitiva] para activar: Teje entre y corta a los enemigos con un poderoso ataque en una gran área en frente, seguido de un Movimiento Final, infligiendo masivo Daño Físico. Jane entra directamente en el estado de (Pasión) al activar la habilidad, y gana el máximo de (Corriente de Pasión). El personaje es invulnerable mientras usa esta habilidad.",
       tags: ["Físico", "Técnica Definitiva"]
     },
     {

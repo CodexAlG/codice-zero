@@ -80,7 +80,7 @@ export default {
     {
       type: "Técnica Definitiva",
       name: "Definitiva: Luz Estelar, Brilla Fuerte",
-      description: "Cuando el Nivel de Decibelios está al [Máximo], presiona [Icono Definitiva] para activar: Desata un poderoso ataque perforante a enemigos circundantes en un área grande, infligiendo masivo Daño Físico. El personaje es invulnerable mientras usa esta habilidad.",
+      description: "Cuando el Nivel de Decibelios está al (Máximo), presiona [Icono Definitiva] para activar: Desata un poderoso ataque perforante a enemigos circundantes en un área grande, infligiendo masivo Daño Físico. El personaje es invulnerable mientras usa esta habilidad.",
       tags: ["Físico", "Técnica Definitiva"]
     },
     {

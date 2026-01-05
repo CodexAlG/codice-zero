@@ -126,7 +126,7 @@ export default {
     {
       type: "Técnica Definitiva",
       name: "Tecnica Definitiva: Musou Aratama",
-      description: "Cuando el Nivel de Decibelios está al [Maximo], presiona [Icono Definitiva] para activar: Salta en el aire y entrega un corte descendente a los enemigos en frente, seguido de una explosión, causando masivo Daño Fuego. El personaje es invulnerable mientras usa esta habilidad.",
+      description: "Cuando el Nivel de Decibelios está al (Máximo), presiona [Icono Definitiva] para activar: Salta en el aire y entrega un corte descendente a los enemigos en frente, seguido de una explosión, causando masivo Daño Fuego. El personaje es invulnerable mientras usa esta habilidad.",
       tags: ["Fuego", "Técnica Definitiva"]
     },
     {

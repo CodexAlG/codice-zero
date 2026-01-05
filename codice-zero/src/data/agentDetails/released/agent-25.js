@@ -104,7 +104,7 @@ export default {
     {
       type: "Técnica Definitiva",
       name: "Definitiva: Zanshin",
-      description: "Cuando el Nivel de Decibelios está al [Maximo], presiona [Icono Definitiva] para activar: Desata un ataque perforante a enemigos en una gran área adelante, causando masivo Daño Eléctrico. El personaje es invulnerable mientras usa esta habilidad.",
+      description: "Cuando el Nivel de Decibelios está al (Máximo), presiona [Icono Definitiva] para activar: Desata un ataque perforante a enemigos en una gran área adelante, causando masivo Daño Eléctrico. El personaje es invulnerable mientras usa esta habilidad.",
       tags: ["Eléctrico", "Técnica Definitiva"]
     },
     {

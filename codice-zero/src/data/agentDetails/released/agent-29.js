@@ -110,7 +110,7 @@ export default {
     {
       type: "Técnica Definitiva",
       name: "Definitiva: Oh, ¿Hora de Jugar?",
-      description: "Cuando el Nivel de Decibelios está al [Maximo], presiona [Icono Definitiva] para activar: Desata un disparo poderoso a los enemigos en una gran área adelante, causando masivo Daño Físico. El personaje es invulnerable mientras usa esta habilidad.",
+      description: "Cuando el Nivel de Decibelios está al (Máximo), presiona [Icono Definitiva] para activar: Desata un disparo poderoso a los enemigos en una gran área adelante, causando masivo Daño Físico. El personaje es invulnerable mientras usa esta habilidad.",
       tags: ["Físico", "Técnica Definitiva"]
     },
     {

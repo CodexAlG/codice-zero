@@ -92,7 +92,7 @@ export default {
     {
       type: "Técnica Definitiva",
       name: "Definitiva: Misión Cumplida",
-      description: "Cuando el Nivel de Decibelios está al [Máximo], presiona [Icono Definitiva] para activar: Desata múltiples golpes poderosos a enemigos en una gran área, infligiendo masivo Daño Hielo. El personaje es invulnerable mientras usa esta habilidad.",
+      description: "Cuando el Nivel de Decibelios está al (Máximo), presiona [Icono Definitiva] para activar: Desata múltiples golpes poderosos a enemigos en una gran área, infligiendo masivo Daño Hielo. El personaje es invulnerable mientras usa esta habilidad.",
       tags: ["Hielo", "Técnica Definitiva"]
     },
     {

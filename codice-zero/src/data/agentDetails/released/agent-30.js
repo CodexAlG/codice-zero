@@ -116,7 +116,7 @@ export default {
     {
       type: "Técnica Definitiva",
       name: "Definitiva: Golpe del Vacío",
-      description: "Cuando el Nivel de Decibelios está al [Maximo], presiona [Icono Definitiva] para activar: Realiza una poderosa serie de cortes en un área grande en frente, seguida de un golpe de rayo, causando masivo Daño Electrico. Cuando la habilidad golpea a un enemigo, cargará completamente (Estrella Plateada). El personaje es invulnerable mientras usa esta habilidad.",
+      description: "Cuando el Nivel de Decibelios está al (Máximo), presiona [Icono Definitiva] para activar: Realiza una poderosa serie de cortes en un área grande en frente, seguida de un golpe de rayo, causando masivo Daño Electrico. Cuando la habilidad golpea a un enemigo, cargará completamente (Estrella Plateada). El personaje es invulnerable mientras usa esta habilidad.",
       tags: ["Eléctrico", "Técnica Definitiva"]
     },
     {

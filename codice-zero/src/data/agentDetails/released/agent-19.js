@@ -92,7 +92,7 @@ export default {
     {
       type: "Técnica Definitiva",
       name: "Definitiva: ¡Agárrense~ Fuerte~!",
-      description: "Cuando el Nivel de Decibelios está al [Máximo], presiona [Icono Definitiva] para activar: Gira rápidamente, desatando poderosos cortes giratorios a enemigos en una gran área adelante, seguidos de un golpe descendente, infligiendo masivo Daño Físico. El personaje es invulnerable mientras usa esta habilidad.",
+      description: "Cuando el Nivel de Decibelios está al (Máximo), presiona [Icono Definitiva] para activar: Gira rápidamente, desatando poderosos cortes giratorios a enemigos en una gran área adelante, seguidos de un golpe descendente, infligiendo masivo Daño Físico. El personaje es invulnerable mientras usa esta habilidad.",
       tags: ["Físico", "Técnica Definitiva"]
     },
     {

@@ -98,7 +98,7 @@ export default {
     {
       type: "Técnica Definitiva",
       name: "Definitiva: Corte de Pudín Jumbo",
-      description: "Cuando el Nivel de Decibelios está al [Máximo], presiona [Icono Definitiva] para activar: Soukaku desata rápidamente una serie extendida de golpes a enemigos en frente de ella y sigue con (Ondear la Bandera), infligiendo masivo Daño Hielo. Al activar esta habilidad, Soukaku entra en el estado (Máscara), aumentando su Tasa Crítica en un 15% por 15s. Al activar esta habilidad, otros miembros del escuadrón recuperan 10 de Energía. El siguiente personaje en cambiar gana 20 de Energía adicional. El personaje es invulnerable mientras usa esta habilidad.",
+      description: "Cuando el Nivel de Decibelios está al (Máximo), presiona [Icono Definitiva] para activar: Soukaku desata rápidamente una serie extendida de golpes a enemigos en frente de ella y sigue con (Ondear la Bandera), infligiendo masivo Daño Hielo. Al activar esta habilidad, Soukaku entra en el estado (Máscara), aumentando su Tasa Crítica en un 15% por 15s. Al activar esta habilidad, otros miembros del escuadrón recuperan 10 de Energía. El siguiente personaje en cambiar gana 20 de Energía adicional. El personaje es invulnerable mientras usa esta habilidad.",
       tags: ["Hielo", "Técnica Definitiva"]
     },
     {

@@ -110,7 +110,7 @@ export default {
     {
       type: "Técnica Definitiva",
       name: "Definitiva: Ocho Sonidos de Ganzhou",
-      description: "Cuando el Nivel de Decibelios está al [Máximo], presiona [Icono Definitiva] para activar: Lanza una serie de golpes poderosos sobre una gran área en frente, seguido de un Movimiento Final, infligiendo masivo Daño Eléctrico. El personaje es invulnerable mientras usa esta habilidad.",
+      description: "Cuando el Nivel de Decibelios está al (Máximo), presiona [Icono Definitiva] para activar: Lanza una serie de golpes poderosos sobre una gran área en frente, seguido de un Movimiento Final, infligiendo masivo Daño Eléctrico. El personaje es invulnerable mientras usa esta habilidad.",
       tags: ["Eléctrico", "Técnica Definitiva"]
     },
     {

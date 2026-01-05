@@ -122,13 +122,13 @@ export default {
     {
       type: "Técnica Definitiva",
       name: "Definitiva: Garrote Lunalux - Timbre",
-      description: "Cuando el Nivel de Decibelios está al [Maximo], presiona [Icono Definitiva] para activar: Evelyn corta en frente con múltiples (Garrotes Lunalux) y detona una explosión, causando masivo Daño Fuego a enemigos en el área. Al activar esta habilidad, Evelyn se quita su chaqueta y entra en el estado (Danza del Fuego Despertado), que dura toda la batalla. Mientras está en el estado (Danza del Fuego Despertado), cuando Evelyn consume (Puntos de Atadura Ardiente) para activar (Ataque en Cadena: Lunalux - Trampa), retendrá 1 punto de (Punto de Atadura Ardiente). Cuando el ataque golpea un enemigo, Evelyn usa (Garrote Lunalux) para atar el objetivo primario, entrando en (Sello Vinculante). El personaje es invulnerable mientras usa esta habilidad. Después de usar esta habilidad, gana 1 (Punto de Atadura Ardiente).",
+      description: "Cuando el Nivel de Decibelios está al (Máximo), presiona [Icono Definitiva] para activar: Evelyn corta en frente con múltiples (Garrotes Lunalux) y detona una explosión, causando masivo Daño Fuego a enemigos en el área. Al activar esta habilidad, Evelyn se quita su chaqueta y entra en el estado (Danza del Fuego Despertado), que dura toda la batalla. Mientras está en el estado (Danza del Fuego Despertado), cuando Evelyn consume (Puntos de Atadura Ardiente) para activar (Ataque en Cadena: Lunalux - Trampa), retendrá 1 punto de (Punto de Atadura Ardiente). Cuando el ataque golpea un enemigo, Evelyn usa (Garrote Lunalux) para atar el objetivo primario, entrando en (Sello Vinculante). El personaje es invulnerable mientras usa esta habilidad. Después de usar esta habilidad, gana 1 (Punto de Atadura Ardiente).",
       tags: ["Fuego", "Técnica Definitiva"]
     },
     {
       type: "Técnica Definitiva",
       name: "Definitiva: Garrote Lunalux - Sombra",
-      description: "Mientras está bajo el estado (Danza del Fuego Despertado), y cuando el Nivel de Decibelios está al [Maximo], presiona [Icono Definitiva] para activar: Evelyn corta en frente con múltiples (Garrotes Lunalux) y detona una explosión, causando masivo Daño Fuego a enemigos en el área. Cuando el ataque golpea un enemigo, Evelyn usa (Garrote Lunalux) para atar el objetivo primario y entra en (Sello Vinculante). El personaje es invulnerable mientras usa esta habilidad. Después de usar esta habilidad, gana 1 (Punto de Atadura Ardiente).",
+      description: "Mientras está bajo el estado (Danza del Fuego Despertado), y cuando el Nivel de Decibelios está al (Máximo), presiona [Icono Definitiva] para activar: Evelyn corta en frente con múltiples (Garrotes Lunalux) y detona una explosión, causando masivo Daño Fuego a enemigos en el área. Cuando el ataque golpea un enemigo, Evelyn usa (Garrote Lunalux) para atar el objetivo primario y entra en (Sello Vinculante). El personaje es invulnerable mientras usa esta habilidad. Después de usar esta habilidad, gana 1 (Punto de Atadura Ardiente).",
       tags: ["Fuego", "Técnica Definitiva"]
     },
     {

@@ -86,7 +86,7 @@ export default {
     {
       type: "Técnica Definitiva",
       name: "Definitiva: Granada Etérea",
-      description: "Cuando el Nivel de Decibelios está al [Máximo], presiona [Icono Definitiva] para activar: Desata un poderoso golpe a distancia a enemigos en una pequeña área, generando un (Campo de Energía) que atrae a los enemigos hacia su centro para infligir Daño Etéreo. Cuando usa esta habilidad, otros miembros del escuadrón recuperan 10 de Energía. El siguiente personaje en cambiar gana 20 de Energía adicional. El personaje es invulnerable mientras usa esta habilidad. Una (Asistencia Rápida) se activa cuando esta habilidad golpea a un enemigo. Recarga automáticamente después del ataque para mejorar (Ataque Básico) y (Ataque de Carrera) hasta 8 veces.",
+      description: "Cuando el Nivel de Decibelios está al (Máximo), presiona [Icono Definitiva] para activar: Desata un poderoso golpe a distancia a enemigos en una pequeña área, generando un (Campo de Energía) que atrae a los enemigos hacia su centro para infligir Daño Etéreo. Cuando usa esta habilidad, otros miembros del escuadrón recuperan 10 de Energía. El siguiente personaje en cambiar gana 20 de Energía adicional. El personaje es invulnerable mientras usa esta habilidad. Una (Asistencia Rápida) se activa cuando esta habilidad golpea a un enemigo. Recarga automáticamente después del ataque para mejorar (Ataque Básico) y (Ataque de Carrera) hasta 8 veces.",
       tags: ["Etéreo", "Técnica Definitiva"]
     },
     {

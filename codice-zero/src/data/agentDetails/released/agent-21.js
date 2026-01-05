@@ -123,7 +123,7 @@ export default {
     {
       type: "Técnica Definitiva",
       name: "Definitiva: Aplastamiento Salvaje",
-      description: "Cuando el Nivel de Decibelios está al [Máximo], presiona [Icono Definitiva] para activar: Lanza el escudo hacia adelante, desatando un poderoso ataque giratorio sobre los enemigos en frente, seguido de un golpe descendente, infligiendo daño masivo de Daño Físico. Al golpear enemigos con escudo, el Aturdimiento infligido aumenta en un {VALOR_5}. El personaje es invulnerable mientras usa esta habilidad.",
+      description: "Cuando el Nivel de Decibelios está al (Máximo), presiona [Icono Definitiva] para activar: Lanza el escudo hacia adelante, desatando un poderoso ataque giratorio sobre los enemigos en frente, seguido de un golpe descendente, infligiendo daño masivo de Daño Físico. Al golpear enemigos con escudo, el Aturdimiento infligido aumenta en un {VALOR_5}. El personaje es invulnerable mientras usa esta habilidad.",
       tags: ["Físico", "Técnica Definitiva"]
     },
     {

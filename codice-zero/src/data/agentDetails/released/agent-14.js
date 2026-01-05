@@ -80,7 +80,7 @@ export default {
     {
       type: "Técnica Definitiva",
       name: "Definitiva: ¡Lo Siento Muchísimo!",
-      description: "Cuando el Nivel de Decibelios está al [Máximo], presiona [Icono Definitiva] para activar: Desata un poderoso corte a enemigos en una pequeña área, infligiendo masivo Daño Físico. Presiona repetidamente o manten presionado el botón para extender el ataque de corte de motosierra. El personaje es invulnerable mientras usa esta habilidad.",
+      description: "Cuando el Nivel de Decibelios está al (Máximo), presiona [Icono Definitiva] para activar: Desata un poderoso corte a enemigos en una pequeña área, infligiendo masivo Daño Físico. Presiona repetidamente o manten presionado el botón para extender el ataque de corte de motosierra. El personaje es invulnerable mientras usa esta habilidad.",
       tags: ["Físico", "Técnica Definitiva"]
     },
     {

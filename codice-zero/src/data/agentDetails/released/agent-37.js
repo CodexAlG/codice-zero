@@ -158,7 +158,7 @@ export default {
     {
       type: "Técnica Definitiva",
       name: "Definitiva: Rendirse o Sufrir la Travesura",
-      description: "Cuando el Nivel de Decibelios está al [Maximo], presiona [Icono Definitiva] para activar: Desata un golpe poderoso en enemigos en un área grande alrededor del personaje, causando masivo Daño Fisico. Los enemigos golpeados con un ataque pesado son infligidos con el estado (Susto Dulce). Al activar esta habilidad, otros miembros del escuadrón ganan 25.0 de Energía. Al activar esta habilidad, gana 2 (Puntos de Azucar). Una (Asistencia Rapida) es activada cuando esta habilidad golpea a un enemigo. El personaje es invulnerable mientras usa esta habilidad.",
+      description: "Cuando el Nivel de Decibelios está al (Máximo), presiona [Icono Definitiva] para activar: Desata un golpe poderoso en enemigos en un área grande alrededor del personaje, causando masivo Daño Fisico. Los enemigos golpeados con un ataque pesado son infligidos con el estado (Susto Dulce). Al activar esta habilidad, otros miembros del escuadrón ganan 25.0 de Energía. Al activar esta habilidad, gana 2 (Puntos de Azucar). Una (Asistencia Rapida) es activada cuando esta habilidad golpea a un enemigo. El personaje es invulnerable mientras usa esta habilidad.",
       tags: ["Físico", "Técnica Definitiva"]
     },
     {

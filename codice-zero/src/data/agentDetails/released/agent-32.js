@@ -142,7 +142,7 @@ export default {
     {
       type: "Técnica Definitiva",
       name: "Definitiva: Cancion del Pajaro Elevandose",
-      description: "Cuando el Nivel de Decibelios está al [Maximo], presiona [Icono Definitiva] para activar: Lanza un poderoso ataque en un área grande de enemigos adelante, causando masivo Daño Etereo y ganando 5 (Plumas de Vuelo). El personaje es invulnerable mientras usa esta habilidad. Después de que la habilidad se activa, entra en el estado (Vestido Aleteante), el cual puede ser cancelado manteniendo presionado [Icono Dodges] durante la habilidad.",
+      description: "Cuando el Nivel de Decibelios está al (Máximo), presiona [Icono Definitiva] para activar: Lanza un poderoso ataque en un área grande de enemigos adelante, causando masivo Daño Etereo y ganando 5 (Plumas de Vuelo). El personaje es invulnerable mientras usa esta habilidad. Después de que la habilidad se activa, entra en el estado (Vestido Aleteante), el cual puede ser cancelado manteniendo presionado [Icono Dodges] durante la habilidad.",
       tags: ["Etéreo", "Técnica Definitiva"]
     },
     {

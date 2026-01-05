@@ -150,7 +150,7 @@ export default {
     {
       type: "Técnica Definitiva",
       name: "Definitiva: Sombra de Cielo Qingming",
-      description: "Cuando el Nivel de Decibelios está al [Maximo], presiona [Icono Definitiva] para activar: Lanza un aluvión de ataques de alas, luego guía innumerables talismanes para atacar, causando masivo Daño Tinta Aurica. Al activar esta habilidad, Yixuan redistribuye equitativamente los PV del escuadrón. Después de usar esta habilidad y con suficientes (Puntos de Tinta Aurica), mantén [Icono Dodges] para seguir rápidamente con (Ataque Basico: Matriz Aurica). El personaje es invulnerable mientras usa esta habilidad.",
+      description: "Cuando el Nivel de Decibelios está al (Máximo), presiona [Icono Definitiva] para activar: Lanza un aluvión de ataques de alas, luego guía innumerables talismanes para atacar, causando masivo Daño Tinta Aurica. Al activar esta habilidad, Yixuan redistribuye equitativamente los PV del escuadrón. Después de usar esta habilidad y con suficientes (Puntos de Tinta Aurica), mantén [Icono Dodges] para seguir rápidamente con (Ataque Basico: Matriz Aurica). El personaje es invulnerable mientras usa esta habilidad.",
       tags: ["Etéreo", "Técnica Definitiva"]
     },
     {

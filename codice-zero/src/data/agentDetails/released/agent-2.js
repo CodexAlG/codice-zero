@@ -104,7 +104,7 @@ export default {
     {
       type: "Técnica Definitiva",
       name: "Definitiva: Modo de Erradicación Máxima",
-      description: "Cuando el Nivel de Decibelios está al [Máximo], presiona [Icono Definitiva] para activar: Usa Maestra de Armas de Fuego Modificada para ejecutar un ataque saturado, disparando láseres y buscando misiles para infligir daño masivo de Daño Etéreo. Al activar, gana 5 (Perdigones Mejorados). El personaje es invulnerable mientras usa esta habilidad.",
+      description: "Cuando el Nivel de Decibelios está al (Máximo), presiona [Icono Definitiva] para activar: Usa Maestra de Armas de Fuego Modificada para ejecutar un ataque saturado, disparando láseres y buscando misiles para infligir daño masivo de Daño Etéreo. Al activar, gana 5 (Perdigones Mejorados). El personaje es invulnerable mientras usa esta habilidad.",
       tags: ["Etéreo", "Técnica Definitiva"]
     },
     {

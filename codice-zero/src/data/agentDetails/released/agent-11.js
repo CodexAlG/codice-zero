@@ -86,7 +86,7 @@ export default {
     {
       type: "Técnica Definitiva",
       name: "Definitiva: Motor Sobrecargado",
-      description: "Cuando el Nivel de Decibelios está al [Máximo], presiona [Icono Definitiva] para activar: Desata un poderoso corte ascendente a enemigos en una pequeña área seguido de varios golpes descendentes, infligiendo masivo Daño Eléctrico. El personaje es invulnerable mientras usa esta habilidad.",
+      description: "Cuando el Nivel de Decibelios está al (Máximo), presiona [Icono Definitiva] para activar: Desata un poderoso corte ascendente a enemigos en una pequeña área seguido de varios golpes descendentes, infligiendo masivo Daño Eléctrico. El personaje es invulnerable mientras usa esta habilidad.",
       tags: ["Eléctrico", "Técnica Definitiva"]
     },
     {

@@ -134,7 +134,7 @@ export default {
     {
       type: "Técnica Definitiva",
       name: "Definitiva: Danza con Fuego",
-      description: "Cuando el Nivel de Decibelios está al [Maximo], presiona [Icono Definitiva] para activar: Realiza un ataque giratorio hacia adelante, luego dispara un láser hacia adelante, causando Daño Fuego. Al saltar en el aire, se activará una (Asistencia Rapida). Si la (Asistencia Rapida) es activada, Orphie & Magus extenderán la duración de disparo del láser. Al activar esta habilidad, recupera 20 (Calor Embotellado). El personaje es invulnerable mientras usa esta habilidad.",
+      description: "Cuando el Nivel de Decibelios está al (Máximo), presiona [Icono Definitiva] para activar: Realiza un ataque giratorio hacia adelante, luego dispara un láser hacia adelante, causando Daño Fuego. Al saltar en el aire, se activará una (Asistencia Rapida). Si la (Asistencia Rapida) es activada, Orphie & Magus extenderán la duración de disparo del láser. Al activar esta habilidad, recupera 20 (Calor Embotellado). El personaje es invulnerable mientras usa esta habilidad.",
       tags: ["Fuego", "Técnica Definitiva"]
     },
     {

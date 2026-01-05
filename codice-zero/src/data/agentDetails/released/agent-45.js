@@ -282,7 +282,7 @@ export default {
     {
       type: "Técnica Definitiva",
       name: "El Mundo Tiembla",
-      description: "Cuando el nivel de Decibelios llega a [Maximo], presiona [Icono Definitiva] para activar: Lanza un ataque de gran área en frente, causando masivo Daño Fuego. Si Banyue tiene más de 120 (Fuegos Iracundos), entra automáticamente en el estado (Semblante de Ira) después del ataque. El personaje es invulnerable mientras usa esta habilidad.",
+      description: "Cuando el nivel de Decibelios llega a (Máximo), presiona [Icono Definitiva] para activar: Lanza un ataque de gran área en frente, causando masivo Daño Fuego. Si Banyue tiene más de 120 (Fuegos Iracundos), entra automáticamente en el estado (Semblante de Ira) después del ataque. El personaje es invulnerable mientras usa esta habilidad.",
       tags: [
         "Fuego",
         "Técnica Definitiva"

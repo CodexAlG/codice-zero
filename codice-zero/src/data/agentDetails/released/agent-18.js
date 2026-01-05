@@ -92,7 +92,7 @@ export default {
     {
       type: "Técnica Definitiva",
       name: "Definitiva: ¡Jonrón de Oro!",
-      description: "Cuando el Nivel de Decibelios está al [Máximo], presiona [Icono Definitiva] para activar: Lanza a todos los (Jabalíes Guardianes) secuencialmente, infligiendo masivo Daño Fuego en una gran área a enemigos adelante. Mientras usa esta habilidad, otros miembros del escuadrón recuperan 10 de Energía, y el siguiente personaje en cambiar gana 20 de Energía adicional. El personaje es invulnerable mientras usa esta habilidad. Cuando la habilidad golpea a un enemigo, activa una (Asistencia Rápida).",
+      description: "Cuando el Nivel de Decibelios está al (Máximo), presiona [Icono Definitiva] para activar: Lanza a todos los (Jabalíes Guardianes) secuencialmente, infligiendo masivo Daño Fuego en una gran área a enemigos adelante. Mientras usa esta habilidad, otros miembros del escuadrón recuperan 10 de Energía, y el siguiente personaje en cambiar gana 20 de Energía adicional. El personaje es invulnerable mientras usa esta habilidad. Cuando la habilidad golpea a un enemigo, activa una (Asistencia Rápida).",
       tags: ["Fuego", "Técnica Definitiva"]
     },
     {

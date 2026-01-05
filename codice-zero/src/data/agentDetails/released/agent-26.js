@@ -86,7 +86,7 @@ export default {
     {
       type: "Técnica Definitiva",
       name: "Definitiva: Nieve Persistente",
-      description: "Cuando el Nivel de Decibelios está al [Maximo], presiona [Icono Definitiva] para activar: Desata un poderoso corte a enemigos en frente en una gran área, causando masivo Daño Congelación. Al activar esta habilidad, gana 3 puntos de (Escarcha Caída). Hoshimi Miyabi regenera 10 de Energía si esta habilidad golpea a un enemigo. El personaje es invulnerable mientras usa esta habilidad.",
+      description: "Cuando el Nivel de Decibelios está al (Máximo), presiona [Icono Definitiva] para activar: Desata un poderoso corte a enemigos en frente en una gran área, causando masivo Daño Congelación. Al activar esta habilidad, gana 3 puntos de (Escarcha Caída). Hoshimi Miyabi regenera 10 de Energía si esta habilidad golpea a un enemigo. El personaje es invulnerable mientras usa esta habilidad.",
       tags: ["Hielo", "Técnica Definitiva"]
     },
     {

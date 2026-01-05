@@ -80,7 +80,7 @@ export default {
     {
       type: "Técnica Definitiva",
       name: "Definitiva: Terremoto de Martillo",
-      description: "Cuando el Nivel de Decibelios está al [Máximo], presiona [Icono Definitiva] para activar: Desata una poderosa explosión en enemigos en una gran área en frente, infligiendo masivo Daño Fuego mientras también obtiene el efecto de (Fuego de Horno). Koleda y Ben pueden unirse cuando luchan juntos para lanzar un ataque coordinado, aumentando aún más el poder del ataque. El personaje es invulnerable mientras usa esta habilidad.",
+      description: "Cuando el Nivel de Decibelios está al (Máximo), presiona [Icono Definitiva] para activar: Desata una poderosa explosión en enemigos en una gran área en frente, infligiendo masivo Daño Fuego mientras también obtiene el efecto de (Fuego de Horno). Koleda y Ben pueden unirse cuando luchan juntos para lanzar un ataque coordinado, aumentando aún más el poder del ataque. El personaje es invulnerable mientras usa esta habilidad.",
       tags: ["Fuego", "Técnica Definitiva"]
     },
     {

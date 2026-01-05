@@ -116,7 +116,7 @@ export default {
     {
       type: "Técnica Definitiva",
       name: "Definitiva: ¡Un Banquete Digno de un Emperador!",
-      description: "Cuando el Nivel de Decibelios está al [Maximo], presiona [Icono Definitiva] para activar: Realiza una técnica que comprime qi en arroz frito y lo catapulta a los enemigos, causando masivo Daño Fisico y curando a todos los miembros del escuadrón por 820.0 PV, mientras también aplica una curación con el tiempo en todos los miembros del escuadrón, recuperando 1.4% PV/s durante 8s. El personaje es invulnerable mientras usa esta habilidad.",
+      description: "Cuando el Nivel de Decibelios está al (Máximo), presiona [Icono Definitiva] para activar: Realiza una técnica que comprime qi en arroz frito y lo catapulta a los enemigos, causando masivo Daño Fisico y curando a todos los miembros del escuadrón por 820.0 PV, mientras también aplica una curación con el tiempo en todos los miembros del escuadrón, recuperando 1.4% PV/s durante 8s. El personaje es invulnerable mientras usa esta habilidad.",
       tags: ["Físico", "Técnica Definitiva"]
     },
     {

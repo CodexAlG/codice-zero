@@ -128,7 +128,7 @@ export default {
     {
       type: "Técnica Definitiva",
       name: "Definitiva: Jardin de Relojeria - ¡Florecer!",
-      description: "Cuando el Nivel de Decibelios está al [Maximo], presiona [Icono Definitiva] para activar: Seed pilotará el mecha personalmente, haciendo llover misiles y una lluvia de meteoros de cohetes, luego realizando un golpe de salto, causando masivo Daño Electrico. Después de usar esta habilidad, acumula 60 de (Carga de Acero). No acumula (Carga de Acero) al golpear. El personaje es invulnerable mientras usa esta habilidad.",
+      description: "Cuando el Nivel de Decibelios está al (Máximo), presiona [Icono Definitiva] para activar: Seed pilotará el mecha personalmente, haciendo llover misiles y una lluvia de meteoros de cohetes, luego realizando un golpe de salto, causando masivo Daño Electrico. Después de usar esta habilidad, acumula 60 de (Carga de Acero). No acumula (Carga de Acero) al golpear. El personaje es invulnerable mientras usa esta habilidad.",
       tags: ["Eléctrico", "Técnica Definitiva"]
     },
     {

@@ -194,7 +194,7 @@ export default {
         {
             type: "Técnica Definitiva",
             name: "Definitiva: Persiguiendo Tormentas",
-            description: "Cuando el Nivel de Decibelios está al [Máximo], presiona [Icono Definitiva] para activar: Invoca una formación de espadas y entra en el estado de (Mente Iluminada), activando un (Velo Etereo: Veredicto) mientras también gana 6 de (Fuerza de Espada Qingming). Esta habilidad inflige masivo Daño Físico. Al activar esta habilidad, si se consumen Decibelios, presiona [Icono Definitiva] mientras está en este estado de (Mente Iluminada) para lanzar una (Definitiva: Cielos Partidos) que no consume Decibelios. Entra en el estado aéreo tras usar esta habilidad. El personaje es invulnerable mientras usa esta habilidad.",
+            description: "Cuando el Nivel de Decibelios está al (Máximo), presiona [Icono Definitiva] para activar: Invoca una formación de espadas y entra en el estado de (Mente Iluminada), activando un (Velo Etereo: Veredicto) mientras también gana 6 de (Fuerza de Espada Qingming). Esta habilidad inflige masivo Daño Físico. Al activar esta habilidad, si se consumen Decibelios, presiona [Icono Definitiva] mientras está en este estado de (Mente Iluminada) para lanzar una (Definitiva: Cielos Partidos) que no consume Decibelios. Entra en el estado aéreo tras usar esta habilidad. El personaje es invulnerable mientras usa esta habilidad.",
             tags: ["Físico", "Técnica Definitiva"]
         },
         {

@@ -86,7 +86,7 @@ export default {
     {
       type: "Técnica Definitiva",
       name: "Definitiva: Bombardeo de Conejos",
-      description: "Cuando el Nivel de Decibelios está al [Máximo], presiona [Icono Definitiva] para activar: Lanza ataques consecutivos en frente, seguidos por un corte de caída, infligiendo masivo Daño Hielo. Después de usar esta habilidad, gana 20 (Puntos de Congelacion). Si los (Puntos de Congelacion) están al máximo, todos los (Puntos de Congelacion) se consumen para activar (Velo Etereo: Manantial). Al activar esta habilidad mientras está en cualquier (Velo Etereo), se activa una (Asistencia Rápida). Si un compañero es cambiado a través de (Asistencia Rápida), Zhao automáticamente sigue con (Ataque Básico: Veredicto Final) y comienza a cargar. El personaje es invulnerable mientras usa esta habilidad.",
+      description: "Cuando el Nivel de Decibelios está al (Máximo), presiona [Icono Definitiva] para activar: Lanza ataques consecutivos en frente, seguidos por un corte de caída, infligiendo masivo Daño Hielo. Después de usar esta habilidad, gana 20 (Puntos de Congelacion). Si los (Puntos de Congelacion) están al máximo, todos los (Puntos de Congelacion) se consumen para activar (Velo Etereo: Manantial). Al activar esta habilidad mientras está en cualquier (Velo Etereo), se activa una (Asistencia Rápida). Si un compañero es cambiado a través de (Asistencia Rápida), Zhao automáticamente sigue con (Ataque Básico: Veredicto Final) y comienza a cargar. El personaje es invulnerable mientras usa esta habilidad.",
       tags: ["Hielo", "Técnica Definitiva"]
     },
     {
