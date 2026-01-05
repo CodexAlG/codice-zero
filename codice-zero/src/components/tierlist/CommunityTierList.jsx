@@ -57,7 +57,7 @@ export default function CommunityTierList() {
             // Capture the HIDDEN EXPORT view instead of the visible one
             if (exportRef.current) {
                 const dataUrl = await toPng(exportRef.current, {
-                    backgroundColor: "#020617",
+                    backgroundColor: "#09090b",
                     pixelRatio: 2,
                     skipFonts: true,
                     width: 1280, // Force width just in case
@@ -380,11 +380,11 @@ export default function CommunityTierList() {
 
                     {/* PC Header (Always Visible) */}
                     <div className="grid" style={gridColsStyle}>
-                        <div className="bg-gray-900/80 p-4 border-b border-r border-white/10 flex items-center justify-center">
+                        <div className="bg-[#18181b] p-4 border-b border-r border-white/10 flex items-center justify-center">
                             <span className="font-bold text-gray-500 text-xs uppercase">Rango</span>
                         </div>
                         {tierCols.map(col => (
-                            <div key={col.id} className="bg-gray-900/80 border-b border-white/10 border-l border-white/5 text-center flex items-center justify-center p-2">
+                            <div key={col.id} className="bg-[#18181b] border-b border-white/10 border-l border-white/5 text-center flex items-center justify-center p-2">
                                 <span className="font-black italic text-yellow-500 text-xl drop-shadow-sm tracking-wider uppercase">{col.label}</span>
                             </div>
                         ))}
@@ -409,13 +409,13 @@ export default function CommunityTierList() {
                                 return (
                                     <div
                                         key={`${tier.id}-${col.id}`}
-                                        className="bg-gray-900/30 p-2 flex flex-wrap gap-2 content-center justify-center border-l border-white/5 border-b"
+                                        className="bg-[#09090b]/50 p-2 flex flex-wrap gap-2 content-center justify-center border-l border-white/5 border-b"
                                     >
                                         <div className="flex flex-wrap gap-2 justify-center">
                                             {itemsInCell.map(agent => (
                                                 <div
                                                     key={agent.id}
-                                                    className="relative w-20 h-20 bg-gray-800 rounded-lg overflow-hidden border border-white/10 shadow-lg"
+                                                    className="relative w-20 h-20 bg-[#18181b] rounded-lg overflow-hidden border border-white/10 shadow-lg"
                                                 >
                                                     <Image
                                                         src={agent.image || agent.icon}
@@ -482,7 +482,7 @@ export default function CommunityTierList() {
                         <h3 className="text-xl font-bold text-white mb-4">Vista Previa</h3>
 
                         {/* Fixed: Image container scaling */}
-                        <div className="flex-1 overflow-hidden bg-[#020617] rounded-lg border border-white/5 mb-6 flex items-center justify-center p-4">
+                        <div className="flex-1 overflow-hidden bg-[#09090b] rounded-lg border border-white/5 mb-6 flex items-center justify-center p-4">
                             <img
                                 src={previewImage}
                                 alt="Tier List Preview"
