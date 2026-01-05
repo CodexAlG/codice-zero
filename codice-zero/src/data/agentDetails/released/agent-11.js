@@ -140,7 +140,7 @@ export default {
     {
       type: "Mindscape 4",
       name: "Carga Conductora",
-      description: "Cuando Anby lanza un (Ataque en Cadena) o usa su (Definitiva), los Agentes Eléctricos fuera del campo recuperan 3 de Energía. Por cada 12% de Tasa de Generación de Energía que Anby tiene, recuperan 2 de Energía adicional, hasta un máximo de 6.",
+      description: "Cuando Anby lanza un (Ataque en Cadena) o usa su (Definitiva), los Agentes Electricos fuera del campo recuperan 3 de Energía. Por cada 12% de Tasa de Generación de Energía que Anby tiene, recuperan 2 de Energía adicional, hasta un máximo de 6.",
       tags: ["Mindscape 4"]
     },
     {

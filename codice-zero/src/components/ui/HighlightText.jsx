@@ -6,7 +6,7 @@ const createHighlightRules = (elementColor = "#facc15") => [
   // Misc special words - specific terms that should be white/bold
   // Misc special words - specific terms that should be white/bold
   {
-    pattern: /(¡No te muevas! \[Modo Asalto\]|¡Por favor, no se resista! \[Modo Supresivo\]|Flash Freeze|Congelación Relámpago|Recorte de Dientes de Sierra|Invierno Eterno|Dientes Afilados|Emboscada Ártica|Barrido de Cola|Coleatazo|Ofensiva de Fuego|Poder de Fuego Abrumador|Disparo de Perdigones|Aluvión Completo|Modo de Erradicación|Modo de Erradicación Máxima|Recarga Rápida|Ascua Etérea|Perforación Etérea|Paquete de Energía Expandido III|Velo Etereo|Campo de Corrupción|Fuego\s+de Horno|Fuego\s+Helado|Quemadura\s+Gélida(?:\s+-\s+Ruptura)?|Potencia|Vórtice|Bandera\s+Escarchada|Ondear\s+la\s+Bandera|Máscara|Campo\s+de\s+Energía|Bala\s+Azucarada|Carga)/gi,
+    pattern: /(¡No te muevas! \[Modo Asalto\]|¡Por favor, no se resista! \[Modo Supresivo\]|Flash Freeze|Congelación Relámpago|Recorte de Dientes de Sierra|Invierno Eterno|Dientes Afilados|Emboscada Ártica|Barrido de Cola|Coleatazo|Ofensiva de Fuego|Poder de Fuego Abrumador|Disparo de Perdigones|Aluvión Completo|Modo de Erradicación|Modo de Erradicación Máxima|Recarga Rápida|Ascua Etérea|Perforación Etérea|Paquete de Energía Expandido III|Velo Etereo|Campo de Corrupción|Fuego\s+de Horno|Fuego\s+Helado|Quemadura\s+Gélida(?:\s+-\s+Ruptura)?|Potencia|Vórtice|Bandera\s+Escarchada|Ondear\s+la\s+Bandera|Máscara|Campo\s+de\s+Energía|Bala\s+Azucarada|Carga|Disparo\s+en\s+Cuclillas|Disparo\s+Rodante|Disparo\s+Final|Visión\s+Vital)/gi,
     color: "text-white font-bold",
   },
   // Damage types
