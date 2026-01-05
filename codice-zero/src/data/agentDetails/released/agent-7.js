@@ -85,7 +85,7 @@ export default {
     {
       type: "Técnica Especial",
       name: "Pulso",
-      description: "Activar una (Definitiva) otorga 25 acumulaciones de (Pulso) (max 25 acumulaciones). Al ganar (Zap), consume 1 acumulación de (Pulso).\nDespués de consumir (Pulso) para obtener 8 acumulaciones de (Zap), el siguiente lanzamiento de granada incluye una Granada de Pulso adicional. Si golpea a un enemigo sufriendo Anomalía de (Éter), (Eléctrico), (Fuego), (Físico), o (Hielo), desencadena (Florecimiento): inflige una instancia adicional de Daño igual al 560%/280%/700%/50%/70% del Daño de Anomalía original. Mientras está en el estado de (Pulso), se desbloquea (Técnica Especial: Eliminación de Obstrucciones - Ciclo).",
+      description: "Activar una (Definitiva) otorga 25 acumulaciones de (Pulso) (max 25 acumulaciones). Al ganar (Zap), consume 1 acumulación de (Pulso).\nDespués de consumir (Pulso) para obtener 8 acumulaciones de (Zap), el siguiente lanzamiento de granada incluye una Granada de Pulso adicional. Si golpea a un enemigo sufriendo Anomalía de (Etéreo), (Eléctrico), (Fuego), (Físico), o (Hielo), desencadena (Florecimiento): inflige una instancia adicional de Daño igual al [CV=\"text-[#d946ef]\"]560%[/CV]/[CV=\"text-[#3b82f6]\"]280%[/CV]/[CV=\"text-[#ef4444]\"]700%[/CV]/[CV=\"text-[#eab308]\"]50%[/CV]/[CV=\"text-[#22d3ee]\"]70%[/CV] del Daño de Anomalía original. Mientras está en el estado de (Pulso), se desbloquea (Técnica Especial: Eliminación de Obstrucciones - Ciclo).",
       tags: ["Mecánica"]
     },
     {
