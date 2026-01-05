@@ -130,11 +130,7 @@ export default function Home() {
         </div>
       </main>
 
-      {/* Footer */}
-      <footer className="w-full py-6 text-center space-y-1 text-gray-600 text-xs font-mono relative z-10">
-        <p>© 2025 CodiceZero. Todos los derechos reservados.</p>
-        <p>Zenless Zone Zero es una marca registrada de HoYoverse.</p>
-      </footer>
+
     </div>
 
   );
