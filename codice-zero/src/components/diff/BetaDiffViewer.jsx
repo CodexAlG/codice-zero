@@ -294,10 +294,10 @@ export default function BetaDiffViewer() {
                                                 <div key={label} className={`relative flex flex-col items-center group transition-all duration-300 ${idx === corePassiveLevel ? 'scale-110' : ''}`}>
                                                     <div
                                                         className={`w-3 h-3 rounded-full mb-2 transition-all duration-300 ${idx === corePassiveLevel
-                                                                ? 'bg-white shadow-[0_0_10px_rgba(255,255,255,0.8)] scale-125'
-                                                                : idx < corePassiveLevel
-                                                                    ? 'bg-yellow-500/50'
-                                                                    : 'bg-gray-700'
+                                                            ? 'bg-white shadow-[0_0_10px_rgba(255,255,255,0.8)] scale-125'
+                                                            : idx < corePassiveLevel
+                                                                ? 'bg-yellow-500/50'
+                                                                : 'bg-gray-700'
                                                             }`}
                                                     ></div>
                                                     <span className={`text-[10px] font-mono font-bold transition-colors duration-300 ${idx === corePassiveLevel ? 'text-white' : 'text-gray-600'
@@ -416,7 +416,7 @@ export default function BetaDiffViewer() {
         <div className="beta-diff-viewer">
             {/* Header with 4 dropdowns */}
             <div className="diff-header">
-                <h1>Beta Diff Viewer</h1>
+                <h1>Visualizador de Diferencias Beta</h1>
                 <div className="diff-controls">
                     {/* Type Selector */}
                     <div className="control-group">
@@ -455,7 +455,7 @@ export default function BetaDiffViewer() {
 
                     {/* Version Before */}
                     <div className="control-group">
-                        <label htmlFor="version-before">Versión Izquierda (Before)</label>
+                        <label htmlFor="version-before">Versión Izquierda</label>
                         <select
                             id="version-before"
                             value={versionBefore || ''}
@@ -474,7 +474,7 @@ export default function BetaDiffViewer() {
 
                     {/* Version After */}
                     <div className="control-group">
-                        <label htmlFor="version-after">Versión Derecha (After)</label>
+                        <label htmlFor="version-after">Versión Derecha</label>
                         <select
                             id="version-after"
                             value={versionAfter || ''}

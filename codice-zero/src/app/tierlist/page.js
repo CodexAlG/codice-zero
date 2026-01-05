@@ -25,13 +25,13 @@ export default function TierListPage() {
                         onClick={() => setActiveTab("developer")}
                         className={`relative z-10 px-6 py-2 rounded-full text-sm font-bold tracking-wide transition-colors duration-300 ${activeTab === 'developer' ? 'text-black' : 'text-gray-400 hover:text-white'}`}
                     >
-                        DEVELOPER
+                        Creador
                     </button>
                     <button
                         onClick={() => setActiveTab("community")}
                         className={`relative z-10 px-6 py-2 rounded-full text-sm font-bold tracking-wide transition-colors duration-300 ${activeTab === 'community' ? 'text-black' : 'text-gray-400 hover:text-white'}`}
                     >
-                        COMMUNITY
+                        Comunidad
                     </button>
                 </div>
             </header>
