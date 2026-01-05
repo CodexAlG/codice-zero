@@ -244,42 +244,55 @@ export default function BetaDiffViewer() {
         const oldSkills = beforeData.skills;
         const newSkills = afterData.skills;
 
+        // Group skills by type to avoid repeating headers
+        const groupedSkills = oldSkills.reduce((acc, skill, index) => {
+            const type = skill.type;
+            if (!acc[type]) acc[type] = [];
+            // Match with new skill by index (assuming order is preserved)
+            acc[type].push({ old: skill, new: newSkills[index] });
+            return acc;
+        }, {});
+
         return (
             <div className="skills-section">
                 <h3>Habilidades</h3>
-                {oldSkills.map((oldSkill, index) => {
-                    const newSkill = newSkills[index];
-                    if (!newSkill) return null;
+                {Object.entries(groupedSkills).map(([type, skills]) => (
+                    <div key={type} className="skill-group">
+                        <div className="skill-type">{type}</div>
+                        {skills.map((skillPair, idx) => {
+                            const { old: oldSkill, new: newSkill } = skillPair;
+                            if (!newSkill) return null;
 
-                    const nameDiff = compareText(oldSkill.name, newSkill.name);
-                    const descDiff = compareText(oldSkill.description, newSkill.description);
+                            const nameDiff = compareText(oldSkill.name, newSkill.name);
+                            const descDiff = compareText(oldSkill.description, newSkill.description);
 
-                    return (
-                        <div key={index} className="skill-comparison">
-                            <div className="skill-type">{oldSkill.type}</div>
-                            <div className="skill-grid">
-                                <div className="skill-column skill-before">
-                                    <h4>Antes ({versionBefore})</h4>
-                                    <div className="skill-name">
-                                        {renderDiffWithHighlight(nameDiff, 'left', beforeData)}
-                                    </div>
-                                    <div className="skill-description">
-                                        {renderDiffWithHighlight(descDiff, 'left', beforeData)}
+                            return (
+                                <div key={idx} className="skill-comparison-item">
+                                    <div className="skill-grid">
+                                        <div className="skill-column skill-before">
+                                            {idx === 0 && <h4>Antes ({versionBefore})</h4>}
+                                            <div className="skill-name">
+                                                {renderDiffWithHighlight(nameDiff, 'left', beforeData)}
+                                            </div>
+                                            <div className="skill-description">
+                                                {renderDiffWithHighlight(descDiff, 'left', beforeData)}
+                                            </div>
+                                        </div>
+                                        <div className="skill-column skill-after">
+                                            {idx === 0 && <h4>Después ({versionAfter})</h4>}
+                                            <div className="skill-name">
+                                                {renderDiffWithHighlight(nameDiff, 'right', afterData)}
+                                            </div>
+                                            <div className="skill-description">
+                                                {renderDiffWithHighlight(descDiff, 'right', afterData)}
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
-                                <div className="skill-column skill-after">
-                                    <h4>Después ({versionAfter})</h4>
-                                    <div className="skill-name">
-                                        {renderDiffWithHighlight(nameDiff, 'right', afterData)}
-                                    </div>
-                                    <div className="skill-description">
-                                        {renderDiffWithHighlight(descDiff, 'right', afterData)}
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    );
-                })}
+                            );
+                        })}
+                    </div>
+                ))}
             </div>
         );
     };

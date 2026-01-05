@@ -1,31 +1,30 @@
-/* BetaDiffViewer - Hakush.in Inspired Styling */
+/* BetaDiffViewer - Darker Premium Styling */
 
 .beta-diff-viewer {
   min-height: 100vh;
-  background: linear-gradient(135deg, #0f0f1e 0%, #1a1a2e 100%);
-  color: #e0e0e0;
+  /* Darker background to match the reference (Discos page) */
+  background: #09090b;
+  color: #e4e4e7;
   padding: 2rem;
 }
 
 /* Header Section */
 .diff-header {
-  background: rgba(255, 255, 255, 0.03);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 16px;
+  background: #18181b;
+  border: 1px solid #27272a;
+  border-radius: 12px;
   padding: 2rem;
   margin-bottom: 2rem;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.5), 0 2px 4px -1px rgba(0, 0, 0, 0.3);
 }
 
 .diff-header h1 {
   font-size: 2rem;
   font-weight: 700;
   margin: 0 0 1.5rem 0;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: #fbbf24;
+  /* Amber-400 like the logo/accent */
+  text-shadow: 0 2px 10px rgba(251, 191, 36, 0.2);
 }
 
 /* Controls Grid */
@@ -42,33 +41,33 @@
 }
 
 .control-group label {
-  font-size: 0.875rem;
+  font-size: 0.75rem;
   font-weight: 600;
-  color: #a0a0b0;
+  color: #a1a1aa;
   text-transform: uppercase;
   letter-spacing: 0.05em;
 }
 
 .diff-select {
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 8px;
+  background: #27272a;
+  border: 1px solid #3f3f46;
+  border-radius: 6px;
   padding: 0.75rem 1rem;
-  color: #e0e0e0;
-  font-size: 1rem;
+  color: #f4f4f5;
+  font-size: 0.9rem;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: all 0.2s ease;
 }
 
 .diff-select:hover:not(:disabled) {
-  background: rgba(255, 255, 255, 0.08);
-  border-color: rgba(102, 126, 234, 0.5);
+  background: #3f3f46;
+  border-color: #52525b;
 }
 
 .diff-select:focus {
   outline: none;
-  border-color: #667eea;
-  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.2);
+  border-color: #fbbf24;
+  box-shadow: 0 0 0 2px rgba(251, 191, 36, 0.1);
 }
 
 .diff-select:disabled {
@@ -77,15 +76,16 @@
 }
 
 .diff-select option {
-  background: #1a1a2e;
-  color: #e0e0e0;
+  background: #18181b;
+  color: #f4f4f5;
 }
 
 /* Content Area */
 .diff-content {
-  background: rgba(255, 255, 255, 0.02);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 16px;
+  /* Dark card background */
+  background: #18181b;
+  border: 1px solid #27272a;
+  border-radius: 12px;
   padding: 2rem;
   min-height: 400px;
 }
@@ -95,7 +95,7 @@
   align-items: center;
   justify-content: center;
   min-height: 300px;
-  color: #808090;
+  color: #71717a;
   font-size: 1.125rem;
 }
 
@@ -105,10 +105,12 @@
 }
 
 .stats-section h3 {
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   font-weight: 700;
   margin-bottom: 1.5rem;
-  color: #fff;
+  color: #f4f4f5;
+  border-left: 4px solid #fbbf24;
+  padding-left: 1rem;
 }
 
 .stats-comparison {
@@ -118,33 +120,36 @@
 }
 
 .stats-column h4 {
-  font-size: 1.125rem;
+  font-size: 0.875rem;
   font-weight: 600;
   margin-bottom: 1rem;
-  color: #a0a0b0;
+  color: #a1a1aa;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
   padding-bottom: 0.5rem;
-  border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid #27272a;
 }
 
 .stat-list {
   display: flex;
   flex-direction: column;
-  gap: 0.75rem;
+  gap: 0.5rem;
 }
 
 .stat-item {
   padding: 0.75rem 1rem;
-  background: rgba(255, 255, 255, 0.03);
-  border-radius: 8px;
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  font-size: 0.95rem;
+  background: #27272a;
+  border-radius: 6px;
+  border: 1px solid #3f3f46;
+  font-size: 0.9rem;
+  color: #e4e4e7;
 }
 
 .stat-row {
   padding: 0.75rem 1rem;
-  background: rgba(255, 255, 255, 0.03);
-  border-radius: 8px;
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  background: #27272a;
+  border-radius: 6px;
+  border: 1px solid #3f3f46;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -152,7 +157,7 @@
 
 .stat-name {
   font-weight: 600;
-  color: #c0c0d0;
+  color: #e4e4e7;
 }
 
 .stat-values {
@@ -162,12 +167,14 @@
 }
 
 .stat-before {
-  color: #808090;
+  color: #71717a;
   text-decoration: line-through;
+  font-size: 0.9rem;
 }
 
 .stat-after {
   font-weight: 600;
+  color: #e4e4e7;
 }
 
 .stat-buff {
@@ -175,11 +182,11 @@
 }
 
 .stat-nerf {
-  color: #ef4444;
+  color: #f87171;
 }
 
 .stat-unchanged {
-  color: #e0e0e0;
+  color: #a1a1aa;
 }
 
 /* Skills Section */
@@ -188,29 +195,42 @@
 }
 
 .skills-section h3 {
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   font-weight: 700;
   margin-bottom: 1.5rem;
-  color: #fff;
+  color: #f4f4f5;
+  border-left: 4px solid #fbbf24;
+  padding-left: 1rem;
 }
 
-.skill-comparison {
+/* New Group Styles */
+.skill-group {
   margin-bottom: 2rem;
-  background: rgba(255, 255, 255, 0.02);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 12px;
+  background: #202024;
+  /* Slightly lighter than main bg */
+  border: 1px solid #27272a;
+  border-radius: 8px;
   overflow: hidden;
 }
 
 .skill-type {
-  background: rgba(102, 126, 234, 0.2);
-  padding: 0.75rem 1.5rem;
+  background: #27272a;
+  padding: 1rem 1.5rem;
   font-weight: 700;
-  font-size: 0.875rem;
+  font-size: 0.9rem;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  color: #a0b9ff;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  color: #fbbf24;
+  /* Accent color for headers */
+  border-bottom: 1px solid #3f3f46;
+}
+
+.skill-comparison-item {
+  border-bottom: 1px solid #27272a;
+}
+
+.skill-comparison-item:last-child {
+  border-bottom: none;
 }
 
 .skill-grid {
@@ -224,66 +244,53 @@
 }
 
 .skill-before {
-  border-right: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(0, 0, 0, 0.2);
+  /* Slightly darker for 'before' side */
+  border-right: 1px solid #27272a;
 }
 
 .skill-column h4 {
-  font-size: 1rem;
+  font-size: 0.75rem;
   font-weight: 600;
   margin-bottom: 1rem;
-  color: #a0a0b0;
+  color: #71717a;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  font-size: 0.875rem;
 }
 
 .skill-name {
-  font-size: 1.125rem;
+  font-size: 1.1rem;
   font-weight: 700;
-  margin-bottom: 1rem;
-  line-height: 1.5;
+  margin-bottom: 0.75rem;
+  line-height: 1.4;
+  color: #f4f4f5;
 }
 
 .skill-description {
   font-size: 0.95rem;
-  line-height: 1.7;
-  color: #c0c0d0;
+  line-height: 1.6;
+  color: #d4d4d8;
 }
 
 /* Diff Text Styling */
 .diff-removed {
-  color: #ef4444;
+  color: #f87171;
   text-decoration: line-through;
-  background: rgba(239, 68, 68, 0.1);
-  padding: 0.1em 0.2em;
-  border-radius: 3px;
+  background: rgba(248, 113, 113, 0.1);
+  padding: 0 0.2em;
+  border-radius: 2px;
 }
 
 .diff-added {
   color: #4ade80;
   background: rgba(74, 222, 128, 0.1);
-  padding: 0.1em 0.2em;
-  border-radius: 3px;
+  padding: 0 0.2em;
+  border-radius: 2px;
   font-weight: 600;
 }
 
 .diff-unchanged {
-  color: #e0e0e0;
-}
-
-/* Number Styling */
-.number-buff {
-  color: #4ade80;
-  font-weight: 700;
-}
-
-.number-nerf {
-  color: #ef4444;
-  font-weight: 700;
-}
-
-.number-unchanged {
-  color: #e0e0e0;
+  color: #d4d4d8;
 }
 
 /* Weapon Effect Section */
@@ -292,30 +299,32 @@
 }
 
 .effect-section h3 {
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   font-weight: 700;
   margin-bottom: 1rem;
-  color: #fff;
+  color: #f4f4f5;
+  border-left: 4px solid #fbbf24;
+  padding-left: 1rem;
 }
 
 .effect-title {
-  font-size: 1.25rem;
+  font-size: 1.1rem;
   font-weight: 600;
-  color: #a0b9ff;
-  margin-bottom: 1.5rem;
-  padding: 0.75rem 1rem;
-  background: rgba(102, 126, 234, 0.1);
-  border-left: 4px solid #667eea;
+  color: #fbbf24;
+  margin-bottom: 1rem;
+  padding: 1rem;
+  background: #27272a;
   border-radius: 8px;
+  border: 1px solid #3f3f46;
 }
 
 .effect-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 2rem;
-  background: rgba(255, 255, 255, 0.02);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 12px;
+  gap: 0;
+  background: #202024;
+  border: 1px solid #27272a;
+  border-radius: 8px;
   overflow: hidden;
 }
 
@@ -324,30 +333,30 @@
 }
 
 .effect-before {
-  border-right: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(0, 0, 0, 0.2);
+  border-right: 1px solid #27272a;
 }
 
 .effect-column h4 {
-  font-size: 1rem;
+  font-size: 0.75rem;
   font-weight: 600;
   margin-bottom: 1rem;
-  color: #a0a0b0;
+  color: #71717a;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  font-size: 0.875rem;
 }
 
 .effect-description {
   font-size: 0.95rem;
-  line-height: 1.7;
-  color: #c0c0d0;
+  line-height: 1.6;
+  color: #d4d4d8;
   margin-bottom: 1.5rem;
 }
 
 .refinements h5 {
-  font-size: 0.875rem;
+  font-size: 0.75rem;
   font-weight: 700;
-  color: #a0a0b0;
+  color: #a1a1aa;
   text-transform: uppercase;
   letter-spacing: 0.05em;
   margin-bottom: 0.75rem;
@@ -361,21 +370,23 @@
 
 .refinement-item {
   padding: 0.5rem 0.75rem;
-  background: rgba(255, 255, 255, 0.03);
-  border-radius: 6px;
+  background: #27272a;
+  border-radius: 4px;
   font-size: 0.9rem;
+  color: #e4e4e7;
+  border: 1px solid #3f3f46;
 }
 
 .refinement-buff {
   color: #4ade80;
-  background: rgba(74, 222, 128, 0.1) !important;
-  font-weight: 600;
+  border-color: rgba(74, 222, 128, 0.3);
+  background: rgba(74, 222, 128, 0.05);
 }
 
 .refinement-nerf {
-  color: #ef4444;
-  background: rgba(239, 68, 68, 0.1) !important;
-  font-weight: 600;
+  color: #f87171;
+  border-color: rgba(248, 113, 113, 0.3);
+  background: rgba(248, 113, 113, 0.05);
 }
 
 /* Responsive Design */
@@ -383,17 +394,17 @@
   .diff-controls {
     grid-template-columns: repeat(2, 1fr);
   }
-  
+
   .stats-comparison,
   .skill-grid,
   .effect-grid {
     grid-template-columns: 1fr;
   }
-  
+
   .skill-before,
   .effect-before {
     border-right: none;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    border-bottom: 1px solid #27272a;
   }
 }
 
@@ -401,38 +412,20 @@
   .beta-diff-viewer {
     padding: 1rem;
   }
-  
+
   .diff-header {
     padding: 1.5rem;
   }
-  
+
   .diff-header h1 {
     font-size: 1.5rem;
   }
-  
+
   .diff-controls {
     grid-template-columns: 1fr;
   }
-  
+
   .diff-content {
     padding: 1.5rem;
   }
-}
-
-/* Animations */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.skill-comparison,
-.stats-section,
-.effect-section {
-  animation: fadeIn 0.4s ease-out;
 }
