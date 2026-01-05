@@ -41,7 +41,7 @@ export default function CommunityTierList() {
 
     // Selection State for Click-to-Move
     const [selectedAgent, setSelectedAgent] = useState(null); // { id: number, source: 'pool' | 'cell' }
-
+    const [tierListTitle, setTierListTitle] = useState("Mi Tier List");
 
     // Pool logic: Agents not in placements are in the pool
     const isInPool = (agentId) => !placements.find(p => p.agentId === agentId);
@@ -56,9 +56,6 @@ export default function CommunityTierList() {
             const { toPng } = await import('html-to-image');
             // Capture the HIDDEN EXPORT view instead of the visible one
             if (exportRef.current) {
-                // Ensure the export view is momentarily "visible" for the capture if needed, 
-                // but usually absolute positioning off-screen works fine.
-                // We use a fixed width container for PC layout.
                 const dataUrl = await toPng(exportRef.current, {
                     backgroundColor: "#020617",
                     pixelRatio: 2,
@@ -77,7 +74,8 @@ export default function CommunityTierList() {
     const confirmDownload = () => {
         if (previewImage) {
             const link = document.createElement('a');
-            link.download = 'mi-tierlist-codicezero.png';
+            const filename = tierListTitle.trim() ? `${tierListTitle.trim()}.png` : 'tierlist-codicezero.png';
+            link.download = filename;
             link.href = previewImage;
             link.click();
             setPreviewImage(null);
@@ -206,6 +204,17 @@ export default function CommunityTierList() {
     return (
         <div className="w-full max-w-7xl mx-auto pb-20">
 
+            {/* Title Input */}
+            <div className="mb-6">
+                <input
+                    type="text"
+                    value={tierListTitle}
+                    onChange={(e) => setTierListTitle(e.target.value)}
+                    className="w-full bg-transparent text-center text-4xl md:text-5xl font-black italic text-white uppercase placeholder-white/20 focus:outline-none border-b-2 border-transparent focus:border-yellow-500 transition-all font-display"
+                    placeholder="Escribe un título..."
+                />
+            </div>
+
             {/* Toolbar */}
             <div className="flex flex-wrap items-center justify-between mb-6 gap-4 bg-gray-900/50 p-4 rounded-xl border border-white/5">
                 {/* Left: Reset */}
@@ -265,10 +274,11 @@ export default function CommunityTierList() {
                                 className="flex flex-col items-center justify-center border-b md:border-b-0 md:border-r border-black/20 relative overflow-hidden group p-4 md:p-1 min-h-[140px]"
                                 style={{ backgroundColor: tier.color }}
                             >
-                                <input
+                                <textarea
                                     value={tier.label}
                                     onChange={(e) => updateRowLabel(tier.id, e.target.value)}
-                                    className="bg-transparent text-black font-black text-4xl md:text-3xl font-display italic text-center w-full focus:outline-none uppercase placeholder-black/30 resize-none"
+                                    className="bg-transparent text-black font-black text-2xl md:text-3xl font-display italic text-center w-full focus:outline-none uppercase placeholder-black/30 resize-none overflow-hidden leading-tight break-words whitespace-pre-wrap"
+                                    rows={2}
                                 />
 
                                 <div className="absolute top-1 right-1 flex md:flex-col gap-2 md:gap-1 items-center bg-white/20 md:bg-transparent rounded px-1 md:px-0">
@@ -344,6 +354,13 @@ export default function CommunityTierList() {
             {/* HIDDEN DESKTOP EXPORT VIEW (FIXED WIDTH, ALWAYS GRID) */}
             <div style={{ position: 'absolute', top: '-10000px', left: '-10000px', width: '1280px' }}>
                 <div ref={exportRef} className="w-[1280px] border border-white/10 rounded-lg overflow-hidden bg-[#0a0a0a]">
+
+                    {/* NEW: Export Title */}
+                    <div className="bg-[#0f172a] p-6 border-b border-white/10 flex items-center justify-center">
+                        <h1 className="text-5xl font-black italic text-white uppercase font-display tracking-wider drop-shadow-lg">
+                            {tierListTitle || "My Tier List"}
+                        </h1>
+                    </div>
 
                     {/* PC Header (Always Visible) */}
                     <div className="grid" style={gridColsStyle}>
