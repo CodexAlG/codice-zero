@@ -140,7 +140,7 @@ export default {
     {
       type: "Mindscape 4",
       name: "Afilando Garras",
-      description: "Cuando Nekomata usa su (Técnica Especial EX), su Tasa Crítica aumenta en un 7% por 15s, acumulándose hasta 2 veces, con la duración de cada acumulación calculada por separado.",
+      description: "Cuando Nekomata usa su (Técnica Especial EX), su Probabilidad de Crit aumenta en un 7% por 15s, acumulándose hasta 2 veces, con la duración de cada acumulación calculada por separado.",
       tags: ["Mindscape 4"]
     },
     {

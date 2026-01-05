@@ -104,7 +104,7 @@ export default {
     {
       type: "Habilidad Adicional",
       name: "Habilidad Adicional: ¡Bateador Arriba!",
-      description: "Cuando otro personaje en tu escuadrón comparte el mismo Atributo o Facción o es un personaje (Ruptura): Los (Jabalíes Guardianes) heredan la Tasa Crítica y el Daño Crítico de Lucy.",
+      description: "Cuando otro personaje en tu escuadrón comparte el mismo Atributo o Facción o es un personaje (Ruptura): Los (Jabalíes Guardianes) heredan la Probabilidad de Crit y el Daño Crítico de Lucy.",
       tags: ["Habilidad Adicional"]
     },
     {
