@@ -5,6 +5,7 @@ import { usePathname } from 'next/navigation';
 import Image from 'next/image';
 import { BookOpen, Home, X, List } from 'lucide-react';
 import Link from 'next/link';
+import appIcon from '@/app/icon.png';
 import { agents } from '../../data/agents';
 import { weapons } from '../../data/weapons';
 import { bangboos } from '../../data/bangboos';
@@ -123,14 +124,25 @@ export default function TopNavbar({ isVisible }) {
                 } hidden lg:flex flex-col items-center py-8`}
         >
             {/* Logo CZ */}
-            <Link href="/" className="flex items-center justify-center group relative mb-12">
-                <div
-                    className={`text-transparent bg-clip-text bg-gradient-to-br from-yellow-300 to-yellow-600 drop-shadow-[0_0_10px_rgba(234,179,8,0.9)] tracking-tighter transition-all duration-300 group-hover:scale-110 font-display font-black italic text-2xl`}
-                >
-                    CZ
+            <Link href="/" className="flex flex-col items-center justify-center group relative mb-8 gap-2">
+                <div className="relative w-10 h-10 transition-transform duration-300 group-hover:scale-110">
+                    <div className="absolute inset-0 bg-yellow-400 blur-lg opacity-40 rounded-full animate-pulse"></div>
+                    <Image
+                        src={appIcon}
+                        alt="CodiceZero Logo"
+                        width={40}
+                        height={40}
+                        className="object-contain relative z-10 drop-shadow-[0_0_8px_rgba(250,204,21,0.8)]"
+                    />
                 </div>
+
+                {/* Texto CodiceZero */}
+                <span className="text-[9px] uppercase font-bold tracking-[0.15em] text-yellow-300 drop-shadow-[0_0_5px_rgba(234,179,8,0.8)] font-display text-center">
+                    CodiceZero
+                </span>
+
                 {/* Overlay de Brillo para el hover */}
-                <div className="absolute inset-0 bg-yellow-500/0 group-hover:bg-yellow-500/10 transition-colors duration-200 rounded-full blur-xl -z-10 w-12 h-12"></div>
+                <div className="absolute inset-0 bg-yellow-500/0 group-hover:bg-yellow-500/5 transition-colors duration-200 rounded-lg -z-10 -m-2"></div>
             </Link>
 
             {/* Navigation */}
