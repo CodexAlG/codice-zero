@@ -12,6 +12,7 @@ import {
     getWeaponVersionData
 } from '@/data/versionedWeaponData';
 import { compareText, renderDiffText, compareNumber } from '@/utils/diffUtils';
+import HighlightText from '../ui/HighlightText';
 import './BetaDiffViewer.css';
 
 export default function BetaDiffViewer() {
@@ -159,6 +160,54 @@ export default function BetaDiffViewer() {
         );
     };
 
+    // Helper to process scaling placeholders {VALOR_1}
+    const processScaling = (text, data) => {
+        if (!data?.coreSkillScaling || !text) return text;
+        // Use Level 1 (index 0) as default for comparison view
+        const currentScalingValues = data.coreSkillScaling[0];
+        if (!currentScalingValues) return text;
+
+        const scalingColors = data.coreSkillScalingColors || [];
+
+        return text.replace(/\{VALOR_(\d+)\}/g, (_, number) => {
+            const index = parseInt(number) - 1;
+            const val = currentScalingValues[index];
+
+            if (val !== undefined) {
+                if (scalingColors[index]) {
+                    return `[CV="${scalingColors[index]}"]${val}[/CV]`;
+                }
+                return `[VAL]${val}[/VAL]`;
+            }
+            return `{VALOR_${number}}`;
+        });
+    };
+
+    // Helper to render diff tokens with HighlightText
+    const renderDiffWithHighlight = (diffTokens, side, data) => {
+        if (!diffTokens || diffTokens.length === 0) return [];
+
+        return diffTokens.map((part, index) => {
+            let className = "diff-unchanged"; // default
+            if (side === 'left') {
+                if (part.added) return null;
+                if (part.removed) className = "diff-removed";
+            } else {
+                if (part.removed) return null;
+                if (part.added) className = "diff-added";
+            }
+
+            // Process scaling placeholders in the text chunk
+            let processedText = processScaling(part.value, data);
+
+            return (
+                <span key={index} className={className}>
+                    <HighlightText text={processedText} elementColor={data?.elementColor || "#facc15"} />
+                </span>
+            );
+        }).filter(Boolean);
+    };
+
     // Render skill comparison for agents
     const renderSkillsComparison = () => {
         if (!beforeData || !afterData || !beforeData.skills || !afterData.skills) {
@@ -185,19 +234,19 @@ export default function BetaDiffViewer() {
                                 <div className="skill-column skill-before">
                                     <h4>Antes ({versionBefore})</h4>
                                     <div className="skill-name">
-                                        {renderDiffText(nameDiff, 'left')}
+                                        {renderDiffWithHighlight(nameDiff, 'left', beforeData)}
                                     </div>
                                     <div className="skill-description">
-                                        {renderDiffText(descDiff, 'left')}
+                                        {renderDiffWithHighlight(descDiff, 'left', beforeData)}
                                     </div>
                                 </div>
                                 <div className="skill-column skill-after">
                                     <h4>Después ({versionAfter})</h4>
                                     <div className="skill-name">
-                                        {renderDiffText(nameDiff, 'right')}
+                                        {renderDiffWithHighlight(nameDiff, 'right', afterData)}
                                     </div>
                                     <div className="skill-description">
-                                        {renderDiffText(descDiff, 'right')}
+                                        {renderDiffWithHighlight(descDiff, 'right', afterData)}
                                     </div>
                                 </div>
                             </div>
