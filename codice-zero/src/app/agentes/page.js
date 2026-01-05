@@ -59,7 +59,7 @@ export default function PersonajesPage() {
     "Victoria Housekeeping", "Belobog Heavy Industries", "Cunning Hares",
     "N.E.P.S.", "Obol Squad", "Section 6", "Stars of Lyra", "Sons of Calydon",
     "Spook Shack", "Mookingbird", "Yunkui Summit",
-    "Defense Force - Silver Squad", "Krampus Compliance Authority"
+    "Defense Force - Silver Squad", "Krampus Compliance Authority", "Agenls of Delusion"
   ];
 
   const elementIcons = {
@@ -95,7 +95,8 @@ export default function PersonajesPage() {
     "Mookingbird": "/CodiceZero/Agentes/Faction/Faction_Mockingbird_Icon.webp",
     "Yunkui Summit": "/CodiceZero/Agentes/Faction/Faction_Yunkui_Summit_Icon.webp",
     "Defense Force - Silver Squad": "/CodiceZero/Agentes/Faction/Faction_Defense_Force_-_Silver_Squad_Icon.webp",
-    "Krampus Compliance Authority": "/CodiceZero/Agentes/Faction/Faction_Krampus_Compliance_Authority_Icon.png"
+    "Krampus Compliance Authority": "/CodiceZero/Agentes/Faction/Faction_Krampus_Compliance_Authority_Icon.png",
+    "Angels of Delusion": "/CodiceZero/Agentes/Faction/Faction_Angels_of_Delusion_Icon.webp"
   };
 
   const filteredAgents = useMemo(() => {

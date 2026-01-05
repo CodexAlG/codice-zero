@@ -1,5 +1,30 @@
 
 export const agents = [
+  // --- VERSIÓN 2.6---
+  {
+    id: 49,
+    name: "Sunna",
+    rank: "S",
+    element: "Fisico",
+    rol: "Soporte",
+    faction: "Angels of Delusion",
+    version: "2.6",
+    leak: "Beta",
+    image: "/CodiceZero/ICONOS/Agent_Sunna_Icon.webp",
+    customStyle: "scale-[1.00] group-hover:scale-[1.10] object-[center_top]",
+  },
+  {
+    id: 48,
+    name: "Aria",
+    rank: "S",
+    element: "Etereo",
+    rol: "Anomalia",
+    faction: "Angels of Delusion",
+    version: "2.6",
+    leak: "Beta",
+    image: "/CodiceZero/ICONOS/Agent_Aria_Icon.webp",
+    customStyle: "scale-[1.00] group-hover:scale-[1.10] object-[center_top]",
+  },
   // --- VERSIÓN 2.5 ---
   {
     id: 47,
