@@ -53,7 +53,7 @@ export default function StatsTable({ currentStats, themeColor, agentRole }) {
 
   return (
     <>
-      <AttributeRow label="PV Base" value={currentStats.hp} highlight={currentStats.buffedStat === 'hp'} bonusValue={currentStats.bonusValue} />
+      <AttributeRow label="Hp Base" value={currentStats.hp} highlight={currentStats.buffedStat === 'hp'} bonusValue={currentStats.bonusValue} />
       <AttributeRow label="Ataque Base" value={currentStats.atk} highlight={currentStats.buffedStat === 'atk'} bonusValue={currentStats.bonusValue} />
       <AttributeRow label="Defensa Base" value={currentStats.def} highlight={currentStats.buffedStat === 'def'} bonusValue={currentStats.bonusValue} />
       <AttributeRow label="Impacto Base" value={currentStats.impact} highlight={currentStats.buffedStat === 'impact'} bonusValue={currentStats.bonusValue} />

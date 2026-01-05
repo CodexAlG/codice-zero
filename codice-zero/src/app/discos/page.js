@@ -74,29 +74,29 @@ export default function DiscsPage() {
                         className="object-contain drop-shadow-lg"
                       />
                     </div>
-                    <span className="text-white font-bold text-[10px] text-center uppercase tracking-wide leading-tight">
+                    <span className="text-white font-bold text-xs text-center uppercase tracking-wide leading-tight">
                       {disc.name}
                     </span>
                   </div>
 
                   {/* Columna Derecha: Stats */}
-                  <div className="flex-1 p-4 flex flex-col justify-center gap-3 min-w-0">
+                  <div className="flex-1 p-5 flex flex-col justify-center gap-4 min-w-0">
                     {/* 2 Piezas */}
                     <div className="flex flex-col gap-1">
                       <span className="text-[10px] text-yellow-500/90 uppercase font-black tracking-widest">
                         2 Piezas
                       </span>
-                      <div className="text-xs text-gray-300 font-medium">
+                      <div className="text-sm text-gray-300 font-medium">
                         <HighlightText text={disc.twoPiece} />
                       </div>
                     </div>
 
                     {/* 4 Piezas */}
-                    <div className="flex flex-col gap-1 border-t border-white/5 pt-2">
+                    <div className="flex flex-col gap-1 border-t border-white/5 pt-3">
                       <span className="text-[10px] text-yellow-500/90 uppercase font-black tracking-widest">
                         4 Piezas
                       </span>
-                      <div className="text-sm text-gray-300 leading-snug">
+                      <div className="text-[15px] text-gray-300 leading-relaxed">
                         <HighlightText text={disc.fourPiece} />
                       </div>
                     </div>

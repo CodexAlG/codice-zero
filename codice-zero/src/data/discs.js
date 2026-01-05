@@ -10,7 +10,7 @@ export const driveDiscs = [
   {
     id: 9925,
     name: "Brillando Aria",
-    twoPiece: "Daño Etereo +10%",
+    twoPiece: "Daño Etéreo +10%",
     fourPiece: "Cuando el portador realiza un Ataque Básico y golpea a un enemigo, su Maestría de anomalía aumenta en 36 puntos, con una duración de 8 segundos. La duración se restablece si se activa repetidamente. Cuando un enemigo en el campo entra en estado aturdido, el daño infligido por el portador aumenta en 25%, con una duración de 18 segundos. La duración se restablece si se activa repetidamente.",
     image: "/CodiceZero/Discos/SuitShiningAria.png",
   },
@@ -38,7 +38,7 @@ export const driveDiscs = [
   {
     id: 9921,
     name: "Cuentos de Yunkui (Yunkui Tales)",
-    twoPiece: "PV +10%",
+    twoPiece: "Hp +10%",
     fourPiece: "Al usar (Tecnica Especial EX), (Ataque en Cadena) o (Definitiva), la Probabilidad de CRIT aumenta un 4%, acumulándose hasta 3 veces y durando 15s. Activaciones repetidas reinician la duración. Al tener 3 acumulaciones de este efecto, el Daño Puro aumenta un 10%.",
     image: "/CodiceZero/Discos/Drive_Disc_Yunkui_Tales_Icon.webp"
   },
@@ -48,7 +48,7 @@ export const driveDiscs = [
     id: 9920,
     name: "Melodía de Faetón (Phaethon's Melody)",
     twoPiece: "Tasa de Anomalía +8%",
-    fourPiece: "Cuando cualquier miembro del equipo usa una (Tecnica Especial EX), la Maestría de Anomalía del portador aumenta en 45 durante 8s. Si el personaje que usa la (Tecnica Especial EX) no es el portador, el Daño Etereo del portador aumenta un 25%.",
+    fourPiece: "Cuando cualquier miembro del equipo usa una (Tecnica Especial EX), la Maestría de Anomalía del portador aumenta en 45 durante 8s. Si el personaje que usa la (Tecnica Especial EX) no es el portador, el Daño Etéreo del portador aumenta un 25%.",
     image: "/CodiceZero/Discos/Drive_Disc_Phaethon's_Melody_Icon.webp"
   },
   {
@@ -138,7 +138,7 @@ export const driveDiscs = [
     id: 9908,
     name: "Rock del Alma (Soul Rock)",
     twoPiece: "DEF +16%",
-    fourPiece: "Tras recibir un ataque enemigo y perder PV, el portador recibe un 40% menos de Daño durante 2.5s. Este efecto puede activarse una vez cada 15s.",
+    fourPiece: "Tras recibir un ataque enemigo y perder Hp, el portador recibe un 40% menos de Daño durante 2.5s. Este efecto puede activarse una vez cada 15s.",
     image: "/CodiceZero/Discos/Drive_Disc_Soul_Rock_Icon.webp"
   },
   {

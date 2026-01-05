@@ -116,7 +116,7 @@ export default {
     {
       type: "Técnica Definitiva",
       name: "Definitiva: ¡Un Banquete Digno de un Emperador!",
-      description: "Cuando el Nivel de Decibelios está al (Máximo), presiona [Icono Definitiva] para activar: Realiza una técnica que comprime qi en arroz frito y lo catapulta a los enemigos, causando masivo Daño Fisico y curando a todos los miembros del escuadrón por 820.0 PV, mientras también aplica una curación con el tiempo en todos los miembros del escuadrón, recuperando 1.4% PV/s durante 8s. El personaje es invulnerable mientras usa esta habilidad.",
+      description: "Cuando el Nivel de Decibelios está al (Máximo), presiona [Icono Definitiva] para activar: Realiza una técnica que comprime qi en arroz frito y lo catapulta a los enemigos, causando masivo Daño Fisico y curando a todos los miembros del escuadrón por 820.0 Hp, mientras también aplica una curación con el tiempo en todos los miembros del escuadrón, recuperando 1.4% Hp/s durante 8s. El personaje es invulnerable mientras usa esta habilidad.",
       tags: ["Físico", "Técnica Definitiva"]
     },
     {
@@ -140,7 +140,7 @@ export default {
     {
       type: "Mindscape 4",
       name: "Jefe de Cocina de Primera Clase",
-      description: "Cuando (Definitiva: ¡Un Banquete Digno de un Emperador!) cura a todos los miembros del escuadrón, la recuperación de PV aumenta un 25%, y el efecto de curación con el tiempo aumenta un 25%. Al activar (Definitiva: ¡Un Banquete Digno de un Emperador!), gana el efecto (Provisiones de Respaldo). Cuando cualquier personaje en el escuadrón pierde PV, consume el efecto (Provisiones de Respaldo) para restaurar instantáneamente el 50% de los PV recuperados con el efecto de recuperación instantánea de (Definitiva: ¡Un Banquete Digno de un Emperador!). Este efecto no se acumula.",
+      description: "Cuando (Definitiva: ¡Un Banquete Digno de un Emperador!) cura a todos los miembros del escuadrón, la recuperación de Hp aumenta un 25%, y el efecto de curación con el tiempo aumenta un 25%. Al activar (Definitiva: ¡Un Banquete Digno de un Emperador!), gana el efecto (Provisiones de Respaldo). Cuando cualquier personaje en el escuadrón pierde Hp, consume el efecto (Provisiones de Respaldo) para restaurar instantáneamente el 50% de los Hp recuperados con el efecto de recuperación instantánea de (Definitiva: ¡Un Banquete Digno de un Emperador!). Este efecto no se acumula.",
       tags: ["Mindscape 4"]
     },
     {

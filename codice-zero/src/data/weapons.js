@@ -132,7 +132,7 @@ export const weapons = [
     },
     effect: {
       title: "Plumas de Punta de Plata",
-      description: "Aumenta la Tasa de Acumulación de Anomalía un 40%. Cuando el portador inflige Daño Etereo, su Maestría de Anomalía aumenta en 20 por 5s, acumulándose hasta 6 veces. Este efecto puede activarse una vez cada 0.5s, y las activaciones repetidas reinician la duración.",
+      description: "Aumenta la Tasa de Acumulación de Anomalía un 40%. Cuando el portador inflige Daño Etéreo, su Maestría de Anomalía aumenta en 20 por 5s, acumulándose hasta 6 veces. Este efecto puede activarse una vez cada 0.5s, y las activaciones repetidas reinician la duración.",
       refinements: [ // Tabla de Mejora (R1 - R5)
         { level: 1, atk: "40%", damage: "20" },
         { level: 2, atk: "46%", damage: "23" },
@@ -428,7 +428,7 @@ export const weapons = [
     },
     effect: {
       title: "Patrulla de Seguridad",
-      description: "Aumenta la Probabilidad de CRIT en un 15%. Lanzar una (Tecnica Especial EX) otorga al portador 8 acumulaciones de Carga, hasta un máximo de 8 acumulaciones. Siempre que el (Ataque Basico) o (Ataque de Carrera) del portador causa Daño Etereo, consume una acumulación de Carga y aumenta el DAÑO de la habilidad en un 35%.",
+      description: "Aumenta la Probabilidad de CRIT en un 15%. Lanzar una (Tecnica Especial EX) otorga al portador 8 acumulaciones de Carga, hasta un máximo de 8 acumulaciones. Siempre que el (Ataque Basico) o (Ataque de Carrera) del portador causa Daño Etéreo, consume una acumulación de Carga y aumenta el DAÑO de la habilidad en un 35%.",
       refinements: [ // Tabla de Mejora (R1 - R5)
         { level: 1, prob: "15%", damageDash: "35%" },
         { level: 2, prob: "18.8%", damageDash: "43.5%" },
@@ -946,7 +946,7 @@ export const weapons = [
     },
     effect: {
       title: "Cazador de Bestias",
-      description: "Cuando los PV del objetivo no son inferiores al 50%, el portador inflige un 10% más de Aturdimiento al objetivo. Cuando los PV del objetivo no son inferiores al 75%, esta bonificación aumenta en un 10% adicional.",
+      description: "Cuando los Hp del objetivo no son inferiores al 50%, el portador inflige un 10% más de Aturdimiento al objetivo. Cuando los Hp del objetivo no son inferiores al 75%, esta bonificación aumenta en un 10% adicional.",
       refinements: [ // Tabla de Mejora (R1 - R5)
         { level: 1, Daze: "10%", DazeAdd: "10%" },
         { level: 2, Daze: "11.5%", DazeAdd: "11.5%" },
@@ -1178,7 +1178,7 @@ export const weapons = [
     },
     effect: {
       title: "Patada Voladora del Caballero de la Luz Estelar",
-      description: "Aumenta los PV Máx en un 8%. Al ser atacado, el Impacto del portador aumenta en un 10% por 12s.",
+      description: "Aumenta los Hp Máx en un 8%. Al ser atacado, el Impacto del portador aumenta en un 10% por 12s.",
       refinements: [ // Tabla de Mejora (R1 - R5)
         { level: 1, HP: "8%", Impacto: "10%" },
         { level: 2, HP: "9%", Impacto: "11.5%" },
@@ -1200,7 +1200,7 @@ export const weapons = [
     },
     effect: {
       title: "Acaricia al Conejo",
-      description: "Aumenta los PV Máx en un 8%. Aumenta el ATK del portador en un 10% cuando tiene un escudo.",
+      description: "Aumenta los Hp Máx en un 8%. Aumenta el ATK del portador en un 10% cuando tiene un escudo.",
       refinements: [ // Tabla de Mejora (R1 - R5)
         { level: 1, HP: "8%", ATK: "10%" },
         { level: 2, HP: "9.2%", ATK: "11.5%" },
@@ -1244,7 +1244,7 @@ export const weapons = [
     },
     effect: {
       title: "Grabado Relámpago",
-      description: "Cuando los PV de un miembro del escuadrón son superiores o iguales al 50%, recibe un 7.5% menos de DAÑO y un 10% menos de Contaminación de Miasma. Solo puede existir una instancia de este efecto en el mismo escuadrón.",
+      description: "Cuando los Hp de un miembro del escuadrón son superiores o iguales al 50%, recibe un 7.5% menos de DAÑO y un 10% menos de Contaminación de Miasma. Solo puede existir una instancia de este efecto en el mismo escuadrón.",
       refinements: [ // Tabla de Mejora (R1 - R5)
         { level: 1, DEF: "7.5%", Energia: "10%" },
         { level: 2, DEF: "8.6%", Energia: "11.5%" },
@@ -1266,7 +1266,7 @@ export const weapons = [
     },
     effect: {
       title: "Mapeo de Meridianos",
-      description: "El DAÑO de la (Técnica Especial EX) y la (Definitiva) del portador aumenta en un 25%. Cada vez que cualquier miembro del escuadrón recibe DAÑO o recupera PV, el portador gana 2 de Energía. Este efecto puede activarse una vez cada 5s..",
+      description: "El DAÑO de la (Técnica Especial EX) y la (Definitiva) del portador aumenta en un 25%. Cada vez que cualquier miembro del escuadrón recibe DAÑO o recupera Hp, el portador gana 2 de Energía. Este efecto puede activarse una vez cada 5s..",
       refinements: [ // Tabla de Mejora (R1 - R5)
         { level: 1, Daño: "25%", Energia: "2" },
         { level: 2, Daño: "28.7%", Energia: "2.3" },
@@ -1362,7 +1362,7 @@ export const weapons = [
     },
     effect: {
       title: "Caricia Sincera",
-      description: "Cuando los PV del portador disminuyen, su Daño Hielo Puro aumenta en un 6%, acumulándose hasta 3 veces y durando 25s. La duración de cada acumulación se calcula por separado. Este efecto puede activarse una vez cada 0.5s. Cuando los PV del portador caen al 50% de los PV Máx o menos, la Probabilidad de CRIT aumenta en un 20%.",
+      description: "Cuando los Hp del portador disminuyen, su Daño Hielo Puro aumenta en un 6%, acumulándose hasta 3 veces y durando 25s. La duración de cada acumulación se calcula por separado. Este efecto puede activarse una vez cada 0.5s. Cuando los Hp del portador caen al 50% de los Hp Máx o menos, la Probabilidad de CRIT aumenta en un 20%.",
       refinements: [ // Tabla de Mejora (R1 - R5)
         { level: 1, DañoHieloPuro: "6%", ProbabilidadCrit: "20%" },
         { level: 2, DañoHieloPuro: "7%", ProbabilidadCrit: "23%" },
@@ -1408,7 +1408,7 @@ export const weapons = [
     },
     effect: {
       title: "Fuego Enjaulado",
-      description: "El Daño Fuego del portador aumenta en un 15%. Cuando los PV del portador disminuyen, su Probabilidad de CRIT aumenta en un 15% por 5s.",
+      description: "El Daño Fuego del portador aumenta en un 15%. Cuando los Hp del portador disminuyen, su Probabilidad de CRIT aumenta en un 15% por 5s.",
       refinements: [ // Tabla de Mejora (R1 - R5)
         { level: 1, TasaCrit: "15%", DañoFuego: "15%" },
         { level: 2, TasaCrit: "17.25%", DañoFuego: "17.25%" },
@@ -1430,7 +1430,7 @@ export const weapons = [
     },
     effect: {
       title: "Artesanía Ingeniosa",
-      description: "Al lanzar una (Técnica Especial EX), el Daño CRIT del portador aumenta en un 16% por 12s. Además, si los PV actuales del objetivo son inferiores al 50% de sus PV Máx, el Daño de la (Técnica Especial EX) aumenta en un 20%.",
+      description: "Al lanzar una (Técnica Especial EX), el Daño CRIT del portador aumenta en un 16% por 12s. Además, si los Hp actuales del objetivo son inferiores al 50% de sus Hp Máx, el Daño de la (Técnica Especial EX) aumenta en un 20%.",
       refinements: [ // Tabla de Mejora (R1 - R5)
         { level: 1, DañoCrit: "16%", Daño: "20%" },
         { level: 2, DañoCrit: "18.4%", Daño: "23%" },
@@ -1526,13 +1526,13 @@ export const weapons = [
     },
     effect: {
       title: "Épica de la Marea Lunar",
-      description: "La Regeneración de Energía del portador aumenta en 0.4/s. Cuando el portador activa un (Velo Etereo) o extiende su duración, todos los miembros del escuadrón ganan un 25% de DAÑO aumentado y un 15% de PV Máx aumentados por 45s. Las activaciones repetidas reinician la duración. Solo puede existir una instancia de este efecto en el mismo escuadrón.",
+      description: "La Regeneración de Energía del portador aumenta en 0.4/s. Cuando el portador activa un (Velo Etereo) o extiende su duración, todos los miembros del escuadrón ganan un 25% de DAÑO aumentado y un 15% de Hp Máx aumentados por 45s. Las activaciones repetidas reinician la duración. Solo puede existir una instancia de este efecto en el mismo escuadrón.",
       refinements: [ // Tabla de Mejora (R1 - R5)
-        { level: 1, Energia: "0.4/s", Daño: "25%", PVMax: "15%" },
-        { level: 2, Energia: "0.46/s", Daño: "28.8%", PVMax: "17.3%" },
-        { level: 3, Energia: "0.52/s", Daño: "32.5%", PVMax: "19.5%" },
-        { level: 4, Energia: "0.58/s", Daño: "36.3%", PVMax: "21.8%" },
-        { level: 5, Energia: "0.64/s", Daño: "40%", PVMax: "24%" }
+        { level: 1, Energia: "0.4/s", Daño: "25%", HpMax: "15%" },
+        { level: 2, Energia: "0.46/s", Daño: "28.8%", HpMax: "17.3%" },
+        { level: 3, Energia: "0.52/s", Daño: "32.5%", HpMax: "19.5%" },
+        { level: 4, Energia: "0.58/s", Daño: "36.3%", HpMax: "21.8%" },
+        { level: 5, Energia: "0.64/s", Daño: "40%", HpMax: "24%" }
       ]
     },
     image: "/CodiceZero/Armas/Soporte/W-Engine_Dreamlit_Hearth.webp"
@@ -1832,13 +1832,13 @@ export const weapons = [
     },
     effect: {
       title: "Dulzura Frágil",
-      description: "La Regeneración de Energía del portador aumenta en 0.46/s. Todos los miembros del escuadrón ganan un 10% de ATK y un 10% de PV Máx. Solo puede existir una instancia de este efecto en el mismo escuadrón. Cuando el portador activa o extiende un (Velo Etereo), todo el escuadrón gana un 30% de Daño CRIT por 60s. Las activaciones repetidas reinician la duración.",
+      description: "La Regeneración de Energía del portador aumenta en 0.46/s. Todos los miembros del escuadrón ganan un 10% de ATK y un 10% de Hp Máx. Solo puede existir una instancia de este efecto en el mismo escuadrón. Cuando el portador activa o extiende un (Velo Etereo), todo el escuadrón gana un 30% de Daño CRIT por 60s. Las activaciones repetidas reinician la duración.",
       refinements: [ // Tabla de Mejora (R1 - R5)
-        { level: 1, Energia: "0.46/s", ATK: "10%", PVMax: "10%", DañoCrit: "30%" },
-        { level: 2, Energia: "0.53/s", ATK: "11.5%", PVMax: "11.5%", DañoCrit: "34.5%" },
-        { level: 3, Energia: "0.60/s", ATK: "13%", PVMax: "13%", DañoCrit: "39%" },
-        { level: 4, Energia: "0.67/s", ATK: "14.5%", PVMax: "14.5%", DañoCrit: "43.5%" },
-        { level: 5, Energia: "0.74/s", ATK: "16%", PVMax: "16%", DañoCrit: "48%" }
+        { level: 1, Energia: "0.46/s", ATK: "10%", HpMax: "10%", DañoCrit: "30%" },
+        { level: 2, Energia: "0.53/s", ATK: "11.5%", HpMax: "11.5%", DañoCrit: "34.5%" },
+        { level: 3, Energia: "0.60/s", ATK: "13%", HpMax: "13%", DañoCrit: "39%" },
+        { level: 4, Energia: "0.67/s", ATK: "14.5%", HpMax: "14.5%", DañoCrit: "43.5%" },
+        { level: 5, Energia: "0.74/s", ATK: "16%", HpMax: "16%", DañoCrit: "48%" }
       ]
     },
     image: "/CodiceZero/Armas/Defensa/Weapon_S_1341Big.png"

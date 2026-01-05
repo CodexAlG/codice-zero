@@ -46,25 +46,25 @@ export default {
     {
       type: "Ataque Básico",
       name: "Ataque Basico: Golpe Emplumado",
-      description: "Presiona [Icono Ataque] para activar: Realiza hasta cuatro ataques en frente, causando Daño Fisico y Daño Etereo. Después de activar el cuarto ataque, entra en el estado (Mujer Noble). Con (Plumas de Vuelo) disponibles, mantener [Icono Ataque] durante el cuarto ataque activará el estado (Vestido Aleteante).",
+      description: "Presiona [Icono Ataque] para activar: Realiza hasta cuatro ataques en frente, causando Daño Fisico y Daño Etéreo. Después de activar el cuarto ataque, entra en el estado (Mujer Noble). Con (Plumas de Vuelo) disponibles, mantener [Icono Ataque] durante el cuarto ataque activará el estado (Vestido Aleteante).",
       tags: ["Físico", "Etéreo", "Ataque Básico"]
     },
     {
       type: "Ataque Básico",
       name: "Ataque Basico: Mujer Noble - Vals",
-      description: "Mientras está en el estado (Mujer Noble), presiona [Icono Ataque] para activar: Se lanza hacia adelante con un ataque que causa Daño Etereo y recupera 1 (Pluma de Guardia). El personaje es invulnerable mientras usa esta habilidad. Si se activa una (Evasion Perfecta) durante el dash, gana 1 (Pluma de Vuelo) adicional. Si hay (Plumas de Vuelo) disponibles después de la habilidad, entra en el estado (Vestido Aleteante), el cual puede ser cancelado manteniendo presionado [Icono Dodges] cuando se usa la habilidad.",
+      description: "Mientras está en el estado (Mujer Noble), presiona [Icono Ataque] para activar: Se lanza hacia adelante con un ataque que causa Daño Etéreo y recupera 1 (Pluma de Guardia). El personaje es invulnerable mientras usa esta habilidad. Si se activa una (Evasion Perfecta) durante el dash, gana 1 (Pluma de Vuelo) adicional. Si hay (Plumas de Vuelo) disponibles después de la habilidad, entra en el estado (Vestido Aleteante), el cual puede ser cancelado manteniendo presionado [Icono Dodges] cuando se usa la habilidad.",
       tags: ["Etéreo", "Ataque Básico"]
     },
     {
       type: "Ataque Básico",
       name: "Ataque Basico: Vestido Aleteante - Suspension",
-      description: "Presiona [Icono Ataque] mientras está en el estado (Vestido Aleteante) para activar: Ataca un área adelante, causando Daño Etereo. Después de la activación, esta habilidad consumirá todas las (Plumas de Vuelo), y cada (Pluma de Vuelo) consumida otorga 1 (Pluma de Guardia). El personaje es invulnerable mientras usa esta habilidad. Cuando se cambian personajes durante el estado (Vestido Aleteante), Vivian realizará automáticamente (Ataque Basico: Vestido Aleteante - Suspension). Mientras está en el estado (Vestido Aleteante), presiona [Icono Dodges] para salir del estado.",
+      description: "Presiona [Icono Ataque] mientras está en el estado (Vestido Aleteante) para activar: Ataca un área adelante, causando Daño Etéreo. Después de la activación, esta habilidad consumirá todas las (Plumas de Vuelo), y cada (Pluma de Vuelo) consumida otorga 1 (Pluma de Guardia). El personaje es invulnerable mientras usa esta habilidad. Cuando se cambian personajes durante el estado (Vestido Aleteante), Vivian realizará automáticamente (Ataque Basico: Vestido Aleteante - Suspension). Mientras está en el estado (Vestido Aleteante), presiona [Icono Dodges] para salir del estado.",
       tags: ["Etéreo", "Ataque Básico"]
     },
     {
       type: "Ataque Básico",
       name: "Ataque Basico: Flor de Pluma",
-      description: "Después de que cualquier miembro del escuadrón golpea a un objetivo con un (Tecnica Especial EX), Vivian consumirá 1 (Pluma de Guardia) para lanzar (Ataque Basico: Flor de Pluma). Lanza un ataque al objetivo, causando Daño Etereo, activándose como máximo una vez por uso de una habilidad. Este efecto puede activarse incluso si Vivian está fuera del campo. Un máximo de 5 (Plumas de Guardia) pueden ser almacenadas.",
+      description: "Después de que cualquier miembro del escuadrón golpea a un objetivo con un (Tecnica Especial EX), Vivian consumirá 1 (Pluma de Guardia) para lanzar (Ataque Basico: Flor de Pluma). Lanza un ataque al objetivo, causando Daño Etéreo, activándose como máximo una vez por uso de una habilidad. Este efecto puede activarse incluso si Vivian está fuera del campo. Un máximo de 5 (Plumas de Guardia) pueden ser almacenadas.",
       tags: ["Etéreo", "Ataque Básico"]
     },
     {
@@ -82,7 +82,7 @@ export default {
     {
       type: "Evasión",
       name: "Contraataque de Evasion: Reverberacion de Hoja de Ala",
-      description: "Presiona [Icono Ataque] durante una (Evasion Perfecta) para activar: Lanza un ataque a los enemigos en frente, causando Daño Fisico y Daño Etereo. El personaje es invulnerable mientras usa esta habilidad. Después de activar la habilidad, entra en el estado (Mujer Noble). Cuando hay (Plumas de Vuelo) disponibles, mantener [Icono Ataque] durante la activación de la habilidad permite entrar en el estado (Vestido Aleteante).",
+      description: "Presiona [Icono Ataque] durante una (Evasion Perfecta) para activar: Lanza un ataque a los enemigos en frente, causando Daño Fisico y Daño Etéreo. El personaje es invulnerable mientras usa esta habilidad. Después de activar la habilidad, entra en el estado (Mujer Noble). Cuando hay (Plumas de Vuelo) disponibles, mantener [Icono Ataque] durante la activación de la habilidad permite entrar en el estado (Vestido Aleteante).",
       tags: ["Físico", "Etéreo", "Evasión"]
     },
     {
@@ -94,19 +94,19 @@ export default {
     {
       type: "Técnica Especial",
       name: "Tecnica Especial: Cancion de Alas de Plata",
-      description: "Presiona [Icono Especial] para activar: Corre rápidamente hacia adelante, causando Daño Fisico y Daño Etereo. El nivel de Anti-Interrupción aumenta mientras usa esta habilidad.",
+      description: "Presiona [Icono Especial] para activar: Corre rápidamente hacia adelante, causando Daño Fisico y Daño Etéreo. El nivel de Anti-Interrupción aumenta mientras usa esta habilidad.",
       tags: ["Físico", "Etéreo", "Técnica Especial"]
     },
     {
       type: "Técnica Especial EX",
       name: "Tecnica Especial EX: Requiem Violeta",
-      description: "Con suficiente Energía, presiona [Icono Especial EX] para activar: Desata un poderoso ataque hacia adelante que causa masivo Daño Etereo y gana 3 (Plumas de Vuelo). El personaje es invulnerable mientras usa esta habilidad. Después de usar la habilidad, mantén presionado [Icono Dodges] durante el uso de la habilidad para entrar en el estado (Vestido Aleteante).",
+      description: "Con suficiente Energía, presiona [Icono Especial EX] para activar: Desata un poderoso ataque hacia adelante que causa masivo Daño Etéreo y gana 3 (Plumas de Vuelo). El personaje es invulnerable mientras usa esta habilidad. Después de usar la habilidad, mantén presionado [Icono Dodges] durante el uso de la habilidad para entrar en el estado (Vestido Aleteante).",
       tags: ["Etéreo", "Técnica Especial EX"]
     },
     {
       type: "Asistencia",
       name: "Asistencia Rapida: Guardia de Escarcha",
-      description: "Cuando el personaje activo es lanzado, presiona [Icono Assist] para activar: Lanza un ataque a los enemigos en frente, causando Daño Fisico y Daño Etereo. El personaje es invulnerable mientras usa esta habilidad. Después de que la habilidad se activa, entra en el estado (Mujer Noble). Con (Plumas de Vuelo) disponibles, mantén presionado [Icono Ataque] durante la activación de la habilidad para entrar en el estado (Vestido Aleteante).",
+      description: "Cuando el personaje activo es lanzado, presiona [Icono Assist] para activar: Lanza un ataque a los enemigos en frente, causando Daño Fisico y Daño Etéreo. El personaje es invulnerable mientras usa esta habilidad. Después de que la habilidad se activa, entra en el estado (Mujer Noble). Con (Plumas de Vuelo) disponibles, mantén presionado [Icono Ataque] durante la activación de la habilidad para entrar en el estado (Vestido Aleteante).",
       tags: ["Físico", "Etéreo", "Asistencia"]
     },
     {
@@ -118,13 +118,13 @@ export default {
     {
       type: "Asistencia",
       name: "Ataque de Asistencia: Ejecucion de Hoja de Pluma",
-      description: "Presiona [Icono Ataque] después de una (Asistencia Defensiva) para activar: Lanza un ataque a los enemigos en frente, causando Daño Etereo y ganando 2 (Plumas de Vuelo). El personaje es invulnerable mientras usa esta habilidad. Después de que la habilidad se activa, entra en el estado (Vestido Aleteante), el cual puede ser cancelado manteniendo presionado [Icono Dodges] durante la habilidad.",
+      description: "Presiona [Icono Ataque] después de una (Asistencia Defensiva) para activar: Lanza un ataque a los enemigos en frente, causando Daño Etéreo y ganando 2 (Plumas de Vuelo). El personaje es invulnerable mientras usa esta habilidad. Después de que la habilidad se activa, entra en el estado (Vestido Aleteante), el cual puede ser cancelado manteniendo presionado [Icono Dodges] durante la habilidad.",
       tags: ["Etéreo", "Asistencia"]
     },
     {
       type: "Pasiva Central",
       name: "Pasiva Principal: Canto Funebre del Destino",
-      description: "Cuando (Ataque Basico: Flor de Pluma) golpea a un objetivo que está sufriendo de una (Anomalia) de Etereo, Electrico, Fuego, Fisico o Hielo, activará (Florecer), causando Daño de Anomalia de Atributo adicional. El DAÑO adicional es {VALOR_1}/{VALOR_2}/{VALOR_3}/{VALOR_4}/{VALOR_5} por cada 10 puntos de Competencia de Anomalía del DAÑO de Anomalía original. Cuando (Ataque Basico: Vestido Aleteante - Suspension) o (Ataque Basico: Flor de Pluma) golpea a un objetivo sufriendo cualquier (Anomalia de Atributo), infligirá (Profecia de Vivian), causando que el objetivo reciba Daño Etereo igual al 55% del ATK de Vivian cada 0.55s. Este DAÑO puede activar DAÑO adicional de (Anomalias de Atributo). (Profecia de Vivian) termina cuando el objetivo ya no está sufriendo una (Anomalia de Atributo). Al entrar al campo de batalla, Vivian gana 2 (Plumas de Vuelo).",
+      description: "Cuando (Ataque Basico: Flor de Pluma) golpea a un objetivo que está sufriendo de una (Anomalia) de Etereo, Electrico, Fuego, Fisico o Hielo, activará (Florecer), causando Daño de Anomalia de Atributo adicional. El DAÑO adicional es {VALOR_1}/{VALOR_2}/{VALOR_3}/{VALOR_4}/{VALOR_5} por cada 10 puntos de Competencia de Anomalía del DAÑO de Anomalía original. Cuando (Ataque Basico: Vestido Aleteante - Suspension) o (Ataque Basico: Flor de Pluma) golpea a un objetivo sufriendo cualquier (Anomalia de Atributo), infligirá (Profecia de Vivian), causando que el objetivo reciba Daño Etéreo igual al 55% del ATK de Vivian cada 0.55s. Este DAÑO puede activar DAÑO adicional de (Anomalias de Atributo). (Profecia de Vivian) termina cuando el objetivo ya no está sufriendo una (Anomalia de Atributo). Al entrar al campo de batalla, Vivian gana 2 (Plumas de Vuelo).",
       tags: ["Pasiva Central"]
     },
     {
@@ -136,13 +136,13 @@ export default {
     {
       type: "Técnica Definitiva",
       name: "Ataque en Cadena: Coro de Alas Celestiales",
-      description: "Cuando un (Ataque en Cadena) es activado, selecciona el personaje para activar: Lanza un poderoso ataque en un área grande de enemigos adelante, causando masivo Daño Etereo y ganando 3 (Plumas de Vuelo). El personaje es invulnerable mientras usa esta habilidad. Después de que la habilidad se activa, entra en el estado (Vestido Aleteante), el cual puede ser cancelado manteniendo presionado [Icono Dodges] durante la habilidad.",
+      description: "Cuando un (Ataque en Cadena) es activado, selecciona el personaje para activar: Lanza un poderoso ataque en un área grande de enemigos adelante, causando masivo Daño Etéreo y ganando 3 (Plumas de Vuelo). El personaje es invulnerable mientras usa esta habilidad. Después de que la habilidad se activa, entra en el estado (Vestido Aleteante), el cual puede ser cancelado manteniendo presionado [Icono Dodges] durante la habilidad.",
       tags: ["Etéreo", "Ataque en Cadena"]
     },
     {
       type: "Técnica Definitiva",
       name: "Definitiva: Cancion del Pajaro Elevandose",
-      description: "Cuando el Nivel de Decibelios está al (Máximo), presiona [Icono Definitiva] para activar: Lanza un poderoso ataque en un área grande de enemigos adelante, causando masivo Daño Etereo y ganando 5 (Plumas de Vuelo). El personaje es invulnerable mientras usa esta habilidad. Después de que la habilidad se activa, entra en el estado (Vestido Aleteante), el cual puede ser cancelado manteniendo presionado [Icono Dodges] durante la habilidad.",
+      description: "Cuando el Nivel de Decibelios está al (Máximo), presiona [Icono Definitiva] para activar: Lanza un poderoso ataque en un área grande de enemigos adelante, causando masivo Daño Etéreo y ganando 5 (Plumas de Vuelo). El personaje es invulnerable mientras usa esta habilidad. Después de que la habilidad se activa, entra en el estado (Vestido Aleteante), el cual puede ser cancelado manteniendo presionado [Icono Dodges] durante la habilidad.",
       tags: ["Etéreo", "Técnica Definitiva"]
     },
     {
