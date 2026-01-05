@@ -11,7 +11,7 @@ const createHighlightRules = (elementColor = "#facc15") => [
   },
   // Damage types
   // Hielo (Moved before Fuego to prioritize 'Quemadura por Frío' over 'Quemadura')
-  { pattern: /(Acumulaci[oó]n\s+de\s+Anomal[ií]a\s+Hielo|Daño\s+Hielo(?:\s+Puro)?|Daño\s+Congelaci[oó]n|Rompehielo|Romper\s+Hielo|Congelaci[oó]n\w*|Anomal[ií]a\s+Hielo|Res\s+Hielo|Resistencia\s+Hielo|Hielo(?:\s+Puro)?|Quemadura\s+por\s+Fr[ií]o|Anomal[ií]a\s+de\s+Congelaci[oó]n|Acumulaci[oó]n\s+de\s+Anomal[ií]a\s+de\s+Congelaci[oó]n|Anomal[ií]a\s+de\s+Atributo\s+(?:de\s+)?Hielo)/gi, color: "text-[#22d3ee] font-bold" },
+  { pattern: /(Acumulaci[oó]n\s+de\s+Anomal[ií]a\s+Hielo|Daño\s+Hielo(?:\s+Puro)?|Daño\s+Congelaci[oó]n|Rompehielo|Romper\s+Hielo|Congelaci[ó]n\w*|Anomal[ií]a\s+Hielo|Res\s+Hielo|Resistencia\s+Hielo|Hielo(?:\s+Puro)?|Quemadura\s+por\s+Fr[ií]o|Anomal[ií]a\s+de\s+Congelaci[oó]n|Acumulaci[oó]n\s+de\s+Anomal[ií]a\s+de\s+Congelaci[oó]n|Anomal[ií]a\s+de\s+Atributo\s+(?:de\s+)?Hielo)/gi, color: "text-[#22d3ee] font-bold" },
   // Fuego
   { pattern: /(Acumulaci[oó]n\s+de\s+Anomal[ií]a\s+Fuego|Daño\s+Fuego(?:\s+Puro)?|Quemadura|Quemados?|Anomal[ií]a\s+Fuego|Res\s+Fuego|Resistencia\s+Fuego|Fuego(?:\s+Puro)?|Anomal[ií]a\s+de\s+Atributo\s+(?:de\s+)?Fuego)/gi, color: "text-[#ef4444] font-bold" },
   // Eléctrico
