@@ -22,9 +22,17 @@ export default {
         energyRegen: "1.2",
     },
     coreStats: {
-        statName: "tasa", // Usuario agregará
+        statName: "Tasa de Anomalía", // Usuario agregará
         valuePerNode: 16 // Usuario agregará
     },
+    coreSkillScalingColors: [
+        "text-[#d946ef]", // Etéreo (Pink/Magenta)
+        "text-[#3b82f6]", // Eléctrico (Blue)
+        "text-[#ef4444]", // Fuego (Red)
+        "text-[#eab308]", // Físico (Yellow)
+        "text-[#22d3ee]", // Hielo (Cyan)
+        "text-[#d946ef]"  // Val 6 (Etéreo)
+    ],
     coreSkillScaling: [
         ["3.1%", "1.6%", "4%", "0.3%", "0.4%", "6.2%"], // Usuario agregará los valores del Core Skill
         ["3.6%", "1.9%", "4.7%", "0.35%", "0.5%", "7.2%"],
@@ -122,7 +130,7 @@ export default {
         {
             type: "Pasiva Central",
             name: "Pasiva Central: Aria",
-            description: "Cuando la 3-Rank (Ataque de Carga) de Aria golpea un objetivo afligido con Anomalía de Atributo de Etéreo, Anomalía de Atributo Eléctrico, Anomalía de Atributo Fuego, Anomalía de Atributo Físico o Anomalía de Atributo Hielo, activa (Abloom): causa Daño de Anomalía de Atributo adicional igual al [CV=\"text-[#d946ef]\"]{VALOR_1}[/CV]/[CV=\"text-[#3b82f6]\"]{VALOR_2}[/CV]/[CV=\"text-[#ef4444]\"]{VALOR_3}[/CV]/[CV=\"text-[#eab308]\"]{VALOR_4}[/CV]/[CV=\"text-[#22d3ee]\"]{VALOR_5}[/CV] del DAÑO de Anomalía de Atributo original por 10 puntos de Maestría de Anomalía. Cuando un miembro del escuadrón en el campo activa (Abloom), Aria también gana 2 (Bastones de Luz). Cuando en el escuadrón, enemigos entrando (Anomalía de Atributo de Etéreo) también entran (Estado Debilitado de Anomalía) por 20s, activaciones repetidas reinician la duración. Si Aria activa (Anomalía de Atributo de Etéreo) en un enemigo en (Estado Debilitado de Anomalía), ella inmediatamente activa un más poderoso (Abloom), causando Daño de Anomalía de Atributo adicional igual al [CV=\"text-[#d946ef]\"]{VALOR_6}[/CV] del DAÑO de Anomalía de Atributo original por 10 puntos de Maestría de Anomalía. (Abloom) no eliminará la (Anomalía de Atributo) del objetivo.",
+            description: "Cuando la 3-Rank (Ataque de Carga) de Aria golpea un objetivo afligido con (Anomalía de Atributo de Etéreo), (Anomalía de Atributo Eléctrico), (Anomalía de Atributo Fuego), (Anomalía de Atributo Físico) o (Anomalía de Atributo Hielo), activa (Abloom): causa Daño de Anomalía de Atributo adicional igual al {VALOR_1}/{VALOR_2}/{VALOR_3}/{VALOR_4}/{VALOR_5} del DAÑO de Anomalía de Atributo original por 10 puntos de Maestría de Anomalía. Cuando un miembro del escuadrón en el campo activa (Abloom), Aria también gana 2 (Bastones de Luz). Cuando en el escuadrón, enemigos entrando (Anomalía de Atributo de Etéreo) también entran (Estado Debilitado de Anomalía) por 20s, activaciones repetidas reinician la duración. Si Aria activa (Anomalía de Atributo de Etéreo) en un enemigo en (Estado Debilitado de Anomalía), ella inmediatamente activa un más poderoso (Abloom), causando Daño de Anomalía de Atributo adicional igual al {VALOR_6} del DAÑO de Anomalía de Atributo original por 10 puntos de Maestría de Anomalía. (Abloom) no eliminará la (Anomalía de Atributo) del objetivo.",
             tags: ["Pasiva Central"]
         },
         {
@@ -134,7 +142,7 @@ export default {
         {
             type: "Mindscape 1",
             name: "Talento 1",
-            description: "Iris' (Ataque Básico), (Ataque Especial), (Ataques Especiales EX) ignoran el 10% de la Resistencia de Acumulación de Anomalía de Atributo del objetivo oscuro Anomalía de Atributo de Etéreo. Cuando son activados, hay una posibilidad de activar una Probabilidad de Crit Base. La Probabilidad de Crit Base es de 40% y el Daño CRIT es de 30% respectivamente. Si La tasa de anomalía es mayor que 180, cada punto de maestría de Anomalía excediendo este punto incrementa la Probabilidad de Crit de este efecto en un extra 0.4%.",
+            description: "Iris' (Ataque Básico), (Ataque Especial), (Ataques Especiales EX) ignoran el 10% de la Resistencia de Acumulación de Anomalía de Atributo del objetivo oscuro Anomalía de Atributo de Etéreo. Cuando son activados, hay una posibilidad de activar una Probabilidad de Crit Base. La Probabilidad de Crit Base es de 40% y el Daño CRIT es de 30% respectivamente. Si La Tasa de Anomalía es mayor que 180, cada punto de Maestría de Anomalía excediendo este punto incrementa la Probabilidad de Crit de este efecto en un extra 0.4%.",
             tags: ["Mindscape 1"]
         },
         {
