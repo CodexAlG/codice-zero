@@ -98,7 +98,7 @@ export default {
     {
       type: "Habilidad Adicional",
       name: "Habilidad Adicional: Banquete de Perfección",
-      description: "Cuando otro personaje en tu escuadrón comparte el mismo Atributo o Facción: Aumenta la duración de (Shock) infligido a enemigos por cualquier personaje en 3s. Cuando hay enemigos bajo (Shock) en el campo, el Daño Eléctrico de todos los miembros del escuadrón aumenta en un 10%.",
+      description: "Cuando otro personaje en tu escuadrón comparte el mismo Atributo o Facción: Aumenta la duración de (electrochoque) infligido a enemigos por cualquier personaje en 3s. Cuando hay enemigos bajo (electrochoque) en el campo, el Daño Eléctrico de todos los miembros del escuadrón aumenta en un 10%.",
       tags: ["Habilidad Adicional"]
     },
     {

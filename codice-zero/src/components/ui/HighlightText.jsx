@@ -15,7 +15,7 @@ const createHighlightRules = (elementColor = "#facc15") => [
   // Fuego
   { pattern: /(Acumulaci[oó]n\s+de\s+Anomal[ií]a\s+Fuego|Daño\s+Fuego(?:\s+Puro)?|Quemadura|Quemados?|Anomal[ií]a\s+Fuego|Res\s+Fuego|Resistencia\s+Fuego|Fuego(?:\s+Puro)?|Anomal[ií]a\s+de\s+Atributo\s+(?:de\s+)?Fuego)/gi, color: "text-[#ef4444] font-bold" },
   // Eléctrico
-  { pattern: /(Acumulaci[oó]n\s+de\s+Anomal[ií]a\s+El[eé]ctrica|Daño\s+El[eé]ctrico(?:\s+Puro)?|Shock|Electrocuci[oó]n|Anomal[ií]a\s+El[eé]ctrica|Res\s+El[eé]ctrica|Resistencia\s+El[eé]ctrica|El[eé]ctrico|El[eé]ctrica(?:\s+Pura)?|Anomal[ií]a\s+de\s+Atributo\s+(?:de\s+)?El[eé]ctric[oa])/gi, color: "text-[#3b82f6] font-bold" },
+  { pattern: /(Acumulaci[oó]n\s+de\s+Anomal[ií]a\s+El[eé]ctrica|Daño\s+El[eé]ctrico(?:\s+Puro)?|[Ee]lectrochoque|Electrocuci[oó]n|Anomal[ií]a\s+El[eé]ctrica|Res\s+El[eé]ctrica|Resistencia\s+El[eé]ctrica|El[eé]ctrico|El[eé]ctrica(?:\s+Pura)?|Anomal[ií]a\s+de\s+Atributo\s+(?:de\s+)?El[eé]ctric[oa])/gi, color: "text-[#3b82f6] font-bold" },
   // Físico
   { pattern: /(Asalto\s+de\s+Polaridad|Hoja\s+Afilada|Honed\s+Edge|Acumulaci[oó]n\s+de\s+Anomal[ií]a\s+F[ií]sica|Daño\s+F[ií]sico(?:\s+Puro)?|Anomal[ií]a\s+F[ií]sica|Res\s+F[ií]sic[oa]|Resistencia\s+F[ií]sica|Asalto|F[ií]sico|F[ií]sica(?:\s+Pura)?|Anomal[ií]a\s+de\s+Atributo\s+(?:de\s+)?F[ií]sic[oa])/gi, color: "text-[#eab308] font-bold" },
   // Etéreo
