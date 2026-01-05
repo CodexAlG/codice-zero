@@ -122,7 +122,7 @@ export default {
         {
             type: "Pasiva Central",
             name: "Pasiva Central: Aria",
-            description: "Cuando la 3-Rank (Ataque de Carga) de Aria golpea un objetivo afligido con Anomalía de Atributo de Etéreo, Anomalía de Atributo Eléctrico, Anomalía de Atributo Fuego, Anomalía de Atributo Físico o Anomalía de Atributo Hielo, activa (Abloom): causa Daño de Anomalía de Atributo adicional igual al [CV=\"text-[#d946ef]\"]6.2%[/CV]/[CV=\"text-[#3b82f6]\"]3.2%[/CV]/[CV=\"text-[#ef4444]\"]8%[/CV]/[CV=\"text-[#eab308]\"]0.6%[/CV]/[CV=\"text-[#22d3ee]\"]0.8%[/CV] del DAÑO de Anomalía de Atributo original por 10 puntos de Proficiencia de Anomalía. Cuando un miembro del escuadrón en el campo activa (Abloom), Aria también gana 2 (Bastones de Luz). Cuando en el escuadrón, enemigos entrando Anomalía de Atributo de Etéreo también entran (Estado Debilitado de Anomalía) por 20s, activaciones repetidas reinician la duración. Si Aria activa Anomalía de Atributo de Etéreo en un enemigo en (Estado Debilitado de Anomalía), ella inmediatamente activa un más poderoso (Abloom), causando Daño de Anomalía de Atributo adicional igual al [CV=\"text-[#d946ef]\"]12.3%[/CV] del DAÑO de Anomalía de Atributo original por 10 puntos de Proficiencia de Anomalía. (Abloom) no eliminará la (Anomalía de Atributo) del objetivo.",
+            description: "Cuando la 3-Rank (Ataque de Carga) de Aria golpea un objetivo afligido con Anomalía de Atributo de Etéreo, Anomalía de Atributo Eléctrico, Anomalía de Atributo Fuego, Anomalía de Atributo Físico o Anomalía de Atributo Hielo, activa (Abloom): causa Daño de Anomalía de Atributo adicional igual al [CV=\"text-[#d946ef]\"]{VALOR_1}[/CV]/[CV=\"text-[#3b82f6]\"]{VALOR_2}[/CV]/[CV=\"text-[#ef4444]\"]{VALOR_3}[/CV]/[CV=\"text-[#eab308]\"]{VALOR_4}[/CV]/[CV=\"text-[#22d3ee]\"]{VALOR_5}[/CV] del DAÑO de Anomalía de Atributo original por 10 puntos de Proficiencia de Anomalía. Cuando un miembro del escuadrón en el campo activa (Abloom), Aria también gana 2 (Bastones de Luz). Cuando en el escuadrón, enemigos entrando Anomalía de Atributo de Etéreo también entran (Estado Debilitado de Anomalía) por 20s, activaciones repetidas reinician la duración. Si Aria activa Anomalía de Atributo de Etéreo en un enemigo en (Estado Debilitado de Anomalía), ella inmediatamente activa un más poderoso (Abloom), causando Daño de Anomalía de Atributo adicional igual al [CV=\"text-[#d946ef]\"]{VALOR_6}[/CV] del DAÑO de Anomalía de Atributo original por 10 puntos de Proficiencia de Anomalía. (Abloom) no eliminará la (Anomalía de Atributo) del objetivo.",
             tags: ["Pasiva Central"]
         },
         {
@@ -164,7 +164,7 @@ export default {
         {
             type: "Mindscape 6",
             name: "Talento 6",
-            description: "Al entrar en el campo de batalla, Aria inmediatamente gana 1,500 Decibeles, y Aria no saldrá del (Estado Potenciado) una vez que el (Ataque de Carga Potenciado) es incrementado en un 20%. Cuando Aria activa una Anomalía Etéreo de nuevo en el enemigo en el (Estado Debilitado de Anomalía), ella gana 2 (Bastones de Luz Súper).",
+            description: "Al entrar en el campo de batalla, Aria inmediatamente gana 1,500 Decibeles, y Aria no saldrá del (Estado Potenciado) una vez que el (Ataque de Carga Potenciado) el Daño Etéreo es incrementado en un 20%. Cuando Aria activa una Anomalía Etéreo de nuevo en el enemigo en el (Estado Debilitado de Anomalía), ella gana 2 (Bastones de Luz Súper).",
             tags: ["Mindscape 6"]
         }
     ]
