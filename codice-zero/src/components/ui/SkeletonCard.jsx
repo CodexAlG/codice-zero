@@ -4,30 +4,30 @@
  */
 
 export default function SkeletonCard({ aspectRatio = "4/5" }) {
-    return (
-        <div
-            className="relative w-full mx-auto bg-gray-800/50 rounded-lg overflow-hidden animate-pulse"
-            style={{ aspectRatio }}
-        >
-            {/* Shimmer overlay */}
-            <div className="absolute inset-0 shimmer"></div>
+  return (
+    <div
+      className="relative w-full mx-auto bg-[#18181b]/50 rounded-lg overflow-hidden animate-pulse"
+      style={{ aspectRatio }}
+    >
+      {/* Shimmer overlay */}
+      <div className="absolute inset-0 shimmer"></div>
 
-            {/* Skeleton content */}
-            <div className="absolute inset-0 p-2 flex flex-col justify-between">
-                {/* Top badges */}
-                <div className="flex justify-between">
-                    <div className="w-6 h-6 bg-gray-700/80 rounded"></div>
-                    <div className="w-6 h-6 bg-gray-700/80 rounded"></div>
-                </div>
+      {/* Skeleton content */}
+      <div className="absolute inset-0 p-2 flex flex-col justify-between">
+        {/* Top badges */}
+        <div className="flex justify-between">
+          <div className="w-6 h-6 bg-[#27272a]/80 rounded"></div>
+          <div className="w-6 h-6 bg-[#27272a]/80 rounded"></div>
+        </div>
 
-                {/* Bottom text */}
-                <div className="space-y-2 p-2">
-                    <div className="h-3 bg-gray-700/80 rounded w-3/4 mx-auto"></div>
-                </div>
-            </div>
+        {/* Bottom text */}
+        <div className="space-y-2 p-2">
+          <div className="h-3 bg-[#27272a]/80 rounded w-3/4 mx-auto"></div>
+        </div>
+      </div>
 
-            {/* Shimmer animation styles */}
-            <style jsx>{`
+      {/* Shimmer animation styles */}
+      <style jsx>{`
         @keyframes shimmer {
           0% {
             transform: translateX(-100%);
@@ -53,6 +53,6 @@ export default function SkeletonCard({ aspectRatio = "4/5" }) {
           animation: shimmer 2s infinite;
         }
       `}</style>
-        </div>
-    );
+    </div>
+  );
 }
