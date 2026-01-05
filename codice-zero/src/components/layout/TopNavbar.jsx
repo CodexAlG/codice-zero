@@ -118,7 +118,7 @@ export default function TopNavbar({ isVisible }) {
 
     return (
         <header
-            className={`fixed top-0 left-0 h-full w-56 z-50 bg-[#0b0c15]/95 backdrop-blur-md border-r border-white/5 shadow-2xl transition-transform duration-300 ease-in-out ${isVisible ? 'translate-x-0' : '-translate-x-full'
+            className={`fixed top-0 left-0 h-full w-56 z-50 bg-slate-950 backdrop-blur-md border-r border-white/5 shadow-2xl transition-transform duration-300 ease-in-out ${isVisible ? 'translate-x-0' : '-translate-x-full'
                 } hidden lg:flex flex-col items-center py-8`}
         >
             {/* Logo CZ */}
