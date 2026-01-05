@@ -125,20 +125,20 @@ export default function TopNavbar({ isVisible }) {
         >
             {/* Logo CZ */}
             <Link href="/" className="flex flex-col items-center justify-center group relative mb-8 gap-2">
-                <div className="relative w-10 h-10 transition-transform duration-300 group-hover:scale-110">
-                    <div className="absolute inset-0 bg-yellow-400 blur-lg opacity-40 rounded-full animate-pulse"></div>
+                <div className="relative w-14 h-14 transition-transform duration-300 group-hover:scale-110">
+                    <div className="absolute inset-0 bg-yellow-400 blur-xl opacity-40 rounded-full animate-pulse"></div>
                     <Image
                         src={appIcon}
                         alt="CodiceZero Logo"
-                        width={40}
-                        height={40}
-                        className="object-contain relative z-10 drop-shadow-[0_0_8px_rgba(250,204,21,0.8)]"
+                        width={56}
+                        height={56}
+                        className="object-contain relative z-10 drop-shadow-[0_0_12px_rgba(250,204,21,0.8)]"
                     />
                 </div>
 
                 {/* Texto CodiceZero */}
-                <span className="text-[9px] uppercase font-bold tracking-[0.15em] text-yellow-300 drop-shadow-[0_0_5px_rgba(234,179,8,0.8)] font-display text-center">
-                    CodiceZero
+                <span className="text-[11px] uppercase font-bold tracking-widest text-yellow-300 drop-shadow-[0_0_5px_rgba(234,179,8,0.8)] font-display text-center leading-none">
+                    Codice<br />Zero
                 </span>
 
                 {/* Overlay de Brillo para el hover */}
