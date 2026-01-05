@@ -5,6 +5,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useMemo } from 'react';
+import appIcon from '@/app/icon.png';
 
 // Mapa simple para mostrar el título de la página actual
 const pathTitles = {
@@ -29,7 +30,7 @@ export default function MobileHeader({ toggleSidebar }) {
       {/* 1. Logo CZ (Izquierda) */}
       <Link href="/" className="flex-shrink-0 relative w-8 h-8">
         <Image
-          src="@/app/icon.png"
+          src={appIcon}
           alt="Codice Zero"
           fill
           className="object-contain drop-shadow-[0_0_8px_rgba(234,179,8,0.5)]"
