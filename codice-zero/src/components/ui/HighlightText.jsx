@@ -17,7 +17,7 @@ const createHighlightRules = (elementColor = "#facc15") => [
   // Eléctrico
   { pattern: /(Acumulaci[oó]n\s+de\s+Anomal[ií]a\s+El[eé]ctrica|Daño\s+El[eé]ctrico(?:\s+Puro)?|Shock|Electrocuci[oó]n|Anomal[ií]a\s+El[eé]ctrica|Res\s+El[eé]ctrica|Resistencia\s+El[eé]ctrica|El[eé]ctrico|El[eé]ctrica(?:\s+Pura)?|Anomal[ií]a\s+de\s+Atributo\s+(?:de\s+)?El[eé]ctric[oa])/gi, color: "text-[#3b82f6] font-bold" },
   // Físico
-  { pattern: /(Asalto\s+de\s+Polaridad|Acumulaci[oó]n\s+de\s+Anomal[ií]a\s+F[ií]sica|Daño\s+F[ií]sico(?:\s+Puro)?|Anomal[ií]a\s+F[ií]sica|Res\s+F[ií]sic[oa]|Resistencia\s+F[ií]sica|Asalto|F[ií]sico|F[ií]sica(?:\s+Pura)?|Anomal[ií]a\s+de\s+Atributo\s+(?:de\s+)?F[ií]sic[oa])/gi, color: "text-[#eab308] font-bold" },
+  { pattern: /(Asalto\s+de\s+Polaridad|Hoja\s+Afilada|Honed\s+Edge|Acumulaci[oó]n\s+de\s+Anomal[ií]a\s+F[ií]sica|Daño\s+F[ií]sico(?:\s+Puro)?|Anomal[ií]a\s+F[ií]sica|Res\s+F[ií]sic[oa]|Resistencia\s+F[ií]sica|Asalto|F[ií]sico|F[ií]sica(?:\s+Pura)?|Anomal[ií]a\s+de\s+Atributo\s+(?:de\s+)?F[ií]sic[oa])/gi, color: "text-[#eab308] font-bold" },
   // Etéreo
   { pattern: /(Acumulaci[oó]n\s+de\s+Anomal[ií]a\s+(?:Et[é]rea|Tinta\s+Aurica)|Daño\s+(?:Et[é]reo|Tinta\s+Aurica)(?:\s+Puro)?|Corrupci[oó]n|Anomal[ií]a\s+(?:Et[é]rea|Tinta\s+Aurica|Et[é]reo)|Res\s+(?:Et[é]rea|Tinta\s+Aurica)|Resistencia\s+(?:Et[é]rea|Tinta\s+Aurica)|Tinta\s+Aurica(?:\s+Pura)?|Et[é]reo(?:\s+Puro)?|Et[é]rea(?:\s+Pura)?|Anomal[ií]a\s+de\s+Atributo\s+(?:de\s+)?(?:Et[é]re[oa]|Tinta\s+Aurica))/gi, color: "text-[#d946ef] font-bold" },
   // Massive / Severe damage – use element colour

@@ -1,11 +1,19 @@
-// Agent 47: Ye Shunguang - Detailed Stats and Skills
+// Agent 47 - Detailed Stats and Skills
 export default {
-    id: 47,
     baseStats: {
-        hp: { min: 617, max: 7673 },
-        atk: { min: 135, max: 938 },
-        def: { min: 49, max: 606 },
-        impact: "93",
+        hp: {
+            min: 617,
+            max: 7673
+        },
+        atk: {
+            min: 135,
+            max: 938
+        },
+        def: {
+            min: 49,
+            max: 606
+        },
+        impact: 83,
         crit: "5%",
         critDmg: "50%",
         anomalyRate: "94",
@@ -14,286 +22,222 @@ export default {
         energyRegen: "1.2",
     },
     coreStats: {
-        statName: "crit rate", // Core stat único para alcanzar el cap de buff
-        valuePerNode: 4.8,
+        statName: "crit rate",
+        valuePerNode: 4.8
     },
-    materials: {
-        weeklyBoss: {
-            name: "Exuvia del Refinamiento",
-            icon: "Item_Exuvia_of_Refinement.webp"
-        },
-        eliteBoss: {
-            name: "Datos Dimensionales Superiores: Elytron Miásmico",
-            icon: "Item_Higher_Dimensional_Data_Miasmic_Elytron.webp"
-        }
-    },
-    equipment: {
-        weapons: [
-            {
-                name: "Lone Light in the Clouds",
-                rarity: "S",
-                icon: "W-Engine_Lone_Light_in_the_Clouds.webp",
-                description: "Aumenta el Daño Físico y la Probabilidad de Crítico."
-            },
-            {
-                name: "Nocturno del Corazón",
-                rarity: "S",
-                icon: "W-Engine_Heartstring_Nocturne.webp",
-                description: "Aumenta el ATQ tras realizar una Evasión o Asistencia."
-            },
-            {
-                name: "Azufre",
-                rarity: "S",
-                icon: "W-Engine_The_Brimstone.webp",
-                description: "Alternativa sólida para daño sostenido."
-            }
-        ],
-        driveDiscs: {
-            sets: [
-                {
-                    name: "Balada de Agua Blanca",
-                    count: 4,
-                    icon: "SuitWhiteWaterBallad.png",
-                    description: "Aumenta el Daño Físico y el daño tras Asalto."
-                },
-                {
-                    name: "Pájaro Carpintero Electro",
-                    count: 2,
-                    icon: "Drive_Disc_Woodpecker_Electro_Icon.png",
-                    description: "Aumenta la Probabilidad de Crítico."
-                }
-            ],
-            stats: {
-                main: {
-                    iv: "Prob. Crítico / Daño Crítico",
-                    v: "Daño Físico / ATQ%",
-                    vi: "ATQ%"
-                },
-                sub: ["Prob. Crítico", "Daño Crítico", "ATQ%", "Penetración"]
-            }
-        },
-        teams: [
-            {
-                name: "Equipo Premium",
-                members: [
-                    { name: "Dialyn", role: "Aturdidor", element: "Fisico", icon: "/CodiceZero/ICONOS/Agent_Dialyn_Icon.webp" },
-                    { name: "Zhao", role: "Defensa", element: "Hielo", icon: "/CodiceZero/ICONOS/Agent_Zhao_Icon.webp" }
-                ]
-            },
-            {
-                name: "Equipo F2P",
-                members: [
-                    { name: "Koleda", role: "Aturdidor", element: "Fisico", icon: "/CodiceZero/ICONOS/Agent_Koleda_Belobog_Icon.webp" },
-                    { name: "Zhao", role: "Defensa", element: "Hielo", icon: "/CodiceZero/ICONOS/Agent_Zhao_Icon.webp" }
-                ]
-            }
-        ],
-        skillPriority: [
-            "/CodiceZero/Habilidades/Icon_Basic_Attack.webp",
-            "/CodiceZero/Habilidades/Icon_EX_Special_Attack.webp",
-            "/CodiceZero/Habilidades/Icon_Ultimate_Colored.webp",
-            "/CodiceZero/Habilidades/Icon_Dodge.webp",
-            "/CodiceZero/Habilidades/Icon_Assist_Attack.png"
-        ]
-    },
+    coreSkillScaling: [
+        ["15%", "10%"],
+        ["17.5%", "12.5%"],
+        ["20%", "15%"],
+        ["22.5%", "17.5%"],
+        ["25%", "20%"],
+        ["27.5%", "22.5%"],
+        ["30%", "25%"] // Placeholders for user to fill
+    ],
     skills: [
         {
             type: "Ataque Básico",
-            name: "Ataque Básico ",
-            description: "Clic [Icono Ataque] para activar: Realiza hasta cuatro cortes hacia adelante, causando Daño Físico; Al lanzar el cuarto ataque, recuperará todas las espadas en el campo y colocará 6 espadas en el campo.",
-            tags: ["Físico", "Ataque Básico"],
+            name: "Ataque Básico: Filo Veloz",
+            description: "Presiona [Icono Ataque] para activar: Lanza hasta cuatro cortes hacia adelante, infligiendo Daño Físico. Puede encadenarse en (Ataque de Carrera: Carrera Fantasma) tras el 4to golpe.",
+            tags: ["Físico", "Ataque Básico"]
         },
         {
             type: "Ataque Básico",
-            name: "Qi de Espada",
-            description: "Mantener [Icono Ataque] para activar: Lanza rápidamente múltiples ondas de Qi de espada y consume continuamente (Intención de Espada), causando Daño Físico; Se puede extender el ataque haciendo clic repetidamente o manteniendo presionado; Al golpear a un enemigo, aumenta su propia Probabilidad de Crítico en un 6%, dura 60 segundos, se acumula hasta 5 veces, se puede obtener máximo 1 capa cada 0.1 segundos, activar repetidamente refresca la duración.",
-            tags: ["Físico", "Ataque Básico"],
+            name: "Ataque Básico: Voluntad de Espada de Corriente de Nube",
+            description: "Mantén [Icono Ataque] para activar: Lanza una ráfaga de ondas de choque de espada, infligiendo Daño Físico. Mantén presionado para extender el ataque. El nivel de Anti-Interrupción aumenta durante esta habilidad.",
+            tags: ["Físico", "Ataque Básico"]
         },
         {
             type: "Ataque Básico",
-            name: "Forma de Empuñadura Tierra",
-            description: "Bajo (Forma de Empuñadura) y estando en el suelo, Clic [Icono Ataque] para activar: Realiza hasta dos etapas de cortes hacia adelante, causando Daño Físico; Al golpear a un enemigo, obtiene 1 capa de efecto (Tendencia Celestial).",
-            tags: ["Físico", "Ataque Básico"],
+            name: "Ataque Básico: Mente Iluminada - Corrientes Divididas",
+            description: "Mientras está en el estado de (Mente Iluminada) y en el suelo, presiona [Icono Ataque] para activar: Realiza hasta tres cortes hacia adelante, infligiendo Daño Físico. Si es golpeado por un ataque enemigo durante el 3er golpe, activa un bloqueo, negando esa instancia de Daño. Si posee (Fuerza de Espada Qingming), el 3er golpe es reemplazado con (Ataque Básico: Mente Iluminada - Ascenso al Cielo).",
+            tags: ["Físico", "Ataque Básico"]
         },
         {
             type: "Ataque Básico",
-            name: "Forma de Empuñadura Tierra Tercera Postura",
-            description: "Tras la segunda etapa de (Ataque Básico: Forma de Empuñadura Tierra), Clic [Icono Ataque] para activar: Realiza un corte hacia adelante, causando Daño Físico; Tras lanzarlo, Clic [Icono Especial] para activar rápidamente (Ataque Básico: Forma de Empuñadura Cielo Tercera Postura); Al activar el movimiento, si es atacado por un enemigo, puede activar el efecto de bloqueo (Parry), inmunizando ese daño y obteniendo 2 capas de efecto (Tendencia Celestial).  Al lanzar, si posee (Intención de Espada), realizará un corte de gran alcance hacia adelante, causando gran cantidad de Daño Físico; Al golpear a un enemigo, consumirá 1 punto de ( Intención de Espada), y obtendrá 2 capas de efecto (Tendencia Celestial), al mismo tiempo consumirá todo el efecto (Tendencia Celestial), aumentando el daño del movimiento, el valor de aumento específico crece con el nivel de la habilidad (Pasiva Principal)",
-            tags: ["Físico", "Ataque Básico"],
+            name: "Ataque Básico: Mente Iluminada - Ascenso al Cielo",
+            description: "Mientras está en el estado de (Mente Iluminada) y con (Fuerza de Espada Qingming), tras el 2do golpe de (Ataque Básico: Mente Iluminada - Corrientes Divididas), presiona [Icono Ataque] para activar: Lanza un veloz ataque ascendente, infligiendo Daño Físico y entrando en un estado aéreo. El personaje es invulnerable mientras usa esta habilidad.",
+            tags: ["Físico", "Ataque Básico"]
         },
         {
             type: "Ataque Básico",
-            name: "Forma de Empuñadura Tierra Definitiva",
-            description: "En (Ataque de Asistencia: Corte de Retirada) al activar (evasión perfecta), Clic [Icono Ataque] para activar: Realiza un corte hacia adelante, causando Daño Físico; Tras lanzarlo, Clic [Icono Especial] para activar rápidamente (Ataque Básico: Forma de Empuñadura Cielo Tercera Postura); Al activar el movimiento, si es atacado por un enemigo, puede activar el efecto de bloqueo (Parry), inmunizando ese daño, y obteniendo 2 capas de efecto (Tendencia Celestial), se acumula hasta 4 capas.  Al lanzar, si posee ( Intención de Espada), realizará un corte de gran alcance hacia adelante, causando gran cantidad de Daño Físico; Al golpear a un enemigo, consumirá 1 punto de (Intención de Espada), y obtendrá 2 capas de efecto (Tendencia Celestial), al mismo tiempo consumirá todo el efecto (Tendencia Celestial), aumentando el daño del movimiento, el valor de aumento específico crece con el nivel de la habilidad (Pasiva Principal).",
-            tags: ["Físico", "Ataque Básico"],
+            name: "Ataque Básico: Mente Iluminada - Aniquilación de Luz Solar Máxima",
+            description: "Tras activar (Ataque Básico: Mente Iluminada - Aniquilación de Luz Solar), y con (Fuerza de Espada Qingming), presiona [Icono Ataque] para activar: Lanza un amplio corte de barrido hacia adelante, infligiendo masivo Daño Físico. Al golpear, se consume 1 punto de (Fuerza de Espada Qingming). Si es golpeado por un enemigo durante la habilidad, activa un bloqueo, negando esa instancia de Daño y aumentando el Nivel de Interrupción de la habilidad. Tras usar esta habilidad y con (Fuerza de Espada Qingming), presiona [Icono Especial] para consumir 1 punto de (Fuerza de Espada Qingming) y lanzar un golpe de (Técnica Especial EX: Mente Iluminada - Luz Elevada). Esta habilidad es seguida automáticamente por (Ataque Básico: Mente Iluminada - Ascenso al Cielo), y Ye Shunguang entra en un estado aéreo. El personaje es invulnerable mientras usa esta habilidad.",
+            tags: ["Físico", "Ataque Básico"]
         },
         {
             type: "Ataque Básico",
-            name: "Forma de Empuñadura Cielo",
-            description: "Bajo (Forma de Empuñadura) y estando en el aire, Clic [Icono Ataque] para activar: Realiza hasta dos etapas de cortes hacia abajo, causando Daño Físico; Al golpear a un enemigo, obtiene 1 capa de efecto (Tendencia Celestial).",
-            tags: ["Físico", "Ataque Básico"],
+            name: "Ataque Básico: Mente Iluminada - Luz Solar",
+            description: "En el estado de (Mente Iluminada), y mientras está en el aire, presiona [Icono Ataque] para activar: Lanza hasta dos cortes descendentes en frente, infligiendo Daño Físico. Ye Shunguang no saldrá del estado de (Mente Iluminada) durante esta habilidad. Presiona [Icono Especial] o [Icono Dodges] para seguir con (Ataque Básico: Mente Iluminada - Aniquilación de Luz Solar). El personaje es invulnerable mientras usa esta habilidad.",
+            tags: ["Físico", "Ataque Básico"]
         },
         {
             type: "Ataque Básico",
-            name: "Forma de Empuñadura Cielo Tercera Postura",
-            description: "Tras la segunda etapa de (Ataque Básico: Forma de Empuñadura Cielo), Clic [Icono Ataque] para activar: Realiza un ataque de caída hacia abajo, causando Daño Físico; Tras lanzarlo, Clic [Icono Ataque] para activar rápidamente (Ataque Básico: Forma de Empuñadura Tierra Tercera Postura); Al activar el movimiento, si es atacado por un enemigo, puede activar el efecto de bloqueo (Parry), inmunizando ese daño, y obteniendo 2 capas de efecto (Tendencia Celestial).  Al lanzar, si posee (  Intención de Espada), realizará un ataque de caída de gran alcance hacia abajo, causando gran cantidad de Daño Físico; Al golpear a un enemigo, consumirá 1 punto de (Intención de Espada), y obtendrá 2 capas de efecto (Tendencia Celestial), al mismo tiempo consumirá todo el efecto (Tendencia Celestial), aumentando el daño del movimiento, el valor de aumento específico crece con el nivel de la habilidad (Pasiva Principal).",
-            tags: ["Físico", "Ataque Básico"],
+            name: "Ataque Básico: Mente Iluminada - Aniquilación de Luz Solar",
+            description: "Tras el 2do golpe de (Ataque Básico: Mente Iluminada - Luz Solar), presiona [Icono Ataque] para activar: Realiza un ataque de caída en frente, entrando en un estado terrestre, e infligiendo Daño Físico. Al lanzar esta habilidad con 2 o más puntos de (Fuerza de Espada Qingming), Ye Shunguang realizará en su lugar un ataque de caída descendente a través de una gran área en frente, infligiendo masivo Daño Físico. Al golpear, se consumen 2 puntos de (Fuerza de Espada Qingming), otorgando el efecto de (Culminación). Tras usar esta habilidad, si Ye Shunguang posee (Fuerza de Espada Qingming), presiona [Icono Especial] para consumir 1 punto de (Fuerza de Espada Qingming) y lanzar un golpe de (Técnica Especial EX: Mente Iluminada - Luz Elevada), que puede ser seguido rápidamente con (Ataque Básico: Mente Iluminada - Aniquilación de Luz Solar Máxima). Ye Shunguang no saldrá del estado de (Mente Iluminada) durante esta habilidad. Durante esta habilidad, si es atacado por enemigos, activa un bloqueo, negando esa instancia de Daño. El personaje es invulnerable mientras usa esta habilidad.",
+            tags: ["Físico", "Ataque Básico"]
         },
         {
             type: "Evasión",
-            name: "Evasión",
-            description: "Clic [Icono Dodges] para activar: (Evasión rápida de carrera); Posee efecto de invencibilidad durante la activación; Bajo (Forma de Empuñadura), si se activa una evasión perfecta, Clic [Icono Ataque] para activar rápidamente (Ataque Básico: Forma de Empuñadura Tierra Definitiva).",
-            tags: ["Físico", "Evasión"],
+            name: "Evasión: Sin Dejar Rastro",
+            description: "Presiona [Icono Dodges] para activar: Una rápida evasión deslizante. El personaje es invulnerable mientras usa esta habilidad. Durante el estado de (Mente Iluminada), y si se activa una (Evasión Perfecta), presiona [Icono Ataque] para activar (Ataque Básico: Mente Iluminada - Ascenso al Cielo).",
+            tags: ["Evasión"]
         },
         {
             type: "Evasión",
-            name: "Evasión",
-            description: "Al usar (Evasión), Clic [Icono Ataque] para activar: Causa Daño Físico.",
-            tags: ["Físico", "Evasión", "Evasión"],
+            name: "Evasión: Nube Errante",
+            description: "Mientras inclinas el stick/joystick, mantén [Icono Dodges] para activar: Entra en un estado de movimiento de alta velocidad. Conduce con el stick/joystick, y suelta el stick/joystick para detenerte.",
+            tags: ["Evasión"]
         },
         {
             type: "Evasión",
-            name: "Evasión: Corte de Retirada",
-            description: "Bajo (Forma de Empuñadura), sin mover el joystick/palanca Clic [Icono Dodges] para activar: Lanza un rápido corte de retirada, si durante el periodo activa una (evasión perfecta), Clic [Icono Ataque] para activar rápidamente (Ataque Básico: Forma de Empuñadura Tierra Definitiva). Posee estado de invencibilidad durante la activación.",
-            tags: ["Físico", "Evasión", "Forma de Empuñadura", "Evasión"],
+            name: "Ataque de Carrera: Carrera Fantasma",
+            description: "Presiona [Icono Ataque] durante una evasión para activar: Corta enemigos en frente, infligiendo Daño Físico.",
+            tags: ["Físico", "Evasión"]
         },
         {
             type: "Evasión",
-            name: "Evasión",
-            description: "Tras activar (Evasión Perfecta), Clic [Icono Ataque] para activar: Causa Daño Físico; Posee efecto de invencibilidad durante la activación.",
-            tags: ["Físico", "Evasión"],
-        },
-        {
-            type: "Asistencia",
-            name: "Asistencia Rápida",
-            description: "Cuando el personaje en operación actual es lanzado por los aires, Clic [Icono Assist] para activar: Posee efecto de invencibilidad durante la activación.",
-            tags: ["Físico", "Asistencia"],
-        },
-        {
-            type: "Asistencia",
-            name: "Asistencia Defensiva",
-            description: "Cuando el personaje en el campo está a punto de ser atacado, Clic [Icono Assist] para activar: Bloquea el ataque del enemigo, acumulando gran cantidad de valor de aturdimiento; Posee efecto de invencibilidad durante la activación.",
-            tags: ["Físico", "Asistencia"],
-        },
-        {
-            type: "Asistencia",
-            name: "Ataque de Asistencia",
-            description: "Tras lanzar (Asistencia Defensiva), Clic [Icono Ataque] para activar: Causa gran cantidad de Daño Físico; Posee efecto de invencibilidad durante la activación.",
-            tags: ["Físico", "Asistencia"],
-        },
-        {
-            type: "Asistencia",
-            name: "Ataque de Asistencia",
-            description: "Bajo (Forma de Empuñadura), tras lanzar (Asistencia Defensiva), Clic [Icono Ataque] para activar: Causa gran cantidad de Daño Físico; Posee efecto de invencibilidad durante la activación.",
-            tags: ["Físico", "Asistencia", "Forma de Empuñadura"],
+            name: "Contraataque de Evasión: Golpe de Golondrina",
+            description: "Presiona [Icono Ataque] durante una (Evasión Perfecta) para activar: Salta en el aire y empuja hacia adelante, infligiendo Daño Físico. El personaje es invulnerable mientras usa esta habilidad.",
+            tags: ["Físico", "Evasión"]
         },
         {
             type: "Técnica Especial",
-            name: "Técnica Especial",
-            description: "Clic [Icono Especial] para activar: Si hay una espada en el campo, corre rápidamente a la espada más cercana y lanza un ataque rápido de Qi de espada al enemigo, causando Daño Físico; Si no hay espada en el campo, la activación falla; Tras una activación exitosa, puede encadenar rápidamente (Ataque Básico: Qi de Espada); Durante el movimiento, recupera la espada del campo y la convierte en (Intención de Espada).",
-            tags: ["Físico", "Técnica Especial", "Forma de Empuñadura"],
-        },
-        {
-            type: "Técnica Especial",
-            name: "Técnica Especial",
-            description: "Mantener [Icono Especial] para activar: Si hay una espada en el campo, corre rápidamente a la espada más cercana y, tras una breve carga, inflige un corte de embestida y un ataque de Qi de espada al enemigo, causando Daño Físico; Si no hay espada en el campo, la activación falla; Tras lanzarlo, puede encadenar rápidamente la tercera etapa de (Ataque Básico); y deja 2 espadas en el campo; Durante el movimiento, recupera la espada del campo y la convierte en (Intención de Espada).",
-            tags: ["Físico", "Técnica Especial", "Forma de Empuñadura"],
-        },
-        {
-            type: "Técnica Especial",
-            name: "Forma de Empuñadura - Ascenso",
-            description: "Bajo (Forma de Empuñadura), Clic [Icono Especial EX] para activar: Lanza rápidamente un ataque ascendente, causando Daño Físico al enemigo y entrando en estado aéreo. Posee efecto de invencibilidad durante la activación.",
-            tags: ["Físico", "Técnica Especial", "Forma de Empuñadura"],
-        },
-        {
-            type: "Técnica Especial",
-            name: "Técnica Especial EX",
-            description: "Cuando la energía es suficiente, Mantener [Icono Especial EX] para activar: Si hay una espada en el campo, corre rápidamente a la espada más cercana y, tras una breve carga, inflige un corte de embestida y un ataque de Qi de espada al enemigo, causando Daño Físico; Si no hay espada en el campo, la activación falla; durante el movimiento recupera la espada del campo, convirtiéndola en (Intención de Espada); tras lanzarlo puede encadenar rápidamente la tercera etapa de (Ataque Básico), y deja 5 espadas en el campo; Tras la activación, obtiene el efecto (Tendencia Terrestre); y tras entrar en (Forma de Empuñadura), lanzar (Ataque Básico: Forma de Empuñadura Tierra Tercera Postura) se mejorará automáticamente a (Ataque Básico: Forma de Empuñadura Tierra Definit iva), durando hasta que termine la (Forma de Empuñadura).",
-            tags: ["Físico", "Técnica Especial", "Forma de Empuñadura"],
+            name: "Técnica Especial: Mareas Guía",
+            description: "Presiona [Icono Especial] para activar: Si una evasión está disponible, se consume 1 oportunidad de evasión, y la acción cuenta como activar una (Evasión). Si no hay evasión disponible o no se activa una (Evasión Perfecta), lanza un rápido ataque de energía de espada que inflige Daño Físico. Si se activa una (Evasión Perfecta) en este momento, lanza un ataque de espada volador, infligiendo Daño Físico, e inmediatamente sigue con el 2do golpe de (Ataque Básico: Filo Veloz). El personaje es brevemente invulnerable mientras usa esta habilidad.",
+            tags: ["Físico", "Técnica Especial"]
         },
         {
             type: "Técnica Especial EX",
-            name: "Forma de Empuñadura Destello",
-            description: "Bajo (Forma de Empuñadura), en el aire Mantener [Icono Especial EX] para activar: Lanza cortes rápidos y consume continua y rápidamente (Intención de Espada), hasta agotar la (Intención de Espada).",
-            tags: ["Físico", "Técnica Especial", "Forma de Empuñadura"],
+            name: "Técnica Especial EX: Supresión de Vendaval",
+            description: "Con suficiente Energía, presiona [Icono Especial EX] para activar: Lanza un corte rápido y un ataque de espada volador al enemigo, infligiendo masivo Daño Físico. Los ataques enemigos pueden ser esquivados durante esta habilidad. Tras usar esta habilidad, gana 1 punto de (Fuerza de Espada Qingming). El personaje es invulnerable mientras usa esta habilidad.",
+            tags: ["Físico", "Técnica Especial EX"]
+        },
+        {
+            type: "Técnica Especial",
+            name: "Técnica Especial: Mente Iluminada - Salida Limpia",
+            description: "Mientras está en el estado de (Mente Iluminada) y en el suelo, presiona [Icono Especial] para activar: Realiza un veloz corte de paso atrás, infligiendo Daño Físico. Si una evasión está disponible, se consume 1 oportunidad de evasión, y la acción cuenta como activar una (Evasión). Si se activa una (Evasión Perfecta) en este momento, presiona [Icono Ataque] para activar rápidamente (Ataque Básico: Mente Iluminada - Aniquilación de Luz Solar Máxima) y entrar en (Vista Vital). Después de que este (Ataque Básico: Mente Iluminada - Aniquilación de Luz Solar Máxima) se activa, puede ser seguido inmediatamente con (Ataque Básico: Mente Iluminada - Ascenso al Cielo). El personaje es invulnerable mientras usa esta habilidad.",
+            tags: ["Físico", "Técnica Especial"]
         },
         {
             type: "Técnica Especial EX",
-            name: "Forma de Empuñadura Extinción",
-            description: "Tras (Técnica Especial EX: Forma de Empuñadura Destello), si la (Intención de Espada) se agota, Clic o Mantener [Icono Especial] para activar: Causa gran cantidad de Daño Físico a una amplia gama de enemigos; Tras activar el movimiento, cierra el (Velo Etereo: ZhuXie) y sale de la (Forma de Empuñadura).",
-            tags: ["Físico", "Técnica Especial", "Forma de Empuñadura"],
+            name: "Técnica Especial EX: Mente Iluminada - Luz Elevada",
+            description: "En el estado de (Mente Iluminada) y con (Fuerza de Espada Qingming), mantén [Icono Especial EX] para activar: Realiza rápidos cortes consecutivos, infligiendo masivo Daño Físico mientras consume rápidamente (Fuerza de Espada Qingming) hasta que no queda nada. La habilidad termina temprano si la (Fuerza de Espada Qingming) es insuficiente o si se suelta [Icono Especial EX]. Ye Shunguang no saldrá del estado de (Mente Iluminada) durante esta habilidad. El personaje es invulnerable mientras usa esta habilidad. Efecto (Culminación): Durante esta habilidad, cada vez que se consume (Fuerza de Espada Qingming) mientras (Culminación) está activo, el costo de (Fuerza de Espada Qingming) se reemplaza consumiendo (Culminación) en su lugar. Este efecto no se acumula, y dura hasta que el actual (Mente Iluminada) termina.",
+            tags: ["Físico", "Técnica Especial EX"]
         },
         {
-            type: "Ataque en Cadena",
-            name: "Ataque en Cadena",
-            description: "Al activar (Ataque en Cadena), selecciona el personaje correspondiente para activar: Lanza un poderoso corte a una amplia gama de enemigos en frente, causando gran cantidad de Daño Físico; Posee efecto de invencibilidad durante la activación.",
-            tags: ["Físico", "Ataque en Cadena", "Forma de Empuñadura"],
+            type: "Técnica Especial EX",
+            name: "Técnica Especial EX: Mente Iluminada - Regreso al Polvo",
+            description: "En el estado de (Mente Iluminada), presiona [Icono Definitiva] o mantén [Icono Especial EX] cuando toda la (Fuerza de Espada Qingming) se gasta para activar: Inflige masivo Daño Físico a enemigos en una gran área. Ye Shunguang no saldrá del estado de (Mente Iluminada) durante esta habilidad. Tras usar esta habilidad, (Velo Etereo: Veredicto) se elimina y el estado de (Mente Iluminada) termina. El personaje es invulnerable mientras usa esta habilidad.",
+            tags: ["Físico", "Técnica Especial EX"]
         },
         {
-            type: "Técnica Definitiva",
-            name: "Ataque en Cadena: Forma de Empuñadura",
-            description: "Bajo (Forma de Empuñadura), al activar (Ataque en Cadena), selecciona el personaje correspondiente para activar: Lanza un poderoso corte a una amplia gama de enemigos en frente, causando gran cantidad de Daño Físico; Posee efecto de invencibilidad durante la activación.",
-            tags: ["Físico", "Ataque en Cadena", "Forma de Empuñadura"],
+            type: "Asistencia",
+            name: "Habilidad de Entrada: Iluminando la Oscuridad",
+            description: "Con 6 de (Fuerza de Espada Qingming) y mientras no está en el estado de (Mente Iluminada), mantén [Icono Ataque] para activar, o presiona [Icono Assist] mientras está en combate y cambia al campo desde fuera del campo para activar: Entra en el estado de (Mente Iluminada) y activa (Velo Etereo: Veredicto). Inflige Daño Físico a enemigos en una gran área en frente. Activar esta habilidad se considera como activar una (Asistencia Rápida). Entra en el estado aéreo tras usar esta habilidad. El personaje es invulnerable mientras usa esta habilidad.",
+            tags: ["Físico", "Asistencia"]
         },
         {
-            type: "Técnica Definitiva",
-            name: "Técnica Definitiva",
-            description: "Cuando el nivel de Decibelios llega a (Máximo), Clic [Icono Definitiva] para activar: Invoca una formación de espadas, causando gran cantidad de Daño Físico a los enemigos; Tras activar el movimiento, abrirá el (Velo Etereo: ZhuXie) entrando en (Forma de Empuñadura), y obteniendo 4 puntos de (Intención de Espada), la (Forma de Empuñadura) y el (Velo Etereo: ZhuXie) duran 12 segundos; Posee efecto de invencibilidad durante la activación.",
-            tags: ["Físico", "Técnica Definitiva", "Forma de Empuñadura"],
+            type: "Asistencia",
+            name: "Asistencia Rápida: Guardia de Soporte",
+            description: "Cuando el personaje activo es lanzado, presiona [Icono Assist] para activar: Salta en el aire y empuja hacia adelante, infligiendo Daño Físico. El personaje es invulnerable mientras usa esta habilidad.",
+            tags: ["Físico", "Asistencia"]
         },
         {
-            type: "Técnica Definitiva",
-            name: "Definitiva: Forma de Empuñadura",
-            description: "Bajo (Forma de Empuñadura), cuando el nivel de Decibelios llega a (Máximo), Clic [Icono Definitiva] para activar: Invoca una espada gigante, causando gran cantidad de Daño Físico a los enemigos; Tras activar el movimiento, cerrará el (Velo Etereo: ZhuXie) y saldrá de la (Forma de Empuñadura), y obtendrá 4 puntos de (Intención de Espada). Posee efecto de invencibilidad durante la activación.",
-            tags: ["Físico", "Técnica Definitiva", "Forma de Empuñadura"],
+            type: "Asistencia",
+            name: "Ataque de Asistencia: Cese de Hostilidad",
+            description: "Presiona [Icono Ataque] después de una (Asistencia Defensiva) para activar: Inflige masivo Daño Físico. El personaje es invulnerable mientras usa esta habilidad.",
+            tags: ["Físico", "Asistencia"]
+        },
+        {
+            type: "Asistencia",
+            name: "Asistencia Defensiva: Cuando Regrese",
+            description: "Cuando el personaje en el campo está a punto de ser atacado, presiona [Icono Assist] para activar: Bloquea (Parry) el ataque del enemigo, infligiendo masivo Aturdimiento. El personaje es invulnerable mientras usa esta habilidad.",
+            tags: ["Asistencia"]
+        },
+        {
+            type: "Asistencia",
+            name: "Asistencia Rápida: Mente Iluminada - Soporte Táctico",
+            description: "Mientras está en el estado de (Mente Iluminada), cuando el personaje activo es lanzado, presiona [Icono Assist] para activar: Lanza un corte hacia adelante, infligiendo Daño Físico. El personaje es invulnerable mientras usa esta habilidad.",
+            tags: ["Físico", "Asistencia"]
+        },
+        {
+            type: "Asistencia",
+            name: "Ataque de Asistencia: Mente Iluminada - Unificación",
+            description: "Mientras está en el estado de (Mente Iluminada) y tras una (Asistencia Defensiva), presiona [Icono Ataque] para activar: Inflige masivo Daño Físico. El personaje es invulnerable mientras usa esta habilidad.",
+            tags: ["Físico", "Asistencia"]
         },
         {
             type: "Pasiva Central",
-            name: "",
-            description: "Tras lanzar (Técnica Definitiva) o (Técnica de Entrada), Ye Shunguang entrará en (Forma de Empuñadura), obteniendo 4 puntos de (Intención de Espada), y abriendo el (Velo Etereo: ZhuXie), durando hasta 12 segundos; Estando bajo (Forma de Empuñadura), Ye Shunguang usará movimientos más poderosos, lanzar (Ataque Básico) otorgará efecto (Tendencia Celestial), lanzar (Ataque Básico: Forma de Empuñadura Tierra Tercera Postura), (Ataque Básico: Forma de Empuñadura Tierra Definitiva) y (Ataque Básico: Forma de Empuñadura Cielo Tercera Postura) consumirá todo el efecto (Tendencia Celestial), cada capa aumenta el daño de dicho movimiento en un 20%, acumulándose hasta 4 capas, dura hasta que termine la (Forma de Empuñadura); Durante la existencia de (Velo Etereo: ZhuXie), se aplicará Vulnerabilidad de Aturdimiento a los enemigos, el daño de Aturdimiento falla; si el enemigo no está en estado de Aturdimiento, el multiplicador de vulnerabilidad es el mismo que el multiplicador inicial de vulnerabilidad de Aturdimiento del enemigo, si el enemigo está en estado de Aturdimiento, el multiplicador de vulnerabilidad es el mismo que el multiplicador de vulnerabilidad de Aturdimiento del enemigo, el multiplicador de vulnerabilidad no puede exceder el 80%; Bajo (Forma de Empuñadura), la eficiencia de purificación contra (Escudos) aumenta un 50%.",
-            tags: ["Pasiva Central"],
+            name: "Pasiva Principal: Claridad Ardiente",
+            description: "Cuando no está en el estado de (Mente Iluminada) y con menos de 6 puntos de (Fuerza de Espada Qingming), ciertos ataques construyen lentamente (Fuerza de Espada Qingming). Siempre que se gana (Fuerza de Espada Qingming) por cualquier medio, cada 1 punto de (Fuerza de Espada Qingming) que excede el límite se convierte en 1 acumulación de (Portador), acumulándose hasta 3 veces. Al dejar el estado de (Mente Iluminada), todas las acumulaciones de (Portador) se consumen para otorgar el mismo número de acumulaciones de (Fuerza de Espada Qingming). Al entrar al campo de batalla, gana (Unidad), aumentando la Probabilidad de Crit en un {VALOR_1} y el Daño en un {VALOR_2}. Cuando (Definitiva: Persiguiendo Tormentas) o (Habilidad de Entrada: Iluminando la Oscuridad) se desata, Ye Shunguang entra en el estado de (Mente Iluminada) y activa (Velo Etereo: Veredicto). (Velo Etereo: Veredicto) tiene la misma duración que (Mente Iluminada). La duración dura 16s, y el temporizador se pausa mientras ella está fuera del campo. Durante el estado de (Mente Iluminada), las habilidades de Ye Shunguang se mejoran, todo el Daño Físico infligido por sus habilidades se convierte en Daño de Hoja Afilada. Mientras (Velo Etereo: Veredicto) está activo, cuando un enemigo entra en (Velo Etereo: Veredicto), gana un efecto de Vulnerabilidad de Velo basado en su multiplicador de Daño de Aturdimiento actual. Durante esto, cuando Ye Shunguang inflige Daño a enemigos con sus habilidades, el multiplicador de Daño de Aturdimiento enemigo se ignora y se reemplaza con el bonus de Vulnerabilidad de Velo. La Vulnerabilidad de Velo tiene un tope del 110%. El efecto se elimina cuando (Velo Etereo: Veredicto) termina.",
+            tags: ["Pasiva Central"]
         },
         {
             type: "Habilidad Adicional",
-            name: "",
-            description: "Se activa cuando hay personajes de (Soporte) o (Defensa) en el equipo: Después de que un compañero active cualquier (Velo Etereo) o un enemigo active un (Campo de Corrupción), Ye Shunguang obtendrá el efecto (Listo para la Acción), durando hasta que terminen todos los (Velo Etereo) y (Campo de Corrupción), no acumulable. Cuando Ye Shunguang posee el efecto (Listo para la Acción), la próxima vez que entre al campo en combate consumirá el efecto (Listo para la Acción), y lanzará (Técnica de Entrada), abriendo (Velo Etereo: ZhuXie) entrando en (Forma de Empuñadura) y obteniendo al mismo tiempo 4 puntos de (Intención de Espada).",
-            tags: ["Habilidad Adicional"],
+            name: "Habilidad Adicional: Vuelo de Sombra",
+            description: "Cuando otro personaje en tu escuadrón es un personaje de (Apoyo) o (Defensa): Cuando un compañero activa cualquier (Velo Etereo), gana 3 puntos de (Fuerza de Espada Qingming). Si ya está en el estado de (Mente Iluminada), esto se convierte en cambio en 3 acumulaciones de (Portador).",
+            tags: ["Habilidad Adicional"]
+        },
+        {
+            type: "Técnica Definitiva",
+            name: "Ataque en Cadena: Castigar a los Malvados",
+            description: "Cuando se activa un (Ataque en Cadena), selecciona al personaje para activar: Desata un corte poderoso a enemigos en frente en una gran área, infligiendo masivo Daño Físico. El personaje es invulnerable mientras usa esta habilidad.",
+            tags: ["Físico", "Ataque en Cadena"]
+        },
+        {
+            type: "Técnica Definitiva",
+            name: "Definitiva: Persiguiendo Tormentas",
+            description: "Cuando el Nivel de Decibelios está al [Máximo], presiona [Icono Definitiva] para activar: Invoca una formación de espadas y entra en el estado de (Mente Iluminada), activando un (Velo Etereo: Veredicto) mientras también gana 6 de (Fuerza de Espada Qingming). Esta habilidad inflige masivo Daño Físico. Al activar esta habilidad, si se consumen Decibelios, presiona [Icono Definitiva] mientras está en este estado de (Mente Iluminada) para lanzar una (Definitiva: Cielos Partidos) que no consume Decibelios. Entra en el estado aéreo tras usar esta habilidad. El personaje es invulnerable mientras usa esta habilidad.",
+            tags: ["Físico", "Técnica Definitiva"]
+        },
+        {
+            type: "Técnica Definitiva",
+            name: "Ataque en Cadena: Mente Iluminada - Atraer Trueno",
+            description: "Mientras está en el estado de (Mente Iluminada), y cuando se activa un (Ataque en Cadena), selecciona al personaje para activar: Desata un corte poderoso a enemigos en frente en una gran área, infligiendo masivo Daño Físico. Ye Shunguang no saldrá del estado de (Mente Iluminada) durante esta habilidad. Entra en el estado aéreo tras usar esta habilidad. El personaje es invulnerable mientras usa esta habilidad.",
+            tags: ["Físico", "Ataque en Cadena"]
+        },
+        {
+            type: "Técnica Definitiva",
+            name: "Definitiva: Cielos Partidos",
+            description: "Tras consumir Decibelios para lanzar (Definitiva: Persiguiendo Tormentas) y mientras está en el estado de (Mente Iluminada), presiona [Icono Definitiva] o mantén [Icono Especial] cuando toda la (Fuerza de Espada Qingming) se gasta para activar: Invoca una espada masiva, infligiendo masivo Daño Físico a enemigos. Ye Shunguang no saldrá del estado de (Mente Iluminada) durante esta habilidad. Tras usar esta habilidad, el estado de (Mente Iluminada) termina, y (Velo Etereo: Veredicto) se elimina. Esta habilidad no consume Decibelios. El personaje es invulnerable mientras usa esta habilidad.",
+            tags: ["Físico", "Técnica Definitiva"]
         },
         {
             type: "Mindscape 1",
-            name: "Nombre a determinar",
-            description: "En (Forma de Empuñadura), el efecto (Tendencia Celestial) no se consumirá, y el número de capas acumulables cambia a 6; al lanzar (Técnica Especial EX: Forma de Empuñadura Destello) bajo (Forma de Empuñadura), por cada 1 punto de (Intención de Espada) restante, aumenta el daño de este movimiento en un 10%.",
-            tags: ["Mindscape 1"],
+            name: "Yo Atado al Sueño",
+            description: "Al entrar al campo de batalla, gana 6 de (Fuerza de Espada Qingming). Este efecto puede activarse una vez cada 180s en modo Zona de Investigación. El efecto de (Unidad) de (Pasiva Principal: Claridad Ardiente) aumenta el Daño infligido en un 10% adicional, e ignora el 20% de la DEF del objetivo.",
+            tags: ["Mindscape 1"]
         },
         {
             type: "Mindscape 2",
-            name: "Nombre a determinar",
-            description: "El límite superior de (Intención de Espada) cambia a 6 puntos, al entrar o salir de (Forma de Empuñadura) por cualquier medio, obtiene 6 puntos de (Intención de Espada); Tras consumir valor de decibelios para lanzar (Técnica Definitiva) entrando en (Forma de Empuñadura), puede lanzar (Técnica Definitiva: Forma de Empuñadura) sin consumo, durando hasta que termine esta (Forma de Empuñadura).",
-            tags: ["Mindscape 2"],
+            name: "Luz y Sombra",
+            description: "El conteo máximo de acumulaciones de (Portador) aumenta a 6, y (Culminación) puede acumularse hasta 9 veces. Mientras está en el estado de (Mente Iluminada), cada punto de (Fuerza de Espada Qingming) consumido otorga 1 acumulación de (Culminación). El Daño de (Técnica Especial EX: Mente Iluminada - Luz Elevada) y (Definitiva: Cielos Partidos) ignora el 40% de la DEF del objetivo.",
+            tags: ["Mindscape 2"]
         },
         {
             type: "Mindscape 3",
-            name: "Nombre a determinar",
-            description: "Nivel de habilidad de (Ataque Básico), (Evasión), (Asistencia), (Técnica Especial), (Ataque en Cadena) +2",
-            tags: ["Mindscape 3"],
+            name: "Espadachína",
+            description: "Nivel de (Ataque Básico), (Evasión), (Asistencia), (Técnica Especial), y (Ataque en Cadena) +2",
+            tags: ["Mindscape 3"]
         },
         {
             type: "Mindscape 4",
-            name: "Nombre a determinar",
-            description: "El efecto (Tendencia Terrestre) puede acumularse máximo 3 capas, cada capa aumenta adicionalmente el daño de (Ataque Básico: Forma de Empuñadura Tierra Definitiva) en un 15%; Al entrar en combate, obtiene una capa de efecto (Tendencia Terrestre); al salir de (Forma de Empuñadura), obtiene una capa de efecto (Tendencia Terrestre).",
-            tags: ["Mindscape 4"],
+            name: "Juntos hacia el Polvo",
+            description: "Al entrar al campo de batalla, gana 1,000 Decibelios. En modo Zona de Investigación, este efecto puede activarse una vez cada 180s. El bonus de Vulnerabilidad proporcionado por (Velo Etereo: Veredicto) aumenta a un máximo del 200%.",
+            tags: ["Mindscape 4"]
         },
         {
             type: "Mindscape 5",
-            name: "Nombre a determinar",
-            description: "Nivel de habilidad de (Ataque Básico), (Evasión), (Asistencia), (Técnica Especial), (Ataque en Cadena) +2",
-            tags: ["Mindscape 5"],
+            name: "Destello Guía",
+            description: "Nivel de (Ataque Básico), (Evasión), (Asistencia), (Técnica Especial), y (Ataque en Cadena) +2",
+            tags: ["Mindscape 5"]
         },
         {
             type: "Mindscape 6",
-            name: "Nombre a determinar",
-            description: "Al entrar en (Forma de Empuñadura), por cada capa de efecto (Tendencia Terrestre), obtendrá una capa de efecto (Armonía); tras lanzar (Ataque Básico: Forma de Empuñadura Cielo Tercera Postura), puede hacer clic en la tecla de (Técnica Especial) para lanzar rápidamente una vez (Técnica Especial EX: Forma de Empuñadura Destello) sin consumir (Intención de Espada); al lanzar (Técnica Especial EX: Forma de Empuñadura Destello) normalmente y consumir (Intención de Espada), por cada 1 punto de (Intención de Espada) consumido, aumenta el multiplicador de daño de (Técnica Especial EX: Forma de Empuñadura Extinción) en un 10%, hasta un aumento máximo del 60%.",
-            tags: ["Mindscape 6"],
-        },
+            name: "Deseo de Linterna",
+            description: "Al entrar al campo de batalla, gana 2 acumulaciones de (Deseo de Linterna). Al entrar en el estado de (Mente Iluminada), gana 1 acumulación de (Deseo de Linterna), acumulándose hasta 4 veces. Con 3 acumulaciones de (Deseo de Linterna), (Técnica Especial EX: Mente Iluminada - Regreso al Polvo) es reemplazada con (Definitiva: Cielos Partidos). Cuando esta (Definitiva: Cielos Partidos) se activa, consume 3 acumulaciones de (Deseo de Linterna). El último golpe de (Mente Iluminada - Regreso al Polvo) y (Definitiva: Cielos Partidos) inflige 1,500% del ATK como Daño Físico adicional.",
+            tags: ["Mindscape 6"]
+        }
     ]
 };
