@@ -5,6 +5,7 @@ import { usePathname } from 'next/navigation';
 import Image from 'next/image';
 import { BookOpen, Home, X, List } from 'lucide-react';
 import Link from 'next/link';
+import appIcon from '@/app/icon.png';
 
 export default function Sidebar({ isExpanded, isMobile, toggleDrawer }) {
   const [activeItem, setActiveItem] = useState(-1);
@@ -42,20 +43,32 @@ export default function Sidebar({ isExpanded, isMobile, toggleDrawer }) {
         }`}
     >
       {/* Logo CZ y Botón Cerrar Móvil */}
-      <Link href="/" className="flex-shrink-0 flex items-center justify-center h-20 w-full relative group bg-transparent shadow-2xl">
+      <Link href="/" className="flex-shrink-0 flex items-center justify-center h-24 w-full relative group bg-transparent">
 
-        {/* Insignia CZ */}
-        <div
-          className={`text-transparent bg-clip-text bg-gradient-to-br from-yellow-300 to-yellow-600 drop-shadow-[0_0_10px_rgba(234,179,8,0.9)] tracking-tighter transition-all duration-300 group-hover:scale-105 font-display font-black italic text-3xl pr-4`}
-        >
-          CZ
+        <div className="flex flex-col items-center gap-1 transition-transform duration-300 group-hover:scale-105">
+          {/* Imagen del Logo con Glow */}
+          <div className="relative w-10 h-10">
+            <div className="absolute inset-0 bg-yellow-400 blur-lg opacity-40 rounded-full animate-pulse"></div>
+            <Image
+              src={appIcon}
+              alt="CodiceZero Logo"
+              width={40}
+              height={40}
+              className="object-contain relative z-10 drop-shadow-[0_0_8px_rgba(250,204,21,0.8)]"
+            />
+          </div>
+
+          {/* Texto CodiceZero */}
+          <span className="text-[10px] uppercase font-bold tracking-[0.15em] text-yellow-300 drop-shadow-[0_0_5px_rgba(234,179,8,0.8)] font-display">
+            CodiceZero
+          </span>
         </div>
 
         {/* Botón Cerrar (Solo en Móvil) */}
         {isMobile && (
           <button
             onClick={toggleDrawer}
-            className="absolute right-3 text-white/50 hover:text-white transition-colors"
+            className="absolute right-3 top-3 text-white/50 hover:text-white transition-colors"
             aria-label="Cerrar menú"
           >
             <X className="w-6 h-6" />
@@ -63,7 +76,7 @@ export default function Sidebar({ isExpanded, isMobile, toggleDrawer }) {
         )}
 
         {/* Overlay de Brillo para el hover */}
-        <div className="absolute inset-0 bg-yellow-500/0 group-hover:bg-yellow-500/10 transition-colors duration-200"></div>
+        <div className="absolute inset-0 bg-yellow-500/0 group-hover:bg-yellow-500/5 transition-colors duration-200 pointer-events-none"></div>
       </Link>
 
       {/* Navigation */}
