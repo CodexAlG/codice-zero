@@ -100,6 +100,16 @@ export default function BangboosPage() {
             {/* Contenido Normal de la Página (Solo visible cuando NO está cargando) */}
             <div className={`min-h-screen text-white p-8 transition-opacity duration-300 ${isLoading ? 'opacity-0' : 'opacity-100'}`}>
 
+                {/* --- AVISO IMPORTANTE --- */}
+                <div className="w-full mb-6 p-4 bg-yellow-900/40 border border-yellow-500/30 rounded-xl flex items-center gap-4 shadow-lg backdrop-blur-sm">
+                    <div className="p-2 bg-yellow-500/10 rounded-full text-yellow-500 shrink-0">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-info"><circle cx="12" cy="12" r="10" /><path d="M12 16v-4" /><path d="M12 8h.01" /></svg>
+                    </div>
+                    <p className="text-yellow-200 text-sm md:text-base font-medium leading-relaxed">
+                        La información de cada Bangboo no se encuentra disponible por el momento. Estén atentos al <a href="https://discord.gg/RBzdz2Bn4u" target="_blank" rel="noopener noreferrer" className="text-yellow-400 hover:text-white underline underline-offset-2 transition-colors font-bold">Servidor de Discord</a>, donde se avisará cuando se agregará esa información.
+                    </p>
+                </div>
+
                 {/* --- PANEL DE FILTROS --- */}
                 <div className="w-full mb-8 p-6 bg-gray-950/80 border-y border-white/10 backdrop-blur-md shadow-2xl flex flex-col gap-6">
 
