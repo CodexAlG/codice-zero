@@ -61,15 +61,15 @@ export default function TopNavbar({ isVisible }) {
                 >
                     {isActive && <div className="absolute left-0 top-1/2 -translate-y-1/2 h-8 w-[3px] bg-gradient-to-b from-yellow-300 to-yellow-500 rounded-r-full shadow-lg shadow-yellow-500/50"></div>}
 
-                    <div className="flex-shrink-0 flex items-center justify-center w-8 h-8">
+                    <div className="flex-shrink-0 flex items-center justify-center w-10 h-10">
                         {typeof Icon === 'string' ? (
-                            <Image src={Icon} alt={`Icono ${label}`} width={32} height={32} className={`transition-all duration-200 object-contain ${isActive ? 'drop-shadow-lg shadow-yellow-400/50 saturate-200 contrast-200' : 'opacity-70 group-hover:opacity-100 group-hover:saturate-150'}`} />
+                            <Image src={Icon} alt={`Icono ${label}`} width={36} height={36} className={`transition-all duration-200 object-contain ${isActive ? 'drop-shadow-lg shadow-yellow-400/50 saturate-200 contrast-200' : 'opacity-70 group-hover:opacity-100 group-hover:saturate-150'}`} />
                         ) : (
-                            <Icon size={32} className={`transition-all duration-200 ${isActive ? 'text-yellow-300 drop-shadow-lg shadow-yellow-400/50' : 'text-current opacity-70 group-hover:opacity-100'}`} />
+                            <Icon size={36} className={`transition-all duration-200 ${isActive ? 'text-yellow-300 drop-shadow-lg shadow-yellow-400/50' : 'text-current opacity-70 group-hover:opacity-100'}`} />
                         )}
                     </div>
 
-                    <span className={`font-medium tracking-wide text-sm transition-colors duration-200 ${isActive ? 'text-yellow-300 font-bold' : 'text-gray-300 group-hover:text-white'}`}>
+                    <span className={`text-[15px] font-bold tracking-wide transition-colors duration-200 uppercase ${isActive ? 'text-yellow-300 drop-shadow-[0_0_8px_rgba(250,204,21,0.5)]' : 'text-gray-400 group-hover:text-white'}`}>
                         {label}
                     </span>
                 </Link>
