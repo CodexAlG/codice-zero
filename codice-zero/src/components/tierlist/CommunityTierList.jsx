@@ -112,6 +112,14 @@ export default function CommunityTierList() {
         setTierRows(prev => prev.map(r => r.id === rowId ? { ...r, label: newLabel } : r));
     };
 
+    const getFontSize = (text) => {
+        const len = text.length;
+        if (len <= 2) return "text-5xl md:text-6xl"; // Single letters S, A, B
+        if (len <= 6) return "text-3xl md:text-4xl"; // Short words
+        if (len <= 12) return "text-xl md:text-2xl"; // Medium phrases
+        return "text-sm md:text-base"; // Long sentences
+    };
+
     // Column Actions
     const addCol = () => {
         const newId = `col-${Date.now()}`;
@@ -277,8 +285,9 @@ export default function CommunityTierList() {
                                 <textarea
                                     value={tier.label}
                                     onChange={(e) => updateRowLabel(tier.id, e.target.value)}
-                                    className="bg-transparent text-black font-black text-2xl md:text-3xl font-display italic text-center w-full focus:outline-none uppercase placeholder-black/30 resize-none overflow-hidden leading-tight break-words whitespace-pre-wrap"
-                                    rows={2}
+                                    className={`bg-transparent text-black font-black font-display italic text-center w-full focus:outline-none uppercase placeholder-black/30 resize-none overflow-hidden leading-tight break-words whitespace-pre-wrap ${getFontSize(tier.label)}`}
+                                    style={{ fieldSizing: "content" }} // Modern CSS for auto-height
+                                    rows={tier.label.length > 6 ? 2 : 1} // Fallback
                                 />
 
                                 <div className="absolute top-1 right-1 flex md:flex-col gap-2 md:gap-1 items-center bg-white/20 md:bg-transparent rounded px-1 md:px-0">
@@ -381,7 +390,9 @@ export default function CommunityTierList() {
                                 className="flex flex-col items-center justify-center border-r border-black/20 p-1 min-h-[140px]"
                                 style={{ backgroundColor: tier.color }}
                             >
-                                <span className="text-black font-black text-4xl font-display italic uppercase text-center">{tier.label}</span>
+                                <span className={`text-black font-black font-display italic uppercase text-center whitespace-pre-wrap leading-tight ${getFontSize(tier.label)}`}>
+                                    {tier.label}
+                                </span>
                             </div>
 
                             {tierCols.map(col => {
