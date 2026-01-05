@@ -8,8 +8,8 @@ export const versionedAgents = {
         id: 48,
         name: "Aria",
         versions: {
-            "V1": {
-                versionLabel: "V1",
+            "v2.6.1": {
+                versionLabel: "v2.6.1",
                 baseStats: {
                     hp: {
                         min: 623, // Usuario agregará

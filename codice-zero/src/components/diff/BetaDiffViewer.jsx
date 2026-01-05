@@ -12,6 +12,7 @@ import {
     getWeaponVersionData
 } from '@/data/versionedWeaponData';
 import { replaceIcons } from '@/components/utils/TextWithIcons';
+import { compareText, renderDiffText, compareNumber } from '@/utils/diffUtils';
 import HighlightText from '../ui/HighlightText';
 import './BetaDiffViewer.css';
 
