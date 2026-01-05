@@ -214,6 +214,7 @@ export default function AgentDetailPage() {
   // States
   const [level, setLevel] = useState(60);
   const [coreSkillLevel, setCoreSkillLevel] = useState(0); // 0=Default, 1-6=A-F
+  const [potentialLevel, setPotentialLevel] = useState(0); // 0-5
   const [details, setDetails] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -268,6 +269,7 @@ export default function AgentDetailPage() {
     "Definitiva": "/CodiceZero/Habilidades/Icon_Ultimate_Colored.webp",
     "Pasiva Central": "/CodiceZero/Habilidades/Icon_Core_Skill.webp",
     "Pasiva": "/CodiceZero/Habilidades/Icon_Core_Skill.webp",
+    "Potencial": "/CodiceZero/Habilidades/Icon_Core_Skill.webp", // Placeholder icon for Potential
   };
 
   if (!agent) {
@@ -301,6 +303,93 @@ export default function AgentDetailPage() {
   };
   const currentStats = calculateCurrentStats();
 
+
+  // --- HELPER: Process Potential Scaling ---
+  const processPotentialScaling = (text) => {
+    if (!details?.potentialSkillScaling || !text) return text;
+    const currentScalingValues = details.potentialSkillScaling[potentialLevel];
+    if (!currentScalingValues) return text;
+
+    // START: Custom Colors Logic (reuse core one or make new if needed)
+    const scalingColors = details.potentialSkillScalingColors || [];
+
+    return text.replace(/\{VALOR_(\d+)\}/g, (_, number) => {
+      const index = parseInt(number) - 1;
+      const val = currentScalingValues[index];
+
+      if (val !== undefined) {
+        if (scalingColors[index]) {
+          return `[CV="${scalingColors[index]}"]${val}[/CV]`;
+        }
+        return `[VAL]${val}[/VAL]`;
+      }
+      return `{VALOR_${number}}`;
+    });
+  };
+
+  // --- RENDER POTENTIAL FUNCTION ---
+  const renderPotential = () => {
+    if (!details?.potential) return null;
+    const potentialLevels = ['0', '1', '2', '3', '4', '5'];
+
+    const description = processPotentialScaling(details.potential.description);
+
+    return (
+      <div id="potential" className="relative w-full max-w-[1400px] mx-auto p-4 lg:p-12 pb-0">
+        <div className="flex flex-col gap-4">
+          {/* Header del Grupo */}
+          <div className="flex items-center gap-3 pb-2 border-b border-white/10 justify-between">
+            <div className="flex items-center gap-3">
+              <div className="w-8 h-8 rounded bg-white/5 flex items-center justify-center">
+                {/* Reuse Core Skill Icon for now or get a specific one */}
+                <Image
+                  src={skillIcons["Pasiva Central"]}
+                  alt="Potencial" width={20} height={20} className="object-contain opacity-80" unoptimized
+                />
+              </div>
+              <h3 className="text-xl font-bold uppercase tracking-wide text-white/90">Potencial</h3>
+            </div>
+
+            {/* Selector de Nivel Para Potencial (Barra Deslizante) */}
+            {details?.potentialSkillScaling && (
+              <div className="flex flex-col w-48 lg:w-64 mr-2">
+                <div className="relative h-6 flex items-center">
+                  <input
+                    type="range"
+                    min="0"
+                    max="5"
+                    step="1"
+                    value={potentialLevel}
+                    onChange={(e) => setPotentialLevel(parseInt(e.target.value))}
+                    className="w-full h-1 bg-white/20 rounded-lg appearance-none cursor-pointer accent-white hover:bg-white/30 transition-colors"
+                  />
+                </div>
+                <div className="flex justify-between px-1">
+                  {potentialLevels.map((lvl, idx) => (
+                    <span
+                      key={lvl}
+                      className={`text-[10px] font-mono font-bold transition-colors ${potentialLevel === idx ? 'text-white scale-125' : 'text-gray-600'}`}
+                    >
+                      {lvl}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            )}
+          </div>
+
+          {/* Contenido Potencial */}
+          <div className="bg-[#0a0a0a] border border-white/5 rounded-xl p-5 hover:bg-white/[0.02] transition-colors relative overflow-hidden">
+            <div className="absolute left-0 top-0 bottom-0 w-1" style={{ backgroundColor: themeColor }}></div>
+            <h4 className="text-lg font-bold text-white mb-2">{details.potential.name || "Sin nombre"}</h4>
+            <div className="text-gray-300 text-sm leading-relaxed space-y-2 font-sans">
+              <HighlightText text={replaceIcons(description)} skills={details.skills} skillIcons={skillIcons} elementColor={themeColor} />
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  };
 
   // --- RENDER GROUP FUNCTION ---
   const renderGroup = (title, keyOrKeys, iconKey) => {
@@ -429,7 +518,7 @@ export default function AgentDetailPage() {
     <div className="min-h-screen bg-[#0b0c15] text-white selection:bg-yellow-500/30">
 
       {/* NAVEGACIÓN LATERAL FLOTANTE */}
-      <SidebarNav />
+      <SidebarNav agentId={agentId} hasPotential={!!details?.potential} />
 
       {/* AVISO BETA (Top of Page) */}
       {agent.leak === "Beta" && (
@@ -564,6 +653,9 @@ export default function AgentDetailPage() {
 
         </div>
       </div>
+
+      {/* POTENTIAL SECTION */}
+      {renderPotential()}
 
       {/* 3. SECCIÓN INFERIOR: HABILIDADES (Grid 2 Columnas) */}
       <div id="skills" className="relative w-full max-w-[1400px] mx-auto p-4 lg:p-12 pt-12 lg:pt-8">

@@ -34,6 +34,13 @@ export default {
     ["23%", "27.5%"],
     ["25%", "30%"],
   ],
+  potentialSkillScaling: [
+    ["34%"], ["38%"], ["42%"], ["46%"], ["50%"] // Placeholders 0-5
+  ],
+  potential: {
+    name: "Potencial Despierto: Electropulso",
+    description: "Durante la (Habilidad Adicional: Oleada de Voltaje), el Daño de (Réplica) de todos los miembros del escuadrón contra enemigos marcados con (Estrella Plateada) aumenta a un {VALOR_1}."
+  },
   skills: [
     {
       type: "Ataque Básico",
