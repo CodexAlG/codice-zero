@@ -29,7 +29,7 @@ export default function MobileHeader({ toggleSidebar }) {
       {/* 1. Logo CZ (Izquierda) */}
       <Link href="/" className="flex-shrink-0 relative w-8 h-8">
         <Image
-          src="/CodiceZero/Logo.png"
+          src="@/app/icon.png"
           alt="Codice Zero"
           fill
           className="object-contain drop-shadow-[0_0_8px_rgba(234,179,8,0.5)]"
