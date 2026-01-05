@@ -59,7 +59,7 @@ export default function PersonajesPage() {
     "Victoria Housekeeping", "Belobog Heavy Industries", "Cunning Hares",
     "N.E.P.S.", "Obol Squad", "Section 6", "Stars of Lyra", "Sons of Calydon",
     "Spook Shack", "Mookingbird", "Yunkui Summit",
-    "Defense Force - Silver Squad", "Krampus Compliance Authority", "Agenls of Delusion"
+    "Defense Force - Silver Squad", "Krampus Compliance Authority", "Angels of Delusion"
   ];
 
   const elementIcons = {
