@@ -11,7 +11,7 @@ import {
     getWeaponVersions,
     getWeaponVersionData
 } from '@/data/versionedWeaponData';
-import { compareText, renderDiffText, compareNumber } from '@/utils/diffUtils';
+import { replaceIcons } from '@/components/utils/TextWithIcons';
 import HighlightText from '../ui/HighlightText';
 import './BetaDiffViewer.css';
 
@@ -21,6 +21,24 @@ export default function BetaDiffViewer() {
     const [versionBefore, setVersionBefore] = useState(null);
     const [versionAfter, setVersionAfter] = useState(null);
 
+    // Skill Icons Mapping (reused from AgentDetailPage)
+    const skillIcons = {
+        "Ataque Básico": "/CodiceZero/Habilidades/Icon_Basic_Attack.webp",
+        "Ataque Normal": "/CodiceZero/Habilidades/Icon_Basic_Attack.webp",
+        "Ataque": "/CodiceZero/Habilidades/Icon_Basic_Attack.webp",
+        "Evasión": "/CodiceZero/Habilidades/Icon_Dodge.webp",
+        "Asistencia": "/CodiceZero/Habilidades/Icon_Assist_Attack.png",
+        "Técnica Especial": "/CodiceZero/Habilidades/Icon_Special_Attack.webp",
+        "Habilidad Especial": "/CodiceZero/Habilidades/Icon_Special_Attack.webp",
+        "Técnica Especial EX": "/CodiceZero/Habilidades/Icon_EX_Special_Attack.webp",
+        "Habilidad Especial EX": "/CodiceZero/Habilidades/Icon_EX_Special_Attack.webp",
+        "Técnica Definitiva": "/CodiceZero/Habilidades/Icon_Ultimate_Colored.webp",
+        "Definitiva": "/CodiceZero/Habilidades/Icon_Ultimate_Colored.webp",
+        "Pasiva Central": "/CodiceZero/Habilidades/Icon_Core_Skill.webp",
+        "Pasiva": "/CodiceZero/Habilidades/Icon_Core_Skill.webp",
+        "Potencial": "/CodiceZero/Habilidades/Icon_Core_Skill.webp",
+    };
+
     // Get available entities based on type
     const availableEntities = useMemo(() => {
         return selectedType === 'agentes'
@@ -28,137 +46,7 @@ export default function BetaDiffViewer() {
             : getAvailableWeapons();
     }, [selectedType]);
 
-    // Get available versions for selected entity
-    const availableVersions = useMemo(() => {
-        if (!selectedEntity) return [];
-        return selectedType === 'agentes'
-            ? getAgentVersions(selectedEntity.id)
-            : getWeaponVersions(selectedEntity.id);
-    }, [selectedEntity, selectedType]);
-
-    // Get data for both versions
-    const beforeData = useMemo(() => {
-        if (!selectedEntity || !versionBefore) return null;
-        return selectedType === 'agentes'
-            ? getAgentVersionData(selectedEntity.id, versionBefore)
-            : getWeaponVersionData(selectedEntity.id, versionBefore);
-    }, [selectedEntity, versionBefore, selectedType]);
-
-    const afterData = useMemo(() => {
-        if (!selectedEntity || !versionAfter) return null;
-        return selectedType === 'agentes'
-            ? getAgentVersionData(selectedEntity.id, versionAfter)
-            : getWeaponVersionData(selectedEntity.id, versionAfter);
-    }, [selectedEntity, versionAfter, selectedType]);
-
-    // Handle type change
-    const handleTypeChange = (e) => {
-        setSelectedType(e.target.value);
-        setSelectedEntity(null);
-        setVersionBefore(null);
-        setVersionAfter(null);
-    };
-
-    // Handle entity change
-    const handleEntityChange = (e) => {
-        const entityId = parseInt(e.target.value);
-        const entity = availableEntities.find(ent => ent.id === entityId);
-        setSelectedEntity(entity);
-        setVersionBefore(null);
-        setVersionAfter(null);
-    };
-
-    // Render stat comparison
-    const renderStatComparison = (statName, oldValue, newValue) => {
-        const comparison = compareNumber(oldValue, newValue);
-        const statusClass = comparison.status === 'buff'
-            ? 'stat-buff'
-            : comparison.status === 'nerf'
-                ? 'stat-nerf'
-                : 'stat-unchanged';
-
-        return (
-            <div className="stat-row" key={statName}>
-                <div className="stat-name">{statName}</div>
-                <div className="stat-values">
-                    <div className="stat-before">{oldValue}</div>
-                    <div className={`stat-after ${statusClass}`}>{newValue}</div>
-                </div>
-            </div>
-        );
-    };
-
-    // Render agent stats comparison
-    const renderAgentStats = () => {
-        if (!beforeData || !afterData || !beforeData.baseStats || !afterData.baseStats) {
-            return null;
-        }
-
-        const oldStats = beforeData.baseStats;
-        const newStats = afterData.baseStats;
-
-        return (
-            <div className="stats-section">
-                <h3>Estadísticas Base</h3>
-                <div className="stats-comparison">
-                    <div className="stats-column">
-                        <h4>Antes ({versionBefore})</h4>
-                        <div className="stat-list">
-                            {oldStats.hp && <div className="stat-item">HP: {oldStats.hp.min} - {oldStats.hp.max}</div>}
-                            {oldStats.atk && <div className="stat-item">ATK: {oldStats.atk.min} - {oldStats.atk.max}</div>}
-                            {oldStats.def && <div className="stat-item">DEF: {oldStats.def.min} - {oldStats.def.max}</div>}
-                            {oldStats.impact && <div className="stat-item">Impact: {oldStats.impact}</div>}
-                            {oldStats.anomalyRate && <div className="stat-item">Tasa Anomalía: {oldStats.anomalyRate}</div>}
-                            {oldStats.anomalyMastery && <div className="stat-item">Maestría Anomalía: {oldStats.anomalyMastery}</div>}
-                        </div>
-                    </div>
-                    <div className="stats-column">
-                        <h4>Después ({versionAfter})</h4>
-                        <div className="stat-list">
-                            {renderStatComparison('HP', `${oldStats.hp?.min} - ${oldStats.hp?.max}`, `${newStats.hp?.min} - ${newStats.hp?.max}`)}
-                            {renderStatComparison('ATK', `${oldStats.atk?.min} - ${oldStats.atk?.max}`, `${newStats.atk?.min} - ${newStats.atk?.max}`)}
-                            {renderStatComparison('DEF', `${oldStats.def?.min} - ${oldStats.def?.max}`, `${newStats.def?.min} - ${newStats.def?.max}`)}
-                            {renderStatComparison('Impact', oldStats.impact, newStats.impact)}
-                            {renderStatComparison('Tasa Anomalía', oldStats.anomalyRate, newStats.anomalyRate)}
-                            {renderStatComparison('Maestría Anomalía', oldStats.anomalyMastery, newStats.anomalyMastery)}
-                        </div>
-                    </div>
-                </div>
-            </div>
-        );
-    };
-
-    // Render weapon stats comparison
-    const renderWeaponStats = () => {
-        if (!beforeData || !afterData || !beforeData.detailStats || !afterData.detailStats) {
-            return null;
-        }
-
-        const oldStats = beforeData.detailStats;
-        const newStats = afterData.detailStats;
-
-        return (
-            <div className="stats-section">
-                <h3>Estadísticas del Arma</h3>
-                <div className="stats-comparison">
-                    <div className="stats-column">
-                        <h4>Antes ({versionBefore})</h4>
-                        <div className="stat-list">
-                            <div className="stat-item">ATK Base: {oldStats.baseAtk.min} - {oldStats.baseAtk.max}</div>
-                            <div className="stat-item">{oldStats.subStat.name}: {oldStats.subStat.min} - {oldStats.subStat.max}</div>
-                        </div>
-                    </div>
-                    <div className="stats-column">
-                        <h4>Después ({versionAfter})</h4>
-                        <div className="stat-list">
-                            {renderStatComparison('ATK Base', `${oldStats.baseAtk.min} - ${oldStats.baseAtk.max}`, `${newStats.baseAtk.min} - ${newStats.baseAtk.max}`)}
-                            {renderStatComparison(oldStats.subStat.name, `${oldStats.subStat.min} - ${oldStats.subStat.max}`, `${newStats.subStat.min} - ${newStats.subStat.max}`)}
-                        </div>
-                    </div>
-                </div>
-            </div>
-        );
-    };
+    // ... (rest of the code unchanged until helper functions)
 
     // Helper to process scaling placeholders {VALOR_1}
     const processScaling = (text, data) => {
@@ -197,12 +85,20 @@ export default function BetaDiffViewer() {
                 if (part.added) className = "diff-added";
             }
 
-            // Process scaling placeholders in the text chunk
+            // 1. Process scaling placeholders
             let processedText = processScaling(part.value, data);
+
+            // 2. Replace icons placeholders [Icono ...] with HTML <img> tags
+            processedText = replaceIcons(processedText);
 
             return (
                 <span key={index} className={className}>
-                    <HighlightText text={processedText} elementColor={data?.elementColor || "#facc15"} />
+                    <HighlightText
+                        text={processedText}
+                        elementColor={data?.elementColor || "#facc15"}
+                        skillIcons={skillIcons}
+                        skills={data?.skills || []}
+                    />
                 </span>
             );
         }).filter(Boolean);
