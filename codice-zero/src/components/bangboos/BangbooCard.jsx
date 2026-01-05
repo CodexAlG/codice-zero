@@ -8,7 +8,7 @@ const BangbooCard = memo(({ bangboo, priority = false }) => {
     const rankIcon = `/CodiceZero/Rango/Icon_Item_Rank_${bangboo.rank}.webp`;
 
     return (
-        <div className={`relative w-full max-w-[160px] mx-auto aspect-[4/5] bg-gray-900/80 rounded-lg border-b-4 ${rankColor} overflow-hidden group hover:scale-[1.02] hover:shadow-xl transition-none`}>
+        <div className={`relative w-full max-w-[160px] mx-auto aspect-[4/5] bg-[#18181b] rounded-lg border-b-4 ${rankColor} overflow-hidden group hover:scale-[1.02] hover:shadow-xl transition-none`}>
 
             {/* Rank Icon - Top Right */}
             <div className="absolute top-2 right-2 z-20">

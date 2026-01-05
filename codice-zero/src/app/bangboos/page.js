@@ -111,7 +111,7 @@ export default function BangboosPage() {
                 </div>
 
                 {/* --- PANEL DE FILTROS --- */}
-                <div className="w-full mb-8 p-6 bg-gray-950/80 border-y border-white/10 backdrop-blur-md shadow-2xl flex flex-col gap-6">
+                <div className="w-full mb-8 p-6 bg-[#09090b]/80 border-y border-white/10 backdrop-blur-md shadow-2xl flex flex-col gap-6">
 
                     {/* FILA 1: Filtros Principales */}
                     <div className="flex flex-col xl:flex-row items-start xl:items-center justify-between gap-4">
@@ -122,7 +122,7 @@ export default function BangboosPage() {
                                 onClick={() => toggleFilter("Todos")}
                                 className={`h-10 px-6 rounded-lg font-bold font-display text-sm tracking-wider border transition-all ${activeFilters.length === 0
                                     ? "bg-yellow-400 text-black border-yellow-400 shadow-[0_0_15px_#facc15]"
-                                    : "bg-gray-900 text-gray-400 border-gray-700 hover:border-gray-500 hover:text-white"
+                                    : "bg-black/50 text-gray-400 border-white/10 hover:border-gray-500 hover:text-white"
                                     }`}
                             >
                                 TODOS

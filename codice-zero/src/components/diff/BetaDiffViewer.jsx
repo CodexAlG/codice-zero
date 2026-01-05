@@ -21,6 +21,9 @@ export default function BetaDiffViewer() {
     const [selectedEntity, setSelectedEntity] = useState(null);
     const [versionBefore, setVersionBefore] = useState(null);
     const [versionAfter, setVersionAfter] = useState(null);
+    const [corePassiveLevel, setCorePassiveLevel] = useState(0); // 0 to 6 (0, A, B, C, D, E, F)
+
+    const CORE_PASSIVE_LABELS = ['0', 'A', 'B', 'C', 'D', 'E', 'F'];
 
     // Skill Icons Mapping (reused from AgentDetailPage)
     const skillIcons = {
@@ -182,8 +185,10 @@ export default function BetaDiffViewer() {
     // Helper to process scaling placeholders {VALOR_1}
     const processScaling = (text, data) => {
         if (!data?.coreSkillScaling || !text) return text;
-        // Use Level 1 (index 0) as default for comparison view
-        const currentScalingValues = data.coreSkillScaling[0];
+        if (!data?.coreSkillScaling || !text) return text;
+
+        // Use selected level
+        const currentScalingValues = data.coreSkillScaling[corePassiveLevel] || data.coreSkillScaling[0];
         if (!currentScalingValues) return text;
 
         const scalingColors = data.coreSkillScalingColors || [];
@@ -258,7 +263,60 @@ export default function BetaDiffViewer() {
                 <h3>Habilidades</h3>
                 {Object.entries(groupedSkills).map(([type, skills]) => (
                     <div key={type} className="skill-group">
-                        <div className="skill-type">{type}</div>
+                        <div className="flex items-center justify-between mb-2">
+                            <div className="skill-type">{type}</div>
+                            {/* Slider para Pasiva Central */}
+                            {(type === "Pasiva Central" || type === "Pasiva") && (
+                                <div className="flex flex-col items-center w-64 mr-4">
+                                    <h5 className="text-xs text-gray-400 font-bold uppercase tracking-wider mb-2 self-start w-full text-left flex items-center gap-2">
+                                        <span className="w-1 h-3 bg-yellow-500 rounded-full"></span>
+                                        Talento Pasivo
+                                    </h5>
+                                    <div className="relative w-full h-8 flex items-center">
+                                        {/* Línea de fondo */}
+                                        <div className="absolute w-full h-1 bg-white/10 rounded-full"></div>
+
+                                        {/* Input Range Personalizado */}
+                                        <input
+                                            type="range"
+                                            min="0"
+                                            max="6"
+                                            step="1"
+                                            value={corePassiveLevel}
+                                            onChange={(e) => setCorePassiveLevel(Number(e.target.value))}
+                                            className="w-full absolute z-20 cursor-pointer opacity-0 h-8"
+                                            title={`Nivel: ${CORE_PASSIVE_LABELS[corePassiveLevel]}`}
+                                        />
+
+                                        {/* Marcadores Visuales */}
+                                        <div className="w-full flex justify-between absolute z-10 pointer-events-none px-1">
+                                            {CORE_PASSIVE_LABELS.map((label, idx) => (
+                                                <div key={label} className={`relative flex flex-col items-center group transition-all duration-300 ${idx === corePassiveLevel ? 'scale-110' : ''}`}>
+                                                    <div
+                                                        className={`w-3 h-3 rounded-full mb-2 transition-all duration-300 ${idx === corePassiveLevel
+                                                                ? 'bg-white shadow-[0_0_10px_rgba(255,255,255,0.8)] scale-125'
+                                                                : idx < corePassiveLevel
+                                                                    ? 'bg-yellow-500/50'
+                                                                    : 'bg-gray-700'
+                                                            }`}
+                                                    ></div>
+                                                    <span className={`text-[10px] font-mono font-bold transition-colors duration-300 ${idx === corePassiveLevel ? 'text-white' : 'text-gray-600'
+                                                        }`}>
+                                                        {label}
+                                                    </span>
+                                                </div>
+                                            ))}
+                                        </div>
+
+                                        {/* Barra de Progreso (Relleno) */}
+                                        <div
+                                            className="absolute h-1 bg-yellow-500/50 rounded-full transition-all duration-300 left-0"
+                                            style={{ width: `${(corePassiveLevel / 6) * 100}%` }}
+                                        ></div>
+                                    </div>
+                                </div>
+                            )}
+                        </div>
                         {skills.map((skillPair, idx) => {
                             const { old: oldSkill, new: newSkill } = skillPair;
                             if (!newSkill) return null;

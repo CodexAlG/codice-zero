@@ -11,7 +11,7 @@ export default function BangbooDetail({ params }) {
     const bangboo = bangboos.find((b) => b.id === id);
 
     if (!bangboo) return (
-        <div className="min-h-screen bg-gray-950 flex items-center justify-center">
+        <div className="min-h-screen bg-[#09090b] flex items-center justify-center">
             <div className="text-center">
                 <h1 className="text-4xl font-display text-red-400 mb-4">Bangboo no encontrado</h1>
                 <Link href="/bangboos" className="text-yellow-400 hover:text-yellow-300 transition-colors">
@@ -22,7 +22,7 @@ export default function BangbooDetail({ params }) {
     );
 
     return (
-        <div className="min-h-screen bg-gradient-to-b from-gray-900 via-gray-950 to-black text-white flex flex-col items-center justify-center p-8">
+        <div className="min-h-screen bg-[#09090b] text-white flex flex-col items-center justify-center p-8">
             {/* Botón Volver */}
             <Link href="/bangboos" className="absolute top-8 left-8 z-50 inline-flex items-center text-gray-400 hover:text-yellow-400 transition-colors">
                 <ArrowLeft className="w-6 h-6 mr-2" />
