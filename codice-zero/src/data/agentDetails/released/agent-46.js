@@ -3,7 +3,7 @@ export default {
   baseStats: {
     hp: {
       min: 733,
-      max: 8985
+      max: 8986
     },
     atk: {
       min: 110,
@@ -13,7 +13,7 @@ export default {
       min: 56,
       max: 701
     },
-    impact: "93",
+    impact: 93,
     crit: "5%",
     critDmg: "50%",
     anomalyRate: "93",
@@ -25,203 +25,141 @@ export default {
     statName: "hp%",
     valuePerNode: 6
   },
-  materials: {
-    weeklyBoss: {
-      name: "",
-      icon: "",
-    },
-    eliteBoss: {
-      name: "",
-      icon: "",
-    }
-  },
   coreSkillScaling: [
-    ["0.8%", "100"],
-    ["0.9%", "250"],
-    ["1%", "400"],
-    ["1.1%", "550"],
-    ["1.2%", "700"],
-    ["1.3%", "850"],
-    ["1.4%", "1000"]
+    ["24.0%", "0.8%", "100", "1.7%"],
+    ["24.0%", "0.9%", "250", "1.7%"],
+    ["24.0%", "1.0%", "400", "1.7%"],
+    ["24.0%", "1.1%", "550", "1.7%"],
+    ["24.0%", "1.2%", "700", "1.7%"],
+    ["24.0%", "1.3%", "850", "1.7%"],
+    ["24.0%", "1.4%", "1000", "1.7%"] // Placeholders for user to fill
   ],
   skills: [
     {
       type: "Ataque Básico",
-      name: "Ataque Básico",
-      description: "Clic [Icono Ataque] para activar: Realiza hasta cinco etapas de cortes hacia adelante, causando Daño Hielo.",
-      tags: [
-        "Hielo",
-        "Ataque Básico"
-      ]
+      name: "Ataque Básico: Juicio Glacial",
+      description: "Presiona [Icono Ataque] para activar: Lanza hasta cinco cortes hacia adelante, el primero infligiendo Daño Físico, y los siguientes cuatro Daño de Hielo.",
+      tags: ["Físico", "Hielo", "Ataque Básico"]
     },
     {
       type: "Ataque Básico",
-      name: "Corte Cargado",
-      description: "Mantener [Icono Ataque] para activar: Tras cargar, realiza un corte hacia adelante, causando gran cantidad de Daño Hielo; Si Zhao activa (Asistencia Rapida) en un movimiento y es cambiada fuera del campo, conectará automáticamente con (Ataque Básico: Corte Cargado) y comenzará a cargar; Al cargar, Zhao acumulará duración de carga hasta un máximo de 5 segundos. La próxima vez que lance (Ataque Básico: Corte Cargado), (Ataque en Cadena) o (Ataque de Asistencia) e inflija daño, consumirá la duración de carga para causar daño adicional. Por cada 1 segundo de duración de carga, causa daño adicional equivalente al 24.0% de los PV Máximos de Zhao.",
-      tags: [
-        "Hielo",
-        "Ataque Básico"
-      ]
+      name: "Ataque Básico: Veredicto Final",
+      description: "Mantén [Icono Ataque] para activar: Después de prepararse, Zhao comienza a cargar, luego lanza un corte hacia adelante al soltar, infligiendo masivo Daño de Hielo. Mientras carga, Zhao acumula hasta 5s de tiempo de carga. Cuando el Golpe Final de (Ataque Básico: Veredicto Final), (Ataque en Cadena), o (Ataque de Asistencia) golpea, el tiempo de carga almacenado se consume para infligir Daño adicional. Por cada 1 segundo de tiempo de carga, Zhao inflige {VALOR_1} del HP Máx como Daño adicional. Cuando Zhao está en cualquier (Velo Etéreo), si es cambiada hacia fuera mientras carga, la carga puede continuar. Si los (Puntos de Congelación) están al máximo cuando la habilidad se activa, todos los (Puntos de Congelación) se consumen para activar (Velo Etéreo: Manantial) y una (Asistencia Rápida). Si un compañero es cambiado a través de (Asistencia Rápida), Zhao automáticamente sigue con (Ataque Básico: Veredicto Final) y comienza a cargar. Durante la activación de la habilidad, el nivel de Anti-Interrupción aumenta, y el Daño recibido se reduce en un 40%. Mientras no sea el personaje controlado actualmente, el personaje es invulnerable mientras usa esta habilidad.",
+      tags: ["Hielo", "Ataque Básico"]
     },
     {
       type: "Evasión",
-      name: "Evasión",
-      description: "Clic [Icono Dodges] para activar: Evasión rápida de carrera; Posee efecto de invencibilidad durante la activación.",
-      tags: [
-        "Evasión"
-      ]
+      name: "Evasión: Salto de Conejo",
+      description: "Presiona [Icono Dodges] para activar: Una rápida evasión deslizante. El personaje es invulnerable mientras usa esta habilidad.",
+      tags: ["Evasión"]
     },
     {
       type: "Evasión",
-      name: "Evasión",
-      description: "Al usar (Evasión), Clic [Icono Ataque] para activar: Causa Daño Hielo.",
-      tags: [
-        "Hielo",
-        "Evasión"
-      ]
+      name: "Ataque de Carrera: Carrera Rebotante",
+      description: "Presiona [Icono Ataque] durante una evasión para activar: Corta hacia adelante, infligiendo Daño Físico y Daño de Hielo.",
+      tags: ["Físico", "Hielo", "Evasión"]
     },
     {
       type: "Evasión",
-      name: "Evasión",
-      description: "Tras activar (Evasión Perfecta), Clic [Icono Ataque] para activar: Causa Daño Hielo. Posee efecto de invencibilidad durante la activación.",
-      tags: [
-        "Hielo",
-        "Evasión"
-      ]
-    },
-    {
-      type: "Asistencia",
-      name: "Técnica de Entrada",
-      description: "Cuando el (Valor de Escarcha) de Zhao está lleno, Clic [Icono Assist] para activar: Causa gran cantidad de Daño Hielo; Zhao activa (Asistencia Rapida) en el movimiento y es cambiada fuera del campo, conectará automáticamente con (Ataque Básico: Corte Cargado) y realizará la carga; Posee efecto de invencibilidad durante la activación.",
-      tags: [
-        "Hielo",
-        "Asistencia"
-      ]
-    },
-    {
-      type: "Asistencia",
-      name: "Asistencia Rápida",
-      description: "Cuando el personaje en operación actual es lanzado por los aires, Clic [Icono Assist] para activar: Posee efecto de invencibilidad durante la activación.",
-      tags: [
-        "Asistencia"
-      ]
-    },
-    {
-      type: "Asistencia",
-      name: "Asistencia Defensiva",
-      description: "Cuando el personaje en el campo está a punto de ser atacado, Clic [Icono Assist] para activar: Bloquea el ataque del enemigo, acumulando gran cantidad de valor de aturdimiento; Posee un rendimiento de bloqueo superior, al recibir ataques de alta intensidad el consumo de (Puntos de Asistencia) se reduce; Posee efecto de invencibilidad durante la activación.",
-      tags: [
-        "Asistencia"
-      ]
-    },
-    {
-      type: "Asistencia",
-      name: "Ataque de Asistencia",
-      description: "Tras lanzar (Asistencia Defensiva), Clic [Icono Ataque] para activar: Causa gran cantidad de Daño Hielo; Tras la activación, si el (Valor de Escarcha) está lleno, puede hacer Clic en [Icono Assist] para conectar con (Tecnica de Entrada); Posee efecto de invencibilidad durante la activación.",
-      tags: [
-        "Hielo",
-        "Asistencia"
-      ]
+      name: "Contraataque de Evasión: Parpadeo Veloz",
+      description: "Presiona [Icono Ataque] durante una (Evasión Perfecta) para activar: Realiza un corte de caída adelante, infligiendo Daño de Hielo. El personaje es invulnerable mientras usa esta habilidad.",
+      tags: ["Hielo", "Evasión"]
     },
     {
       type: "Técnica Especial",
-      name: "Técnica Especial",
-      description: "Clic [Icono Especial] para activar: Realiza un corte hacia adelante al enemigo, causando Daño Hielo; Al activar el movimiento, si los PV actuales de Zhao son mayores al 50%, consumirá el 6% de los PV Máximos para hacer que todos los personajes del equipo recuperen PV cada segundo basados en el 1% de los PV Máximos de Zhao, dura 5 segundos, se activa máximo una vez cada 15 segundos.",
-      tags: [
-        "Hielo",
-        "Técnica Especial"
-      ]
+      name: "Técnica Especial: Oleada de Escarcha",
+      description: "Presiona [Icono Especial] para activar: Lanza un corte hacia adelante, infligiendo Daño de Hielo. Al activar esta habilidad, consume 5% del HP actual para otorgar a todos los miembros del escuadrón regeneración de HP igual al {VALOR_4} del HP Máx de Zhao por segundo durante 5s. Los efectos de consumo de HP de (Técnica Especial: Oleada de Escarcha) y (Técnica Especial EX: Tundra de Flujo Helado) pueden activarse como máximo una vez cada 30s.",
+      tags: ["Hielo", "Técnica Especial"]
     },
     {
       type: "Técnica Especial EX",
-      name: "Técnica Especial Reforzada",
-      description: "Cuando la energía es suficiente, Clic [Icono Especial EX] para activar: Realiza un corte hacia adelante al enemigo, causando gran cantidad de Daño Hielo; Al activar el movimiento, si los PV actuales de Zhao son mayores al 50%, consumirá el 6% de los PV Máximos para hacer que todos los personajes del equipo recuperen PV cada segundo basados en el 1% de los PV Máximos de Zhao, dura 5 segundos, se activa máximo una vez cada 15 segundos; Al activar el movimiento, otorga al equipo el efecto (Aumento). Al activar este efecto, si se encuentra bajo (Velo Etereo: Manantial), activará (Asistencia Rapida). Posee efecto de invencibilidad durante la activación.",
-      tags: [
-        "Hielo",
-        "Técnica Especial"
-      ]
+      name: "Técnica Especial EX: Tundra de Flujo Helado",
+      description: "Con suficiente energía, presiona [Icono Especial EX] para activar: Lanza múltiples cortes hacia adelante, infligiendo masivo Daño de Hielo. Al activar esta habilidad, consume 5% del HP actual para otorgar a todos los miembros del escuadrón regeneración de HP igual al {VALOR_4} del HP Máx de Zhao por segundo durante 5s. Los efectos de consumo de HP de (Técnica Especial: Oleada de Escarcha) y (Técnica Especial EX: Tundra de Flujo Helado) pueden activarse como máximo una vez cada 30s. Al activar esta habilidad, gana 20 (Puntos de Congelación). Si los (Puntos de Congelación) están al máximo, todos los (Puntos de Congelación) se consumen para activar (Velo Etéreo: Manantial). Al activar esta habilidad mientras está en cualquier (Velo Etéreo), se activa una (Asistencia Rápida). Si un compañero es cambiado a través de (Asistencia Rápida), Zhao automáticamente sigue con (Ataque Básico: Veredicto Final) y comienza a cargar. El personaje es invulnerable mientras usa esta habilidad.",
+      tags: ["Hielo", "Técnica Especial EX"]
     },
     {
       type: "Técnica Definitiva",
-      name: "Ataque en Cadena",
-      description: "Al activar (Ataque en Cadena), selecciona el personaje correspondiente para activar: Causa gran cantidad de Daño Hielo; Al activar el movimiento, acumula 15 puntos de (Valor de Escarcha); Posee efecto de invencibilidad durante la activación.",
-      tags: [
-        "Hielo",
-        "Ataque en Cadena"
-      ]
+      name: "Ataque en Cadena: Alianza Temporal",
+      description: "Cuando se activa un (Ataque en Cadena), selecciona al personaje para activar: Lanza múltiples cortes en frente, infligiendo masivo Daño de Hielo. Después de usar esta habilidad, gana 5 (Puntos de Congelación). Si los (Puntos de Congelación) están al máximo, todos los (Puntos de Congelación) se consumen para activar (Velo Etéreo: Manantial). Al activar esta habilidad mientras está en cualquier (Velo Etéreo), se activa una (Asistencia Rápida). Si un compañero es cambiado a través de (Asistencia Rápida), Zhao automáticamente sigue con (Ataque Básico: Veredicto Final) y comienza a cargar. El personaje es invulnerable mientras usa esta habilidad.",
+      tags: ["Hielo", "Ataque en Cadena"]
     },
     {
       type: "Técnica Definitiva",
-      name: "Técnica Definitiva",
-      description: "Cuando el nivel de Decibelios llega a [Max], Clic [Icono Definitiva] para activar: Ataca hacia adelante y sigue con un corte descendente al enemigo, causando gran cantidad de Daño Hielo; Al activar el movimiento, acumula 20 puntos de (Valor de Escarcha); Posee efecto de invencibilidad durante la activación.",
-      tags: [
-        "Hielo",
-        "Técnica Definitiva"
-      ]
+      name: "Definitiva: Bombardeo de Conejos",
+      description: "Cuando el Nivel de Decibelios está al [Máximo], presiona [Icono Definitiva] para activar: Lanza ataques consecutivos en frente, seguidos por un corte de caída, infligiendo masivo Daño de Hielo. Después de usar esta habilidad, gana 20 (Puntos de Congelación). Si los (Puntos de Congelación) están al máximo, todos los (Puntos de Congelación) se consumen para activar (Velo Etéreo: Manantial). Al activar esta habilidad mientras está en cualquier (Velo Etéreo), se activa una (Asistencia Rápida). Si un compañero es cambiado a través de (Asistencia Rápida), Zhao automáticamente sigue con (Ataque Básico: Veredicto Final) y comienza a cargar. El personaje es invulnerable mientras usa esta habilidad.",
+      tags: ["Hielo", "Técnica Definitiva"]
     },
     {
       type: "Pasiva Central",
-      name: "Pasiva Principal",
-      description: "Zhao aumenta su Probabilidad de Crítico adicionalmente basada en sus PV Máximos iniciales, cada 1000 puntos de PV Máximos aumenta un {VALOR_1} de Probabilidad de Crítico; Cuando el agente en el campo causa daño, aturde a un enemigo o derrota a un enemigo, Zhao acumula 1.5/15/10 puntos de (Valor de Escarcha), se activa máximo una vez cada 1/50/50 segundos, máximo 100 puntos; Cuando el (Valor de Escarcha) está lleno, cambiar a Zhao al campo puede activar (Tecnica de Entrada); Cuando Zhao activa (Tecnica de Entrada), abre el (Velo Etereo: Manantial), dura 50 segundos, antes de activarse nuevamente, cerrará el (Velo Etereo: Manantial) existente; Cuando Zhao activa (Tecnica Especial Reforzada) o (Tecnica de Entrada), todo el equipo obtiene el efecto (Aumento), aumentando el Ataque en {VALOR_2} puntos, dura 40 segundos, activaciones repetidas extienden la duración; al activar este efecto, si se encuentra bajo (Velo Etereo: Manantial), activará (Asistencia Rapida).",
-      tags: [
-        "Pasiva Central"
-      ]
+      name: "Pasiva Principal: Colega Ideal",
+      description: "Zhao gana Tasa Crítica bonus basada en su HP Máx inicial, ganando {VALOR_2} de Tasa Crítica por cada 1,000 de HP Máx inicial. Al entrar al campo de batalla, Zhao gana 100 (Puntos de Congelación). Este efecto puede activarse una vez cada 180s en modo Zona de Investigación. La cantidad máxima de (Puntos de Congelación) es 100. Cuando los ataques del personaje activo actual golpean a un enemigo, Zhao gana 6 (Puntos de Congelación). Esto puede activarse una vez cada 3s. Cuando los (Puntos de Congelación) están al máximo, cambiar a Zhao al campo mientras está en combate activará su (Habilidad de Entrada). Cuando Zhao activa su (Habilidad de Entrada), todos los (Puntos de Congelación) se consumen para activar (Velo Etéreo: Manantial). Mientras (Velo Etéreo: Manantial) está activo, todos los miembros del escuadrón ganan 5% de HP Máx por 40s. Re-activar (Velo Etéreo: Manantial) termina la instancia existente antes de aplicar un nuevo (Velo Etéreo: Manantial). Cuando Zhao activa (Velo Etéreo: Manantial), el ATK de todos los miembros del escuadrón aumenta en {VALOR_3} por 50s. Las activaciones repetidas reinician la duración.",
+      tags: ["Pasiva Central"]
     },
     {
       type: "Habilidad Adicional",
-      name: "Habilidad Adicional",
-      description: "Se activa cuando hay personajes de (Ataque), (Anomalia) o (Aturdimiento) en el equipo: Cuando Zhao está bajo (Velo Etereo), aumenta el daño causado por todo el equipo en un 10%. Si los PV Máximos iniciales de Zhao son superiores a 6000 puntos, por cada 1000 puntos de PV Máximos iniciales excedentes, el efecto de aumento de daño mejora adicionalmente en un 1.5%, hasta un aumento máximo del 40%. Cuando los PV Máximos iniciales alcanzan 26000 puntos, el efecto de mejora alcanza su valor máximo.",
-      tags: [
-        "Habilidad Adicional"
-      ]
+      name: "Habilidad Adicional: Cristalización",
+      description: "Cuando otro personaje en tu escuadrón es un personaje de (Ataque), (Anomalía), o (Apoyo): Cuando Zhao está dentro de cualquier (Velo Etéreo), el Daño de todo el escuadrón aumenta en un 10%. Si el HP Máx inicial de Zhao excede 15,000, cada 400 HP Máx inicial adicional aumenta este bonus de Daño en un 1% adicional, hasta un aumento máximo total del 40%. Este bonus alcanza su máximo cuando el HP Máx inicial de Zhao alcanza 27,000.",
+      tags: ["Habilidad Adicional"]
+    },
+    {
+      type: "Asistencia",
+      name: "Habilidad de Entrada: Estallido de Escarcha",
+      description: "Cuando Zhao tiene el máximo de (Puntos de Congelación), y está en combate, presiona [Icono Assist] para activar: Lanza ataques consecutivos hacia adelante, seguidos por un corte, infligiendo masivo Daño de Hielo. Al activar esta habilidad, todos los (Puntos de Congelación) se consumen para activar (Velo Etéreo: Manantial). Al activar esta habilidad, se activa una (Asistencia Rápida). Si un compañero es cambiado a través de (Asistencia Rápida), Zhao automáticamente sigue con (Ataque Básico: Veredicto Final) y comienza a cargar. Activar esta habilidad se considera como activar una (Asistencia Rápida). El personaje es invulnerable mientras usa esta habilidad.",
+      tags: ["Hielo", "Asistencia"]
+    },
+    {
+      type: "Asistencia",
+      name: "Asistencia Rápida: Cubrir Brechas",
+      description: "Cuando el personaje activo es lanzado, presiona [Icono Assist] para activar: Lanza un corte de caída en frente, infligiendo Daño de Hielo. El personaje es invulnerable mientras usa esta habilidad.",
+      tags: ["Hielo", "Asistencia"]
+    },
+    {
+      type: "Asistencia",
+      name: "Asistencia Defensiva: Supresión de Velo Helado",
+      description: "Cuando el personaje en el campo está a punto de ser atacado, presiona [Icono Assist] para activar: Bloquea (Parry) el ataque del enemigo, infligiendo masivo Aturdimiento. Esta habilidad sobresale en bloquear ataques enemigos y reduce el consumo de (Puntos de Asistencia) cuando el personaje está bajo ataques intensos. El personaje es invulnerable mientras usa esta habilidad.",
+      tags: ["Asistencia"]
+    },
+    {
+      type: "Asistencia",
+      name: "Ataque de Asistencia: Reflejo de Luz Helada",
+      description: "Presiona [Icono Ataque] después de una (Asistencia Defensiva) para activar: Lanza múltiples cortes en frente, infligiendo masivo Daño de Hielo. Al activar esta habilidad, si los (Puntos de Congelación) están al máximo, todos los (Puntos de Congelación) se consumen para activar (Velo Etéreo: Manantial). Al activar esta habilidad mientras está en cualquier (Velo Etéreo), se activa una (Asistencia Rápida). Si un compañero es cambiado a través de (Asistencia Rápida), Zhao automáticamente sigue con (Ataque Básico: Veredicto Final) y comienza a cargar. El personaje es invulnerable mientras usa esta habilidad.",
+      tags: ["Hielo", "Asistencia"]
     },
     {
       type: "Mindscape 1",
-      name: "Nombre a determinar",
-      description: "Cuando Zhao es cambiada fuera del campo, hace que el daño causado por todo el equipo ignore un 15% de la Resistencia a Daño Elemental del objetivo, dura 50 segundos.",
-      tags: [
-        "Mindscape 1"
-      ]
+      name: "Veredicto Justo",
+      description: "Cuando Zhao cambia de ser el personaje activo, el Daño de todos los miembros del escuadrón ignora el 15% de la RES a Todos los Atributos del objetivo por 50s.",
+      tags: ["Mindscape 1"]
     },
     {
       type: "Mindscape 2",
-      name: "Nombre a determinar",
-      description: "Aumenta la recuperación de PV de todos los personajes del equipo en un 10%; cuando un personaje del equipo recupera PV, si sus PV son superiores al 50% de sus PV Máximos, aumenta su Ataque en un 15%, dura 25 segundos.",
-      tags: [
-        "Mindscape 2"
-      ]
+      name: "Krampus Mayor",
+      description: "Cuando Zhao recupera HP, su ATK aumenta en un 20%, y el ATK de otros miembros del escuadrón aumenta en un 15% por 50s. Las activaciones repetidas reinician la duración.",
+      tags: ["Mindscape 2"]
     },
     {
       type: "Mindscape 3",
-      name: "Nombre a determinar",
-      description: "Nivel de habilidad de (Ataque Basico), (Evasion), (Asistencia), (Tecnica Especial), (Ataque en Cadena) +2",
-      tags: [
-        "Mindscape 3"
-      ]
+      name: "Filo de Velo Helado",
+      description: "Nivel de (Ataque Básico), (Evasión), (Asistencia), (Técnica Especial), y (Ataque en Cadena) +2",
+      tags: ["Mindscape 3"]
     },
     {
       type: "Mindscape 4",
-      name: "Nombre a determinar",
-      description: "Cuando Zhao activa (Tecnica de Entrada), obtiene 300 puntos de Valor de Decibelios; aumenta el Daño Crítico de (Tecnica Definitiva), (Ataque en Cadena) y (Tecnica de Entrada) en un 25%.",
-      tags: [
-        "Mindscape 4"
-      ]
+      name: "Pasos Ligeros como Pluma",
+      description: "Cuando Zhao activa un (Velo Etéreo), gana 250 Decibelios. El Daño Crítico de su (Definitiva), (Ataque en Cadena), y (Ataque Básico: Veredicto Final) aumenta en un 40%.",
+      tags: ["Mindscape 4"]
     },
     {
       type: "Mindscape 5",
-      name: "Nombre a determinar",
-      description: "Nivel de habilidad de (Ataque Basico), (Evasion), (Asistencia), (Tecnica Especial), (Ataque en Cadena) +2",
-      tags: [
-        "Mindscape 5"
-      ]
+      name: "Oyente Difuso",
+      description: "Nivel de (Ataque Básico), (Evasión), (Asistencia), (Técnica Especial), y (Ataque en Cadena) +2",
+      tags: ["Mindscape 5"]
     },
     {
       type: "Mindscape 6",
-      name: "Nombre a determinar",
-      description: "El efecto de aumento de Probabilidad de Crítico de la (Pasiva Principal) aumenta en un 25%; el daño adicional de (Ataque Basico: Corte Cargado) aumenta al 150% del original, y no se consumirá al golpear.",
-      tags: [
-        "Mindscape 6"
-      ]
+      name: "El No Valor Tiene Su Propio Valor",
+      description: "El buff de Tasa Crítica de (Pasiva Principal: Colega Ideal) aumenta al 125% del valor original. El Daño extra ganado al cargar durante (Ataque Básico: Veredicto Final) aumenta al 140% del valor original, y el tiempo de carga acumulado ya no se consume al atacar.",
+      tags: ["Mindscape 6"]
     }
   ]
 };
