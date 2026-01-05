@@ -38,7 +38,7 @@ export default {
     {
       type: "Ataque Básico",
       name: "Ataque Básico: Aplastar y Machacar",
-      description: "Presiona [Icono Ataque] para activar: Desata hasta 4 golpes, infligiendo Daño Físico. Cuando Koleda tiene el efecto de (Fuego de Horno), puede lanzar un (Ataque Básico) mejorado tras el 2do golpe, consumiendo el efecto de (Fuego de Horno) e infligiendo masivo Daño de Fuego. Cuando Koleda y Ben están desplegados juntos, ejecutar un (Ataque Básico) mejorado activará un ataque coordinado de ambos, aumentando aún más el poder del movimiento; Koleda es invulnerable durante el 4to golpe del (Ataque Básico) y el (Ataque Básico) mejorado.",
+      description: "Presiona [Icono Ataque] para activar: Desata hasta 4 golpes, infligiendo Daño Físico. Cuando Koleda tiene el efecto de (Fuego de Horno), puede lanzar un (Ataque Básico) mejorado tras el 2do golpe, consumiendo el efecto de (Fuego de Horno) e infligiendo masivo Daño Fuego. Cuando Koleda y Ben están desplegados juntos, ejecutar un (Ataque Básico) mejorado activará un ataque coordinado de ambos, aumentando aún más el poder del movimiento; Koleda es invulnerable durante el 4to golpe del (Ataque Básico) y el (Ataque Básico) mejorado.",
       tags: ["Físico", "Fuego", "Ataque Básico"]
     },
     {
@@ -56,31 +56,31 @@ export default {
     {
       type: "Evasión",
       name: "Contraataque de Evasión: ¡No Me Menosprecies!",
-      description: "Presiona [Icono Ataque] durante una (Evasión Perfecta) para activar: Golpea enemigos en frente y crea una explosión, infligiendo Daño de Fuego. El personaje es invulnerable mientras usa esta habilidad.",
+      description: "Presiona [Icono Ataque] durante una (Evasión Perfecta) para activar: Golpea enemigos en frente y crea una explosión, infligiendo Daño Fuego. El personaje es invulnerable mientras usa esta habilidad.",
       tags: ["Fuego", "Evasión"]
     },
     {
       type: "Técnica Especial",
       name: "Técnica Especial: Hora del Martillo",
-      description: "Presiona [Icono Especial] para activar: Golpea enemigos en frente y activa una explosión, infligiendo Daño de Fuego. Esta habilidad se lanza más rápido y activa una explosión cuando se usa tras el 2do o 4to golpe del (Ataque Básico) de Koleda o (Ataque Básico) mejorado. Cuando Koleda y Ben están ambos en tu escuadrón, y esta habilidad se lanza rápidamente tras un (Ataque Básico) mejorado, se unen para lanzar un ataque coordinado, aumentando aún más el poder de la habilidad. El nivel de Anti-Interrupción aumenta durante esta habilidad.",
+      description: "Presiona [Icono Especial] para activar: Golpea enemigos en frente y activa una explosión, infligiendo Daño Fuego. Esta habilidad se lanza más rápido y activa una explosión cuando se usa tras el 2do o 4to golpe del (Ataque Básico) de Koleda o (Ataque Básico) mejorado. Cuando Koleda y Ben están ambos en tu escuadrón, y esta habilidad se lanza rápidamente tras un (Ataque Básico) mejorado, se unen para lanzar un ataque coordinado, aumentando aún más el poder de la habilidad. El nivel de Anti-Interrupción aumenta durante esta habilidad.",
       tags: ["Fuego", "Técnica Especial"]
     },
     {
       type: "Técnica Especial EX",
       name: "Técnica Especial EX: Horno Hirviente",
-      description: "Con suficiente Energía, presiona [Icono Especial EX] para activar: Golpea enemigos en frente y activa una poderosa explosión, infligiendo masivo Daño de Fuego. Koleda también gana el efecto de (Fuego de Horno). Esta habilidad se activa más rápido y activa una explosión cuando se usa tras el 2do o 4to golpe del (Ataque Básico) de Koleda o (Ataque Básico) mejorado. Cuando Koleda y Ben están ambos en tu escuadrón y esta habilidad se lanza rápidamente tras un (Ataque Básico) mejorado, se unen para lanzar un ataque coordinado, aumentando aún más el poder de la habilidad. El personaje es invulnerable mientras usa esta habilidad.",
+      description: "Con suficiente Energía, presiona [Icono Especial EX] para activar: Golpea enemigos en frente y activa una poderosa explosión, infligiendo masivo Daño Fuego. Koleda también gana el efecto de (Fuego de Horno). Esta habilidad se activa más rápido y activa una explosión cuando se usa tras el 2do o 4to golpe del (Ataque Básico) de Koleda o (Ataque Básico) mejorado. Cuando Koleda y Ben están ambos en tu escuadrón y esta habilidad se lanza rápidamente tras un (Ataque Básico) mejorado, se unen para lanzar un ataque coordinado, aumentando aún más el poder de la habilidad. El personaje es invulnerable mientras usa esta habilidad.",
       tags: ["Fuego", "Técnica Especial EX"]
     },
     {
       type: "Técnica Definitiva",
       name: "Ataque en Cadena: Desastre Natural",
-      description: "Cuando se activa un (Ataque en Cadena), selecciona al personaje para activar: Desata una poderosa explosión en enemigos en una gran área, infligiendo masivo Daño de Fuego mientras también obtiene el efecto de (Fuego de Horno). El personaje es invulnerable mientras usa esta habilidad.",
+      description: "Cuando se activa un (Ataque en Cadena), selecciona al personaje para activar: Desata una poderosa explosión en enemigos en una gran área, infligiendo masivo Daño Fuego mientras también obtiene el efecto de (Fuego de Horno). El personaje es invulnerable mientras usa esta habilidad.",
       tags: ["Fuego", "Ataque en Cadena"]
     },
     {
       type: "Técnica Definitiva",
       name: "Definitiva: Terremoto de Martillo",
-      description: "Cuando el Nivel de Decibelios está al [Máximo], presiona [Icono Definitiva] para activar: Desata una poderosa explosión en enemigos en una gran área en frente, infligiendo masivo Daño de Fuego mientras también obtiene el efecto de (Fuego de Horno). Koleda y Ben pueden unirse cuando luchan juntos para lanzar un ataque coordinado, aumentando aún más el poder del ataque. El personaje es invulnerable mientras usa esta habilidad.",
+      description: "Cuando el Nivel de Decibelios está al [Máximo], presiona [Icono Definitiva] para activar: Desata una poderosa explosión en enemigos en una gran área en frente, infligiendo masivo Daño Fuego mientras también obtiene el efecto de (Fuego de Horno). Koleda y Ben pueden unirse cuando luchan juntos para lanzar un ataque coordinado, aumentando aún más el poder del ataque. El personaje es invulnerable mientras usa esta habilidad.",
       tags: ["Fuego", "Técnica Definitiva"]
     },
     {
@@ -90,7 +90,7 @@ export default {
       tags: ["Pasiva Central"]
     },
     {
-      type: "Habilidad Adicional: Gestión de Belobog",
+      type: "Habilidad Adicional",
       name: "Habilidad Adicional: Gestión de Belobog",
       description: "Cuando otro personaje en tu escuadrón comparte el mismo Atributo o Facción o es un personaje (Aturdidor): Cuando la explosión de la (Técnica Especial EX) de Koleda golpea a un enemigo, aplica un debuff al objetivo. Mientras el objetivo está Aturdido, los (Ataques en Cadena) infligen 35% más Daño al objetivo. Este efecto puede acumularse hasta 2 veces y se reinicia cuando el efecto de Aturdimiento termina.",
       tags: ["Habilidad Adicional"]
@@ -98,7 +98,7 @@ export default {
     {
       type: "Asistencia",
       name: "Asistencia Rápida: ¡Pasando!",
-      description: "Cuando el personaje activo es lanzado, presiona [Icono Assist] para activar: Golpea enemigos en frente, infligiendo Daño de Fuego. El personaje es invulnerable mientras usa esta habilidad.",
+      description: "Cuando el personaje activo es lanzado, presiona [Icono Assist] para activar: Golpea enemigos en frente, infligiendo Daño Fuego. El personaje es invulnerable mientras usa esta habilidad.",
       tags: ["Fuego", "Asistencia"]
     },
     {
@@ -110,7 +110,7 @@ export default {
     {
       type: "Asistencia",
       name: "Ataque de Asistencia: Campana de Martillo",
-      description: "Presiona [Icono Ataque] después de una (Asistencia Defensiva) para activar: Koleda carga y golpea enemigos en frente, infligiendo Daño de Fuego y obteniendo el efecto de (Fuego de Horno). El personaje es invulnerable mientras usa esta habilidad.",
+      description: "Presiona [Icono Ataque] después de una (Asistencia Defensiva) para activar: Koleda carga y golpea enemigos en frente, infligiendo Daño Fuego y obteniendo el efecto de (Fuego de Horno). El personaje es invulnerable mientras usa esta habilidad.",
       tags: ["Fuego", "Asistencia"]
     },
     {

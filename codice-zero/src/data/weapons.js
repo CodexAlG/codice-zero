@@ -472,7 +472,7 @@ export const weapons = [
     },
     effect: {
       title: "Coro Devorador de Llamas",
-      description: "Aumenta la Probabilidad de CRIT en un 20%. Cuando el portador activa una (Replica) que causa Daño de Fuego, sus ataques ignoran un 15% de la DEF del objetivo por 8s. Puede acumularse una vez cada 3s, hasta 2 veces. Las activaciones repetidas reinician la duración.",
+      description: "Aumenta la Probabilidad de CRIT en un 20%. Cuando el portador activa una (Replica) que causa Daño Fuego, sus ataques ignoran un 15% de la DEF del objetivo por 8s. Puede acumularse una vez cada 3s, hasta 2 veces. Las activaciones repetidas reinician la duración.",
       refinements: [ // Tabla de Mejora (R1 - R5)
         { level: 1, prob: "20%", DEF: "15%" },
         { level: 2, prob: "23%", DEF: "17.2%" },
