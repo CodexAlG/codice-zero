@@ -54,6 +54,29 @@ export default function BetaDiffViewer() {
         setVersionAfter(null);
     };
 
+    // Get available versions for selected entity
+    const availableVersions = useMemo(() => {
+        if (!selectedEntity) return [];
+        return selectedType === 'agentes'
+            ? getAgentVersions(selectedEntity.id)
+            : getWeaponVersions(selectedEntity.id);
+    }, [selectedEntity, selectedType]);
+
+    // Get data for both versions
+    const beforeData = useMemo(() => {
+        if (!selectedEntity || !versionBefore) return null;
+        return selectedType === 'agentes'
+            ? getAgentVersionData(selectedEntity.id, versionBefore)
+            : getWeaponVersionData(selectedEntity.id, versionBefore);
+    }, [selectedEntity, versionBefore, selectedType]);
+
+    const afterData = useMemo(() => {
+        if (!selectedEntity || !versionAfter) return null;
+        return selectedType === 'agentes'
+            ? getAgentVersionData(selectedEntity.id, versionAfter)
+            : getWeaponVersionData(selectedEntity.id, versionAfter);
+    }, [selectedEntity, versionAfter, selectedType]);
+
     // Handle entity change
     const handleEntityChange = (e) => {
         const entityId = parseInt(e.target.value);
