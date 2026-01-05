@@ -78,6 +78,12 @@ export default {
             tags: ["Físico", "Ataque Básico"]
         },
         {
+            type: "Ataque Básico",
+            name: "Culminación",
+            description: "Durante (Técnica Especial EX: Mente Iluminada - Luz Elevada), cada vez que se consume (Fuerza de Espada Qingming) mientras (Culminación) está activa, el costo de (Fuerza de Espada Qingming) se reemplaza consumiendo (Culminación) en su lugar. Este efecto no se acumula, y dura hasta que la actual (Mente Iluminada) termina.",
+            tags: ["Ataque Básico"]
+        },
+        {
             type: "Evasión",
             name: "Evasión: Sin Dejar Rastro",
             description: "Presiona [Icono Dodges] para activar: Una rápida evasión deslizante. El personaje es invulnerable mientras usa esta habilidad. Durante el estado de (Mente Iluminada), y si se activa una (Evasión Perfecta), presiona [Icono Ataque] para activar (Ataque Básico: Mente Iluminada - Ascenso al Cielo).",
