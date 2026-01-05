@@ -114,10 +114,19 @@ export default function CommunityTierList() {
 
     const getFontSize = (text) => {
         const len = text.length;
-        if (len <= 2) return "text-5xl md:text-6xl"; // Single letters S, A, B
-        if (len <= 6) return "text-3xl md:text-4xl"; // Short words
-        if (len <= 12) return "text-xl md:text-2xl"; // Medium phrases
-        return "text-sm md:text-base"; // Long sentences
+        if (len <= 2) return "text-5xl md:text-6xl";
+        if (len <= 8) return "text-3xl md:text-4xl";
+        if (len <= 16) return "text-xl md:text-2xl";
+        if (len <= 35) return "text-sm md:text-base";
+        return "text-[10px] md:text-xs"; // Very long text
+    };
+
+    const getRows = (text) => {
+        const len = text.length;
+        if (len <= 8) return 1;
+        if (len <= 16) return 2;
+        if (len <= 35) return 3;
+        return 5;
     };
 
     // Column Actions
@@ -287,7 +296,7 @@ export default function CommunityTierList() {
                                     onChange={(e) => updateRowLabel(tier.id, e.target.value)}
                                     className={`bg-transparent text-black font-black font-display italic text-center w-full focus:outline-none uppercase placeholder-black/30 resize-none overflow-hidden leading-tight break-words whitespace-pre-wrap ${getFontSize(tier.label)}`}
                                     style={{ fieldSizing: "content" }} // Modern CSS for auto-height
-                                    rows={tier.label.length > 6 ? 2 : 1} // Fallback
+                                    rows={getRows(tier.label)}
                                 />
 
                                 <div className="absolute top-1 right-1 flex md:flex-col gap-2 md:gap-1 items-center bg-white/20 md:bg-transparent rounded px-1 md:px-0">
