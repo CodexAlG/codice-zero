@@ -46,7 +46,114 @@ export default function BetaDiffViewer() {
             : getAvailableWeapons();
     }, [selectedType]);
 
-    // ... (rest of the code unchanged until helper functions)
+    // Handle type change
+    const handleTypeChange = (e) => {
+        setSelectedType(e.target.value);
+        setSelectedEntity(null);
+        setVersionBefore(null);
+        setVersionAfter(null);
+    };
+
+    // Handle entity change
+    const handleEntityChange = (e) => {
+        const entityId = parseInt(e.target.value);
+        const entity = availableEntities.find(ent => ent.id === entityId);
+        setSelectedEntity(entity);
+        setVersionBefore(null);
+        setVersionAfter(null);
+    };
+
+    // Render stat comparison
+    const renderStatComparison = (statName, oldValue, newValue) => {
+        const comparison = compareNumber(oldValue, newValue);
+        const statusClass = comparison.status === 'buff'
+            ? 'stat-buff'
+            : comparison.status === 'nerf'
+                ? 'stat-nerf'
+                : 'stat-unchanged';
+
+        return (
+            <div className="stat-row" key={statName}>
+                <div className="stat-name">{statName}</div>
+                <div className="stat-values">
+                    <div className="stat-before">{oldValue}</div>
+                    <div className={`stat-after ${statusClass}`}>{newValue}</div>
+                </div>
+            </div>
+        );
+    };
+
+    // Render agent stats comparison
+    const renderAgentStats = () => {
+        if (!beforeData || !afterData || !beforeData.baseStats || !afterData.baseStats) {
+            return null;
+        }
+
+        const oldStats = beforeData.baseStats;
+        const newStats = afterData.baseStats;
+
+        return (
+            <div className="stats-section">
+                <h3>Estadísticas Base</h3>
+                <div className="stats-comparison">
+                    <div className="stats-column">
+                        <h4>Antes ({versionBefore})</h4>
+                        <div className="stat-list">
+                            {oldStats.hp && <div className="stat-item">HP: {oldStats.hp.min} - {oldStats.hp.max}</div>}
+                            {oldStats.atk && <div className="stat-item">ATK: {oldStats.atk.min} - {oldStats.atk.max}</div>}
+                            {oldStats.def && <div className="stat-item">DEF: {oldStats.def.min} - {oldStats.def.max}</div>}
+                            {oldStats.impact && <div className="stat-item">Impact: {oldStats.impact}</div>}
+                            {oldStats.anomalyRate && <div className="stat-item">Tasa Anomalía: {oldStats.anomalyRate}</div>}
+                            {oldStats.anomalyMastery && <div className="stat-item">Maestría Anomalía: {oldStats.anomalyMastery}</div>}
+                        </div>
+                    </div>
+                    <div className="stats-column">
+                        <h4>Después ({versionAfter})</h4>
+                        <div className="stat-list">
+                            {renderStatComparison('HP', `${oldStats.hp?.min} - ${oldStats.hp?.max}`, `${newStats.hp?.min} - ${newStats.hp?.max}`)}
+                            {renderStatComparison('ATK', `${oldStats.atk?.min} - ${oldStats.atk?.max}`, `${newStats.atk?.min} - ${newStats.atk?.max}`)}
+                            {renderStatComparison('DEF', `${oldStats.def?.min} - ${oldStats.def?.max}`, `${newStats.def?.min} - ${newStats.def?.max}`)}
+                            {renderStatComparison('Impact', oldStats.impact, newStats.impact)}
+                            {renderStatComparison('Tasa Anomalía', oldStats.anomalyRate, newStats.anomalyRate)}
+                            {renderStatComparison('Maestría Anomalía', oldStats.anomalyMastery, newStats.anomalyMastery)}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        );
+    };
+
+    // Render weapon stats comparison
+    const renderWeaponStats = () => {
+        if (!beforeData || !afterData || !beforeData.detailStats || !afterData.detailStats) {
+            return null;
+        }
+
+        const oldStats = beforeData.detailStats;
+        const newStats = afterData.detailStats;
+
+        return (
+            <div className="stats-section">
+                <h3>Estadísticas del Arma</h3>
+                <div className="stats-comparison">
+                    <div className="stats-column">
+                        <h4>Antes ({versionBefore})</h4>
+                        <div className="stat-list">
+                            <div className="stat-item">ATK Base: {oldStats.baseAtk.min} - {oldStats.baseAtk.max}</div>
+                            <div className="stat-item">{oldStats.subStat.name}: {oldStats.subStat.min} - {oldStats.subStat.max}</div>
+                        </div>
+                    </div>
+                    <div className="stats-column">
+                        <h4>Después ({versionAfter})</h4>
+                        <div className="stat-list">
+                            {renderStatComparison('ATK Base', `${oldStats.baseAtk.min} - ${oldStats.baseAtk.max}`, `${newStats.baseAtk.min} - ${newStats.baseAtk.max}`)}
+                            {renderStatComparison(oldStats.subStat.name, `${oldStats.subStat.min} - ${oldStats.subStat.max}`, `${newStats.subStat.min} - ${newStats.subStat.max}`)}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        );
+    };
 
     // Helper to process scaling placeholders {VALOR_1}
     const processScaling = (text, data) => {
