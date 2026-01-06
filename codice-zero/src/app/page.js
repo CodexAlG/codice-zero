@@ -58,7 +58,7 @@ export default function Home() {
   ];
 
   return (
-    <div className="min-h-screen flex flex-col relative overflow-hidden">
+    <div className="flex-1 w-full h-full flex flex-col relative overflow-hidden">
 
       {/* Fondo de Malla (Grid) */}
       <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] pointer-events-none"></div>
@@ -99,6 +99,40 @@ export default function Home() {
           <div className="flex items-center gap-2">
             <div className="w-2 h-2 bg-cyan-500 rounded-full"></div>
             <span>AGENTS: {agentCount}</span>
+          </div>
+        </div>
+
+        {/* CARTA DEL CREADOR (EGO) */}
+        <div className="mb-10 w-full max-w-sm">
+          <div className="relative group bg-[#18181b]/80 border border-white/5 rounded-2xl p-4 flex items-center gap-4 hover:bg-white/[0.02] transition-colors overflow-hidden">
+
+            {/* Glow Effect */}
+            <div className="absolute inset-0 bg-yellow-500/0 group-hover:bg-yellow-500/5 transition-colors duration-500 pointer-events-none"></div>
+
+            {/* Avatar */}
+            <div className="relative w-16 h-16 rounded-full border-2 border-yellow-500/20 group-hover:border-yellow-500/50 transition-colors overflow-hidden shrink-0 shadow-lg">
+              <Image
+                src="/assets/creator_ego.jpg"
+                alt="Ego"
+                fill
+                className="object-cover"
+              />
+            </div>
+
+            {/* Info */}
+            <div className="flex flex-col items-start gap-1 z-10">
+              <span className="text-[10px] font-bold uppercase tracking-widest text-gray-500">Project Lead</span>
+              <div className="flex items-center gap-2">
+                <h3 className="text-xl font-bold text-white group-hover:text-yellow-400 transition-colors duration-300">Ego</h3>
+                <div className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse" title="Online"></div>
+              </div>
+              <p className="text-xs text-gray-400 italic">"Building for the community."</p>
+            </div>
+
+            {/* Discord Icon (Decorativo) */}
+            <div className="ml-auto opacity-20 group-hover:opacity-100 transition-opacity grayscale group-hover:grayscale-0">
+              <Image src="/CodiceZero/Redes/Discord.png" alt="Discord" width={24} height={24} className="object-contain" />
+            </div>
           </div>
         </div>
 
