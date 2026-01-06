@@ -412,8 +412,8 @@ export default function AgentDetailPage() {
 
                   {/* Slider integrado en la tarjeta (Solo para Pasiva Central) */}
                   {details?.coreSkillScaling && (skill.type === 'Pasiva Central' || skill.type === 'Pasiva') && (
-                    <div className="flex flex-col w-full max-w-[200px] bg-black/20 p-2 rounded-lg border border-white/5">
-                      <div className="flex justify-between items-center mb-1">
+                    <div className="flex flex-col w-full max-w-[200px]">
+                      <div className="flex justify-between items-center mb-1 px-1">
                         <span className="text-[10px] font-bold uppercase text-gray-400">Nivel</span>
                         <span className="text-xs font-bold text-white font-mono">{coreLevels[coreSkillLevel]}</span>
                       </div>

@@ -109,11 +109,9 @@ export default function ArmasPage() {
         {/* --- PANEL DE FILTROS --- */}
         <div className="w-full mb-8 p-6 bg-[#09090b]/80 border-y border-white/10 backdrop-blur-md shadow-2xl flex flex-col gap-6">
 
-          {/* FILA 1: Filtros Principales */}
-          <div className="flex flex-col xl:flex-row items-start xl:items-center justify-between gap-4">
-
-            {/* Grupo Izquierdo: Botón TODOS y Cápsulas */}
-            <div className="flex flex-wrap items-center gap-4">
+          {/* Header del Panel: Botón Todos y Contador */}
+          <div className="flex flex-col md:flex-row items-center justify-between gap-4">
+            <div className="flex items-center gap-4">
               <button
                 onClick={() => toggleFilter("Todos")}
                 className={`h-10 px-6 rounded-lg font-bold font-display text-sm tracking-wider border transition-all ${activeFilters.length === 0
@@ -123,39 +121,45 @@ export default function ArmasPage() {
               >
                 TODOS
               </button>
-
-              {/* Cápsulas de Filtros */}
-              <div className="flex flex-wrap gap-2">
-                <div className="flex items-center gap-1 p-2 bg-black/40 border border-white/5 rounded-lg shadow-inner">
-                  {rankFilters.map((rank) => (
-                    <FilterIcon
-                      key={rank}
-                      name={rank}
-                      icon={filterIcons[rank]}
-                      activeFilters={activeFilters}
-                      toggleFilter={toggleFilter}
-                      size={28}
-                    />
-                  ))}
-                </div>
-                <div className="flex items-center gap-1 p-2 bg-black/40 border border-white/5 rounded-lg shadow-inner">
-                  {roleFilters.map((role) => (
-                    <FilterIcon
-                      key={role}
-                      name={role}
-                      icon={filterIcons[role]}
-                      activeFilters={activeFilters}
-                      toggleFilter={toggleFilter}
-                    />
-                  ))}
-                </div>
+              <span className="text-gray-500 text-sm hidden md:inline">|</span>
+              <div className="text-gray-400 text-sm hidden md:block">
+                Filtra por categorías
               </div>
             </div>
 
             {/* Contador de Armas */}
-            <div className="text-gray-400 text-sm">
+            <div className="text-gray-400 text-sm font-mono">
               {filteredWeapons.length} arma{filteredWeapons.length !== 1 ? 's' : ''} encontrada{filteredWeapons.length !== 1 ? 's' : ''}
             </div>
+          </div>
+
+          {/* GRUPOS DE FILTROS (Desktop: Row, Mobile: Stack Accordions) */}
+          <div className="flex flex-wrap gap-4 items-start">
+
+            <FilterCategory title="RANGO">
+              {rankFilters.map((rank) => (
+                <FilterIcon
+                  key={rank}
+                  name={rank}
+                  icon={filterIcons[rank]}
+                  activeFilters={activeFilters}
+                  toggleFilter={toggleFilter}
+                  size={28}
+                />
+              ))}
+            </FilterCategory>
+
+            <FilterCategory title="ROL">
+              {roleFilters.map((role) => (
+                <FilterIcon
+                  key={role}
+                  name={role}
+                  icon={filterIcons[role]}
+                  activeFilters={activeFilters}
+                  toggleFilter={toggleFilter}
+                />
+              ))}
+            </FilterCategory>
           </div>
         </div>
 
@@ -188,6 +192,42 @@ export default function ArmasPage() {
     </>
   );
 }
+
+// COMPONENTE DE CATEGORÍA DE FILTRO (Responsive: Accordion en Móvil, Visible en Desktop)
+const FilterCategory = ({ title, children, isFullWidth = false }) => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  return (
+    <div className={`flex flex-col gap-2 ${isFullWidth ? 'w-full' : ''}`}>
+      {/* Título / Toggle */}
+      <button
+        onClick={() => setIsOpen(!isOpen)}
+        className="flex items-center justify-between w-full md:w-auto gap-2 group focus:outline-none"
+      >
+        <span className="text-[10px] font-bold tracking-[0.2em] text-gray-400 group-hover:text-white transition-colors uppercase">
+          {title}
+        </span>
+        {/* Icono Chevron (Solo visible en Móvil) */}
+        <div className={`md:hidden text-gray-500 transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`}>
+          <svg width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M1 1L5 5L9 1" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+          </svg>
+        </div>
+      </button>
+
+      {/* Contenido (Collapsible en Móvil, Siempre visible en Desktop) */}
+      <div className={`
+        overflow-hidden transition-all duration-300 ease-in-out
+        ${isOpen ? 'max-h-[500px] opacity-100' : 'max-h-0 opacity-0 md:max-h-none md:opacity-100'}
+        md:block
+      `}>
+        <div className="flex flex-wrap items-center gap-1 p-2 bg-black/40 border border-white/5 rounded-lg shadow-inner">
+          {children}
+        </div>
+      </div>
+    </div>
+  );
+};
 
 const FilterIcon = memo(({ name, icon, activeFilters, toggleFilter, size = 24 }) => {
   const isActive = activeFilters.includes(name);

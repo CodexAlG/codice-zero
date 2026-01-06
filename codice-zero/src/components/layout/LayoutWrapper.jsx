@@ -18,9 +18,13 @@ export default function LayoutWrapper({ children }) {
   // Verificar si estamos en la ruta de detalles de materiales
   const isMaterialDetail = pathname?.startsWith("/materiales");
 
-  // Reset navbar visibility when changing routes
+  // Reset navbar visibility and Scroll to Top when changing routes
   useEffect(() => {
     setNavbarVisible(true);
+    if (mainRef.current) {
+      // Force instant scroll to top on navigation to simulate natural page load
+      mainRef.current.scrollTo({ top: 0, behavior: "instant" });
+    }
   }, [pathname]);
 
   useEffect(() => {

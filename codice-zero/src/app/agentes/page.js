@@ -138,83 +138,132 @@ export default function PersonajesPage() {
         {/* --- PANEL DE FILTROS --- */}
         <div className="w-full mb-8 p-6 bg-[#09090b]/80 border-y border-white/10 backdrop-blur-md shadow-2xl flex flex-col gap-6">
 
-          {/* FILA 1: Filtros Principales + Búsqueda */}
-          <div className="flex flex-col xl:flex-row items-start xl:items-center justify-between gap-4">
 
-            {/* Grupo Izquierdo: Botones y Cápsulas */}
-            <div className="flex flex-wrap items-center gap-4">
-              <button
-                onClick={() => toggleFilter("Todos")}
-                className={`h-10 px-6 rounded-lg font-bold font-display text-sm tracking-wider border transition-all ${activeFilters.length === 0
-                  ? "bg-yellow-400 text-black border-yellow-400 shadow-[0_0_15px_#facc15]"
-                  : "bg-black/50 text-gray-400 border-white/10 hover:border-white/30 hover:text-white"
-                  }`}
-              >
-                TODOS
-              </button>
+          {/* FILA 1: Búsqueda y Filtros Principales */}
+          <div className="flex flex-col gap-6">
 
-              {/* Cápsulas (Elementos, Rangos, Roles) */}
-              <div className="flex flex-wrap gap-2">
-                <div className="flex items-center gap-1 p-2 bg-black/40 border border-white/5 rounded-lg shadow-inner">
-                  {elementFilters.map((el) => (
-                    <FilterIcon key={el} name={el} icon={elementIcons[el]} activeFilters={activeFilters} toggleFilter={toggleFilter} />
-                  ))}
+            {/* Búsqueda y Botón Todos */}
+            <div className="flex flex-col md:flex-row items-center justify-between gap-4">
+              <div className="flex items-center gap-4">
+                <button
+                  onClick={() => toggleFilter("Todos")}
+                  className={`h-10 px-6 rounded-lg font-bold font-display text-sm tracking-wider border transition-all ${activeFilters.length === 0
+                    ? "bg-yellow-400 text-black border-yellow-400 shadow-[0_0_15px_#facc15]"
+                    : "bg-black/50 text-gray-400 border-white/10 hover:border-white/30 hover:text-white"
+                    }`}
+                >
+                  TODOS
+                </button>
+                <span className="text-gray-500 text-sm hidden md:inline">|</span>
+                <div className="text-gray-400 text-sm hidden md:block">
+                  Filtra por categorías
                 </div>
-                <div className="flex items-center gap-1 p-2 bg-black/40 border border-white/5 rounded-lg shadow-inner">
-                  {rankFilters.map((r) => (
-                    <FilterIcon key={r} name={r} icon={elementIcons[r]} activeFilters={activeFilters} toggleFilter={toggleFilter} size={28} />
-                  ))}
-                </div>
-                <div className="flex items-center gap-1 p-2 bg-black/40 border border-white/5 rounded-lg shadow-inner">
-                  {roleFilters.map((rol) => (
-                    <FilterIcon key={rol} name={rol} icon={elementIcons[rol]} activeFilters={activeFilters} toggleFilter={toggleFilter} />
-                  ))}
-                </div>
+              </div>
+
+              {/* Buscador */}
+              <div className="relative w-full md:w-64">
+                <input
+                  type="text"
+                  placeholder="Buscar Agente..."
+                  value={searchTerm}
+                  onChange={(e) => setSearchTerm(e.target.value)}
+                  className="w-full bg-black/50 border border-white/10 rounded-lg py-2.5 pl-10 pr-4 text-sm text-white focus:outline-none focus:border-yellow-500 focus:shadow-[0_0_15px_rgba(234,179,8,0.2)] transition-all"
+                />
+                <svg className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                </svg>
               </div>
             </div>
 
-            {/* Grupo Derecho: Búsqueda (Ahora aquí arriba) */}
-            <div className="relative w-full xl:w-64">
-              <input
-                type="text"
-                placeholder="Buscar Agente..."
-                value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full bg-black/50 border border-white/10 rounded-lg py-2.5 pl-10 pr-4 text-sm text-white focus:outline-none focus:border-yellow-500 focus:shadow-[0_0_15px_rgba(234,179,8,0.2)] transition-all"
-              />
-              <svg className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-              </svg>
+            {/* GRUPOS DE FILTROS (Desktop: Row, Mobile: Stack) */}
+            <div className="flex flex-wrap gap-4 items-start">
+
+              <FilterCategory title="ELEMENTO">
+                {elementFilters.map((el) => (
+                  <FilterIcon key={el} name={el} icon={elementIcons[el]} activeFilters={activeFilters} toggleFilter={toggleFilter} />
+                ))}
+              </FilterCategory>
+
+              <FilterCategory title="RANGO">
+                {rankFilters.map((r) => (
+                  <FilterIcon key={r} name={r} icon={elementIcons[r]} activeFilters={activeFilters} toggleFilter={toggleFilter} size={28} />
+                ))}
+              </FilterCategory>
+
+              <FilterCategory title="ROL">
+                {roleFilters.map((rol) => (
+                  <FilterIcon key={rol} name={rol} icon={elementIcons[rol]} activeFilters={activeFilters} toggleFilter={toggleFilter} />
+                ))}
+              </FilterCategory>
+
             </div>
+
+            {/* FACCIONES (Separado por longitud) */}
+            <div className="w-full">
+              <FilterCategory title="FACCIÓN" isFullWidth>
+                {factionFilters.map((fac) => (
+                  <FilterIcon key={fac} name={fac} icon={elementIcons[fac]} activeFilters={activeFilters} toggleFilter={toggleFilter} size={32} />
+                ))}
+              </FilterCategory>
+            </div>
+
           </div>
 
-          {/* FILA 2: FACCIONES (Limpia, solo iconos) */}
-          <div className="flex flex-wrap items-center gap-1 p-2 bg-black/40 border border-white/5 rounded-lg shadow-inner">
-            {factionFilters.map((fac) => (
-              <FilterIcon key={fac} name={fac} icon={elementIcons[fac]} activeFilters={activeFilters} toggleFilter={toggleFilter} size={32} />
-            ))}
-          </div>
-
-        </div>
-
-        {/* GRID DE PERSONAJES OPTIMIZADO */}
-        <div className="w-full max-w-7xl mx-auto">
-          <div className="flex flex-wrap justify-center gap-3 content-start transition-none" style={{ minHeight: '50vh' }}>
-            {filteredAgents.map((agent, index) => (
-              <Link
-                key={agent.id}
-                href={`/agentes/${agent.id}`}
-                className="w-[30%] sm:w-[23%] md:w-[18%] lg:w-[15%] xl:w-[13%] 2xl:w-[11%]"
-              >
-                <AgentCard agent={agent} priority={index < 8} />
-              </Link>
-            ))}
+          {/* GRID DE PERSONAJES OPTIMIZADO */}
+          <div className="w-full max-w-7xl mx-auto">
+            <div className="flex flex-wrap justify-center gap-3 content-start transition-none" style={{ minHeight: '50vh' }}>
+              {filteredAgents.map((agent, index) => (
+                <Link
+                  key={agent.id}
+                  href={`/agentes/${agent.id}`}
+                  className="w-[30%] sm:w-[23%] md:w-[18%] lg:w-[15%] xl:w-[13%] 2xl:w-[11%]"
+                >
+                  <AgentCard agent={agent} priority={index < 8} />
+                </Link>
+              ))}
+            </div>
           </div>
         </div>
       </div>
     </>
   );
 }
+
+// COMPONENTE DE CATEGORÍA DE FILTRO (Responsive: Accordion en Móvil, Visible en Desktop)
+const FilterCategory = ({ title, children, isFullWidth = false }) => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  return (
+    <div className={`flex flex-col gap-2 ${isFullWidth ? 'w-full' : ''}`}>
+      {/* Título / Toggle */}
+      <button
+        onClick={() => setIsOpen(!isOpen)}
+        className="flex items-center justify-between w-full md:w-auto gap-2 group focus:outline-none"
+      >
+        <span className="text-[10px] font-bold tracking-[0.2em] text-gray-400 group-hover:text-white transition-colors uppercase">
+          {title}
+        </span>
+        {/* Icono Chevron (Solo visible en Móvil) */}
+        <div className={`md:hidden text-gray-500 transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`}>
+          <svg width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M1 1L5 5L9 1" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+          </svg>
+        </div>
+      </button>
+
+      {/* Contenido (Collapsible en Móvil, Siempre visible en Desktop) */}
+      <div className={`
+        overflow-hidden transition-all duration-300 ease-in-out
+        ${isOpen ? 'max-h-[500px] opacity-100' : 'max-h-0 opacity-0 md:max-h-none md:opacity-100'}
+        md:block
+      `}>
+        <div className="flex flex-wrap items-center gap-1 p-2 bg-black/40 border border-white/5 rounded-lg shadow-inner">
+          {children}
+        </div>
+      </div>
+    </div>
+  );
+};
 
 const FilterIcon = memo(({ name, icon, activeFilters, toggleFilter, size = 24 }) => {
   const isActive = activeFilters.includes(name);
