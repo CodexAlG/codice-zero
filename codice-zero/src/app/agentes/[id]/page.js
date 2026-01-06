@@ -489,11 +489,13 @@ export default function AgentDetailPage() {
 
         {/* COLUMNA IZQUIERDA: IMAGEN (Sticky en Desktop) */}
         <div className="w-full lg:w-[45%] h-[60vh] lg:h-[85vh] sticky top-0 flex items-center justify-center z-10">
-          <div className="relative w-full h-full overflow-hidden">
-            {/* Fondo Decorativo detrás de la imagen */}
+          <div className="relative w-full h-full flex items-center justify-center">
+            {/* Fondo Decorativo: Radial Gradient Seguro */}
             <div
-              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[80%] opacity-20 blur-[100px] rounded-full pointer-events-none"
-              style={{ backgroundColor: themeColor }}
+              className="absolute inset-0 opacity-30 blur-3xl pointer-events-none"
+              style={{
+                background: `radial-gradient(circle at center, ${themeColor} 0%, transparent 70%)`
+              }}
             ></div>
 
             <Image
