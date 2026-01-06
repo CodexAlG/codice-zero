@@ -50,13 +50,13 @@ export default {
     {
       type: "Ataque Básico",
       name: "Ataque Básico: Pluma Descendente",
-      description: "Después del 5to golpe de (Ataque Básico: Perforanubes), un (Ataque Especial), un (Ataque Especial EX), o un (Ataque en Cadena), mantén [Icono Ataque] para activar: Dispara inmediatamente (Pluma Descendente) a enemigos en frente, causando Daño Eléctrico. Mantén [Icono Ataque] para apuntar a un objetivo y suelta [Icono Ataque] para activar: Después de tensar la cuerda y apuntar, dispara (Pluma Descendente) al objetivo, causando Daño Eléctrico.",
+      description: "Después del 5to golpe de (Ataque Básico: Perforanubes), un (Técnica Especial), un (Técnica Especial EX), o un (Ataque en Cadena), mantén [Icono Ataque] para activar: Dispara inmediatamente (Pluma Descendente) a enemigos en frente, causando Daño Eléctrico. Mantén [Icono Ataque] para apuntar a un objetivo y suelta [Icono Ataque] para activar: Después de tensar la cuerda y apuntar, dispara (Pluma Descendente) al objetivo, causando Daño Eléctrico.",
       tags: ["Eléctrico", "Ataque Básico"]
     },
     {
       type: "Ataque Básico",
       name: "Ataque Básico: Ha-Oto no Ya",
-      description: "Cuando el 5to golpe de (Ataque Básico: Perforanubes)/(Ataque Especial EX)/(Ataque en Cadena) golpea a un enemigo o al suelo, puede generar 2/6/6 (Cargas Electro). Si no hay (Cargas Electro) en el campo cuando cualquier miembro del escuadrón aplica una Anomalía de Atributo a un enemigo, genera 6 (Cargas Electro). Este efecto puede activarse una vez cada 12s. Puede haber hasta 6 (Cargas Electro) presentes a la vez. Si hay (Cargas Electro) presentes cuando Harumasa dispara y golpea enemigos con (Pluma Descendente), las (Cargas Electro) se activarán y dispararán (Ha-Oto no Ya) a los enemigos golpeados por (Pluma Descendente), causando Daño Eléctrico. (Ha-Oto no Ya) aplicará (Prisión Electro) a los enemigos golpeados, acumulándose hasta 8 veces y durando 10s, las activaciones repetidas reinician la duración. Mientras un objetivo tenga al menos 2 acumulaciones de (Prisión Electro), estará (Marcado-X).",
+      description: "Cuando el 5to golpe de (Ataque Básico: Perforanubes)/(Técnica Especial EX)/(Ataque en Cadena) golpea a un enemigo o al suelo, puede generar 2/6/6 (Cargas Electro). Si no hay (Cargas Electro) en el campo cuando cualquier miembro del escuadrón aplica una Anomalía de Atributo a un enemigo, genera 6 (Cargas Electro). Este efecto puede activarse una vez cada 12s. Puede haber hasta 6 (Cargas Electro) presentes a la vez. Si hay (Cargas Electro) presentes cuando Harumasa dispara y golpea enemigos con (Pluma Descendente), las (Cargas Electro) se activarán y dispararán (Ha-Oto no Ya) a los enemigos golpeados por (Pluma Descendente), causando Daño Eléctrico. (Ha-Oto no Ya) aplicará (Prisión Electro) a los enemigos golpeados, acumulándose hasta 8 veces y durando 10s, las activaciones repetidas reinician la duración. Mientras un objetivo tenga al menos 2 acumulaciones de (Prisión Electro), estará (Marcado-X).",
       tags: ["Eléctrico", "Ataque Básico"]
     },
     {

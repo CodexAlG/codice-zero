@@ -66,7 +66,7 @@ export const weapons = [
     },
     effect: {
       title: "",
-      description: "Mientras está fuera del campo, la Regeneración de Energía del equipo aumenta en 0.6/s. Cuando golpea a un enemigo con un (ataque especial o ataque rápido), el daño del equipo aumenta en un 3.5%, apilándose hasta 10 veces y durando 6s. Este efecto puede desencadenar una vez cada 0.3s. Mientras está fuera del campo, el efecto de la pila se duplica. Los desencadenadores repetidos restablecen la duración. Al obtener el efecto de aumento de Daño, si el número de pilas de corriente es mayor o igual a 5, entonces la Maestria de Anomalía del equipo aumenta en 50. Este aumento de la Maestria de Anomalía no se acumula y dura 6s.",
+      description: "Mientras está fuera del campo, la Regeneración de Energía del equipo aumenta en 0.6/s. Cuando golpea a un enemigo con un (Técnica Especial o ataque rápido), el daño del equipo aumenta en un 3.5%, apilándose hasta 10 veces y durando 6s. Este efecto puede desencadenar una vez cada 0.3s. Mientras está fuera del campo, el efecto de la pila se duplica. Los desencadenadores repetidos restablecen la duración. Al obtener el efecto de aumento de Daño, si el número de pilas de corriente es mayor o igual a 5, entonces la Maestria de Anomalía del equipo aumenta en 50. Este aumento de la Maestria de Anomalía no se acumula y dura 6s.",
       refinements: [ // Tabla de Mejora (R1 - R5)
         { level: 1, atk: "0.6/s", tasa: "3.5%", mastery: "50" },
         { level: 2, atk: "0.75/s", tasa: "4.4%", mastery: "62" },

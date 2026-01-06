@@ -52,7 +52,7 @@ export default {
         {
             type: "Ataque Básico",
             name: "Ataque de Carga",
-            description: "Mantén [Icono Ataque] para activar: Aria entra en un estado de carga de hasta tres niveles. Cuando [Icono Ataque] es soltado o el tiempo máximo de carga es alcanzado, desata un poderoso ataque descendente hacia adelante basado en el nivel de carga, causando masivo Daño Etéreo. Si hay (Bastones de Luz) cerca de Aria mientras carga, ella absorberá los (Bastones de Luz). Cada (Bastón de Luz) absorbido incrementa exitosamente el  nivel de carga por 1, otorga 20 Decibelios, y otorga 1 acumulación de buff; el siguiente (Ataque de Carga)' DAÑO es incrementado en un 10%, y Acumulación de Anomalía aumenta en un 20%. Este buff se acumula hasta 2 veces y se remueve después de que (Ataque de Carga) termina. Después del 4to golpe de (Ataque Básico), (Ataque Especial: Cambio de Golpe), (Ataque Especial EX), o un Nivel 3 (Ataque de Carga), si hay más de 2 (Bastones de Luz) cerca, sosteniendo [Icono Ataque] puede rápidamente Lanzar un Nivel 3 (Ataque de Carga). Después de ejecutar 2 o más consecutivos Nivel 3 (Ataques de Carga), Aria puede inmediatamente seguir con el 4to golpe de (Ataque Básico). Mientras carga, el Nivel Anti-Interrupción de Aria se incrementa y el DAÑO recibido se reduce en un 40%. El nivel de Anti-Interrupción se incrementa mientras usa esta habilidad.",
+            description: "Mantén [Icono Ataque] para activar: Aria entra en un estado de carga de hasta tres niveles. Cuando [Icono Ataque] es soltado o el tiempo máximo de carga es alcanzado, desata un poderoso ataque descendente hacia adelante basado en el nivel de carga, causando masivo Daño Etéreo. Si hay (Bastones de Luz) cerca de Aria mientras carga, ella absorberá los (Bastones de Luz). Cada (Bastón de Luz) absorbido incrementa exitosamente el  nivel de carga por 1, otorga 20 Decibelios, y otorga 1 acumulación de buff; el siguiente (Ataque de Carga)' DAÑO es incrementado en un 10%, y Acumulación de Anomalía aumenta en un 20%. Este buff se acumula hasta 2 veces y se remueve después de que (Ataque de Carga) termina. Después del 4to golpe de (Ataque Básico), (Técnica Especial: Cambio de Golpe), (Técnica Especial EX), o un Nivel 3 (Ataque de Carga), si hay más de 2 (Bastones de Luz) cerca, sosteniendo [Icono Ataque] puede rápidamente Lanzar un Nivel 3 (Ataque de Carga). Después de ejecutar 2 o más consecutivos Nivel 3 (Ataques de Carga), Aria puede inmediatamente seguir con el 4to golpe de (Ataque Básico). Mientras carga, el Nivel Anti-Interrupción de Aria se incrementa y el DAÑO recibido se reduce en un 40%. El nivel de Anti-Interrupción se incrementa mientras usa esta habilidad.",
             tags: ["Etéreo", "Ataque Básico"]
         },
         {
@@ -75,26 +75,26 @@ export default {
         },
         {
             type: "Técnica Especial",
-            name: "Ataque Especial",
+            name: "Técnica Especial",
             description: "Presiona [Icono Especial] para activar: Lanza una patada hacia adelante, causando Daño Etéreo. El nivel de Anti-Interrupción se incrementa mientras usa esta habilidad.",
             tags: ["Etéreo", "Técnica Especial"]
         },
         {
             type: "Técnica Especial",
-            name: "Ataque Especial: Cambio de Golpe",
+            name: "Técnica Especial: Cambio de Golpe",
             description: "Después del 4to golpe de 3-Rank (Ataque Básico), 3-Rank (Ataque de Carrera), (Asistencia Rápida), (Ataque en Cadena), (Evasión Perfecta), o a nivel 3 (Ataque de Carga), presiona [Icono Especial] para activar: Lanza una patada más rápida hacia adelante, causando Daño Etéreo. Si el ataque golpea a un enemigo, 1 (Bastón de Luz) será generado en el campo después de que el ataque completa. Después de usar esta habilidad, puede seguir inmediatamente con el 3er golpe de (Ataque Básico). El nivel de Anti-Interrupción se incrementa mientras usa esta habilidad.",
             tags: ["Etéreo", "Técnica Especial"]
         },
         {
             type: "Técnica Especial EX",
-            name: "Ataque Especial EX",
+            name: "Técnica Especial EX",
             description: "Con suficiente Energía, presiona [Icono Especial EX] para activar: Desata un poderoso ataque hacia adelante seguido por una onda sónica, causando masivo Daño Etéreo. Si el ataque golpea a un enemigo, genera 1 (Bastón de Luz) en el campo después de que el ataque completa. El personaje es invulnerable mientras usa esta habilidad.",
             tags: ["Etéreo", "Técnica Especial EX"]
         },
         {
             type: "Técnica Especial EX",
-            name: "Ataque Especial EX: Fase 2",
-            description: "(Ataque Especial EX:Cambio) Después de la activación, con suficiente Energía, presiona [Icono Especial EX] para activar: Desata un poderoso ataque descendente adicional, causando Daño Etéreo. Si el ataque golpea a un enemigo, 3 (Bastones de Luz) serán generados en el campo después de que el ataque completa. El personaje es invulnerable mientras usa esta habilidad.",
+            name: "Técnica Especial EX: Fase 2",
+            description: "(Técnica Especial EX:Cambio) Después de la activación, con suficiente Energía, presiona [Icono Especial EX] para activar: Desata un poderoso ataque descendente adicional, causando Daño Etéreo. Si el ataque golpea a un enemigo, 3 (Bastones de Luz) serán generados en el campo después de que el ataque completa. El personaje es invulnerable mientras usa esta habilidad.",
             tags: ["Etéreo", "Técnica Especial EX"]
         },
         {
@@ -142,7 +142,7 @@ export default {
         {
             type: "Mindscape 1",
             name: "Talento 1",
-            description: "Iris' (Ataque Básico), (Ataque Especial), (Ataques Especiales EX) ignoran el 10% de la Resistencia de Acumulación de Anomalía de Atributo del objetivo oscuro Anomalía de Atributo de Etéreo. Cuando son activados, hay una posibilidad de activar una Probabilidad de Crit Base. La Probabilidad de Crit Base es de 40% y el Daño CRIT es de 30% respectivamente. Si La Tasa de Anomalía es mayor que 180, cada punto de Maestría de Anomalía excediendo este punto incrementa la Probabilidad de Crit de este efecto en un extra 0.4%.",
+            description: "Iris' (Ataque Básico), (Técnica Especial), (Ataques Especiales EX) ignoran el 10% de la Resistencia de Acumulación de Anomalía de Atributo del objetivo oscuro Anomalía de Atributo de Etéreo. Cuando son activados, hay una posibilidad de activar una Probabilidad de Crit Base. La Probabilidad de Crit Base es de 40% y el Daño CRIT es de 30% respectivamente. Si La Tasa de Anomalía es mayor que 180, cada punto de Maestría de Anomalía excediendo este punto incrementa la Probabilidad de Crit de este efecto en un extra 0.4%.",
             tags: ["Mindscape 1"]
         },
         {
@@ -154,7 +154,7 @@ export default {
         {
             type: "Mindscape 3",
             name: "Talento 3",
-            description: "(Ataque Básico), (Evasión), (Asistencia), (Ataque Especial) y (Ataque en Cadena) Lv. +2",
+            description: "(Ataque Básico), (Evasión), (Asistencia), (Técnica Especial) y (Ataque en Cadena) Lv. +2",
             tags: ["Mindscape 3"]
         },
         {
@@ -166,7 +166,7 @@ export default {
         {
             type: "Mindscape 5",
             name: "Talento 5",
-            description: "(Ataque Básico), (Evasión), (Asistencia), (Ataque Especial) y (Ataque en Cadena) Lv. +2",
+            description: "(Ataque Básico), (Evasión), (Asistencia), (Técnica Especial) y (Ataque en Cadena) Lv. +2",
             tags: ["Mindscape 5"]
         },
         {

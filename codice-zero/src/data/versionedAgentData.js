@@ -62,7 +62,7 @@ export const versionedAgents = {
                     {
                         type: "Ataque Básico",
                         name: "Ataque de Carga",
-                        description: "Mantén [Icono Ataque] para activar: Aria entra en un estado de carga de hasta tres niveles. Cuando [Icono Ataque] es soltado o el tiempo máximo de carga es alcanzado, desata un poderoso ataque descendente hacia adelante basado en el nivel de carga, causando masivo Daño Etéreo. Si hay (Bastones de Luz) cerca de Aria mientras carga, ella absorberá los (Bastones de Luz). Cada (Bastón de Luz) absorbido incrementa exitosamente el  nivel de carga por 1, otorga 20 Decibelios, y otorga 1 acumulación de buff; el siguiente (Ataque de Carga)' DAÑO es incrementado en un 10%, y Acumulación de Anomalía aumenta en un 20%. Este buff se acumula hasta 2 veces y se remueve después de que (Ataque de Carga) termina. Después del 4to golpe de (Ataque Básico), (Ataque Especial: Cambio de Golpe), (Ataque Especial EX), o un Nivel 3 (Ataque de Carga), si hay más de 2 (Bastones de Luz) cerca, sosteniendo [Icono Ataque] puede rápidamente Lanzar un Nivel 3 (Ataque de Carga). Después de ejecutar 2 o más consecutivos Nivel 3 (Ataques de Carga), Aria puede inmediatamente seguir con el 4to golpe de (Ataque Básico). Mientras carga, el Nivel Anti-Interrupción de Aria se incrementa y el DAÑO recibido se reduce en un 40%. El nivel de Anti-Interrupción se incrementa mientras usa esta habilidad.",
+                        description: "Mantén [Icono Ataque] para activar: Aria entra en un estado de carga de hasta tres niveles. Cuando [Icono Ataque] es soltado o el tiempo máximo de carga es alcanzado, desata un poderoso ataque descendente hacia adelante basado en el nivel de carga, causando masivo Daño Etéreo. Si hay (Bastones de Luz) cerca de Aria mientras carga, ella absorberá los (Bastones de Luz). Cada (Bastón de Luz) absorbido incrementa exitosamente el  nivel de carga por 1, otorga 20 Decibelios, y otorga 1 acumulación de buff; el siguiente (Ataque de Carga)' DAÑO es incrementado en un 10%, y Acumulación de Anomalía aumenta en un 20%. Este buff se acumula hasta 2 veces y se remueve después de que (Ataque de Carga) termina. Después del 4to golpe de (Ataque Básico), (Técnica Especial: Cambio de Golpe), (Técnica Especial EX), o un Nivel 3 (Ataque de Carga), si hay más de 2 (Bastones de Luz) cerca, sosteniendo [Icono Ataque] puede rápidamente Lanzar un Nivel 3 (Ataque de Carga). Después de ejecutar 2 o más consecutivos Nivel 3 (Ataques de Carga), Aria puede inmediatamente seguir con el 4to golpe de (Ataque Básico). Mientras carga, el Nivel Anti-Interrupción de Aria se incrementa y el DAÑO recibido se reduce en un 40%. El nivel de Anti-Interrupción se incrementa mientras usa esta habilidad.",
                         tags: ["Etéreo", "Ataque Básico"]
                     },
                     {
@@ -85,26 +85,26 @@ export const versionedAgents = {
                     },
                     {
                         type: "Técnica Especial",
-                        name: "Ataque Especial",
+                        name: "Técnica Especial",
                         description: "Presiona [Icono Especial] para activar: Lanza una patada hacia adelante, causando Daño Etéreo. El nivel de Anti-Interrupción se incrementa mientras usa esta habilidad.",
                         tags: ["Etéreo", "Técnica Especial"]
                     },
                     {
                         type: "Técnica Especial",
-                        name: "Ataque Especial: Cambio de Golpe",
+                        name: "Técnica Especial: Cambio de Golpe",
                         description: "Después del 4to golpe de 3-Rank (Ataque Básico), 3-Rank (Ataque de Carrera), (Asistencia Rápida), (Ataque en Cadena), (Evasión Perfecta), o a nivel 3 (Ataque de Carga), presiona [Icono Especial] para activar: Lanza una patada más rápida hacia adelante, causando Daño Etéreo. Si el ataque golpea a un enemigo, 1 (Bastón de Luz) será generado en el campo después de que el ataque completa. Después de usar esta habilidad, puede seguir inmediatamente con el 3er golpe de (Ataque Básico). El nivel de Anti-Interrupción se incrementa mientras usa esta habilidad.",
                         tags: ["Etéreo", "Técnica Especial"]
                     },
                     {
                         type: "Técnica Especial EX",
-                        name: "Ataque Especial EX",
+                        name: "Técnica Especial EX",
                         description: "Con suficiente Energía, presiona [Icono Especial EX] para activar: Desata un poderoso ataque hacia adelante seguido por una onda sónica, causando masivo Daño Etéreo. Si el ataque golpea a un enemigo, genera 1 (Bastón de Luz) en el campo después de que el ataque completa. El personaje es invulnerable mientras usa esta habilidad.",
                         tags: ["Etéreo", "Técnica Especial EX"]
                     },
                     {
                         type: "Técnica Especial EX",
-                        name: "Ataque Especial EX: Fase 2",
-                        description: "(Ataque Especial EX:Cambio) Después de la activación, con suficiente Energía, presiona [Icono Especial EX] para activar: Desata un poderoso ataque descendente adicional, causando Daño Etéreo. Si el ataque golpea a un enemigo, 3 (Bastones de Luz) serán generados en el campo después de que el ataque completa. El personaje es invulnerable mientras usa esta habilidad.",
+                        name: "Técnica Especial EX: Fase 2",
+                        description: "(Técnica Especial EX:Cambio) Después de la activación, con suficiente Energía, presiona [Icono Especial EX] para activar: Desata un poderoso ataque descendente adicional, causando Daño Etéreo. Si el ataque golpea a un enemigo, 3 (Bastones de Luz) serán generados en el campo después de que el ataque completa. El personaje es invulnerable mientras usa esta habilidad.",
                         tags: ["Etéreo", "Técnica Especial EX"]
                     },
                     {
@@ -152,7 +152,7 @@ export const versionedAgents = {
                     {
                         type: "Mindscape 1",
                         name: "Talento 1",
-                        description: "Iris' (Ataque Básico), (Ataque Especial), (Ataques Especiales EX) ignoran el 10% de la Resistencia de Acumulación de Anomalía de Atributo del objetivo oscuro Anomalía de Atributo de Etéreo. Cuando son activados, hay una posibilidad de activar una Probabilidad de Crit Base. La Probabilidad de Crit Base es de 40% y el Daño CRIT es de 30% respectivamente. Si La Tasa de Anomalía es mayor que 180, cada punto de Maestría de Anomalía excediendo este punto incrementa la Probabilidad de Crit de este efecto en un extra 0.4%.",
+                        description: "Iris' (Ataque Básico), (Técnica Especial), (Ataques Especiales EX) ignoran el 10% de la Resistencia de Acumulación de Anomalía de Atributo del objetivo oscuro Anomalía de Atributo de Etéreo. Cuando son activados, hay una posibilidad de activar una Probabilidad de Crit Base. La Probabilidad de Crit Base es de 40% y el Daño CRIT es de 30% respectivamente. Si La Tasa de Anomalía es mayor que 180, cada punto de Maestría de Anomalía excediendo este punto incrementa la Probabilidad de Crit de este efecto en un extra 0.4%.",
                         tags: ["Mindscape 1"]
                     },
                     {
@@ -164,7 +164,7 @@ export const versionedAgents = {
                     {
                         type: "Mindscape 3",
                         name: "Talento 3",
-                        description: "(Ataque Básico), (Evasión), (Asistencia), (Ataque Especial) y (Ataque en Cadena) Lv. +2",
+                        description: "(Ataque Básico), (Evasión), (Asistencia), (Técnica Especial) y (Ataque en Cadena) Lv. +2",
                         tags: ["Mindscape 3"]
                     },
                     {
@@ -176,7 +176,7 @@ export const versionedAgents = {
                     {
                         type: "Mindscape 5",
                         name: "Talento 5",
-                        description: "(Ataque Básico), (Evasión), (Asistencia), (Ataque Especial) y (Ataque en Cadena) Lv. +2",
+                        description: "(Ataque Básico), (Evasión), (Asistencia), (Técnica Especial) y (Ataque en Cadena) Lv. +2",
                         tags: ["Mindscape 5"]
                     },
                     {
@@ -263,20 +263,20 @@ export const versionedAgents = {
                     },
                     {
                         type: "Técnica Especial",
-                        name: "Ataque Especial: Pistola de Aire",
+                        name: "Técnica Especial: Pistola de Aire",
                         description: "Presiona [Icono Especial] para activar: Dispara un gatito usando una pistola de aire para atacar a los enemigos adelante, infligiendo Daño Físico. Después de activar la habilidad, si no hay gatos en el campo, invoca un gatito.",
                         tags: ["Físico", "Técnica Especial"]
                     },
                     {
                         type: "Técnica Especial EX",
-                        name: "Ataque Especial EX: Golpe de Gato",
+                        name: "Técnica Especial EX: Golpe de Gato",
                         description: "Con suficiente Energía, presiona [Icono Especial EX] para activar: Lanza un gato para golpear al objetivo e infligir Daño Físico. Después de activar esta habilidad, si no hay gatos en el campo, invoca un gato. Al activar esta habilidad, aplica el efecto (Fiebre) a todos los Agentes en el escuadrón durante 40s. Cuando el ataque pesado de la habilidad golpea a un enemigo, activa (Asistencia Rápida). El personaje es invulnerable mientras usa esta habilidad.",
                         tags: ["Físico", "Técnica Especial EX"]
                     },
                     {
                         type: "Técnica Especial EX",
-                        name: "Ataque Especial EX: Ataque de Enlace de Cámara",
-                        description: "Después de entrar en (Fiebre), presiona [Icono Especial EX] para activar: Golpea a los enemigos objetivo junto con Kitty, infligiendo Daño Físico. Después de usar esta habilidad, si no hay gato en el campo, invoca a Kitty. Cuando se activa el ataque pesado, abre (Velo Etereo: Ídolo). Mientras (Velo Etereo: Ídolo) está activo, incrementa el ATK de todos los miembros del escuadrón en 50 puntos adicionales durante 30s. Antes de que Sunna reabra (Velo Etereo: Ídolo), el (Velo Etereo: Ídolo) existente se cerrará. Cuando el ataque pesado de la habilidad golpea a un enemigo, activa (Asistencia Rápida). El personaje es invulnerable mientras usa esta habilidad. Cada vez que se entra en (Fiebre), (Ataque Especial EX: Golpe Combinado Fotográfico) solo puede activarse una vez.",
+                        name: "Técnica Especial EX: Ataque de Enlace de Cámara",
+                        description: "Después de entrar en (Fiebre), presiona [Icono Especial EX] para activar: Golpea a los enemigos objetivo junto con Kitty, infligiendo Daño Físico. Después de usar esta habilidad, si no hay gato en el campo, invoca a Kitty. Cuando se activa el ataque pesado, abre (Velo Etereo: Ídolo). Mientras (Velo Etereo: Ídolo) está activo, incrementa el ATK de todos los miembros del escuadrón en 50 puntos adicionales durante 30s. Antes de que Sunna reabra (Velo Etereo: Ídolo), el (Velo Etereo: Ídolo) existente se cerrará. Cuando el ataque pesado de la habilidad golpea a un enemigo, activa (Asistencia Rápida). El personaje es invulnerable mientras usa esta habilidad. Cada vez que se entra en (Fiebre), (Técnica Especial EX: Golpe Combinado Fotográfico) solo puede activarse una vez.",
                         tags: ["Físico", "Técnica Especial EX", "Velo Etereo"]
                     },
                     {
@@ -312,7 +312,7 @@ export const versionedAgents = {
                     {
                         type: "Pasiva Central",
                         name: "Pasiva Central: Sunna",
-                        description: "Los personajes en el estado (Fiebre) ganan ATK aumentado igual al {VALOR_1} del ATK inicial de Sunna, hasta un máximo de {VALOR_2}. (Ataque Básico: Arañazo de Pata), (Ataque Especial EX: Golpe de Gato), (Ataque Especial EX: Ataque de Enlace de Cámara), (Ataque en Cadena: Embestida Gatuna) y (Definitiva: Golpea al Topo) aplican la marca (Hipnotizado) a los objetivos al golpear, durando 12 segundos. Mientras Sunna está en el campo, la duración de la marca (Hipnotizado) se refresca continuamente; los enemigos normales con la marca (Hipnotizado) tienen aggro reducido hacia Sunna. Cuando personajes de (Ataque) o (Anomalía) en el escuadrón atacan continuamente y aciertan un ataque pesado en enemigos con la marca (Hipnotizado), activan y detonan la marca (Hipnotizado). Cuando un personaje de (Ataque) la detona, infligen Daño de Atributo igual al (210%) del ATK a los enemigos en rango. Cuando un personaje de (Anomalía) la detona, infligen Daño de Atributo igual al (210%) del ATK a los enemigos en rango. Este DAÑO está garantizado de ser CRÍTICO y el Daño CRIT aumenta en un (100%). Cuando múltiples enemigos con la marca (Hipnotizado) están en el campo, solo la marca (Hipnotizado) del objetivo principal de ataque será activada, y otras marcas (Hipnotizado) serán eliminadas. Cuando un enemigo está Aturdido, la marca (Hipnotizado) se activa más rápidamente.",
+                        description: "Los personajes en el estado (Fiebre) ganan ATK aumentado igual al {VALOR_1} del ATK inicial de Sunna, hasta un máximo de {VALOR_2}. (Ataque Básico: Arañazo de Pata), (Técnica Especial EX: Golpe de Gato), (Técnica Especial EX: Ataque de Enlace de Cámara), (Ataque en Cadena: Embestida Gatuna) y (Definitiva: Golpea al Topo) aplican la marca (Hipnotizado) a los objetivos al golpear, durando 12 segundos. Mientras Sunna está en el campo, la duración de la marca (Hipnotizado) se refresca continuamente; los enemigos normales con la marca (Hipnotizado) tienen aggro reducido hacia Sunna. Cuando personajes de (Ataque) o (Anomalía) en el escuadrón atacan continuamente y aciertan un ataque pesado en enemigos con la marca (Hipnotizado), activan y detonan la marca (Hipnotizado). Cuando un personaje de (Ataque) la detona, infligen Daño de Atributo igual al (210%) del ATK a los enemigos en rango. Cuando un personaje de (Anomalía) la detona, infligen Daño de Atributo igual al (210%) del ATK a los enemigos en rango. Este DAÑO está garantizado de ser CRÍTICO y el Daño CRIT aumenta en un (100%). Cuando múltiples enemigos con la marca (Hipnotizado) están en el campo, solo la marca (Hipnotizado) del objetivo principal de ataque será activada, y otras marcas (Hipnotizado) serán eliminadas. Cuando un enemigo está Aturdido, la marca (Hipnotizado) se activa más rápidamente.",
                         tags: ["Pasiva Central", "Físico"]
                     },
                     {
@@ -336,25 +336,25 @@ export const versionedAgents = {
                     {
                         type: "Mindscape 3",
                         name: "3. Transformación de Manzana",
-                        description: "Nivel de Ataque Básico, Evasión, Asistencia, Ataque Especial y Ataque en Cadena +2",
+                        description: "Nivel de Ataque Básico, Evasión, Asistencia, Técnica Especial y Ataque en Cadena +2",
                         tags: ["Mindscape"]
                     },
                     {
                         type: "Mindscape 4",
                         name: "4. Escuadrón de Investigación de Delirios",
-                        description: "Cuando Sunna entra al campo de batalla, restaura 20 de Energía. Este efecto puede activarse una vez cada 180 segundos en Zona de Investigación; cuando activa (Ataque Especial EX: Ataque de Enlace de Cámara), restaura 2.5% de HP para todos los miembros del escuadrón.",
+                        description: "Cuando Sunna entra al campo de batalla, restaura 20 de Energía. Este efecto puede activarse una vez cada 180 segundos en Zona de Investigación; cuando activa (Técnica Especial EX: Ataque de Enlace de Cámara), restaura 2.5% de HP para todos los miembros del escuadrón.",
                         tags: ["Mindscape"]
                     },
                     {
                         type: "Mindscape 5",
                         name: "5. Expreso Galáctico",
-                        description: "Nivel de Ataque Básico, Evasión, Asistencia, Ataque Especial y Ataque en Cadena +2",
+                        description: "Nivel de Ataque Básico, Evasión, Asistencia, Técnica Especial y Ataque en Cadena +2",
                         tags: ["Mindscape"]
                     },
                     {
                         type: "Mindscape 6",
                         name: "6. Big Bang del Hueco",
-                        description: "Cuando Sunna activa su (Ataque Especial EX), entra en el estado (Big Bang) por 8 segundos; \nDurante el estado (Big Bang), los ataques de Sunna son CRÍTICOS garantizados, y su Daño CRIT aumenta en un 0.02% de su ATK inicial, hasta un aumento máximo del 60%; \nDurante el estado (Big Bang), Sunna puede activar marcas (Hipnotizado), infligiendo DAÑO igual al 210% de su ATK a enemigos en rango; si Sunna tiene (Puntos de Ataque) al activar marcas (Hipnotizado), inmediatamente consume los (Puntos de Ataque) y aplica marcas (Hipnotizado) a los enemigos de nuevo; \nDurante el estado (Big Bang), el DAÑO infligido por todo el escuadrón al activar marcas (Hipnotizado) aumenta en un 20%.",
+                        description: "Cuando Sunna activa su (Técnica Especial EX), entra en el estado (Big Bang) por 8 segundos; \nDurante el estado (Big Bang), los ataques de Sunna son CRÍTICOS garantizados, y su Daño CRIT aumenta en un 0.02% de su ATK inicial, hasta un aumento máximo del 60%; \nDurante el estado (Big Bang), Sunna puede activar marcas (Hipnotizado), infligiendo DAÑO igual al 210% de su ATK a enemigos en rango; si Sunna tiene (Puntos de Ataque) al activar marcas (Hipnotizado), inmediatamente consume los (Puntos de Ataque) y aplica marcas (Hipnotizado) a los enemigos de nuevo; \nDurante el estado (Big Bang), el DAÑO infligido por todo el escuadrón al activar marcas (Hipnotizado) aumenta en un 20%.",
                         tags: ["Mindscape"]
                     }
                 ]

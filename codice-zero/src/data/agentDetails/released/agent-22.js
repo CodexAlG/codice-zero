@@ -160,7 +160,7 @@ export default {
     {
       type: "Mindscape 4",
       name: "Suministro de Combustible Definitivo",
-      description: "Cuando un (Ataque Especial EX) o (Ataque de Asistencia) golpea a un enemigo, la Probabilidad de Crítico del movimiento aumenta en un 30%. La duración máxima de rociado de llamas de la (Técnica Especial EX: Método de Agitación de Calor Intenso - Disparo Doble) aumenta en 1s."
+      description: "Cuando un (Técnica Especial EX) o (Ataque de Asistencia) golpea a un enemigo, la Probabilidad de Crítico del movimiento aumenta en un 30%. La duración máxima de rociado de llamas de la (Técnica Especial EX: Método de Agitación de Calor Intenso - Disparo Doble) aumenta en 1s."
     },
     {
       type: "Mindscape 5",
