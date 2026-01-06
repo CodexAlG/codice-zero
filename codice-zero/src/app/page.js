@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import { Send, Coffee } from "lucide-react";
+import { Coffee } from "lucide-react";
 import { agents } from "@/data/agents";
 
 export default function Home() {
@@ -28,25 +28,6 @@ export default function Home() {
       icon: "/CodiceZero/Redes/Twitter.webp",
       link: "https://x.com/EgoBl9",
       customClass: "scale-[1.35]"
-    },
-    {
-      name: "YouTube",
-      icon: "/CodiceZero/Redes/Youtube.png",
-      link: "https://www.youtube.com/@thisego9",
-      customClass: "scale-110"
-    },
-    {
-      name: "GitHub",
-      icon: "/CodiceZero/Redes/Github.png",
-      link: "https://github.com/CodexAlG",
-      customClass: "invert"
-    },
-    {
-      name: "Telegram",
-      icon: Send,
-      link: "https://t.me/CodiceZeroZZZ",
-      isComponent: true,
-      customClass: "text-gray-300 group-hover:text-blue-400 p-1"
     },
     {
       name: "Ko-Fi",
@@ -120,18 +101,13 @@ export default function Home() {
             </div>
 
             {/* Info */}
-            <div className="flex flex-col items-start gap-1 z-10">
-              <span className="text-[10px] font-bold uppercase tracking-widest text-gray-500">Líder del Proyecto</span>
+            <div className="flex flex-col justify-center items-start gap-0.5 z-10 h-16">
+              <span className="text-[10px] font-bold uppercase tracking-widest text-gray-500 leading-none">Líder del Proyecto</span>
               <div className="flex items-center gap-2">
-                <h3 className="text-xl font-bold text-white group-hover:text-yellow-400 transition-colors duration-300">Ego</h3>
+                <h3 className="text-xl font-bold text-white group-hover:text-yellow-400 transition-colors duration-300 leading-tight">Ego</h3>
                 <div className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse" title="Online"></div>
               </div>
-              <p className="text-xs text-gray-400 italic">"Construyendo para la comunidad."</p>
-            </div>
-
-            {/* Discord Icon (Decorativo) */}
-            <div className="ml-auto opacity-20 group-hover:opacity-100 transition-opacity grayscale group-hover:grayscale-0">
-              <Image src="/CodiceZero/Redes/Discord.png" alt="Discord" width={24} height={24} className="object-contain" />
+              <p className="text-xs text-gray-400 italic leading-none">"Construyendo para la comunidad."</p>
             </div>
           </div>
         </div>
