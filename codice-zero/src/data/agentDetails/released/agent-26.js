@@ -91,7 +91,7 @@ export default {
     },
     {
       type: "Pasiva Central",
-      name: "Pasiva Principal: Frío Abrasador",
+      name: "Pasiva Central: Frío Abrasador",
       description: "Cuando Hoshimi Miyabi causa Daño Congelación, aplica (Fuego Helado) al objetivo, durando 30s. Cuando acumula (Acumulación de Anomalía de Congelación) contra objetivos con (Fuego Helado), aumenta la Tasa de (Acumulación de Anomalía de Congelación) en un 100% de la Prob. Crítica de Hoshimi Miyabi, hasta un aumento máximo del 80%. A medida que Hoshimi Miyabi acumula (Acumulación de Anomalía de Congelación), tiene su propio medidor de Acumulación de Anomalía de Atributo independiente y activa (Congelación), (Rompehielo), y (Quemadura por Frío) que pueden reaccionar con otras Anomalías de Atributo, incluyendo (Anomalía de Atributo de Hielo), para activar (Desorden). Cuando Hoshimi Miyabi aplica (Quemadura por Frío) a enemigos con (Fuego Helado), consumirá el (Fuego Helado) para activar (Quemadura Gélida - Ruptura), causando Daño Congelación igual al {VALOR_1} del ATK de Hoshimi Miyabi y causando que el objetivo entre en el estado (Quemadura Gélida). Todas las unidades acumulan {VALOR_2} más de Acumulación de Anomalía contra enemigos bajo el estado (Quemadura Gélida), pero Hoshimi Miyabi no puede volver a aplicar (Fuego Helado) a estos enemigos. El estado (Quemadura Gélida) termina cuando (Quemadura por Frío) expira. Mientras este estado permanece activo, activar otra Anomalía de Atributo sobrescribirá (Quemadura por Frío) y eliminará (Quemadura Gélida). Al activar (Quemadura Gélida - Ruptura), Hoshimi Miyabi obtiene 1 punto de (Escarcha Caída). Este efecto puede activarse una vez cada 10s.",
       tags: ["Pasiva Central"]
     },

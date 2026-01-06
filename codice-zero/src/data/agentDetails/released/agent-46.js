@@ -91,7 +91,7 @@ export default {
     },
     {
       type: "Pasiva Central",
-      name: "Pasiva Principal: Colega Ideal",
+      name: "Pasiva Central: Colega Ideal",
       description: "Zhao gana Probabilidad de Crit bonus basada en su HP Máx inicial, ganando {VALOR_2} de Probabilidad de Crit por cada 1,000 de HP Máx inicial. Al entrar al campo de batalla, Zhao gana 100 (Puntos de Congelacion). Este efecto puede activarse una vez cada 180s en modo Zona de Investigación. La cantidad máxima de (Puntos de Congelacion) es 100. Cuando los ataques del personaje activo actual golpean a un enemigo, Zhao gana 6 (Puntos de Congelacion). Esto puede activarse una vez cada 3s. Cuando los (Puntos de Congelacion) están al máximo, cambiar a Zhao al campo mientras está en combate activará su (Habilidad de Entrada). Cuando Zhao activa su (Habilidad de Entrada), todos los (Puntos de Congelacion) se consumen para activar (Velo Etereo: Manantial). Mientras (Velo Etereo: Manantial) está activo, todos los miembros del escuadrón ganan 5% de HP Máx por 40s. Re-activar (Velo Etereo: Manantial) termina la instancia existente antes de aplicar un nuevo (Velo Etereo: Manantial). Cuando Zhao activa (Velo Etereo: Manantial), el ATK de todos los miembros del escuadrón aumenta en {VALOR_3} por 50s. Las activaciones repetidas reinician la duración.",
       tags: ["Pasiva Central"]
     },
@@ -158,7 +158,7 @@ export default {
     {
       type: "Mindscape 6",
       name: "El No Valor Tiene Su Propio Valor",
-      description: "El buff de Probabilidad de Crit de (Pasiva Principal: Colega Ideal) aumenta al 125% del valor original. El Daño extra ganado al cargar durante (Ataque Básico: Veredicto Final) aumenta al 140% del valor original, y el tiempo de carga acumulado ya no se consume al atacar.",
+      description: "El buff de Probabilidad de Crit de (Pasiva Central: Colega Ideal) aumenta al 125% del valor original. El Daño extra ganado al cargar durante (Ataque Básico: Veredicto Final) aumenta al 140% del valor original, y el tiempo de carga acumulado ya no se consume al atacar.",
       tags: ["Mindscape 6"]
     }
   ]

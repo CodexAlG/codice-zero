@@ -85,7 +85,7 @@ export default {
     },
     {
       type: "Pasiva Central",
-      name: "Pasiva Principal: Eclipse Lunar",
+      name: "Pasiva Central: Eclipse Lunar",
       description: "Después de que Yanagi activa su (Técnica Especial EX), el multiplicador de DAÑO de (Desorden) aumenta en un {VALOR_1} cuando cualquier miembro del escuadrón aplica el efecto (Desorden) a un enemigo, durando 15s. Cuando su (Técnica Especial EX) golpea a un enemigo, el Daño Eléctrico de Yanagi contra el objetivo aumenta en un {VALOR_2} por 15s.",
       tags: ["Pasiva Central"]
     },

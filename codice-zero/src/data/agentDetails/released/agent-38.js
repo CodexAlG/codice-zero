@@ -103,7 +103,7 @@ export default {
     },
     {
       type: "Pasiva Central",
-      name: "Pasiva Principal: Arcoiris Gemelos del Corazon de la Espada",
+      name: "Pasiva Central: Arcoiris Gemelos del Corazon de la Espada",
       description: "Después de que cualquier miembro del escuadrón inflige una Anomalia Fisica en un enemigo, Alice causa daño adicional cada 0.95s de su duración activa, igual al {VALOR_1} del Daño de Anomalía Física original. Si (Desorden) es activado mientras el enemigo está sufriendo una Anomalia Fisica, por cada 1s de duración restante de Anomalia Fisica, el multiplicador de DAÑO de (Desorden) aumenta en un 18%, hasta un máximo de 180.0%. Cuando los ataques de Alice golpean a un enemigo, ella acumula (Etiqueta de Hoja). Cuando ella activa un (Asalto) a través de la Acumulación de Anomalía, gana 10 (Etiqueta de Hoja). (Etiqueta de Hoja) tiene un máximo de 300, con cada 100 siendo 1 barra. Cuando el Movimiento Final de un (Ataque Basico: Vals de Brillo Estelar) cargado de tres etapas aterriza, activa un efecto especial de (Asalto): Asalto de Polaridad, causando 100.0% del DAÑO de (Asalto) original, ignorando el progreso de Acumulación de Anomalía. Esto puede combinarse con cualquier otra Anomalía de Atributo, incluyendo Anomalía Física, para activar (Desorden). Cuando Alice activa (Asalto) en un enemigo, su Tasa de Acumulacion de Anomalia Fisica aumenta en un 25% por 30s.",
       tags: ["Pasiva Central"]
     },

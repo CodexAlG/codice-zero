@@ -122,7 +122,7 @@ export default {
     },
     {
       type: "Pasiva Central",
-      name: "Pasiva Principal: Mirada Escudriñadora del Alma",
+      name: "Pasiva Central: Mirada Escudriñadora del Alma",
       description: "Cuando el (replica) de Trigger golpea a un enemigo, el Multiplicador de Daño de Aturdimiento del objetivo aumenta en un {VALOR_1} por 5s. Este aumento del Multiplicador de Daño de Aturdimiento se aplicará incluso si el objetivo no está Aturdido.",
       tags: ["Pasiva Central"]
     },
@@ -135,7 +135,7 @@ export default {
     {
       type: "Mindscape 1",
       name: "Sentidos Agudizados",
-      description: "El Multiplicador de Daño de Aturdimiento aplicado a través de (Pasiva Principal: Mirada Escudriñadora del Alma) aumenta en un 20% adicional. Cuando se activa (Ataque Basico: Disparo Armonizador), el tiempo de espera se reduce a 2s. La (Purga) ganada al golpear a un enemigo con el disparo continuo o el contraataque cargado en (Postura de Francotirador) aumenta en un 25%. El máximo de (Purga) aumenta a 125.",
+      description: "El Multiplicador de Daño de Aturdimiento aplicado a través de (Pasiva Central: Mirada Escudriñadora del Alma) aumenta en un 20% adicional. Cuando se activa (Ataque Basico: Disparo Armonizador), el tiempo de espera se reduce a 2s. La (Purga) ganada al golpear a un enemigo con el disparo continuo o el contraataque cargado en (Postura de Francotirador) aumenta en un 25%. El máximo de (Purga) aumenta a 125.",
       tags: ["Mindscape 1"]
     },
     {

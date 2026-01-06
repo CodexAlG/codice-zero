@@ -85,14 +85,14 @@ export default {
     },
     {
       type: "Pasiva Central",
-      name: "Pasiva Principal: Guardián",
+      name: "Pasiva Central: Guardián",
       description: "El ATK inicial de Ben aumenta junto con su DEF inicial. Él gana {VALOR_1} de su DEF inicial como ATK. Cuando Ben lanza un poderoso golpe de seguimiento durante su (Técnica Especial EX), todos los miembros del escuadrón ganan un (Escudo) de {VALOR_2} de su DEF + {VALOR_3}, durando 30s.",
       tags: ["Pasiva Central", "Escudo"]
     },
     {
       type: "Habilidad Adicional",
       name: "Habilidad Adicional: Acuerdo Contractual",
-      description: "Cuando otro personaje en tu escuadrón comparte el mismo Atributo o Facción: Mientras el (Escudo) de (Pasiva Principal: Guardián) está en efecto, la Probabilidad de Crit del personaje aumenta en un 16%.",
+      description: "Cuando otro personaje en tu escuadrón comparte el mismo Atributo o Facción: Mientras el (Escudo) de (Pasiva Central: Guardián) está en efecto, la Probabilidad de Crit del personaje aumenta en un 16%.",
       tags: ["Habilidad Adicional", "Escudo"]
     },
     {

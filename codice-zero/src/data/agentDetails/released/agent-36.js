@@ -103,7 +103,7 @@ export default {
     },
     {
       type: "Pasiva Central",
-      name: "Pasiva Principal: Poder Feraz",
+      name: "Pasiva Central: Poder Feraz",
       description: "Cuando Ju Fufu aún no ha usado a Hu Wei, atacará automáticamente a los enemigos y ganará (Poder) al golpearlos. Cuando Hu Wei golpea a un enemigo y tiene al menos 100 de (Poder), y Ju Fufu no es el personaje activo actual, Ju Fufu lanzará (Ataque en Cadena: Caldero de Tigre Supresor) centrado alrededor del enemigo objetivo. Al activarse, todos los miembros del escuadrón ganan el efecto (Rugido de Tigre): Daño CRIT aumenta un {VALOR_1}, y cuando el ATK inicial de Ju Fufu es mayor o igual a 2,800, cada 100 de ATK adicional aumenta el Daño CRIT en un 5%, hasta un aumento máximo adicional del 30%. Mientras está en el estado (Rugido de Tigre), el Daño de (Ataque en Cadena)/(Definitiva) del personaje aumenta un {VALOR_2}/{VALOR_3}. El estado (Rugido de Tigre) dura 30s. Activaciones repetidas reinician la duración. Mientras Ju Fufu está en el estado (Rugido de Tigre), el Impacto aumenta en {VALOR_4}.",
       tags: ["Pasiva Central"]
     },

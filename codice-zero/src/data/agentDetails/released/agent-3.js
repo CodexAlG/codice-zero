@@ -97,7 +97,7 @@ export default {
     },
     {
       type: "Pasiva Central",
-      name: "Pasiva Principal: Garras Metálicas",
+      name: "Pasiva Central: Garras Metálicas",
       description: "Cuando Lycaon carga su (Ataque Básico) hasta completarlo, el ataque inflige {VALOR_1} más de Aturdimiento. Cuando (Técnica Especial EX: Emoción de la Caza) o (Ataque de Asistencia: Contraataque Vengativo) golpea a un enemigo, la RES al Daño Hielo del objetivo disminuye un 25% por 30s.",
       tags: ["Pasiva Central"]
     },

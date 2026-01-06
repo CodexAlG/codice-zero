@@ -91,7 +91,7 @@ export default {
     },
     {
       type: "Pasiva Central",
-      name: "Pasiva Principal: Pequeña Compañera de Destrucción",
+      name: "Pasiva Central: Pequeña Compañera de Destrucción",
       description: "Cuando se ordena a Drusilla o Anastella atacar, la Tasa de PEN de otros miembros del escuadrón aumenta junto con la de Rina, en un 25% de la Tasa de PEN de Rina + {VALOR_1}, hasta un 30%. El efecto termina cuando tanto Drusilla como Anastella regresan a Rina.",
       tags: ["Pasiva Central"]
     },
@@ -122,7 +122,7 @@ export default {
     {
       type: "Mindscape 1",
       name: "Dúo de Baile",
-      description: "Tras ser enviadas a lanzar un ataque, Drusilla y Anastella permanecen en el lugar por 5.5s adicionales antes de regresar a Rina. El efecto ganado de (Pasiva Principal: Pequeña Compañera de Destrucción) por personajes dentro de 10m aumenta al 130% del valor original.",
+      description: "Tras ser enviadas a lanzar un ataque, Drusilla y Anastella permanecen en el lugar por 5.5s adicionales antes de regresar a Rina. El efecto ganado de (Pasiva Central: Pequeña Compañera de Destrucción) por personajes dentro de 10m aumenta al 130% del valor original.",
       tags: ["Mindscape 1"]
     },
     {

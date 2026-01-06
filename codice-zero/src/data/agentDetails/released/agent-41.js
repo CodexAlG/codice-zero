@@ -107,7 +107,7 @@ export default {
     },
     {
       type: "Pasiva Central",
-      name: "Pasiva Principal: Poderoso Filo Fundido",
+      name: "Pasiva Central: Poderoso Filo Fundido",
       description: "Manato gana Fuerza Pura extra basada en sus Hp Máx, con cada 1 punto de Hp Máx aumentando su Fuerza Pura en 0.1. Todo el Daño Fuego de Manato se inflige como Daño Puro, ignorando la DEF enemiga y usando su estadística de Fuerza Pura como el Multiplicador de Daño. Cuando Manato usa (Tecnica Especial: Retorno a las Cenizas - Sacrificio) o una (Asistencia Defensiva), él acumula (Corazon Ardiente), hasta un máximo de 100 puntos. A los 75 (Corazon Ardiente), Manato entra en el estado (Filo Fundido). Mientras está en el estado (Filo Fundido), Manato consume 3.3 (Corazon Ardiente) por segundo. Cuando (Corazon Ardiente) se agota completamente, él sale de (Filo Fundido). Mientras está en el estado (Filo Fundido), los (Ataques Basicos) de Manato son mejorados, y puede usar (Tecnica Especial EX: Retorno a las Cenizas - Caida). Al consumir Hp durante (Ataque Basico: Viento Abrasador - Corte Brumoso) o durante los cortes consecutivos de un (Ataque de Asistencia), el Daño CRIT de ese ataque aumenta en un {VALOR_1}, y la Tasa de Generación de Adrenalina aumenta en un 100%. Mientras está en el estado (Filo Fundido), la Probabilidad de CRIT de Manato aumenta en un {VALOR_2}, y su Daño Fuego aumenta en un 20%.",
       tags: ["Pasiva Central"]
     },

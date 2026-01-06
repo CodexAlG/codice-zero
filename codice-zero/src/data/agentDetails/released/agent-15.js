@@ -103,7 +103,7 @@ export default {
     },
     {
       type: "Pasiva Central",
-      name: "Pasiva Principal: Bandera de Hoja",
+      name: "Pasiva Central: Bandera de Hoja",
       description: "Cuando Soukaku lanza (Ondear la Bandera), su ATK aumenta en un {VALOR_1} de su ATK inicial, hasta 500, por 22s. Cuando consume (Vórtice) durante (Ondear la Bandera), el aumento de ATK se duplica, hasta un máximo de 1,000. Este buff puede pasarse a personajes que cambian vía (Asistencias Rápidas) o (Ataques en Cadena) activados por (Ondear la Bandera), y refresca la duración del buff.",
       tags: ["Pasiva Central"]
     },
@@ -134,7 +134,7 @@ export default {
     {
       type: "Mindscape 1",
       name: "Corriente Edificante",
-      description: "Cuando Soukaku activa (Pasiva Principal: Bandera de Hoja) o (Habilidad Adicional: Menú de Grupo), la duración del buff aumenta en 8s.",
+      description: "Cuando Soukaku activa (Pasiva Central: Bandera de Hoja) o (Habilidad Adicional: Menú de Grupo), la duración del buff aumenta en 8s.",
       tags: ["Mindscape 1"]
     },
     {

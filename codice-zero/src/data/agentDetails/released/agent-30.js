@@ -128,7 +128,7 @@ export default {
     },
     {
       type: "Pasiva Central",
-      name: "Pasiva Principal: Brecha de Voltaje",
+      name: "Pasiva Central: Brecha de Voltaje",
       description: "Soldier 0 - Anby causa un {VALOR_1} más de DAÑO a enemigos marcados con (Estrella Plateada). Cuando un enemigo está afligido con (Estrella Plateada), recibe DAÑO CRIT adicional de (Reverberaciones), igual al {VALOR_2} del Daño CRIT de Soldier 0 - Anby. Cuando está marcado con una (Estrella Plateada), el DAÑO de las (Reverberaciones) de aliados acumula carga de (Estrella Plateada) en el enemigo. Este efecto puede activarse una vez cada 5s. El bono de DAÑO CRIT de (Reverberación) de (Estrella Plateada) aumenta adicionalmente en un 5% del Daño CRIT de Soldier 0 - Anby. Cuando un enemigo afligido con (Trueno Blanco) es derrotado, automáticamente desata (Tecnica Especial: Golpe de Trueno) en el objetivo enemigo más cercano.",
       tags: ["Pasiva Central"]
     },

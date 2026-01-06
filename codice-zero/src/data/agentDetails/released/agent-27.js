@@ -56,7 +56,7 @@ export default {
     {
       type: "Ataque Básico",
       name: "Ataque Básico: Final",
-      description: "Mientras está en el estado (Cadencia Idílica), mantén [Icono Ataque] para activar: Libera (Trémolo) hacia adelante para atacar, causando Daño Etéreo y saliendo del estado (Cadencia Idílica). Al activar la habilidad, otorga un buffo de la Pasiva Principal: Andante Agraciado. Con suficiente Energía, consume Energía para seguir con 1 (Trémolo) y 3 (Cúmulos Tonales). Este ataque de (Trémolo) lanzado es considerado una (Técnica Especial EX).",
+      description: "Mientras está en el estado (Cadencia Idílica), mantén [Icono Ataque] para activar: Libera (Trémolo) hacia adelante para atacar, causando Daño Etéreo y saliendo del estado (Cadencia Idílica). Al activar la habilidad, otorga un buffo de la Pasiva Central: Andante Agraciado. Con suficiente Energía, consume Energía para seguir con 1 (Trémolo) y 3 (Cúmulos Tonales). Este ataque de (Trémolo) lanzado es considerado una (Técnica Especial EX).",
       tags: ["Etéreo", "Ataque Básico"]
     },
     {
@@ -127,7 +127,7 @@ export default {
     },
     {
       type: "Pasiva Central",
-      name: "Pasiva Principal: Andante Agraciado",
+      name: "Pasiva Central: Andante Agraciado",
       description: "Durante el estado de (Cadencia Idílica), cuando otros miembros del escuadrón cambian a través de una (Asistencia Rápida), (Ataque en Cadena), (Asistencia Defensiva), o (Asistencia Evasiva), y cuando Astra Yao gasta Energía para liberar (Trémolo) para atacar, tanto Astra Yao como el ATK del personajeentrante aumentan. El aumento es igual al {VALOR_4} del ATK inicial de Astra Yao, hasta un máximo de 1,200. El efecto dura por 20s y puede extenderse hasta 30s con activaciones repetidas.",
       tags: ["Pasiva Central"]
     },
@@ -146,7 +146,7 @@ export default {
     {
       type: "Mindscape 2",
       name: "Arte de la Avaricia",
-      description: "El buff de ATK de la Pasiva Principal: Andante Agraciado aumenta adicionalmente en un 19%, con un máximo aumentado de 400. Mientras está en el estado (Cadencia Idílica), cuando otros miembros del escuadrón cambian a través de una (Asistencia Rápida), (Ataque en Cadena), (Asistencia Defensiva), o (Asistencia Evasiva), Astra Yao seguirá adicionalmente con 1 (Trémolo) y 3 (Cúmulos Tonales) para atacar. Este efecto puede activarse una vez cada 3s.",
+      description: "El buff de ATK de la Pasiva Central: Andante Agraciado aumenta adicionalmente en un 19%, con un máximo aumentado de 400. Mientras está en el estado (Cadencia Idílica), cuando otros miembros del escuadrón cambian a través de una (Asistencia Rápida), (Ataque en Cadena), (Asistencia Defensiva), o (Asistencia Evasiva), Astra Yao seguirá adicionalmente con 1 (Trémolo) y 3 (Cúmulos Tonales) para atacar. Este efecto puede activarse una vez cada 3s.",
       tags: ["Mindscape 2"]
     },
     {

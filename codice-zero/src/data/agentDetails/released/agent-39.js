@@ -109,7 +109,7 @@ export default {
     },
     {
       type: "Pasiva Central",
-      name: "Pasiva Principal: Protocolo de Cadena de Flores",
+      name: "Pasiva Central: Protocolo de Cadena de Flores",
       description: "El compañero de equipo de (Ataque) con el ATK inicial más alto es considerado la (Vanguardia) de Seed. Cuando la (Vanguardia) desata una (Tecnica Especial EX), Seed gana el estado (Embestida), aumentando el ATK de Seed en {VALOR_1} y el Daño CRIT en un {VALOR_2}. Cuando Seed desata una (Tecnica Especial EX), la (Vanguardia) gana el estado (Golpe Directo), aumentando el ATK de la (Vanguardia) en {VALOR_3} y el Daño CRIT en un {VALOR_4}. Cuando (Golpe Directo) y (Embestida) están ambos activos, Seed y la (Vanguardia) ganan simultáneamente el estado (Asedio), aumentando el DAÑO infligido en un {VALOR_5}. Los efectos de (Embestida), (Golpe Directo) y (Asedio) pueden tener efecto cuando el personaje es el personaje activo actual. Al cambiar a inactivo, los efectos permanecen en el personaje que sale del campo por 3s después del cambio. Cuando el personaje regresa a ser el personaje activo, los efectos se reactivan. Al entrar al campo de batalla con una (Vanguardia), Seed gana inmediatamente los estados (Embestida) y (Asedio), mientras la (Vanguardia) gana inmediatamente los estados (Golpe Directo) y (Asedio). Los estados (Golpe Directo) y (Embestida) duran 40s, y activaciones repetidas refrescan la duración. Cuando la (Vanguardia) consume Energía como el personaje activo o cuando Seed consume Energía, por cada 1 punto de Energía consumido, Seed recupera 0.5 puntos de (Carga de Acero).",
       tags: ["Pasiva Central"]
     },

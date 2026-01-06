@@ -133,7 +133,7 @@ export default {
     },
     {
       type: "Pasiva Central",
-      name: "Pasiva Principal: Enredo",
+      name: "Pasiva Central: Enredo",
       description: "Al entrar en (Sello Vinculante), la Probabilidad de CRIT de Evelyn aumenta en un {VALOR_1}. Después de dejar (Sello Vinculante), retiene el buff por 10s. Si Evelyn cambia a otro personaje mientras está en (Sello Vinculante), automáticamente seguirá con (Técnica Especial: Separación Vinculante - Primera Forma).",
       tags: ["Pasiva Central"]
     },

@@ -85,7 +85,7 @@ export default {
     },
     {
       type: "Pasiva Central",
-      name: "Pasiva Principal: Acelerante",
+      name: "Pasiva Central: Acelerante",
       description: "Lighter gana automáticamente (Moral) con el tiempo, a una tasa de 2.9 puntos por segundo. Por cada punto de Energía consumido por cualquier miembro del escuadrón, Lighter recupera 0.26 (Moral) adicional, hasta un máximo de 100. Cuando (Moral) alcanza 80, la próxima vez que Lighter entra en batalla inmediatamente lanza una (Asistencia Rápida). Una vez que (Moral) es 80 o mayor, ejecutar el 5to golpe de (Ataque Básico) pone a Lighter en el estado (Estallido de Moral), mejorando el poder del golpe ligero inicial, combo de jab, y el Movimiento Final del 5to golpe de su (Ataque Básico). Cuando una habilidad golpea a un enemigo con su poder aumentado, consumirá continuamente (Moral). Con cada 10 puntos de (Moral) consumidos, el Impacto de Lighter aumenta en un {VALOR_1}, hasta un aumento máximo de {VALOR_2}, y durando 6s. En el estado (Estallido de Moral), Lighter ya no ganará automáticamente (Moral) con el tiempo. Si su (Moral) se agota durante un golpe ligero inicial o combo de jab, automáticamente seguirá con un Movimiento Final más poderoso. En el estado (Estallido de Moral), cuando golpes ligeros iniciales o combos de jab golpean enemigos, la Res Hielo y Res Fuego del objetivo se reducen en un 15%, durando 30s. En el estado (Estallido de Moral), cuando el Movimiento Final golpea a un enemigo, aplica el efecto (Colapso) en el objetivo, extendiendo su duración de (Aturdimiento) en 3s. El efecto (Colapso) puede activarse solo una vez en el mismo objetivo antes de que se recupere del (Aturdimiento). Cuando el Movimiento Final del 5to golpe de (Ataque Básico) golpea a un enemigo, cuando cambia fuera del campo, o cuando su (Moral) se agota, Lighter saldrá del estado (Estallido de Moral), manteniendo cualquier (Moral) no gastada.",
       tags: ["Pasiva Central"]
     },
@@ -116,13 +116,13 @@ export default {
     {
       type: "Mindscape 1",
       name: "El Campeón",
-      description: "Entre los debuffs impuestos por (Pasiva Principal: Acelerante), el efecto (Colapso) aumenta la duración de (Aturdimiento) en 5s, mientras reduce aún más la Res Hielo y Res Fuego en un 10%. El Movimiento Final más poderoso que sigue cuando la (Moral) de Lighter es completamente agotada durante un golpe ligero inicial o combo de jab causa 30% de DAÑO aumentado.",
+      description: "Entre los debuffs impuestos por (Pasiva Central: Acelerante), el efecto (Colapso) aumenta la duración de (Aturdimiento) en 5s, mientras reduce aún más la Res Hielo y Res Fuego en un 10%. El Movimiento Final más poderoso que sigue cuando la (Moral) de Lighter es completamente agotada durante un golpe ligero inicial o combo de jab causa 30% de DAÑO aumentado.",
       tags: ["Mindscape 1"]
     },
     {
       type: "Mindscape 2",
       name: "Bufanda Roja",
-      description: "Al aplicar (Colapso) vía (Pasiva Principal: Acelerante) a enemigos, el Multiplicador de DAÑO de Aturdimiento del objetivo aumenta en un 25%. El aumento al Daño Hielo y Daño Fuego proporcionado por (Júbilo) de (Habilidad Adicional: Espíritu de Lucha) aumenta al 120% del original.",
+      description: "Al aplicar (Colapso) vía (Pasiva Central: Acelerante) a enemigos, el Multiplicador de DAÑO de Aturdimiento del objetivo aumenta en un 25%. El aumento al Daño Hielo y Daño Fuego proporcionado por (Júbilo) de (Habilidad Adicional: Espíritu de Lucha) aumenta al 120% del original.",
       tags: ["Mindscape 2"]
     },
     {

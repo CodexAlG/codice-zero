@@ -97,7 +97,7 @@ export default {
     },
     {
       type: "Pasiva Central",
-      name: "Pasiva Principal: Carga de Potencia",
+      name: "Pasiva Central: Carga de Potencia",
       description: "Cuando la (Técnica Especial EX: Giro de Motor) o (Definitiva) de Piper golpea a un enemigo, gana 1 acumulación de (Potencia), hasta un máximo de 20 acumulaciones, durando 12s. Activaciones repetidas reinician la duración. Por cada acumulación de (Potencia), la Tasa de Acumulación de Anomalía Física de Piper aumenta en un {VALOR_1}.",
       tags: ["Pasiva Central"]
     },

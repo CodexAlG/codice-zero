@@ -227,7 +227,7 @@ export default {
         "Dupe"
       ],
       name: "Floreciendo en Silencio",
-      description: "Yidhari gana un 10% más de Decibelios al perder Hp por la (Pasiva Principal: Colección de Paisajes Oníricos). Mientras está en (Velo Etereo: Manantial), los Hp Máx. de Yidhari aumentan adicionalmente un 5%.",
+      description: "Yidhari gana un 10% más de Decibelios al perder Hp por la (Pasiva Central: Colección de Paisajes Oníricos). Mientras está en (Velo Etereo: Manantial), los Hp Máx. de Yidhari aumentan adicionalmente un 5%.",
     },
     {
       type: [

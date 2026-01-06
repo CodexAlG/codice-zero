@@ -97,7 +97,7 @@ export default {
     },
     {
       type: "Pasiva Central",
-      name: "Pasiva Principal: Guardia de Melena Carmesí",
+      name: "Pasiva Central: Guardia de Melena Carmesí",
       description: "Cuando Lucy usa su (Técnica Especial) o (Técnica Especial EX), un (Jabalí Guardián) se unirá a la batalla y llamará a otros dos (Jabalíes Guardianes). Los (Jabalíes Guardianes) heredan el ATK, Impacto y Maestría de Anomalía de Lucy. El buff de (¡Ánimo!) para los (Jabalíes Guardianes) aumenta al {VALOR_1} del efecto original, y su frecuencia de ataque aumenta.",
       tags: ["Pasiva Central"]
     },

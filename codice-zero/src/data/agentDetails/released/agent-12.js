@@ -91,14 +91,14 @@ export default {
     },
     {
       type: "Pasiva Central",
-      name: "Pasiva Principal: Maletín Mecánico",
+      name: "Pasiva Central: Maletín Mecánico",
       description: "Después de golpear a un enemigo con una (Técnica Especial), (Técnica Especial EX), (Ataque en Cadena), o (Definitiva), Nicole puede recargar, mejorando su (Ataque Básico) y (Ataque de Carrera). Cuando sus balas mejoradas o (Campo de Energía) golpea a un enemigo, la DEF del objetivo se reduce en {VALOR_1} por 3.5s.",
       tags: ["Pasiva Central"]
     },
     {
       type: "Habilidad Adicional",
       name: "Habilidad Adicional: Liebre de Muchas Madrigueras",
-      description: "Cuando otro personaje en tu escuadrón comparte el mismo Atributo o Facción: Cuando la (Pasiva Principal: Maletín Mecánico) de Nicole aplica un debuff a un enemigo, todas las unidades infligen 25% más Daño Etéreo al objetivo por 3.5s.",
+      description: "Cuando otro personaje en tu escuadrón comparte el mismo Atributo o Facción: Cuando la (Pasiva Central: Maletín Mecánico) de Nicole aplica un debuff a un enemigo, todas las unidades infligen 25% más Daño Etéreo al objetivo por 3.5s.",
       tags: ["Habilidad Adicional"]
     },
     {
@@ -128,7 +128,7 @@ export default {
     {
       type: "Mindscape 2",
       name: "Dispositivo de Carga",
-      description: "Nicole recupera 5 de Energía cuando el debuff de (Pasiva Principal: Maletín Mecánico) es activado. Este efecto puede activarse una vez cada 15s.",
+      description: "Nicole recupera 5 de Energía cuando el debuff de (Pasiva Central: Maletín Mecánico) es activado. Este efecto puede activarse una vez cada 15s.",
       tags: ["Mindscape 2"]
     },
     {

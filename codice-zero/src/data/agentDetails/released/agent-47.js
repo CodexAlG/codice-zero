@@ -175,7 +175,7 @@ export default {
         },
         {
             type: "Pasiva Central",
-            name: "Pasiva Principal: Claridad Ardiente",
+            name: "Pasiva Central: Claridad Ardiente",
             description: "Cuando no está en el estado de (Mente Iluminada) y con menos de 6 puntos de (Fuerza de Espada Qingming), ciertos ataques construyen lentamente (Fuerza de Espada Qingming). Siempre que se gana (Fuerza de Espada Qingming) por cualquier medio, cada 1 punto de (Fuerza de Espada Qingming) que excede el límite se convierte en 1 acumulación de (Portador), acumulándose hasta 3 veces. Al dejar el estado de (Mente Iluminada), todas las acumulaciones de (Portador) se consumen para otorgar el mismo número de acumulaciones de (Fuerza de Espada Qingming). Al entrar al campo de batalla, gana (Unidad), aumentando la Probabilidad de Crit en un {VALOR_1} y el Daño en un {VALOR_2}. Cuando (Definitiva: Persiguiendo Tormentas) o (Habilidad de Entrada: Iluminando la Oscuridad) se desata, Ye Shunguang entra en el estado de (Mente Iluminada) y activa (Velo Etereo: Veredicto). (Velo Etereo: Veredicto) tiene la misma duración que (Mente Iluminada). La duración dura 16s, y el temporizador se pausa mientras ella está fuera del campo. Durante el estado de (Mente Iluminada), las habilidades de Ye Shunguang se mejoran, todo el Daño Físico infligido por sus habilidades se convierte en Daño de Hoja Afilada. Mientras (Velo Etereo: Veredicto) está activo, cuando un enemigo entra en (Velo Etereo: Veredicto), gana un efecto de Vulnerabilidad de Velo basado en su multiplicador de Daño de Aturdimiento actual. Durante esto, cuando Ye Shunguang inflige Daño a enemigos con sus habilidades, el multiplicador de Daño de Aturdimiento enemigo se ignora y se reemplaza con el bonus de Vulnerabilidad de Velo. La Vulnerabilidad de Velo tiene un tope del 110%. El efecto se elimina cuando (Velo Etereo: Veredicto) termina.",
             tags: ["Pasiva Central"]
         },
@@ -212,7 +212,7 @@ export default {
         {
             type: "Mindscape 1",
             name: "Yo Atado al Sueño",
-            description: "Al entrar al campo de batalla, gana 6 de (Fuerza de Espada Qingming). Este efecto puede activarse una vez cada 180s en modo Zona de Investigación. El efecto de (Unidad) de (Pasiva Principal: Claridad Ardiente) aumenta el Daño infligido en un 10% adicional, e ignora el 20% de la DEF del objetivo.",
+            description: "Al entrar al campo de batalla, gana 6 de (Fuerza de Espada Qingming). Este efecto puede activarse una vez cada 180s en modo Zona de Investigación. El efecto de (Unidad) de (Pasiva Central: Claridad Ardiente) aumenta el Daño infligido en un 10% adicional, e ignora el 20% de la DEF del objetivo.",
             tags: ["Mindscape 1"]
         },
         {

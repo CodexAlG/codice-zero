@@ -128,7 +128,7 @@ export default {
     },
     {
       type: "Pasiva Central",
-      name: "Pasiva Principal: Barrera de Resiliencia",
+      name: "Pasiva Central: Barrera de Resiliencia",
       description: "Cuando Caesar activa (Técnica Especial EX: Contraataque de Bloqueo), (Ataque en Cadena), (Definitiva), o desencadena (Técnica Especial EX: Golpe de Escudo Abrumador) a través de (Represalia), ella otorga un escudo (Égida Radiante) a todos los miembros del escuadrón igual al {VALOR_1} de su Impacto base + {VALOR_2}. El escudo dura 60s. Cualquier instancia singular de Daño no excederá el valor del escudo. Mientras (Égida Radiante) está activa, el nivel de anti-interrupción del portador del escudo aumenta. Mientras (Égida Radiante) está activa, el ATK del portador del escudo aumenta en {VALOR_3}. Después de que (Égida Radiante) expira, este buff permanece por 5s adicionales.",
       tags: ["Pasiva Central"]
     },
@@ -147,7 +147,7 @@ export default {
     {
       type: "Mindscape 2",
       name: "Legado de las Tierras Lejanas",
-      description: "Mientras (Égida Radiante) de (Pasiva Principal: Barrera de Resiliencia) está activa, la Tasa de Recuperación de Energía de Caesar aumenta en un 10%, y el aumento de ATK del portador del escudo se incrementa al 150% de su valor original.",
+      description: "Mientras (Égida Radiante) de (Pasiva Central: Barrera de Resiliencia) está activa, la Tasa de Recuperación de Energía de Caesar aumenta en un 10%, y el aumento de ATK del portador del escudo se incrementa al 150% de su valor original.",
       tags: ["Mindscape 2"]
     },
     {

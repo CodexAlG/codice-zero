@@ -103,7 +103,7 @@ export default {
     },
     {
       type: "Pasiva Central",
-      name: "Pasiva Principal: ¡Hermanos de Armas!",
+      name: "Pasiva Central: ¡Hermanos de Armas!",
       description: "Cuando Anton usa su (Ataque de Martinete), el Daño de la habilidad aumenta en un {VALOR_1} y cuando usa su (Ataque de Taladro), el Daño de la habilidad aumenta en un {VALOR_2}.",
       tags: ["Pasiva Central"]
     },

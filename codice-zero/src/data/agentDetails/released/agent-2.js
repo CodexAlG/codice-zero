@@ -109,7 +109,7 @@ export default {
     },
     {
       type: "Pasiva Central",
-      name: "Pasiva Principal: Munición de Operaciones Especiales",
+      name: "Pasiva Central: Munición de Operaciones Especiales",
       description: "Cuando Zhu Yuan está bajo (Modo Supresivo), usar (Perdigones Mejorados) aumenta su Daño en un {VALOR_1}. Al atacar a enemigos Aturdidos, este buff de Daño aumenta en un {VALOR_1} adicional. Cuando Zhu Yuan entra al campo de batalla, gana inmediatamente 6 (Perdigones Mejorados).",
       tags: ["Pasiva Central"]
     },

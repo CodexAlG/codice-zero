@@ -109,7 +109,7 @@ export default {
     },
     {
       type: "Pasiva Central",
-      name: "Pasiva Principal: Amanecer",
+      name: "Pasiva Central: Amanecer",
       description: "La Prob. Crítica de (Ataque de Carrera: Hiten no Tsuru - Corte) aumenta en un {VALOR_1}, y cuando el (Ataque de Carrera: Hiten no Tsuru - Corte) de Harumasa activa un golpe crítico contra un enemigo, gana 1 acumulación de (Filo Reluciente), hasta un máximo de 3 acumulaciones por uso de la habilidad y acumulándose hasta 6 veces, durando 5s, los disparos repetidos reinician la duración. Cada acumulación de (Filo Reluciente) aumenta el Daño Crítico de (Ataque de Carrera: Hiten no Tsuru - Corte) en un {VALOR_2}.",
       tags: ["Pasiva Central"]
     },

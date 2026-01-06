@@ -85,7 +85,7 @@ export default {
     },
     {
       type: "Pasiva Central",
-      name: "Pasiva Principal: Disparo Estable",
+      name: "Pasiva Central: Disparo Estable",
       description: "El Daño de Billy aumenta en un {VALOR_1} cuando entra en (Disparo en Cuclillas) durante su (Ataque Básico). El efecto termina si se mueve, regresa a espera, o es derribado o lanzado por un ataque.",
       tags: ["Pasiva Central"]
     },

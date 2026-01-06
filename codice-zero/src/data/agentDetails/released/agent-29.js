@@ -115,7 +115,7 @@ export default {
     },
     {
       type: "Pasiva Central",
-      name: "Pasiva Principal: Instinto de Cazador",
+      name: "Pasiva Central: Instinto de Cazador",
       description: "Cuando Pulchra activa una (Técnica Especial EX), (Ataque de Asistencia), (Ataque en Cadena) o (Definitiva), entra en el estado (Marcha del Cazador), aumentando el Aturdimiento que causa en un {VALOR_1} por 6s. Después de cambiar a otro personaje, si Pulchra todavía está en el estado (Marcha del Cazador), el estado durará hasta que Pulchra vuelva a entrar. Mientras está en el estado (Marcha del Cazador) y como el personaje activo, cuando Pulchra asesta un ataque pesado sobre enemigos, puede activar una (Asistencia Rápida) del personaje anterior en el escuadrón.",
       tags: ["Pasiva Central"]
     },
@@ -134,7 +134,7 @@ export default {
     {
       type: "Mindscape 2",
       name: "Oportunista",
-      description: "Mientras está en el estado (Marcha del Cazador) de la Pasiva Principal: Instinto de Cazador, el ATK de Pulchra aumenta en un 10% adicional.",
+      description: "Mientras está en el estado (Marcha del Cazador) de la Pasiva Central: Instinto de Cazador, el ATK de Pulchra aumenta en un 10% adicional.",
       tags: ["Mindscape 2"]
     },
     {

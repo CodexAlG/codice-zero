@@ -85,7 +85,7 @@ export default {
     },
     {
       type: "Pasiva Central",
-      name: "Pasiva Principal: Hiperenfoque",
+      name: "Pasiva Central: Hiperenfoque",
       description: "Después de mantener o presionar repetidamente, cuando Corin desata un corte continuo extendido con su Motosierra, el Daño de la habilidad aumenta en un {VALOR_1}.",
       tags: ["Pasiva Central"]
     },

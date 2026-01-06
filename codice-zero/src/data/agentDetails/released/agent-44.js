@@ -257,7 +257,7 @@ export default {
     {
       type: "Mindscape 6",
       name: "Verdad",
-      description: "Cuando un aliado entra al campo con una (Definitiva) a través del efecto de la (Pasiva Principal), ese aliado gana el efecto (Resplandor). Con este efecto, asestar un ataque hace que Dialyn inflija una instancia adicional de Daño Físico igual al 480% del ATK de Dialyn. Este daño es tratado como daño de (Tecnica Especial EX), y puede activarse una vez cada segundo, hasta 12 veces. Ganar (Resplandor) nuevamente refresca su conteo de activaciones. Solo un aliado puede tener (Resplandor) a la vez.",
+      description: "Cuando un aliado entra al campo con una (Definitiva) a través del efecto de la (Pasiva Central), ese aliado gana el efecto (Resplandor). Con este efecto, asestar un ataque hace que Dialyn inflija una instancia adicional de Daño Físico igual al 480% del ATK de Dialyn. Este daño es tratado como daño de (Tecnica Especial EX), y puede activarse una vez cada segundo, hasta 12 veces. Ganar (Resplandor) nuevamente refresca su conteo de activaciones. Solo un aliado puede tener (Resplandor) a la vez.",
       tags: [
         "Mindscape 6"
       ]

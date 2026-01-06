@@ -85,7 +85,7 @@ export default {
     },
     {
       type: "Pasiva Central",
-      name: "Pasiva Principal: Martillo de Demolición",
+      name: "Pasiva Central: Martillo de Demolición",
       description: "Cuando Koleda usa su (Técnica Especial EX) o consume (Fuego de Horno) para usar un (Ataque Básico) mejorado, el Aturdimiento que inflige aumenta en un {VALOR_1}.",
       tags: ["Pasiva Central"]
     },

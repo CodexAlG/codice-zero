@@ -109,7 +109,7 @@ export default {
     },
     {
       type: "Pasiva Central",
-      name: "Pasiva Principal: Protector",
+      name: "Pasiva Central: Protector",
       description: "Cuando Seth activa (Técnica Especial EX: Embestida de Escudo de Trueno - Alto Voltaje), gana un (Escudo de Resolución Firme) igual al {VALOR_1} de su ATK inicial, hasta un máximo de 3000 puntos, y dura 10s. Este efecto puede activarse una vez cada 10s. Cuando (Ataque Básico: Golpe de Relámpago - Electrificado) o Movimiento Final de (Ataque en Cadena) activa el (Asistencia Rápida) o (Ataque en Cadena) de otro miembro del escuadrón, ese miembro del escuadrón que entra al campo gana un (Escudo de Resolución Firme) igual al {VALOR_1} del ATK inicial de Seth, hasta un máximo de 3000 puntos, y dura 10s. Este efecto puede activarse una vez cada 10s. Tener un (Escudo de Resolución Firme) aumenta la Maestría de Anomalía en un {VALOR_2}.",
       tags: ["Pasiva Central"]
     },
@@ -122,7 +122,7 @@ export default {
     {
       type: "Mindscape 1",
       name: "Heroísmo",
-      description: "El valor del escudo proporcionado por (Escudo de Resolución Firme) y su límite máximo aumenta en un 30%. Cuando (Escudo de Resolución Firme) termina, el aumento de Maestría de Anomalía proporcionado por (Pasiva Principal: Protector) dura 10s adicionales.",
+      description: "El valor del escudo proporcionado por (Escudo de Resolución Firme) y su límite máximo aumenta en un 30%. Cuando (Escudo de Resolución Firme) termina, el aumento de Maestría de Anomalía proporcionado por (Pasiva Central: Protector) dura 10s adicionales.",
       tags: ["Mindscape 1"]
     },
     {

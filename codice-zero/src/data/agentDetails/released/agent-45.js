@@ -315,7 +315,7 @@ export default {
     {
       type: "Mindscape 2",
       name: "La Ira Corta como una Espada",
-      description: "El bono de Daño CRIT de la (Pasiva Principal) aumenta en un 15% adicional, y el bono de Daño Fuego aumenta en un 15% adicional. Mientras está en el estado (Semblante de Ira), Banyue restaura 5 de Adrenalina adicional al consumir (Poder de la Montaña) para lanzar una (Tecnica Especial EX).",
+      description: "El bono de Daño CRIT de la (Pasiva Central) aumenta en un 15% adicional, y el bono de Daño Fuego aumenta en un 15% adicional. Mientras está en el estado (Semblante de Ira), Banyue restaura 5 de Adrenalina adicional al consumir (Poder de la Montaña) para lanzar una (Tecnica Especial EX).",
       tags: [
         "Mindscape 2"
       ]

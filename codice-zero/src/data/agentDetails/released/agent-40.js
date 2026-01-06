@@ -115,7 +115,7 @@ export default {
     },
     {
       type: "Pasiva Central",
-      name: "Pasiva Principal: Domando Viento y Fuego",
+      name: "Pasiva Central: Domando Viento y Fuego",
       description: "La Probabilidad de CRIT de Orphie & Magus aumenta en un {VALOR_1}, y el Daño de Réplica aumenta en un {VALOR_2}. Orphie & Magus ganan inicialmente 100 (Calor Embotellado), hasta un máximo de 125. Cuando Orphie & Magus están fuera del campo, si (Tecnica Especial: Destello Corrosivo) está disponible y la Energía es mayor o igual a 60, consume 30 de Energía para activar automáticamente (Tecnica Especial EX: Vortice Carmesi) en su lugar. Cuando el láser de (Tecnica Especial EX: Carga de Calor) golpea enemigos, todos los miembros del escuadrón ganan (En la Mira) por 12s. Activaciones repetidas reinician la duración. (En la Mira) aumenta el ATK del Agente en {VALOR_3}. Cuando la Regeneración de Energía inicial de Orphie & Magus es mayor o igual a 1.6, por cada 0.1 de Regeneración de Energía inicial por encima de este umbral, el ATK aumenta en 20 adicionales. El aumento total de ATK tanto inicial como adicional no puede exceder {VALOR_4}. Cuando un Agente con (En la Mira) activa una Réplica, su duración de (En la Mira) se extiende por 4s, hasta una extensión máxima de 20s. El ataque de hoja de fuego de (Ataque Basico: Lanzallamas de Alta Presion), (Tecnica Especial EX: Cuida Tus Pasos), (Tecnica Especial EX: Vortice Carmesi), (Tecnica Especial EX: Carga de Calor), (Tecnica Especial EX: Erupcion Ardiente), (Ataque en Cadena: Cañon Sobrecalentado) y (Definitiva: Danza con Fuego) cuentan todos como Daño de Réplica, y usar estas habilidades cuenta como activar una Réplica.",
       tags: ["Pasiva Central"]
     },

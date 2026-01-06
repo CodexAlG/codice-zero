@@ -104,7 +104,7 @@ export default {
     {
       type: "Técnica Definitiva",
       name: "Ataque en Cadena: Serenata Tranquila",
-      description: "Cuando se activa un (Ataque en Cadena), selecciona al personaje para activar: Lanza una serie de golpes poderosos sobre una gran área en frente, infligiendo masivo Daño Eléctrico. Cuando este ataque golpea a un enemigo, el Daño de Qingyi aumenta en un 3% por cada acumulación de (Subyugación) en (Pasiva Principal: Estaciones Eternas). El personaje es invulnerable mientras usa esta habilidad.",
+      description: "Cuando se activa un (Ataque en Cadena), selecciona al personaje para activar: Lanza una serie de golpes poderosos sobre una gran área en frente, infligiendo masivo Daño Eléctrico. Cuando este ataque golpea a un enemigo, el Daño de Qingyi aumenta en un 3% por cada acumulación de (Subyugación) en (Pasiva Central: Estaciones Eternas). El personaje es invulnerable mientras usa esta habilidad.",
       tags: ["Eléctrico", "Ataque en Cadena"]
     },
     {
@@ -115,7 +115,7 @@ export default {
     },
     {
       type: "Pasiva Central",
-      name: "Pasiva Principal: Estaciones Eternas",
+      name: "Pasiva Central: Estaciones Eternas",
       description: "Cuando Qingyi aterriza un Movimiento Final en un enemigo con su (Ataque Básico: Flores de Luna Encantadas), aplica 3 acumulaciones de (Subyugación) al objetivo del enemigo. Cada acumulación de (Subyugación) aumenta el Daño de Aturdimiento del objetivo en un {VALOR_1}. Esta acumulación se aplica durante (Ataque Básico: Flores de Luna Encantadas), el Movimiento Final no aplicará ninguna acumulación de (Subyugación). Si se activa (Evasión Perfecta) al usar el Movimiento Final, directamente aplica 10.0 acumulaciones de (Subyugación) al objetivo. Al aplicar (Subyugación) a enemigos normales y de élite, el objetivo recibe el doble de las acumulaciones. Cuando el objetivo recibe Aturdimiento, las acumulaciones correspondientes de (Subyugación) se restablecen.",
       tags: ["Pasiva Central"]
     },
@@ -134,7 +134,7 @@ export default {
     {
       type: "Mindscape 2",
       name: "Esfuerzo Mínimo, Impacto Máximo",
-      description: "El multiplicador de Daño de Aturdimiento proporcionado por cada acumulación de (Subyugación) en (Pasiva Principal: Estaciones Eternas) aumenta al 135% de su valor original. Cuando el ataque de Qingyi golpea a un enemigo y las acumulaciones de (Subyugación) que aplica alcanzan su máximo de acumulaciones, su Aturdimiento infligido al objetivo aumenta en un 15%.",
+      description: "El multiplicador de Daño de Aturdimiento proporcionado por cada acumulación de (Subyugación) en (Pasiva Central: Estaciones Eternas) aumenta al 135% de su valor original. Cuando el ataque de Qingyi golpea a un enemigo y las acumulaciones de (Subyugación) que aplica alcanzan su máximo de acumulaciones, su Aturdimiento infligido al objetivo aumenta en un 15%.",
       tags: ["Mindscape 2"]
     },
     {

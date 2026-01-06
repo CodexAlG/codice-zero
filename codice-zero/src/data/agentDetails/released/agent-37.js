@@ -139,7 +139,7 @@ export default {
     },
     {
       type: "Pasiva Central",
-      name: "Pasiva Principal: Maravilla Caprichosa",
+      name: "Pasiva Central: Maravilla Caprichosa",
       description: "Al entrar al campo de batalla, Yuzuha gana inmediatamente 3 (Puntos de Azucar). Yuzuha puede tener hasta 6 (Puntos de Azucar). Cuando (Tecnica Especial EX: Alerta de Cavidad), (Tecnica Especial EX: ¡Alerta de Cavidad, Ahora Mismo!), o (Definitiva: Rendirse o Sufrir la Travesura) de Yuzuha golpea a un enemigo, todos los miembros del escuadrón reciben el efecto (Deseo de Tanuki). (Deseo de Tanuki) otorga un aumento de ATK igual al 40% del ATK inicial de Yuzuha, hasta un aumento máximo de {VALOR_1}, y aumenta el DAÑO infligido por aquellos con el efecto en un 15%, durando 40s. Activaciones repetidas reinician la duración. Si el ATK inicial de Yuzuha alcanza 3,000, ella otorga el bono completo de ATK a todos los miembros del escuadrón.",
       tags: ["Pasiva Central"]
     },

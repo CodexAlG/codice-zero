@@ -123,7 +123,7 @@ export default {
     },
     {
       type: "Pasiva Central",
-      name: "Pasiva Principal: Canto Funebre del Destino",
+      name: "Pasiva Central: Canto Funebre del Destino",
       description: "Cuando (Ataque Basico: Flor de Pluma) golpea a un objetivo que está sufriendo de una (Anomalia) de Etereo, Electrico, Fuego, Fisico o Hielo, activará (Florecer), causando Daño de Anomalia de Atributo adicional. El DAÑO adicional es {VALOR_1}/{VALOR_2}/{VALOR_3}/{VALOR_4}/{VALOR_5} por cada 10 puntos de Competencia de Anomalía del DAÑO de Anomalía original. Cuando (Ataque Basico: Vestido Aleteante - Suspension) o (Ataque Basico: Flor de Pluma) golpea a un objetivo sufriendo cualquier (Anomalia de Atributo), infligirá (Profecia de Vivian), causando que el objetivo reciba Daño Etéreo igual al 55% del ATK de Vivian cada 0.55s. Este DAÑO puede activar DAÑO adicional de (Anomalias de Atributo). (Profecia de Vivian) termina cuando el objetivo ya no está sufriendo una (Anomalia de Atributo). Al entrar al campo de batalla, Vivian gana 2 (Plumas de Vuelo).",
       tags: ["Pasiva Central"]
     },

@@ -91,7 +91,7 @@ export default {
     },
     {
       type: "Pasiva Central",
-      name: "Pasiva Principal: Voltaje Fluctuante",
+      name: "Pasiva Central: Voltaje Fluctuante",
       description: "Lanza un (Ataque Básico: Rayo), (Técnica Especial), o (Técnica Especial EX) después del 3er golpe del (Ataque Básico) de Anby para un {VALOR_1} extra de Aturdimiento.",
       tags: ["Pasiva Central"]
     },

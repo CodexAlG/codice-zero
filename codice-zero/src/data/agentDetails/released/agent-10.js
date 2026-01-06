@@ -133,7 +133,7 @@ export default {
     },
     {
       type: "Pasiva Central",
-      name: "Pasiva Principal: Perspicacia",
+      name: "Pasiva Central: Perspicacia",
       description: "Cuando los ataques de Jane golpean a un enemigo, hace que entren en el estado de (Roído), durando 10s. Si cualquier miembro del escuadrón activa (Asalto) en un enemigo en el estado de (Roído) y causa el efecto de (Retroceso), la duración del efecto de (Retroceso) se extiende por 5s. El Daño de (Asalto) tiene una probabilidad de activar un golpe crítico contra enemigos en el estado de (Roído), con una Probabilidad de Crit base del {VALOR_1} y Daño Crítico del 50%. Cada punto de la Maestría de Anomalía de Jane aumenta adicionalmente esta Probabilidad de Crit en un {VALOR_2}.",
       tags: ["Pasiva Central"]
     },

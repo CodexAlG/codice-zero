@@ -91,7 +91,7 @@ export default {
     },
     {
       type: "Pasiva Central",
-      name: "Pasiva Principal: Patas Sigilosas",
+      name: "Pasiva Central: Patas Sigilosas",
       description: "Cuando el (Contraataque de Evasión) o (Asistencia Rápida) de Nekomata golpea a un enemigo, su Daño aumenta en un {VALOR_1} por 6s.",
       tags: ["Pasiva Central"]
     },
