@@ -25,6 +25,8 @@ export default function Sidebar({ isExpanded, isMobile, toggleDrawer }) {
       setActiveItem(4); // Discos
     } else if (pathname.startsWith('/tierlist')) {
       setActiveItem(5); // Tier List
+    } else if (pathname.startsWith('/diff')) {
+      setActiveItem(6); // Diff
     }
   }, [pathname]);
 

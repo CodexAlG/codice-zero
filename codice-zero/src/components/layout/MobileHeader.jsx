@@ -15,6 +15,8 @@ const pathTitles = {
   '/discos': 'Discos',
   '/guias': 'Guías',
   '/bangboo': 'Bangboo',
+  '/tier-list': 'Tier List',
+  '/diff': 'Diff'
 };
 
 export default function MobileHeader({ toggleSidebar }) {
