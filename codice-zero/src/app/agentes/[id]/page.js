@@ -396,38 +396,7 @@ export default function AgentDetailPage() {
 
     return (
       <div className="flex flex-col gap-6 animate-fadeIn">
-        {/* Header Específico del Tab Activo (Opcional, ya está el Tab, pero útil para sliders) */}
-        {isPassiveGroup && details?.coreSkillScaling && (
-          <div className="flex justify-end mb-4">
-            <div className="flex flex-col w-full max-w-xs p-4 bg-[#18181b] border border-white/10 rounded-xl">
-              <div className="flex justify-between items-center mb-2">
-                <span className="text-xs font-bold uppercase text-gray-400">Nivel de Pasiva Central</span>
-                <span className="text-sm font-bold text-white font-mono">{coreLevels[coreSkillLevel]}</span>
-              </div>
-              <div className="relative h-6 flex items-center">
-                <input
-                  type="range"
-                  min="0"
-                  max="6"
-                  step="1"
-                  value={coreSkillLevel}
-                  onChange={(e) => setCoreSkillLevel(parseInt(e.target.value))}
-                  className="w-full h-1 bg-white/20 rounded-lg appearance-none cursor-pointer accent-white hover:bg-white/30 transition-colors"
-                />
-              </div>
-              <div className="flex justify-between px-1 mt-1">
-                {coreLevels.map((lvl, idx) => (
-                  <span
-                    key={lvl}
-                    className={`text-[10px] font-mono font-bold transition-colors ${coreSkillLevel === idx ? 'text-white' : 'text-gray-600'}`}
-                  >
-                    {lvl}
-                  </span>
-                ))}
-              </div>
-            </div>
-          </div>
-        )}
+
 
         {/* GRID HORIZONTAL DE HABILIDADES */}
         <div className="grid grid-cols-1 xl:grid-cols-2 gap-6">
@@ -438,7 +407,38 @@ export default function AgentDetailPage() {
               <div key={idx} className="bg-[#18181b] border border-white/5 rounded-xl p-6 hover:bg-white/[0.02] transition-colors relative overflow-hidden group h-full flex flex-col">
                 <div className="absolute left-0 top-0 bottom-0 w-1" style={{ backgroundColor: themeColor }}></div>
 
-                <h4 className="text-lg font-bold text-white mb-3 pl-3">{skill.name || "Sin nombre"}</h4>
+                <div className="flex flex-col xl:flex-row justify-between items-start xl:items-center gap-4 mb-4 pl-3 pr-2 pt-2">
+                  <h4 className="text-lg font-bold text-white">{skill.name || "Sin nombre"}</h4>
+
+                  {/* Slider integrado en la tarjeta (Solo para Pasiva Central) */}
+                  {details?.coreSkillScaling && (skill.type === 'Pasiva Central' || skill.type === 'Pasiva') && (
+                    <div className="flex flex-col w-full max-w-[200px] bg-black/20 p-2 rounded-lg border border-white/5">
+                      <div className="flex justify-between items-center mb-1">
+                        <span className="text-[10px] font-bold uppercase text-gray-400">Nivel</span>
+                        <span className="text-xs font-bold text-white font-mono">{coreLevels[coreSkillLevel]}</span>
+                      </div>
+                      <input
+                        type="range"
+                        min="0"
+                        max="6"
+                        step="1"
+                        value={coreSkillLevel}
+                        onChange={(e) => setCoreSkillLevel(parseInt(e.target.value))}
+                        className="w-full h-1 bg-white/20 rounded-lg appearance-none cursor-pointer accent-white hover:bg-white/30 transition-colors mb-1"
+                      />
+                      <div className="flex justify-between px-0.5">
+                        {coreLevels.map((lvl, idx) => (
+                          <span
+                            key={lvl}
+                            className={`text-[8px] font-mono font-bold transition-colors ${coreSkillLevel === idx ? 'text-white' : 'text-gray-600'}`}
+                          >
+                            {lvl}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+                </div>
 
                 <div className="text-gray-300 text-sm leading-relaxed space-y-2 font-sans flex-grow">
                   <HighlightText text={replaceIcons(description)} skills={details.skills} skillIcons={skillIcons} elementColor={themeColor} />
@@ -480,15 +480,15 @@ export default function AgentDetailPage() {
       )}
 
       {/* 1. SECCIÓN SUPERIOR: HERO + STATS (2 Columnas) */}
-      <div className="relative w-full max-w-[1600px] mx-auto p-4 lg:p-8 pb-0 flex flex-col lg:flex-row gap-6 lg:gap-12 min-h-screen lg:min-h-[85vh]">
+      <div className="relative w-full max-w-[1600px] mx-auto p-4 pt-10 lg:p-8 pb-0 flex flex-col lg:flex-row gap-6 lg:gap-12 min-h-screen lg:min-h-[85vh]">
 
         {/* BOTÓN VOLVER */}
         <Link href="/agentes" className="absolute top-4 left-4 z-50 p-2 bg-black/50 rounded-full border border-white/10 hover:bg-white/10 transition-colors">
           <ArrowLeft className="w-6 h-6 text-white" />
         </Link>
 
-        {/* COLUMNA IZQUIERDA: IMAGEN (Sticky en Desktop) */}
-        <div className="w-full lg:w-[45%] h-[60vh] lg:h-[85vh] sticky top-0 flex items-center justify-center z-10">
+        {/* COLUMNA IZQUIERDA: IMAGEN (Sticky en Desktop, Relative en Móvil para evitar cortes) */}
+        <div className="w-full lg:w-[45%] h-[60vh] lg:h-[85vh] relative lg:sticky top-0 flex items-center justify-center z-10">
           <div className="relative w-full h-full flex items-center justify-center">
             {/* Fondo Decorativo: Radial Gradient Seguro */}
             <div

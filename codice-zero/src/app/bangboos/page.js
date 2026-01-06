@@ -206,7 +206,7 @@ const FilterIcon = memo(({ name, icon, activeFilters, toggleFilter, size = 24 })
             title={name}
             className={`relative p-2 rounded-lg border-2 transition-all duration-300 group ${isActive
                 ? "border-yellow-500 bg-yellow-500/10 shadow-[0_0_15px_rgba(234,179,8,0.4)] scale-110 z-10 opacity-100"
-                : "border-transparent hover:bg-white/5 opacity-40 hover:opacity-100 hover:scale-105"
+                : "border-transparent hover:bg-white/5 opacity-100 hover:scale-105"
                 }`}
         >
             <Image
@@ -214,7 +214,7 @@ const FilterIcon = memo(({ name, icon, activeFilters, toggleFilter, size = 24 })
                 alt={name}
                 width={size}
                 height={size}
-                className={`object-contain transition-all ${isActive ? "grayscale-0 drop-shadow-md" : "grayscale group-hover:grayscale-0"}`}
+                className={`object-contain transition-all ${isActive ? "drop-shadow-md" : ""}`}
             />
         </button>
     );
