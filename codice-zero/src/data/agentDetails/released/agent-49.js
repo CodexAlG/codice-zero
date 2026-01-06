@@ -62,7 +62,7 @@ export default {
         {
             type: "Evasión",
             name: "Contraataque de Evasión: Triple Gancho",
-            description: "Presiona [Icono Ataque] durante una Evasión Perfecta para activar: Martillea continuamente a los enemigos en frente, infligiendo Daño Físico. El personaje es invulnerable mientras usa esta habilidad.",
+            description: "Presiona [Icono Ataque] durante una (Evasión Perfecta) para activar: Martillea continuamente a los enemigos en frente, infligiendo Daño Físico. El personaje es invulnerable mientras usa esta habilidad.",
             tags: ["Físico", "Evasión"]
         },
         {
