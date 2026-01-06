@@ -127,7 +127,7 @@ export default {
         },
         {
             type: "Mindscape 1",
-            name: "1. Síndrome de Corrupción de Soledad",
+            name: "1. Síndrome de Corrupcion de Soledad",
             description: "(Hipnotizado) Cuando una explosión de marca golpea a un enemigo, reduce la DEF del objetivo en un 5% durante 15 segundos. Puede acumularse hasta 3 veces. La duración de cada acumulación se calcula por separado.",
             tags: ["Mindscape"]
         },
