@@ -401,7 +401,7 @@ export default function AgentDetailPage() {
           <div className="flex justify-end mb-4">
             <div className="flex flex-col w-full max-w-xs p-4 bg-[#18181b] border border-white/10 rounded-xl">
               <div className="flex justify-between items-center mb-2">
-                <span className="text-xs font-bold uppercase text-gray-400">Nivel de Core Skill</span>
+                <span className="text-xs font-bold uppercase text-gray-400">Nivel de Pasiva Central</span>
                 <span className="text-sm font-bold text-white font-mono">{coreLevels[coreSkillLevel]}</span>
               </div>
               <div className="relative h-6 flex items-center">
