@@ -465,7 +465,7 @@ export default function AgentDetailPage() {
 
   // --- LAYOUT ---
   return (
-    <div className="min-h-screen bg-[#09090b] text-white selection:bg-yellow-500/30">
+    <div className="min-h-screen bg-[#09090b] text-white selection:bg-yellow-500/30 overflow-x-hidden">
 
 
 
@@ -489,7 +489,7 @@ export default function AgentDetailPage() {
 
         {/* COLUMNA IZQUIERDA: IMAGEN (Sticky en Desktop) */}
         <div className="w-full lg:w-[45%] h-[60vh] lg:h-[85vh] sticky top-0 flex items-center justify-center z-10">
-          <div className="relative w-full h-full">
+          <div className="relative w-full h-full overflow-hidden">
             {/* Fondo Decorativo detrás de la imagen */}
             <div
               className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[80%] opacity-20 blur-[100px] rounded-full pointer-events-none"
@@ -544,7 +544,7 @@ export default function AgentDetailPage() {
           {/* Aviso Beta REMOVED from here */}
 
           {/* Panel de Estadísticas Estilo "Hakush" (Tarjeta Oscura con Datos) */}
-          <div id="stats" className="bg-[#18181b]/80 backdrop-blur-md border border-white/10 rounded-xl p-4 shadow-2xl relative overflow-hidden group max-w-[480px] mx-auto lg:mr-0">
+          <div id="stats" className="bg-[#18181b]/80 backdrop-blur-md border border-white/10 rounded-xl p-4 shadow-2xl relative overflow-hidden group w-full max-w-[480px] mx-auto lg:mr-0">
             <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-white/5 to-transparent rounded-full -translate-y-1/2 translate-x-1/2 blur-2xl pointer-events-none"></div>
 
             {/* Sub-Header: Materiales REMOVED */}
