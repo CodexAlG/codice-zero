@@ -102,7 +102,7 @@ export default function ArmasPage() {
       {isLoading && <LoadingSpinner />}
 
       {/* Contenido Normal de la Página (Solo visible cuando NO está cargando) */}
-      <div className={`min-h-screen text-white p-8 transition-opacity duration-300 ${isLoading ? 'opacity-0' : 'opacity-100'}`}>
+      <div className={`min-h-screen text-white p-4 sm:p-8 transition-opacity duration-300 ${isLoading ? 'opacity-0' : 'opacity-100'}`}>
 
         {hasBetaContent && <BetaWarning />}
 
@@ -163,7 +163,7 @@ export default function ArmasPage() {
         <div className="w-full max-w-7xl mx-auto">
           <motion.div
             layout
-            className="flex flex-wrap justify-center gap-4 content-start transition-none"
+            className="grid grid-cols-3 sm:flex sm:flex-wrap justify-center gap-3 sm:gap-4 content-start transition-none"
             style={{ minHeight: '80vh' }}
           >
             <AnimatePresence mode="popLayout">
@@ -171,7 +171,7 @@ export default function ArmasPage() {
                 <Link key={weapon.id} href={`/armas/${weapon.id}`}>
                   <motion.div
                     layout // Animación suave de movimiento
-                    className="w-[29%] sm:w-[140px] md:w-[150px] lg:w-[160px]"
+                    className="w-full sm:w-[140px] md:w-[150px] lg:w-[160px]"
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}

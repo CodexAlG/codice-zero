@@ -51,7 +51,7 @@ const WeaponCard = memo(({ weapon, priority = false }) => {
           alt={weapon.name}
           width={120}
           height={120}
-          className={`object-contain transition-opacity duration-300 ${imageLoaded ? 'opacity-100' : 'opacity-0'}`}
+          className={`object-contain max-w-full max-h-full transition-opacity duration-300 ${imageLoaded ? 'opacity-100' : 'opacity-0'}`}
           onLoad={() => setImageLoaded(true)}
           loading={priority ? "eager" : "lazy"}
           priority={priority}
