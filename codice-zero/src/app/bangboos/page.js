@@ -206,7 +206,7 @@ const FilterCategory = ({ title, children, isFullWidth = false }) => {
     const [isOpen, setIsOpen] = useState(false);
 
     return (
-        <div className={`flex flex-col gap-2 ${isFullWidth ? 'w-full' : ''}`}>
+        <div className={`flex flex-col gap-2 w-full md:w-auto ${isFullWidth ? 'md:w-full' : ''}`}>
             {/* Título / Toggle */}
             <button
                 onClick={() => setIsOpen(!isOpen)}
