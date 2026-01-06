@@ -14,130 +14,7 @@ import SkillMaterials from '@/components/agents/SkillMaterials';
 import { replaceIcons } from '@/components/utils/TextWithIcons';
 import HighlightText from '@/components/ui/HighlightText'; // Import directly here
 
-const SidebarNav = ({ agentId }) => {
-  const [activeSection, setActiveSection] = useState('stats');
-  const isManualScrolling = useRef(false);
 
-  const navItems = [
-    { id: 'stats', label: 'ESTADÍSTICAS' },
-    { id: 'materials', label: 'MATERIALES' },
-    { id: 'skills', label: 'HABILIDADES' },
-    { id: 'mindscape', label: 'MINDSCAPE' },
-  ];
-
-  const scrollToSection = (id) => {
-    // 1. Bloquear Spy temporalmente
-    isManualScrolling.current = true;
-    setActiveSection(id); // Feedback instantáneo
-
-    // 2. Obtener el contenedor scrollable (main element del layout)
-    const scrollContainer = document.querySelector('main');
-
-    // 3. Ejecutar Scroll
-    if (id === 'stats') {
-      // Para estadísticas: ir al inicio del contenedor
-      if (scrollContainer) {
-        scrollContainer.scrollTo({ top: 0, behavior: 'smooth' });
-      }
-    } else {
-      const element = document.getElementById(id);
-      if (element) {
-        // scrollIntoView funciona con cualquier contenedor scrollable
-        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }
-    }
-
-    // 4. Desbloquear Spy después de la animación (aprox 1s)
-    setTimeout(() => {
-      isManualScrolling.current = false;
-    }, 1000);
-  };
-
-  useEffect(() => {
-    // El contenedor scrollable es 'main', no 'window'
-    const scrollContainer = document.querySelector('main');
-    if (!scrollContainer) return;
-
-    const handleScroll = () => {
-      // Si el usuario acaba de hacer click, ignorar el spy temporalmente
-      if (isManualScrolling.current) return;
-
-      const scrollTop = scrollContainer.scrollTop;
-
-      // Protección de inicio
-      if (scrollTop < 100) {
-        setActiveSection('stats');
-        return;
-      }
-
-      // Umbral visual: 50% desde la parte superior de la pantalla
-      const threshold = window.innerHeight * 0.5;
-      let current = 'stats';
-
-      for (const item of navItems) {
-        const element = document.getElementById(item.id);
-        if (element) {
-          const rect = element.getBoundingClientRect();
-          // El elemento activo es el último cuyo inicio ha pasado el umbral
-          if (rect.top < threshold) {
-            current = item.id;
-          }
-        }
-      }
-
-      setActiveSection(current);
-    };
-
-    scrollContainer.addEventListener('scroll', handleScroll, { passive: true });
-    // Check inicial
-    handleScroll();
-
-    return () => scrollContainer.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  return (
-    <div className="fixed left-60 top-1/2 -translate-y-1/2 z-[9999] hidden 2xl:flex flex-col gap-6 pointer-events-auto">
-      {/* Línea guía vertical */}
-      <div className="absolute left-[7px] top-0 bottom-0 w-[2px] bg-white/5 rounded-full"></div>
-
-      {navItems.map((item) => {
-        const isActive = activeSection === item.id;
-        return (
-          <button
-            key={item.id}
-            onClick={() => scrollToSection(item.id)}
-            className="group flex items-center gap-4 text-left transition-all relative cursor-pointer outline-none"
-            aria-label={`Ir a sección ${item.label}`}
-          >
-            {/* Indicador (Punto) */}
-            <div
-              className={`
-                w-4 h-4 rounded-full border-2 transition-all duration-300 z-10 box-border
-                ${isActive
-                  ? 'bg-yellow-400 border-yellow-400 scale-110 shadow-[0_0_15px_rgba(250,204,21,0.5)]'
-                  : 'bg-[#18181b] border-white/20 group-hover:border-white/60'}
-              `}
-            >
-              {isActive && <div className="absolute inset-0 rounded-full bg-yellow-400 opacity-50 animate-ping"></div>}
-            </div>
-
-            {/* Texto (Siempre visible) */}
-            <span
-              className={`
-                text-[10px] font-bold tracking-[0.2em] transition-all duration-300 uppercase
-                ${isActive
-                  ? 'text-yellow-400 translate-x-1'
-                  : 'text-white/30 group-hover:text-white/70'}
-              `}
-            >
-              {item.label}
-            </span>
-          </button>
-        );
-      })}
-    </div>
-  );
-};
 
 export default function AgentDetailPage() {
   const params = useParams();
@@ -272,7 +149,9 @@ export default function AgentDetailPage() {
     "Definitiva": "/CodiceZero/Habilidades/Icon_Ultimate_Colored.webp",
     "Pasiva Central": "/CodiceZero/Habilidades/Icon_Core_Skill.webp",
     "Pasiva": "/CodiceZero/Habilidades/Icon_Core_Skill.webp",
-    "Potencial": "/CodiceZero/Habilidades/Icon_Core_Skill.webp", // Placeholder icon for Potential
+    "Pasiva": "/CodiceZero/Habilidades/Icon_Core_Skill.webp",
+    "Potencial": "/CodiceZero/Habilidades/Icon_Core_Skill.webp",
+    "MINDSCAPE": "/CodiceZero/Habilidades/Icon_Core_Skill.webp", // Fallback for Mindscape tab icon
   };
 
   if (!agent) {
@@ -412,6 +291,7 @@ export default function AgentDetailPage() {
     { id: 'special', label: 'TÉCNICA ESPECIAL', keys: ['Técnica Especial', 'Técnica Especial EX', 'Habilidad Especial', 'Habilidad Especial EX'], icon: 'Técnica Especial' },
     { id: 'chain', label: 'TÉCNICA DEFINITIVA', keys: ['Técnica Definitiva', 'Definitiva'], icon: 'Técnica Definitiva' },
     { id: 'passive', label: 'TALENTO PASIVO', keys: ['Pasiva', 'Pasiva Central', 'Habilidad Adicional'], icon: 'Pasiva Central' },
+    { id: 'mindscape', label: 'MINDSCAPE CINEMA', keys: 'Mindscape', icon: 'MINDSCAPE' },
   ];
 
   // --- RENDER GROUP FUNCTION (ADAPTED FOR TABS) ---
@@ -419,7 +299,56 @@ export default function AgentDetailPage() {
     const activeGroup = SKILL_GROUPS.find(g => g.id === activeSkillTab);
     if (!activeGroup) return null;
 
-    const { keys, id, label } = activeGroup;
+    const { keys, id } = activeGroup;
+
+    // --- MINDSCAPE SPECIAL RENDERING ---
+    if (id === 'mindscape') {
+      const mindscapeSkills = (details?.skills || []).filter(s => {
+        if (!s.type) return false;
+        if (typeof s.type === 'string') return s.type.startsWith("Mindscape") || s.type.includes("Mindscape");
+        if (Array.isArray(s.type)) return s.type.includes("Mindscape");
+        return false;
+      });
+
+      if (mindscapeSkills.length === 0) {
+        return (
+          <div className="flex items-center justify-center p-12 border border-white/5 rounded-xl bg-[#18181b]/50 text-gray-500 italic">
+            No hay Mindscapes disponibles.
+          </div>
+        );
+      }
+
+      return (
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 animate-fadeIn">
+          {mindscapeSkills.map((skill, idx) => {
+            const mindscapeNumber = Array.isArray(skill.type)
+              ? (idx + 1)
+              : skill.type.replace("Mindscape ", "").replace(/[^\d]/g, '') || (idx + 1);
+
+            return (
+              <div key={idx} className="bg-[#18181b] border border-white/5 rounded-xl p-6 relative overflow-hidden group hover:border-white/20 transition-all h-full">
+                {/* Número Grande de Fondo */}
+                <div className="absolute -right-4 -bottom-4 text-9xl font-black text-white/5 select-none pointer-events-none group-hover:text-white/10 transition-colors">
+                  {mindscapeNumber}
+                </div>
+
+                <div className="flex items-center gap-4 mb-4">
+                  <div className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center border border-white/10 font-bold text-white shrink-0 z-10">
+                    {mindscapeNumber}
+                  </div>
+                  <h4 className="text-xl font-bold text-white z-10">{skill.name || "Mindscape"}</h4>
+                </div>
+
+                <div className="text-gray-300 text-sm leading-relaxed relative z-10">
+                  <HighlightText text={skill.description} skills={details.skills} skillIcons={skillIcons} elementColor={themeColor} />
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      );
+    }
+    // --- END MINDSCAPE SPECIAL RENDERING ---
 
     let groupSkills = [];
     if (Array.isArray(keys)) {
@@ -538,8 +467,7 @@ export default function AgentDetailPage() {
   return (
     <div className="min-h-screen bg-[#09090b] text-white selection:bg-yellow-500/30">
 
-      {/* NAVEGACIÓN LATERAL FLOTANTE */}
-      <SidebarNav agentId={agentId} hasPotential={!!details?.potential} />
+
 
       {/* AVISO BETA (Top of Page) */}
       {agent.leak === "Beta" && (
@@ -693,7 +621,7 @@ export default function AgentDetailPage() {
           <div className="flex flex-col gap-8">
 
             {/* 1. TABS NAVIGATION */}
-            <div className="flex flex-wrap items-center justify-center gap-4 bg-[#18181b]/50 border border-white/5 p-2 rounded-2xl mx-auto w-fit max-w-full overflow-x-auto">
+            <div className="flex flex-wrap items-center justify-center gap-2 lg:gap-4 bg-[#18181b]/50 border border-white/5 p-2 rounded-2xl mx-auto w-full overflow-x-auto selection-none">
               {SKILL_GROUPS.map((group) => {
                 const isActive = activeSkillTab === group.id;
                 return (
@@ -701,15 +629,15 @@ export default function AgentDetailPage() {
                     key={group.id}
                     onClick={() => setActiveSkillTab(group.id)}
                     className={`
-                      relative px-6 py-3 rounded-xl transition-all duration-300 flex items-center gap-3 border
+                      relative px-3 lg:px-6 py-3 rounded-xl transition-all duration-300 flex items-center gap-2 lg:gap-3 border shrink-0
                       ${isActive
-                        ? 'bg-white/10 border-white/20 text-white shadow-lg scale-105 z-10'
+                        ? 'bg-white/10 border-white/20 text-white shadow-lg z-10'
                         : 'bg-transparent border-transparent text-gray-500 hover:bg-white/5 hover:text-gray-300'}
                     `}
                   >
                     {/* Icon Container */}
                     <div className={`
-                      w-6 h-6 rounded flex items-center justify-center transition-opacity
+                      w-5 h-5 lg:w-6 lg:h-6 rounded flex items-center justify-center transition-opacity
                       ${isActive ? 'opacity-100' : 'opacity-50'}
                     `}>
                       <Image
@@ -718,7 +646,7 @@ export default function AgentDetailPage() {
                       />
                     </div>
 
-                    <span className={`text-xs md:text-sm font-bold uppercase tracking-widest whitespace-nowrap`}>
+                    <span className={`text-[10px] lg:text-sm font-bold uppercase tracking-widest whitespace-nowrap`}>
                       {group.label}
                     </span>
 
@@ -739,42 +667,7 @@ export default function AgentDetailPage() {
           </div>
         )}
 
-        {/* MINDSCAPES (Full Width) */}
-        <div id="mindscape" className="mt-8 pt-8 border-t border-white/10">
-          <h2 className="text-2xl font-display italic font-bold text-center tracking-widest mb-8">MINDSCAPE CINEMA</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {(details?.skills || []).filter(s => {
-              if (!s.type) return false;
-              if (typeof s.type === 'string') return s.type.startsWith("Mindscape");
-              if (Array.isArray(s.type)) return s.type.includes("Mindscape");
-              return false;
-            }).map((skill, idx) => {
-              const mindscapeNumber = Array.isArray(skill.type)
-                ? (idx + 1)
-                : skill.type.replace("Mindscape ", "");
 
-              return (
-                <div key={idx} className="bg-[#18181b] border border-white/5 rounded-xl p-6 relative overflow-hidden group hover:border-white/20 transition-all">
-                  {/* Número Grande de Fondo */}
-                  <div className="absolute -right-4 -bottom-4 text-9xl font-black text-white/5 select-none pointer-events-none group-hover:text-white/10 transition-colors">
-                    {mindscapeNumber}
-                  </div>
-
-                  <div className="flex items-center gap-4 mb-4">
-                    <div className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center border border-white/10 font-bold text-white">
-                      {mindscapeNumber}
-                    </div>
-                    <h4 className="text-xl font-bold text-white">{skill.name || "Mindscape"}</h4>
-                  </div>
-
-                  <div className="text-gray-300 text-sm leading-relaxed relative z-10">
-                    <HighlightText text={skill.description} skills={details.skills} skillIcons={skillIcons} elementColor={themeColor} />
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-        </div>
 
 
         {/* Espaciador Final */}
