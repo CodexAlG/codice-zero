@@ -112,7 +112,7 @@ export default function Home() {
             {/* Avatar */}
             <div className="relative w-16 h-16 rounded-full border-2 border-yellow-500/20 group-hover:border-yellow-500/50 transition-colors overflow-hidden shrink-0 shadow-lg">
               <Image
-                src="/assets/creator_ego.jpg"
+                src="/CodiceZero/IconoEgo.jpg"
                 alt="Ego"
                 fill
                 className="object-cover"
@@ -121,12 +121,12 @@ export default function Home() {
 
             {/* Info */}
             <div className="flex flex-col items-start gap-1 z-10">
-              <span className="text-[10px] font-bold uppercase tracking-widest text-gray-500">Project Lead</span>
+              <span className="text-[10px] font-bold uppercase tracking-widest text-gray-500">Líder del Proyecto</span>
               <div className="flex items-center gap-2">
                 <h3 className="text-xl font-bold text-white group-hover:text-yellow-400 transition-colors duration-300">Ego</h3>
                 <div className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse" title="Online"></div>
               </div>
-              <p className="text-xs text-gray-400 italic">"Building for the community."</p>
+              <p className="text-xs text-gray-400 italic">"Construyendo para la comunidad."</p>
             </div>
 
             {/* Discord Icon (Decorativo) */}
