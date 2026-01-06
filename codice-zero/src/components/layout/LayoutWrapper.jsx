@@ -71,7 +71,7 @@ export default function LayoutWrapper({ children }) {
         className="flex-1 w-full h-full overflow-y-auto relative pt-16 lg:pt-0 lg:pl-56 scroll-smooth"
       >
         <div className="w-full min-h-full relative z-10 flex flex-col">
-          <div className="flex-1">
+          <div className="flex-1 flex flex-col">
             {children}
           </div>
           <Footer />
