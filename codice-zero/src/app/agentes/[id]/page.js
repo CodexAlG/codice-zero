@@ -219,6 +219,7 @@ export default function AgentDetailPage() {
   const [potentialLevel, setPotentialLevel] = useState(0); // 0-5
   const [details, setDetails] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
+  const [activeSkillTab, setActiveSkillTab] = useState("basic");
 
   // Load details
   useEffect(() => {
@@ -403,45 +404,61 @@ export default function AgentDetailPage() {
     );
   };
 
-  // --- RENDER GROUP FUNCTION ---
-  const renderGroup = (title, keyOrKeys, iconKey) => {
+  // --- CONSTANTS: SKILL GROUPS ---
+  const SKILL_GROUPS = [
+    { id: 'basic', label: 'ATAQUE BÁSICO', keys: ['Ataque Básico', 'Ataque Normal'], icon: 'Ataque Básico' },
+    { id: 'dodge', label: 'EVASIÓN', keys: 'Evasión', icon: 'Evasión' },
+    { id: 'assist', label: 'ASISTENCIA', keys: 'Asistencia', icon: 'Asistencia' },
+    { id: 'special', label: 'TÉCNICA ESPECIAL', keys: ['Técnica Especial', 'Técnica Especial EX', 'Habilidad Especial', 'Habilidad Especial EX'], icon: 'Técnica Especial' },
+    { id: 'chain', label: 'TÉCNICA DEFINITIVA', keys: ['Técnica Definitiva', 'Definitiva'], icon: 'Técnica Definitiva' },
+    { id: 'passive', label: 'TALENTO PASIVO', keys: ['Pasiva', 'Pasiva Central', 'Habilidad Adicional'], icon: 'Pasiva Central' },
+  ];
+
+  // --- RENDER GROUP FUNCTION (ADAPTED FOR TABS) ---
+  const renderActiveTabContent = () => {
+    const activeGroup = SKILL_GROUPS.find(g => g.id === activeSkillTab);
+    if (!activeGroup) return null;
+
+    const { keys, id, label } = activeGroup;
+
     let groupSkills = [];
-    if (Array.isArray(keyOrKeys)) {
-      keyOrKeys.forEach(k => {
+    if (Array.isArray(keys)) {
+      keys.forEach(k => {
         const found = details?.skills?.filter(s => s.type === k) || [];
         groupSkills = [...groupSkills, ...found];
       });
     } else {
-      groupSkills = details?.skills?.filter(s => s.type === keyOrKeys) || [];
+      groupSkills = details?.skills?.filter(s => s.type === keys) || [];
     }
 
-    if (groupSkills.length === 0) return null;
+    if (groupSkills.length === 0) {
+      return (
+        <div className="flex items-center justify-center p-12 border border-white/5 rounded-xl bg-[#18181b]/50 text-gray-500 italic">
+          No hay habilidades disponibles en esta categoría.
+        </div>
+      );
+    }
 
     // Check if this is the Passive Talent group
-    const isPassiveGroup = title.includes("Pasivo") || title.includes("Pasiva");
+    const isPassiveGroup = id === 'passive';
     const coreLevels = ['0', 'A', 'B', 'C', 'D', 'E', 'F'];
 
-    // Helper to process scaling placeholders {VALOR_1}
+    // Helper to process scaling
     const processScaling = (text) => {
       if (!details?.coreSkillScaling || !text) return text;
-      // coreSkillLevel 0 corresponds to index 0 in scaling array
       const currentScalingValues = details.coreSkillScaling[coreSkillLevel];
       if (!currentScalingValues) return text;
 
-      // START: Custom Colors Logic
       const scalingColors = details.coreSkillScalingColors || [];
-      // END: Custom Colors Logic
 
       return text.replace(/\{VALOR_(\d+)\}/g, (_, number) => {
         const index = parseInt(number) - 1;
         const val = currentScalingValues[index];
 
         if (val !== undefined) {
-          // Check if a specific color is defined for this value index
           if (scalingColors[index]) {
             return `[CV="${scalingColors[index]}"]${val}[/CV]`;
           }
-          // Default Green Highlight
           return `[VAL]${val}[/VAL]`;
         }
         return `{VALOR_${number}}`;
@@ -449,22 +466,15 @@ export default function AgentDetailPage() {
     };
 
     return (
-      <div className="flex flex-col gap-4">
-        {/* Header del Grupo */}
-        <div className="flex items-center gap-3 pb-2 border-b border-white/10 justify-between">
-          <div className="flex items-center gap-3">
-            <div className="w-8 h-8 rounded bg-white/5 flex items-center justify-center">
-              <Image
-                src={skillIcons[iconKey] || skillIcons["Ataque"]}
-                alt={title} width={20} height={20} className="object-contain opacity-80" unoptimized
-              />
-            </div>
-            <h3 className="text-xl font-bold uppercase tracking-wide text-white/90">{title}</h3>
-          </div>
-
-          {/* Selector de Nivel Para Pasiva (Barra Deslizante) */}
-          {isPassiveGroup && details?.coreSkillScaling && (
-            <div className="flex flex-col w-48 lg:w-64 mr-2">
+      <div className="flex flex-col gap-6 animate-fadeIn">
+        {/* Header Específico del Tab Activo (Opcional, ya está el Tab, pero útil para sliders) */}
+        {isPassiveGroup && details?.coreSkillScaling && (
+          <div className="flex justify-end mb-4">
+            <div className="flex flex-col w-full max-w-xs p-4 bg-[#18181b] border border-white/10 rounded-xl">
+              <div className="flex justify-between items-center mb-2">
+                <span className="text-xs font-bold uppercase text-gray-400">Nivel de Core Skill</span>
+                <span className="text-sm font-bold text-white font-mono">{coreLevels[coreSkillLevel]}</span>
+              </div>
               <div className="relative h-6 flex items-center">
                 <input
                   type="range"
@@ -476,40 +486,39 @@ export default function AgentDetailPage() {
                   className="w-full h-1 bg-white/20 rounded-lg appearance-none cursor-pointer accent-white hover:bg-white/30 transition-colors"
                 />
               </div>
-              <div className="flex justify-between px-1">
+              <div className="flex justify-between px-1 mt-1">
                 {coreLevels.map((lvl, idx) => (
                   <span
                     key={lvl}
-                    className={`text-[10px] font-mono font-bold transition-colors ${coreSkillLevel === idx ? 'text-white scale-125' : 'text-gray-600'}`}
+                    className={`text-[10px] font-mono font-bold transition-colors ${coreSkillLevel === idx ? 'text-white' : 'text-gray-600'}`}
                   >
                     {lvl}
                   </span>
                 ))}
               </div>
             </div>
-          )}
-        </div>
+          </div>
+        )}
 
-        {/* Lista de Habilidades del Grupo */}
-        <div className="flex flex-col gap-6">
+        {/* GRID HORIZONTAL DE HABILIDADES */}
+        <div className="grid grid-cols-1 xl:grid-cols-2 gap-6">
           {groupSkills.map((skill, idx) => {
-            // Apply scaling to all groups, not just passive
             const description = processScaling(skill.description);
 
             return (
-              <div key={idx} className="bg-[#18181b] border border-white/5 rounded-xl p-5 hover:bg-white/[0.02] transition-colors relative overflow-hidden">
+              <div key={idx} className="bg-[#18181b] border border-white/5 rounded-xl p-6 hover:bg-white/[0.02] transition-colors relative overflow-hidden group h-full flex flex-col">
                 <div className="absolute left-0 top-0 bottom-0 w-1" style={{ backgroundColor: themeColor }}></div>
 
-                <h4 className="text-lg font-bold text-white mb-2">{skill.name || "Sin nombre"}</h4>
+                <h4 className="text-lg font-bold text-white mb-3 pl-3">{skill.name || "Sin nombre"}</h4>
 
-                <div className="text-gray-300 text-sm leading-relaxed space-y-2 font-sans">
+                <div className="text-gray-300 text-sm leading-relaxed space-y-2 font-sans flex-grow">
                   <HighlightText text={replaceIcons(description)} skills={details.skills} skillIcons={skillIcons} elementColor={themeColor} />
                 </div>
 
                 {/* Multiplicadores Compactos */}
                 {skill.attributes && skill.attributes.length > 0 && (
-                  <div className="mt-4 pt-3 border-t border-white/5 grid grid-cols-2 gap-2">
-                    {skill.attributes.slice(0, 4).map((attr, aIdx) => (
+                  <div className="mt-5 pt-4 border-t border-white/5 grid grid-cols-2 gap-y-2 gap-x-4">
+                    {skill.attributes.slice(0, 6).map((attr, aIdx) => (
                       <div key={aIdx} className="flex justify-between text-xs text-gray-500">
                         <span>{attr.label}</span>
                         <span className="font-mono text-gray-300">{attr.values[attr.values.length - 1]}</span>
@@ -679,22 +688,54 @@ export default function AgentDetailPage() {
           <div className="h-px bg-white/20 flex-1"></div>
         </div>
 
-        {/* Grid de Habilidades Agrupadas */}
+        {/* Grid de Habilidades Agrupadas (TABS UI) */}
         {details?.skills && (
-          <div className="grid grid-cols-1 xl:grid-cols-2 gap-x-8 gap-y-12 items-start">
-            {/* Columna 1 */}
-            <div className="flex flex-col gap-12">
-              {renderGroup("Ataque Básico", ["Ataque Básico", "Ataque Normal"], "Ataque Básico")}
-              {renderGroup("Asistencia", "Asistencia", "Asistencia")}
-              {renderGroup("Técnica Definitiva", ["Técnica Definitiva", "Definitiva"], "Técnica Definitiva")}
+          <div className="flex flex-col gap-8">
+
+            {/* 1. TABS NAVIGATION */}
+            <div className="flex flex-wrap items-center justify-center gap-4 bg-[#18181b]/50 border border-white/5 p-2 rounded-2xl mx-auto w-fit max-w-full overflow-x-auto">
+              {SKILL_GROUPS.map((group) => {
+                const isActive = activeSkillTab === group.id;
+                return (
+                  <button
+                    key={group.id}
+                    onClick={() => setActiveSkillTab(group.id)}
+                    className={`
+                      relative px-6 py-3 rounded-xl transition-all duration-300 flex items-center gap-3 border
+                      ${isActive
+                        ? 'bg-white/10 border-white/20 text-white shadow-lg scale-105 z-10'
+                        : 'bg-transparent border-transparent text-gray-500 hover:bg-white/5 hover:text-gray-300'}
+                    `}
+                  >
+                    {/* Icon Container */}
+                    <div className={`
+                      w-6 h-6 rounded flex items-center justify-center transition-opacity
+                      ${isActive ? 'opacity-100' : 'opacity-50'}
+                    `}>
+                      <Image
+                        src={skillIcons[group.icon] || skillIcons["Ataque"]}
+                        alt={group.label} width={20} height={20} className="object-contain" unoptimized
+                      />
+                    </div>
+
+                    <span className={`text-xs md:text-sm font-bold uppercase tracking-widest whitespace-nowrap`}>
+                      {group.label}
+                    </span>
+
+                    {/* Active Indicator Line */}
+                    {isActive && (
+                      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-1/2 h-[2px]" style={{ backgroundColor: themeColor }}></div>
+                    )}
+                  </button>
+                );
+              })}
             </div>
 
-            {/* Columna 2 */}
-            <div className="flex flex-col gap-12">
-              {renderGroup("Evasión", "Evasión", "Evasión")}
-              {renderGroup("Técnica Especial", ["Técnica Especial", "Técnica Especial EX", "Habilidad Especial", "Habilidad Especial EX"], "Técnica Especial")}
-              {renderGroup("Talento Pasivo", ["Pasiva", "Pasiva Central", "Habilidad Adicional"], "Pasiva Central")}
+            {/* 2. ACTIVE TAB CONTENT AREA */}
+            <div className="min-h-[400px]">
+              {renderActiveTabContent()}
             </div>
+
           </div>
         )}
 
