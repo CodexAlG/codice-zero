@@ -22,10 +22,9 @@ export default {
         energyRegen: "1.2",
     },
     coreStats: {
-        statName: "Ataque", // Inferido
-        valuePerNode:  // Placeholder
+        statName: "atq%", // Inferido
+        valuePerNode: 0, // Placeholder
     },
-
     coreSkillScaling: [
         ["30%", "400"],
         ["30%", "500"],
