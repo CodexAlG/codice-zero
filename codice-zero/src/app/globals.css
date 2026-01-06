@@ -25,6 +25,8 @@ body {
 
   /* Altura completa */
   min-height: 100vh;
+  overflow-x: hidden;
+  /* Prevent horizontal scroll globally */
 
   color: #ededed;
   font-family: Arial, Helvetica, sans-serif;

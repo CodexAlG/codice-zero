@@ -7,6 +7,9 @@ module.exports = {
   ],
   theme: {
     extend: {
+      screens: {
+        'xs': '375px',
+      },
       fontFamily: {
         display: ['var(--font-orbitron)', 'sans-serif'],
         mono: ['var(--font-oxanium)', 'monospace'],

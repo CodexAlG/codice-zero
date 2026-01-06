@@ -45,19 +45,19 @@ export default function Home() {
       <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] pointer-events-none"></div>
 
       {/* Contenido Principal */}
-      <main className="flex-1 flex flex-col items-center justify-center w-full max-w-4xl px-6 text-center mx-auto py-12">
+      <main className="flex-1 flex flex-col items-center justify-center w-full max-w-4xl px-4 sm:px-6 text-center mx-auto py-8 sm:py-12">
 
         <span className="text-xs font-mono text-yellow-500/50 tracking-[0.5em] mb-[-10px] block">SYSTEM.ROOT.ACCESS</span>
 
         {/* Título */}
-        <h1 className="text-6xl md:text-8xl font-display font-black italic text-transparent bg-clip-text bg-gradient-to-b from-yellow-300 to-yellow-600 drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)] mb-6 tracking-tighter pr-4">
+        <h1 className="text-4xl xs:text-5xl sm:text-6xl md:text-8xl font-display font-black italic text-transparent bg-clip-text bg-gradient-to-b from-yellow-300 to-yellow-600 drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)] mb-4 sm:mb-6 tracking-tighter pr-2 sm:pr-4 leading-tight">
           CODICEZERO
         </h1>
 
         {/* Subtítulo */}
         <div className="h-1 w-32 bg-yellow-500 rounded-full mb-8 shadow-[0_0_10px_#eab308]"></div>
 
-        <p className="text-xl md:text-2xl text-gray-200 font-bold mb-4">
+        <p className="text-lg xs:text-xl md:text-2xl text-gray-200 font-bold mb-4">
           La Referencia Estratégica Hispana
         </p>
 
@@ -84,8 +84,8 @@ export default function Home() {
         </div>
 
         {/* CARTA DEL CREADOR (EGO) */}
-        <div className="mb-10 w-full max-w-sm">
-          <div className="relative group bg-[#18181b]/80 border border-white/5 rounded-2xl p-4 flex items-center gap-4 hover:bg-white/[0.02] transition-colors overflow-hidden">
+        <div className="mb-8 sm:mb-10 w-full max-w-[280px] xs:max-w-xs sm:max-w-sm">
+          <div className="relative group bg-[#18181b]/80 border border-white/5 rounded-2xl p-3 sm:p-4 flex items-center gap-3 sm:gap-4 hover:bg-white/[0.02] transition-colors overflow-hidden">
 
             {/* Glow Effect */}
             <div className="absolute inset-0 bg-yellow-500/0 group-hover:bg-yellow-500/5 transition-colors duration-500 pointer-events-none"></div>
