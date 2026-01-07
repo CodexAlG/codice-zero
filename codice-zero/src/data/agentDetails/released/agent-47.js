@@ -25,6 +25,16 @@ export default {
         statName: "crit rate",
         valuePerNode: 4.8
     },
+    materials: {
+        weeklyBoss: {
+            name: "Sustancia Cristalina Nublada",
+            icon: "Item_Clouded_Crystalline_Substance.webp"
+        },
+        eliteBoss: {
+            name: "Datos de Dimensiones Superiores: Núcleo de Corrupción Espinoso",
+            icon: "Item_Higher_Dimensional_Data_Spiked_Corruption_Core.webp"
+        }
+    },
     coreSkillScaling: [
         ["15%", "10%"],
         ["17.5%", "12.5%"],
