@@ -1,13 +1,14 @@
 'use client';
 
 import { useState, useEffect, useMemo } from 'react';
-import { memo } from 'react';
 import Image from 'next/image';
 import { motion, AnimatePresence } from "framer-motion";
 import { bangboos } from '@/data/bangboos';
 import Link from 'next/link';
 import BangbooCard from '@/components/bangboos/BangbooCard';
 import LoadingSpinner from '@/components/ui/LoadingSpinner';
+import FilterCategory from "@/components/filters/FilterCategory";
+import FilterIcon from "@/components/filters/FilterIcon";
 
 export default function BangboosPage() {
     const [activeFilters, setActiveFilters] = useState([]);
@@ -200,64 +201,3 @@ export default function BangboosPage() {
         </>
     );
 }
-
-// COMPONENTE DE CATEGORÍA DE FILTRO (Responsive: Accordion en Móvil, Visible en Desktop)
-const FilterCategory = ({ title, children, isFullWidth = false }) => {
-    const [isOpen, setIsOpen] = useState(false);
-
-    return (
-        <div className={`flex flex-col gap-2 w-full md:w-auto ${isFullWidth ? 'md:w-full' : ''}`}>
-            {/* Título / Toggle */}
-            <button
-                onClick={() => setIsOpen(!isOpen)}
-                className="flex items-center justify-between w-full md:w-auto gap-2 group focus:outline-none"
-            >
-                <span className="text-[10px] font-bold tracking-[0.2em] text-gray-400 group-hover:text-white transition-colors uppercase">
-                    {title}
-                </span>
-                {/* Icono Chevron (Solo visible en Móvil) */}
-                <div className={`md:hidden text-gray-500 transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`}>
-                    <svg width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M1 1L5 5L9 1" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                    </svg>
-                </div>
-            </button>
-
-            {/* Contenido (Collapsible en Móvil, Siempre visible en Desktop) */}
-            <div className={`
-        overflow-hidden transition-all duration-300 ease-in-out
-        ${isOpen ? 'max-h-[500px] opacity-100' : 'max-h-0 opacity-0 md:max-h-none md:opacity-100'}
-        md:block
-      `}>
-                <div className="flex flex-wrap items-center gap-1 p-2 bg-black/40 border border-white/5 rounded-lg shadow-inner">
-                    {children}
-                </div>
-            </div>
-        </div>
-    );
-};
-
-const FilterIcon = memo(({ name, icon, activeFilters, toggleFilter, size = 24 }) => {
-    const isActive = activeFilters.includes(name);
-
-    return (
-        <button
-            onClick={() => toggleFilter(name)}
-            title={name}
-            className={`relative p-2 rounded-lg border-2 transition-all duration-300 group ${isActive
-                ? "border-yellow-500 bg-yellow-500/10 shadow-[0_0_15px_rgba(234,179,8,0.4)] scale-110 z-10 opacity-100"
-                : "border-transparent hover:bg-white/5 opacity-100 hover:scale-105"
-                }`}
-        >
-            <Image
-                src={icon}
-                alt={name}
-                width={size}
-                height={size}
-                className={`object-contain transition-all ${isActive ? "drop-shadow-md" : ""}`}
-            />
-        </button>
-    );
-});
-
-FilterIcon.displayName = 'FilterIcon';
