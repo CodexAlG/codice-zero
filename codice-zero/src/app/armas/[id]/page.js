@@ -91,26 +91,33 @@ export default function WeaponDetail({ params }) {
 
       <div className="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 min-h-screen items-center p-8">
 
-        {/* COLUMNA IZQUIERDA: IMAGEN HERO */}
-        <div className="relative aspect-square flex items-center justify-center w-80 mx-auto">
-          {/* Fondo de aura sutil */}
-          <div className={`absolute inset-0 bg-[${rankColor}] opacity-10 blur-[100px] rounded-full pointer-events-none`}></div>
-          <Image
-            src={weapon.image}
-            alt={weapon.name}
-            fill
-            className="object-contain drop-shadow-2xl z-10"
-            sizes="(max-width: 768px) 50vw, 400px"
-            unoptimized
-          />
-          {/* Icono de Rango Flotante */}
-          <Image
-            src={`/CodiceZero/Rango/Icon_Item_Rank_${weapon.rank}.webp`}
-            alt={weapon.rank}
-            width={80}
-            height={80}
-            className="absolute -top-4 -right-4 z-20 w-15 h-15 drop-shadow-lg"
-          />
+        {/* COLUMNA IZQUIERDA: IMAGEN HERO + MATERIALES */}
+        <div className="flex flex-col items-center justify-center space-y-8">
+          <div className="relative aspect-square flex items-center justify-center w-80 mx-auto">
+            {/* Fondo de aura sutil */}
+            <div className={`absolute inset-0 bg-[${rankColor}] opacity-10 blur-[100px] rounded-full pointer-events-none`}></div>
+            <Image
+              src={weapon.image}
+              alt={weapon.name}
+              fill
+              className="object-contain drop-shadow-2xl z-10"
+              sizes="(max-width: 768px) 50vw, 400px"
+              unoptimized
+            />
+            {/* Icono de Rango Flotante */}
+            <Image
+              src={`/CodiceZero/Rango/Icon_Item_Rank_${weapon.rank}.webp`}
+              alt={weapon.rank}
+              width={80}
+              height={80}
+              className="absolute -top-4 -right-4 z-20 w-15 h-15 drop-shadow-lg"
+            />
+          </div>
+
+          {/* Materiales de Ascensión (Debajo de la imagen) */}
+          <div className="w-full max-w-md">
+            <WeaponAscensionMaterials level={level} weaponRole={weapon.rol} themeColor={rankColor} />
+          </div>
         </div>
 
         {/* COLUMNA DERECHA: INFORMACIÓN UNIFICADA */}
@@ -202,8 +209,6 @@ export default function WeaponDetail({ params }) {
             </div>
           </div>
 
-          {/* Materiales de Ascensión Dinámicos (Movido fuera de la tarjeta) */}
-          <WeaponAscensionMaterials level={level} weaponRole={weapon.rol} themeColor={rankColor} />
 
           {/* 3. Efecto Pasivo (Expandido) */}
           <div className="pt-4 border-t border-white/10 w-full">
