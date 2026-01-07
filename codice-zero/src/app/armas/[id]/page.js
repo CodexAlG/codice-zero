@@ -114,8 +114,8 @@ export default function WeaponDetail({ params }) {
             />
           </div>
 
-          {/* Materiales de Ascensión (Debajo de la imagen) */}
-          <div className="w-full max-w-md">
+          {/* Materiales de Ascensión (Desktop: Columna Izquierda) */}
+          <div className="w-full max-w-md hidden lg:block">
             <WeaponAscensionMaterials level={level} weaponRole={weapon.rol} themeColor={rankColor} />
           </div>
         </div>
@@ -209,6 +209,10 @@ export default function WeaponDetail({ params }) {
             </div>
           </div>
 
+          {/* Materiales de Ascensión (Móvil: Debajo de Stats, Arriba de Pasiva) */}
+          <div className="lg:hidden w-full">
+            <WeaponAscensionMaterials level={level} weaponRole={weapon.rol} themeColor={rankColor} />
+          </div>
 
           {/* 3. Efecto Pasivo (Expandido) */}
           <div className="pt-4 border-t border-white/10 w-full">
