@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { agents } from "@/data/agents";
 
 const TIERS = ["T0", "T0.5", "T1", "T2", "T3", "T4", "T5"];
@@ -269,17 +270,19 @@ export default function DeveloperTierList() {
 
                                     <div className="flex flex-wrap gap-3 justify-center">
                                         {cellAgents.map(agent => (
-                                            <div key={agent.id} className="relative group w-16 h-16 md:w-20 md:h-20 bg-[#18181b] rounded-lg overflow-hidden border border-white/10 hover:border-yellow-500/50 transition-colors shadow-lg">
-                                                <Image
-                                                    src={agent.image || agent.icon}
-                                                    alt={agent.name}
-                                                    fill
-                                                    className={`object-cover ${agent.customStyle ? agent.customStyle.replace('scale-[1.00] group-hover:scale-[1.10]', '') : ''}`}
-                                                />
-                                                {/* Tooltip */}
-                                                <div className="absolute bottom-0 left-0 right-0 bg-black/80 text-[9px] text-center py-0.5 truncate px-1 opacity-0 group-hover:opacity-100 transition-opacity">
-                                                    {agent.name}
-                                                </div>
+                                            <div key={agent.id} className="relative group w-16 h-16 md:w-20 md:h-20 bg-[#18181b] rounded-lg overflow-hidden border border-white/10 hover:border-yellow-500/50 transition-colors shadow-lg cursor-pointer">
+                                                <Link href={`/agentes/${agent.id}`} className="block w-full h-full relative">
+                                                    <Image
+                                                        src={agent.image || agent.icon}
+                                                        alt={agent.name}
+                                                        fill
+                                                        className={`object-cover ${agent.customStyle ? agent.customStyle.replace('scale-[1.00] group-hover:scale-[1.10]', '') : ''}`}
+                                                    />
+                                                    {/* Tooltip */}
+                                                    <div className="absolute bottom-0 left-0 right-0 bg-black/80 text-[9px] text-center py-0.5 truncate px-1 opacity-0 group-hover:opacity-100 transition-opacity z-10">
+                                                        {agent.name}
+                                                    </div>
+                                                </Link>
                                             </div>
                                         ))}
                                     </div>

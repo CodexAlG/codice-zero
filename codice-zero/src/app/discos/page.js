@@ -62,7 +62,7 @@ export default function DiscsPage() {
                 <motion.div
                   key={disc.id}
                   layout
-                  className="flex flex-row h-full bg-[#18181b]/80 border border-white/5 rounded-md overflow-hidden hover:bg-[#18181b] transition-colors"
+                  className="flex flex-row h-full bg-[#18181b]/80 border border-white/5 rounded-md overflow-hidden"
                 >
                   {/* Columna Izquierda: Identidad */}
                   <div className="w-32 flex-shrink-0 bg-black/20 border-r border-white/5 p-4 flex flex-col items-center justify-center gap-2 relative">
