@@ -25,6 +25,16 @@ export default {
     statName: "tasa",
     valuePerNode: 12
   },
+  materials: {
+    weeklyBoss: {
+      name: "Refinamiento del Sicofante",
+      icon: "Item_Sycophants_Refinement.webp",
+    },
+    eliteBoss: {
+      name: "Datos de Dimensiones Superiores: Filo Tóxico",
+      icon: "Item_Higher_Dimensional_Data_Toxic_Edge.webp",
+    }
+  },
   coreSkillScaling: [
     ["12.5%"],
     ["14.6%"],

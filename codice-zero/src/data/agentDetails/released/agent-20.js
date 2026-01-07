@@ -25,6 +25,16 @@ export default {
     statName: "energy%",
     valuePerNode: 0.12
   },
+  materials: {
+    weeklyBoss: {
+      name: "Impulso Vital",
+      icon: "Item_Living_Drive.webp",
+    },
+    eliteBoss: {
+      name: "Datos de Dimensiones Superiores: Puño Descendente",
+      icon: "Item_Higher_Dimensional_Data_Falling_Fist.webp",
+    }
+  },
   coreSkillScaling: [
     ["40%", "50"],
     ["50%", "62"],

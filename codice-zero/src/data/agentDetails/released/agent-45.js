@@ -39,6 +39,16 @@ export default {
       icon: "Item_Higher_Dimensional_Data_Miasmic_Elytron.webp",
     }
   },
+  materials: {
+    weeklyBoss: {
+      name: "Cúspide de Miasma Carmesí",
+      icon: "Item_Crimson_Miasma_Spike.webp"
+    },
+    eliteBoss: {
+      name: "Datos Dimensionales Superiores: Elytron Miásmico",
+      icon: "Item_Higher_Dimensional_Data_Miasmic_Elytron.webp"
+    }
+  },
   coreSkillScaling: [
     [
       "150",

@@ -25,6 +25,16 @@ export default {
     statName: "impact",
     valuePerNode: 6
   },
+  materials: {
+    weeklyBoss: {
+      name: "Zapatos de Baile Finales",
+      icon: "Item_Finale_Dance_Shoes.webp",
+    },
+    eliteBoss: {
+      name: "Datos de Dimensiones Superiores: Persecución Etérea",
+      icon: "Item_Higher_Dimensional_Data_Ethereal_Pursuit.webp",
+    }
+  },
   coreSkillScaling: [
     ["40%"], ["46.6%"], ["53.3%"], ["60%"], ["66.6%"], ["73.3%"], ["80%"] // Placeholders for user to fill
   ],

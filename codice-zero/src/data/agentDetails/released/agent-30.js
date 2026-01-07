@@ -25,6 +25,16 @@ export default {
     statName: "crit rate",
     valuePerNode: 4.8
   },
+  materials: {
+    weeklyBoss: {
+      name: "Impulso Vital",
+      icon: "Item_Living_Drive.webp",
+    },
+    eliteBoss: {
+      name: "Datos de Dimensiones Superiores: Corte Mortal",
+      icon: "Item_Higher_Dimensional_Data_Mortal_Cleave.gif",
+    }
+  },
   coreSkillScaling: [
     ["12.5%", "15%"],
     ["14.5%", "17.5%"],

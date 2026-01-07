@@ -25,6 +25,16 @@ export default {
     statName: "impact",
     valuePerNode: 6
   },
+  materials: {
+    weeklyBoss: {
+      name: "Agarre Feroz",
+      icon: "Item_Ferocious_Grip.gif",
+    },
+    eliteBoss: {
+      name: "Datos de Dimensiones Superiores: Obituario Asesino",
+      icon: "Item_Higher_Dimensional_Data_Murderous_Obituary.webp",
+    }
+  },
   coreSkillScaling: [
     ["32%"],
     ["37.3%"],

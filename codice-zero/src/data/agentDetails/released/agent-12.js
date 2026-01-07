@@ -25,6 +25,16 @@ export default {
     statName: "energia",
     valuePerNode: 0.12
   },
+  materials: {
+    weeklyBoss: {
+      name: "Agarre Feroz",
+      icon: "Item_Ferocious_Grip.gif",
+    },
+    eliteBoss: {
+      name: "Datos de Dimensiones Superiores: Obituario Asesino",
+      icon: "Item_Higher_Dimensional_Data_Murderous_Obituary.webp",
+    }
+  },
   coreSkillScaling: [
     ["20%"],
     ["25%"],

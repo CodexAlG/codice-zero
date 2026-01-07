@@ -25,6 +25,16 @@ export default {
     statName: "impact",
     valuePerNode: 6
   },
+  materials: {
+    weeklyBoss: {
+      name: "Motor Escarlata",
+      icon: "Item_Scarlet_Engine.webp",
+    },
+    eliteBoss: {
+      name: "Datos de Dimensiones Superiores: Terror Carmesí",
+      icon: "Item_Higher_Dimensional_Data_Crimson_Awe.webp",
+    }
+  },
   coreSkillScaling: [
     ["1%", "10%"],
     ["1.17%", "11.7%"],

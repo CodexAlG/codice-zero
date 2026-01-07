@@ -25,6 +25,16 @@ export default {
     statName: "crit rate",
     valuePerNode: 4.8
   },
+  materials: {
+    weeklyBoss: {
+      name: "Exuvia del Refinamiento",
+      icon: "Item_Exuvia_of_Refinement.webp",
+    },
+    eliteBoss: {
+      name: "Datos de Dimensiones Superiores: Élitro Miasmático",
+      icon: "Item_Higher_Dimensional_Data_Miasmic_Elytron.webp",
+    }
+  },
   coreSkillScaling: [
     ["10%", "10%", "20%", "25"],
     ["11.7%", "11.7%", "23.3%", "29.2"],

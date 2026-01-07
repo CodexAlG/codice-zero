@@ -25,6 +25,16 @@ export default {
     statName: "crit rate",
     valuePerNode: 4.8
   },
+  materials: {
+    weeklyBoss: {
+      name: "Zapatos de Baile Finales",
+      icon: "Item_Finale_Dance_Shoes.webp",
+    },
+    eliteBoss: {
+      name: "Datos de Dimensiones Superiores: Obituario Asesino",
+      icon: "Item_Higher_Dimensional_Data_Murderous_Obituary.webp",
+    }
+  },
   coreSkillScaling: [
     ["25", "75", "500%", "140%", "50%", "1,700%"],
     ["50", "150", "583%", "163%", "58%", "1,978%"],

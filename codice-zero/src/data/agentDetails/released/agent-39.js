@@ -25,6 +25,16 @@ export default {
     statName: "crit dmg",
     valuePerNode: 9.6
   },
+  materials: {
+    weeklyBoss: {
+      name: "Exuvia del Refinamiento",
+      icon: "Item_Exuvia_of_Refinement.webp",
+    },
+    eliteBoss: {
+      name: "Datos de Dimensiones Superiores: Corte Mortal",
+      icon: "Item_Higher_Dimensional_Data_Mortal_Cleave.gif",
+    }
+  },
   coreSkillScaling: [
     ["100", "15%", "100", "15%", "12.5%"],
     ["225", "17.5%", "225", "17.5%", "14.5%"],

@@ -25,6 +25,16 @@ export default {
         statName: "atq%", // Inferido
         valuePerNode: 0, // Placeholder
     },
+    materials: {
+        weeklyBoss: {
+            name: "Sustancia Cristalina Nublada",
+            icon: "Item_Clouded_Crystalline_Substance.webp"
+        },
+        eliteBoss: {
+            name: "item_0",
+            icon: ""
+        }
+    },
     coreSkillScaling: [
         ["30%", "400"],
         ["30%", "500"],

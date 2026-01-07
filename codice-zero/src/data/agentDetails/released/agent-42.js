@@ -25,6 +25,16 @@ export default {
     statName: "energia",
     valuePerNode: 0.12
   },
+  materials: {
+    weeklyBoss: {
+      name: "Pico de miasma carmesí",
+      icon: "Item_Crimson_Miasma_Spike.webp",
+    },
+    eliteBoss: {
+      name: "Datos de dimensiones superiores: Acero onírico corrupto",
+      icon: "Item_Higher_Dimensional_Data_Corrupted_Dreamsteel.webp",
+    }
+  },
   coreSkillScaling: [
     ["10%"],
     ["11.7%"],

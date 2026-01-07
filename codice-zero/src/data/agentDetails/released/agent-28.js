@@ -25,6 +25,16 @@ export default {
     statName: "crit rate",
     valuePerNode: 4.8
   },
+  materials: {
+    weeklyBoss: {
+      name: "Motor Escarlata",
+      icon: "Item_Scarlet_Engine.webp",
+    },
+    eliteBoss: {
+      name: "Datos de Dimensiones Superiores: Malicia de Acero",
+      icon: "Item_Higher_Dimensional_Data_Steel_Malice.webp",
+    }
+  },
   coreSkillScaling: [
     ["12.5%"],
     ["14.6%"],

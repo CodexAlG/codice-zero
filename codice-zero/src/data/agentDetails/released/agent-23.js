@@ -25,6 +25,16 @@ export default {
     statName: "tasa",
     valuePerNode: 12
   },
+  materials: {
+    weeklyBoss: {
+      name: "Impulso Vital",
+      icon: "Item_Living_Drive.webp",
+    },
+    eliteBoss: {
+      name: "Datos de Dimensiones Superiores: Avance Destructivo",
+      icon: "Item_Higher_Dimensional_Data_Destructive_Advance.webp",
+    }
+  },
   coreSkillScaling: [
     ["125%", "10%", "3200.0%"],
     ["145%", "11.6%", "3200.0%"],

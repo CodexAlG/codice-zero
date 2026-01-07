@@ -25,6 +25,16 @@ export default {
     statName: "crit rate",
     valuePerNode: 4.8
   },
+  materials: {
+    weeklyBoss: {
+      name: "Agarre Feroz",
+      icon: "Item_Ferocious_Grip.gif",
+    },
+    eliteBoss: {
+      name: "Datos de Dimensiones Superiores: Terror Carmesí",
+      icon: "Item_Higher_Dimensional_Data_Crimson_Awe.webp",
+    }
+  },
   coreSkillScaling: [
     ["30%"],
     ["35%"],

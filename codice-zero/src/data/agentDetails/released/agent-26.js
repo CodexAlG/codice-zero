@@ -25,6 +25,16 @@ export default {
     statName: "maestria",
     valuePerNode: 30
   },
+  materials: {
+    weeklyBoss: {
+      name: "Refinamiento del Sicofante",
+      icon: "Item_Sycophants_Refinement.webp",
+    },
+    eliteBoss: {
+      name: "Datos de Dimensiones Superiores: Dragón Atronador",
+      icon: "Item_Higher_Dimensional_Data_Thunderous_Dragon.webp",
+    }
+  },
   coreSkillScaling: [
     ["750%", "14%"],
     ["875%", "15%"],

@@ -33,7 +33,17 @@ export default {
         "text-[#22d3ee]", // Hielo (Cyan)
         "text-[#d946ef]"  // Val 6 (Etéreo)
     ],
-    coreSkillScaling: [
+    materials: {
+    weeklyBoss: {
+      name: "Sustancia Cristalina Nublada",
+      icon: "Item_Clouded_Crystalline_Substance.webp",
+    },
+    eliteBoss: {
+      name: "Datos de Dimensiones Superiores: Puño Descendente",
+      icon: "Item_Higher_Dimensional_Data_Falling_Fist.webp",
+    }
+  },
+  coreSkillScaling: [
         ["3.1%", "1.6%", "4%", "0.3%", "0.4%", "6.2%"], // Usuario agregará los valores del Core Skill
         ["3.6%", "1.9%", "4.7%", "0.35%", "0.5%", "7.2%"],
         ["4.1%", "2.1%", "5.3%", "0.4%", "0.5%", "8.2%"],

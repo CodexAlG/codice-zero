@@ -29,6 +29,16 @@ export default {
     statName: "atk%",
     valuePerNode: 4
   },
+  materials: {
+    weeklyBoss: {
+      name: "Pico de Miasma Carmesí",
+      icon: "Item_Crimson_Miasma_Spike.webp",
+    },
+    eliteBoss: {
+      name: "Datos de Dimensiones Superiores: Acero Onírico Corrupto",
+      icon: "Item_Higher_Dimensional_Data_Corrupted_Dreamsteel.webp",
+    }
+  },
   coreSkillScaling: [
     ["25%", "10%"],
     ["29.2%", "11.7%"],

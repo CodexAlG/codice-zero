@@ -25,6 +25,16 @@ export default {
     statName: "energia",
     valuePerNode: 0.12
   },
+  materials: {
+    weeklyBoss: {
+      name: "Zapatos de Baile Finales",
+      icon: "Item_Finale_Dance_Shoes.webp",
+    },
+    eliteBoss: {
+      name: "Datos de Dimensiones Superiores: Dragón Atronador",
+      icon: "Item_Higher_Dimensional_Data_Thunderous_Dragon.webp",
+    }
+  },
   coreSkillScaling: [
     ["20%", "25.0%", "2950.0", "22%"],
     ["20%", "25.0%", "2950.0", "24%"],

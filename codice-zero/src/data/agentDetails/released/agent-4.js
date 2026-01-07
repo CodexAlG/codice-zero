@@ -25,6 +25,16 @@ export default {
     statName: "impact",
     valuePerNode: 6
   },
+  materials: {
+    weeklyBoss: {
+      name: "Impulso Vital",
+      icon: "Item_Living_Drive.webp",
+    },
+    eliteBoss: {
+      name: "Datos de Dimensiones Superiores: Malicia de Acero",
+      icon: "Item_Higher_Dimensional_Data_Steel_Malice.webp",
+    }
+  },
   coreSkillScaling: [
     ["30%"],
     ["35%"],

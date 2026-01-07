@@ -25,6 +25,16 @@ export default {
     statName: "pen ratio",
     valuePerNode: 4.8
   },
+  materials: {
+    weeklyBoss: {
+      name: "Zapatos de Baile Finales",
+      icon: "Item_Finale_Dance_Shoes.webp",
+    },
+    eliteBoss: {
+      name: "Datos de Dimensiones Superiores: Avance Destructivo",
+      icon: "Item_Higher_Dimensional_Data_Destructive_Advance.webp",
+    }
+  },
   coreSkillScaling: [
     ["6%"],
     ["7.5%"],

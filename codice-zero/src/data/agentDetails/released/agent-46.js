@@ -25,6 +25,16 @@ export default {
     statName: "hp%",
     valuePerNode: 6
   },
+  materials: {
+    weeklyBoss: {
+      name: "Sustancia Cristalina Nublada",
+      icon: "Item_Clouded_Crystalline_Substance.webp",
+    },
+    eliteBoss: {
+      name: "Datos de Dimensiones Superiores: Núcleo de Corrupción Espinoso",
+      icon: "Item_Higher_Dimensional_Data_Spiked_Corruption_Core.webp",
+    }
+  },
   coreSkillScaling: [
     ["24.0%", "0.8%", "100", "1.7%"],
     ["24.0%", "0.9%", "250", "1.7%"],

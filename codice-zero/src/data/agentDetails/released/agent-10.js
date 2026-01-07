@@ -25,6 +25,16 @@ export default {
     statName: "tasa",
     valuePerNode: 12
   },
+  materials: {
+    weeklyBoss: {
+      name: "Agarre Feroz",
+      icon: "Item_Ferocious_Grip.gif",
+    },
+    eliteBoss: {
+      name: "Datos de Dimensiones Superiores: Puño Descendente",
+      icon: "Item_Higher_Dimensional_Data_Falling_Fist.webp",
+    }
+  },
   coreSkillScaling: [
     ["20%", "0.1%"], // CERo
     ["25%", "0.11%"], // A

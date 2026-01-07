@@ -25,6 +25,16 @@ export default {
     statName: "impact",
     valuePerNode: 6
   },
+  materials: {
+    weeklyBoss: {
+      name: "Impulso Vital",
+      icon: "Item_Living_Drive.webp",
+    },
+    eliteBoss: {
+      name: "Datos de Dimensiones Superiores: Persecución Etérea",
+      icon: "Item_Higher_Dimensional_Data_Ethereal_Pursuit.webp",
+    }
+  },
   coreSkillScaling: [
     ["2%"], ["2.4%"], ["2.7%"], ["3%"], ["3.4%"], ["3.7%"], ["4%"] // Placeholders for user to fill
   ],

@@ -25,6 +25,16 @@ export default {
     statName: "crit rate",
     valuePerNode: 4.8
   },
+  materials: {
+    weeklyBoss: {
+      name: "Motor Escarlata",
+      icon: "Item_Scarlet_Engine.webp",
+    },
+    eliteBoss: {
+      name: "Datos de Dimensiones Superiores: Élitro Miasmático",
+      icon: "Item_Higher_Dimensional_Data_Miasmic_Elytron.webp",
+    }
+  },
   coreSkillScaling: [
     ["12.5%", "42.5%", "130", "340"],
     ["14.6%", "49.6%", "155", "400"],

@@ -33,6 +33,16 @@ export default {
     "text-[#22d3ee]", // Hielo (Cyan)
     "text-green-400"  // Default/Extra (Green)
   ],
+  materials: {
+    weeklyBoss: {
+      name: "Refinamiento del Sicofante",
+      icon: "Item_Sycophants_Refinement.webp",
+    },
+    eliteBoss: {
+      name: "Datos de Dimensiones Superiores: Dragón Atronador",
+      icon: "Item_Higher_Dimensional_Data_Thunderous_Dragon.webp",
+    }
+  },
   coreSkillScaling: [
     ["3.07%", "1.6%", "4%", "0.37%", "0.54%", "12%"],
     ["3.59%", "1.86%", "4.66%", "0.44%", "0.63%", "12%"],

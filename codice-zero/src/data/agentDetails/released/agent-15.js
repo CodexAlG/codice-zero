@@ -25,6 +25,16 @@ export default {
     statName: "energy",
     valuePerNode: 0.12
   },
+  materials: {
+    weeklyBoss: {
+      name: "Zapatos de Baile Finales",
+      icon: "Item_Finale_Dance_Shoes.webp",
+    },
+    eliteBoss: {
+      name: "Datos de Dimensiones Superiores: Obituario Asesino",
+      icon: "Item_Higher_Dimensional_Data_Murderous_Obituary.webp",
+    }
+  },
   coreSkillScaling: [
     ["10%"],
     ["12%"],
