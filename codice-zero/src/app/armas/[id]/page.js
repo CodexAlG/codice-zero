@@ -5,8 +5,7 @@ import HighlightText from "@/components/ui/HighlightText";
 import Link from "next/link";
 import { weapons } from "@/data/weapons"; // Usamos la base de datos única
 import { ArrowLeft, TriangleAlert } from "lucide-react"; // O tu icono de regreso
-
-// Helper para normalizar strings
+import WeaponAscensionMaterials from "@/components/weapons/WeaponAscensionMaterials";
 const normalize = (str) => str ? str.normalize("NFD").replace(/[\u0300-\u036f]/g, "") : "";
 
 export default function WeaponDetail({ params }) {
@@ -200,6 +199,9 @@ export default function WeaponDetail({ params }) {
                   </p>
                 </div>
               </div>
+
+              {/* Materiales de Ascensión Dinámicos */}
+              <WeaponAscensionMaterials level={level} weaponRole={weapon.rol} themeColor={rankColor} />
             </div>
           </div>
 
