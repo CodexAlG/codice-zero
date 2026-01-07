@@ -27,12 +27,12 @@ export default {
   },
   materials: {
     weeklyBoss: {
-      name: "Agarre Feroz",
-      icon: "Item_Ferocious_Grip.gif",
+      name: "Ferocious Grip",
+      icon: "Item_Ferocious_Grip.webp",
     },
     eliteBoss: {
-      name: "Datos de Dimensiones Superiores: Corte Mortal",
-      icon: "Item_Higher_Dimensional_Data_Mortal_Cleave.gif",
+      name: "Higher Dimensional Data: Mortal Cleave",
+      icon: "Item_Higher_Dimensional_Data_Mortal_Cleave.webp",
     }
   },
   coreSkillScaling: [

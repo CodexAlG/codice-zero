@@ -27,11 +27,11 @@ export default {
   },
   materials: {
     weeklyBoss: {
-      name: "Exuvia del Refinamiento",
+      name: "Exuvia of Refinement",
       icon: "Item_Exuvia_of_Refinement.webp",
     },
     eliteBoss: {
-      name: "Datos de Dimensiones Superiores: Élitro Miasmático",
+      name: "Higher Dimensional Data: Miasmic Elytron",
       icon: "Item_Higher_Dimensional_Data_Miasmic_Elytron.webp",
     }
   },

@@ -27,11 +27,11 @@ export default {
   },
   materials: {
     weeklyBoss: {
-      name: "Motor Escarlata",
+      name: "Scarlet Engine",
       icon: "Item_Scarlet_Engine.webp",
     },
     eliteBoss: {
-      name: "Datos de Dimensiones Superiores: Terror Carmesí",
+      name: "Higher Dimensional Data: Crimson Awe",
       icon: "Item_Higher_Dimensional_Data_Crimson_Awe.webp",
     }
   },

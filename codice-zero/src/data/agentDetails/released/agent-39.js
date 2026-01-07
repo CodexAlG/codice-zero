@@ -27,12 +27,12 @@ export default {
   },
   materials: {
     weeklyBoss: {
-      name: "Exuvia del Refinamiento",
+      name: "Exuvia of Refinement",
       icon: "Item_Exuvia_of_Refinement.webp",
     },
     eliteBoss: {
-      name: "Datos de Dimensiones Superiores: Corte Mortal",
-      icon: "Item_Higher_Dimensional_Data_Mortal_Cleave.gif",
+      name: "Higher Dimensional Data: Mortal Cleave",
+      icon: "Item_Higher_Dimensional_Data_Mortal_Cleave.webp",
     }
   },
   coreSkillScaling: [

@@ -27,12 +27,12 @@ export default {
   },
   materials: {
     weeklyBoss: {
-      name: "Impulso Vital",
+      name: "Living Drive",
       icon: "Item_Living_Drive.webp",
     },
     eliteBoss: {
-      name: "Datos de Dimensiones Superiores: Corte Mortal",
-      icon: "Item_Higher_Dimensional_Data_Mortal_Cleave.gif",
+      name: "Higher Dimensional Data: Mortal Cleave",
+      icon: "Item_Higher_Dimensional_Data_Mortal_Cleave.webp",
     }
   },
   coreSkillScaling: [

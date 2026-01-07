@@ -27,11 +27,11 @@ export default {
   },
   materials: {
     weeklyBoss: {
-      name: "Motor Escarlata",
+      name: "Scarlet Engine",
       icon: "Item_Scarlet_Engine.webp",
     },
     eliteBoss: {
-      name: "Datos de Dimensiones Superiores: Fantasma Sigiloso",
+      name: "Higher Dimensional Data: Stealth Phantom",
       icon: "Item_Higher_Dimensional_Data_Stealth_Phantom.webp",
     }
   },

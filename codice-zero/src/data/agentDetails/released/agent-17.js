@@ -27,11 +27,11 @@ export default {
   },
   materials: {
     weeklyBoss: {
-      name: "Impulso Vital",
+      name: "Living Drive",
       icon: "Item_Living_Drive.webp",
     },
     eliteBoss: {
-      name: "Datos de Dimensiones Superiores: Avance Destructivo",
+      name: "Higher Dimensional Data: Destructive Advance",
       icon: "Item_Higher_Dimensional_Data_Destructive_Advance.webp",
     }
   },

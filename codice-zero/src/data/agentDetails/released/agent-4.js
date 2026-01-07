@@ -27,11 +27,11 @@ export default {
   },
   materials: {
     weeklyBoss: {
-      name: "Impulso Vital",
+      name: "Living Drive",
       icon: "Item_Living_Drive.webp",
     },
     eliteBoss: {
-      name: "Datos de Dimensiones Superiores: Malicia de Acero",
+      name: "Higher Dimensional Data: Steel Malice",
       icon: "Item_Higher_Dimensional_Data_Steel_Malice.webp",
     }
   },

@@ -31,11 +31,11 @@ export default {
   },
   materials: {
     weeklyBoss: {
-      name: "Pico de Miasma Carmesí",
+      name: "Pico de miasma carmesí",
       icon: "Item_Crimson_Miasma_Spike.webp",
     },
     eliteBoss: {
-      name: "Datos de Dimensiones Superiores: Acero Onírico Corrupto",
+      name: "Datos de dimensiones superiores: Acero onírico corrupto",
       icon: "Item_Higher_Dimensional_Data_Corrupted_Dreamsteel.webp",
     }
   },

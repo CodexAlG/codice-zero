@@ -27,12 +27,12 @@ export default {
   },
   materials: {
     weeklyBoss: {
-      name: "Refinamiento del Sicofante",
-      icon: "Item_Sycophants_Refinement.webp",
+      name: "Sycophant's Refinement",
+      icon: "Item_Sycophant's_Refinement.webp"
     },
     eliteBoss: {
-      name: "Datos de Dimensiones Superiores: Filo Tóxico",
-      icon: "Item_Higher_Dimensional_Data_Toxic_Edge.webp",
+      name: "Higher Dimensional Data: Toxic Edge",
+      icon: "Item_Higher_Dimensional_Data_Toxic_Edge.webp"
     }
   },
   coreSkillScaling: [

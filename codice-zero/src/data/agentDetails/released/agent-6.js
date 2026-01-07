@@ -27,11 +27,11 @@ export default {
   },
   materials: {
     weeklyBoss: {
-      name: "Zapatos de Baile Finales",
+      name: "Finale Dance Shoes",
       icon: "Item_Finale_Dance_Shoes.webp",
     },
     eliteBoss: {
-      name: "Datos de Dimensiones Superiores: Avance Destructivo",
+      name: "Higher Dimensional Data: Destructive Advance",
       icon: "Item_Higher_Dimensional_Data_Destructive_Advance.webp",
     }
   },

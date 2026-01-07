@@ -27,11 +27,11 @@ export default {
   },
   materials: {
     weeklyBoss: {
-      name: "Agarre Feroz",
-      icon: "Item_Ferocious_Grip.gif",
+      name: "Ferocious Grip",
+      icon: "Item_Ferocious_Grip.webp",
     },
     eliteBoss: {
-      name: "Datos de Dimensiones Superiores: Puño Descendente",
+      name: "Higher Dimensional Data: Falling Fist",
       icon: "Item_Higher_Dimensional_Data_Falling_Fist.webp",
     }
   },
