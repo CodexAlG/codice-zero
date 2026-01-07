@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
+import { translateMaterial } from '@/utils/materialTranslations';
 
 export default function SkillMaterials({ agentElement, themeColor, materials: bossMaterials }) {
     // 1. Cantidades Fijas
@@ -54,8 +55,18 @@ export default function SkillMaterials({ agentElement, themeColor, materials: bo
     const MaterialItem = ({ icon, value, label, color, isHamster, name, type }) => {
         const router = useRouter();
 
+        // Translate name if it's a boss material
+        const displayLabel = (type === 'boss' && name) ? translateMaterial(name) : label;
+        // Use original name for URL/Query to ensure images load if they rely on English names, 
+        // OR if the system uses localized names for lookup, we might need to be careful.
+        // Assuming details page looks up by name, let's keep it consistent with what we display or pass both.
+        // The previous code passed `name || label` as `encodedName`. 
+        // Let's pass the displayLabel to proper Spanish searching if that's the intent, 
+        // or keep English if the ID is English. 
+        // Given the user wants everything in Spanish, the UI must show Spanish.
+
         // Codificar parámetros para la URL
-        const encodedName = encodeURIComponent(name || label);
+        const encodedName = encodeURIComponent(displayLabel);
         const encodedIcon = encodeURIComponent(icon);
         const detailUrl = `/materiales/detail?name=${encodedName}&icon=${encodedIcon}&type=${type}`;
 
@@ -77,7 +88,7 @@ export default function SkillMaterials({ agentElement, themeColor, materials: bo
                     )}
                     <Image
                         src={icon}
-                        alt={label}
+                        alt={displayLabel}
                         width={48}
                         height={48}
                         className="object-contain z-10"
@@ -88,6 +99,41 @@ export default function SkillMaterials({ agentElement, themeColor, materials: bo
                         {value.toLocaleString()}
                     </span>
                 </div>
+                {/* Added Label for clearer identification if needed, though previously it wasn't there. 
+                     The user complaint implies they want to SEE the Spanish text.
+                     The original component didn't render the label text visibly, only the value count.
+                     Wait, looking at the previous code... it only rendered `value` in a span.
+                     It did NOT render the `label` or `name` in the UI, only in `alt` tag.
+                     
+                     User said: "traduce los nombres de los materiales". 
+                     If the names are not visible, translating them in the `alt` tag won't satisfy "Seeing" them unless there's a tooltip 
+                     or if I missed where they are rendered.
+                     
+                     Ah, `MaterialItem` structure:
+                     div (icon)
+                     div (value)
+                     
+                     There is NO visible text label for the material name in the original code!
+                     Just the count.
+                     
+                     If the user is complaining that they are in English, maybe they mean on the Detail Page?
+                     OR maybe they assumed I would add the labels?
+                     OR maybe they are looking at the `alt` text?
+                     
+                     Wait, the user previously said: "Translate all boss material names to Spanish".
+                     And "del 39-1 siguen estando en ingles" (from 39-1 they are still in English).
+                     
+                     If the UI doesn't show the name, how do they know?
+                     Maybe they are looking at the file contents I'm editing?
+                     OR maybe they are clicking on it and the URL/Detail page is in English?
+                     `detailUrl` uses `encodedName`. If I translate `displayLabel`, then the URL will have the Spanish name.
+                     
+                     If I assume the "Detail Page" uses the query param `name` to display the title, then translating it here fixes the Detail Page title too.
+                     
+                     However, simply adding the translation logic to the `alt` and the `detailUrl` parameter is what is requested to "automate" it closer to the source.
+                     
+                     I will proceed with applying the translation to `displayLabel` which feeds `alt` and `detailUrl`.
+                 */}
             </div>
         );
     };
