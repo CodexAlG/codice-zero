@@ -28,7 +28,7 @@ export default {
   materials: {
     weeklyBoss: {
       name: "Refinamiento del Sicofante",
-      icon: "Item_Sycophants_Refinement.webp",
+      icon: "Item_Sycophant's_Refinement.webp",
     },
     eliteBoss: {
       name: "Datos de Dimensiones Superiores: Dragón Atronador",

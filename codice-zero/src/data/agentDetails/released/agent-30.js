@@ -32,7 +32,7 @@ export default {
     },
     eliteBoss: {
       name: "Higher Dimensional Data: Mortal Cleave",
-      icon: "Item_Higher_Dimensional_Data_Mortal_Cleave.webp",
+      icon: "Item_Higher_Dimensional_Data_Mortal_Cleave.gif",
     }
   },
   coreSkillScaling: [

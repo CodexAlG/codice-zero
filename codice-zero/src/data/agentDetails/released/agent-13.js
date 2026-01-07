@@ -28,7 +28,7 @@ export default {
   materials: {
     weeklyBoss: {
       name: "Ferocious Grip",
-      icon: "Item_Ferocious_Grip.webp",
+      icon: "Item_Ferocious_Grip.gif",
     },
     eliteBoss: {
       name: "Higher Dimensional Data: Ethereal Pursuit",
