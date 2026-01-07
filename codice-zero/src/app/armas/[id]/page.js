@@ -199,11 +199,11 @@ export default function WeaponDetail({ params }) {
                   </p>
                 </div>
               </div>
-
-              {/* Materiales de Ascensión Dinámicos */}
-              <WeaponAscensionMaterials level={level} weaponRole={weapon.rol} themeColor={rankColor} />
             </div>
           </div>
+
+          {/* Materiales de Ascensión Dinámicos (Movido fuera de la tarjeta) */}
+          <WeaponAscensionMaterials level={level} weaponRole={weapon.rol} themeColor={rankColor} />
 
           {/* 3. Efecto Pasivo (Expandido) */}
           <div className="pt-4 border-t border-white/10 w-full">

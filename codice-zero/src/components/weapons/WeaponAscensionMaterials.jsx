@@ -12,23 +12,23 @@ export default function WeaponAscensionMaterials({ level, weaponRole, themeColor
 
         if (lvl >= 10) {
             basic = 4;
-            denny = 12000;
+            denny += 12000;
         }
         if (lvl >= 20) {
             advanced = 12;
-            denny = 28000; // 24k + 56k
+            denny += 28000;
         }
         if (lvl >= 30) {
-            advanced = 32; // 12 + 20
-            denny = 60000; // 80k + 120k
+            advanced = 32;
+            denny += 60000;
         }
         if (lvl >= 40) {
             expert = 10;
-            denny = 100000; // 200k + 200k
+            denny += 100000;
         }
         if (lvl >= 50) {
-            expert = 30; // 10 + 20
-            denny = 200000; // 400k + 400k
+            expert = 30;
+            denny += 200000;
         }
 
         return { denny, basic, advanced, expert };
