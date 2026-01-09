@@ -478,6 +478,24 @@ export const versionedAgents = {
                         tags: ["Físico", "Ataque Básico"]
                     },
                     {
+                        type: "Evasión",
+                        name: "Evasión: No Me Puedes Tocar",
+                        description: "Presiona [Icono Evasión] para activar: Una evasión rápida. El personaje es invulnerable mientras usa esta habilidad.",
+                        tags: ["Evasión"]
+                    },
+                    {
+                        type: "Ataque de Embestida",
+                        name: "Ataque de Embestida: Martillo Celestial",
+                        description: "Presiona [Icono Ataque] durante una esquiva para activar: Lanza enemigos al frente hacia el aire, infligiendo Daño Físico.",
+                        tags: ["Físico", "Ataque de Embestida"]
+                    },
+                    {
+                        type: "Contador de Evasión",
+                        name: "Contador de Evasión: Delusión Triplex",
+                        description: "Presiona [Icono Ataque] durante una (Evasión Perfecta) para activar: Martilla continuamente a los enemigos en frente, infligiendo Daño Físico. El personaje es invulnerable mientras usa esta habilidad.",
+                        tags: ["Físico", "Contador de Evasión"]
+                    },
+                    {
                         type: "Técnica Especial",
                         name: "Técnica Especial: Lanzador Estelar",
                         description: "Presiona [Icono Especial] para activar: Dispara Bubble Pop desde el Air Gun para atacar enemigos adelante, infligiendo Daño Físico. Después de activar esta habilidad, (Bubble Pop se une) al combate.",
@@ -506,6 +524,24 @@ export const versionedAgents = {
                         name: "Definitiva: ¡Aplástalo Todo!",
                         description: "Cuando el Nivel de Decibelios está al (Máximo), presiona [Icono Definitiva] para activar: Desata ataques consecutivos de martillo, luego dispara Bubble Pop que explota, infligiendo masivo Daño Físico a enemigos en rango. Cuando un ataque pesado es activado, (Velo Etereo: Encore Fantasía) es activado; gana 3 (Garras Afiladas). Cuando un ataque pesado golpea a un enemigo, activa (Quick Assist). El personaje es invulnerable mientras usa esta habilidad.",
                         tags: ["Físico", "Técnica Definitiva"]
+                    },
+                    {
+                        type: "Asistencia",
+                        name: "Asistencia Rápida: Bombardeo de Golpes Salvajes",
+                        description: "Cuando el personaje activo es lanzado, presiona [Icono Assist] para activar: Golpea a los enemigos en frente con golpes de martillo consecutivos, infligiendo Daño Físico. El personaje es invulnerable mientras usa esta habilidad.",
+                        tags: ["Físico", "Asistencia"]
+                    },
+                    {
+                        type: "Asistencia",
+                        name: "Asistencia Defensiva: Pánico Escénico",
+                        description: "Cuando el personaje en el campo está a punto de ser atacado, presiona [Icono Assist] para activar: Parry al ataque del enemigo, causando Aturdimiento masivo. El personaje es invulnerable mientras usa esta habilidad.",
+                        tags: ["Asistencia", "Aturdimiento"]
+                    },
+                    {
+                        type: "Asistencia",
+                        name: "Seguimiento de Asistencia: Taladros Rebotantes",
+                        description: "Presiona [Icono Ataque] después de una Asistencia Defensiva para activar: Monta el martillo neumático y salta continuamente, infligiendo Daño Físico masivo a enemigos en frente. El personaje es invulnerable mientras usa esta habilidad.",
+                        tags: ["Físico", "Asistencia"]
                     },
                     {
                         type: "Pasiva Central",
