@@ -409,12 +409,23 @@ export default function BetaDiffViewer() {
         const currentOldRefinement = oldEffect.refinements?.[refinementLevel];
         const currentNewRefinement = newEffect.refinements?.[refinementLevel];
 
-        // Create modified descriptions with refinement values
+        // Function to inject refinement values into description
         const getDescriptionWithValues = (description, refinement) => {
-            if (!refinement) return description;
+            if (!refinement || !description) return description;
+
             let result = description;
-            // Replace any {VALUE_X} or similar placeholders with actual values from refinement
-            // For now, we'll keep the original description since values are shown in refinements
+            // Inject values from refinement object dynamically
+            Object.entries(refinement).forEach(([key, value]) => {
+                if (key === 'level') return;
+
+                // Create a pattern to find this value in the text
+                const escapedValue = value.toString().replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+                const regex = new RegExp(`\\b${escapedValue}\\b`, 'g');
+
+                // Replace with marked text for highlighting
+                result = result.replace(regex, `{${value}}`);
+            });
+
             return result;
         };
 
@@ -483,37 +494,12 @@ export default function BetaDiffViewer() {
                         <div className="effect-description">
                             {renderDiffWithHighlight(descDiff, 'left', beforeData)}
                         </div>
-                        {currentOldRefinement && (
-                            <div className="refinements mt-4">
-                                <h5 className="text-sm text-gray-400 mb-2">Valores ({REFINEMENT_LABELS[refinementLevel]})</h5>
-                                <div className="refinement-values grid gap-1">
-                                    {Object.entries(currentOldRefinement).map(([key, value]) => {
-                                        if (key === 'level') return null;
-                                        return <div key={key} className="refinement-item text-sm p-2 bg-gray-800/30 rounded">{key}: {value}</div>;
-                                    })}
-                                </div>
-                            </div>
-                        )}
                     </div>
                     <div className="effect-column effect-after">
                         <h4>Después ({versionAfter})</h4>
                         <div className="effect-description">
                             {renderDiffWithHighlight(descDiff, 'right', afterData)}
                         </div>
-                        {currentNewRefinement && (
-                            <div className="refinements mt-4">
-                                <h5 className="text-sm text-gray-400 mb-2">Valores ({REFINEMENT_LABELS[refinementLevel]})</h5>
-                                <div className="refinement-values grid gap-1">
-                                    {Object.entries(currentNewRefinement).map(([key, value]) => {
-                                        if (key === 'level') return null;
-                                        const oldValue = currentOldRefinement?.[key];
-                                        const comparison = compareNumber(oldValue, value);
-                                        const className = comparison.status === 'buff' ? 'refinement-buff' : comparison.status === 'nerf' ? 'refinement-nerf' : '';
-                                        return <div key={key} className={`refinement-item text-sm p-2 rounded ${className}`}>{key}: {value}</div>;
-                                    })}
-                                </div>
-                            </div>
-                        )}
                     </div>
                 </div>
             </div>
