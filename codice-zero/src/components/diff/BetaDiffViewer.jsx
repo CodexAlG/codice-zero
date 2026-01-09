@@ -268,6 +268,9 @@ export default function BetaDiffViewer() {
         const oldSkills = beforeData.skills;
         const newSkills = afterData.skills;
 
+        // Check if we're comparing the same version
+        const isSameVersion = versionBefore === versionAfter;
+
         // Group skills by type from the NEW version (target of comparison)
         const skillsByType = newSkills.reduce((acc, skill) => {
             const type = skill.type;
@@ -289,7 +292,8 @@ export default function BetaDiffViewer() {
 
                         const hasChanges = nameDiff.some(t => t.added || t.removed) || descDiff.some(t => t.added || t.removed);
 
-                        if (!hasChanges) return null;
+                        // If comparing same version, show all skills. Otherwise, only show changed ones
+                        if (!isSameVersion && !hasChanges) return null;
 
                         return { newSkill, oldSkill, nameDiff, descDiff };
                     }).filter(Boolean);
