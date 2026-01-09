@@ -1903,7 +1903,7 @@ export const weapons = [
     },
     effect: {
       title: "Aria Test W-Engine",
-      description: "Aumenta el ATK del equipador en un 18%. Cuando el equipador entra al campo o activa un (Ataque Especial) o (Técnica Especial EX), gana un buff: el DAÑO tratado a enemigos afligidos con Anomalía de Atributo Etereo aumenta en un 15%, y el DAÑO tratado a enemigos afligidos con cualquier Anomalía de Atributo aumenta en un 15%. Este efecto dura 12s, y los triggers repetidos reinician la duración. El efecto se elimina cuando el equipador sale del campo.",
+      description: "Aumenta el ATK del equipador en un 18%. Cuando el equipador entra al campo o activa un (Ataque Especial) o (Técnica Especial EX), gana un buff: el DAÑO tratado a enemigos afligidos con Anomalía de Atributo Etéreo aumenta en un 15%, y el DAÑO tratado a enemigos afligidos con cualquier Anomalía de Atributo aumenta en un 15%. Este efecto dura 12s, y los triggers repetidos reinician la duración. El efecto se elimina cuando el equipador sale del campo.",
       refinements: [ // Tabla de Mejora (R1 - R5)
         { level: 1, DañoIgnored: "18%", Daño: "15%", DañoCritico: "15%" },
         { level: 2, DañoIgnored: "20.7%", Daño: "17.3%", DañoCritico: "17.3%" },

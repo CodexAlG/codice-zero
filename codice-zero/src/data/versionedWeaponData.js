@@ -5,12 +5,12 @@ export const versionedWeapons = {
     5540: {
         id: 5540,
         name: "Aria Test W-Engine",
-        rol: "Ataque",
+        rol: "Anomalia",
         versions: {
             "v2.6.1": {
                 versionLabel: "v2.6.1",
-                passive: {
-                    name: "Aria Test W-Engine",
+                effect: {
+                    title: "Aria Test W-Engine",
                     description: "Aumenta el ATK del equipador en un 18%. Cuando el equipador entra al campo o activa un (Ataque Especial) o (Técnica Especial EX), gana un buff: el DAÑO tratado a enemigos afligidos con Anomalía de Atributo Etereo aumenta en un 15%, y el DAÑO tratado a enemigos afligidos con cualquier Anomalía de Atributo aumenta en un 15%. Este efecto dura 12s, y los triggers repetidos reinician la duración. El efecto se elimina cuando el equipador sale del campo.",
                     refinements: [ // Tabla de Mejora (R1 - R5)
                         { level: 1, DañoIgnored: "18%", Daño: "15%", DañoCritico: "15%" },
@@ -23,8 +23,8 @@ export const versionedWeapons = {
             },
             "v2.6.2": {
                 versionLabel: "v2.6.2",
-                passive: {
-                    name: "Aria Test W-Engine",
+                effect: {
+                    title: "Aria Test W-Engine",
                     description: "Aumenta el ATK del equipador en un 18%. Cuando el equipador entra al campo o activa un (Ataque Especial) o (Técnica Especial EX), gana un buff: el DAÑO tratado a enemigos afligidos con Anomalía de Atributo Etereo aumenta en un 15%, y el DAÑO tratado a enemigos afligidos con cualquier Anomalía de Atributo aumenta en un 15%. Este efecto dura 12s, y los triggers repetidos reinician la duración. El efecto se elimina cuando el equipador sale del campo.",
                     refinements: [ // Tabla de Mejora (R1 - R5)
                         { level: 1, DañoIgnored: "18%", Daño: "15%", DañoCritico: "15%" },
@@ -41,12 +41,12 @@ export const versionedWeapons = {
     5541: {
         id: 5541,
         name: "Song of Thoughts",
-        rol: "Anomalía",
+        rol: "Soporte",
         versions: {
             "v2.6.1": {
                 versionLabel: "v2.6.1",
-                passive: {
-                    name: "Sunna Test W-Engine",
+                effect: {
+                    title: "Sunna Test W-Engine",
                     description: "Aumenta la Regeneración de Energía del equipador en 0.4 por segundo. Cuando el equipador usa una (Técnica Especial EX) para infligir Daño Físico, otorga un buff a todo el escuadrón: Aumenta el DAÑO tratado en un 12.5% durante 6s. Puede acumularse hasta 2 veces, los triggers repetidos reinician la duración. Cuando tiene 2 acumulaciones, adicionalmente aumenta el ATK en un 12.5%. Solo una instancia de este efecto puede existir en el mismo escuadrón.",
                     refinements: [ // Tabla de Mejora (R1 - R5)
                         { level: 1, DañoIgnored: "0.4", Daño: "12.5%", DañoCritico: "12.5%" },
@@ -59,8 +59,8 @@ export const versionedWeapons = {
             },
             "v2.6.2": {
                 versionLabel: "v2.6.2",
-                passive: {
-                    name: "Monólogo Decibel",
+                effect: {
+                    title: "Monólogo Decibel",
                     description: "Aumenta la Regeneración de Energía del equipador en 0.4 por segundo. Cuando el equipador usa una (Técnica Especial EX) para infligir Daño Físico, otorga un buff a todos los miembros del escuadrón: Aumenta el DAÑO tratado en un 12.5% durante 6s. Puede acumularse hasta 2 veces, los triggers repetidos reinician la duración. Cuando tiene 2 acumulaciones, adicionalmente aumenta el ATK en un 12.5%. Solo una instancia de este efecto puede existir en el mismo escuadrón.",
                     refinements: [ // Tabla de Mejora (R1 - R5)
                         { level: 1, DañoIgnored: "0.4", Daño: "12.5%", DañoCritico: "12.5%" },
