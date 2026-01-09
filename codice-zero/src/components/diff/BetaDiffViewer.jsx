@@ -218,7 +218,7 @@ export default function BetaDiffViewer() {
     // Helper to restore icons after diffing
     const restoreIcons = (text) => {
         if (!text) return "";
-        return text.replace(/__ICON_([^_]+)__/g, (match, type) => {
+        return text.replace(/__ICON_(.*?)__/g, (match, type) => {
             return `[Icono ${type.replace(/_/g, ' ')}]`;
         });
     };
