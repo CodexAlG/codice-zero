@@ -484,14 +484,14 @@ export const versionedAgents = {
                         tags: ["Evasión"]
                     },
                     {
-                        type: "Ataque de Embestida",
-                        name: "Ataque de Embestida: Martillo Celestial",
+                        type: "Evasión",
+                        name: "Ataque de Carrera: Martillo Celestial",
                         description: "Presiona [Icono Ataque] durante una esquiva para activar: Lanza enemigos al frente hacia el aire, infligiendo Daño Físico.",
                         tags: ["Físico", "Ataque de Embestida"]
                     },
                     {
-                        type: "Contador de Evasión",
-                        name: "Contador de Evasión: Delusión Triplex",
+                        type: "Evasiñon",
+                        name: "Contraataque de Evasió: Delusión Triplex",
                         description: "Presiona [Icono Ataque] durante una (Evasión Perfecta) para activar: Martilla continuamente a los enemigos en frente, infligiendo Daño Físico. El personaje es invulnerable mientras usa esta habilidad.",
                         tags: ["Físico", "Contador de Evasión"]
                     },
