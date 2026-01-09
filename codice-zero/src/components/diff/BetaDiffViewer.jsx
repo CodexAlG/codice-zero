@@ -292,8 +292,14 @@ export default function BetaDiffViewer() {
 
                         const hasChanges = nameDiff.some(t => t.added || t.removed) || descDiff.some(t => t.added || t.removed);
 
-                        // If comparing same version, show all skills. Otherwise, only show changed ones
-                        if (!isSameVersion && !hasChanges) return null;
+                        // If comparing same version, show all skills
+                        // If comparing different versions, show all skills (to handle renamed skills)
+                        if (!isSameVersion) {
+                            // Different versions: show all skills from target
+                            return { newSkill, oldSkill, nameDiff, descDiff };
+                        }
+                        // Same version: only show if there are changes (shouldn't happen but keep for safety)
+                        if (!hasChanges) return null;
 
                         return { newSkill, oldSkill, nameDiff, descDiff };
                     }).filter(Boolean);
