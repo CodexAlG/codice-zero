@@ -207,6 +207,22 @@ export default function BetaDiffViewer() {
         });
     };
 
+    // Helper to protect icons from being split by diffWords
+    const protectIcons = (text) => {
+        if (!text) return "";
+        return text.replace(/\[Icono ([^\]]+)\]/g, (match, type) => {
+            return `__ICON_${type.replace(/\s+/g, '_')}__`;
+        });
+    };
+
+    // Helper to restore icons after diffing
+    const restoreIcons = (text) => {
+        if (!text) return "";
+        return text.replace(/__ICON_([^_]+)__/g, (match, type) => {
+            return `[Icono ${type.replace(/_/g, ' ')}]`;
+        });
+    };
+
     // Helper to render diff tokens with HighlightText
     const renderDiffWithHighlight = (diffTokens, side, data) => {
         if (!diffTokens || diffTokens.length === 0) return [];
@@ -221,8 +237,11 @@ export default function BetaDiffViewer() {
                 if (part.added) className = "diff-added";
             }
 
+            // 0. Restore icons from protection tokens
+            let value = restoreIcons(part.value);
+
             // 1. Process scaling placeholders
-            let processedText = processScaling(part.value, data);
+            let processedText = processScaling(value, data);
 
             // 2. Replace icons placeholders [Icono ...] with HTML <img> tags
             processedText = replaceIcons(processedText);
@@ -249,36 +268,33 @@ export default function BetaDiffViewer() {
         const oldSkills = beforeData.skills;
         const newSkills = afterData.skills;
 
-        // Group skills by type to avoid repeating headers
-        const groupedSkills = oldSkills.reduce((acc, skill, index) => {
+        // Group skills by type from the NEW version (target of comparison)
+        const skillsByType = newSkills.reduce((acc, skill) => {
             const type = skill.type;
             if (!acc[type]) acc[type] = [];
-            // Match with new skill by index (assuming order is preserved)
-            acc[type].push({ old: skill, new: newSkills[index] });
+            acc[type].push(skill);
             return acc;
         }, {});
 
         return (
             <div className="skills-section">
                 <h3>Habilidades</h3>
-                {Object.entries(groupedSkills).map(([type, skills]) => {
+                {Object.entries(skillsByType).map(([type, groupSkills]) => {
                     // Filter skills that have changes
-                    const filteredSkillsInGroup = skills.reduce((acc, pair) => {
-                        const { old: oldSkill, new: newSkill } = pair;
-                        if (!newSkill) return acc;
+                    const comparisonItems = groupSkills.map(newSkill => {
+                        const oldSkill = oldSkills.find(s => s.name === newSkill.name) || { name: "", description: "" };
 
-                        const nameDiff = compareText(oldSkill.name, newSkill.name);
-                        const descDiff = compareText(oldSkill.description, newSkill.description);
+                        const nameDiff = compareText(protectIcons(oldSkill.name), protectIcons(newSkill.name));
+                        const descDiff = compareText(protectIcons(oldSkill.description), protectIcons(newSkill.description));
 
                         const hasChanges = nameDiff.some(t => t.added || t.removed) || descDiff.some(t => t.added || t.removed);
 
-                        if (hasChanges) {
-                            acc.push({ ...pair, nameDiff, descDiff });
-                        }
-                        return acc;
-                    }, []);
+                        if (!hasChanges) return null;
 
-                    if (filteredSkillsInGroup.length === 0) return null;
+                        return { newSkill, oldSkill, nameDiff, descDiff };
+                    }).filter(Boolean);
+
+                    if (comparisonItems.length === 0) return null;
 
                     return (
                         <div key={type} className="skill-group">
@@ -336,8 +352,8 @@ export default function BetaDiffViewer() {
                                     </div>
                                 )}
                             </div>
-                            {filteredSkillsInGroup.map((skillData, idx) => {
-                                const { old: oldSkill, new: newSkill, nameDiff, descDiff } = skillData;
+                            {comparisonItems.map((item, idx) => {
+                                const { nameDiff, descDiff } = item;
 
                                 return (
                                     <div key={idx} className="skill-comparison-item">
