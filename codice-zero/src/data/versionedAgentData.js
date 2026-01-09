@@ -490,8 +490,8 @@ export const versionedAgents = {
                         tags: ["Físico", "Ataque de Embestida"]
                     },
                     {
-                        type: "Evasiñon",
-                        name: "Contraataque de Evasió: Delusión Triplex",
+                        type: "Evasión",
+                        name: "Contraataque de Evasión: Delusión Triplex",
                         description: "Presiona [Icono Ataque] durante una (Evasión Perfecta) para activar: Martilla continuamente a los enemigos en frente, infligiendo Daño Físico. El personaje es invulnerable mientras usa esta habilidad.",
                         tags: ["Físico", "Contador de Evasión"]
                     },
