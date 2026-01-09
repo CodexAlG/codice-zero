@@ -404,49 +404,116 @@ export default function BetaDiffViewer() {
 
         const oldEffect = beforeData.effect;
         const newEffect = afterData.effect;
-        const descDiff = compareText(oldEffect.description, newEffect.description);
+
+        // Get refinement values for current level
+        const currentOldRefinement = oldEffect.refinements?.[refinementLevel];
+        const currentNewRefinement = newEffect.refinements?.[refinementLevel];
+
+        // Create modified descriptions with refinement values
+        const getDescriptionWithValues = (description, refinement) => {
+            if (!refinement) return description;
+            let result = description;
+            // Replace any {VALUE_X} or similar placeholders with actual values from refinement
+            // For now, we'll keep the original description since values are shown in refinements
+            return result;
+        };
+
+        const oldDescWithValues = getDescriptionWithValues(oldEffect.description, currentOldRefinement);
+        const newDescWithValues = getDescriptionWithValues(newEffect.description, currentNewRefinement);
+
+        const descDiff = compareText(oldDescWithValues, newDescWithValues);
 
         return (
             <div className="effect-section">
                 <h3>Efecto del Arma</h3>
                 <div className="effect-title">{oldEffect.title}</div>
+
+                {/* Refinement Level Slider */}
+                {oldEffect.refinements && oldEffect.refinements.length > 0 && (
+                    <div className="mb-6">
+                        <div className="flex items-center justify-between mb-2">
+                            <span className="text-sm text-gray-400 uppercase tracking-wider">Nivel de Refinamiento</span>
+                            <span className="text-sm font-mono text-yellow-500">{REFINEMENT_LABELS[refinementLevel]}</span>
+                        </div>
+                        <div className="relative h-8 w-full flex items-center bg-gray-800/50 rounded-lg px-2">
+                            {/* Input Range */}
+                            <input
+                                type="range"
+                                min="0"
+                                max="4"
+                                step="1"
+                                value={refinementLevel}
+                                onChange={(e) => setRefinementLevel(Number(e.target.value))}
+                                className="w-full absolute z-20 cursor-pointer opacity-0 h-8"
+                                title={`Nivel: ${REFINEMENT_LABELS[refinementLevel]}`}
+                            />
+
+                            {/* Visual Markers */}
+                            <div className="w-full flex justify-between absolute z-10 pointer-events-none px-1">
+                                {REFINEMENT_LABELS.map((label, idx) => (
+                                    <div key={label} className={`relative flex flex-col items-center group transition-all duration-300 ${idx === refinementLevel ? 'scale-110' : ''}`}>
+                                        <div
+                                            className={`w-3 h-3 rounded-full mb-2 transition-all duration-300 ${idx === refinementLevel
+                                                ? 'bg-white shadow-[0_0_10px_rgba(255,255,255,0.8)] scale-125'
+                                                : idx < refinementLevel
+                                                    ? 'bg-yellow-500/50'
+                                                    : 'bg-gray-700'
+                                                }`}
+                                        ></div>
+                                        <span className={`text-[10px] font-mono font-bold transition-colors duration-300 ${idx === refinementLevel ? 'text-white' : 'text-gray-600'
+                                            }`}>
+                                            {label}
+                                        </span>
+                                    </div>
+                                ))}
+                            </div>
+
+                            {/* Progress Bar */}
+                            <div
+                                className="absolute h-1 bg-yellow-500/50 rounded-full transition-all duration-300 left-0"
+                                style={{ width: `${(refinementLevel / 4) * 100}%` }}
+                            ></div>
+                        </div>
+                    </div>
+                )}
+
                 <div className="effect-grid">
                     <div className="effect-column effect-before">
                         <h4>Antes ({versionBefore})</h4>
                         <div className="effect-description">
-                            {renderDiffText(descDiff, 'left')}
+                            {renderDiffWithHighlight(descDiff, 'left', beforeData)}
                         </div>
-                        <div className="refinements">
-                            <h5>Mejoras (R1)</h5>
-                            {oldEffect.refinements && oldEffect.refinements[0] && (
-                                <div className="refinement-values">
-                                    {Object.entries(oldEffect.refinements[0]).map(([key, value]) => {
+                        {currentOldRefinement && (
+                            <div className="refinements mt-4">
+                                <h5 className="text-sm text-gray-400 mb-2">Valores ({REFINEMENT_LABELS[refinementLevel]})</h5>
+                                <div className="refinement-values grid gap-1">
+                                    {Object.entries(currentOldRefinement).map(([key, value]) => {
                                         if (key === 'level') return null;
-                                        return <div key={key} className="refinement-item">{key}: {value}</div>;
+                                        return <div key={key} className="refinement-item text-sm p-2 bg-gray-800/30 rounded">{key}: {value}</div>;
                                     })}
                                 </div>
-                            )}
-                        </div>
+                            </div>
+                        )}
                     </div>
                     <div className="effect-column effect-after">
                         <h4>Después ({versionAfter})</h4>
                         <div className="effect-description">
-                            {renderDiffText(descDiff, 'right')}
+                            {renderDiffWithHighlight(descDiff, 'right', afterData)}
                         </div>
-                        <div className="refinements">
-                            <h5>Mejoras (R1)</h5>
-                            {newEffect.refinements && newEffect.refinements[0] && (
-                                <div className="refinement-values">
-                                    {Object.entries(newEffect.refinements[0]).map(([key, value]) => {
+                        {currentNewRefinement && (
+                            <div className="refinements mt-4">
+                                <h5 className="text-sm text-gray-400 mb-2">Valores ({REFINEMENT_LABELS[refinementLevel]})</h5>
+                                <div className="refinement-values grid gap-1">
+                                    {Object.entries(currentNewRefinement).map(([key, value]) => {
                                         if (key === 'level') return null;
-                                        const oldValue = oldEffect.refinements[0][key];
+                                        const oldValue = currentOldRefinement?.[key];
                                         const comparison = compareNumber(oldValue, value);
                                         const className = comparison.status === 'buff' ? 'refinement-buff' : comparison.status === 'nerf' ? 'refinement-nerf' : '';
-                                        return <div key={key} className={`refinement-item ${className}`}>{key}: {value}</div>;
+                                        return <div key={key} className={`refinement-item text-sm p-2 rounded ${className}`}>{key}: {value}</div>;
                                     })}
                                 </div>
-                            )}
-                        </div>
+                            </div>
+                        )}
                     </div>
                 </div>
             </div>
