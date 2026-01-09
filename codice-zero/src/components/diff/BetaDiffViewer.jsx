@@ -261,96 +261,112 @@ export default function BetaDiffViewer() {
         return (
             <div className="skills-section">
                 <h3>Habilidades</h3>
-                {Object.entries(groupedSkills).map(([type, skills]) => (
-                    <div key={type} className="skill-group">
-                        <div className="flex items-center justify-between mb-2">
-                            <div className="skill-type">{type}</div>
-                            {/* Slider para Pasiva Central */}
-                            {(type === "Pasiva Central" || type === "Pasiva") && (
-                                <div className="flex flex-col items-center w-64 mr-4">
-                                    <h5 className="text-xs text-gray-400 font-bold uppercase tracking-wider mb-2 self-start w-full text-left flex items-center gap-2">
-                                        <span className="w-1 h-3 bg-yellow-500 rounded-full"></span>
-                                        Talento Pasivo
-                                    </h5>
-                                    <div className="relative w-full h-8 flex items-center">
-                                        {/* Línea de fondo */}
-                                        <div className="absolute w-full h-1 bg-white/10 rounded-full"></div>
+                {Object.entries(groupedSkills).map(([type, skills]) => {
+                    // Filter skills that have changes
+                    const filteredSkillsInGroup = skills.reduce((acc, pair) => {
+                        const { old: oldSkill, new: newSkill } = pair;
+                        if (!newSkill) return acc;
 
-                                        {/* Input Range Personalizado */}
-                                        <input
-                                            type="range"
-                                            min="0"
-                                            max="6"
-                                            step="1"
-                                            value={corePassiveLevel}
-                                            onChange={(e) => setCorePassiveLevel(Number(e.target.value))}
-                                            className="w-full absolute z-20 cursor-pointer opacity-0 h-8"
-                                            title={`Nivel: ${CORE_PASSIVE_LABELS[corePassiveLevel]}`}
-                                        />
+                        const nameDiff = compareText(oldSkill.name, newSkill.name);
+                        const descDiff = compareText(oldSkill.description, newSkill.description);
 
-                                        {/* Marcadores Visuales */}
-                                        <div className="w-full flex justify-between absolute z-10 pointer-events-none px-1">
-                                            {CORE_PASSIVE_LABELS.map((label, idx) => (
-                                                <div key={label} className={`relative flex flex-col items-center group transition-all duration-300 ${idx === corePassiveLevel ? 'scale-110' : ''}`}>
-                                                    <div
-                                                        className={`w-3 h-3 rounded-full mb-2 transition-all duration-300 ${idx === corePassiveLevel
-                                                            ? 'bg-white shadow-[0_0_10px_rgba(255,255,255,0.8)] scale-125'
-                                                            : idx < corePassiveLevel
-                                                                ? 'bg-yellow-500/50'
-                                                                : 'bg-gray-700'
-                                                            }`}
-                                                    ></div>
-                                                    <span className={`text-[10px] font-mono font-bold transition-colors duration-300 ${idx === corePassiveLevel ? 'text-white' : 'text-gray-600'
-                                                        }`}>
-                                                        {label}
-                                                    </span>
+                        const hasChanges = nameDiff.some(t => t.added || t.removed) || descDiff.some(t => t.added || t.removed);
+
+                        if (hasChanges) {
+                            acc.push({ ...pair, nameDiff, descDiff });
+                        }
+                        return acc;
+                    }, []);
+
+                    if (filteredSkillsInGroup.length === 0) return null;
+
+                    return (
+                        <div key={type} className="skill-group">
+                            <div className="flex items-center justify-between mb-2">
+                                <div className="skill-type">{type}</div>
+                                {/* Slider para Pasiva Central */}
+                                {(type === "Pasiva Central" || type === "Pasiva") && (
+                                    <div className="flex flex-col items-center w-64 mr-4">
+                                        <h5 className="text-xs text-gray-400 font-bold uppercase tracking-wider mb-2 self-start w-full text-left flex items-center gap-2">
+                                            <span className="w-1 h-3 bg-yellow-500 rounded-full"></span>
+                                            Talento Pasivo
+                                        </h5>
+                                        <div className="relative w-full h-8 flex items-center">
+                                            {/* Línea de fondo */}
+                                            <div className="absolute w-full h-1 bg-white/10 rounded-full"></div>
+
+                                            {/* Input Range Personalizado */}
+                                            <input
+                                                type="range"
+                                                min="0"
+                                                max="6"
+                                                step="1"
+                                                value={corePassiveLevel}
+                                                onChange={(e) => setCorePassiveLevel(Number(e.target.value))}
+                                                className="w-full absolute z-20 cursor-pointer opacity-0 h-8"
+                                                title={`Nivel: ${CORE_PASSIVE_LABELS[corePassiveLevel]}`}
+                                            />
+
+                                            {/* Marcadores Visuales */}
+                                            <div className="w-full flex justify-between absolute z-10 pointer-events-none px-1">
+                                                {CORE_PASSIVE_LABELS.map((label, idx) => (
+                                                    <div key={label} className={`relative flex flex-col items-center group transition-all duration-300 ${idx === corePassiveLevel ? 'scale-110' : ''}`}>
+                                                        <div
+                                                            className={`w-3 h-3 rounded-full mb-2 transition-all duration-300 ${idx === corePassiveLevel
+                                                                ? 'bg-white shadow-[0_0_10px_rgba(255,255,255,0.8)] scale-125'
+                                                                : idx < corePassiveLevel
+                                                                    ? 'bg-yellow-500/50'
+                                                                    : 'bg-gray-700'
+                                                                }`}
+                                                        ></div>
+                                                        <span className={`text-[10px] font-mono font-bold transition-colors duration-300 ${idx === corePassiveLevel ? 'text-white' : 'text-gray-600'
+                                                            }`}>
+                                                            {label}
+                                                        </span>
+                                                    </div>
+                                                ))}
+                                            </div>
+
+                                            {/* Barra de Progreso (Relleno) */}
+                                            <div
+                                                className="absolute h-1 bg-yellow-500/50 rounded-full transition-all duration-300 left-0"
+                                                style={{ width: `${(corePassiveLevel / 6) * 100}%` }}
+                                            ></div>
+                                        </div>
+                                    </div>
+                                )}
+                            </div>
+                            {filteredSkillsInGroup.map((skillData, idx) => {
+                                const { old: oldSkill, new: newSkill, nameDiff, descDiff } = skillData;
+
+                                return (
+                                    <div key={idx} className="skill-comparison-item">
+                                        <div className="skill-grid">
+                                            <div className="skill-column skill-before">
+                                                {idx === 0 && <h4>Antes ({versionBefore})</h4>}
+                                                <div className="skill-name">
+                                                    {renderDiffWithHighlight(nameDiff, 'left', beforeData)}
                                                 </div>
-                                            ))}
+                                                <div className="skill-description">
+                                                    {renderDiffWithHighlight(descDiff, 'left', beforeData)}
+                                                </div>
+                                            </div>
+                                            <div className="skill-column skill-after">
+                                                {idx === 0 && <h4>Después ({versionAfter})</h4>}
+                                                <div className="skill-name">
+                                                    {renderDiffWithHighlight(nameDiff, 'right', afterData)}
+                                                </div>
+                                                <div className="skill-description">
+                                                    {renderDiffWithHighlight(descDiff, 'right', afterData)}
+                                                </div>
+                                            </div>
                                         </div>
-
-                                        {/* Barra de Progreso (Relleno) */}
-                                        <div
-                                            className="absolute h-1 bg-yellow-500/50 rounded-full transition-all duration-300 left-0"
-                                            style={{ width: `${(corePassiveLevel / 6) * 100}%` }}
-                                        ></div>
                                     </div>
-                                </div>
-                            )}
+                                );
+                            })}
                         </div>
-                        {skills.map((skillPair, idx) => {
-                            const { old: oldSkill, new: newSkill } = skillPair;
-                            if (!newSkill) return null;
-
-                            const nameDiff = compareText(oldSkill.name, newSkill.name);
-                            const descDiff = compareText(oldSkill.description, newSkill.description);
-
-                            return (
-                                <div key={idx} className="skill-comparison-item">
-                                    <div className="skill-grid">
-                                        <div className="skill-column skill-before">
-                                            {idx === 0 && <h4>Antes ({versionBefore})</h4>}
-                                            <div className="skill-name">
-                                                {renderDiffWithHighlight(nameDiff, 'left', beforeData)}
-                                            </div>
-                                            <div className="skill-description">
-                                                {renderDiffWithHighlight(descDiff, 'left', beforeData)}
-                                            </div>
-                                        </div>
-                                        <div className="skill-column skill-after">
-                                            {idx === 0 && <h4>Después ({versionAfter})</h4>}
-                                            <div className="skill-name">
-                                                {renderDiffWithHighlight(nameDiff, 'right', afterData)}
-                                            </div>
-                                            <div className="skill-description">
-                                                {renderDiffWithHighlight(descDiff, 'right', afterData)}
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            );
-                        })}
-                    </div>
-                ))}
+                    );
+                })}
             </div>
         );
     };

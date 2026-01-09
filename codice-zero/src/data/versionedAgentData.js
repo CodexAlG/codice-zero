@@ -222,7 +222,7 @@ export const versionedAgents = {
                     {
                         type: "Técnica Especial",
                         name: "Técnica Especial: Cambio de Golpe",
-                        description: "Después del 4to golpe de [Ataque Básico], 3-Rank [Ataque de Carga], [Seguimiento de Asistencia], [Ataque en Cadena], y [Definitiva], presiona [Icono Especial] para activar: Lanza una patada más rápida hacia adelante, causando Daño Etéreo. Si el ataque golpea a un enemigo, 1 (Energía de Soporte) será generada en el campo después de que el ataque completa. El nivel de Anti-Interrupción se incrementa mientras usa esta habilidad.",
+                        description: "Después del 4to golpe de (Ataque Básico), 3-Rank (Ataque de Carga), (Seguimiento de Asistencia), (Ataque en Cadena), y (Definitiva), presiona [Icono Especial] para activar: Lanza una patada más rápida hacia adelante, causando Daño Etéreo. Si el ataque golpea a un enemigo, 1 (Energía de Soporte) será generada en el campo después de que el ataque completa. El nivel de Anti-Interrupción se incrementa mientras usa esta habilidad.",
                         tags: ["Etéreo", "Técnica Especial"]
                     },
                     {
@@ -234,49 +234,49 @@ export const versionedAgents = {
                     {
                         type: "Técnica Especial EX",
                         name: "Técnica Especial EX: Fase 2",
-                        description: "[Técnica Especial EX:] Después de la activación, con suficiente Energía, presiona [Icono Especial EX] para activar: Desata un poderoso ataque descendente adicional, causando Daño Etéreo. Si el ataque golpea a un enemigo, 3 (Energía de Soporte) serán generadas en el campo después de que el ataque completa. El personaje es invulnerable mientras usa esta habilidad.",
+                        description: "(Técnica Especial EX) Después de la activación, con suficiente Energía, presiona [Icono Especial EX] para activar: Desata un poderoso ataque descendente adicional, causando Daño Etéreo. Si el ataque golpea a un enemigo, 3 (Energía de Soporte) serán generadas en el campo después de que el ataque completa. El personaje es invulnerable mientras usa esta habilidad.",
                         tags: ["Etéreo", "Técnica Especial EX"]
                     },
                     {
                         type: "Técnica Definitiva",
                         name: "Ataque en Cadena",
-                        description: "Cuando un [Ataque en Cadena] es activado, selecciona el personaje para activar: Desata ataques consecutivos hacia adelante, causando masivo Daño Etéreo. Si los ataques golpean a un enemigo, 2 (Energía de Soporte) serán generadas en el campo después de que el ataque se completa. El personaje es invulnerable mientras usa esta habilidad.",
+                        description: "Cuando un (Ataque en Cadena) es activado, selecciona el personaje para activar: Desata ataques consecutivos hacia adelante, causando masivo Daño Etéreo. Si los ataques golpean a un enemigo, 2 (Energía de Soporte) serán generadas en el campo después de que el ataque se completa. El personaje es invulnerable mientras usa esta habilidad.",
                         tags: ["Etéreo", "Ataque en Cadena"]
                     },
                     {
                         type: "Técnica Definitiva",
                         name: "Definitiva",
-                        description: "Cuando el Nivel de Decibelios está al [Máximo], presiona [Icono Definitiva] para activar: Desata su poder completo entrando en [Estado Potenciado] y disparando múltiples disparos poderosos en el objetivo, causando masivo Daño Etéreo. Cuando entra en [Estado Potenciado], Aria gana el máximo de acumulaciones de [Apoyo de Poder], mientras activa [Velo Etereo: Fantasía Bis]. Mientras [Velo Etereo: Fantasía Bis] está activo, todos los miembros del escuadrón ganan 50 de ATK adicional por 30s. Antes de que Aria activa [Velo Etereo: Fantasía Bis] de nuevo, cualquier [Velo Etereo: Fantasía Bis] existente será desactivado; Cuando Aria carga, si ella tiene el efecto [Apoyo de Poder], ella priorizará consumir 1 acumulación de [Apoyo de Poder] para cargar. Cada acumulación de [Apoyo de Poder] aumenta el nivel de carga en 2; Cuando entra en [Estado Potenciado], si ella ya tiene el efecto [Apoyo de Poder], cualquier acumulación restante de [Apoyo de Poder] será convertida en [Energía de Soporte] en el campo. Cada acumulación de [Apoyo de Poder] se convierte en 2 [Energía de Soporte]; [Estado Potenciado] dura un máximo de 15s. Durante [Estado Potenciado], el tercer nivel de [Ataque de Carga] de Aria será mejorado a una versión potenciada; Cuando sale de [Estado Potenciado], si ella tiene el efecto [Apoyo de Poder], las acumulaciones restantes de [Apoyo de Poder] también serán convertidas en [Energía de Soporte] en el campo. Cada acumulación de [Apoyo de Poder] se convierte en 2 [Energía de Soporte]; El personaje es invulnerable mientras usa esta habilidad.",
+                        description: "Cuando el Nivel de Decibelios está al (Máximo), presiona [Icono Definitiva] para activar: Desata su poder completo entrando en (Estado Potenciado) y disparando múltiples disparos poderosos en el objetivo, causando masivo Daño Etéreo. Cuando entra en (Estado Potenciado), Aria gana el máximo de acumulaciones de (Apoyo de Poder), mientras activa (Velo Etereo: Fantasía Bis). Mientras (Velo Etereo: Fantasía Bis) está activo, todos los miembros del escuadrón ganan 50 de ATK adicional por 30s. Antes de que Aria activa (Velo Etereo: Fantasía Bis) de nuevo, cualquier (Velo Etereo: Fantasía Bis) existente será desactivado; Cuando Aria carga, si ella tiene el efecto (Apoyo de Poder), ella priorizará consumir 1 acumulación de (Apoyo de Poder) para cargar. Cada acumulación de (Apoyo de Poder) aumenta el nivel de carga en 2; Cuando entra en (Estado Potenciado), si ella ya tiene el efecto (Apoyo de Poder), cualquier acumulación restante de (Apoyo de Poder) será convertida en (Energía de Soporte) en el campo. Cada acumulación de (Apoyo de Poder) se convierte en 2 (Energía de Soporte); (Estado Potenciado) dura un máximo de 15s. Durante (Estado Potenciado), el tercer nivel de (Ataque de Carga) de Aria será mejorado a una versión potenciada; Cuando sale de (Estado Potenciado), si ella tiene el efecto (Apoyo de Poder), las acumulaciones restantes de (Apoyo de Poder) también serán convertidas en (Energía de Soporte) en el campo. Cada acumulación de (Apoyo de Poder) se convierte en 2 (Energía de Soporte); El personaje es invulnerable mientras usa esta habilidad.",
                         tags: ["Etéreo", "Técnica Definitiva"]
                     },
                     {
                         type: "Pasiva Central",
                         name: "Pasiva Central: Aria",
-                        description: "Cuando el 3-Rank [Ataque de Carga] de Aria golpea un objetivo afectado por Anomalía de Atributo Etéreo, Anomalía de Atributo Eléctrico, Anomalía de Atributo Fuego, Anomalía de Atributo Físico o Anomalía de Atributo Hielo, activa [Abloom]: Causa Daño de Anomalía de Atributo adicional igual al {VALOR_1}/{VALOR_2}/{VALOR_3}/{VALOR_4}/{VALOR_5} del DAÑO de Anomalía de Atributo original por 10 puntos de Maestría de Anomalía inicial. Cuando el objetivo está Aturdido, el ratio de DAÑO se incrementa en un (30%) adicional.",
+                        description: "Cuando el 3-Rank (Ataque de Carga) de Aria golpea un objetivo afectado por Anomalía de Atributo Etéreo, Anomalía de Atributo Eléctrico, Anomalía de Atributo Fuego, Anomalía de Atributo Físico o Anomalía de Atributo Hielo, activa (Abloom): Causa Daño de Anomalía de Atributo adicional igual al {VALOR_1}/{VALOR_2}/{VALOR_3}/{VALOR_4}/{VALOR_5} del DAÑO de Anomalía de Atributo original por 10 puntos de Maestría de Anomalía inicial. Cuando el objetivo está Aturdido, el ratio de DAÑO se incrementa en un (30%) adicional.",
                         tags: ["Pasiva Central"]
                     },
                     {
                         type: "Habilidad Adicional",
                         name: "Habilidad Adicional: Aria",
-                        description: "Cuando otro personaje en tu escuadrón es [Aturdidor] o [Soporte]:\\nCuando [Velo Etereo] está activo, genera 4 [Energía de Soporte] en el campo. Puede activarse una vez cada 1s.\\nCuando un enemigo élite o boss en el campo entra en el estado Aturdido, genera 4 [Energía de Soporte] en el campo. Puede activarse una vez cada 35s.\\nSi la Maestría de Anomalía inicial de Aria excede 180, incrementa la Maestría de Anomalía en 1.2 por cada 1 punto sobre ese umbral.",
+                        description: "Cuando otro personaje en tu escuadrón es (Aturdidor) o (Soporte):\\nCuando (Velo Etereo) está activo, genera 4 (Energía de Soporte) en el campo. Puede activarse una vez cada 1s.\\nCuando un enemigo élite o boss en el campo entra en el estado Aturdido, genera 4 (Energía de Soporte) en el campo. Puede activarse una vez cada 35s.\\nSi la Maestría de Anomalía inicial de Aria excede 180, incrementa la Maestría de Anomalía en 1.2 por cada 1 punto sobre ese umbral.",
                         tags: ["Habilidad Adicional"]
                     },
                     {
                         type: "Mindscape 1",
                         name: "Talento 1",
-                        description: "Cuando el [Ataque Básico], [Ataque Especial] o [Ataque Especial EX] de Aria inflige daño a un enemigo, ignora el 10% de la RES de Acumulación de Anomalía Etérea del objetivo; Adicionalmente, cuando activa [Abloom], tiene una probabilidad de activar un golpe crítico: La Probabilidad de Crítico Base es 35%, el Daño Crítico es 30%; si la Maestría de Anomalía inicial excede 180, cada punto de Maestría de Anomalía por encima de este umbral incrementa la Probabilidad de Crítico de este efecto en un 0.5% adicional.",
+                        description: "Cuando el (Ataque Básico), (Ataque Especial) o (Ataque Especial EX) de Aria inflige daño a un enemigo, ignora el 10% de la RES de Acumulación de Anomalía Etérea del objetivo; Adicionalmente, cuando activa (Abloom), tiene una probabilidad de activar un golpe crítico: La Probabilidad de Crítico Base es 35%, el Daño Crítico es 30%; si la Maestría de Anomalía inicial excede 180, cada punto de Maestría de Anomalía por encima de este umbral incrementa la Probabilidad de Crítico de este efecto en un 0.5% adicional.",
                         tags: ["Mindscape 1"]
                     },
                     {
                         type: "Mindscape 2",
                         name: "Talento 2",
-                        description: "El límite de acumulaciones de [Apoyo de Poder] aumenta a 6; durante la duración del [Estado Potenciado], los ataques de Aria ignoran el 30% de la DEF del objetivo.",
+                        description: "El límite de acumulaciones de (Apoyo de Poder) aumenta a 6; durante la duración del (Estado Potenciado), los ataques de Aria ignoran el 30% de la DEF del objetivo.",
                         tags: ["Mindscape 2"]
                     },
                     {
                         type: "Mindscape 6",
                         name: "Talento 6",
-                        description: "Al entrar en el campo de batalla, Aria inmediatamente gana 1,500 Decibeles, y una vez que Aria entra en [Estado Potenciado] ella no saldrá de él. El Daño Etéreo del [Ataque de Carga Potenciado] aumenta en un 20%. Cuando Aria está en [Estado Potenciado], si un enemigo en el campo entra en un estado de Anomalía de Atributo, Aria gana 2 acumulaciones de [Apoyo de Poder]. Este efecto puede activarse una vez cada 8s.",
+                        description: "Al entrar en el campo de batalla, Aria inmediatamente gana 1,500 Decibeles, y una vez que Aria entra en (Estado Potenciado) ella no saldrá de él. El Daño Etéreo del (Ataque de Carga Potenciado) aumenta en un 20%. Cuando Aria está en (Estado Potenciado), si un enemigo en el campo entra en un estado de Anomalía de Atributo, Aria gana 2 acumulaciones de (Apoyo de Poder). Este efecto puede activarse una vez cada 8s.",
                         tags: ["Mindscape 6"]
                     }
                 ]
