@@ -22,8 +22,10 @@ export default function BetaDiffViewer() {
     const [versionBefore, setVersionBefore] = useState(null);
     const [versionAfter, setVersionAfter] = useState(null);
     const [corePassiveLevel, setCorePassiveLevel] = useState(0); // 0 to 6 (0, A, B, C, D, E, F)
+    const [refinementLevel, setRefinementLevel] = useState(0); // 0 to 4 (R1 to R5)
 
     const CORE_PASSIVE_LABELS = ['0', 'A', 'B', 'C', 'D', 'E', 'F'];
+    const REFINEMENT_LABELS = ['R1', 'R2', 'R3', 'R4', 'R5'];
 
     // Skill Icons Mapping (reused from AgentDetailPage)
     const skillIcons = {
