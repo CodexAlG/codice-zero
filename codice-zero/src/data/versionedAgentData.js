@@ -455,6 +455,15 @@ export const versionedAgents = {
             },
             "v2.6.2": {
                 versionLabel: "v2.6.2",
+                coreSkillScaling: [
+                    ["30%", "400"],
+                    ["30%", "500"],
+                    ["30%", "600"],
+                    ["30%", "700"],
+                    ["30%", "800"],
+                    ["30%", "900"],
+                    ["30%", "1000"],
+                ],
                 skills: [
                     {
                         type: "Ataque Básico",
@@ -473,24 +482,6 @@ export const versionedAgents = {
                         name: "Técnica Especial: Lanzador Estelar",
                         description: "Presiona [Icono Especial] para activar: Dispara Bubble Pop desde el Air Gun para atacar enemigos adelante, infligiendo Daño Físico. Después de activar esta habilidad, (Bubble Pop se une) al combate.",
                         tags: ["Físico", "Técnica Especial"]
-                    },
-                    {
-                        type: "Técnica Especial EX",
-                        name: "Técnica Especial EX: Bombardeo Bubblegum",
-                        description: "Con suficiente Energía, presiona [Icono Especial EX] para activar: Lanza un gato usando el arma para el objetivo e inflige Daño Físico. Después de activar esta habilidad, (Bubble Pop se une) al combate. Cuando se activa la habilidad, aplica el efecto (Acorde de Ángel) a todos los Agentes en el escuadrón por 40s. Cuando el ataque pesado de la habilidad golpea a un enemigo, activa (Asistencia Rápida). El personaje es invulnerable mientras usa esta habilidad.",
-                        tags: ["Físico", "Técnica Especial EX"]
-                    },
-                    {
-                        type: "Técnica Especial EX",
-                        name: "Técnica Especial EX: Bombardeo Bubblegum",
-                        description: "Con suficiente Energía, presiona [Icono Especial EX] para activar: Lanza un gato usando el arma para el objetivo e inflige Daño Físico. Después de activar esta habilidad, (Bubble Pop se une) al combate. Cuando se activa la habilidad, aplica el efecto (Acorde de Ángel) a todos los Agentes en el escuadrón por 40s. Cuando el ataque pesado de la habilidad golpea a un enemigo, activa (Asistencia Rápida). El personaje es invulnerable mientras usa esta habilidad.",
-                        tags: ["Físico", "Técnica Especial EX"]
-                    },
-                    {
-                        type: "Técnica Especial EX",
-                        name: "Técnica Especial EX: Bombardeo Bubblegum",
-                        description: "Con suficiente Energía, presiona [Icono Especial EX] para activar: Lanza un gato usando el arma para el objetivo e inflige Daño Físico. Después de activar esta habilidad, (Bubble Pop se une) al combate. Cuando se activa la habilidad, aplica el efecto (Acorde de Ángel) a todos los Agentes en el escuadrón por 40s. Cuando el ataque pesado de la habilidad golpea a un enemigo, activa (Asistencia Rápida). El personaje es invulnerable mientras usa esta habilidad.",
-                        tags: ["Físico", "Técnica Especial EX"]
                     },
                     {
                         type: "Técnica Especial EX",
@@ -551,8 +542,8 @@ export const versionedAgents = {
                         name: "6. 'Big Bang del Hueco'",
                         description: "Cuando Sunna activa su (Técnica Especial EX), entra en el estado (Encerrada) por 8 segundos. Durante (Encerrada), los ataques de Sunna son CRÍTICOS garantizados, y su Daño CRIT aumenta en un 0.02% de su ATK inicial, hasta un aumento máximo del 60%. Durante (Encerrada), el Nivel de Anti-Interrupción de Sunna aumenta y el DAÑO tomado es reducido en un 60%. Durante (Encerrada), Sunna puede activar (Mirada de Gato), calculando DAÑO según (Ataque) del Multiplicador de DAÑO de (Mirada de Gato) y una vez que se activa (Mirada de Gato), inmediatamente consume los (Pulidores de Uñas) y aplica (Mirada de Gato) al enemigo nuevamente; Durante (Encerrada), el DAÑO infligido por todo el escuadrón al activar (Mirada de Gato) aumenta en un 20%.",
                         tags: ["Mindscape"]
-                    },
-                ],
+                    }
+                ]
             },
 
         },
