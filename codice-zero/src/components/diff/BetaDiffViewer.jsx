@@ -283,9 +283,12 @@ export default function BetaDiffViewer() {
             <div className="skills-section">
                 <h3>Habilidades</h3>
                 {Object.entries(skillsByType).map(([type, groupSkills]) => {
-                    // Filter skills that have changes
-                    const comparisonItems = groupSkills.map(newSkill => {
-                        const oldSkill = oldSkills.find(s => s.name === newSkill.name) || { name: "", description: "" };
+                    // Match skills by index within this type
+                    const comparisonItems = groupSkills.map((newSkill, index) => {
+                        // Find old skills of the same type
+                        const oldSkillsOfType = oldSkills.filter(s => s.type === type);
+                        // Match by index within the type
+                        const oldSkill = oldSkillsOfType[index] || { name: "", description: "" };
 
                         const nameDiff = compareText(protectIcons(oldSkill.name), protectIcons(newSkill.name));
                         const descDiff = compareText(protectIcons(oldSkill.description), protectIcons(newSkill.description));
