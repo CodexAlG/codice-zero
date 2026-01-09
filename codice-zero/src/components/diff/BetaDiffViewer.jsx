@@ -413,17 +413,25 @@ export default function BetaDiffViewer() {
         const getDescriptionWithValues = (description, refinement) => {
             if (!refinement || !description) return description;
 
+            // Extract all values from refinement (excluding 'level' key)
+            const values = Object.entries(refinement)
+                .filter(([key]) => key !== 'level')
+                .map(([_, value]) => value);
+
+            if (values.length === 0) return description;
+
             let result = description;
-            // Inject values from refinement object dynamically
-            Object.entries(refinement).forEach(([key, value]) => {
-                if (key === 'level') return;
+            let valueIndex = 0;
 
-                // Create a pattern to find this value in the text
-                const escapedValue = value.toString().replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-                const regex = new RegExp(`\\b${escapedValue}\\b`, 'g');
-
-                // Replace with marked text for highlighting
-                result = result.replace(regex, `{${value}}`);
+            // Replace numeric values (percentages and decimals) in order of appearance
+            result = result.replace(/\d+(?:\.\d+)?%?/g, (match) => {
+                // If we have a replacement value available
+                if (valueIndex < values.length) {
+                    const replacement = `{${values[valueIndex]}}`;
+                    valueIndex++;
+                    return replacement;
+                }
+                return match;
             });
 
             return result;
