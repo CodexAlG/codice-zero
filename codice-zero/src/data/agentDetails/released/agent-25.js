@@ -53,7 +53,7 @@ export default {
   ],
   potential: {
     name: "Potencial Despierto: Asaba Harumasa",
-    description: "Al usar una Técnica Especial EX, Ataque en Cadena o Definitiva, el ATQ aumenta en un 30% por 12s."
+    description: "Al usar una Técnica Especial EX, Ataque en Cadena o Definitiva, el ATQ aumenta en un {VALOR_1} por 12s."
   },
   skills: [
     {
