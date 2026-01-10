@@ -395,37 +395,89 @@
     grid-template-columns: repeat(2, 1fr);
   }
 
-  .stats-comparison,
-  .skill-grid,
-  .effect-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .skill-before,
-  .effect-before {
-    border-right: none;
-    border-bottom: 1px solid #27272a;
-  }
+  /* REMOVED: Forcing single column (vertical stack) for grids to maintain side-by-side view */
 }
 
 @media (max-width: 640px) {
   .beta-diff-viewer {
-    padding: 1rem;
+    padding: 0.5rem;
   }
 
   .diff-header {
-    padding: 1.5rem;
+    padding: 1rem;
+    margin-bottom: 1rem;
   }
 
   .diff-header h1 {
-    font-size: 1.5rem;
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
   }
 
   .diff-controls {
     grid-template-columns: 1fr;
+    gap: 1rem;
   }
 
   .diff-content {
-    padding: 1.5rem;
+    padding: 0.5rem;
+    min-height: auto;
+  }
+
+  /* Force side-by-side and optimize for small screens */
+  .stats-comparison,
+  .skill-grid,
+  .effect-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+  }
+
+  .skill-column,
+  .effect-column {
+    padding: 0.75rem;
+    /* Compact padding */
+  }
+
+  .skill-name {
+    font-size: 0.85rem;
+    /* Smaller font for mobile */
+    margin-bottom: 0.5rem;
+    word-break: break-word;
+  }
+
+  .skill-description,
+  .effect-description {
+    font-size: 0.75rem;
+    /* Smaller font for mobile */
+    line-height: 1.35;
+    word-break: break-word;
+  }
+
+  .stats-column h4 {
+    font-size: 0.7rem;
+  }
+
+  .stat-list {
+    gap: 0.25rem;
+  }
+
+  .stat-item,
+  .stat-row {
+    padding: 0.5rem;
+    font-size: 0.75rem;
+  }
+
+  .stat-values {
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 0.1rem;
+  }
+
+  .stat-before {
+    font-size: 0.7rem;
+  }
+
+  /* Ensure highlighting wraps correctly */
+  .highlight-container {
+    word-break: break-word;
   }
 }
