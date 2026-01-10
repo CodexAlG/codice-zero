@@ -1,32 +1,15 @@
 'use client';
 
-import { useState, useEffect, useMemo } from 'react';
+import { useState, useEffect } from 'react';
 import { usePathname } from 'next/navigation';
 import Image from 'next/image';
-import { BookOpen, Home, X, List, GitCompare } from 'lucide-react';
+import { BookOpen, Home, List, GitCompare } from 'lucide-react';
 import Link from 'next/link';
 import appIcon from '@/app/icon.png';
-import { agents } from '../../data/agents';
-import { weapons } from '../../data/weapons';
-import { bangboos } from '../../data/bangboos';
 
 export default function TopNavbar({ isVisible }) {
     const [activeItem, setActiveItem] = useState(-1);
     const pathname = usePathname();
-
-    // Logic to get latest items
-    const latestAgents = useMemo(() => {
-        return [...agents].sort((a, b) => b.id - a.id).slice(0, 2);
-    }, []);
-
-    const latestWeapons = useMemo(() => {
-        return [...weapons].filter(w => w.rank === 'S').sort((a, b) => b.id - a.id).slice(0, 2);
-    }, []);
-
-    const latestBangboos = useMemo(() => {
-        return [...bangboos].sort((a, b) => b.id - a.id).slice(0, 1);
-    }, []);
-
 
     // Sincronizar el estado activo con la ruta actual
     useEffect(() => {
@@ -49,7 +32,7 @@ export default function TopNavbar({ isVisible }) {
         }
     }, [pathname]);
 
-    const NavItem = ({ href, index, icon: Icon, label, hasDropdown, latestItems, itemType }) => {
+    const NavItem = ({ href, index, icon: Icon, label }) => {
         const isActive = activeItem === index;
 
         return (
@@ -77,45 +60,6 @@ export default function TopNavbar({ isVisible }) {
                         {label}
                     </span>
                 </Link>
-
-                {/* Dropdown Menu (Opens to Right) */}
-                {hasDropdown && latestItems && (
-                    <div className="absolute top-0 left-full ml-2 hidden group-hover:block z-50 pl-2">
-                        <div className="bg-[#09090b] border border-white/10 rounded-xl shadow-2xl p-4 w-72 backdrop-blur-xl flex flex-col gap-3 relative overflow-hidden">
-                            {/* Decoration */}
-                            <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-yellow-500 to-transparent opacity-50"></div>
-
-                            <span className="text-xs font-bold text-gray-400 uppercase tracking-wider ml-1 mb-1">{label} - Lo más nuevo</span>
-
-                            {latestItems.map((item) => (
-                                <Link
-                                    key={item.id}
-                                    href={itemType === 'agente' ? `/agentes/${item.id}` : itemType === 'arma' ? `/armas/${item.id}` : `/bangboos/${item.id}`}
-                                    className="flex items-center p-2 rounded-lg bg-white/5 hover:bg-white/10 transition-colors border border-transparent hover:border-white/10 group/item"
-                                >
-                                    <div className="relative w-12 h-12 rounded-md overflow-hidden bg-black/50 border border-white/5 flex-shrink-0">
-                                        <Image
-                                            src={item.image}
-                                            alt={item.name}
-                                            fill
-                                            className="object-cover group-hover/item:scale-110 transition-transform duration-300"
-                                        />
-                                    </div>
-                                    <div className="ml-3 flex flex-col">
-                                        <span className="text-sm font-bold text-gray-200 group-hover/item:text-yellow-400 transition-colors line-clamp-1">{item.name}</span>
-                                        {item.leak === 'Beta' && (
-                                            <span className="text-[10px] text-black bg-yellow-500 px-1.5 py-0.5 rounded w-fit font-bold">BETA</span>
-                                        )}
-                                        {!item.leak && item.rank && (
-                                            <span className="text-[10px] text-gray-500">Rango {item.rank}</span>
-                                        )}
-                                    </div>
-                                </Link>
-                            ))}
-
-                        </div>
-                    </div>
-                )}
             </li>
         );
     };
@@ -161,21 +105,15 @@ export default function TopNavbar({ isVisible }) {
                         index={0}
                         icon="/CodiceZero/Agentes/Icon_Agents.webp"
                         label="Agentes"
-                        hasDropdown={true}
-                        latestItems={latestAgents}
-                        itemType="agente"
                     />
                     <NavItem
                         href="/armas"
                         index={1}
                         icon="/CodiceZero/Armas/Icon_Storage_W-Engine.webp"
                         label="Armas"
-                        hasDropdown={true}
-                        latestItems={latestWeapons}
-                        itemType="arma"
                     />
                     <NavItem
-                        href="/guias"
+                        href="/guías"
                         index={2}
                         icon={BookOpen}
                         label="Guías"
@@ -185,9 +123,6 @@ export default function TopNavbar({ isVisible }) {
                         index={3}
                         icon="/CodiceZero/Bangboo/INTER-KNOT_Bangboo.webp"
                         label="Bangboo"
-                        hasDropdown={true}
-                        latestItems={latestBangboos}
-                        itemType="bangboo"
                     />
                     <NavItem
                         href="/discos"

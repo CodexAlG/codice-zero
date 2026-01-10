@@ -16,14 +16,14 @@ export default {
         impact: 87,
         crit: "5%",
         critDmg: "50%",
-        anomalyRate: "140",
+        anomalyRate: "152",
         anomalyMastery: "116",
         penRatio: "0%",
         energyRegen: "1.2",
     },
     coreStats: {
         statName: "Tasa de Anomalía",
-        valuePerNode: 16
+        valuePerNode: 12
     },
     coreSkillScalingColors: [
         "text-[#d946ef]", // Etéreo (Pink/Magenta)
