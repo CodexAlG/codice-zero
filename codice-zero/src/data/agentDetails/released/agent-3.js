@@ -38,6 +38,13 @@ export default {
   coreSkillScaling: [
     ["40%"], ["46.6%"], ["53.3%"], ["60%"], ["66.6%"], ["73.3%"], ["80%"] // Placeholders for user to fill
   ],
+  potentialSkillScaling: [
+    ["1", "1%"], // Placeholder
+  ],
+  potential: {
+    name: "Potencial Despierto: Lycaon",
+    description: "TBD"
+  },
   skills: [
     {
       type: "Ataque Básico",

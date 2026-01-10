@@ -44,6 +44,17 @@ export default {
     ["22.6%", "11%"],
     ["25%", "12%"],
   ],
+  potentialSkillScaling: [
+    ["10%"],
+    ["15%"],
+    ["20%"],
+    ["25%"],
+    ["30%"]
+  ],
+  potential: {
+    name: "Potencial Despierto: Asaba Harumasa",
+    description: "Al usar una Técnica Especial EX, Ataque en Cadena o Definitiva, el ATQ aumenta en un 30% por 12s."
+  },
   skills: [
     {
       type: "Ataque Básico",
@@ -90,7 +101,7 @@ export default {
     {
       type: "Evasión",
       name: "Ataque de Carrera: Hiten no Tsuru - Corte",
-      description: "Mientras hay enemigos (Marcado-X) en el campo, Harumasa entrará en el estado (Despertar), cambiando (Ataque de Carrera: Hiten no Tsuru) por (Ataque de Carrera: Hiten no Tsuru - Corte). Mientras está en el estado (Despertar), presiona [Icono Ataque] durante una evasión para activar: Arremete hacia el enemigo (Marcado-X) más cercano y ejecuta un corte poderoso, causando Daño Eléctrico. Cuando el corte golpea al objetivo, consume 2 acumulaciones de (Prisión Electro). Con menos de 2 acumulaciones de (Prisión Electro), (Marcado-X) será eliminado del enemigo. Antes de que (Marcado-X) sea eliminado, presiona repetidamente [Icono Ataque] para usar repetidamente (Ataque de Carrera: Hiten no Tsuru - Corte). Mientras no existan enemigos (Marcado-X) en el campo, Harumasa sale del estado (Despertar). Mientras está en el estado (Despertar), presiona [Icono Ataque] después de (Ataque Básico: Pluma Descendente) para seguir rápidamente con (Ataque de Carrera: Hiten no Tsuru - Corte). Durante la activación de la habilidad, el nivel de Anti-Interrupción aumenta, y el DAÑO recibido se reduce en un 40%.",
+      description: "Mientras hay enemigos (Marcado-X) en el campo, Harumasa entrará en el estado (Despertar), cambiando (Ataque de Carrera: Hiten no Tsuru) por (Ataque de Carrera: Hiten no Tsuru - Corte). Mientras está en el estado (Despertar), presiona [Icono Ataque] durante una evasión para activar: Arremete hacia el enemigo (Marcado-X) más cercano y ejecuta un corte poderoso, causando Daño Eléctrico. Cuando el corte golpea al objetivo, consume 2 acumulaciones de (Prisión Electro). Con menos de 2 acumulaciones de (Prisión Electro), (Marcado-X) será eliminado del enemigo. Antes de que (Marcado-X) sea eliminado, presiona repetidamente [Icono Ataque] para usar repetidamente (Ataque de Carrera: Hiten no Tsuru - Corte). Mientras no existan enemigos (Marcado-X) en el campo, Harumasa sale del estado (Despertar). Mientras está en el estado (Despertar), presiona [Icono Ataque] después de (Ataque Básico: Pluma Descendente) para seguir rápidamente con (Ataque de Carrera: Hiten no Tsuru - Corte). Durante la primera etapa del movimiento, puede Parrear ataques enemigos. Durante la activación de la habilidad, el nivel de Anti-Interrupción aumenta, y el DAÑO recibido se reduce en un 40%.",
       tags: ["Eléctrico", "Evasión"]
     },
     {
