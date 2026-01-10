@@ -19,6 +19,8 @@ export default function Sidebar({ isExpanded, isMobile, toggleDrawer }) {
       setActiveItem(0); // Agentes
     } else if (pathname.startsWith('/armas')) {
       setActiveItem(1); // Armas
+    } else if (pathname.startsWith('/guias')) {
+      setActiveItem(2); // Guías
     } else if (pathname.startsWith('/bangboos')) {
       setActiveItem(3); // Bangboo
     } else if (pathname.startsWith('/discos')) {

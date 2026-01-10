@@ -19,7 +19,7 @@ export default function TopNavbar({ isVisible }) {
             setActiveItem(0); // Agentes
         } else if (pathname.startsWith('/armas')) {
             setActiveItem(1); // Armas
-        } else if (pathname.startsWith('/guías')) {
+        } else if (pathname.startsWith('/guias')) {
             setActiveItem(2); // Guías
         } else if (pathname.startsWith('/bangboos')) {
             setActiveItem(3); // Bangboo
@@ -113,7 +113,7 @@ export default function TopNavbar({ isVisible }) {
                         label="Armas"
                     />
                     <NavItem
-                        href="/guías"
+                        href="/guias"
                         index={2}
                         icon={BookOpen}
                         label="Guías"
