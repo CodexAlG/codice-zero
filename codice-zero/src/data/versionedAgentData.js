@@ -480,7 +480,7 @@ export const versionedAgents = {
                     {
                         type: "Evasión",
                         name: "Evasión: No Me Puedes Tocar",
-                        description: "Presiona [Icono Evasión] para activar: Una evasión rápida. El personaje es invulnerable mientras usa esta habilidad.",
+                        description: "Presiona [Icono Dodges] para activar: Una evasión rápida. El personaje es invulnerable mientras usa esta habilidad.",
                         tags: ["Evasión"]
                     },
                     {
