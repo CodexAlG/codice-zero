@@ -1926,7 +1926,7 @@ export const weapons = [
     },
     effect: {
       title: "Monólogo Decibel",
-      description: "Aumenta la Regeneración de Energía del equipador en 0.4 por segundo. Cuando el equipador usa una (Técnica Especial EX) para infligir Daño Físico, otorga un buff a todos los miembros del escuadrón: Aumenta el DAÑO tratado en un 12.5% durante 6s. Puede acumularse hasta 2 veces, los triggers repetidos reinician la duración. Cuando tiene 2 acumulaciones, adicionalmente aumenta el ATK en un 12.5%. Solo una instancia de este efecto puede existir en el mismo escuadrón.",
+      description: "Aumenta la Regeneración de Energía del equipador en 0.6 por segundo. Cuando el equipador usa una (Técnica Especial EX) para infligir Daño Físico, otorga un buff a todos los miembros del escuadrón: Aumenta el DAÑO tratado en un 12.5% durante 6s. Puede acumularse hasta 2 veces, los triggers repetidos reinician la duración. Cuando tiene 2 acumulaciones, adicionalmente aumenta el ATK en un 10%. Solo una instancia de este efecto puede existir en el mismo escuadrón.",
       refinements: [ // Tabla de Mejora (R1 - R5)
         { level: 1, DañoIgnored: "0.6", Daño: "12.5%", DañoCritico: "10%" },
         { level: 2, DañoIgnored: "0.69", Daño: "14.3%", DañoCritico: "11.5%" },
