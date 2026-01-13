@@ -53,7 +53,7 @@ export default {
   ],
   potential: {
     name: "Potencial Despierto: Asaba Harumasa",
-    description: "Al activar (Técnica Especial Potenciada), (Ataque en Cadena) o (Definitiva), el ATQ aumenta en un 30%, durante 12s; la duración de (Borde) de la (Pasiva Central) se extiende a 10s."
+    description: "Al activar [Técnica Especial Potenciada], [Ataque en Cadena] o [Definitiva], el ATQ aumenta en un 30%, durante 12s; la duración de [Borde] de la [Pasiva Central] se extiende a 10s."
   },
   skills: [
     {
