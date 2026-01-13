@@ -16,6 +16,7 @@ import {
 import { replaceIcons } from '@/components/utils/TextWithIcons';
 import { compareText, renderDiffText, compareNumber } from '@/utils/diffUtils';
 import HighlightText from '../ui/HighlightText';
+import { useDynamicTitle } from '@/hooks/useDynamicTitle';
 import './BetaDiffViewer.css';
 
 export default function BetaDiffViewer() {
@@ -51,6 +52,9 @@ export default function BetaDiffViewer() {
 
     const CORE_PASSIVE_LABELS = ['0', 'A', 'B', 'C', 'D', 'E', 'F'];
     const REFINEMENT_LABELS = ['R1', 'R2', 'R3', 'R4', 'R5'];
+
+    // Dynamic Title Management
+    useDynamicTitle(selectedEntity ? `Beta Diff: ${selectedEntity.name}` : null);
 
     // Update URL Helper Function
     const updateUrlParam = (key, value) => {
