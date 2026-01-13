@@ -25,7 +25,7 @@ export const versionedWeapons = {
                 versionLabel: "v2.6.2",
                 effect: {
                     title: "Aria Test W-Engine",
-                    description: "Aumenta el ATK del equipador en un 18%. Cuando el equipador entra al campo o activa un (Ataque Especial) o (Técnica Especial EX), gana un buff: el DAÑO tratado a enemigos afligidos con Anomalía de Atributo Etereo aumenta en un 15%, y el DAÑO tratado a enemigos afligidos con cualquier Anomalía de Atributo aumenta en un 15%. Este efecto dura 12s, y los triggers repetidos reinician la duración. El efecto se elimina cuando el equipador sale del campo.",
+                    description: "Aumenta el ATK del equipador en un 18%. Cuando el equipador entra al campo o activa un (Ataque Especial) o (Técnica Especial EX), gana un buff: el DAÑO tratado a enemigos afligidos con Anomalía de Atributo Etereo aumenta en un 15%, y el DAÑO tratado a enemigos afligidos con cualquier Anomalía de Atributo aumenta en un 15%. Este efecto dura 15s, y los triggers repetidos reinician la duración. El efecto se elimina cuando el equipador sale del campo.",
                     refinements: [ // Tabla de Mejora (R1 - R5)
                         { level: 1, DañoIgnored: "18%", Daño: "15%", DañoCritico: "15%" },
                         { level: 2, DañoIgnored: "20.7%", Daño: "17.3%", DañoCritico: "17.3%" },
@@ -63,11 +63,11 @@ export const versionedWeapons = {
                     title: "Monólogo Decibel",
                     description: "Aumenta la Regeneración de Energía del equipador en 0.4 por segundo. Cuando el equipador usa una (Técnica Especial EX) para infligir Daño Físico, otorga un buff a todos los miembros del escuadrón: Aumenta el DAÑO tratado en un 12.5% durante 6s. Puede acumularse hasta 2 veces, los triggers repetidos reinician la duración. Cuando tiene 2 acumulaciones, adicionalmente aumenta el ATK en un 12.5%. Solo una instancia de este efecto puede existir en el mismo escuadrón.",
                     refinements: [ // Tabla de Mejora (R1 - R5)
-                        { level: 1, DañoIgnored: "0.4", Daño: "12.5%", DañoCritico: "12.5%" },
-                        { level: 2, DañoIgnored: "0.46", Daño: "14.3%", DañoCritico: "14.3%" },
-                        { level: 3, DañoIgnored: "0.52", Daño: "16.1%", DañoCritico: "16.1%" },
-                        { level: 4, DañoIgnored: "0.58", Daño: "18.9%", DañoCritico: "18%" },
-                        { level: 5, DañoIgnored: "0.65", Daño: "20%", DañoCritico: "20%" }
+                        { level: 1, DañoIgnored: "0.6", Daño: "12.5%", DañoCritico: "10%" },
+                        { level: 2, DañoIgnored: "0.69", Daño: "14.3%", DañoCritico: "11.5%" },
+                        { level: 3, DañoIgnored: "0.78", Daño: "16.1%", DañoCritico: "13%" },
+                        { level: 4, DañoIgnored: "0.87", Daño: "18.9%", DañoCritico: "14.5%" },
+                        { level: 5, DañoIgnored: "0.96", Daño: "20%", DañoCritico: "16%" }
                     ]
                 }
             }

@@ -1,6 +1,7 @@
 "use client";
 
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
+import { useRouter, usePathname, useSearchParams } from 'next/navigation';
 import {
     getAvailableAgents,
     getAgentVersions,
@@ -18,15 +19,54 @@ import HighlightText from '../ui/HighlightText';
 import './BetaDiffViewer.css';
 
 export default function BetaDiffViewer() {
-    const [selectedType, setSelectedType] = useState('agentes');
-    const [selectedEntity, setSelectedEntity] = useState(null);
-    const [versionBefore, setVersionBefore] = useState(null);
-    const [versionAfter, setVersionAfter] = useState(null);
+    const router = useRouter();
+    const pathname = usePathname();
+    const searchParams = useSearchParams();
+
+    const [selectedType, setSelectedType] = useState(() => {
+        if (searchParams.get('weapon')) return 'armas';
+        return 'agentes';
+    });
+
+    // Initialize state reading from URL Search Params
+    const [selectedEntity, setSelectedEntity] = useState(() => {
+        const agentParam = searchParams.get('agent');
+        const weaponParam = searchParams.get('weapon');
+
+        if (agentParam) {
+            const agents = getAvailableAgents();
+            return agents.find(a => a.name.toLowerCase() === agentParam.toLowerCase()) || null;
+        } else if (weaponParam) {
+            const weapons = getAvailableWeapons();
+            return weapons.find(w => w.name.toLowerCase() === weaponParam.toLowerCase()) || null;
+        }
+        return null;
+    });
+
+    const [versionBefore, setVersionBefore] = useState(() => searchParams.get('left') || null);
+    const [versionAfter, setVersionAfter] = useState(() => searchParams.get('right') || null);
+
     const [corePassiveLevel, setCorePassiveLevel] = useState(0); // 0 to 6
     const [refinementLevel, setRefinementLevel] = useState(0); // 0 to 4
 
     const CORE_PASSIVE_LABELS = ['0', 'A', 'B', 'C', 'D', 'E', 'F'];
     const REFINEMENT_LABELS = ['R1', 'R2', 'R3', 'R4', 'R5'];
+
+    // Update URL Helper Function
+    const updateUrlParam = (key, value) => {
+        const current = new URLSearchParams(Array.from(searchParams.entries()));
+
+        if (!value) {
+            current.delete(key);
+        } else {
+            current.set(key, value);
+        }
+
+        const search = current.toString();
+        const query = search ? `?${search}` : "";
+
+        router.replace(`${pathname}${query}`, { scroll: false });
+    };
 
     // Skill Icons Mapping
     const skillIcons = {
@@ -55,10 +95,22 @@ export default function BetaDiffViewer() {
 
     // Handle type change
     const handleTypeChange = (e) => {
-        setSelectedType(e.target.value);
+        const newType = e.target.value;
+        setSelectedType(newType);
         setSelectedEntity(null);
         setVersionBefore(null);
         setVersionAfter(null);
+
+        // Clear all params on type change to avoid mixing agent/weapon params
+        const current = new URLSearchParams(Array.from(searchParams.entries()));
+        current.delete('agent');
+        current.delete('weapon');
+        current.delete('left');
+        current.delete('right');
+
+        const search = current.toString();
+        const query = search ? `?${search}` : "";
+        router.replace(`${pathname}${query}`, { scroll: false });
     };
 
     // Get available versions
@@ -101,9 +153,39 @@ export default function BetaDiffViewer() {
     const handleEntityChange = (e) => {
         const entityId = parseInt(e.target.value);
         const entity = availableEntities.find(ent => ent.id === entityId);
+
         setSelectedEntity(entity);
         setVersionBefore(null);
         setVersionAfter(null);
+
+        // Update URL
+        const current = new URLSearchParams(Array.from(searchParams.entries()));
+        // Clear previous selection params
+        current.delete('agent');
+        current.delete('weapon');
+        current.delete('left');
+        current.delete('right');
+
+        if (entity) {
+            const paramKey = selectedType === 'agentes' ? 'agent' : 'weapon';
+            current.set(paramKey, entity.name.toLowerCase());
+        }
+
+        const search = current.toString();
+        const query = search ? `?${search}` : "";
+        router.replace(`${pathname}${query}`, { scroll: false });
+    };
+
+    const handleVersionBeforeChange = (e) => {
+        const val = e.target.value;
+        setVersionBefore(val || null);
+        updateUrlParam('left', val);
+    };
+
+    const handleVersionAfterChange = (e) => {
+        const val = e.target.value;
+        setVersionAfter(val || null);
+        updateUrlParam('right', val);
     };
 
     const renderStatComparison = (statName, oldValue, newValue) => {
@@ -447,14 +529,14 @@ export default function BetaDiffViewer() {
                     </div>
                     <div className="control-group">
                         <label htmlFor="version-before">Versión Izquierda</label>
-                        <select id="version-before" value={versionBefore || ''} onChange={(e) => setVersionBefore(e.target.value)} className="diff-select" disabled={!selectedEntity || !availableVersions.length}>
+                        <select id="version-before" value={versionBefore || ''} onChange={handleVersionBeforeChange} className="diff-select" disabled={!selectedEntity || !availableVersions.length}>
                             <option value="">Seleccionar...</option>
                             {availableVersions.map(version => <option key={version} value={version}>{version}</option>)}
                         </select>
                     </div>
                     <div className="control-group">
                         <label htmlFor="version-after">Versión Derecha</label>
-                        <select id="version-after" value={versionAfter || ''} onChange={(e) => setVersionAfter(e.target.value)} className="diff-select" disabled={!selectedEntity || !availableVersions.length}>
+                        <select id="version-after" value={versionAfter || ''} onChange={handleVersionAfterChange} className="diff-select" disabled={!selectedEntity || !availableVersions.length}>
                             <option value="">Seleccionar...</option>
                             {availableVersions.map(version => <option key={version} value={version}>{version}</option>)}
                         </select>
