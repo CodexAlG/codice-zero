@@ -198,13 +198,13 @@ export const versionedAgents = {
                     "text-[#d946ef]"
                 ],
                 coreSkillScaling: [
-                    ["19.8%", "10.3%", "25.7%", "1.8%", "2.6%"],
-                    ["23.1%", "12%", "30%", "2.1%", "3%"],
-                    ["26.4%", "13.7%", "34.3%", "2.4%", "3.4%"],
-                    ["29.7%", "15.5%", "38.6%", "2.7%", "3.8%"],
-                    ["33.0%", "17.2%", "42.8%", "3.0%", "4.3%"],
-                    ["36.3%", "18.9%", "47.1%", "3.3%", "4.7%"],
-                    ["39.6%", "20.6%", "51.4%", "3.6%", "5.1%"]
+                    ["9%", "4.7%", "11.6%", "0.8%", "1.2%"],
+                    ["10.4%", "5.4%", "13.5%", "0.93%", "1.3%"],
+                    ["11.9%", "6.2%", "15.5%", "1.07%", "1.5%"],
+                    ["13.4%", "7%", "17.4%", "1.2%", "1.7%"],
+                    ["14.9%", "7.8%", "19.3%", "1.33%", "1.9%"],
+                    ["16.4%", "8.5%", "21.3%", "1.47%", "2.1%"],
+                    ["17.9%", "9.3%", "23.3%", "1.6%", "2.3%"],
                 ],
                 skills: [
                     {
@@ -456,13 +456,13 @@ export const versionedAgents = {
             "v2.6.2": {
                 versionLabel: "v2.6.2",
                 coreSkillScaling: [
-                    ["30%", "400"],
-                    ["30%", "500"],
-                    ["30%", "600"],
-                    ["30%", "700"],
-                    ["30%", "800"],
-                    ["30%", "900"],
-                    ["30%", "1000"],
+                    ["180%", "240%", "40%"],
+                    ["210%", "280%", "50%"],
+                    ["240%", "320%", "60%"],
+                    ["270%", "360%", "70%"],
+                    ["300%", "400%", "80%"],
+                    ["330%", "440%", "90%"],
+                    ["360%", "480%", "100%"],
                 ],
                 skills: [
                     {
@@ -504,13 +504,13 @@ export const versionedAgents = {
                     {
                         type: "Técnica Especial EX",
                         name: "Técnica Especial EX: Bombardeo Bubblegum",
-                        description: "Con suficiente Energía, presiona [Icono Especial EX] para activar: Lanza un gato usando el arma para el objetivo e inflige Daño Físico. Después de activar esta habilidad, (Bubble Pop se une) al combate. Cuando se activa la habilidad, aplica el efecto (Acorde de Ángel) a todos los Agentes en el escuadrón por 40s. Cuando el ataque pesado de la habilidad golpea a un enemigo, activa (Asistencia Rápida). El personaje es invulnerable mientras usa esta habilidad.",
+                        description: "Con suficiente Energía, presiona [Icono Especial EX] para activar: Lanza un gato usando el arma para el objetivo e inflige Daño Físico. Después de activar esta habilidad, (Bubble Pop se une) al combate. Cuando se activa la habilidad, aplica el efecto (Acorde de Ángel) a todos los Agentes en el escuadrón por 35s. Cuando el ataque pesado de la habilidad golpea a un enemigo, activa (Asistencia Rápida). El personaje es invulnerable mientras usa esta habilidad.",
                         tags: ["Físico", "Técnica Especial EX"]
                     },
                     {
                         type: "Técnica Especial EX",
                         name: "Técnica Especial EX: Técnica de Cámara Especial",
-                        description: "Después de entrar en (Acorde de Ángel), presiona [Icono Especial EX] para activar, o durante (Fiebre), mantén presionado [Icono Especial] para el (Quick Assist): Lanza un Ataque Coordinado con Bubble Pop contra enemigos objetivo, infligiendo Daño Físico. Después de usar esta habilidad, (Bubble Pop se une) al combate. Antes de que se active la habilidad, abre (Velo Etereo: Encore Fantasía). Mientras (Velo Etereo: Encore Fantasía) está activo, incrementa el ATK de todos los miembros del escuadrón en 50 puntos adicionales durante 30s. Antes de que Sunna reabra (Velo Etereo: Encore Fantasía), el (Velo Etereo: Encore Fantasía) existente se cerrará. Cuando el ataque pesado de la habilidad golpea a un enemigo, activa (Asistencia Rápida). El personaje es invulnerable mientras usa esta habilidad. Cada vez que (Acorde de Ángel) es activado, (Técnica Especial EX: Técnica de Cámara Especial) solo puede activarse una vez.",
+                        description: "Después de entrar en (Acorde de Ángel), presiona [Icono Especial EX] para activar, o durante (Fiebre), mantén presionado [Icono Especial] para el (Quick Assist): Lanza un Ataque Coordinado con Bubble Pop contra enemigos objetivo, infligiendo Daño Físico. Después de usar esta habilidad, (Bubble Pop se une) al combate. Antes de que se active la habilidad, abre (Velo Etereo: Encore Fantasía). Mientras (Velo Etereo: Encore Fantasía) está activo, incrementa el ATK de todos los miembros del escuadrón en 50 puntos adicionales durante 35s. Antes de que Sunna reabra (Velo Etereo: Encore Fantasía), el (Velo Etereo: Encore Fantasía) existente se cerrará. Cuando el ataque pesado de la habilidad golpea a un enemigo, activa (Asistencia Rápida). El personaje es invulnerable mientras usa esta habilidad. Cada vez que (Acorde de Ángel) es activado, (Técnica Especial EX: Técnica de Cámara Especial) solo puede activarse una vez.",
                         tags: ["Físico", "Técnica Especial EX", "Velo Etereo"]
                     },
                     {
@@ -546,147 +546,43 @@ export const versionedAgents = {
                     {
                         type: "Pasiva Central",
                         name: "Pasiva Central: La Ternura es Justicia",
-                        description: "Los personajes en el estado (Acorde de Ángel) ganan ATK aumentado igual al {VALOR_1} del ATK inicial de Sunna, hasta un máximo de {VALOR_2}. (Ataque Básico: Gatita Mala al Acecho), (Técnica Especial EX: Bombardeo Bubblegum), (Técnica Especial EX: Técnica de Cámara Especial), (Ataque en Cadena: No Te Metas con el Gato) y (Definitiva: ¡Aplástalo Todo!) aplican (Mirada de Gato) a los objetivos al golpear, durando 12 segundos. Mientras Sunna está en el campo, la duración de (Mirada de Gato) se refresca continuamente; los enemigos normales con (Mirada de Gato) tienen aggro reducido hacia Sunna. Cuando personajes de (Ataque) o (Anomalía) en el escuadrón atacan continuamente enemigos con (Mirada de Gato), activan y detonan (Mirada de Gato). Cuando un personaje de (Ataque) la detona, infligen Daño de Atributo igual al 210% del ATK a enemigos en rango. Cuando un personaje de (Anomalía) la detona, infligen Daño de Atributo igual al 210% del ATK a enemigos en rango. Este DAÑO está garantizado de ser CRÍTICO y el Daño CRIT aumenta en un 100%. Daño tratado por (Mirada de Gato) es considerado daño tratado por el (Agente Activador). Cuando múltiples enemigos con (Mirada de Gato) están en el campo, solo la (Mirada de Gato) del objetivo principal de ataque será activada, y todas las (Miradas de Gato) en el campo serán eliminadas al activarse. Cuando un enemigo está Aturdido, (Mirada de Gato) es activada más rápidamente.",
+                        description: "Los personajes en el estado (Acorde de Ángel) ven incrementado su ATK en una cantidad igual al 14% del ATK inicial de Sunna, hasta un máximo de 490. (Ataque Básico), (Técnica Especial Potenciada), (Técnica Especial EX), (Ataque en Cadena), (Definitiva) al golpear a un enemigo, aplican (Mirada de Gato) al objetivo durante 12s. Mientras Sunna está en el campo, la duración de (Mirada de Gato) se refresca continuamente; los enemigos normales con (Mirada de Gato) tienen un deseo de ataque reducido hacia Sunna. Cuando personajes de (Ataque) o (Anomalía) en el equipo atacan continuamente a un enemigo con (Mirada de Gato), se activa y elimina (Mirada de Gato): Cuando es activado por un personaje de (Ataque), inflige un {VALOR_1} del ATK como Daño de Atributo del Agente a los enemigos en el rango. Cuando es activado por un personaje de (Anomalía), inflige un {VALOR_2} del ATK como Daño de Atributo del Agente a los enemigos en el rango; este daño es Crítico garantizado, y el Daño Crítico aumenta en un {VALOR_3}. El daño causado por (Mirada de Gato) se considera daño causado por el (Agente Activador). Cuando hay múltiples monstruos con (Mirada de Gato) en el campo, solo se activará la (Mirada de Gato) del objetivo principal, y al activarse recuperará todas las (Mirada de Gato) del campo. Cuando un enemigo está en estado de Aturdimiento, (Mirada de Gato) se activará más rápidamente.",
                         tags: ["Pasiva Central"]
                     },
                     {
                         type: "Habilidad Adicional",
                         name: "Habilidad Adicional: Contrapunto del Ensueño",
-                        description: "Cuando otro personaje en tu escuadrón es (Ataque) o comparte la misma Facción: Al entrar en combate o cuando cualquier miembro del escuadrón activa o extiende cualquier (Velo Etereo), adicionalmente aumenta el límite de (Acorde de Ángel) de Sunna en 15%, y adicionalmente incrementa su tap en 30, durando 15s. Máx 3 acumulaciones. La duración de cada acumulación se calcula separadamente; Cuando otro personaje en tu escuadrón es un personaje de (Ataque) mientras (Velo Etereo: Encore Fantasía) está activo, incrementa el DAÑO del Multiplicador de DAÑO Stun del objetivo en un 30% por 40s. Al entrar en combate o cuando otro miembro del escuadrón activa (Quick Assist), el Multiplicador de DAÑO Stun del objetivo incrementa en un 30% adicional por 40s; Si la Maestría de Anomalía inicial de Sunna excede 180, incrementa la Maestría de Anomalía en 1.2 por cada 1 punto sobre ese umbral.",
+                        description: "Se activa cuando hay un personaje de (Ataque) o de la misma Facción en el equipo:\nCuando un personaje dentro del (Velo Etereo: Repetición Delirante) golpea a un enemigo, el Multiplicador de Daño de Aturdimiento del objetivo aumenta en un 30% durante 35s.\nAl entrar en combate, o cuando cualquier personaje del equipo abre o extiende cualquier (Velo Etereo), el efecto de aumento de ATK de (Acorde de Ángel) aumenta adicionalmente en un 8%, y el límite superior aumenta adicionalmente en 280 puntos, durante 35s. Se puede acumular hasta 2 veces, y la duración de cada acumulación se calcula de forma independiente.",
                         tags: ["Habilidad Adicional"]
                     },
                     {
                         type: "Mindscape 1",
                         name: "1. 'Síndrome de Corrupción de Soledad'",
-                        description: "Cuando Sunna entra al campo de batalla, restaura 20 de Energía. En modo Zona de Investigación, este efecto puede activarse una vez cada 180 segundos. Cuando (Mirada de Gato) activa y sus enemigos, reduce el DEF del objetivo en un 5%, durando 15 segundos, acumulando hasta 3 veces. La duración de cada acumulación se calcula separadamente.",
+                        description: "Cuando Sunna entra al campo de batalla, restaura 20 de Energía. En modo Zona de Investigación, este efecto puede activarse una vez cada 180 segundos. Cuando (Mirada de Gato) activa y sus enemigos, reduce el DEF del objetivo en un 6%, durando 30 segundos, acumulando hasta 3 veces. La duración de cada acumulación se calcula separadamente.",
                         tags: ["Mindscape"]
                     },
                     {
                         type: "Mindscape 2",
                         name: "2. 'Gatos Siguen la Corriente'",
-                        description: "Mientras Sunna está dentro de cualquier (Velo Etereo), gana 1 acumulación de (Pulidor de Uñas) cada 10s; el tratamiento de daño del Multiplicador de DAÑO aumenta cuando (Mirada de Gato) es activada. Cuando es activado por un personaje de (Ataque): el Multiplicador de DAÑO aumenta en un 10%. Cuando es activado por un personaje de (Anomalía): el Multiplicador de DAÑO aumenta en un 10%.",
+                        description: "Mientras Sunna está dentro de cualquier (Velo Etereo), gana 1 acumulación de (Pulidor de Uñas) cada 10s; el tratamiento de daño del Multiplicador de DAÑO aumenta cuando (Mirada de Gato) es activada. Cuando es activado por un personaje de (Ataque): el Multiplicador de DAÑO aumenta en un 200%. Cuando es activado por un personaje de (Anomalía): el Multiplicador de DAÑO aumenta en un 300%.",
                         tags: ["Mindscape"]
                     },
                     {
                         type: "Mindscape 4",
                         name: "4. 'Escuadrón de Investigación de Delirios'",
-                        description: "Cuando Sunna lanza su (Definitiva), todos los miembros del escuadrón obtienen 80% de DAÑO aumentado por 10s.",
+                        description: "Cuando Sunna lanza su (Definitiva), todos los miembros del escuadrón obtienen 15% de DAÑO aumentado por 60s.",
                         tags: ["Mindscape"]
                     },
                     {
                         type: "Mindscape 6",
                         name: "6. 'Big Bang del Hueco'",
-                        description: "Cuando Sunna activa su (Técnica Especial EX), entra en el estado (Encerrada) por 8 segundos. Durante (Encerrada), los ataques de Sunna son CRÍTICOS garantizados, y su Daño CRIT aumenta en un 0.02% de su ATK inicial, hasta un aumento máximo del 60%. Durante (Encerrada), el Nivel de Anti-Interrupción de Sunna aumenta y el DAÑO tomado es reducido en un 60%. Durante (Encerrada), Sunna puede activar (Mirada de Gato), calculando DAÑO según (Ataque) del Multiplicador de DAÑO de (Mirada de Gato) y una vez que se activa (Mirada de Gato), inmediatamente consume los (Pulidores de Uñas) y aplica (Mirada de Gato) al enemigo nuevamente; Durante (Encerrada), el DAÑO infligido por todo el escuadrón al activar (Mirada de Gato) aumenta en un 20%.",
+                        description: "Cuando Sunna activa su (Técnica Especial EX), entra en el estado (Encerrada) por 8 segundos. Durante (Encerrada), los ataques de Sunna son CRÍTICOS garantizados, y su Daño CRIT aumenta en un 0.03% de su ATK inicial, hasta un aumento máximo del 105%. Durante (Encerrada), el Nivel de Anti-Interrupción de Sunna aumenta y el DAÑO tomado es reducido en un 40%. Durante (Encerrada), Sunna puede activar (Mirada de Gato), calculando DAÑO según (Ataque) del Multiplicador de DAÑO de (Mirada de Gato) y una vez que se activa (Mirada de Gato), inmediatamente consume los (Pulidores de Uñas) y aplica (Mirada de Gato) al enemigo nuevamente; Durante (Encerrada), el DAÑO infligido por todo el escuadrón al activar (Mirada de Gato) aumenta en un 50%.",
                         tags: ["Mindscape"]
                     }
                 ]
             },
 
         },
-    },
-    25: {
-        id: 25,
-        name: "Asaba Harumasa",
-        versions: {
-            "v2.6.1": {
-                baseStats: {
-                    hp: { min: 628, max: 9694 },
-                    atk: { min: 112, max: 1045 },
-                    def: { min: 50, max: 805 },
-                    impact: 95,
-                    anomalyRate: 110,
-                    anomalyMastery: 108
-                },
-                coreSkillScaling: [
-                    ["7.5%", "15%"],
-                    ["8.3%", "20%"],
-                    ["9.1%", "25%"],
-                    ["9.9%", "30%"],
-                    ["10.7%", "35%"],
-                    ["11.5%", "40%"],
-                    ["12.3%", "45%"]
-                ]
-            },
-            "v2.6.2": {
-                baseStats: {
-                    hp: { min: 628, max: 9694 },
-                    atk: { min: 112, max: 1045 },
-                    def: { min: 50, max: 805 },
-                    impact: 95,
-                    anomalyRate: 110,
-                    anomalyMastery: 108
-                },
-                coreSkillScaling: [
-                    ["7.5%", "15%"],
-                    ["8.3%", "20%"],
-                    ["9.1%", "25%"],
-                    ["9.9%", "30%"],
-                    ["10.7%", "35%"],
-                    ["11.5%", "40%"],
-                    ["12.3%", "45%"]
-                ]
-            }
-        },
-        skills: [
-            {
-                id: "harumasa_dash_slice",
-                type: "Evasión",
-                versions: {
-                    "v2.6.1": {
-                        name: "Ataque de Carrera: Hiten no Tsuru - Corte",
-                        description: "Durante una evasión, pulsa [Ataque Normal] para activarlo.\nSe lanza hacia el enemigo y le asesta un tajo frente a sí, infligiendo [Daño Eléctrico].\nEs invulnerable durante la ejecución del movimiento y puede evadir ese daño.",
-                        tags: ["Evasión", "Eléctrico"]
-                    },
-                    "v2.6.2": {
-                        name: "Ataque de Carrera: Hiten no Tsuru - Corte",
-                        description: "Durante una evasión, pulsa [Ataque Normal] para activarlo.\nSe lanza hacia el enemigo y le asesta un tajo frente a sí, infligiendo [Daño Eléctrico].\nEs invulnerable durante la ejecución del movimiento y puede Parrear ataques enemigos.",
-                        tags: ["Evasión", "Eléctrico"]
-                    }
-                }
-            },
-            {
-                id: "harumasa_potential",
-                type: "Potencial",
-                versions: {
-                    "v2.6.1": {
-                        name: "Potencial Despierto: Asaba Harumasa",
-                        description: "Al usar una Técnica Especial EX, Ataque en Cadena o Definitiva, el ATQ aumenta en un 10% por 12s.",
-                        tags: ["Potencial", "Eléctrico"]
-                    },
-                    "v2.6.2": {
-                        name: "Potencial Despierto: Asaba Harumasa",
-                        description: "Al usar una Técnica Especial EX, Ataque en Cadena o Definitiva, el ATQ aumenta en un 30% por 12s; la duración de (Filo Reluciente) en la (Pasiva Central) se extiende a 10s.",
-                        tags: ["Potencial", "Eléctrico"]
-                    }
-                }
-            }
-        ]
-    },
-    3: {
-        id: 3,
-        name: "Lycaon",
-        versions: {
-            "v1.0": {},
-            "v1.1": {}
-        },
-        skills: [
-            {
-                id: "lycaon_potential",
-                type: "Potencial",
-                versions: {
-                    "v1.0": {
-                        name: "Potencial Despierto: Lycaon",
-                        description: "TBD",
-                        tags: ["Potencial", "Hielo"]
-                    },
-                    "v1.1": {
-                        name: "Potencial Despierto: Lycaon",
-                        description: "TBD",
-                        tags: ["Potencial", "Hielo"]
-                    }
-                }
-            }
-        ]
     },
 }
 
@@ -722,62 +618,6 @@ export function getAgentVersions(agentId) {
  */
 export function getAgentVersionData(agentId, versionLabel) {
     const agent = versionedAgents[agentId];
+    if (!agent || !agent.versions || !agent.versions[versionLabel]) return null;
     return agent.versions[versionLabel];
-}
-
-/**
- * Get agent skills with support for both structure types
- * @param {number} agentId 
- * @returns {Array} Array of skill objects with versions
- */
-export function getAgentSkills(agentId) {
-    const agent = versionedAgents[agentId];
-    if (!agent) return [];
-
-    // Type A: Skills already in top-level array (Harumasa/Lycaon)
-    if (agent.skills && Array.isArray(agent.skills)) {
-        return agent.skills;
-    }
-
-    // Type B: Skills nested inside versions (Aria/Sunna)
-    // We pivot them to the Type A structure for the viewer:
-
-    // Check if versions exist
-    if (!agent.versions) return [];
-
-    const allVersions = Object.keys(agent.versions);
-    // Use a Map to Group by Skill Type (since Aria data doesn't have IDs on skills)
-    // We assume the ORDER and TYPE of skills are consistent between versions for mapping.
-    // Or we use a combination of Type + Name? Name might change.
-    // Using Type + Index in that type category is safer for array-based matching.
-
-    const skillMap = new Map();
-
-    allVersions.forEach(version => {
-        const vData = agent.versions[version];
-        if (!vData.skills || !Array.isArray(vData.skills)) return;
-
-        // Reset counters for types in this version
-        const typeCounters = {};
-
-        vData.skills.forEach(skill => {
-            const type = skill.type || "Unknown";
-            if (!typeCounters[type]) typeCounters[type] = 0;
-            const index = typeCounters[type]++;
-
-            // Unique key for this skill across versions
-            const key = `${type}_${index}`;
-
-            if (!skillMap.has(key)) {
-                skillMap.set(key, {
-                    id: key,
-                    type: type,
-                    versions: {}
-                });
-            }
-            skillMap.get(key).versions[version] = skill;
-        });
-    });
-
-    return Array.from(skillMap.values());
 }
