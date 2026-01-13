@@ -198,13 +198,13 @@ export const versionedAgents = {
                     "text-[#d946ef]"
                 ],
                 coreSkillScaling: [
-                    ["9%", "4.7%", "11.6%", "0.8%", "1.2%"],
-                    ["10.4%", "5.4%", "13.5%", "0.93%", "1.3%"],
-                    ["11.9%", "6.2%", "15.5%", "1.07%", "1.5%"],
-                    ["13.4%", "7%", "17.4%", "1.2%", "1.7%"],
-                    ["14.9%", "7.8%", "19.3%", "1.33%", "1.9%"],
-                    ["16.4%", "8.5%", "21.3%", "1.47%", "2.1%"],
-                    ["17.9%", "9.3%", "23.3%", "1.6%", "2.3%"],
+                    ["14.3%", "7.5%", "18.6%", "1.3%", "1.9%"],
+                    ["16.7%", "8.7%", "21.6%", "1.52%", "2.2%"],
+                    ["19.1%", "9.9%", "24.7%", "1.73%", "2.5%"],
+                    ["21.5%", "11.2%", "27.8%", "1.95%", "2.8%"],
+                    ["23.8%", "12.4%", "30.9%", "2.17%", "3.1%"],
+                    ["26.2%", "13.7%", "34.0%", "2.38%", "3.4%"],
+                    ["28.6%", "14.9%", "37.1%", "2.6%", "3.7%"],
                 ],
                 skills: [
                     {
@@ -252,7 +252,7 @@ export const versionedAgents = {
                     {
                         type: "Pasiva Central",
                         name: "Pasiva Central: Aria",
-                        description: "Cuando el 3-Rank (Ataque de Carga) de Aria golpea un objetivo afectado por Anomalía de Atributo Etéreo, Anomalía de Atributo Eléctrico, Anomalía de Atributo Fuego, Anomalía de Atributo Físico o Anomalía de Atributo Hielo, activa (Abloom): Causa Daño de Anomalía de Atributo adicional igual al {VALOR_1}/{VALOR_2}/{VALOR_3}/{VALOR_4}/{VALOR_5} del DAÑO de Anomalía de Atributo original por 10 puntos de Maestría de Anomalía inicial. Cuando el objetivo está Aturdido, el ratio de DAÑO se incrementa en un (30%) adicional.",
+                        description: "Cuando el 3-Rank (Ataque de Carga) de Aria golpea un objetivo afectado por Anomalía de Atributo Etéreo, Anomalía de Atributo Eléctrico, Anomalía de Atributo Fuego, Anomalía de Atributo Físico o Anomalía de Atributo Hielo, activa (Abloom): Causa Daño de Anomalía de Atributo adicional igual al {VALOR_1}/{VALOR_2}/{VALOR_3}/{VALOR_4}/{VALOR_5} del DAÑO de Anomalía de Atributo original por 10 puntos de Maestría de Anomalía inicial. Cuando el objetivo está Aturdido, el ratio de DAÑO se incrementa en un (50%) adicional.",
                         tags: ["Pasiva Central"]
                     },
                     {
