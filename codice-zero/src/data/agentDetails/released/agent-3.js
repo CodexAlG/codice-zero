@@ -115,7 +115,7 @@ export default {
     {
       type: "Pasiva Central",
       name: "Pasiva Central: Garras Metálicas",
-      description: "Cuando Lycaon carga su (Ataque Básico) hasta completarlo, el ataque inflige {VALOR_1} más de Aturdimiento. Cuando (Técnica Especial EX: Emoción de la Caza) o (Ataque de Asistencia: Contraataque Vengativo) golpea a un enemigo, la RES al Daño Hielo del objetivo disminuye un 25% por 30s.",
+      description: "Cuando Lycaon carga su (Ataque Básico) hasta completarlo, el ataque inflige {VALOR_1} más de Aturdimiento. Cuando (Técnica Especial EX: Emoción de la Caza) o (Ataque de Asistencia: Contraataque Vengativo) golpea a un enemigo, la RES al Daño Hielo del objetivo disminuye un 25% por 30s. En la activación de [Assist: Vengeful Counter] y [Assist: Empowered Vengeful Counter] durante el proceso de activar un Quick Assist, Lycaon entra en estado [Coordinación], durando 5 segundos. Mientras está en estado [Coordinación], activar [Ataque de Asistencia: Contraataque Vengativo Potenciado] terminará el estado [Coordinación] 1s antes, y el Daño de [Ataque de Asistencia: Contraataque Vengativo Potenciado] aumenta en un 40%.",
       tags: ["Pasiva Central"]
     },
     {

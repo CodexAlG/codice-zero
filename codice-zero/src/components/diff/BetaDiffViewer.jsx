@@ -241,7 +241,7 @@ export default function BetaDiffViewer() {
             // Given User's request "only changed skills are displayed", I will enable filtering.
 
             // Only show if there IS a change.
-            if (!hasChanges) return null;
+            if (!hasChanges && versionBefore !== versionAfter) return null;
 
             return (
                 <div key={skillObj.id || index} className="skill-group icon-override">

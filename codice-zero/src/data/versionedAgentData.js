@@ -584,6 +584,85 @@ export const versionedAgents = {
 
         },
     },
+    // Agent 25 - Asaba Harumasa
+    25: {
+        id: 25,
+        name: "Asaba Harumasa",
+        versions: {
+            "v1.4": {
+                versionLabel: "v1.4",
+                baseStats: { hp: { min: 595, max: 7405 }, atk: { min: 132, max: 915 }, def: { min: 48, max: 600 }, impact: 90, crit: "5%", critDmg: "50%", anomalyRate: "80", anomalyMastery: "95", penRatio: "0%", energyRegen: "1.2" },
+                coreStats: { statName: "crit rate", valuePerNode: 4.8 },
+                coreSkillScaling: [["10.6%", "6%"], ["13%", "7%"], ["15.4%", "8%"], ["17.8%", "9%"], ["20.2%", "10%"], ["22.6%", "11%"], ["25%", "12%"]],
+                potential: { name: "(Test1) Despertar Potencial: Asaba Harumasa", description: "Al activar [Técnica Especial Potenciada], [Ataque en Cadena] o [Definitiva], el ATQ aumenta en un 10%, durante 12s." },
+                skills: [
+                    { type: "Evasión", name: "Evasión: Destello Rápido", description: "Presiona [Icono Dodges] para activar: Una evasión rápida de carrera. El personaje es invulnerable mientras usa esta habilidad.", tags: ["Evasión"] },
+                    { type: "Evasión", name: "Ataque de Carrera: Hiten no Tsuru", description: "Presiona [Icono Ataque] durante una evasión para activar: Lanza múltiples ataques perforantes hacia adelante, causando Daño Físico.", tags: ["Físico", "Evasión"] },
+                    { type: "Evasión", name: "Contraataque de Evasión: Filo Oculto", description: "Presiona [Icono Ataque] durante una (Evasión Perfecta) para activar: Perfora a enemigos en frente, causando Daño Eléctrico. El personaje es invulnerable mientras usa esta habilidad.", tags: ["Eléctrico", "Evasión"] },
+                    { type: "Técnica Especial", name: "Técnica Especial: Sin Lugar Donde Esconderse", description: "Presiona [Icono Especial] para activar: Lanza una flecha hacia adelante, causando Daño Eléctrico. El nivel de Anti-Interrupción aumenta mientras usa esta habilidad.", tags: ["Eléctrico", "Técnica Especial"] },
+                    { type: "Técnica Especial EX", name: "Técnica Especial EX: Sin Lugar Donde Correr", description: "Con suficiente Energía, presiona [Icono Especial] para activar: Lanza dagas y una flecha mejorada hacia adelante, causando masivo Daño Eléctrico. Cuando la flecha mejorada golpea a un enemigo o al suelo, genera 6 (Cargas Electro). El personaje es invulnerable mientras usa esta habilidad.", tags: ["Eléctrico", "Técnica Especial EX"] },
+                    { type: "Técnica Definitiva", name: "Ataque en Cadena: Kai - Hanare", description: "Cuando un (Ataque en Cadena) es activado, selecciona el personaje para activar: Desata un ataque perforante en una gran área adelante y luego dispara una flecha mejorada, causando masivo Daño Eléctrico. Cuando la flecha golpea el suelo, genera 6 (Cargas Electro). El personaje es invulnerable mientras usa esta habilidad.", tags: ["Eléctrico", "Ataque en Cadena"] },
+                    { type: "Técnica Definitiva", name: "Definitiva: Zanshin", description: "Cuando el Nivel de Decibelios está al (Máximo), presiona [Icono Definitiva] para activar: Desata un ataque perforante a enemigos en una gran área adelante, causando masivo Daño Eléctrico. El personaje es invulnerable mientras usa esta habilidad.", tags: ["Eléctrico", "Técnica Definitiva"] },
+                    { type: "Pasiva Central", name: "Pasiva Central: Amanecer", description: "La Prob. Crítica de (Ataque de Carrera: Hiten no Tsuru - Corte) aumenta en un {VALOR_1}, y cuando el (Ataque de Carrera: Hiten no Tsuru - Corte) de Harumasa activa un golpe crítico contra un enemigo, gana 1 acumulación de (Filo Reluciente), hasta un máximo de 3 acumulaciones por uso de la habilidad y acumulándose hasta 6 veces, durando 5s, los disparos repetidos reinician la duración. Cada acumulación de (Filo Reluciente) aumenta el Daño Crítico de (Ataque de Carrera: Hiten no Tsuru - Corte) en un {VALOR_2}.", tags: ["Pasiva Central"] },
+                    { type: "Habilidad Adicional", name: "Habilidad Adicional: Overclock", description: "Cuando otro personaje en tu escuadrón es un personaje de (Aturdimiento) o (Anomalía): Cuando los ataques de Harumasa golpean enemigos Aturdidos o enemigos bajo Anomalía de Atributo, su DAÑO aumenta en un 40%. Cuando el (Pluma Descendente) de Harumasa golpea enemigos Aturdidos o enemios bajo Anomalía de Atributo, aplicará 2 acumulaciones de (Prisión Electro) al objetivo.", tags: ["Habilidad Adicional"] }
+                ]
+            },
+            "v2.6.2": {
+                versionLabel: "v2.6.2",
+                baseStats: { hp: { min: 595, max: 7405 }, atk: { min: 132, max: 915 }, def: { min: 48, max: 600 }, impact: 90, crit: "5%", critDmg: "50%", anomalyRate: "80", anomalyMastery: "95", penRatio: "0%", energyRegen: "1.2" },
+                coreStats: { statName: "crit rate", valuePerNode: 4.8 },
+                coreSkillScaling: [["10.6%", "6%"], ["13%", "7%"], ["15.4%", "8%"], ["17.8%", "9%"], ["20.2%", "10%"], ["22.6%", "11%"], ["25%", "12%"]],
+                potential: { name: "(Test1) Despertar Potencial: Asaba Harumasa", description: "Al activar [Técnica Especial Potenciada], [Ataque en Cadena] o [Definitiva], el ATQ aumenta en un 30%, durante 12s; la duración de [Borde] de la [Pasiva Central] se extiende a 10s." },
+                skills: [
+                    { type: "Evasión", name: "Evasión: Destello Rápido", description: "Presiona [Icono Dodges] para activar: Una evasión rápida de carrera. El personaje es invulnerable mientras usa esta habilidad.", tags: ["Evasión"] },
+                    { type: "Evasión", name: "Ataque de Carrera: Hiten no Tsuru", description: "Presiona [Icono Ataque] durante una evasión para activar: Lanza múltiples ataques perforantes hacia adelante, causando Daño Eléctrico.", tags: ["Eléctrico", "Evasión"] },
+                    { type: "Evasión", name: "Ataque de Carrera: Hiten no Tsuru - Corte", description: "Mientras hay enemigos (Marcado-X) en el campo, Harumasa entrará en el estado (Despertar), cambiando (Ataque de Carrera: Hiten no Tsuru) por (Ataque de Carrera: Hiten no Tsuru - Corte). Mientras está en el estado (Despertar), presiona [Icono Ataque] durante una evasión para activar: Arremete hacia el enemigo (Marcado-X) más cercano y ejecuta un corte poderoso, causando Daño Eléctrico. Cuando el corte golpea al objetivo, consume 2 acumulaciones de (Prisión Electro). Con menos de 2 acumulaciones de (Prisión Electro), (Marcado-X) será eliminado del enemigo. Antes de que (Marcado-X) sea eliminado, presiona repetidamente [Icono Ataque] para usar repetidamente (Ataque de Carrera: Hiten no Tsuru - Corte). Mientras no existan enemigos (Marcado-X) en el campo, Harumasa sale del estado (Despertar).", tags: ["Eléctrico", "Evasión"] },
+                    { type: "Evasión", name: "Contraataque de Evasión: Filo Oculto", description: "Presiona [Icono Ataque] durante una (Evasión Perfecta) para activar: Perfora a enemigos en frente, causando Daño Eléctrico. El personaje es invulnerable mientras usa esta habilidad.", tags: ["Eléctrico", "Evasión"] },
+                    { type: "Técnica Especial", name: "Técnica Especial: Sin Lugar Donde Esconderse", description: "Presiona [Icono Especial] para activar: Lanza una flecha hacia adelante, causando Daño Eléctrico. El nivel de Anti-Interrupción aumenta mientras usa esta habilidad.", tags: ["Eléctrico", "Técnica Especial"] },
+                    { type: "Técnica Especial EX", name: "Técnica Especial EX: Sin Lugar Donde Correr", description: "Con suficiente Energía, presiona [Icono Especial] para activar: Lanza dagas y una flecha mejorada hacia adelante, causando masivo Daño Eléctrico. Cuando la flecha mejorada golpea a un enemigo, genera 6 (Cargas Electro). El personaje es invulnerable mientras usa esta habilidad.", tags: ["Eléctrico", "Técnica Especial EX"] },
+                    { type: "Pasiva Central", name: "Pasiva Central: Amanecer", description: "La Prob. Crítica de (Ataque de Carrera: Hiten no Tsuru - Corte) aumenta en un {VALOR_1}, y cuando el (Ataque de Carrera: Hiten no Tsuru - Corte) de Harumasa activa un golpe crítico contra un enemigo, gana 1 acumulación de (Filo Reluciente), hasta un máximo de 3 acumulaciones por uso de la habilidad y acumulándose hasta 6 veces, durando 5s, los disparos repetidos reinician la duración. Cada acumulación de (Filo Reluciente) aumenta el Daño Crítico de (Ataque de Carrera: Hiten no Tsuru - Corte) en un {VALOR_2}.", tags: ["Pasiva Central"] },
+                    { type: "Habilidad Adicional", name: "Habilidad Adicional: Overclock", description: "Cuando otro personaje en tu escuadrón es un personaje de (Aturdimiento) o (Anomalía): Cuando los ataques de Harumasa golpean enemigos Aturdidos o enemigos bajo Anomalía de Atributo, su DAÑO aumenta en un 40%. Cuando el (Pluma Descendente) de Harumasa golpea enemigos Aturdidos o enemios bajo Anomalía de Atributo, aplicará 2 acumulaciones de (Prisión Electro) al objetivo.", tags: ["Habilidad Adicional"] }
+                ]
+            }
+        }
+    },
+    // Agent 3 - Lycaon
+    3: {
+        id: 3,
+        name: "Lycaon",
+        versions: {
+            "v1.0": {
+                versionLabel: "v1.0",
+                baseStats: { hp: { min: 677, max: 8416 }, atk: { min: 105, max: 728 }, def: { min: 49, max: 606 }, impact: 119, crit: "5%", critDmg: "50%", anomalyRate: "91", anomalyMastery: "90", penRatio: "0%", energyRegen: "1.2" },
+                coreStats: { statName: "impact", valuePerNode: 6 },
+                coreSkillScaling: [["40%"], ["46.6%"], ["53.3%"], ["60%"], ["66.6%"], ["73.3%"], ["80%"]],
+                potential: { name: "(Test1) Despertar Potencial: Lycaon", description: "(Test1) Cuando Lycaon está en estado [Coordinación], Impacto aumenta 15%." },
+                skills: [
+                    {
+                        type: "Pasiva Central",
+                        name: "Pasiva Central: Garras Metálicas",
+                        description: "Cuando Lycaon carga su (Ataque Básico) hasta completarlo, el ataque inflige {VALOR_1} más de Aturdimiento. Cuando (Técnica Especial EX: Emoción de la Caza) o (Ataque de Asistencia: Contraataque Vengativo) golpea a un enemigo, la RES al Daño Hielo del objetivo disminuye un 25% por 30s. En la activación de [Assist: Vengeful Counter] y [Assist: Empowered Vengeful Counter] durante el proceso de activar un Quick Assist, Lycaon entra en estado [Coordinación], durando {EXCEL:3} segundos.",
+                        tags: ["Pasiva Central"]
+                    }
+                ]
+            },
+            "v2.6.2": {
+                versionLabel: "v2.6.2",
+                baseStats: { hp: { min: 677, max: 8416 }, atk: { min: 105, max: 728 }, def: { min: 49, max: 606 }, impact: 119, crit: "5%", critDmg: "50%", anomalyRate: "91", anomalyMastery: "90", penRatio: "0%", energyRegen: "1.2" },
+                coreStats: { statName: "impact", valuePerNode: 6 },
+                coreSkillScaling: [["40%"], ["46.6%"], ["53.3%"], ["60%"], ["66.6%"], ["73.3%"], ["80%"]],
+                potential: { name: "(Test1) Despertar Potencial: Lycaon", description: "(Test1) Cuando Lycaon está en estado [Coordinación], Impacto aumenta 15%." },
+                skills: [
+                    {
+                        type: "Pasiva Central",
+                        name: "Pasiva Central: Garras Metálicas",
+                        description: "Cuando Lycaon carga su (Ataque Básico) hasta completarlo, el ataque inflige {VALOR_1} más de Aturdimiento. Cuando (Técnica Especial EX: Emoción de la Caza) o (Ataque de Asistencia: Contraataque Vengativo) golpea a un enemigo, la RES al Daño Hielo del objetivo disminuye un 25% por 30s. En la activación de [Assist: Vengeful Counter] y [Assist: Empowered Vengeful Counter] durante el proceso de activar un Quick Assist, Lycaon entra en estado [Coordinación], durando 5 segundos. Mientras está en estado [Coordinación], activar [Ataque de Asistencia: Contraataque Vengativo Potenciado] terminará el estado [Coordinación] 1s antes, y el Daño de [Ataque de Asistencia: Contraataque Vengativo Potenciado] aumenta en un 40%.",
+                        tags: ["Pasiva Central"]
+                    }
+                ]
+            }
+        }
+    }
 }
 
 

@@ -44,13 +44,13 @@ export default {
         }
     },
     coreSkillScaling: [
-        ["19.8%", "10.3%", "25.7%", "1.8%", "2.6%"],
-        ["23.1%", "12%", "30%", "2.1%", "3%"],
-        ["26.4%", "13.7%", "34.3%", "2.4%", "3.4%"],
-        ["29.7%", "15.5%", "38.6%", "2.7%", "3.8%"],
-        ["33.0%", "17.2%", "42.8%", "3.0%", "4.3%"],
-        ["36.3%", "18.9%", "47.1%", "3.3%", "4.7%"],
-        ["39.6%", "20.6%", "51.4%", "3.6%", "5.1%"]
+        ["14.3%", "7.5%", "18.6%", "1.3%", "1.9%"],
+        ["16.7%", "8.7%", "21.6%", "1.52%", "2.2%"],
+        ["19.1%", "9.9%", "24.7%", "1.73%", "2.5%"],
+        ["21.5%", "11.2%", "27.8%", "1.95%", "2.8%"],
+        ["23.8%", "12.4%", "30.9%", "2.17%", "3.1%"],
+        ["26.2%", "13.7%", "34.0%", "2.38%", "3.4%"],
+        ["28.6%", "14.9%", "37.1%", "2.6%", "3.7%"],
     ],
     skills: [
         {
@@ -140,7 +140,7 @@ export default {
         {
             type: "Pasiva Central",
             name: "Pasiva Central: Aria",
-            description: "Cuando el 3-Rank (Ataque de Carga) de Aria golpea un objetivo afectado por Anomalía de Atributo Etéreo, Anomalía de Atributo Eléctrico, Anomalía de Atributo Fuego, Anomalía de Atributo Físico o Anomalía de Atributo Hielo, activa (Abloom): Causa Daño de Anomalía de Atributo adicional igual al {VALOR_1}/{VALOR_2}/{VALOR_3}/{VALOR_4}/{VALOR_5} del DAÑO de Anomalía de Atributo original por 10 puntos de Maestría de Anomalía inicial. Cuando el objetivo está Aturdido, el ratio de DAÑO se incrementa en un (30%) adicional.",
+            description: "Cuando el 3-Rank (Ataque de Carga) de Aria golpea un objetivo afectado por Anomalía de Atributo Etéreo, Anomalía de Atributo Eléctrico, Anomalía de Atributo Fuego, Anomalía de Atributo Físico o Anomalía de Atributo Hielo, activa (Abloom): Causa Daño de Anomalía de Atributo adicional igual al {VALOR_1}/{VALOR_2}/{VALOR_3}/{VALOR_4}/{VALOR_5} del DAÑO de Anomalía de Atributo original por 10 puntos de Maestría de Anomalía inicial. Cuando el objetivo está Aturdido, el ratio de DAÑO se incrementa en un (50%) adicional. Puede activarse una vez cada 1s.\\nCuando un enemigo élite o boss en el campo entra en el estado Aturdido, genera 4 (Energía de Soporte) en el campo. Puede activarse una vez cada 35s.\\nSi la Maestría de Anomalía inicial de Aria excede 180, incrementa la Maestría de Anomalía en 1.2 por cada 1 punto sobre ese umbral.",
             tags: ["Pasiva Central"]
         },
         {
