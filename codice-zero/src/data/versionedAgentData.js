@@ -621,3 +621,60 @@ export function getAgentVersionData(agentId, versionLabel) {
     if (!agent || !agent.versions || !agent.versions[versionLabel]) return null;
     return agent.versions[versionLabel];
 }
+
+/**
+ * Get skills for an agent, normalizing structure
+ * @param {number} agentId 
+ * @returns {Array} Array of skill objects
+ */
+export function getAgentSkills(agentId) {
+    const agent = versionedAgents[agentId];
+    if (!agent) return [];
+
+    // Type A: Skills already in top-level array (Harumasa/Lycaon)
+    if (agent.skills && Array.isArray(agent.skills)) {
+        return agent.skills;
+    }
+
+    // Type B: Skills nested inside versions (Aria/Sunna) - Pivot to Type A structure
+    // We need to collect all unique skills across versions and merge them
+    if (!agent.versions) return [];
+
+    const allVersions = Object.keys(agent.versions);
+    const skillMap = new Map(); // key -> skillObj
+
+    allVersions.forEach(version => {
+        const vData = agent.versions[version];
+        if (!vData.skills || !Array.isArray(vData.skills)) return;
+
+        // We assume skills in 'skills' array are ordered/keyed by type+name or just index
+        // For Aria/Sunna, they are just lists. We can try to match by 'type' or just index.
+        // Given the structure, let's group by 'type'.
+        const typeCounters = {};
+
+        vData.skills.forEach(skill => {
+            const type = skill.type || "Unknown";
+            if (!typeCounters[type]) typeCounters[type] = 0;
+            const index = typeCounters[type]++;
+
+            // Create a unique key for this skill slot, e.g., "Basic Attack_0"
+            const key = `${type}_${index}`;
+
+            if (!skillMap.has(key)) {
+                skillMap.set(key, {
+                    id: key,
+                    type: type,
+                    // We don't have a single 'name' or 'description' if they change
+                    // But the diff viewer handles per-version data if we structure it right?
+                    // Actually BetaDiffViewer expects:
+                    // [{ id: '...', name: '...', versions: { 'v1': { description: ... }, 'v2': ... } }]
+                    versions: {}
+                });
+            }
+
+            skillMap.get(key).versions[version] = skill;
+        });
+    });
+
+    return Array.from(skillMap.values());
+}
