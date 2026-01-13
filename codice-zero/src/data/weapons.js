@@ -1896,7 +1896,7 @@ export const weapons = [
     name: "Aria Test W-Engine",
     rank: "S",
     rol: "Anomalia",
-
+    leak: "Beta",
     detailStats: {
       baseAtk: { min: 48, max: 713 },
       subStat: { name: "Tasa de Anomalía", min: "12%", max: "30%" }
@@ -1919,7 +1919,7 @@ export const weapons = [
     name: "Song of Thoughts",
     rank: "S",
     rol: "Soporte",
-
+    leak: "Beta",
     detailStats: {
       baseAtk: { min: 48, max: 713 },
       subStat: { name: "Recuperación de Energia", min: "24%", max: "60%" }
