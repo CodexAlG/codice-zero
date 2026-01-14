@@ -44,7 +44,7 @@ export default {
     // 5 ARMAS (BiS -> F2P)
     bestWeapons: [
       { id: "w1", name: "Half-Sugar Hail", tier: "S+", tag: "BiS", icon: "/CodiceZero/Armas/Defensa/Weapon_S_1341Big.png" },
-      { id: "w2", name: "Transmorfo Original", tier: "S", tag: "Alternativa W5", icon: "/CodiceZero/Armas/Defensa/W-Engine_Original_Transmorpho.png" },
+      { id: "w2", name: "Transmorfo Original", tier: "S", tag: "Alternativa W5", icon: "/CodiceZero/Armas/Defensa/W-Engine_Original_Transmorpher.png" },
     ],
 
     // 2 BUILDS DE DISCOS DIFERENTES
