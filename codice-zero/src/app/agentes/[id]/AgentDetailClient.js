@@ -13,6 +13,7 @@ import AscensionMaterials from '@/components/agents/AscensionMaterials';
 import SkillMaterials from '@/components/agents/SkillMaterials';
 import { replaceIcons } from '@/components/utils/TextWithIcons';
 import HighlightText from '@/components/ui/HighlightText'; // Import directly here
+import BuildSection from './BuildSection';
 
 
 
@@ -675,6 +676,9 @@ export default function AgentDetailPage() {
                 {/* Espaciador Final */}
                 <div className="h-32"></div>
             </div >
+
+            {/* --- ESTRATEGIA DE EQUIPAMIENTO --- */}
+            <BuildSection strategy={details?.strategy} />
 
         </div >
     );

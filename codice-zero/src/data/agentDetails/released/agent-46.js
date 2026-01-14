@@ -35,6 +35,67 @@ export default {
       icon: "Item_Higher_Dimensional_Data_Spiked_Corruption_Core.webp",
     }
   },
+  strategy: {
+    // Orden de Habilidades
+    skillPriority: ["Técnica Especial", "Técnica Definitiva", "Asistencia", "Evasión", "Ataque Básico"],
+
+    statsPriority: ["HP%", "HP", "ATK%", "ATK"],
+
+    // 5 ARMAS (BiS -> F2P)
+    bestWeapons: [
+      { id: "w1", name: "Half-Sugar Hail", tier: "S+", tag: "BiS", icon: "/CodiceZero/Armas/Ataque/Weapon_S_1341Big.png" },
+      { id: "w2", name: "Transmorfo Original", tier: "S", tag: "Alternativa W5", icon: "/CodiceZero/Armas/Ataque/W-Engine_Original_Transmorpho.png" },
+    ],
+
+    // 2 BUILDS DE DISCOS DIFERENTES
+    driveDiscSetups: [
+      {
+        name: "Build Recomendada Premium",
+        sets: [
+          { name: "Voz Astral", count: 4, icon: "/CodiceZero/Discos/Astral.webp" },
+          { name: "Cuentos de Yunkui", count: 2, icon: "/CodiceZero/Discos/Drive_Disc_Yunkui_Tales_Icon.webp" }
+        ],
+        mainStats: { iv: "HP%", v: "HP", vi: "HP%", vii: "HP% > Recuperación de Energia" }
+      },
+      {
+        name: "Build 2do",
+        sets: [
+          { name: "Cuentos de Yunkui", count: 2, icon: "/CodiceZero/Discos/Drive_Disc_Yunkui_Tales_Icon.webp" },
+          { name: "Nana de Luna", count: 2, icon: "/CodiceZero/Discos/Drive_Disc_Moonlight_Lullaby_Icon.webp" },
+          { name: "Jazz Swing", count: 2, icon: "/CodiceZero/Discos/Drive_Disc_Swing_Jazz_Icon.webp" }
+        ],
+        mainStats: { iv: "HP%", v: "HP", vi: "HP%", vii: "HP% > Recuperación de Energia" }
+      }
+    ],
+
+    // EQUIPOS
+    teams: [
+      {
+        name: "Shunguang Premium",
+        members: [
+          { name: "Ye Shunguang", icon: "/CodiceZero/ICONOS/Agent_Ye_Shunguang_Icon.webp" },
+          { name: "Dialyn", icon: "/CodiceZero/ICONOS/Agent_Dialyn_Icon.webp" },
+          { name: "Zhao", icon: "/CodiceZero/ICONOS/Agent_Zhao_Icon.webp" }
+        ]
+      },
+      {
+        name: "Equipo de Ellen",
+        members: [
+          { name: "Ellen Joe", icon: "/CodiceZero/ICONOS/Agent_Ellen_Joe_Icon.webp" },
+          { name: "Zhao", icon: "/CodiceZero/ICONOS/Agent_Zhao_Icon.webp" },
+          { name: "Dialyn", icon: "/CodiceZero/ICONOS/Agent_Dialyn_Icon.webp" }
+        ]
+      },
+      {
+        name: "Team Yidhari",
+        members: [
+          { name: "Yidhari", icon: "/CodiceZero/ICONOS/Agent_Yidhari_Murphy_Icon.webp" },
+          { name: "Zhao", icon: "/CodiceZero/ICONOS/Agent_Zhao_Icon.webp" },
+          { name: "JuFufu", icon: "/CodiceZero/ICONOS/Agent_Ju_Fufu_Icon.webp" }
+        ]
+      }
+    ]
+  },
   coreSkillScaling: [
     ["24.0%", "0.8%", "100", "1.7%"],
     ["24.0%", "0.9%", "250", "1.7%"],

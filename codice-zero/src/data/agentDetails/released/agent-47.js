@@ -35,6 +35,69 @@ export default {
             icon: "Item_Higher_Dimensional_Data_Spiked_Corruption_Core.webp"
         }
     },
+    strategy: {
+        // Orden de Habilidades
+        skillPriority: ["Ataque Básico", "Técnica Especial", "Técnica Definitiva", "Evasión", "Asistencia"],
+
+        statsPriority: ["Probabilidad de Critico", "Daño Critico", " ATK%", "ATK Plano"],
+
+        // 5 ARMAS (BiS -> F2P)
+        bestWeapons: [
+            { id: "w1", name: "Resplandor Partenubes", tier: "S+", tag: "BiS", icon: "/CodiceZero/Armas/Ataque/W-Engine_Cloudcleave_Radience.webp" },
+            { id: "w2", name: "Azufre", tier: "S", tag: "Alternativa W5", icon: "/CodiceZero/Armas/Ataque/W-Engine_The_Brimstone.webp" },
+            { id: "w3", name: "Cojin de Acero", tier: "A", tag: "Opción 2", icon: "/CodiceZero/Armas/Ataque/W-Engine_Steel_Cushion.webp" },
+            { id: "w4", name: "Anhelo Marcato", tier: "A", tag: "F2P W5", icon: "/CodiceZero/Armas/Ataque/W-Engine_Marcato_Desire.webp" },
+            { id: "w5", name: "Flor Dorada", tier: "B", tag: "F2P W5", icon: "/CodiceZero/Armas/Ataque/W-Engine_Golden_Flower.webp" }
+        ],
+
+        // 2 BUILDS DE DISCOS DIFERENTES
+        driveDiscSetups: [
+            {
+                name: "Build TOP (Recomendada)",
+                sets: [
+                    { name: "Balada de Agua Blanca", count: 4, icon: "/CodiceZero/Discos/SuitWhiteWaterBallad.png" },
+                    { name: "Cancion de Rama y Hoja", count: 2, icon: "/CodiceZero/Discos/Drive_Disc_Branch_&_Blade_Song_Icon.webp" }
+                ],
+                mainStats: { iv: "Daño Critico", v: "Tasa de Perforacion > Daño Fisico > ATK%", vi: "ATK%" }
+            },
+            {
+                name: "Build 2do",
+                sets: [
+                    { name: "Balada de Agua Blanca", count: 4, icon: "/CodiceZero/Discos/SuitWhiteWaterBallad.png" },
+                    { name: "Tecno Pscido", count: 2, icon: "/CodiceZero/Discos/Drive_Disc_Woodpecker_Electro_Icon.png" }
+                ],
+                mainStats: { iv: "Daño Critico", v: "Tasa de Perforacion > Daño Fisico > ATK%", vi: "ATK%" }
+            }
+        ],
+
+        // EQUIPOS
+        teams: [
+            {
+                name: "Shunguang Premium",
+                members: [
+                    { name: "Ye Shunguang", icon: "/CodiceZero/ICONOS/Agent_Ye_Shunguang_Icon.webp" },
+                    { name: "Dialyn", icon: "/CodiceZero/ICONOS/Agent_Dialyn_Icon.webp" },
+                    { name: "Zhao", icon: "/CodiceZero/ICONOS/Agent_Zhao_Icon.webp" }
+                ]
+            },
+            {
+                name: "Shunguang Premium 2do Opcion",
+                members: [
+                    { name: "Ye Shunguang", icon: "/CodiceZero/ICONOS/Agent_Ye_Shunguang_Icon.webp" },
+                    { name: "Zhao", icon: "/CodiceZero/ICONOS/Agent_Zhao_Icon.webp" },
+                    { name: "Astra Yao", icon: "/CodiceZero/ICONOS/Agent_Astra_Yao_Icon.webp" }
+                ]
+            },
+            {
+                name: "Variante F2P",
+                members: [
+                    { name: "Ye Shunguang", icon: "/CodiceZero/ICONOS/Agent_Ye_Shunguang_Icon.webp" },
+                    { name: "Zhao", icon: "/CodiceZero/ICONOS/Agent_Zhao_Icon.webp" },
+                    { name: "Rina", icon: "/CodiceZero/ICONOS/Agent_Alexandrina_Sebastiane_Icon.webp" }
+                ]
+            }
+        ]
+    },
     coreSkillScaling: [
         ["15%", "10%"],
         ["17.5%", "12.5%"],
