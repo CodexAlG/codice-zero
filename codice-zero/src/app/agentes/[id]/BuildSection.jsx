@@ -129,58 +129,62 @@ export default function BuildSection({ strategy }) {
                                 Drive Discs
                             </h3>
 
-                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                                {strategy.driveDiscSetups?.map((setup, idx) => (
-                                    <div key={idx} className="bg-white/[0.03] border border-white/5 rounded-lg p-4">
-                                        <div className="text-xs font-bold text-purple-300 uppercase tracking-widest mb-3">
-                                            {setup.name}
-                                        </div>
-
-                                        {/* Disc Icons */}
-                                        <div className="flex items-center gap-3 mb-3">
-                                            {setup.sets.map((set, sIdx) => (
-                                                <div key={sIdx} className="flex items-center gap-2">
-                                                    <div className="relative">
-                                                        <div className="w-16 h-16 rounded-full bg-black/50 border border-white/10 overflow-hidden relative">
-                                                            {set.icon && (
-                                                                <Image
-                                                                    src={set.icon}
-                                                                    alt={set.name}
-                                                                    fill
-                                                                    className="object-cover"
-                                                                    unoptimized
-                                                                />
-                                                            )}
-                                                        </div>
-                                                        <div className="absolute -bottom-1 -right-1 w-6 h-6 bg-purple-600 rounded-full flex items-center justify-center text-xs font-bold text-white border-2 border-[#0f0f11]">
-                                                            {set.count}
-                                                        </div>
-                                                    </div>
-                                                    <span className="text-sm font-bold text-white">{set.name}</span>
-                                                </div>
-                                            ))}
-                                        </div>
-
-                                        {/* Stats Row */}
-                                        {setup.mainStats && (
-                                            <div className="flex gap-2">
-                                                <div className="flex-1 bg-black/40 rounded px-2 py-1.5 text-center">
-                                                    <div className="text-[10px] text-gray-400 font-bold">IV</div>
-                                                    <div className="text-sm text-white font-bold truncate">{setup.mainStats.iv}</div>
-                                                </div>
-                                                <div className="flex-1 bg-black/40 rounded px-2 py-1.5 text-center">
-                                                    <div className="text-[10px] text-gray-400 font-bold">V</div>
-                                                    <div className="text-sm text-white font-bold truncate">{setup.mainStats.v}</div>
-                                                </div>
-                                                <div className="flex-1 bg-black/40 rounded px-2 py-1.5 text-center">
-                                                    <div className="text-[10px] text-gray-400 font-bold">VI</div>
-                                                    <div className="text-sm text-white font-bold truncate">{setup.mainStats.vi}</div>
-                                                </div>
+                            {/* All Builds in One Box */}
+                            <div className="bg-white/[0.03] border border-white/5 rounded-lg p-4 mb-3">
+                                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                    {strategy.driveDiscSetups?.map((setup, idx) => (
+                                        <div key={idx}>
+                                            {/* Build Name */}
+                                            <div className="text-xs font-bold text-purple-300 uppercase tracking-widest mb-3">
+                                                {setup.name}
                                             </div>
-                                        )}
-                                    </div>
-                                ))}
+
+                                            {/* Disc Icons Row */}
+                                            <div className="flex items-center gap-3 flex-wrap">
+                                                {setup.sets.map((set, sIdx) => (
+                                                    <div key={sIdx} className="flex items-center gap-2">
+                                                        <div className="relative">
+                                                            <div className="w-14 h-14 rounded-full bg-black/50 border border-white/10 overflow-hidden relative">
+                                                                {set.icon && (
+                                                                    <Image
+                                                                        src={set.icon}
+                                                                        alt={set.name}
+                                                                        fill
+                                                                        className="object-cover"
+                                                                        unoptimized
+                                                                    />
+                                                                )}
+                                                            </div>
+                                                            <div className="absolute -bottom-1 -right-1 w-5 h-5 bg-purple-600 rounded-full flex items-center justify-center text-[10px] font-bold text-white border-2 border-[#0f0f11]">
+                                                                {set.count}
+                                                            </div>
+                                                        </div>
+                                                        <span className="text-xs font-bold text-white">{set.name}</span>
+                                                    </div>
+                                                ))}
+                                            </div>
+                                        </div>
+                                    ))}
+                                </div>
                             </div>
+
+                            {/* Single Stats Row - Only from first build */}
+                            {strategy.driveDiscSetups?.[0]?.mainStats && (
+                                <div className="flex gap-2">
+                                    <div className="flex-1 bg-black/40 rounded-lg px-3 py-3 text-center min-w-0">
+                                        <div className="text-xs text-gray-400 font-bold mb-1">SLOT IV</div>
+                                        <div className="text-sm text-white font-bold break-words leading-tight">{strategy.driveDiscSetups[0].mainStats.iv}</div>
+                                    </div>
+                                    <div className="flex-1 bg-black/40 rounded-lg px-3 py-3 text-center min-w-0">
+                                        <div className="text-xs text-gray-400 font-bold mb-1">SLOT V</div>
+                                        <div className="text-sm text-white font-bold break-words leading-tight">{strategy.driveDiscSetups[0].mainStats.v}</div>
+                                    </div>
+                                    <div className="flex-1 bg-black/40 rounded-lg px-3 py-3 text-center min-w-0">
+                                        <div className="text-xs text-gray-400 font-bold mb-1">SLOT VI</div>
+                                        <div className="text-sm text-white font-bold break-words leading-tight">{strategy.driveDiscSetups[0].mainStats.vi}</div>
+                                    </div>
+                                </div>
+                            )}
 
                             {strategy.statsPriority && (
                                 <div className="mt-3 text-sm">
