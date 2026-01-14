@@ -43,11 +43,11 @@ export default {
 
         // 5 ARMAS (BiS -> F2P)
         bestWeapons: [
-            { id: "w1", name: "Resplandor Partenubes", tier: "S+", tag: "BiS", icon: "/CodiceZero/Armas/Ataque/W-Engine_Cloudcleave_Radience.webp" },
+            { id: "w1", name: "Resplandor Partenubes", tier: "S+", tag: "BiS", icon: "/CodiceZero/Armas/Ataque/W-Engine_Cloudcleave_Radiance.webp" },
             { id: "w2", name: "Azufre", tier: "S", tag: "Alternativa W5", icon: "/CodiceZero/Armas/Ataque/W-Engine_The_Brimstone.webp" },
             { id: "w3", name: "Cojin de Acero", tier: "A", tag: "Opción 2", icon: "/CodiceZero/Armas/Ataque/W-Engine_Steel_Cushion.webp" },
             { id: "w4", name: "Anhelo Marcato", tier: "A", tag: "F2P W5", icon: "/CodiceZero/Armas/Ataque/W-Engine_Marcato_Desire.webp" },
-            { id: "w5", name: "Flor Dorada", tier: "B", tag: "F2P W5", icon: "/CodiceZero/Armas/Ataque/W-Engine_Golden_Flower.webp" }
+            { id: "w5", name: "Flor Dorada", tier: "B", tag: "F2P W5", icon: "/CodiceZero/Armas/Ataque/W-Engine_Gilded_Blossom.webp" }
         ],
 
         // 2 BUILDS DE DISCOS DIFERENTES

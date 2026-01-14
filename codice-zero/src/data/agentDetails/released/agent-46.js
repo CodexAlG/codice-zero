@@ -43,8 +43,8 @@ export default {
 
     // 5 ARMAS (BiS -> F2P)
     bestWeapons: [
-      { id: "w1", name: "Half-Sugar Hail", tier: "S+", tag: "BiS", icon: "/CodiceZero/Armas/Ataque/Weapon_S_1341Big.png" },
-      { id: "w2", name: "Transmorfo Original", tier: "S", tag: "Alternativa W5", icon: "/CodiceZero/Armas/Ataque/W-Engine_Original_Transmorpho.png" },
+      { id: "w1", name: "Half-Sugar Hail", tier: "S+", tag: "BiS", icon: "/CodiceZero/Armas/Defensa/Weapon_S_1341Big.png" },
+      { id: "w2", name: "Transmorfo Original", tier: "S", tag: "Alternativa W5", icon: "/CodiceZero/Armas/Defensa/W-Engine_Original_Transmorpho.png" },
     ],
 
     // 2 BUILDS DE DISCOS DIFERENTES
@@ -55,7 +55,7 @@ export default {
           { name: "Voz Astral", count: 4, icon: "/CodiceZero/Discos/Astral.webp" },
           { name: "Cuentos de Yunkui", count: 2, icon: "/CodiceZero/Discos/Drive_Disc_Yunkui_Tales_Icon.webp" }
         ],
-        mainStats: { iv: "HP%", v: "HP", vi: "HP%", vii: "HP% > Recuperación de Energia" }
+        mainStats: { iv: "HP%", v: "HP", v: "HP%", vi: "HP% > Recuperación de Energia" }
       },
       {
         name: "Build 2do",
@@ -64,7 +64,7 @@ export default {
           { name: "Nana de Luna", count: 2, icon: "/CodiceZero/Discos/Drive_Disc_Moonlight_Lullaby_Icon.webp" },
           { name: "Jazz Swing", count: 2, icon: "/CodiceZero/Discos/Drive_Disc_Swing_Jazz_Icon.webp" }
         ],
-        mainStats: { iv: "HP%", v: "HP", vi: "HP%", vii: "HP% > Recuperación de Energia" }
+        mainStats: { iv: "HP%", v: "HP", v: "HP%", vi: "HP% > Recuperación de Energia" }
       }
     ],
 
@@ -87,7 +87,7 @@ export default {
         ]
       },
       {
-        name: "Team Yidhari",
+        name: "Equipo de Yidhari",
         members: [
           { name: "Yidhari", icon: "/CodiceZero/ICONOS/Agent_Yidhari_Murphy_Icon.webp" },
           { name: "Zhao", icon: "/CodiceZero/ICONOS/Agent_Zhao_Icon.webp" },
