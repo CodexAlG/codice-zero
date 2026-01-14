@@ -73,25 +73,25 @@ export default {
       {
         name: "Shunguang Premium",
         members: [
-          { name: "Ye Shunguang", icon: "/CodiceZero/ICONOS/Agent_Ye_Shunguang_Icon.webp" },
-          { name: "Dialyn", icon: "/CodiceZero/ICONOS/Agent_Dialyn_Icon.webp" },
-          { name: "Zhao", icon: "/CodiceZero/ICONOS/Agent_Zhao_Icon.webp" }
+          { id: 47, name: "Ye Shunguang", icon: "/CodiceZero/ICONOS/Agent_Ye_Shunguang_Icon.webp" },
+          { id: 44, name: "Dialyn", icon: "/CodiceZero/ICONOS/Agent_Dialyn_Icon.webp" },
+          { id: 46, name: "Zhao", icon: "/CodiceZero/ICONOS/Agent_Zhao_Icon.webp" }
         ]
       },
       {
         name: "Equipo de Ellen",
         members: [
-          { name: "Ellen Joe", icon: "/CodiceZero/ICONOS/Agent_Ellen_Joe_Icon.webp" },
-          { name: "Zhao", icon: "/CodiceZero/ICONOS/Agent_Zhao_Icon.webp" },
-          { name: "Dialyn", icon: "/CodiceZero/ICONOS/Agent_Dialyn_Icon.webp" }
+          { id: 1, name: "Ellen Joe", icon: "/CodiceZero/ICONOS/Agent_Ellen_Joe_Icon.webp" },
+          { id: 46, name: "Zhao", icon: "/CodiceZero/ICONOS/Agent_Zhao_Icon.webp" },
+          { id: 44, name: "Dialyn", icon: "/CodiceZero/ICONOS/Agent_Dialyn_Icon.webp" }
         ]
       },
       {
         name: "Equipo de Yidhari",
         members: [
-          { name: "Yidhari", icon: "/CodiceZero/ICONOS/Agent_Yidhari_Murphy_Icon.webp" },
-          { name: "Zhao", icon: "/CodiceZero/ICONOS/Agent_Zhao_Icon.webp" },
-          { name: "JuFufu", icon: "/CodiceZero/ICONOS/Agent_Ju_Fufu_Icon.webp" }
+          { id: 43, name: "Yidhari", icon: "/CodiceZero/ICONOS/Agent_Yidhari_Murphy_Icon.webp" },
+          { id: 46, name: "Zhao", icon: "/CodiceZero/ICONOS/Agent_Zhao_Icon.webp" },
+          { id: 36, name: "JuFufu", icon: "/CodiceZero/ICONOS/Agent_Ju_Fufu_Icon.webp" }
         ]
       }
     ]

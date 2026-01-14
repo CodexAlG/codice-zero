@@ -75,25 +75,25 @@ export default {
             {
                 name: "Shunguang Premium",
                 members: [
-                    { name: "Ye Shunguang", icon: "/CodiceZero/ICONOS/Agent_Ye_Shunguang_Icon.webp" },
-                    { name: "Dialyn", icon: "/CodiceZero/ICONOS/Agent_Dialyn_Icon.webp" },
-                    { name: "Zhao", icon: "/CodiceZero/ICONOS/Agent_Zhao_Icon.webp" }
+                    { id: 47, name: "Ye Shunguang", icon: "/CodiceZero/ICONOS/Agent_Ye_Shunguang_Icon.webp" },
+                    { id: 44, name: "Dialyn", icon: "/CodiceZero/ICONOS/Agent_Dialyn_Icon.webp" },
+                    { id: 46, name: "Zhao", icon: "/CodiceZero/ICONOS/Agent_Zhao_Icon.webp" }
                 ]
             },
             {
                 name: "Shunguang Premium 2do Opcion",
                 members: [
-                    { name: "Ye Shunguang", icon: "/CodiceZero/ICONOS/Agent_Ye_Shunguang_Icon.webp" },
-                    { name: "Zhao", icon: "/CodiceZero/ICONOS/Agent_Zhao_Icon.webp" },
-                    { name: "Astra Yao", icon: "/CodiceZero/ICONOS/Agent_Astra_Yao_Icon.webp" }
+                    { id: 47, name: "Ye Shunguang", icon: "/CodiceZero/ICONOS/Agent_Ye_Shunguang_Icon.webp" },
+                    { id: 46, name: "Zhao", icon: "/CodiceZero/ICONOS/Agent_Zhao_Icon.webp" },
+                    { id: 27, name: "Astra Yao", icon: "/CodiceZero/ICONOS/Agent_Astra_Yao_Icon.webp" }
                 ]
             },
             {
                 name: "Variante F2P",
                 members: [
-                    { name: "Ye Shunguang", icon: "/CodiceZero/ICONOS/Agent_Ye_Shunguang_Icon.webp" },
-                    { name: "Zhao", icon: "/CodiceZero/ICONOS/Agent_Zhao_Icon.webp" },
-                    { name: "Rina", icon: "/CodiceZero/ICONOS/Agent_Alexandrina_Sebastiane_Icon.webp" }
+                    { id: 47, name: "Ye Shunguang", icon: "/CodiceZero/ICONOS/Agent_Ye_Shunguang_Icon.webp" },
+                    { id: 46, name: "Zhao", icon: "/CodiceZero/ICONOS/Agent_Zhao_Icon.webp" },
+                    { id: 6, name: "Rina", icon: "/CodiceZero/ICONOS/Agent_Alexandrina_Sebastiane_Icon.webp" }
                 ]
             }
         ]

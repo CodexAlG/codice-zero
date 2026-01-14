@@ -1,6 +1,7 @@
 'use client';
 
 import Image from 'next/image';
+import Link from 'next/link';
 
 // Mapeo de iconos de habilidades
 const SKILL_ICONS = {
@@ -209,9 +210,10 @@ export default function BuildSection({ strategy }) {
                                         {/* Team portraits */}
                                         <div className="flex items-center -space-x-3">
                                             {team.members.map((member, mIdx) => (
-                                                <div
+                                                <Link
                                                     key={mIdx}
-                                                    className="relative w-14 h-14 rounded-full overflow-hidden border-2 border-[#0f0f11] bg-gray-800 hover:z-10 hover:scale-110 transition-transform cursor-pointer"
+                                                    href={member.id ? `/agentes/${member.id}` : '#'}
+                                                    className="relative w-14 h-14 rounded-full overflow-hidden border-2 border-[#0f0f11] bg-gray-800 hover:z-10 hover:scale-110 hover:border-green-400 transition-all cursor-pointer block"
                                                     title={member.name}
                                                 >
                                                     {member.icon && member.icon !== "..." ? (
@@ -227,7 +229,7 @@ export default function BuildSection({ strategy }) {
                                                             {member.name?.[0] || "?"}
                                                         </div>
                                                     )}
-                                                </div>
+                                                </Link>
                                             ))}
                                         </div>
                                     </div>
