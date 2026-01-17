@@ -420,13 +420,36 @@ export default function BetaDiffViewer() {
             return bestMatch;
         };
 
+        // PRE-COMPUTE MATCHES: Process skills sorted by description length (longest first)
+        // This ensures long descriptions get matched with other long descriptions first
+        const preComputedMatches = new Map(); // skillObj.id -> oldSkill
+
+        if (isComparison) {
+            // Create array of skills with their new data, sorted by description length (longest first)
+            const skillsToMatch = agentSkills
+                .map((skillObj, idx) => ({
+                    skillObj,
+                    idx,
+                    newSkill: skillObj.versions[versionAfter],
+                    descLength: (skillObj.versions[versionAfter]?.description || "").length
+                }))
+                .filter(item => item.newSkill) // Only skills that exist in new version
+                .sort((a, b) => b.descLength - a.descLength); // Sort longest first
+
+            // Match in order (longest first claims best matches)
+            for (const item of skillsToMatch) {
+                const match = findBestMatchingOldSkill(item.newSkill, item.skillObj.type);
+                preComputedMatches.set(item.skillObj.id, match);
+            }
+        }
+
         const comparisonElements = agentSkills.map((skillObj, index) => {
             const newSkill = skillObj.versions[versionAfter];
 
-            // Find the best matching old skill by similarity
+            // Use pre-computed match
             let oldSkill = null;
             if (isComparison && newSkill) {
-                oldSkill = findBestMatchingOldSkill(newSkill, skillObj.type);
+                oldSkill = preComputedMatches.get(skillObj.id) || null;
             } else if (isComparison) {
                 // If newSkill doesn't exist but we're comparing, check if old version had this skill
                 oldSkill = skillObj.versions[versionBefore];
