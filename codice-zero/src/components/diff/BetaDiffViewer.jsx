@@ -310,8 +310,8 @@ export default function BetaDiffViewer() {
             }
 
             let value = restoreIcons(part.value);
-            let processedText = processScaling(value, data);
-            processedText = replaceIcons(processedText);
+            // Note: processScaling is now applied BEFORE diff computation, not after
+            let processedText = replaceIcons(value);
 
             return (
                 <span key={index} className={className}>
@@ -479,8 +479,15 @@ export default function BetaDiffViewer() {
             const oldDesc = oldSkill?.description || "";
             const newDesc = newSkill?.description || "";
 
-            const nameDiff = isComparison ? compareText(protectIcons(oldName), protectIcons(newName)) : [{ value: protectIcons(newName), added: false, removed: false }];
-            const descDiff = isComparison ? compareText(protectIcons(oldDesc), protectIcons(newDesc)) : [{ value: protectIcons(newDesc), added: false, removed: false }];
+            // Process scaling VALUES BEFORE diff so they compare correctly
+            // Each side uses its own version's coreSkillScaling data
+            const oldDescProcessed = processScaling(oldDesc, oldSkillVersionData || beforeData);
+            const newDescProcessed = processScaling(newDesc, afterData);
+            const oldNameProcessed = processScaling(oldName, oldSkillVersionData || beforeData);
+            const newNameProcessed = processScaling(newName, afterData);
+
+            const nameDiff = isComparison ? compareText(protectIcons(oldNameProcessed), protectIcons(newNameProcessed)) : [{ value: protectIcons(newNameProcessed), added: false, removed: false }];
+            const descDiff = isComparison ? compareText(protectIcons(oldDescProcessed), protectIcons(newDescProcessed)) : [{ value: protectIcons(newDescProcessed), added: false, removed: false }];
 
             const hasChanges = isComparison
                 ? (nameDiff.some(t => t.added || t.removed) || descDiff.some(t => t.added || t.removed))
