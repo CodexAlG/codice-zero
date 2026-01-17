@@ -287,8 +287,8 @@ export default function BetaDiffViewer() {
             const index = parseInt(number) - 1;
             const val = currentScalingValues[index];
             if (val !== undefined) {
-                // Use unique temp placeholder that won't be fragmented by diff
-                return `§§VAL${number}§§${val}§§VALEND§§`;
+                // Use unique temp placeholder: __SVAL_X_value_SVALEND__
+                return `__SVAL_${number}_${val}_SVALEND__`;
             }
             return `{VALOR_${number}}`;
         });
@@ -299,12 +299,31 @@ export default function BetaDiffViewer() {
         if (!text) return text;
         const scalingColors = data?.coreSkillScalingColors || [];
 
-        return text.replace(/§§VAL(\d+)§§([^§]+)§§VALEND§§/g, (_, number, val) => {
+        // Match pattern: __SVAL_X_value_SVALEND__
+        return text.replace(/__SVAL_(\d+)_(.+?)_SVALEND__/g, (_, number, val) => {
             const index = parseInt(number) - 1;
             if (scalingColors[index]) {
                 return `[CV="${scalingColors[index]}"]${val}[/CV]`;
             }
             return `[VAL]${val}[/VAL]`;
+        });
+    };
+
+    // SINGLE-VIEW (no diff): Direct replacement with colored markers
+    const processScaling = (text, data) => {
+        if (!data?.coreSkillScaling || !text) return text;
+        const currentScalingValues = data.coreSkillScaling[corePassiveLevel] || data.coreSkillScaling[0];
+        if (!currentScalingValues) return text;
+        const scalingColors = data.coreSkillScalingColors || [];
+
+        return text.replace(/\{VALOR_(\d+)\}/g, (_, number) => {
+            const index = parseInt(number) - 1;
+            const val = currentScalingValues[index];
+            if (val !== undefined) {
+                if (scalingColors[index]) return `[CV="${scalingColors[index]}"]${val}[/CV]`;
+                return `[VAL]${val}[/VAL]`;
+            }
+            return `{VALOR_${number}}`;
         });
     };
 
