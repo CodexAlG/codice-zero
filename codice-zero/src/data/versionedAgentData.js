@@ -285,6 +285,14 @@ export const versionedAgents = {
                 versionLabel: "v2.6.3",
                 baseStats: { hp: { min: 623, max: 7749 }, atk: { min: 124, max: 863 }, def: { min: 50, max: 619 }, impact: 87, crit: "5%", critDmg: "50%", anomalyRate: "140", anomalyMastery: "116", penRatio: "0%", energyRegen: "1.2" },
                 coreStats: { statName: "Tasa de Anomalía", valuePerNode: 16 },
+                coreSkillScalingColors: [
+                    "text-[#d946ef]",
+                    "text-[#3b82f6]",
+                    "text-[#ef4444]",
+                    "text-[#eab308]",
+                    "text-[#22d3ee]",
+                    "text-[#d946ef]"
+                ],
                 coreSkillScaling: [
                     ["14.8%", "7.7%", "19.2%", "1.35%", "2.0%"], // Same as v2.6.2 for now
                     ["17.3%", "9.0%", "22.4%", "1.58%", "2.3%"],
@@ -842,6 +850,27 @@ export function getAgentVersionData(agentId, versionLabel) {
  * @param {number} agentId 
  * @returns {Array} Array of skill objects
  */
+// Helper for fuzzy matching
+function calculateSimilarity(str1, str2) {
+    if (!str1 || !str2) return 0;
+    const s1 = str1.toLowerCase();
+    const s2 = str2.toLowerCase();
+    if (s1 === s2) return 1.0;
+
+    // Simple token overlap
+    const tokens1 = new Set(s1.split(/\s+/));
+    const tokens2 = new Set(s2.split(/\s+/));
+    const intersection = new Set([...tokens1].filter(x => tokens2.has(x)));
+    const union = new Set([...tokens1, ...tokens2]);
+
+    return intersection.size / union.size;
+}
+
+/**
+ * Get skills for an agent, normalizing structure with smart matching
+ * @param {number} agentId 
+ * @returns {Array} Array of skill objects
+ */
 export function getAgentSkills(agentId) {
     const agent = versionedAgents[agentId];
     if (!agent) return [];
@@ -851,45 +880,74 @@ export function getAgentSkills(agentId) {
         return agent.skills;
     }
 
-    // Type B: Skills nested inside versions (Aria/Sunna) - Pivot to Type A structure
-    // We need to collect all unique skills across versions and merge them
+    // Type B: Skills nested inside versions (Aria/Sunna)
     if (!agent.versions) return [];
 
-    const allVersions = Object.keys(agent.versions);
-    const skillMap = new Map(); // key -> skillObj
+    const allVersions = Object.keys(agent.versions).sort(); // Ensure sorted order
+    const skillLineages = []; // Array of { id, type, name, versions: {} }
 
     allVersions.forEach(version => {
         const vData = agent.versions[version];
         if (!vData.skills || !Array.isArray(vData.skills)) return;
 
-        // We assume skills in 'skills' array are ordered/keyed by type+name or just index
-        // For Aria/Sunna, they are just lists. We can try to match by 'type' or just index.
-        // Given the structure, let's group by 'type'.
-        const typeCounters = {};
-
         vData.skills.forEach(skill => {
-            const type = skill.type || "Unknown";
-            if (!typeCounters[type]) typeCounters[type] = 0;
-            const index = typeCounters[type]++;
+            // 1. Try to find match in existing lineages
+            let bestMatch = null;
+            let bestScore = 0;
 
-            // Create a unique key for this skill slot, e.g., "Basic Attack_0"
-            const key = `${type}_${index}`;
+            for (const lineage of skillLineages) {
+                // A. Exact ID Match (Highest Priority)
+                if (skill.id && lineage.id === skill.id) {
+                    bestMatch = lineage;
+                    break; // Specific ID match is definitive
+                }
 
-            if (!skillMap.has(key)) {
-                skillMap.set(key, {
-                    id: key,
-                    type: type,
-                    // We don't have a single 'name' or 'description' if they change
-                    // But the diff viewer handles per-version data if we structure it right?
-                    // Actually BetaDiffViewer expects:
-                    // [{ id: '...', name: '...', versions: { 'v1': { description: ... }, 'v2': ... } }]
-                    versions: {}
-                });
+                // B. Type Match + Name Match (High Priority)
+                // Only if lineage also lacks specific ID or IDs match (handled above)
+                if (skill.type === lineage.type) {
+                    // Check if this lineage already has a skill for this version (shouldn't happen usually)
+                    if (lineage.versions[version]) continue;
+
+                    const latestVersionKey = Object.keys(lineage.versions).pop();
+                    const lastSkill = lineage.versions[latestVersionKey];
+
+                    if (skill.name === lastSkill.name) {
+                        // Very likely the same skill
+                        if (!bestMatch || bestScore < 0.9) {
+                            bestMatch = lineage;
+                            bestScore = 0.9;
+                        }
+                    } else {
+                        // C. Similarity Match (Name + Description)
+                        const nameSim = calculateSimilarity(skill.name, lastSkill.name);
+                        const descSim = calculateSimilarity(skill.description, lastSkill.description);
+                        const score = (nameSim * 0.6) + (descSim * 0.4);
+
+                        if (score > 0.5 && score > bestScore) {
+                            bestMatch = lineage;
+                            bestScore = score;
+                        }
+                    }
+                }
             }
 
-            skillMap.get(key).versions[version] = skill;
+            if (bestMatch) {
+                // Add to existing lineage
+                bestMatch.versions[version] = skill;
+                // Update name/description to latest provided it's not a complete rebrand
+                // (Optional, BetaDiffViewer uses per-version data mostly)
+            } else {
+                // Create new lineage
+                const newId = skill.id || `${skill.type}_${skillLineages.length}`;
+                skillLineages.push({
+                    id: newId,
+                    type: skill.type,
+                    name: skill.name,
+                    versions: { [version]: skill }
+                });
+            }
         });
     });
 
-    return Array.from(skillMap.values());
+    return skillLineages;
 }

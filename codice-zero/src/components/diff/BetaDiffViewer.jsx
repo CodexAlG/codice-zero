@@ -326,6 +326,22 @@ export default function BetaDiffViewer() {
         }).filter(Boolean);
     };
 
+    const getNearestPreviousSkill = (skillObj, currentVersionStr, allVersions) => {
+        if (!skillObj || !skillObj.versions || !currentVersionStr || !allVersions) return null;
+
+        const currentIndex = allVersions.indexOf(currentVersionStr);
+        if (currentIndex <= 0) return null;
+
+        // Iterate backwards from previous version
+        for (let i = currentIndex - 1; i >= 0; i--) {
+            const ver = allVersions[i];
+            if (skillObj.versions[ver]) {
+                return skillObj.versions[ver];
+            }
+        }
+        return null;
+    };
+
     const renderSkillsComparison = () => {
         if (!agentSkills.length || !versionAfter) return null;
 
@@ -335,7 +351,22 @@ export default function BetaDiffViewer() {
         const afterSkillsContext = getSkillsContext(versionAfter);
 
         const comparisonElements = agentSkills.map((skillObj, index) => {
-            const oldSkill = isComparison ? skillObj.versions[versionBefore] : null;
+            // Updated Logic: Use Nearest Previous Skill
+            // If we are comparing (v2.6.3 vs v2.6.2), and v2.6.2 doesn't have the skill,
+            // we should try to find it in v2.6.1 (predecessor).
+            // However, we only care if we are in "Comparison Mode" (isComparison is true).
+
+            let oldSkill = null;
+            if (isComparison) {
+                // First try exact previous version
+                oldSkill = skillObj.versions[versionBefore];
+
+                // If not found, look back further (User Requirement: Fallback Logic)
+                if (!oldSkill) {
+                    oldSkill = getNearestPreviousSkill(skillObj, versionAfter, availableVersions);
+                }
+            }
+
             const newSkill = skillObj.versions[versionAfter];
 
             // If new version doesn't have skill, skip (unless it was removed, but if it was removed in new version, newSkill is undefined)
