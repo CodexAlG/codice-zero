@@ -277,39 +277,7 @@ export default function BetaDiffViewer() {
 
     // Helper functions for scaling and icons
 
-    // PRE-DIFF: Replace {VALOR_X} with temporary unique placeholders that won't fragment
-    const processScalingForDiff = (text, data) => {
-        if (!data?.coreSkillScaling || !text) return text;
-        const currentScalingValues = data.coreSkillScaling[corePassiveLevel] || data.coreSkillScaling[0];
-        if (!currentScalingValues) return text;
-
-        return text.replace(/\{VALOR_(\d+)\}/g, (_, number) => {
-            const index = parseInt(number) - 1;
-            const val = currentScalingValues[index];
-            if (val !== undefined) {
-                // Use unique temp placeholder: __SVAL_X_value_SVALEND__
-                return `__SVAL_${number}_${val}_SVALEND__`;
-            }
-            return `{VALOR_${number}}`;
-        });
-    };
-
-    // POST-DIFF: Replace temp placeholders with colored markers for HighlightText
-    const processScalingWithColors = (text, data) => {
-        if (!text) return text;
-        const scalingColors = data?.coreSkillScalingColors || [];
-
-        // Match pattern: __SVAL_X_value_SVALEND__
-        return text.replace(/__SVAL_(\d+)_(.+?)_SVALEND__/g, (_, number, val) => {
-            const index = parseInt(number) - 1;
-            if (scalingColors[index]) {
-                return `[CV="${scalingColors[index]}"]${val}[/CV]`;
-            }
-            return `[VAL]${val}[/VAL]`;
-        });
-    };
-
-    // SINGLE-VIEW (no diff): Direct replacement with colored markers
+    // Replace {VALOR_X} with values from coreSkillScaling, with optional colors
     const processScaling = (text, data) => {
         if (!data?.coreSkillScaling || !text) return text;
         const currentScalingValues = data.coreSkillScaling[corePassiveLevel] || data.coreSkillScaling[0];
@@ -344,8 +312,8 @@ export default function BetaDiffViewer() {
             }
 
             let value = restoreIcons(part.value);
-            // POST-DIFF: Now replace temp placeholders with colored values
-            let processedText = processScalingWithColors(value, data);
+            // Replace {VALOR_X} with values from this version's coreSkillScaling
+            let processedText = processScaling(value, data);
             processedText = replaceIcons(processedText);
 
             return (
@@ -514,16 +482,10 @@ export default function BetaDiffViewer() {
             const oldDesc = oldSkill?.description || "";
             const newDesc = newSkill?.description || "";
 
-            // Process scaling VALUES BEFORE diff so they compare correctly
-            // Each side uses its own version's coreSkillScaling data
-            // Uses temp placeholders that won't fragment during diff
-            const oldDescProcessed = processScalingForDiff(oldDesc, oldSkillVersionData || beforeData);
-            const newDescProcessed = processScalingForDiff(newDesc, afterData);
-            const oldNameProcessed = processScalingForDiff(oldName, oldSkillVersionData || beforeData);
-            const newNameProcessed = processScalingForDiff(newName, afterData);
-
-            const nameDiff = isComparison ? compareText(protectIcons(oldNameProcessed), protectIcons(newNameProcessed)) : [{ value: protectIcons(newNameProcessed), added: false, removed: false }];
-            const descDiff = isComparison ? compareText(protectIcons(oldDescProcessed), protectIcons(newDescProcessed)) : [{ value: protectIcons(newDescProcessed), added: false, removed: false }];
+            // Diff on RAW TEXT with {VALOR_X} placeholders
+            // processScaling will replace them AFTER diff in renderDiffWithHighlight
+            const nameDiff = isComparison ? compareText(protectIcons(oldName), protectIcons(newName)) : [{ value: protectIcons(newName), added: false, removed: false }];
+            const descDiff = isComparison ? compareText(protectIcons(oldDesc), protectIcons(newDesc)) : [{ value: protectIcons(newDesc), added: false, removed: false }];
 
             const hasChanges = isComparison
                 ? (nameDiff.some(t => t.added || t.removed) || descDiff.some(t => t.added || t.removed))
