@@ -355,6 +355,7 @@ export default function BetaDiffViewer() {
 
         // Find the best matching old skill from previous versions
         // Searches backwards through versions to find the most recent match
+        // Returns { skill, version } where version is the source version for coreSkillScaling
         const findBestMatchingOldSkill = (newSkill, skillType) => {
             if (!newSkill || !isComparison) return null;
 
@@ -362,6 +363,7 @@ export default function BetaDiffViewer() {
             if (currentIndex <= 0) return null;
 
             let bestMatch = null;
+            let bestVersion = null;
             let bestScore = 0;
             let bestKey = null;
 
@@ -388,7 +390,6 @@ export default function BetaDiffViewer() {
                     const descSim = calculateSimilarity(newSkill.description, oldSkillData.description);
 
                     // Calculate length similarity (0-1 scale)
-                    // Skills with similar description lengths are more likely to be the same skill
                     const newLen = (newSkill.description || "").length;
                     const oldLen = (oldSkillData.description || "").length;
                     const maxLen = Math.max(newLen, oldLen, 1);
@@ -401,6 +402,7 @@ export default function BetaDiffViewer() {
                     if (score > bestScore) {
                         bestScore = score;
                         bestMatch = oldSkillData;
+                        bestVersion = prevVersion; // Track which version this came from
                         bestKey = skillKey;
                     }
                 }
@@ -408,7 +410,7 @@ export default function BetaDiffViewer() {
                 // If we found a good match in this version, use it and mark as used
                 if (bestMatch && bestScore > 0.3) {
                     if (bestKey) usedOldSkills.add(bestKey);
-                    return bestMatch;
+                    return { skill: bestMatch, version: bestVersion };
                 }
             }
 
@@ -417,7 +419,7 @@ export default function BetaDiffViewer() {
                 usedOldSkills.add(bestKey);
             }
 
-            return bestMatch;
+            return bestMatch ? { skill: bestMatch, version: bestVersion } : null;
         };
 
         // PRE-COMPUTE MATCHES: Process skills sorted by description length (longest first)
@@ -446,13 +448,23 @@ export default function BetaDiffViewer() {
         const comparisonElements = agentSkills.map((skillObj, index) => {
             const newSkill = skillObj.versions[versionAfter];
 
-            // Use pre-computed match
+            // Use pre-computed match - now returns { skill, version }
             let oldSkill = null;
+            let oldSkillVersionData = null; // The version data to use for coreSkillScaling
+
             if (isComparison && newSkill) {
-                oldSkill = preComputedMatches.get(skillObj.id) || null;
+                const matchResult = preComputedMatches.get(skillObj.id);
+                if (matchResult) {
+                    oldSkill = matchResult.skill;
+                    // Get the version data for the version where the old skill came from
+                    oldSkillVersionData = selectedType === 'agentes'
+                        ? getAgentVersionData(selectedEntity.id, matchResult.version)
+                        : null;
+                }
             } else if (isComparison) {
                 // If newSkill doesn't exist but we're comparing, check if old version had this skill
                 oldSkill = skillObj.versions[versionBefore];
+                oldSkillVersionData = beforeData; // Use beforeData as normal
             }
 
             // If new version doesn't have skill, skip (unless it was removed, but if it was removed in new version, newSkill is undefined)
@@ -518,10 +530,10 @@ export default function BetaDiffViewer() {
                             {isComparison && (
                                 <div className="skill-column skill-before">
                                     <div className="skill-name">
-                                        {oldSkill ? renderDiffWithHighlight(nameDiff, 'left', beforeData, beforeSkillsContext) : <span className="text-gray-500 italic">No existe</span>}
+                                        {oldSkill ? renderDiffWithHighlight(nameDiff, 'left', oldSkillVersionData || beforeData, beforeSkillsContext) : <span className="text-gray-500 italic">No existe</span>}
                                     </div>
                                     <div className="skill-description">
-                                        {oldSkill ? renderDiffWithHighlight(descDiff, 'left', beforeData, beforeSkillsContext) : null}
+                                        {oldSkill ? renderDiffWithHighlight(descDiff, 'left', oldSkillVersionData || beforeData, beforeSkillsContext) : null}
                                     </div>
                                 </div>
                             )}
