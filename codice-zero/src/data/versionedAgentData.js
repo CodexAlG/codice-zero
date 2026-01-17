@@ -725,6 +725,74 @@ export const versionedAgents = {
                     }
                 ]
             },
+            "v2.6.3": {
+                versionLabel: "v2.6.3",
+                coreSkillScaling: [
+                    ["1750", "525", "150%", "240%", "80%"],
+                    ["2050", "615", "175%", "280%", "90%"],
+                    ["2350", "705", "200%", "320%", "100%"],
+                    ["2650", "795", "225%", "360%", "120%"],
+                    ["2950", "885", "250%", "400%", "130%"],
+                    ["3250", "975", "275%", "440%", "140%"],
+                    ["3500", "1050", "300%", "480%", "150%"],
+                ],
+                skills: [
+                    {
+                        type: "Ataque Básico",
+                        name: "Ataque Básico: Gatita Mala al Acecho",
+                        description: "Cuando Sunna está fuera del campo en combate y no hay enemigos con la marca (Mirada de Gato) en el campo, Bubble Pop consumirá 1 (Pulidor de Uñas) y lanzará automáticamente un ataque, infligiendo Daño Físico. Cuando cualquier miembro del escuadrón activa o extiende cualquier (Velo Etereo), Sunna gana 2 (Pulidores de Uñas). Cuando cualquier personaje del equipo activa (Mirada de Gato) sobre un enemigo que ha sido afectado por cualquier efecto de estado, Sunna obtiene 1 (Pulidor de Uñas); cada 10s como máximo se puede obtener 6 ataques; Sunna debe tener 6 o más (Pulidores de Uñas).",
+                        tags: ["Físico", "Ataque Básico"]
+                    },
+                    {
+                        type: "Técnica Especial EX",
+                        name: "Técnica Especial EX: Bombardeo Bubblegum",
+                        description: "Con suficiente Energía, presiona [Icono Especial EX] para activar: Lanza un gato usando el arma para el objetivo e inflige Daño Físico. Después de activar esta habilidad, (Bubble Pop se une) al combate. Cuando se activa la habilidad, aplica el efecto (Acorde de Ángel) a todos los Agentes en el escuadrón por 40s. Cuando el ataque pesado de la habilidad golpea a un enemigo, activa (Asistencia Rápida). El personaje es invulnerable mientras usa esta habilidad.",
+                        tags: ["Físico", "Técnica Especial EX"]
+                    },
+                    {
+                        type: "Técnica Especial EX",
+                        name: "Técnica Especial EX: Técnica de Cámara Especial",
+                        description: "Después de entrar en (Acorde de Ángel), presiona [Icono Especial EX] para activar, o durante (Fiebre), mantén presionado [Icono Especial] para el (Quick Assist): Lanza un Ataque Coordinado con Bubble Pop contra enemigos objetivo, infligiendo Daño Físico. Después de usar esta habilidad, (Bubble Pop se une) al combate. Antes de que se active la habilidad, abre (Velo Etereo: Encore Fantasía). Mientras (Velo Etereo: Encore Fantasía) está activo, incrementa el ATK de todos los miembros del escuadrón en 50 puntos adicionales durante 40s. Antes de que Sunna reabra (Velo Etereo: Encore Fantasía), el (Velo Etereo: Encore Fantasía) existente se cerrará. Cuando el ataque pesado de la habilidad golpea a un enemigo, activa (Asistencia Rápida). El personaje es invulnerable mientras usa esta habilidad. Cada vez que (Acorde de Ángel) es activado, (Técnica Especial EX: Técnica de Cámara Especial) solo puede activarse una vez.",
+                        tags: ["Físico", "Técnica Especial EX", "Velo Etereo"]
+                    },
+                    {
+                        type: "Técnica Definitiva",
+                        name: "Definitiva: ¡Aplástalo Todo!",
+                        description: "Cuando el Nivel de Decibelios está al (Máximo), presiona [Icono Definitiva] para activar: Desata ataques consecutivos de martillo, luego dispara Bubble Pop que explota, infligiendo masivo Daño Físico a enemigos en rango. Cuando un ataque pesado es activado, (Velo Etereo: Encore Fantasía) es activado; gana 6 (Pulidores de Uñas). Cuando un ataque pesado golpea a un enemigo, activa (Quick Assist). El personaje es invulnerable mientras usa esta habilidad.",
+                        tags: ["Físico", "Técnica Definitiva"]
+                    },
+                    {
+                        type: "Pasiva Central",
+                        name: "Pasiva Central: La Ternura es Justicia",
+                        description: "Los personajes en el estado (Acorde de Ángel) ven incrementado su ATK en una cantidad igual al 30% del ATK inicial de Sunna; cuando el ATK inicial alcanza {VALOR_1} puntos, todo el equipo recibe un aumento de ATK de hasta un máximo adicional, hasta un máximo de {VALOR_2}. (Ataque Básico), (Técnica Especial Potenciada), (Técnica Especial EX), (Ataque en Cadena), (Definitiva) al golpear a un enemigo con una parte que no sea de la marca, aplican (Mirada de Gato) al objetivo durante 12s. Mientras Sunna está en el campo, la duración de (Mirada de Gato) se refresca continuamente; los enemigos normales con (Mirada de Gato) tienen un deseo de ataque reducido hacia Sunna. Cuando personajes de (Ataque) o (Anomalía) en el equipo atacan continuamente a un enemigo con (Mirada de Gato), se activa y elimina (Mirada de Gato): Cuando es activado por un personaje de (Atacante), inflige un {VALOR_3} del ATQ como Daño de Atributo del Agente a los enemigos en el rango. Cuando es activado por un personaje de (Anomalía), inflige un {VALOR_4} del ATQ como Daño de Atributo del Agente a los enemigos en el rango; este daño es Crítico garantizado, y el Daño Crítico aumenta en un {VALOR_5}. El daño causado por (Mirada de Gato) se considera daño causado por el (Agente Activador). Cuando hay múltiples monstruos con (Mirada de Gato) en el campo, solo se activará la (Mirada de Gato) del objetivo principal, y al activarse se removerán todas las (Mirada de Gato) del campo; la cantidad de ataques requeridos para la activación de (Mirada de Gato) se reduce enormemente. Cuando un enemigo está en estado de Aturdimiento, (Mirada de Gato) se activará más rápidamente.",
+                        tags: ["Pasiva Central"]
+                    },
+                    {
+                        type: "Habilidad Adicional",
+                        name: "Habilidad Adicional: Contrapunto del Ensueño",
+                        description: "Se activa cuando hay un personaje de (Ataque) o de la misma Facción en el equipo:\\nCuando un personaje dentro del (Velo Etereo: Encore Fantasía) golpea a un enemigo, el Multiplicador de Daño de Aturdimiento del objetivo aumenta en un 30% durante 40s.\\nAl entrar al campo de batalla, recupera 20 de Energía. En modo Zona de Investigación, el efecto puede activarse una vez cada 180s y solo se activa una vez.",
+                        tags: ["Habilidad Adicional"]
+                    },
+                    {
+                        type: "Mindscape 1",
+                        name: "1. 'Síndrome de Corrupción de Soledad'",
+                        description: "Cuando Sunna entra al campo de batalla, restaura 20 de Energía. En modo Zona de Investigación, este efecto puede activarse una vez cada 180 segundos. Cuando (Mirada de Gato) activa y golpea enemigos, reduce el DEF del objetivo en un 7%, durando 40 segundos, acumulando hasta 3 veces. La duración de cada acumulación se calcula por separado.",
+                        tags: ["Mindscape"]
+                    },
+                    {
+                        type: "Mindscape 2",
+                        name: "2. 'Gatos Siguen la Corriente'",
+                        description: "Mientras Sunna está dentro de cualquier (Velo Etereo), incrementa el ATK de todo el equipo en un 10%, gana 1 acumulación de (Pulidor de Uñas) cada 10s; el tratamiento de daño del Multiplicador de DAÑO (Mirada de Gato) aumenta cuando (Mirada de Gato) es activada. Cuando es activado por un personaje de (Ataque): el Multiplicador de DAÑO aumenta en un 200%. Cuando es activado por un personaje de (Anomalía): el Multiplicador de DAÑO aumenta en un 300%.",
+                        tags: ["Mindscape"]
+                    },
+                    {
+                        type: "Mindscape 4",
+                        name: "4. 'Escuadrón de Investigación de Delirios'",
+                        description: "Cuando Sunna lanza su (Definitiva), todos los miembros del escuadrón obtienen 15% de DAÑO aumentado por 60s.",
+                        tags: ["Mindscape"]
+                    }
+                ]
+            },
 
         },
     },
