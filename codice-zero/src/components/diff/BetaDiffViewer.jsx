@@ -397,7 +397,7 @@ export default function BetaDiffViewer() {
                     </div>
 
                     <div className="skill-comparison-item">
-                        <div className="skill-grid">
+                        <div className="skill-grid" style={{ gridTemplateColumns: isComparison ? '1fr 1fr' : '1fr' }}>
                             {isComparison && (
                                 <div className="skill-column skill-before">
                                     <div className="skill-name">
@@ -408,7 +408,7 @@ export default function BetaDiffViewer() {
                                     </div>
                                 </div>
                             )}
-                            <div className="skill-column skill-after" style={{ width: isComparison ? '50%' : '100%' }}>
+                            <div className="skill-column skill-after">
                                 <div className="skill-name">
                                     {newSkill
                                         ? (isComparison ? renderDiffWithHighlight(nameDiff, 'right', afterData, afterSkillsContext) : <HighlightText text={replaceIcons(processScaling(restoreIcons(newName), afterData))} skillIcons={skillIcons} skills={afterSkillsContext} />)
