@@ -728,13 +728,13 @@ export const versionedAgents = {
             "v2.6.3": {
                 versionLabel: "v2.6.3",
                 coreSkillScaling: [
-                    ["1750", "525", "150%", "240%", "80%"],
-                    ["2050", "615", "175%", "280%", "90%"],
-                    ["2350", "705", "200%", "320%", "100%"],
-                    ["2650", "795", "225%", "360%", "120%"],
-                    ["2950", "885", "250%", "400%", "130%"],
-                    ["3250", "975", "275%", "440%", "140%"],
-                    ["3500", "1050", "300%", "480%", "150%"],
+                    ["150%", "240%", "80%", "1750", "525"],
+                    ["175%", "280%", "90%", "2050", "615"],
+                    ["200%", "320%", "100%", "2350", "705"],
+                    ["225%", "360%", "120%", "2650", "795"],
+                    ["250%", "400%", "130%", "2950", "885"],
+                    ["275%", "440%", "140%", "3250", "975"],
+                    ["300%", "480%", "150%", "3500", "1050"],
                 ],
                 skills: [
                     {
@@ -764,7 +764,7 @@ export const versionedAgents = {
                     {
                         type: "Pasiva Central",
                         name: "Pasiva Central: La Ternura es Justicia",
-                        description: "Los personajes en el estado (Acorde de Ángel) ven incrementado su ATK en una cantidad igual al 30% del ATK inicial de Sunna; cuando el ATK inicial alcanza {VALOR_1} puntos, todo el equipo recibe un aumento de ATK de hasta un máximo adicional, hasta un máximo de {VALOR_2}. (Ataque Básico), (Técnica Especial Potenciada), (Técnica Especial EX), (Ataque en Cadena), (Definitiva) al golpear a un enemigo con una parte que no sea de la marca, aplican (Mirada de Gato) al objetivo durante 12s. Mientras Sunna está en el campo, la duración de (Mirada de Gato) se refresca continuamente; los enemigos normales con (Mirada de Gato) tienen un deseo de ataque reducido hacia Sunna. Cuando personajes de (Ataque) o (Anomalía) en el equipo atacan continuamente a un enemigo con (Mirada de Gato), se activa y elimina (Mirada de Gato): Cuando es activado por un personaje de (Atacante), inflige un {VALOR_3} del ATQ como Daño de Atributo del Agente a los enemigos en el rango. Cuando es activado por un personaje de (Anomalía), inflige un {VALOR_4} del ATQ como Daño de Atributo del Agente a los enemigos en el rango; este daño es Crítico garantizado, y el Daño Crítico aumenta en un {VALOR_5}. El daño causado por (Mirada de Gato) se considera daño causado por el (Agente Activador). Cuando hay múltiples monstruos con (Mirada de Gato) en el campo, solo se activará la (Mirada de Gato) del objetivo principal, y al activarse se removerán todas las (Mirada de Gato) del campo; la cantidad de ataques requeridos para la activación de (Mirada de Gato) se reduce enormemente. Cuando un enemigo está en estado de Aturdimiento, (Mirada de Gato) se activará más rápidamente.",
+                        description: "Los personajes en el estado (Acorde de Ángel) ven incrementado su ATK en una cantidad igual al 30% del ATK inicial de Sunna; cuando el ATK inicial alcanza {VALOR_4} puntos, todo el equipo recibe un aumento de ATK de hasta un máximo adicional, hasta un máximo de {VALOR_5}. (Ataque Básico), (Técnica Especial Potenciada), (Técnica Especial EX), (Ataque en Cadena), (Definitiva) al golpear a un enemigo con una parte que no sea de la marca, aplican (Mirada de Gato) al objetivo durante 12s. Mientras Sunna está en el campo, la duración de (Mirada de Gato) se refresca continuamente; los enemigos normales con (Mirada de Gato) tienen un deseo de ataque reducido hacia Sunna. Cuando personajes de (Ataque) o (Anomalía) en el equipo atacan continuamente a un enemigo con (Mirada de Gato), se activa y elimina (Mirada de Gato): Cuando es activado por un personaje de (Atacante), inflige un {VALOR_1} del ATQ como Daño de Atributo del Agente a los enemigos en el rango. Cuando es activado por un personaje de (Anomalía), inflige un {VALOR_2} del ATQ como Daño de Atributo del Agente a los enemigos en el rango; este daño es Crítico garantizado, y el Daño Crítico aumenta en un {VALOR_3}. El daño causado por (Mirada de Gato) se considera daño causado por el (Agente Activador). Cuando hay múltiples monstruos con (Mirada de Gato) en el campo, solo se activará la (Mirada de Gato) del objetivo principal, y al activarse se removerán todas las (Mirada de Gato) del campo; la cantidad de ataques requeridos para la activación de (Mirada de Gato) se reduce enormemente. Cuando un enemigo está en estado de Aturdimiento, (Mirada de Gato) se activará más rápidamente.",
                         tags: ["Pasiva Central"]
                     },
                     {
