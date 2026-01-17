@@ -326,62 +326,6 @@ export default function BetaDiffViewer() {
         }).filter(Boolean);
     };
 
-    // Helper: Calculate similarity between two strings (Jaccard token overlap)
-    const calculateSimilarity = (str1, str2) => {
-        if (!str1 || !str2) return 0;
-        const s1 = str1.toLowerCase();
-        const s2 = str2.toLowerCase();
-        if (s1 === s2) return 1.0;
-
-        const tokens1 = new Set(s1.split(/\s+/));
-        const tokens2 = new Set(s2.split(/\s+/));
-        const intersection = new Set([...tokens1].filter(x => tokens2.has(x)));
-        const union = new Set([...tokens1, ...tokens2]);
-
-        return union.size > 0 ? intersection.size / union.size : 0;
-    };
-
-    // Find the most similar skill from previous versions
-    const findBestMatchingOldSkill = (newSkill, skillType, currentVersion, allVersions, allAgentSkills) => {
-        if (!newSkill || !isComparison) return null;
-
-        const currentIndex = allVersions.indexOf(currentVersion);
-        if (currentIndex <= 0) return null;
-
-        let bestMatch = null;
-        let bestScore = 0;
-
-        // Iterate backwards through previous versions
-        for (let vIdx = currentIndex - 1; vIdx >= 0; vIdx--) {
-            const prevVersion = allVersions[vIdx];
-
-            // Find all skills of the same type in this version
-            for (const skillObj of allAgentSkills) {
-                if (skillObj.type !== skillType) continue;
-
-                const oldSkillData = skillObj.versions[prevVersion];
-                if (!oldSkillData) continue;
-
-                // Calculate similarity
-                const nameSim = calculateSimilarity(newSkill.name, oldSkillData.name);
-                const descSim = calculateSimilarity(newSkill.description, oldSkillData.description);
-                const score = (nameSim * 0.4) + (descSim * 0.6); // Weight description more
-
-                if (score > bestScore) {
-                    bestScore = score;
-                    bestMatch = oldSkillData;
-                }
-            }
-
-            // If we found a good match in this version, use it
-            if (bestMatch && bestScore > 0.3) {
-                return bestMatch;
-            }
-        }
-
-        return bestMatch; // May be null if no match found
-    };
-
     const renderSkillsComparison = () => {
         if (!agentSkills.length || !versionAfter) return null;
 
@@ -390,13 +334,89 @@ export default function BetaDiffViewer() {
         const beforeSkillsContext = isComparison ? getSkillsContext(versionBefore) : [];
         const afterSkillsContext = getSkillsContext(versionAfter);
 
+        // Helper: Calculate similarity between two strings (Jaccard token overlap)
+        const calculateSimilarity = (str1, str2) => {
+            if (!str1 || !str2) return 0;
+            const s1 = str1.toLowerCase();
+            const s2 = str2.toLowerCase();
+            if (s1 === s2) return 1.0;
+
+            const tokens1 = new Set(s1.split(/\s+/));
+            const tokens2 = new Set(s2.split(/\s+/));
+            const intersection = new Set([...tokens1].filter(x => tokens2.has(x)));
+            const union = new Set([...tokens1, ...tokens2]);
+
+            return union.size > 0 ? intersection.size / union.size : 0;
+        };
+
+        // Collect all old skills from previous versions (for matching)
+        // Key = "type:versionIndex" to track used skills
+        const usedOldSkills = new Set();
+
+        // Find the best matching old skill from previous versions
+        // Searches backwards through versions to find the most recent match
+        const findBestMatchingOldSkill = (newSkill, skillType) => {
+            if (!newSkill || !isComparison) return null;
+
+            const currentIndex = availableVersions.indexOf(versionAfter);
+            if (currentIndex <= 0) return null;
+
+            let bestMatch = null;
+            let bestScore = 0;
+            let bestKey = null;
+
+            // Iterate backwards through previous versions
+            for (let vIdx = currentIndex - 1; vIdx >= 0; vIdx--) {
+                const prevVersion = availableVersions[vIdx];
+
+                // Find all skills of the same type in this version
+                for (let skillIdx = 0; skillIdx < agentSkills.length; skillIdx++) {
+                    const skillObj = agentSkills[skillIdx];
+                    if (skillObj.type !== skillType) continue;
+
+                    const oldSkillData = skillObj.versions[prevVersion];
+                    if (!oldSkillData) continue;
+
+                    // Create unique key to track this old skill
+                    const skillKey = `${skillType}:${prevVersion}:${skillIdx}`;
+
+                    // Skip if this old skill was already matched to another new skill
+                    if (usedOldSkills.has(skillKey)) continue;
+
+                    // Calculate similarity
+                    const nameSim = calculateSimilarity(newSkill.name, oldSkillData.name);
+                    const descSim = calculateSimilarity(newSkill.description, oldSkillData.description);
+                    const score = (nameSim * 0.4) + (descSim * 0.6);
+
+                    if (score > bestScore) {
+                        bestScore = score;
+                        bestMatch = oldSkillData;
+                        bestKey = skillKey;
+                    }
+                }
+
+                // If we found a good match in this version, use it and mark as used
+                if (bestMatch && bestScore > 0.3) {
+                    if (bestKey) usedOldSkills.add(bestKey);
+                    return bestMatch;
+                }
+            }
+
+            // Mark best match as used even if below threshold
+            if (bestMatch && bestKey) {
+                usedOldSkills.add(bestKey);
+            }
+
+            return bestMatch;
+        };
+
         const comparisonElements = agentSkills.map((skillObj, index) => {
             const newSkill = skillObj.versions[versionAfter];
 
             // Find the best matching old skill by similarity
             let oldSkill = null;
             if (isComparison && newSkill) {
-                oldSkill = findBestMatchingOldSkill(newSkill, skillObj.type, versionAfter, availableVersions, agentSkills);
+                oldSkill = findBestMatchingOldSkill(newSkill, skillObj.type);
             } else if (isComparison) {
                 // If newSkill doesn't exist but we're comparing, check if old version had this skill
                 oldSkill = skillObj.versions[versionBefore];
