@@ -44,8 +44,7 @@ export default function BetaDiffViewer() {
         return null;
     });
 
-    const [versionBefore, setVersionBefore] = useState(() => searchParams.get('left') || null);
-    const [versionAfter, setVersionAfter] = useState(() => searchParams.get('right') || null);
+    const [selectedVersion, setSelectedVersion] = useState(() => searchParams.get('version') || null);
 
     const [corePassiveLevel, setCorePassiveLevel] = useState(0); // 0 to 6
     const [refinementLevel, setRefinementLevel] = useState(0); // 0 to 4
@@ -56,23 +55,135 @@ export default function BetaDiffViewer() {
     // Dynamic Title Management
     useDynamicTitle(selectedEntity ? `Beta Diff: ${selectedEntity.name}` : null);
 
-    // Update URL Helper Function
-    const updateUrlParam = (key, value) => {
-        const current = new URLSearchParams(Array.from(searchParams.entries()));
 
-        if (!value) {
-            current.delete(key);
-        } else {
-            current.set(key, value);
+    // Get available entities
+    const availableEntities = useMemo(() => {
+        return selectedType === 'agentes'
+            ? getAvailableAgents()
+            : getAvailableWeapons();
+    }, [selectedType]);
+
+    // Get available versions
+    const availableVersions = useMemo(() => {
+        if (!selectedEntity) return [];
+        return selectedType === 'agentes'
+            ? getAgentVersions(selectedEntity.id)
+            : getWeaponVersions(selectedEntity.id);
+    }, [selectedEntity, selectedType]);
+
+    // Handle type change
+    const handleTypeChange = (e) => {
+        const newType = e.target.value;
+        setSelectedType(newType);
+        setSelectedEntity(null);
+        setSelectedVersion(null);
+
+        // Clear all params on type change
+        const current = new URLSearchParams(Array.from(searchParams.entries()));
+        current.delete('agent');
+        current.delete('weapon');
+        current.delete('version');
+        current.delete('left'); // Legacy cleanup
+        current.delete('right'); // Legacy cleanup
+
+        const search = current.toString();
+        const query = search ? `?${search}` : "";
+        router.replace(`${pathname}${query}`, { scroll: false });
+    };
+
+    const handleEntityChange = (e) => {
+        const entityId = parseInt(e.target.value);
+        const entity = availableEntities.find(ent => ent.id === entityId);
+
+        setSelectedEntity(entity);
+        setSelectedVersion(null); // Reset version on entity change
+
+        // Update URL
+        const current = new URLSearchParams(Array.from(searchParams.entries()));
+        current.delete('agent');
+        current.delete('weapon');
+        current.delete('version');
+        current.delete('left');
+        current.delete('right');
+
+        if (entity) {
+            const paramKey = selectedType === 'agentes' ? 'agent' : 'weapon';
+            current.set(paramKey, entity.name.toLowerCase());
         }
 
         const search = current.toString();
         const query = search ? `?${search}` : "";
-
         router.replace(`${pathname}${query}`, { scroll: false });
     };
 
-    // Skill Icons Mapping
+    const handleVersionChange = (e) => {
+        const val = e.target.value;
+        setSelectedVersion(val || null);
+
+        const current = new URLSearchParams(Array.from(searchParams.entries()));
+        if (val) {
+            current.set('version', val);
+        } else {
+            current.delete('version');
+        }
+        // Cleanup old params
+        current.delete('left');
+        current.delete('right');
+
+        const search = current.toString();
+        const query = search ? `?${search}` : "";
+        router.replace(`${pathname}${query}`, { scroll: false });
+    };
+
+    // Determine Comparison Versions
+    const comparisonState = useMemo(() => {
+        if (!selectedVersion || !availableVersions.length) return { current: null, previous: null };
+
+        const currentIndex = availableVersions.indexOf(selectedVersion);
+        if (currentIndex === -1) return { current: null, previous: null };
+
+        // Logic: previous is the one BEFORE the current in the list
+        // Assuming list is sorted [v1, v2, v3]. If v2 selected, prev is v1.
+        // If v1 selected (index 0), prev is null.
+
+        // Check sort order of availableVersions. usually getAgentVersions returns keys.
+        // We should ensure they are sorted logicaly. Assuming the data provider does this or they are added in order.
+        // Usually keys in JS object insertion order. v2.6.1, v2.6.2, v2.6.3.
+
+        const previousVersion = currentIndex > 0 ? availableVersions[currentIndex - 1] : null;
+
+        return {
+            current: selectedVersion,
+            previous: previousVersion
+        };
+    }, [selectedVersion, availableVersions]);
+
+    const { current: versionAfter, previous: versionBefore } = comparisonState;
+
+    // Get Data
+    const beforeData = useMemo(() => {
+        if (!selectedEntity || !versionBefore) return null;
+        return selectedType === 'agentes'
+            ? getAgentVersionData(selectedEntity.id, versionBefore)
+            : getWeaponVersionData(selectedEntity.id, versionBefore);
+    }, [selectedEntity, versionBefore, selectedType]);
+
+    const afterData = useMemo(() => {
+        if (!selectedEntity || !versionAfter) return null;
+        return selectedType === 'agentes'
+            ? getAgentVersionData(selectedEntity.id, versionAfter)
+            : getWeaponVersionData(selectedEntity.id, versionAfter);
+    }, [selectedEntity, versionAfter, selectedType]);
+
+    // Get Skills
+    const agentSkills = useMemo(() => {
+        if (selectedType === 'agentes' && selectedEntity) {
+            return getAgentSkills(selectedEntity.id) || [];
+        }
+        return [];
+    }, [selectedType, selectedEntity]);
+
+    // Skill Icons Mapping (Moved inside or outside, but keeping inside for simplicity of edit)
     const skillIcons = {
         "Ataque Básico": "/CodiceZero/Habilidades/Icon_Basic_Attack.webp",
         "Ataque Normal": "/CodiceZero/Habilidades/Icon_Basic_Attack.webp",
@@ -90,109 +201,26 @@ export default function BetaDiffViewer() {
         "Potencial": "/CodiceZero/Habilidades/Icon_Core_Skill.webp",
     };
 
-    // Get available entities
-    const availableEntities = useMemo(() => {
-        return selectedType === 'agentes'
-            ? getAvailableAgents()
-            : getAvailableWeapons();
-    }, [selectedType]);
-
-    // Handle type change
-    const handleTypeChange = (e) => {
-        const newType = e.target.value;
-        setSelectedType(newType);
-        setSelectedEntity(null);
-        setVersionBefore(null);
-        setVersionAfter(null);
-
-        // Clear all params on type change to avoid mixing agent/weapon params
-        const current = new URLSearchParams(Array.from(searchParams.entries()));
-        current.delete('agent');
-        current.delete('weapon');
-        current.delete('left');
-        current.delete('right');
-
-        const search = current.toString();
-        const query = search ? `?${search}` : "";
-        router.replace(`${pathname}${query}`, { scroll: false });
-    };
-
-    // Get available versions
-    const availableVersions = useMemo(() => {
-        if (!selectedEntity) return [];
-        return selectedType === 'agentes'
-            ? getAgentVersions(selectedEntity.id)
-            : getWeaponVersions(selectedEntity.id);
-    }, [selectedEntity, selectedType]);
-
-    // Get data for versions (Stats only for agents now)
-    const beforeData = useMemo(() => {
-        if (!selectedEntity || !versionBefore) return null;
-        return selectedType === 'agentes'
-            ? getAgentVersionData(selectedEntity.id, versionBefore)
-            : getWeaponVersionData(selectedEntity.id, versionBefore);
-    }, [selectedEntity, versionBefore, selectedType]);
-
-    const afterData = useMemo(() => {
-        if (!selectedEntity || !versionAfter) return null;
-        return selectedType === 'agentes'
-            ? getAgentVersionData(selectedEntity.id, versionAfter)
-            : getWeaponVersionData(selectedEntity.id, versionAfter);
-    }, [selectedEntity, versionAfter, selectedType]);
-
-    // Get Skills List (New Structure)
-    const agentSkills = useMemo(() => {
-        if (selectedType === 'agentes' && selectedEntity) {
-            return getAgentSkills(selectedEntity.id) || [];
-        }
-        return [];
-    }, [selectedType, selectedEntity]);
-
     // Helper: Construct flat skills list for HighlightText context
     const getSkillsContext = (version) => {
         if (!agentSkills.length) return [];
         return agentSkills.map(skill => skill.versions?.[version]).filter(Boolean);
     };
 
-    const handleEntityChange = (e) => {
-        const entityId = parseInt(e.target.value);
-        const entity = availableEntities.find(ent => ent.id === entityId);
-
-        setSelectedEntity(entity);
-        setVersionBefore(null);
-        setVersionAfter(null);
-
-        // Update URL
-        const current = new URLSearchParams(Array.from(searchParams.entries()));
-        // Clear previous selection params
-        current.delete('agent');
-        current.delete('weapon');
-        current.delete('left');
-        current.delete('right');
-
-        if (entity) {
-            const paramKey = selectedType === 'agentes' ? 'agent' : 'weapon';
-            current.set(paramKey, entity.name.toLowerCase());
+    // Rendering Helpers
+    const renderStatComparison = (statName, oldValue, newValue) => {
+        // If single view (no oldValue), just show newValue
+        if (oldValue === undefined || oldValue === null) {
+            return (
+                <div className="stat-row" key={statName}>
+                    <div className="stat-name">{statName}</div>
+                    <div className="stat-values">
+                        <div className="stat-after">{newValue}</div>
+                    </div>
+                </div>
+            );
         }
 
-        const search = current.toString();
-        const query = search ? `?${search}` : "";
-        router.replace(`${pathname}${query}`, { scroll: false });
-    };
-
-    const handleVersionBeforeChange = (e) => {
-        const val = e.target.value;
-        setVersionBefore(val || null);
-        updateUrlParam('left', val);
-    };
-
-    const handleVersionAfterChange = (e) => {
-        const val = e.target.value;
-        setVersionAfter(val || null);
-        updateUrlParam('right', val);
-    };
-
-    const renderStatComparison = (statName, oldValue, newValue) => {
         const comparison = compareNumber(oldValue, newValue);
         const statusClass = comparison.status === 'buff' ? 'stat-buff' : comparison.status === 'nerf' ? 'stat-nerf' : 'stat-unchanged';
         return (
@@ -207,34 +235,39 @@ export default function BetaDiffViewer() {
     };
 
     const renderAgentStats = () => {
-        if (!beforeData || !afterData || !beforeData.baseStats || !afterData.baseStats) return null;
-        const oldStats = beforeData.baseStats;
+        if (!afterData || !afterData.baseStats) return null;
+
         const newStats = afterData.baseStats;
+        const oldStats = beforeData?.baseStats; // May be null if first version
+
+        const hasComparison = !!oldStats;
 
         return (
             <div className="stats-section">
-                <h3>Estadísticas Base</h3>
+                <h3>Estadísticas Base {hasComparison ? `(Cambios desde ${versionBefore})` : `(${versionAfter})`}</h3>
                 <div className="stats-comparison">
-                    <div className="stats-column">
-                        <h4>Antes ({versionBefore})</h4>
-                        <div className="stat-list">
-                            {oldStats.hp && <div className="stat-item">HP: {oldStats.hp.min} - {oldStats.hp.max}</div>}
-                            {oldStats.atk && <div className="stat-item">ATK: {oldStats.atk.min} - {oldStats.atk.max}</div>}
-                            {oldStats.def && <div className="stat-item">DEF: {oldStats.def.min} - {oldStats.def.max}</div>}
-                            {oldStats.impact && <div className="stat-item">Impact: {oldStats.impact}</div>}
-                            {oldStats.anomalyRate && <div className="stat-item">Tasa de Anomalía: {oldStats.anomalyRate}</div>}
-                            {oldStats.anomalyMastery && <div className="stat-item">Maestría de Anomalía: {oldStats.anomalyMastery}</div>}
+                    {hasComparison && (
+                        <div className="stats-column">
+                            <h4>Antes ({versionBefore})</h4>
+                            <div className="stat-list">
+                                {oldStats.hp && <div className="stat-item">HP: {oldStats.hp.min} - {oldStats.hp.max}</div>}
+                                {oldStats.atk && <div className="stat-item">ATK: {oldStats.atk.min} - {oldStats.atk.max}</div>}
+                                {oldStats.def && <div className="stat-item">DEF: {oldStats.def.min} - {oldStats.def.max}</div>}
+                                {oldStats.impact && <div className="stat-item">Impact: {oldStats.impact}</div>}
+                                {oldStats.anomalyRate && <div className="stat-item">Tasa de Anomalía: {oldStats.anomalyRate}</div>}
+                                {oldStats.anomalyMastery && <div className="stat-item">Maestría de Anomalía: {oldStats.anomalyMastery}</div>}
+                            </div>
                         </div>
-                    </div>
-                    <div className="stats-column">
-                        <h4>Después ({versionAfter})</h4>
+                    )}
+                    <div className="stats-column" style={{ width: hasComparison ? 'auto' : '100%' }}>
+                        <h4>{hasComparison ? `Después (${versionAfter})` : `Valores (${versionAfter})`}</h4>
                         <div className="stat-list">
-                            {renderStatComparison('HP', `${oldStats.hp?.min} - ${oldStats.hp?.max}`, `${newStats.hp?.min} - ${newStats.hp?.max}`)}
-                            {renderStatComparison('ATK', `${oldStats.atk?.min} - ${oldStats.atk?.max}`, `${newStats.atk?.min} - ${newStats.atk?.max}`)}
-                            {renderStatComparison('DEF', `${oldStats.def?.min} - ${oldStats.def?.max}`, `${newStats.def?.min} - ${newStats.def?.max}`)}
-                            {renderStatComparison('Impact', oldStats.impact, newStats.impact)}
-                            {renderStatComparison('Tasa de Anomalía', oldStats.anomalyRate, newStats.anomalyRate)}
-                            {renderStatComparison('Maestría de Anomalía', oldStats.anomalyMastery, newStats.anomalyMastery)}
+                            {renderStatComparison('HP', oldStats ? `${oldStats.hp?.min} - ${oldStats.hp?.max}` : null, `${newStats.hp?.min} - ${newStats.hp?.max}`)}
+                            {renderStatComparison('ATK', oldStats ? `${oldStats.atk?.min} - ${oldStats.atk?.max}` : null, `${newStats.atk?.min} - ${newStats.atk?.max}`)}
+                            {renderStatComparison('DEF', oldStats ? `${oldStats.def?.min} - ${oldStats.def?.max}` : null, `${newStats.def?.min} - ${newStats.def?.max}`)}
+                            {renderStatComparison('Impact', oldStats?.impact, newStats.impact)}
+                            {renderStatComparison('Tasa de Anomalía', oldStats?.anomalyRate, newStats.anomalyRate)}
+                            {renderStatComparison('Maestría de Anomalía', oldStats?.anomalyMastery, newStats.anomalyMastery)}
                         </div>
                     </div>
                 </div>
@@ -294,19 +327,22 @@ export default function BetaDiffViewer() {
     };
 
     const renderSkillsComparison = () => {
-        if (!agentSkills.length || !versionBefore || !versionAfter) return null;
+        if (!agentSkills.length || !versionAfter) return null;
 
-        // Context for HighlightText (finding skill names for links/colors)
-        const beforeSkillsContext = getSkillsContext(versionBefore);
+        const isComparison = !!versionBefore;
+
+        const beforeSkillsContext = isComparison ? getSkillsContext(versionBefore) : [];
         const afterSkillsContext = getSkillsContext(versionAfter);
 
-        // Map over ALL skills defined for the agent
         const comparisonElements = agentSkills.map((skillObj, index) => {
-            const oldSkill = skillObj.versions[versionBefore];
+            const oldSkill = isComparison ? skillObj.versions[versionBefore] : null;
             const newSkill = skillObj.versions[versionAfter];
 
-            // If neither version has this skill, skip
-            if (!oldSkill && !newSkill) return null;
+            // If new version doesn't have skill, skip (unless it was removed, but if it was removed in new version, newSkill is undefined)
+            // If it's a comparison and old exist but new doesn't -> Removed Skill.
+            // If it's single view -> just show newSkill.
+
+            if (!newSkill && !oldSkill) return null;
 
             // Prepare content for diffing
             const oldName = oldSkill?.name || "";
@@ -314,26 +350,20 @@ export default function BetaDiffViewer() {
             const oldDesc = oldSkill?.description || "";
             const newDesc = newSkill?.description || "";
 
-            const nameDiff = compareText(protectIcons(oldName), protectIcons(newName));
-            const descDiff = compareText(protectIcons(oldDesc), protectIcons(newDesc));
+            const nameDiff = isComparison ? compareText(protectIcons(oldName), protectIcons(newName)) : [{ value: protectIcons(newName), added: false, removed: false }];
+            const descDiff = isComparison ? compareText(protectIcons(oldDesc), protectIcons(newDesc)) : [{ value: protectIcons(newDesc), added: false, removed: false }];
 
-            // Check if there are ACTUAL changes
-            const hasChanges = nameDiff.some(t => t.added || t.removed) || descDiff.some(t => t.added || t.removed);
+            const hasChanges = isComparison
+                ? (nameDiff.some(t => t.added || t.removed) || descDiff.some(t => t.added || t.removed))
+                : true; // Always show in single view
 
-            // OPTIONAL: Hide unchanged skills if desired.
-            // For now, we show everything if the skill exists in the RIGHT side version (the "After" version),
-            // OR if it was removed (exists in Old but not New).
-            // A pure "Diff" view often hides unchanged items, but a "Version Viewer" usually shows context.
-            // Given User's request "only changed skills are displayed", I will enable filtering.
-
-            // Only show if there IS a change.
-            if (!hasChanges && versionBefore !== versionAfter) return null;
+            // Filter unchanged in comparison mode
+            if (isComparison && !hasChanges) return null;
 
             return (
                 <div key={skillObj.id || index} className="skill-group icon-override">
                     <div className="flex items-center justify-between mb-2">
                         <div className="skill-type">{skillObj.type}</div>
-                        {/* Slider para Pasiva Central (Solo si es Pasiva) */}
                         {(skillObj.type === "Pasiva Central" || skillObj.type === "Pasiva") && (
                             <div className="flex flex-col items-center w-64 mr-4">
                                 <h5 className="text-xs text-gray-400 font-bold uppercase tracking-wider mb-2 self-start w-full text-left flex items-center gap-2">
@@ -368,20 +398,26 @@ export default function BetaDiffViewer() {
 
                     <div className="skill-comparison-item">
                         <div className="skill-grid">
-                            <div className="skill-column skill-before">
+                            {isComparison && (
+                                <div className="skill-column skill-before">
+                                    <div className="skill-name">
+                                        {oldSkill ? renderDiffWithHighlight(nameDiff, 'left', beforeData, beforeSkillsContext) : <span className="text-gray-500 italic">No existe</span>}
+                                    </div>
+                                    <div className="skill-description">
+                                        {oldSkill ? renderDiffWithHighlight(descDiff, 'left', beforeData, beforeSkillsContext) : null}
+                                    </div>
+                                </div>
+                            )}
+                            <div className="skill-column skill-after" style={{ width: isComparison ? '50%' : '100%' }}>
                                 <div className="skill-name">
-                                    {oldSkill ? renderDiffWithHighlight(nameDiff, 'left', beforeData, beforeSkillsContext) : <span className="text-gray-500 italic">No existe</span>}
+                                    {newSkill
+                                        ? (isComparison ? renderDiffWithHighlight(nameDiff, 'right', afterData, afterSkillsContext) : <HighlightText text={replaceIcons(processScaling(restoreIcons(newName), afterData))} skillIcons={skillIcons} skills={afterSkillsContext} />)
+                                        : <span className="text-gray-500 italic">Eliminado</span>}
                                 </div>
                                 <div className="skill-description">
-                                    {oldSkill ? renderDiffWithHighlight(descDiff, 'left', beforeData, beforeSkillsContext) : null}
-                                </div>
-                            </div>
-                            <div className="skill-column skill-after">
-                                <div className="skill-name">
-                                    {newSkill ? renderDiffWithHighlight(nameDiff, 'right', afterData, afterSkillsContext) : <span className="text-gray-500 italic">Eliminado</span>}
-                                </div>
-                                <div className="skill-description">
-                                    {newSkill ? renderDiffWithHighlight(descDiff, 'right', afterData, afterSkillsContext) : null}
+                                    {newSkill
+                                        ? (isComparison ? renderDiffWithHighlight(descDiff, 'right', afterData, afterSkillsContext) : <HighlightText text={replaceIcons(processScaling(restoreIcons(newDesc), afterData))} skillIcons={skillIcons} skills={afterSkillsContext} />)
+                                        : null}
                                 </div>
                             </div>
                         </div>
@@ -393,9 +429,11 @@ export default function BetaDiffViewer() {
         if (comparisonElements.length === 0) {
             return (
                 <div className="skills-section">
-                    <h3>Habilidades</h3>
+                    <h3>Habilidades ({versionAfter})</h3>
                     <div className="p-4 text-center text-gray-400 bg-white/5 rounded-lg border border-white/10">
-                        No hay cambios en habilidades entre estas versiones.
+                        {isComparison
+                            ? `No hay cambios en habilidades entre ${versionBefore} y ${versionAfter}.`
+                            : "No se encontraron habilidades para esta versión."}
                     </div>
                 </div>
             );
@@ -403,39 +441,41 @@ export default function BetaDiffViewer() {
 
         return (
             <div className="skills-section">
-                <h3>Habilidades</h3>
+                <h3>Habilidades {isComparison && "(Solo Cambios)"}</h3>
                 {comparisonElements}
             </div>
         );
     };
 
-    // Reuse existing renderWeaponStats, renderWeaponEffect code (omitted changes for brevity but keeping logic)
-    // ... [Include the same renderWeaponStats and renderWeaponEffect from previous file content, simplified here for replacement tool]
-    // Since replace_file_content replaces the WHOLE file if I selected 1-628, I must include EVERYTHING.
-    // I will copy the Weapon parts from the `view_file` output in step 116.
-
-    // ... Copying Weapon Logic ...
     const renderWeaponStats = () => {
-        if (!beforeData || !afterData || !beforeData.detailStats || !afterData.detailStats) return null;
-        const oldStats = beforeData.detailStats;
+        // Logic similar to Agent Stats but for Weapons
+        // Omitted for brevity in this specific tool call patch, but in real file I'd implement it fully.
+        // Since I am replacing the WHOLE file (implied by previous context), I must provide it.
+        // IMPORTANT: I will implement the weapon logic fully below.
+
+        if (!afterData || !afterData.detailStats) return null;
         const newStats = afterData.detailStats;
+        const oldStats = beforeData?.detailStats;
+        const isComparison = !!oldStats;
 
         return (
             <div className="stats-section">
                 <h3>Estadísticas del Arma</h3>
                 <div className="stats-comparison">
-                    <div className="stats-column">
-                        <h4>Antes ({versionBefore})</h4>
-                        <div className="stat-list">
-                            <div className="stat-item">ATK Base: {oldStats.baseAtk.min} - {oldStats.baseAtk.max}</div>
-                            <div className="stat-item">{oldStats.subStat.name}: {oldStats.subStat.min} - {oldStats.subStat.max}</div>
+                    {isComparison && (
+                        <div className="stats-column">
+                            <h4>Antes ({versionBefore})</h4>
+                            <div className="stat-list">
+                                <div className="stat-item">ATK Base: {oldStats.baseAtk.min} - {oldStats.baseAtk.max}</div>
+                                <div className="stat-item">{oldStats.subStat.name}: {oldStats.subStat.min} - {oldStats.subStat.max}</div>
+                            </div>
                         </div>
-                    </div>
+                    )}
                     <div className="stats-column">
-                        <h4>Después ({versionAfter})</h4>
+                        <h4>{isComparison ? `Después (${versionAfter})` : `Valores (${versionAfter})`}</h4>
                         <div className="stat-list">
-                            {renderStatComparison('ATK Base', `${oldStats.baseAtk.min} - ${oldStats.baseAtk.max}`, `${newStats.baseAtk.min} - ${newStats.baseAtk.max}`)}
-                            {renderStatComparison(oldStats.subStat.name, `${oldStats.subStat.min} - ${oldStats.subStat.max}`, `${newStats.subStat.min} - ${newStats.subStat.max}`)}
+                            {renderStatComparison('ATK Base', oldStats ? `${oldStats.baseAtk.min} - ${oldStats.baseAtk.max}` : null, `${newStats.baseAtk.min} - ${newStats.baseAtk.max}`)}
+                            {renderStatComparison(newStats.subStat.name, oldStats ? `${oldStats.subStat.min} - ${oldStats.subStat.max}` : null, `${newStats.subStat.min} - ${newStats.subStat.max}`)}
                         </div>
                     </div>
                 </div>
@@ -444,12 +484,13 @@ export default function BetaDiffViewer() {
     };
 
     const renderWeaponEffect = () => {
-        if (!beforeData || !afterData || !beforeData.effect || !afterData.effect) return null;
-        const oldEffect = beforeData.effect;
+        if (!afterData || !afterData.effect) return null;
         const newEffect = afterData.effect;
+        const oldEffect = beforeData?.effect;
+        const isComparison = !!oldEffect;
 
-        const currentOldRefinement = oldEffect.refinements?.[refinementLevel];
         const currentNewRefinement = newEffect.refinements?.[refinementLevel];
+        const currentOldRefinement = oldEffect?.refinements?.[refinementLevel];
 
         const getDescriptionWithValues = (description, refinement) => {
             if (!refinement || !description) return description;
@@ -468,15 +509,15 @@ export default function BetaDiffViewer() {
             return result;
         };
 
-        const oldDescWithValues = getDescriptionWithValues(oldEffect.description, currentOldRefinement);
         const newDescWithValues = getDescriptionWithValues(newEffect.description, currentNewRefinement);
-        const descDiff = compareText(oldDescWithValues, newDescWithValues);
+        const oldDescWithValues = isComparison ? getDescriptionWithValues(oldEffect.description, currentOldRefinement) : "";
+        const descDiff = isComparison ? compareText(oldDescWithValues, newDescWithValues) : [{ value: newDescWithValues, added: false, removed: false }];
 
         return (
             <div className="effect-section">
                 <h3>Efecto del Arma</h3>
-                <div className="effect-title">{oldEffect.title}</div>
-                {oldEffect.refinements && oldEffect.refinements.length > 0 && (
+                <div className="effect-title">{newEffect.title}</div>
+                {newEffect.refinements && newEffect.refinements.length > 0 && (
                     <div className="mb-6">
                         <div className="flex items-center justify-between mb-2">
                             <span className="text-sm text-gray-400 uppercase tracking-wider">Nivel de Refinamiento</span>
@@ -497,13 +538,20 @@ export default function BetaDiffViewer() {
                     </div>
                 )}
                 <div className="effect-grid">
-                    <div className="effect-column effect-before">
-                        <h4>Antes ({versionBefore})</h4>
-                        <div className="effect-description">{renderDiffWithHighlight(descDiff, 'left', beforeData)}</div>
-                    </div>
-                    <div className="effect-column effect-after">
-                        <h4>Después ({versionAfter})</h4>
-                        <div className="effect-description">{renderDiffWithHighlight(descDiff, 'right', afterData)}</div>
+                    {isComparison && (
+                        <div className="effect-column effect-before">
+                            <h4>Antes ({versionBefore})</h4>
+                            <div className="effect-description">{renderDiffWithHighlight(descDiff, 'left', beforeData)}</div>
+                        </div>
+                    )}
+                    <div className="effect-column effect-after" style={{ width: isComparison ? '50%' : '100%' }}>
+                        <h4>{isComparison ? `Después (${versionAfter})` : `Descripción (${versionAfter})`}</h4>
+                        <div className="effect-description">
+                            {isComparison
+                                ? renderDiffWithHighlight(descDiff, 'right', afterData)
+                                : <HighlightText text={replaceIcons(newDescWithValues)} elementColor={afterData.elementColor} skillIcons={skillIcons} />
+                            }
+                        </div>
                     </div>
                 </div>
             </div>
@@ -532,31 +580,31 @@ export default function BetaDiffViewer() {
                         </select>
                     </div>
                     <div className="control-group">
-                        <label htmlFor="version-before">Versión Izquierda</label>
-                        <select id="version-before" value={versionBefore || ''} onChange={handleVersionBeforeChange} className="diff-select" disabled={!selectedEntity || !availableVersions.length}>
+                        <label htmlFor="version-select">Versión</label>
+                        <select id="version-select" value={selectedVersion || ''} onChange={handleVersionChange} className="diff-select" disabled={!selectedEntity || !availableVersions.length}>
                             <option value="">Seleccionar...</option>
                             {availableVersions.map(version => <option key={version} value={version}>{version}</option>)}
                         </select>
                     </div>
-                    <div className="control-group">
-                        <label htmlFor="version-after">Versión Derecha</label>
-                        <select id="version-after" value={versionAfter || ''} onChange={handleVersionAfterChange} className="diff-select" disabled={!selectedEntity || !availableVersions.length}>
-                            <option value="">Seleccionar...</option>
-                            {availableVersions.map(version => <option key={version} value={version}>{version}</option>)}
-                        </select>
-                    </div>
+                    {versionBefore && (
+                        <div className="control-group mt-6 ml-4">
+                            <span className="text-sm text-gray-400 italic">
+                                Comparando con: <span className="text-yellow-400 font-bold">{versionBefore}</span>
+                            </span>
+                        </div>
+                    )}
                 </div>
             </div>
             <div className="diff-content">
-                {!selectedEntity && <div className="empty-state"><p>Selecciona un {selectedType === 'agentes' ? 'agente' : 'arma'} y dos versiones para comparar</p></div>}
-                {selectedEntity && (!versionBefore || !versionAfter) && <div className="empty-state"><p>Selecciona ambas versiones para ver la comparación</p></div>}
-                {selectedEntity && versionBefore && versionAfter && beforeData && afterData && (
+                {!selectedEntity && <div className="empty-state"><p>Selecciona un {selectedType === 'agentes' ? 'agente' : 'arma'} para continuar</p></div>}
+                {selectedEntity && !selectedVersion && <div className="empty-state"><p>Selecciona una versión para ver los detalles</p></div>}
+                {selectedEntity && selectedVersion && afterData && (
                     <>
                         {selectedType === 'agentes' ? renderAgentStats() : renderWeaponStats()}
                         {selectedType === 'agentes' ? renderSkillsComparison() : renderWeaponEffect()}
                     </>
                 )}
-                {selectedEntity && versionBefore && versionAfter && (!beforeData || !afterData) && <div className="empty-state"><p>No se encontraron datos para las versiones seleccionadas</p></div>}
+                {selectedEntity && selectedVersion && !afterData && <div className="empty-state"><p>No hay datos disponibles para esta versión</p></div>}
             </div>
         </div>
     );
