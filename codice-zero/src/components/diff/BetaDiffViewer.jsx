@@ -326,20 +326,60 @@ export default function BetaDiffViewer() {
         }).filter(Boolean);
     };
 
-    const getNearestPreviousSkill = (skillObj, currentVersionStr, allVersions) => {
-        if (!skillObj || !skillObj.versions || !currentVersionStr || !allVersions) return null;
+    // Helper: Calculate similarity between two strings (Jaccard token overlap)
+    const calculateSimilarity = (str1, str2) => {
+        if (!str1 || !str2) return 0;
+        const s1 = str1.toLowerCase();
+        const s2 = str2.toLowerCase();
+        if (s1 === s2) return 1.0;
 
-        const currentIndex = allVersions.indexOf(currentVersionStr);
+        const tokens1 = new Set(s1.split(/\s+/));
+        const tokens2 = new Set(s2.split(/\s+/));
+        const intersection = new Set([...tokens1].filter(x => tokens2.has(x)));
+        const union = new Set([...tokens1, ...tokens2]);
+
+        return union.size > 0 ? intersection.size / union.size : 0;
+    };
+
+    // Find the most similar skill from previous versions
+    const findBestMatchingOldSkill = (newSkill, skillType, currentVersion, allVersions, allAgentSkills) => {
+        if (!newSkill || !isComparison) return null;
+
+        const currentIndex = allVersions.indexOf(currentVersion);
         if (currentIndex <= 0) return null;
 
-        // Iterate backwards from previous version
-        for (let i = currentIndex - 1; i >= 0; i--) {
-            const ver = allVersions[i];
-            if (skillObj.versions[ver]) {
-                return skillObj.versions[ver];
+        let bestMatch = null;
+        let bestScore = 0;
+
+        // Iterate backwards through previous versions
+        for (let vIdx = currentIndex - 1; vIdx >= 0; vIdx--) {
+            const prevVersion = allVersions[vIdx];
+
+            // Find all skills of the same type in this version
+            for (const skillObj of allAgentSkills) {
+                if (skillObj.type !== skillType) continue;
+
+                const oldSkillData = skillObj.versions[prevVersion];
+                if (!oldSkillData) continue;
+
+                // Calculate similarity
+                const nameSim = calculateSimilarity(newSkill.name, oldSkillData.name);
+                const descSim = calculateSimilarity(newSkill.description, oldSkillData.description);
+                const score = (nameSim * 0.4) + (descSim * 0.6); // Weight description more
+
+                if (score > bestScore) {
+                    bestScore = score;
+                    bestMatch = oldSkillData;
+                }
+            }
+
+            // If we found a good match in this version, use it
+            if (bestMatch && bestScore > 0.3) {
+                return bestMatch;
             }
         }
-        return null;
+
+        return bestMatch; // May be null if no match found
     };
 
     const renderSkillsComparison = () => {
@@ -351,23 +391,16 @@ export default function BetaDiffViewer() {
         const afterSkillsContext = getSkillsContext(versionAfter);
 
         const comparisonElements = agentSkills.map((skillObj, index) => {
-            // Updated Logic: Use Nearest Previous Skill
-            // If we are comparing (v2.6.3 vs v2.6.2), and v2.6.2 doesn't have the skill,
-            // we should try to find it in v2.6.1 (predecessor).
-            // However, we only care if we are in "Comparison Mode" (isComparison is true).
-
-            let oldSkill = null;
-            if (isComparison) {
-                // First try exact previous version
-                oldSkill = skillObj.versions[versionBefore];
-
-                // If not found, look back further (User Requirement: Fallback Logic)
-                if (!oldSkill) {
-                    oldSkill = getNearestPreviousSkill(skillObj, versionAfter, availableVersions);
-                }
-            }
-
             const newSkill = skillObj.versions[versionAfter];
+
+            // Find the best matching old skill by similarity
+            let oldSkill = null;
+            if (isComparison && newSkill) {
+                oldSkill = findBestMatchingOldSkill(newSkill, skillObj.type, versionAfter, availableVersions, agentSkills);
+            } else if (isComparison) {
+                // If newSkill doesn't exist but we're comparing, check if old version had this skill
+                oldSkill = skillObj.versions[versionBefore];
+            }
 
             // If new version doesn't have skill, skip (unless it was removed, but if it was removed in new version, newSkill is undefined)
             // If it's a comparison and old exist but new doesn't -> Removed Skill.
