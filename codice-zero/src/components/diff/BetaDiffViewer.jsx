@@ -617,13 +617,7 @@ export default function BetaDiffViewer() {
                             {availableVersions.map(version => <option key={version} value={version}>{version}</option>)}
                         </select>
                     </div>
-                    {versionBefore && (
-                        <div className="control-group mt-6 ml-4">
-                            <span className="text-sm text-gray-400 italic">
-                                Comparando con: <span className="text-yellow-400 font-bold">{versionBefore}</span>
-                            </span>
-                        </div>
-                    )}
+
                 </div>
             </div>
             <div className="diff-content">

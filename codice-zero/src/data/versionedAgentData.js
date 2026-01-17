@@ -850,7 +850,7 @@ export function getAgentVersionData(agentId, versionLabel) {
  * @param {number} agentId 
  * @returns {Array} Array of skill objects
  */
-// Helper for fuzzy matching
+// Helper for fuzzy matching (kept for potential future use, but not primary)
 function calculateSimilarity(str1, str2) {
     if (!str1 || !str2) return 0;
     const s1 = str1.toLowerCase();
@@ -867,7 +867,8 @@ function calculateSimilarity(str1, str2) {
 }
 
 /**
- * Get skills for an agent, normalizing structure with smart matching
+ * Get skills for an agent, normalizing structure with index-based matching
+ * Uses type + index within that type to match skills across versions
  * @param {number} agentId 
  * @returns {Array} Array of skill objects
  */
@@ -883,71 +884,35 @@ export function getAgentSkills(agentId) {
     // Type B: Skills nested inside versions (Aria/Sunna)
     if (!agent.versions) return [];
 
-    const allVersions = Object.keys(agent.versions).sort(); // Ensure sorted order
-    const skillLineages = []; // Array of { id, type, name, versions: {} }
+    const allVersions = Object.keys(agent.versions).sort();
+    const skillMap = new Map(); // key -> skillObj
 
     allVersions.forEach(version => {
         const vData = agent.versions[version];
         if (!vData.skills || !Array.isArray(vData.skills)) return;
 
+        // Group by type and use index within type for matching
+        const typeCounters = {};
+
         vData.skills.forEach(skill => {
-            // 1. Try to find match in existing lineages
-            let bestMatch = null;
-            let bestScore = 0;
+            const type = skill.type || "Unknown";
+            if (!typeCounters[type]) typeCounters[type] = 0;
+            const index = typeCounters[type]++;
 
-            for (const lineage of skillLineages) {
-                // A. Exact ID Match (Highest Priority)
-                if (skill.id && lineage.id === skill.id) {
-                    bestMatch = lineage;
-                    break; // Specific ID match is definitive
-                }
+            // Create a unique key for this skill slot, e.g., "Técnica Especial_0", "Técnica Especial_1"
+            const key = `${type}_${index}`;
 
-                // B. Type Match + Name Match (High Priority)
-                // Only if lineage also lacks specific ID or IDs match (handled above)
-                if (skill.type === lineage.type) {
-                    // Check if this lineage already has a skill for this version (shouldn't happen usually)
-                    if (lineage.versions[version]) continue;
-
-                    const latestVersionKey = Object.keys(lineage.versions).pop();
-                    const lastSkill = lineage.versions[latestVersionKey];
-
-                    if (skill.name === lastSkill.name) {
-                        // Very likely the same skill
-                        if (!bestMatch || bestScore < 0.9) {
-                            bestMatch = lineage;
-                            bestScore = 0.9;
-                        }
-                    } else {
-                        // C. Similarity Match (Name + Description)
-                        const nameSim = calculateSimilarity(skill.name, lastSkill.name);
-                        const descSim = calculateSimilarity(skill.description, lastSkill.description);
-                        const score = (nameSim * 0.6) + (descSim * 0.4);
-
-                        if (score > 0.5 && score > bestScore) {
-                            bestMatch = lineage;
-                            bestScore = score;
-                        }
-                    }
-                }
-            }
-
-            if (bestMatch) {
-                // Add to existing lineage
-                bestMatch.versions[version] = skill;
-                // Update name/description to latest provided it's not a complete rebrand
-                // (Optional, BetaDiffViewer uses per-version data mostly)
-            } else {
-                // Create new lineage
-                const newId = skill.id || `${skill.type}_${skillLineages.length}`;
-                skillLineages.push({
-                    id: newId,
-                    type: skill.type,
-                    name: skill.name,
-                    versions: { [version]: skill }
+            if (!skillMap.has(key)) {
+                skillMap.set(key, {
+                    id: key,
+                    type: type,
+                    versions: {}
                 });
             }
+
+            skillMap.get(key).versions[version] = skill;
         });
     });
 
-    return skillLineages;
+    return Array.from(skillMap.values());
 }
