@@ -276,20 +276,35 @@ export default function BetaDiffViewer() {
     };
 
     // Helper functions for scaling and icons
-    const processScaling = (text, data) => {
+
+    // PRE-DIFF: Replace {VALOR_X} with temporary unique placeholders that won't fragment
+    const processScalingForDiff = (text, data) => {
         if (!data?.coreSkillScaling || !text) return text;
         const currentScalingValues = data.coreSkillScaling[corePassiveLevel] || data.coreSkillScaling[0];
         if (!currentScalingValues) return text;
-        const scalingColors = data.coreSkillScalingColors || [];
 
         return text.replace(/\{VALOR_(\d+)\}/g, (_, number) => {
             const index = parseInt(number) - 1;
             const val = currentScalingValues[index];
             if (val !== undefined) {
-                if (scalingColors[index]) return `[CV="${scalingColors[index]}"]${val}[/CV]`;
-                return `[VAL]${val}[/VAL]`;
+                // Use unique temp placeholder that won't be fragmented by diff
+                return `§§VAL${number}§§${val}§§VALEND§§`;
             }
             return `{VALOR_${number}}`;
+        });
+    };
+
+    // POST-DIFF: Replace temp placeholders with colored markers for HighlightText
+    const processScalingWithColors = (text, data) => {
+        if (!text) return text;
+        const scalingColors = data?.coreSkillScalingColors || [];
+
+        return text.replace(/§§VAL(\d+)§§([^§]+)§§VALEND§§/g, (_, number, val) => {
+            const index = parseInt(number) - 1;
+            if (scalingColors[index]) {
+                return `[CV="${scalingColors[index]}"]${val}[/CV]`;
+            }
+            return `[VAL]${val}[/VAL]`;
         });
     };
 
@@ -310,8 +325,9 @@ export default function BetaDiffViewer() {
             }
 
             let value = restoreIcons(part.value);
-            // Note: processScaling is now applied BEFORE diff computation, not after
-            let processedText = replaceIcons(value);
+            // POST-DIFF: Now replace temp placeholders with colored values
+            let processedText = processScalingWithColors(value, data);
+            processedText = replaceIcons(processedText);
 
             return (
                 <span key={index} className={className}>
@@ -481,10 +497,11 @@ export default function BetaDiffViewer() {
 
             // Process scaling VALUES BEFORE diff so they compare correctly
             // Each side uses its own version's coreSkillScaling data
-            const oldDescProcessed = processScaling(oldDesc, oldSkillVersionData || beforeData);
-            const newDescProcessed = processScaling(newDesc, afterData);
-            const oldNameProcessed = processScaling(oldName, oldSkillVersionData || beforeData);
-            const newNameProcessed = processScaling(newName, afterData);
+            // Uses temp placeholders that won't fragment during diff
+            const oldDescProcessed = processScalingForDiff(oldDesc, oldSkillVersionData || beforeData);
+            const newDescProcessed = processScalingForDiff(newDesc, afterData);
+            const oldNameProcessed = processScalingForDiff(oldName, oldSkillVersionData || beforeData);
+            const newNameProcessed = processScalingForDiff(newName, afterData);
 
             const nameDiff = isComparison ? compareText(protectIcons(oldNameProcessed), protectIcons(newNameProcessed)) : [{ value: protectIcons(newNameProcessed), added: false, removed: false }];
             const descDiff = isComparison ? compareText(protectIcons(oldDescProcessed), protectIcons(newDescProcessed)) : [{ value: protectIcons(newDescProcessed), added: false, removed: false }];
