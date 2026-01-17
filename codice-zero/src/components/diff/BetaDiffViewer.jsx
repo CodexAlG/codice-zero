@@ -386,7 +386,17 @@ export default function BetaDiffViewer() {
                     // Calculate similarity
                     const nameSim = calculateSimilarity(newSkill.name, oldSkillData.name);
                     const descSim = calculateSimilarity(newSkill.description, oldSkillData.description);
-                    const score = (nameSim * 0.4) + (descSim * 0.6);
+
+                    // Calculate length similarity (0-1 scale)
+                    // Skills with similar description lengths are more likely to be the same skill
+                    const newLen = (newSkill.description || "").length;
+                    const oldLen = (oldSkillData.description || "").length;
+                    const maxLen = Math.max(newLen, oldLen, 1);
+                    const minLen = Math.min(newLen, oldLen);
+                    const lengthSim = minLen / maxLen;
+
+                    // Combined score: name (20%), description content (40%), description length (40%)
+                    const score = (nameSim * 0.2) + (descSim * 0.4) + (lengthSim * 0.4);
 
                     if (score > bestScore) {
                         bestScore = score;
