@@ -294,13 +294,13 @@ export const versionedAgents = {
                     "text-[#d946ef]"
                 ],
                 coreSkillScaling: [
-                    ["14.8%", "7.7%", "19.2%", "1.35%", "2.0%"], // Same as v2.6.2 for now
-                    ["17.3%", "9.0%", "22.4%", "1.58%", "2.3%"],
-                    ["19.7%", "10.3%", "25.8%", "1.8%", "2.6%"],
-                    ["22.2%", "11.6%", "28.8%", "2.03%", "2.9%"],
-                    ["24.7%", "12.8%", "32.0%", "2.25%", "3.3%"],
-                    ["27.1%", "14.1%", "35.2%", "2.48%", "3.6%"],
-                    ["29.6%", "15.4%", "38.4%", "2.7%", "3.9%"],
+                    ["15.4%", "8%", "20%", "1.4%", "2%", "60"],
+                    ["18%", "9.3%", "23.3%", "1.63%", "2.3%", "70"],
+                    ["20.5%", "10.7%", "26.7%", "1.87%", "2.7%", "80"],
+                    ["23.1%", "12%", "30%", "2.1%", "3%", "90"],
+                    ["25.7%", "13.3%", "33.3%", "2.33%", "3.3%", "100"],
+                    ["28.2%", "14.7%", "36.7%", "2.57%", "3.7%", "110"],
+                    ["30.8%", "16%", "40%", "2.8%", "4%", "120"],
                 ],
                 skills: [
                     {
@@ -390,13 +390,13 @@ export const versionedAgents = {
                     {
                         type: "Pasiva Central",
                         name: "Pasiva Central: Núcleo de Control",
-                        description: "Cuando el 3-Rank (Ataque de Carga) de Aria golpea un objetivo afectado por Anomalía de Atributo Etéreo, Anomalía de Atributo Eléctrico, Anomalía de Atributo Fuego, Anomalía de Atributo Físico o Anomalía de Atributo Hielo, activa (Abloom): Causa Daño de Anomalía de Atributo adicional igual al {VALOR_1}/{VALOR_2}/{VALOR_3}/{VALOR_4}/{VALOR_5} del DAÑO de Anomalía de Atributo original por 10 puntos de Maestría de Anomalía inicial. Cuando el objetivo está Aturdido, el ratio de DAÑO se incrementa en un (50%) adicional.",
+                        description: "La Maestría de Anomalía aumenta en {VALOR_6} puntos.\\nCuando el 3-Rank (Ataque de Carga) de Aria golpea un objetivo afectado por (Anomalía de Atributo Etéreo), (Anomalía de Atributo Eléctrico), (Anomalía de Atributo Fuego), (Anomalía de Atributo Físico) o (Anomalía de Atributo Hielo), activa una (Anomalía); en relación al daño de Anomalía de Atributo original, cada 10 puntos de Maestría de Anomalía inicial aumenta el ratio de daño de Anomalía en {VALOR_1}/{VALOR_2}/{VALOR_3}/{VALOR_4}/{VALOR_5}. Cuando el objetivo está en estado de (Aturdimiento), el ratio de DAÑO se incrementa adicionalmente.",
                         tags: ["Pasiva Central"]
                     },
                     {
                         type: "Habilidad Adicional",
                         name: "Habilidad Adicional: Escenario Cooperativo",
-                        description: "Cuando otro personaje en tu escuadrón es (Aturdidor) o (Soporte):\\nLa Maestría de Anomalía de Aria aumenta en 90 puntos;\\nCuando (Velo Etereo: Fantasía Bis) está activo, genera 4 (Energía de Soporte) en el campo. Puede activarse una vez cada 1s;\\nCuando cualquier personaje del equipo aplica el efecto de (Erosión) a un enemigo, la duración de este efecto aumenta en 3s.",
+                        description: "Se activa cuando hay un personaje de Atributo Etéreo o de Soporte en el equipo:\\nCuando (Velo Etéreo: Fantasía Bis) está activo, genera 4 (Energía de Soporte) en el campo;\\nCuando cualquier personaje del equipo aplica el efecto de (Erosión) a un enemigo, la Maestría de Anomalía aumenta en 3 niveles.",
                         tags: ["Habilidad Adicional"]
                     },
                     {
@@ -770,13 +770,13 @@ export const versionedAgents = {
                     {
                         type: "Habilidad Adicional",
                         name: "Habilidad Adicional: Contrapunto del Ensueño",
-                        description: "Se activa cuando hay un personaje de (Ataque) o de la misma Facción en el equipo:\\nCuando un personaje dentro del (Velo Etereo: Encore Fantasía) golpea a un enemigo, el Multiplicador de Daño de Aturdimiento del objetivo aumenta en un 30% durante 40s.\\nAl entrar al campo de batalla, recupera 20 de Energía. En modo Zona de Investigación, el efecto puede activarse una vez cada 180s y solo se activa una vez.",
+                        description: "Se activa cuando hay un personaje de (Ataque) o de la misma Facción en el equipo:\\nCuando un personaje dentro del (Velo Etereo: Encore Fantasía) golpea a un enemigo, el Multiplicador de Daño de Aturdimiento del objetivo aumenta en un 30% durante 40s.\\nAl entrar al campo de batalla, recupera 15 de Energía. En modo Zona de Investigación, el efecto puede activarse una vez cada 180s y solo se activa una vez.",
                         tags: ["Habilidad Adicional"]
                     },
                     {
                         type: "Mindscape 1",
                         name: "1. 'Síndrome de Corrupción de Soledad'",
-                        description: "Cuando Sunna entra al campo de batalla, restaura 20 de Energía. En modo Zona de Investigación, este efecto puede activarse una vez cada 180 segundos. Cuando (Mirada de Gato) activa y golpea enemigos, reduce el DEF del objetivo en un 7%, durando 40 segundos, acumulando hasta 3 veces. La duración de cada acumulación se calcula por separado.",
+                        description: "Cuando Sunna entra al campo de batalla, restaura 15 de Energía. En modo Zona de Investigación, este efecto puede activarse una vez cada 180 segundos. Cuando (Mirada de Gato) activa y golpea enemigos, reduce el DEF del objetivo en un 7%, durando 40 segundos, acumulando hasta 3 veces. La duración de cada acumulación se calcula por separado.",
                         tags: ["Mindscape"]
                     },
                     {
