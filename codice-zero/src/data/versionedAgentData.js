@@ -290,17 +290,16 @@ export const versionedAgents = {
                     "text-[#3b82f6]",
                     "text-[#ef4444]",
                     "text-[#eab308]",
-                    "text-[#22d3ee]",
-                    "text-[#d946ef]"
+                    "text-[#22d3ee]"
                 ],
                 coreSkillScaling: [
-                    ["15.4%", "8%", "20%", "1.4%", "2%", "60"],
-                    ["18%", "9.3%", "23.3%", "1.63%", "2.3%", "70"],
-                    ["20.5%", "10.7%", "26.7%", "1.87%", "2.7%", "80"],
-                    ["23.1%", "12%", "30%", "2.1%", "3%", "90"],
-                    ["25.7%", "13.3%", "33.3%", "2.33%", "3.3%", "100"],
-                    ["28.2%", "14.7%", "36.7%", "2.57%", "3.7%", "110"],
-                    ["30.8%", "16%", "40%", "2.8%", "4%", "120"],
+                    ["14.5%", "7.6%", "18.8%", "1.35%", "1.9%", "45"],
+                    ["16.9%", "8.8%", "21.9%", "1.58%", "2.2%", "52"],
+                    ["19.3%", "10.1%", "25.1%", "1.8%", "2.5%", "60"],
+                    ["21.8%", "11.3%", "28.2%", "2.03%", "2.9%", "67"],
+                    ["24.2%", "12.6%", "31.3%", "2.25%", "3.2%", "75"],
+                    ["26.6%", "13.8%", "34.5%", "2.48%", "3.5%", "82"],
+                    ["29%", "15.1%", "37.6%", "2.7%", "3.8%", "90"],
                 ],
                 skills: [
                     {
@@ -390,7 +389,7 @@ export const versionedAgents = {
                     {
                         type: "Pasiva Central",
                         name: "Pasiva Central: Núcleo de Control",
-                        description: "La Maestría de Anomalía aumenta en {VALOR_6} puntos.\\nCuando el 3-Rank (Ataque de Carga) de Aria golpea un objetivo afectado por (Anomalía de Atributo Etéreo), (Anomalía de Atributo Eléctrico), (Anomalía de Atributo Fuego), (Anomalía de Atributo Físico) o (Anomalía de Atributo Hielo), activa una (Anomalía); en relación al daño de Anomalía de Atributo original, cada 10 puntos de Maestría de Anomalía inicial aumenta el ratio de daño de Anomalía en {VALOR_1}/{VALOR_2}/{VALOR_3}/{VALOR_4}/{VALOR_5}. Cuando el objetivo está en estado de (Aturdimiento), el ratio de DAÑO se incrementa adicionalmente.",
+                        description: "La Maestría de Anomalía aumenta en {VALOR_6} puntos.\nCuando el 3-Rank (Ataque de Carga) de Aria golpea un objetivo afectado por Anomalía de Atributo Etéreo, Anomalía de Atributo Eléctrico, Anomalía de Atributo Fuego, Anomalía de Atributo Físico o Anomalía de Atributo Hielo, activa una (Anomalía); en relación al daño de Anomalía de Atributo original, cada 10 puntos de Maestría de Anomalía inicial aumenta el ratio de daño de Anomalía en {VALOR_1}/{VALOR_2}/{VALOR_3}/{VALOR_4}/{VALOR_5}. Cuando el objetivo está en estado de (Aturdimiento), el ratio de DAÑO se incrementa adicionalmente.",
                         tags: ["Pasiva Central"]
                     },
                     {
@@ -402,7 +401,7 @@ export const versionedAgents = {
                     {
                         type: "Mindscape 1",
                         name: "Talento 1: Onda de Voz Vital",
-                        description: "Cuando el (Ataque Básico), (Ataque Especial) o (Ataque Especial EX) de Aria inflige daño a un enemigo, ignora el 10% de la RES de Acumulación de Anomalía Etérea del objetivo; Adicionalmente, cuando activa (Abloom), tiene una probabilidad de activar un golpe crítico: La Probabilidad de Crítico Base es 35%, el Daño Crítico es 25%; si la Maestría de Anomalía inicial excede 150, cada punto de Maestría de Anomalía por encima de este umbral incrementa la Probabilidad de Crítico de este efecto en un 0.6% adicional.",
+                        description: "Cuando el (Ataque Básico), (Ataque Especial) o (Ataque Especial EX) de Aria inflige daño a un enemigo, ignora el 10% de la RES de Acumulación de Anomalía Etérea del objetivo; Adicionalmente, cuando activa (Abloom), tiene una probabilidad de activar un golpe crítico: La Probabilidad de Crítico Base es 25%, el Daño Crítico es 25%; si la Maestría de Anomalía inicial excede 100, cada punto de Maestría de Anomalía por encima de este umbral incrementa la Probabilidad de Crítico de este efecto en un 0.5% adicional.",
                         tags: ["Mindscape 1"]
                     },
                     {
