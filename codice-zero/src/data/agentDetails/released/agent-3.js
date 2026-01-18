@@ -1,4 +1,4 @@
-// Agent 3 - Detailed Stats and Skills
+// Agent 3 - Lycaon - Detailed Stats and Skills
 export default {
   baseStats: {
     hp: {
@@ -22,8 +22,8 @@ export default {
     energyRegen: "1.2",
   },
   coreStats: {
-    statName: "impact",
-    valuePerNode: 6
+    statName: "Impacto",
+    valuePerNode: 18
   },
   materials: {
     weeklyBoss: {
@@ -35,15 +35,30 @@ export default {
       icon: "Item_Higher_Dimensional_Data_Ethereal_Pursuit.webp",
     }
   },
+  coreSkillScalingColors: [
+    "text-[#22d3ee]", // Hielo (Cyan)
+    "text-[#22d3ee]", // Hielo (Cyan)
+    "text-[#22d3ee]"  // Hielo (Cyan)
+  ],
   coreSkillScaling: [
-    ["40%"], ["46.6%"], ["53.3%"], ["60%"], ["66.6%"], ["73.3%"], ["80%"] // Placeholders for user to fill
+    ["40%", "10%", "6%"],
+    ["46.6%", "11.7%", "6%"],
+    ["53.3%", "13.3%", "6%"],
+    ["60%", "15%", "6%"],
+    ["66.6%", "16.7%", "6%"],
+    ["73.3%", "18.3%", "6%"],
+    ["80%", "20%", "6%"]
   ],
   potentialSkillScaling: [
-    ["1", "1%"], // Placeholder
+    ["5%"],
+    ["7.5%"],
+    ["10%"],
+    ["12.5%"],
+    ["15%"]
   ],
   potential: {
-    name: "Potencial Despierto: Lycaon",
-    description: "TBD"
+    name: "Despertar Potencial: Hielo Propagado",
+    description: "Cuando Lycaon está en estado (Coordinación), el Impacto aumenta en un {VALOR_1}."
   },
   skills: [
     {
@@ -73,19 +88,19 @@ export default {
     {
       type: "Asistencia",
       name: "Asistencia Rápida: Manada de Lobos",
-      description: "Cuando el personaje activo es lanzado, presiona [Icono Assist] para activar: Golpea enemigos en frente, infligiendo Daño Hielo. El personaje es invulnerable mientras usa esta habilidad.",
+      description: "Cuando el personaje activo es lanzado, presiona [Icono Assist] para activar: Lanza un ataque hacia adelante a enemigos, causando Daño Hielo. El personaje es invulnerable mientras usa esta habilidad.",
       tags: ["Hielo", "Asistencia"]
     },
     {
       type: "Asistencia",
-      name: "Asistencia Defensiva: Caza Interrumpida",
-      description: "Cuando el personaje en el campo está a punto de ser atacado, presiona [Icono Assist] para activar: Bloquea (Parry) el ataque del enemigo, infligiendo masivo Aturdimiento. El personaje es invulnerable mientras usa esta habilidad.",
+      name: "Asistencia Defensiva: Intervención de Caza",
+      description: "Cuando el personaje en el campo está a punto de ser atacado, presiona [Icono Assist] para activar: Bloquea el ataque del enemigo, causando masivo Aturdimiento. El personaje es invulnerable mientras usa esta habilidad.",
       tags: ["Asistencia"]
     },
     {
       type: "Asistencia",
       name: "Ataque de Asistencia: Contraataque Vengativo",
-      description: "Presiona [Icono Ataque] después de una (Asistencia Defensiva) para activar: Crea un carámbano en frente, que golpea a todos los enemigos dentro del rango, infligiendo Daño Hielo. El personaje es invulnerable mientras usa esta habilidad.",
+      description: "(Test1) Después de activar (Asistencia Defensiva), mantén [Icono Ataque] para activar: Lanza múltiples ataques rápidos hacia adelante a enemigos, causando Daño Hielo. Durante la activación del ataque, presiona (Asistencia Rápida) activará (Asistencia Rápida); Durante la activación del ataque, presiona [Ataque Básico] y lanza hacia adelante.",
       tags: ["Hielo", "Asistencia"]
     },
     {
@@ -115,13 +130,13 @@ export default {
     {
       type: "Pasiva Central",
       name: "Pasiva Central: Garras Metálicas",
-      description: "Cuando Lycaon carga su (Ataque Básico) hasta completarlo, el ataque inflige {VALOR_1} más de Aturdimiento. Cuando (Técnica Especial EX: Emoción de la Caza) o (Ataque de Asistencia: Contraataque Vengativo) golpea a un enemigo, la RES al Daño Hielo del objetivo disminuye un 25% por 30s. En la activación de [Assist: Vengeful Counter] y [Assist: Empowered Vengeful Counter] durante el proceso de activar un Quick Assist, Lycaon entra en estado [Coordinación], durando 5 segundos. Mientras está en estado [Coordinación], activar [Ataque de Asistencia: Contraataque Vengativo Potenciado] terminará el estado [Coordinación] 1s antes, y el Daño de [Ataque de Asistencia: Contraataque Vengativo Potenciado] aumenta en un 40%.",
+      description: "(Test1) Cuando Lycaon carga su (Ataque Básico) hasta completarlo o activa (Parry con Éxito), el ataque inflige {VALOR_1} más de Aturdimiento. Cuando (Técnica Especial EX: Emoción de la Caza), (Ataque de Asistencia: Contraataque Vengativo) y (Ataque de Asistencia: Contraataque Vengativo Potenciado) o (Hielo) golpea a un enemigo, la RES al Daño Hielo del objetivo disminuye un 25%, acumulando daño de (Hielo) aumenta hasta un {VALOR_2}. Durante 30s. En la activación de (Ataque de Asistencia: Contraataque Vengativo) y (Ataque de Asistencia: Contraataque Vengativo Potenciado), Lycaon entra en estado (Coordinación), durando 8 segundos. Mientras está en estado (Coordinación): (Contraataque Vengativo: Hielo) termina y descompone en cualquiera de los siguientes: un (Ataque de Asistencia: Contraataque Vengativo Potenciado); Lycaon puede usar el primer ataque, hasta el segundo ataque. En estado (Parry con Éxito), (Ataque de Asistencia: Contraataque Vengativo) puede lanzar directamente después del segundo (Ataque Básico). El estado (Coordinación) terminará cuando el personaje cambie. El (Contraataque Vengativo: Hielo) causa aumento de Aturdimiento en un {VALOR_3}, durante 24s como máximo en una vez (Parry con Éxito).",
       tags: ["Pasiva Central"]
     },
     {
       type: "Habilidad Adicional",
-      name: "Habilidad Adicional: Depredador Elegante",
-      description: "Cuando otro personaje en tu escuadrón comparte el mismo Atributo o Facción: Cuando Lycaon golpea a un enemigo Aturdido, el multiplicador de Daño de Aturdimiento del objetivo aumenta en un 35%.",
+      name: "Habilidad Adicional: Manada Elegante",
+      description: "Cuando hay personajes con la misma Facción o del mismo rol del equipo y se activa: Normalmente, o con otros miembros del equipo con otro rol activándose. Cuando Lycaon usa ataques que golpean enemigos en estado de Aturdimiento, el objetivo tiene un aumento de Aturdimiento del 35%.",
       tags: ["Habilidad Adicional"]
     },
     {
