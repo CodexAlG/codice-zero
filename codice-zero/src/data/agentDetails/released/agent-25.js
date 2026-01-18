@@ -1,4 +1,4 @@
-// Agent 25 - Detailed Stats and Skills
+// Agent 25 - Harumasa - Detailed Stats and Skills
 export default {
   baseStats: {
     hp: {
@@ -22,8 +22,8 @@ export default {
     energyRegen: "1.2",
   },
   coreStats: {
-    statName: "crit rate",
-    valuePerNode: 4.8
+    statName: "Prob. Critica",
+    valuePerNode: 14.4
   },
   materials: {
     weeklyBoss: {
@@ -45,15 +45,15 @@ export default {
     ["25%", "12%"],
   ],
   potentialSkillScaling: [
-    ["10%"],
-    ["15%"],
-    ["20%"],
-    ["25%"],
-    ["30%"]
+    ["4%", "5%"],
+    ["6%", "7.5%"],
+    ["8%", "10%"],
+    ["10%", "12.5%"],
+    ["12%", "15%"]
   ],
   potential: {
-    name: "Potencial Despierto: Asaba Harumasa",
-    description: "Al activar [Técnica Especial Potenciada], [Ataque en Cadena] o [Definitiva], el ATQ aumenta en un 30%, durante 12s; la duración de [Borde] de la [Pasiva Central] se extiende a 10s."
+    name: "Despertar Potencial: Concentración",
+    description: "Al activar (Técnica Especial Potenciada), (Ataque en Cadena) o (Definitiva), el ATQ aumenta en un {VALOR_1}; (Ataque de Carrera: Hiten no Tsuru) ignora un {VALOR_2} de la RES a Daño Eléctrico del objetivo, durante 12s. Los activadores repetidos reinician la duración. La duración de (Filo Reluciente) de la (Pasiva Central) se extiende a 10s."
   },
   skills: [
     {
@@ -83,7 +83,7 @@ export default {
     {
       type: "Evasión",
       name: "Evasión: Destello Rápido",
-      description: "Presiona [Icono Dodges] para activar: Una evasión rápida de carrera. El personaje es invulnerable mientras usa esta habilidad.",
+      description: "Presiona [Icono Dodges] para activar: Una evasión rápida. El personaje es invulnerable mientras usa esta habilidad.",
       tags: ["Evasión"]
     },
     {
@@ -100,44 +100,56 @@ export default {
     },
     {
       type: "Evasión",
-      name: "Ataque de Carrera: Hiten no Tsuru - Corte",
-      description: "Mientras hay enemigos (Marcado-X) en el campo, Harumasa entrará en el estado (Despertar), cambiando (Ataque de Carrera: Hiten no Tsuru) por (Ataque de Carrera: Hiten no Tsuru - Corte). Mientras está en el estado (Despertar), presiona [Icono Ataque] durante una evasión para activar: Arremete hacia el enemigo (Marcado-X) más cercano y ejecuta un corte poderoso, causando Daño Eléctrico. Cuando el corte golpea al objetivo, consume 2 acumulaciones de (Prisión Electro). Con menos de 2 acumulaciones de (Prisión Electro), (Marcado-X) será eliminado del enemigo. Antes de que (Marcado-X) sea eliminado, presiona repetidamente [Icono Ataque] para usar repetidamente (Ataque de Carrera: Hiten no Tsuru - Corte). Mientras no existan enemigos (Marcado-X) en el campo, Harumasa sale del estado (Despertar). Mientras está en el estado (Despertar), presiona [Icono Ataque] después de (Ataque Básico: Pluma Descendente) para seguir rápidamente con (Ataque de Carrera: Hiten no Tsuru - Corte). Durante la primera etapa del movimiento, puede Parrear ataques enemigos. Durante la activación de la habilidad, el nivel de Anti-Interrupción aumenta, y el DAÑO recibido se reduce en un 40%.",
+      name: "Ataque de Velocidad: Hiten no Tsuru",
+      description: "Cuando hay enemigos con marca de (Marcado-X) en el campo, Harumasa entrará en estado (Despertar), cambiando (Ataque de Carrera: Hiten no Tsuru) por (Ataque de Velocidad: Hiten no Tsuru). En estado (Despertar), presiona [Icono Ataque] durante una evasión para activar: Arremete rápidamente hacia el enemigo más cercano con marca (Marcado-X) y realiza un corte físico, causando Daño Eléctrico. Cuando el corte golpea al objetivo, consume 2 acumulaciones de (Prisión Electro); si tiene menos de 2 acumulaciones de (Prisión Electro), se elimina la marca (Marcado-X) del enemigo. Antes de eliminar (Marcado-X), presiona repetidamente [Icono Ataque] para usar continuamente (Ataque de Velocidad: Hiten no Tsuru); cuando no hay enemigos (Marcado-X) en el campo, sale del estado (Despertar). En estado (Despertar), después de activar (Contraataque de Evasión), presiona [Icono Ataque] para activar directamente (Ataque de Velocidad: Hiten no Tsuru). El 1er y 2do ataque de (Ataque de Velocidad: Hiten no Tsuru) causa daño adicional de (Prisión Electro) considerado Daño de Atributo Eléctrico. Mientras está en el primer ataque de este modo, el daño recibido se reduce en un 40%.",
       tags: ["Eléctrico", "Evasión"]
     },
     {
       type: "Técnica Especial",
-      name: "Técnica Especial: Sin Lugar Donde Esconderse",
+      name: "Técnica Especial: Territorio",
       description: "Presiona [Icono Especial] para activar: Lanza una flecha hacia adelante, causando Daño Eléctrico. El nivel de Anti-Interrupción aumenta mientras usa esta habilidad.",
       tags: ["Eléctrico", "Técnica Especial"]
     },
     {
       type: "Técnica Especial EX",
-      name: "Técnica Especial EX: Sin Lugar Donde Correr",
-      description: "Con suficiente Energía, presiona [Icono Especial] para activar: Lanza dagas y una flecha mejorada hacia adelante, causando masivo Daño Eléctrico. Cuando la flecha mejorada golpea a un enemigo o al suelo, genera 6 (Cargas Electro). El personaje es invulnerable mientras usa esta habilidad.",
+      name: "Técnica Especial EX: Territorio Mejorado",
+      description: "Con suficiente Energía, presiona [Icono Especial] para activar: Lanza flechas mejoradas hacia adelante, causando masivo Daño Eléctrico. Cuando una flecha mejorada golpea a un enemigo o al suelo, puede generar (Prisión Electro). 1º. Una flecha mejorada que golpea enemigo puede hacer que el objetivo sea marcado con (Marcado-X); luego una siguiente flecha mejorada golpeando el objetivo, genera (Prisión Electro en el objetivo); si el objetivo tiene menos de un cierto número de (Prisión Electro), el número de activaciones se reducirá. El personaje es invulnerable mientras usa esta habilidad.",
+      tags: ["Eléctrico", "Técnica Especial EX"]
+    },
+    {
+      type: "Técnica Especial EX",
+      name: "Técnica Especial EX: Territorio Mejorado - Cielos",
+      description: "Después de (Técnica Especial EX: Territorio Mejorado), en el 4to o 5to ataque después de (Ataque de Carrera), (Ataque de Velocidad), (Hiten no Tsuru), (Contraataque Especial), (Ataque de Velocidad: Boost), (Evasión Rápida: Boost) y después de presionar [Icono Especial] se puede activar: Dispara continuamente flechas mejoradas hacia adelante, causando masivo Daño Eléctrico. La primera flecha mejorada que golpea enemigo o suelo puede generar (Prisión Electro). Después de una flecha mejorada golpear al objetivo, genera (Prisión Electro) en el objetivo; si el objetivo tiene un cierto número de (Prisión Electro) asignadas cerca del límite, se reducirá el número de activaciones. El personaje es invulnerable mientras usa esta habilidad.",
       tags: ["Eléctrico", "Técnica Especial EX"]
     },
     {
       type: "Técnica Definitiva",
-      name: "Ataque en Cadena: Kai - Hanare",
-      description: "Cuando un (Ataque en Cadena) es activado, selecciona el personaje para activar: Desata un ataque perforante en una gran área adelante y luego dispara una flecha mejorada, causando masivo Daño Eléctrico. Cuando la flecha golpea el suelo, genera 6 (Cargas Electro). El personaje es invulnerable mientras usa esta habilidad.",
+      name: "Ataque en Cadena: Convergencia",
+      description: "Cuando un (Ataque en Cadena) es activado, selecciona el personaje para activar: Lanza ataques perforantes a enemigos en una gran área hacia adelante, y dispara flechas mejoradas, causando masivo Daño Eléctrico. Cuando la flecha golpea el suelo, puede generar (Prisión Electro). El personaje es invulnerable mientras usa esta habilidad.",
       tags: ["Eléctrico", "Ataque en Cadena"]
     },
     {
       type: "Técnica Definitiva",
       name: "Definitiva: Zanshin",
-      description: "Cuando el Nivel de Decibelios está al (Máximo), presiona [Icono Definitiva] para activar: Desata un ataque perforante a enemigos en una gran área adelante, causando masivo Daño Eléctrico. El personaje es invulnerable mientras usa esta habilidad.",
+      description: "Cuando el Nivel de Decibelios está al (Máximo), presiona [Icono Definitiva] para activar: Lanza ataques perforantes a enemigos en una gran área hacia adelante, causando masivo Daño Eléctrico. El personaje es invulnerable mientras usa esta habilidad.",
+      tags: ["Eléctrico", "Técnica Definitiva"]
+    },
+    {
+      type: "Técnica Definitiva",
+      name: "Definitiva: Zanshin - Rama",
+      description: "Con (Filo Reluciente Afilado), (Zanshin) se activa automáticamente después de ejecutarse: Lanza ataques de penetración de gran área a enemigos en frente, causando masivo Daño Eléctrico. El personaje es invulnerable mientras usa esta habilidad.",
       tags: ["Eléctrico", "Técnica Definitiva"]
     },
     {
       type: "Pasiva Central",
       name: "Pasiva Central: Amanecer",
-      description: "La Prob. Crítica de (Ataque de Carrera: Hiten no Tsuru - Corte) aumenta en un {VALOR_1}, y cuando el (Ataque de Carrera: Hiten no Tsuru - Corte) de Harumasa activa un golpe crítico contra un enemigo, gana 1 acumulación de (Filo Reluciente), hasta un máximo de 3 acumulaciones por uso de la habilidad y acumulándose hasta 6 veces, durando 5s, los disparos repetidos reinician la duración. Cada acumulación de (Filo Reluciente) aumenta el Daño Crítico de (Ataque de Carrera: Hiten no Tsuru - Corte) en un {VALOR_2}.",
+      description: "La Prob. Crítica de (Ataque de Carrera: Hiten no Tsuru), (Evasión) y (Ataque de Velocidad) aumenta en un {VALOR_1}, y cuando el (Ataque de Carrera: Hiten no Tsuru - Corte) de Harumasa activa un golpe crítico contra un enemigo y activa (Ultima Técnica), obtiene 1/6 acumulaciones de (Filo Reluciente), hasta un máximo de 3/6 acumulaciones por uso de la habilidad y acumulándose hasta 6 veces, durando 6s; los triggers repetidos reinician la duración. Cada acumulación de (Filo Reluciente) aumenta el Daño Crítico de (Ataque de Carrera: Hiten no Tsuru - Corte) en un {VALOR_2}.",
       tags: ["Pasiva Central"]
     },
     {
       type: "Habilidad Adicional",
       name: "Habilidad Adicional: Overclock",
-      description: "Cuando otro personaje en tu escuadrón es un personaje de (Aturdimiento) o (Anomalía): Cuando los ataques de Harumasa golpean enemigos Aturdidos o enemigos bajo Anomalía de Atributo, su DAÑO aumenta en un 40%. Cuando el (Pluma Descendente) de Harumasa golpea enemigos Aturdidos o enemios bajo Anomalía de Atributo, aplicará 2 acumulaciones de (Prisión Electro) al objetivo.",
+      description: "Cuando hay personajes de rol (Aturdidor) o de otra Facción en el equipo y se activa: Cuando los ataques de Harumasa golpean enemigos en estado de Aturdimiento o bajo estado de Anomalía de Atributo, el DAÑO propio aumenta en un 40%. Cuando las flechas de Harumasa lanzan y golpean enemigos en estado de Aturdimiento o bajo estado de Anomalía de Atributo, aplica 2 acumulaciones de (Prisión Electro).",
       tags: ["Habilidad Adicional"]
     },
     {
