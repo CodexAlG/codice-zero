@@ -1893,7 +1893,7 @@ export const weapons = [
   },
   {
     id: 5540,
-    name: "Aria Test W-Engine",
+    name: "Golpe de Vitalidad",
     rank: "S",
     rol: "Anomalia",
     leak: "Beta",
@@ -1902,14 +1902,14 @@ export const weapons = [
       subStat: { name: "Tasa de Anomalía", min: "12%", max: "30%" }
     },
     effect: {
-      title: "Aria Test W-Engine",
-      description: "Aumenta el ATK del equipador en un 18%. Cuando el equipador entra al campo o activa un (Ataque Especial) o (Técnica Especial EX), gana un buff: el DAÑO tratado a enemigos afligidos con Anomalía de Atributo Etereo aumenta en un 15%, y el DAÑO tratado a enemigos afligidos con cualquier Anomalía de Atributo aumenta en un 15%. Este efecto dura 15s, y los triggers repetidos reinician la duración. El efecto se elimina cuando el equipador sale del campo.",
+      title: "Golpe de Vitalidad",
+      description: "Aumenta el ATK del equipador en un 15%. Cuando el equipador de atributo Etéreo entra al campo o activa (Técnica Especial) o (Técnica Especial EX), obtiene un efecto de mejora: el DAÑO infligido a enemigos afectados por Anomalía de Atributo aumenta en un 25%, y todo el daño de Anomalía de Atributo después de activarse aumenta en un 12%. El efecto dura 15 segundos, los disparadores repetidos reinician la duración. El efecto se elimina al cambiar al campo trasero.",
       refinements: [ // Tabla de Mejora (R1 - R5)
-        { level: 1, DañoIgnored: "18%", Daño: "15%", DañoCritico: "15%" },
-        { level: 2, DañoIgnored: "20.7%", Daño: "17.3%", DañoCritico: "17.3%" },
-        { level: 3, DañoIgnored: "23.4%", Daño: "19.5%", DañoCritico: "19.5%" },
-        { level: 4, DañoIgnored: "26.1%", Daño: "21.8%", DañoCritico: "21.8%" },
-        { level: 5, DañoIgnored: "28.8%", Daño: "24%", DañoCritico: "24%" }
+        { level: 1, DañoIgnored: "15%", Daño: "25%", DañoCritico: "12%" },
+        { level: 2, DañoIgnored: "17.3%", Daño: "28.8%", DañoCritico: "13.8%" },
+        { level: 3, DañoIgnored: "19.5%", Daño: "32.5%", DañoCritico: "15.6%" },
+        { level: 4, DañoIgnored: "21.8%", Daño: "36.3%", DañoCritico: "17.4%" },
+        { level: 5, DañoIgnored: "24%", Daño: "40%", DañoCritico: "19.2%" }
       ]
     },
     image: ""
