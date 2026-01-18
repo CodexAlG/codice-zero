@@ -23,7 +23,7 @@ export default {
     },
     coreStats: {
         statName: "Tasa de Anomalía",
-        valuePerNode: 16
+        valuePerNode: 12
     },
     coreSkillScalingColors: [
         "text-[#d946ef]", // Etéreo (Pink/Magenta)
@@ -145,7 +145,7 @@ export default {
         {
             type: "Habilidad Adicional",
             name: "Habilidad Adicional: Escenario Cooperativo",
-            description: "Se activa cuando hay un personaje de Atributo Etéreo o de Soporte en el equipo:\\nCuando (Velo Etéreo: Fantasía Bis) está activo, genera 4 (Energía de Soporte) en el campo;\\nCuando cualquier personaje del equipo aplica el efecto de (Erosión) a un enemigo, la Maestría de Anomalía aumenta en 3 niveles.",
+            description: "Se activa cuando hay un personaje de Atributo Etéreo o de Soporte en el equipo:\\nCuando (Velo Etereo: Fantasía Bis) está activo, genera 4 (Energía de Soporte) en el campo;\\nCuando cualquier personaje del equipo aplica el efecto de (Erosión) a un enemigo, la Maestría de Anomalía aumenta en 3 niveles.",
             tags: ["Habilidad Adicional"]
         },
         {
