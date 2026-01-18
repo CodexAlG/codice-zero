@@ -34,6 +34,20 @@ export const versionedWeapons = {
                         { level: 5, DañoIgnored: "28.8%", Daño: "24%", DañoCritico: "24%" }
                     ]
                 }
+            },
+            "v2.6.3": {
+                versionLabel: "v2.6.3",
+                effect: {
+                    title: "Golpe de Vitalidad",
+                    description: "Aumenta el ATK del equipador en un 15%. Cuando el equipador de atributo Etéreo entra al campo o activa (Técnica Especial) o (Técnica Especial EX), obtiene un efecto de mejora: el DAÑO infligido a enemigos afectados por Anomalía de Atributo aumenta en un 25%, y todo el daño de Anomalía de Atributo después de activarse aumenta en un 12%. El efecto dura 15 segundos, los disparadores repetidos reinician la duración. El efecto se elimina al cambiar al campo trasero.",
+                    refinements: [ // Tabla de Mejora (R1 - R5)
+                        { level: 1, DañoIgnored: "15%", Daño: "25%", DañoCritico: "12%" },
+                        { level: 2, DañoIgnored: "17.3%", Daño: "28.8%", DañoCritico: "13.8%" },
+                        { level: 3, DañoIgnored: "19.5%", Daño: "32.5%", DañoCritico: "15.6%" },
+                        { level: 4, DañoIgnored: "21.8%", Daño: "36.3%", DañoCritico: "17.4%" },
+                        { level: 5, DañoIgnored: "24%", Daño: "40%", DañoCritico: "19.2%" }
+                    ]
+                }
             }
         }
     },
