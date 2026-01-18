@@ -23,7 +23,7 @@ export default {
   },
   coreStats: {
     statName: "Prob. Critica",
-    valuePerNode: 14.4
+    valuePerNode: 4.8
   },
   materials: {
     weeklyBoss: {

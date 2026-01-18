@@ -23,7 +23,7 @@ export default {
   },
   coreStats: {
     statName: "Impacto",
-    valuePerNode: 18
+    valuePerNode: 6
   },
   materials: {
     weeklyBoss: {
