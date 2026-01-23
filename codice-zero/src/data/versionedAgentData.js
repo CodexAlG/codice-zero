@@ -935,6 +935,68 @@ export const versionedAgents = {
                     }
                 ]
             },
+            "v2.6.4": {
+                versionLabel: "v2.6.4",
+                coreSkillScaling: [
+                    ["150%", "240%", "80%", "1750", "525"],
+                    ["175%", "280%", "90%", "2050", "615"],
+                    ["200%", "320%", "100%", "2350", "705"],
+                    ["225%", "360%", "120%", "2650", "795"],
+                    ["250%", "400%", "130%", "2950", "885"],
+                    ["275%", "440%", "140%", "3250", "975"],
+                    ["300%", "480%", "150%", "3500", "1050"],
+                ],
+                skills: [
+                    {
+                        type: "Ataque Básico",
+                        name: "Ataque Básico: Martillo Meteoro Fantasmal",
+                        description: "Presiona [Icono Ataque] para activar: Desata hasta 4 ataques al frente, infligiendo Daño Físico.",
+                        tags: ["Físico", "Ataque Básico"]
+                    },
+                    {
+                        type: "Ataque Básico",
+                        name: "Ataque Básico: Gatita Mala al Acecho",
+                        description: "Cuando Sunna está fuera del campo en combate y no hay enemigos con la marca (Mirada de Gato) en el campo, Bubble Pop consumirá 1 (Pulidor de Uñas) y lanzará automáticamente un ataque, infligiendo Daño Físico. Cuando cualquier miembro del escuadrón activa o extiende cualquier (Velo Etereo), Sunna gana 2 (Pulidores de Uñas). Cuando cualquier personaje del equipo activa (Mirada de Gato) sobre un enemigo que ha sido afectado por cualquier efecto de estado, Sunna obtiene 1 (Pulidor de Uñas); cada 10s como máximo se puede activar 6 ataques. Bubble Pop puede heredar el ATK inicial de Sunna. Sunna puede tener máximo 6 (Pulidores de Uñas).",
+                        tags: ["Físico", "Ataque Básico"]
+                    },
+                    {
+                        type: "Técnica Definitiva",
+                        name: "Ataque en Cadena: No Te Metas con el Gato",
+                        description: "Cuando un (Ataque en Cadena) es activado, selecciona el personaje para activar: Monta a Bubble Pop hacia adelante, embistiendo enemigos adelante e infligiendo masivo Daño Físico. Un (Quick Assist) es activado cuando el ataque pesado de la habilidad golpea a un enemigo. El personaje es invulnerable mientras usa esta habilidad.",
+                        tags: ["Físico", "Ataque en Cadena"]
+                    },
+                    {
+                        type: "Técnica Definitiva",
+                        name: "Definitiva: ¡Aplástalo Todo!",
+                        description: "Cuando el Nivel de Decibelios está al (Máximo), presiona [Icono Definitiva] para activar: Desata ataques consecutivos de martillo, luego dispara Bubble Pop que explota, infligiendo masivo Daño Físico a enemigos en rango. Cuando un ataque pesado es activado, gana 6 (Pulidores de Uñas). Cuando cae desde el aire y golpea a un enemigo, activa (Asistencia Rápida) y restaura 2950 puntos de vida a todos los personajes del equipo. El personaje es invulnerable mientras usa esta habilidad.",
+                        tags: ["Físico", "Técnica Definitiva"]
+                    },
+                    {
+                        type: "Mindscape 1",
+                        name: "1. 'Síndrome de Corrupción de Soledad'",
+                        description: "Cuando Sunna entra al campo de batalla, restaura 15 de Energía. En modo Zona de Investigación, este efecto puede activarse una vez cada 180 segundos. Cuando (Mirada de Gato) activa y golpea enemigos, reduce el DEF del objetivo en un 7%, durando 40 segundos, acumulando hasta 3 veces. La duración de cada acumulación se calcula por separado.",
+                        tags: ["Mindscape"]
+                    },
+                    {
+                        type: "Mindscape 2",
+                        name: "2. 'Gatos Siguen la Corriente'",
+                        description: "Mientras Sunna está dentro de cualquier (Velo Etereo), incrementa el ATK de todo el equipo en un 10%, gana 1 acumulación de (Pulidor de Uñas) cada 10s; la cantidad de ataques requeridos para activar (Mirada de Gato) se reduce. El Multiplicador de DAÑO aumenta cuando (Mirada de Gato) es activada. Cuando es activado por un personaje de (Ataque): el Multiplicador de DAÑO aumenta en un 200%. Cuando es activado por un personaje de (Anomalía): el Multiplicador de DAÑO aumenta en un 300%.",
+                        tags: ["Mindscape"]
+                    },
+                    {
+                        type: "Mindscape 4",
+                        name: "4. 'Escuadrón de Investigación de Delirios'",
+                        description: "Cuando Sunna lanza su (Definitiva), todos los miembros del escuadrón obtienen 18% de DAÑO aumentado por 60s.",
+                        tags: ["Mindscape"]
+                    },
+                    {
+                        type: "Mindscape 6",
+                        name: "6. 'Big Bang del Hueco'",
+                        description: "Cuando Sunna activa su (Técnica Especial EX), entra en el estado (Encerrada) por 8 segundos. Durante (Encerrada), los ataques de Sunna son CRÍTICOS garantizados, y su Daño CRIT aumenta en un 0.03% de su ATK inicial, hasta un aumento máximo del 105%. Durante (Encerrada), el Nivel de Anti-Interrupción de Sunna aumenta y el DAÑO tomado es reducido en un 40%. Durante (Encerrada), Sunna puede activar (Mirada de Gato), calculando DAÑO según (Ataque) del Multiplicador de DAÑO de (Mirada de Gato); si Sunna tiene (Pulidores de Uñas), inmediatamente consume los (Pulidores de Uñas) y aplica (Mirada de Gato) al enemigo nuevamente. Durante (Encerrada), el DAÑO de todo el escuadrón al activar (Mirada de Gato) causado aumenta en un 50%.",
+                        tags: ["Mindscape"]
+                    }
+                ]
+            }
 
         },
     },
