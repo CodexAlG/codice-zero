@@ -417,12 +417,14 @@ export default function BetaDiffViewer() {
                 }
             }
 
-            // Mark best match as used even if below threshold
-            if (bestMatch && bestKey) {
-                usedOldSkills.add(bestKey);
+            // Only return a match if score is above threshold (0.3)
+            // Below threshold = consider it a NEW skill with no match
+            if (bestMatch && bestScore > 0.3) {
+                if (bestKey) usedOldSkills.add(bestKey);
+                return { skill: bestMatch, version: bestVersion };
             }
 
-            return bestMatch ? { skill: bestMatch, version: bestVersion } : null;
+            return null;
         };
 
         // PRE-COMPUTE MATCHES: Process skills sorted by description length (longest first)
