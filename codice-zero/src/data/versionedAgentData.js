@@ -1261,12 +1261,12 @@ export function getAgentSkills(agentId) {
     const agent = versionedAgents[agentId];
     if (!agent) return [];
 
-    // Type A: Skills already in top-level array (Harumasa/Lycaon)
+    // Type A: Skills already in top-level array (legacy format)
     if (agent.skills && Array.isArray(agent.skills)) {
         return agent.skills;
     }
 
-    // Type B: Skills nested inside versions (Aria/Sunna)
+    // Type B: Skills nested inside versions
     if (!agent.versions) return [];
 
     const allVersions = Object.keys(agent.versions).sort();
@@ -1276,16 +1276,13 @@ export function getAgentSkills(agentId) {
         const vData = agent.versions[version];
         if (!vData.skills || !Array.isArray(vData.skills)) return;
 
-        // Group by type and use index within type for matching
-        const typeCounters = {};
-
         vData.skills.forEach(skill => {
             const type = skill.type || "Unknown";
-            if (!typeCounters[type]) typeCounters[type] = 0;
-            const index = typeCounters[type]++;
+            const name = skill.name || "Unknown";
 
-            // Create a unique key for this skill slot, e.g., "Técnica Especial_0", "Técnica Especial_1"
-            const key = `${type}_${index}`;
+            // Use skill name as key for proper matching across versions
+            // This ensures new skills with different names appear as [NUEVA]
+            const key = `${type}::${name}`;
 
             if (!skillMap.has(key)) {
                 skillMap.set(key, {
