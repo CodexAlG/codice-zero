@@ -46,6 +46,11 @@
 
 ## 🐺 Lycaon
 
+**Core Skill Scaling (Multiplicadores de Pasiva Central)**
+- Se añadieron 2 nuevos multiplicadores:
+  - Multiplicador de daño de (Hielo): 10% a nivel 1, hasta 20% a nivel 7 🟢
+  - Multiplicador de Aturdimiento: 6% fijo en todos los niveles 🟢
+
 **Potencial**
 - El nombre pasó de "Lycaon" a "Hielo Propagado"
 
@@ -55,7 +60,7 @@
 
 **Pasiva Central: Garras Metálicas**
 - Ahora también se activa al hacer (Parry con Éxito) 🟢
-- El daño de (Hielo) acumulado ahora también aumenta hasta 5% adicional 🟢
+- El acumulado de daño de (Hielo) ahora aumenta hasta 5% adicional 🟢
 - La duración de (Coordinación) pasó de 5s a 8s 🟢
 - En (Coordinación), ahora puede usar hasta el 2do ataque del Contraataque 🟢
 - Tras Parry exitoso, puede lanzar Contraataque después del 2do Ataque Básico 🟢
@@ -69,6 +74,15 @@
 
 ## 🎭 Aria
 
+**Core Skill Scaling (Multiplicadores de Pasiva Central: Abloom)**
+- Todos los multiplicadores de daño aumentaron ligeramente:
+  - Etéreo: pasó de 14.3%-28.6% a 14.5%-29% 🟢
+  - Eléctrico: pasó de 7.5%-14.9% a 7.6%-15.1% 🟢
+  - Fuego: pasó de 18.6%-37.1% a 18.8%-37.6% 🟢
+  - Físico: pasó de 1.3%-2.6% a 1.35%-2.7% 🟢
+  - Hielo: pasó de 1.9%-3.7% a 1.9%-3.8% 🟢
+- Se añadió nuevo multiplicador de Maestría de Anomalía: 45 a nivel 1, hasta 90 a nivel 7 🟢
+
 **Pasiva Central: Núcleo de Control**
 - Se añadió: otorga puntos de Maestría de Anomalía (45 a nivel 1, hasta 90 a nivel 7) 🟢
 
@@ -76,8 +90,25 @@
 
 ## ☀️ Sunna
 
+**Core Skill Scaling (Multiplicadores de Pasiva Central: Mirada de Gato)**
+- Multiplicador de (Ataque): bajó de 180%-360% a 150%-300% 🔴
+- Multiplicador de (Anomalía): se mantiene igual (240%-480%)
+- Multiplicador de Daño Crítico: subió de 40%-100% a 80%-150% 🟢
+- Se añadió nuevo valor de ATK inicial requerido: 1750 a nivel 1, hasta 3500 a nivel 7 🟢
+- Se añadió nuevo valor de bonus máximo de ATK: 525 a nivel 1, hasta 1050 a nivel 7 🟢
+
+**Técnica Especial EX: Bombardeo Bubblegum**
+- Duración de (Acorde de Ángel) pasó de 35s a 40s 🟢
+
+**Técnica Especial EX: Técnica de Cámara Especial**
+- Duración del bonus de ATK de (Velo Etereo: Encore Fantasía) pasó de 35s a 40s 🟢
+
 **Pasiva Central: La Ternura es Justicia**
-- Se añadieron límites máximos de ATK (1750-3500 puntos ATK inicial, 525-1050 bonus máximo) 🟢
+- El bonus de ATK pasó de 14% del ATK inicial (máx 490) a 30% del ATK inicial 🟢
+- Se añadieron límites máximos definidos (ATK inicial: 1750-3500, bonus máximo: 525-1050) 🟢
+
+**Definitiva: ¡Aplástalo Todo!**
+- Ahora gana 6 (Pulidores de Uñas) en vez de 3 (Garras Afiladas) 🟢
 
 ---
 
