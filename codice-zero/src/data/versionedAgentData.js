@@ -1150,6 +1150,45 @@ export const versionedAgents = {
                         tags: ["Habilidad Adicional"]
                     }
                 ]
+            },
+            "v2.6.4": {
+                versionLabel: "v2.6.4",
+                baseStats: { hp: { min: 677, max: 8416 }, atk: { min: 105, max: 728 }, def: { min: 49, max: 606 }, impact: 119, crit: "5%", critDmg: "50%", anomalyRate: "91", anomalyMastery: "90", penRatio: "0%", energyRegen: "1.2" },
+                coreStats: { statName: "Impacto", valuePerNode: 6 },
+                coreSkillScaling: [["40%", "10%", "6%"], ["46.6%", "11.7%", "6%"], ["53.3%", "13.3%", "6%"], ["60%", "15%", "6%"], ["66.6%", "16.7%", "6%"], ["73.3%", "18.3%", "6%"], ["80%", "20%", "6%"]],
+                potential: { name: "Despertar Potencial: Hielo Propagado", description: "Cuando Lycaon está en estado (Coordinación) y no es el personaje activo actual, el Impacto aumenta en un 15%." },
+                skills: [
+                    {
+                        type: "Asistencia",
+                        name: "Asistencia Rápida: Manada de Lobos",
+                        description: "Cuando el personaje activo es lanzado, presiona [Icono Assist] para activar: Lanza un ataque hacia adelante a enemigos, causando Daño Hielo. El personaje es invulnerable mientras usa esta habilidad.",
+                        tags: ["Hielo", "Asistencia"]
+                    },
+                    {
+                        type: "Asistencia",
+                        name: "Ataque de Asistencia: Contraataque Vengativo",
+                        description: "Después de activar (Asistencia Defensiva), mantén [Icono Ataque] para activar: Crea un pilar de hielo en frente y ataca a enemigos en el área, causando Daño Hielo. El personaje es invulnerable mientras usa esta habilidad.",
+                        tags: ["Hielo", "Asistencia"]
+                    },
+                    {
+                        type: "Asistencia",
+                        name: "Asistencia Defensiva: Intervención de Caza",
+                        description: "Cuando el personaje en el campo está a punto de ser atacado, presiona [Icono Assist] para activar: Bloquea el ataque del enemigo, acumula masivo Aturdimiento. El personaje es invulnerable mientras usa esta habilidad. Cuando recibe ataques de alta intensidad, el consumo de (Puntos de Soporte) se reduce.",
+                        tags: ["Asistencia"]
+                    },
+                    {
+                        type: "Pasiva Central",
+                        name: "Pasiva Central: Garras Metálicas",
+                        description: "Cuando Lycaon carga su (Ataque Básico) hasta completarlo, la habilidad causa {VALOR_1} más de Aturdimiento. (Técnica Especial Potenciada), (Ataque de Contraataque) y (Ataque de Contraataque Hielo) reducen la RES al Daño Hielo del objetivo en un 25%, y reciben un 20% de aumento de RES a otros Atributos por 30s. En la activación de (Asistencia de Soporte), a través de este método puede activar (Asistencia Rápida), Lycaon entra en estado (Coordinación), durando 10 segundos como máximo, primera vez por personaje. En estado (Coordinación), Lycaon puede lanzar (Ataque Básico) y (Contraataque de Evasión) en la secuencia específica, según las condiciones actuales del personaje. Si el personaje activo actual activa (Ataque Básico) y (Contraataque de Evasión) después, Lycaon puede sincronizar y lanzar el tercer golpe de (Ataque Básico). (Técnica Especial Potenciada) o (Ataque de Contraataque), Lycaon puede sincronizar y actuar en el primer o el tercer golpe. Cuando el personaje activo activa (Ataque en Cadena) o (Técnica Definitiva), la habilidad activada en estado (Coordinación) terminará el resto de la habilidad. En (Coordinación): (Contraataque Vengativo: Hielo) causa aumento de Aturdimiento en un {VALOR_3}% por 24s como máximo en una activación. El estado (Coordinación) puede entrar múltiples veces.",
+                        tags: ["Pasiva Central"]
+                    },
+                    {
+                        type: "Habilidad Adicional",
+                        name: "Habilidad Adicional: Manada Elegante",
+                        description: "Cuando hay personajes con el mismo Atributo o la misma Facción o de otro rol en el equipo y se activa: Cuando Lycaon usa ataques que golpean enemigos en estado de Aturdimiento, el objetivo tiene un aumento de Aturdimiento del 35%.",
+                        tags: ["Habilidad Adicional"]
+                    }
+                ]
             }
         }
     }
