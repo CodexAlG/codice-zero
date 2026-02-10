@@ -139,7 +139,7 @@ export default {
         {
             type: "Pasiva Central",
             name: "Pasiva Central: Núcleo de Control",
-            description: "La Maestría de Anomalia de Aria aumenta en {VALOR_6} puntos; Cuando el tercer golpe de (Ataque Normal: Tono Absoluto) de Aria golpea a un objetivo que se encuentra en estado de Anomalia de Atributo Etéreo, Anomalia de Atributo Eléctrico, Anomalia de Atributo Fuego, Anomalia de Atributo Fisico o Anomalia de Atributo Hielo, activa un (Desorden): en relación al daño de Anomalia de Atributo original, cada 10 puntos de Maestria de Anomalia inicial aumenta el ratio de daño de Anomalia en {VALOR_1}/{VALOR_2}/{VALOR_3}/{VALOR_4}/{VALOR_5}, cuando el objetivo esta desequilibrado, la relación de daño aumenta adicionalmente 50%.",
+            description: "La Maestría de Anomalia de Aria aumenta en {VALOR_6} puntos; Cuando el tercer golpe de (Ataque Normal: Tono Absoluto) de Aria golpea a un objetivo que se encuentra en estado de Anomalia de Atributo Etéreo, Anomalia de Atributo Eléctrico, Anomalia de Atributo Fuego, Anomalia de Atributo Fisico o Anomalia de Atributo Hielo, activa un (Desorden): en relación al daño de Anomalia de Atributo original, cada 10 puntos de Tasa de Anomalia inicial aumenta el ratio de daño de Anomalia en {VALOR_1}/{VALOR_2}/{VALOR_3}/{VALOR_4}/{VALOR_5}, cuando el objetivo esta aturdido, la relación de daño aumenta adicionalmente 50%.",
             tags: ["Pasiva Central"]
         },
         {
