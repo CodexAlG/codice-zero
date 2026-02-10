@@ -43,121 +43,121 @@ export default {
         }
     },
     coreSkillScaling: [
-        ["14.5%", "7.6%", "18.8%", "1.35%", "1.9%", "45"],
-        ["16.9%", "8.8%", "21.9%", "1.58%", "2.2%", "52"],
-        ["19.3%", "10.1%", "25.1%", "1.8%", "2.5%", "60"],
-        ["21.8%", "11.3%", "28.2%", "2.03%", "2.9%", "67"],
-        ["24.2%", "12.6%", "31.3%", "2.25%", "3.2%", "75"],
-        ["26.6%", "13.8%", "34.5%", "2.48%", "3.5%", "82"],
-        ["29%", "15.1%", "37.6%", "2.7%", "3.8%", "90"],
+        ["13.8%", "7.2%", "17.9%", "1.25%", "1.8%", "45"],
+        ["16%", "8.3%", "20.8%", "1.46%", "2.1%", "52"],
+        ["18.3%", "9.5%", "23.8%", "1.67%", "2.4%", "60"],
+        ["20.6%", "10.7%", "26.8%", "1.88%", "2.7%", "67"],
+        ["22.9%", "11.9%", "29.8%", "2.08%", "3%", "75"],
+        ["25.2%", "13.1%", "32.7%", "2.29%", "3.3%", "82"],
+        ["27.5%", "14.3%", "35.7%", "2.5%", "3.6%", "90"],
     ],
     skills: [
         {
             type: "Ataque Básico",
             name: "Ataque Básico: Ritmo Dulce",
-            description: "Presiona [Icono Ataque] para activar: Ejecuta hasta 4 ataques consecutivos hacia adelante, causando Daño Etéreo. Si el 4to ataque golpea a un enemigo, 1 (Energía de Soporte) será generada en el campo después de que el ataque finaliza.",
+            description: "Presiona [Icono Ataque] para activar: Realiza hasta cuatro golpes hacia adelante, infligiendo Daño Etéreo; Si el cuarto golpe acierta al enemigo, generará 1 (Energía de Apoyo) en el campo al finalizar el ataque.",
             tags: ["Etéreo", "Ataque Básico"]
         },
         {
             type: "Ataque Básico",
             name: "Ataque de Carga: Tono Absoluto",
-            description: "Mantén [Icono Ataque] para activar: Aria entra en un estado de carga de hasta tres niveles. Cuando [Icono Ataque] es soltado o el tiempo máximo de carga es alcanzado, desata un poderoso ataque descendente hacia adelante basado en el nivel de carga, causando masivo Daño Etéreo. Si hay (Energía de Soporte) cerca de Aria mientras carga, ella absorberá la (Energía de Soporte). Cada (Energía de Soporte) absorbida exitosamente incrementa el nivel de carga por 1 y otorga 1 acumulación de buff: la Acumulación de Anomalía del siguiente Ataque de Carga aumenta un 10%. Este buff se acumula hasta 2 veces y se remueve después de que el Ataque de Carga termina; Después del 4to golpe de (Ataque Básico), (Técnica Especial: Electro-Pop Dulce: Sin Hielo), (Técnica Especial EX), (Técnica Especial EX: Obsesión Instantánea), (Ataque en Cadena), (Definitiva), o un Nivel 3 (Ataque de Carga), si hay más de 2 (Energía de Soporte) cerca, sosteniendo [Icono Ataque] puede lanzar directamente un Lanzamiento Rápido de Nivel 3 (Ataque de Carga); Mientras carga, el Nivel Anti-Interrupción de Aria aumenta y el DAÑO recibido se reduce en un 40%. El personaje es invulnerable durante los Ataques de Carga.",
+            description: "Mantén presionado [Icono Ataque] para activar: Aria entra en estado de carga, se puede cargar hasta dos niveles. Al soltar [Icono Ataque] o alcanzar el tiempo máximo de carga, Aria lanzará un poderoso ataque descendente hacia adelante basado en el nivel de carga actual, infligiendo gran cantidad de Daño Etéreo; Si Aria está cargando y hay (Energía de Apoyo) cerca, absorberá la (Energía de Apoyo). Cada vez que absorba con éxito 1 (Energía de Apoyo), aumentará inmediatamente el nivel de carga en 1 y obtendrá 1 efecto de mejora: El Aturdimiento y el Daño infligidos por el siguiente (Ataque Normal: Tono Absoluto) aumentan un 10%. Este efecto de mejora se puede acumular hasta 2 veces y se elimina tras finalizar el ataque; Tras el cuarto golpe de (Ataque Normal: Ritmo Dulce), (Técnica Especial: Sonido Electrónico Sin Hielo), (Técnica Especial EX), el tercer golpe de (Ataque Normal: Tono Absoluto), (Asistencia Rápida), (Técnica en Cadena) o (Técnica Definitiva), si la cantidad de (Energía de Apoyo) cercana es mayor o igual a 2, se puede mantener presionado [Icono Ataque] consumiendo 2 (Energía de Apoyo) para activar rápidamente la tercera fase de (Ataque Normal: Tono Absoluto); tras el tercer golpe de (Ataque Normal: Tono Absoluto), (Técnica en Cadena) o (Técnica Definitiva), si la cantidad de (Energía de Apoyo) cercana es mayor o igual a 2, también se puede presionar [Icono Ataque] dentro de un periodo de tiempo consumiendo 2 (Energía de Apoyo) para activar rápidamente la tercera fase de (Ataque Normal: Tono Absoluto); Durante el periodo de carga, el nivel de resistencia a la interrupción aumenta, el daño recibido se reduce en un 40% y se posee efecto de invencibilidad durante la ejecución del ataque.",
             tags: ["Etéreo", "Ataque Básico"]
         },
         {
             type: "Evasión",
             name: "Evasión: Ritmo Preciso",
-            description: "Presiona [Icono Dodges] para activar: Una evasión rápida de dash. Si se activa durante un (Ataque Básico), no resetea la secuencia de (Ataque Básico) durante la acción. El personaje es invulnerable mientras usa esta habilidad.",
+            description: "Presiona [Icono Evasión] para activar: Realiza una evasión rápida con desplazamiento; Si se activa durante (Ataque Normal: Ritmo Dulce), no se reiniciarán los golpes del ataque normal durante esta acción; Posee efecto de invencibilidad durante la activación de la habilidad.",
             tags: ["Evasión"]
         },
         {
             type: "Evasión",
-            name: "Ataque de Carrera: Combo Fluido",
-            description: "Presiona [Icono Ataque] durante una evasión para activar: Dash hacia adelante y ejecuta un golpe rápido, causando Daño Etéreo. Si se activa durante un (Ataque Básico), no resetea la secuencia del (Ataque Básico).",
+            name: "Ataque de Carrera: Pequeño Combo Sedoso",
+            description: "Al evadir, presiona [Icono Ataque] para activar: Se lanza hacia adelante realizando cortes rápidos, infligiendo Daño Etéreo; Si se activa durante (Ataque Normal: Ritmo Dulce), no se reiniciarán los golpes del ataque normal durante esta acción.",
             tags: ["Etéreo", "Evasión"]
         },
         {
             type: "Evasión",
-            name: "Contraataque de Evasión: Variación Deslizante",
-            description: "Presiona [Icono Ataque] durante una (Evasión Perfecta) para activar: Ejecuta un poderoso golpe en el objetivo, causando Daño Etéreo. Después de activar esta habilidad, puede conectar directamente con el 3er golpe de (Ataque Básico). El personaje es invulnerable mientras usa esta habilidad.",
+            name: "Contraataque de Evasión: Variación Dinamica",
+            description: "Tras activar una (Evasión Perfecta), presiona [Icono Ataque] para activar: Lanza un poderoso corte al objetivo, infligiendo Daño Etéreo; Tras activar la habilidad, se puede conectar directamente con el tercer golpe de (Ataque Normal: Ritmo Dulce); Posee efecto de invencibilidad durante la activación de la habilidad.",
             tags: ["Etéreo", "Evasión"]
         },
         {
             type: "Técnica Especial",
             name: "Técnica Especial: Electro-Pop Dulce",
-            description: "Presiona [Icono Especial] para activar: Lanza una patada hacia adelante, causando Daño Etéreo. El nivel de Anti-Interrupción se incrementa mientras usa esta habilidad.",
+            description: "Presiona [Icono Especial] para activar: Lanza una patada hacia adelante, infligiendo Daño Etéreo; El nivel de resistencia a la interrupción aumenta durante la activación de la habilidad.",
             tags: ["Etéreo", "Técnica Especial"]
         },
         {
             type: "Técnica Especial",
             name: "Técnica Especial: Electro-Pop Dulce: Sin Hielo",
-            description: "Después del 4to golpe de (Ataque Básico), (Asistencia de Seguimiento), (Ataque en Cadena), y (Definitiva), presiona [Icono Especial] para activar: Lanza una patada más rápida hacia adelante, causando Daño Etéreo. Si el ataque golpea a un enemigo, 1 (Energía de Soporte) será generada en el campo después de que el ataque completa. El nivel de Anti-Interrupción se incrementa mientras usa esta habilidad.",
+            description: "Tras el cuarto golpe de (Ataque Normal: Ritmo Dulce), (Ataque de Asistencia), (Técnica en Cadena) o (Técnica Definitiva), presiona [Icono Especial] para activar: Lanza una patada aún más veloz hacia adelante, infligiendo Daño Etéreo. Si el ataque acierta al enemigo, generará 1 (Energía de Apoyo) en el campo al finalizar el ataque; Posee efecto de invencibilidad durante la activación de la habilidad.",
             tags: ["Etéreo", "Técnica Especial"]
         },
         {
             type: "Técnica Especial EX",
             name: "Técnica Especial EX: Caída en la Fantasía",
-            description: "Con suficiente Energía, presiona [Icono Especial EX] para activar: Desata un poderoso ataque hacia adelante seguido por una onda sónica, causando masivo Daño Etéreo. Si el ataque golpea a un enemigo, genera 3 (Energía de Soporte) en el campo después de que el ataque completa. El personaje es invulnerable mientras usa esta habilidad.",
+            description: "Cuando la energía sea suficiente, presiona [Icono Especial EX] para activar: Realiza una poderosa patada hacia adelante seguida de un ataque de onda sonora, infligiendo Daño Etéreo. Si el ataque acierta al enemigo, generará 3 (Energía de Apoyo) en el campo al finalizar el ataque; Posee efecto de invencibilidad durante la activación de la habilidad.",
             tags: ["Etéreo", "Técnica Especial EX"]
         },
         {
             type: "Técnica Especial EX",
             name: "Técnica Especial EX: Obsesión Instantánea",
-            description: "Después de activar (Técnica Especial EX: Caída en la Fantasía), con suficiente Energía, presiona [Icono Especial EX] para activar: Desata un poderoso ataque descendente adicional, causando Daño Etéreo. Si el ataque golpea a un enemigo, 3 (Energía de Soporte) serán generadas en el campo después de que el ataque completa. El personaje es invulnerable mientras usa esta habilidad.",
+            description: "Tras activar (Técnica Especial EX: Caída en la Fantasía), si la energía es suficiente, presiona [Icono Especial EX] para activar: Añade un poderoso ataque descendente hacia adelante, infligiendo Daño Etéreo. Si el ataque acierta al enemigo, generará 3 (Energía de Apoyo) en el campo al finalizar el ataque; Posee efecto de invencibilidad durante la activación de la habilidad.",
             tags: ["Etéreo", "Técnica Especial EX"]
         },
         {
             type: "Asistencia",
             name: "Asistencia Rápida: Sueño Roto",
-            description: "Cuando el personaje activo es lanzado, presiona [Icono Assist] para activar: Desata un poderoso golpe contra los enemigos en frente, causando Daño Etéreo. Después de activar esta habilidad, puede conectar directamente con el 3er golpe de (Ataque Básico). El personaje es invulnerable mientras usa esta habilidad.",
+            description: "Cuando el personaje en operación es derribado, presiona [Icono Asistencia] para activar: Lanza un poderoso corte al objetivo, infligiendo Daño Etéreo; Tras activar la habilidad, se puede conectar directamente con el tercer golpe de (Ataque Normal: Ritmo Dulce); Posee efecto de invencibilidad durante la activación de la habilidad.",
             tags: ["Etéreo", "Asistencia"]
         },
         {
             type: "Asistencia",
             name: "Asistencia Defensiva: Salvación Divina",
-            description: "Cuando el personaje en el campo está a punto de ser atacado, presiona [Icono Assist] para activar: Parrea el ataque del enemigo, causando masivo Aturdimiento. El personaje es invulnerable mientras usa esta habilidad.",
+            description: "Cuando el personaje en el campo está a punto de ser atacado, presiona [Icono Asistencia] para activar: Realiza un bloqueo al ataque del enemigo, acumulando una gran cantidad de aturdimiento; Posee efecto de invencibilidad durante la activación de la habilidad.",
             tags: ["Asistencia"]
         },
         {
             type: "Asistencia",
             name: "Seguimiento de Asistencia: Encore",
-            description: "Presiona [Icono Ataque] después de una (Asistencia Defensiva) para activar: Desata golpes consecutivos poderosos en el objetivo, causando masivo Daño Etéreo. El personaje es invulnerable mientras usa esta habilidad.",
+            description: "Tras activar (Asistencia Defensiva), presiona [Icono Ataque] para activar: Lanza poderosos cortes continuos al objetivo, infligiendo gran cantidad de Daño Etéreo; Posee efecto de invencibilidad durante la activación de la habilidad.",
             tags: ["Etéreo", "Asistencia"]
         },
         {
             type: "Técnica Definitiva",
             name: "Ataque en Cadena: Colaboración Soñada",
-            description: "Cuando un (Ataque en Cadena) es activado, selecciona el personaje para activar: Desata ataques consecutivos hacia adelante, causando masivo Daño Etéreo. Si los ataques golpean a un enemigo, 4 (Energía de Soporte) serán generadas en el campo después de que el ataque se completa. El personaje es invulnerable mientras usa esta habilidad.",
+            description: "Al activar una (Técnica en Cadena), selecciona al personaje correspondiente para activar: Realiza ataques continuos hacia adelante, infligiendo gran cantidad de Daño Etéreo. Al activar la habilidad se generan 4 (Energía de Apoyo) en el campo; Posee efecto de invencibilidad durante la activación de la habilidad.",
             tags: ["Etéreo", "Ataque en Cadena"]
         },
         {
             type: "Técnica Definitiva",
             name: "Definitiva: Vitalidad al Máximo",
-            description: "Cuando el Nivel de Decibelios está al (Máximo), presiona [Icono Definitiva] para activar: Desata su poder completo entrando en (Momento de Fantasía) y disparando múltiples disparos poderosos en el objetivo, causando masivo Daño Etéreo. Cuando entra en (Momento de Fantasía), Aria gana 3 capas de (Apoyo Total), mientras activa (Velo Etereo: Fantasía Bis). Mientras (Velo Etereo: Fantasía Bis) está activo, todos los miembros del escuadrón ganan 50 de ATK adicional por 30s. Antes de que Aria activa (Velo Etereo: Fantasía Bis) de nuevo, cualquier (Velo Etereo: Fantasía Bis) existente será desactivado; Cuando Aria carga, si ella tiene el efecto (Apoyo Total), ella priorizará consumir 1 capa de (Apoyo Total) para cargar. Cada capa de (Apoyo Total) aumenta el nivel de carga en 2; Cuando entra en (Momento de Fantasía), si ella ya tiene el efecto (Apoyo Total), cualquier capa restante de (Apoyo Total) será convertida en (Energía de Soporte) en el campo. Cada capa de (Apoyo Total) se convierte en 2 (Energía de Soporte); (Momento de Fantasía) dura un máximo de 15s. Durante (Momento de Fantasía), el tercer nivel de (Ataque de Carga) de Aria será mejorado a una versión potenciada; Cuando sale de (Momento de Fantasía), si ella tiene el efecto (Apoyo Total), las capas restantes de (Apoyo Total) también serán convertidas en (Energía de Soporte) en el campo. Cada capa de (Apoyo Total) se convierte en 2 (Energía de Soporte); El personaje es invulnerable mientras usa esta habilidad.",
+            description: "Cuando los Decibelios alcanzan el nivel (MÁX), presiona [Icono Definitiva] para activar: Libera todo su poder, entrando en (Momento de Fantasía) y lanzando múltiples ataques poderosos al objetivo, infligiendo gran cantidad de Daño Etéreo; Al entrar en (Momento de Fantasía), Aria obtiene 3 capas del efecto (Apoyo Total), y simultáneamente activa (Velo Etereo: Repetición de Fantasía). Mientras (Velo Etereo: Repetición de Fantasía) esté activo, el Ataque de todos los personajes del equipo aumenta adicionalmente en 50 puntos durante 30 segundos. Si Aria vuelve a activar (Velo Etereo: Repetición de Fantasía), se cerrará el (Velo Etereo: Repetición de Fantasía) existente; Cuando Aria está cargando, si posee el efecto (Apoyo Total), consumirá primero (Apoyo Total) para cargar; cada capa de (Apoyo Total) consumida puede aumentar el nivel de carga en 2; Al entrar en (Momento de Fantasía), si ella misma posee el efecto (Apoyo Total), convertirá las capas restantes de (Apoyo Total) en (Energía de Apoyo) generada en el campo. Cada capa de (Apoyo Total) se puede convertir en 2 (Energía de Apoyo); (Momento de Fantasía) dura un máximo de 15 segundos. Durante el periodo de (Momento de Fantasía), la tercera fase del (Ataque Normal: Tono Absoluto) de Aria se convertirá en una versión mejorada; Al salir de (Momento de Fantasía), si ella misma posee el efecto (Apoyo Total), también convertirá las capas restantes de (Apoyo Total) en (Energía de Apoyo) generada en el campo. Cada capa de (Apoyo Total) se puede convertir en 2 (Energía de Apoyo); Posee efecto de invencibilidad durante la activación de la habilidad.",
             tags: ["Etéreo", "Técnica Definitiva"]
         },
         {
             type: "Pasiva Central",
             name: "Pasiva Central: Núcleo de Control",
-            description: "La Maestría de Anomalía aumenta en {VALOR_6} puntos.\nCuando el 3-Rank (Ataque de Carga) de Aria golpea un objetivo afectado por Anomalía de Atributo Etéreo, Anomalía de Atributo Eléctrico, Anomalía de Atributo Fuego, Anomalía de Atributo Físico o Anomalía de Atributo Hielo, activa una (Anomalía); en relación al daño de Anomalía de Atributo original, cada 10 puntos de Maestría de Anomalía inicial aumenta el ratio de daño de Anomalía en {VALOR_1}/{VALOR_2}/{VALOR_3}/{VALOR_4}/{VALOR_5}. Cuando el objetivo está en estado de (Aturdimiento), el ratio de DAÑO se incrementa adicionalmente.",
+            description: "La Maestría de Anomalia de Aria aumenta en {VALOR_6} puntos; Cuando el tercer golpe de (Ataque Normal: Tono Absoluto) de Aria golpea a un objetivo que se encuentra en estado de Anomalia de Atributo Etéreo, Anomalia de Atributo Eléctrico, Anomalia de Atributo Fuego, Anomalia de Atributo Fisico o Anomalia de Atributo Hielo, activa un (Desorden): en relación al daño de Anomalia de Atributo original, cada 10 puntos de Maestria de Anomalia inicial aumenta el ratio de daño de Anomalia en {VALOR_1}/{VALOR_2}/{VALOR_3}/{VALOR_4}/{VALOR_5}, cuando el objetivo esta desequilibrado, la relación de daño aumenta adicionalmente 50%.",
             tags: ["Pasiva Central"]
         },
         {
             type: "Habilidad Adicional",
             name: "Habilidad Adicional: Escenario Cooperativo",
-            description: "Se activa cuando hay un personaje de Atributo Etéreo o de Soporte en el equipo:\\nCuando (Velo Etereo: Fantasía Bis) está activo, genera 4 (Energía de Soporte) en el campo;\\nCuando cualquier personaje del equipo aplica el efecto de (Erosión) a un enemigo, la Maestría de Anomalía aumenta en 3 niveles.",
+            description: "Se activa cuando hay en el equipo personajes de (Aturdidor), (Soporte) o de la misma facción que ella: Cuando se activa (Velo Etereo), se generan 4 (Energia de Apoyo) en el campo, se activa como máximo 1 vez por segundo; Cuando cualquier personaje del equipo aplica el efecto de (Corrupción) al enemigo, la duracion de dicho efecto aumenta en 3 segundos.",
             tags: ["Habilidad Adicional"]
         },
         {
             type: "Mindscape 1",
             name: "Talento 1: Onda de Voz Vital",
-            description: "Cuando el (Ataque Básico), (Ataque Especial) o (Ataque Especial EX) de Aria inflige daño a un enemigo, ignora el 10% de la RES de Acumulación de Anomalía Etérea del objetivo; Adicionalmente, cuando activa (Abloom), tiene una probabilidad de activar un golpe crítico: La Probabilidad de Crítico Base es 25%, el Daño Crítico es 25%; si la Maestría de Anomalía inicial excede 100, cada punto de Maestría de Anomalía por encima de este umbral incrementa la Probabilidad de Crítico de este efecto en un 0.5% adicional.",
+            description: "Cuando el (Ataque Básico), (Ataque Especial) o (Ataque Especial EX) de Aria inflige daño a un enemigo, ignora el 10% de la RES de Acumulación de Anomalía Etérea del objetivo; Adicionalmente, cuando activa (Abloom), tiene una probabilidad de activar un golpe crítico: La Probabilidad de Crítico Base es 25%, el Daño Crítico es 25%; si la Tasa de Anomalía inicial excede 100, cada punto de Tasa de Anomalía por encima de este umbral incrementa la Probabilidad de Crítico de este efecto en un 0.5% adicional.",
             tags: ["Mindscape 1"]
         },
         {
             type: "Mindscape 2",
             name: "Talento 2: Ritmo de Sueño",
-            description: "Durante la duración de (Momento de Fantasía), los ataques de Aria y al activar (Abloom) ignoran el 30% de la DEF del objetivo.",
+            description: "Cuando Aria ataca y activa (Abloom), ignora el 16% de la DEF del objetivo; durante la duración de (Momento de Fantasía), al atacar y activar (Desorden), ignora adicionalmente un 8% de la Defensa del objetivo.",
             tags: ["Mindscape 2"]
         },
         {
@@ -181,7 +181,7 @@ export default {
         {
             type: "Mindscape 6",
             name: "Talento 6: Sueño de Constructo",
-            description: "Al entrar en el campo de batalla, Aria inmediatamente gana 1,500 Decibeles, y una vez que Aria entra en (Momento de Fantasía) ella no saldrá de él. El Daño Etéreo del (Ataque de Carga Potenciado) aumenta en un 20%. Cuando Aria está en (Momento de Fantasía), si un enemigo en el campo entra en un estado de Anomalía de Atributo, Aria gana 1 capa de (Apoyo Total). Este efecto puede activarse una vez cada 8s.",
+            description: "Al entrar en el campo de batalla, Aria inmediatamente gana 1,200 Decibeles; En el modo Hollow Zero (Cavidad Cero), este efecto se activa como máximo una vez cada 180 segundos y una vez que Aria entra en (Momento de Fantasía) ella no saldrá de él. El Daño Etéreo del (Ataque Normal: Tono Absoluto) y (Técnica Definitiva) aumenta en un 40%. Cuando Aria está en (Momento de Fantasía), si un enemigo en el campo entra en un estado de Anomalía de Atributo, Aria gana 1 capa de (Apoyo Total). Este efecto puede activarse una vez cada 6s; al obtener el efecto de (Apoyo Total), si ella misma ya tiene 3 capas de (Apoyo Total), convertirá el efecto de (Apoyo Total) excedente en 2 (Energía de Apoyo) generadas en el campo.",
             tags: ["Mindscape 6"]
         }
     ]
