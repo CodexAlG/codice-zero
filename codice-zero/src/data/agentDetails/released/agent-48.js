@@ -67,7 +67,7 @@ export default {
         {
             type: "Evasión",
             name: "Evasión: Ritmo Preciso",
-            description: "Presiona [Icono Evasión] para activar: Realiza una evasión rápida con desplazamiento; Si se activa durante (Ataque Normal: Ritmo Dulce), no se reiniciarán los golpes del ataque normal durante esta acción; Posee efecto de invencibilidad durante la activación de la habilidad.",
+            description: "Presiona [Icono Dodges] para activar: Realiza una evasión rápida con desplazamiento; Si se activa durante (Ataque Normal: Ritmo Dulce), no se reiniciarán los golpes del ataque normal durante esta acción; Posee efecto de invencibilidad durante la activación de la habilidad.",
             tags: ["Evasión"]
         },
         {
@@ -109,13 +109,13 @@ export default {
         {
             type: "Asistencia",
             name: "Asistencia Rápida: Sueño Roto",
-            description: "Cuando el personaje en operación es derribado, presiona [Icono Asistencia] para activar: Lanza un poderoso corte al objetivo, infligiendo Daño Etéreo; Tras activar la habilidad, se puede conectar directamente con el tercer golpe de (Ataque Normal: Ritmo Dulce); Posee efecto de invencibilidad durante la activación de la habilidad.",
+            description: "Cuando el personaje en operación es derribado, presiona [Icono Assist] para activar: Lanza un poderoso corte al objetivo, infligiendo Daño Etéreo; Tras activar la habilidad, se puede conectar directamente con el tercer golpe de (Ataque Normal: Ritmo Dulce); Posee efecto de invencibilidad durante la activación de la habilidad.",
             tags: ["Etéreo", "Asistencia"]
         },
         {
             type: "Asistencia",
             name: "Asistencia Defensiva: Salvación Divina",
-            description: "Cuando el personaje en el campo está a punto de ser atacado, presiona [Icono Asistencia] para activar: Realiza un bloqueo al ataque del enemigo, acumulando una gran cantidad de aturdimiento; Posee efecto de invencibilidad durante la activación de la habilidad.",
+            description: "Cuando el personaje en el campo está a punto de ser atacado, presiona [Icono Assist] para activar: Realiza un bloqueo al ataque del enemigo, acumulando una gran cantidad de aturdimiento; Posee efecto de invencibilidad durante la activación de la habilidad.",
             tags: ["Asistencia"]
         },
         {
