@@ -35,6 +35,70 @@ export default {
       icon: "Item_Higher_Dimensional_Data_Murderous_Obituary.webp",
     }
   },
+  strategy: {
+    // Orden de Habilidades
+    skillPriority: ["Técnica Especial", "Técnica Definitiva", "Ataque Básico", "Evasión", "Asistencia"],
+
+    statsPriority: ["Prob. Crítica", "Daño Crítico", "ATK%", "ATK"],
+
+    // 5 ARMAS (BiS -> F2P)
+    bestWeapons: [
+      { id: "w1", name: "Visitante de las Profundidades", tier: "S+", tag: "BiS", icon: "/CodiceZero/Armas/Ataque/W-Engine_Deep_Sea_Visitor.webp" },
+      { id: "w2", name: "Eclipse Infinito", tier: "S", tag: "Alternativa", icon: "/CodiceZero/Armas/Ataque/W-Engine_Myriad_Eclipse.webp" },
+      { id: "w3", name: "Azufre", tier: "S", tag: "Alternativa", icon: "/CodiceZero/Armas/Ataque/W-Engine_The_Brimstone.webp" },
+      { id: "w4", name: "Anhelo Marcato", tier: "A", tag: "Pase de Batalla", icon: "/CodiceZero/Armas/Ataque/W-Engine_Marcato_Desire.webp" },
+      { id: "w5", name: "Motor Estelar", tier: "A", tag: "F2P", icon: "/CodiceZero/Armas/Ataque/W-Engine_Starlight_Engine.webp" },
+    ],
+
+    // 2 BUILDS DE DISCOS DIFERENTES
+    driveDiscSetups: [
+      {
+        name: "Build de Burst (Meta)",
+        sets: [
+          { name: "Puffer Electro", count: 4, icon: "/CodiceZero/Discos/Drive_Disc_Puffer_Electro_Icon.webp" },
+          { name: "Pájaro Carpintero", count: 2, icon: "/CodiceZero/Discos/Drive_Disc_Woodpecker_Electro_Icon.png" }
+        ],
+        mainStats: { iv: "Daño Crítico / Prob. Crítica", v: "Bono de Daño Hielo", vi: "Ataque %" }
+      },
+      {
+        name: "Build Estándar",
+        sets: [
+          { name: "Metal Polar", count: 4, icon: "/CodiceZero/Discos/Drive_Disc_Polar_Metal_Icon.webp" },
+          { name: "Pájaro Carpintero", count: 2, icon: "/CodiceZero/Discos/Drive_Disc_Woodpecker_Electro_Icon.png" }
+        ],
+        mainStats: { iv: "Daño Crítico / Prob. Crítica", v: "Bono de Daño Hielo", vi: "Ataque %" }
+      }
+    ],
+
+    // EQUIPOS
+    teams: [
+      {
+        name: "Equipo Premium",
+        members: [
+          { id: 1, name: "Ellen Joe", icon: "/CodiceZero/ICONOS/Agent_Ellen_Joe_Icon.webp" },
+          { id: 44, name: "Dialyn", icon: "/CodiceZero/ICONOS/Agent_Dialyn_Icon.webp" },
+          { id: 45, name: "Astra Yao", icon: "/CodiceZero/ICONOS/Agent_Astra_Yao_Icon.webp" }
+        ]
+      },
+      {
+        name: "Equipo Premium 2",
+        members: [
+          { id: 1, name: "Ellen Joe", icon: "/CodiceZero/ICONOS/Agent_Ellen_Joe_Icon.webp" },
+          { id: 40, name: "Lighter", icon: "/CodiceZero/ICONOS/Agent_Lighter_Icon.webp" },
+          { id: 7, name: "Astra Yavo", icon: "/CodiceZero/ICONOS/Agent_Astra_Yao.webp" }
+        ]
+      },
+      {
+        name: "Equipo F2P",
+        members: [
+          { id: 1, name: "Ellen Joe", icon: "/CodiceZero/ICONOS/Agent_Ellen_Joe_Icon.webp" },
+          { id: 3, name: "Lycaon", icon: "/CodiceZero/ICONOS/Agent_Von_Lycaon_Icon.webp" },
+          { id: 7, name: "Soukaku", icon: "/CodiceZero/ICONOS/Agent_Soukaku_Icon.webp" }
+        ]
+      }
+    ]
+  },
+
   coreSkillScaling: [
     ["50%"],
     ["58.3%"],
