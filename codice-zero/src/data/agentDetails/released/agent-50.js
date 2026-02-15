@@ -37,7 +37,7 @@ export default {
         {
             type: "Ataque Básico",
             name: "Ataque Básico",
-            description: "Presiona [Icono Ataque]: Realiza hasta tres golpes consecutivos hacia adelanta, infligiendo Daño Etereo",
+            description: "Presiona [Icono Ataque]: Realiza hasta tres golpes consecutivos hacia adelanta, infligiendo Daño Etèreo",
             tags: ["Etereo", "Ataque Básico"]
         },
         {
@@ -55,19 +55,19 @@ export default {
         {
             type: "Evasión",
             name: "Ataque de Carrera",
-            description: "Al evadir, pulsar [Icono Ataque]: Realiza un ataque ràpido hacia adelante, infligiendo Daño Etereo",
+            description: "Al evadir, pulsar [Icono Ataque]: Realiza un ataque ràpido hacia adelante, infligiendo Daño Etèreo",
             tags: ["Etereo",]
         },
         {
             type: "Evasión",
             name: "Contraataque de Evasión",
-            description: "Tras activar una (Evasiòn Perfecta), pulsar [Icono Ataque]: Salta hacia adelante y realiza un ataque de barrido al aterrizar, infligiendo Daño Etereo; possee efecto de invencibilidad durante la ejecuciòn del movimiento.",
+            description: "Tras activar una (Evasiòn Perfecta), pulsar [Icono Ataque]: Salta hacia adelante y realiza un ataque de barrido al aterrizar, infligiendo Daño Etèreo; possee efecto de invencibilidad durante la ejecuciòn del movimiento.",
             tags: ["Etereo",]
         },
         {
             type: "Asistencia",
             name: "Asistencia Rápida",
-            description: "Cuando el personaje en uso es lanzado por los aires, pulsar [Icono Assist]: Salta hacia adelante y realiza ataques consecutivos al objetivo, infligiendo Daño Etereo; posee efecto de invenciblidad durante la ejecuciòn del movimiento.",
+            description: "Cuando el personaje en uso es lanzado por los aires, pulsar [Icono Assist]: Salta hacia adelante y realiza ataques consecutivos al objetivo, infligiendo Daño Etèreo; posee efecto de invenciblidad durante la ejecuciòn del movimiento.",
             tags: ["Etereo",]
         },
         {
@@ -79,37 +79,37 @@ export default {
         {
             type: "Asistencia",
             name: "Ataque de Asistencia",
-            description: "Tras activar (Asistencia Definitiva), pulsar [Icono Ataque]: Realiza ataques continuos contra el objetivo, infligiendo una gran cantidad de Daño Etereo; posee efecto de invencibilidad durante la ejecuciòn del movimiento.",
+            description: "Tras activar (Asistencia Definitiva), pulsar [Icono Ataque]: Realiza ataques continuos contra el objetivo, infligiendo una gran cantidad de Daño Etèreo; posee efecto de invencibilidad durante la ejecuciòn del movimiento.",
             tags: ["Etereo",]
         },
         {
             type: "Técnica Especial",
             name: "Técnica Especial",
-            description: "Pulsar [Icono Especial]: Blandir el martillo para lanzar un ataque, infligiendo Daño Etereo.",
+            description: "Pulsar [Icono Especial]: Blandir el martillo para lanzar un ataque, infligiendo Daño Etèreo.",
             tags: ["Etereo",]
         },
         {
             type: "Técnica Especial",
             name: "Técnica Especial EX",
-            description: "Cuando la energìa es suficiente, pulsar [Icono Especial EX]: Blandir el martillo para lanzar un ataque, infligiendo una gran cantidad de Daño Etereo; este movimiento no interrumpirà el conteo de combo del (Ataque Basico: Ataque Cargado); posee efecto de invencibilidad durante la ejecuciòn del movimiento.",
+            description: "Cuando la energìa es suficiente, pulsar [Icono Especial EX]: Blandir el martillo para lanzar un ataque, infligiendo una gran cantidad de Daño Etèreo; este movimiento no interrumpirà el conteo de combo del (Ataque Basico: Ataque Cargado); posee efecto de invencibilidad durante la ejecuciòn del movimiento.",
             tags: ["Etereo",]
         },
         {
             type: "Tecnica Definitiva",
             name: "Tecnica en Cadena",
-            description: "Al activar una (Tècnica en Cadena), seleccionar al personaje correspondiente para lanzar: Realiz mùltiples ataques hacia adelante, infligiendo una gran cantidad de Daño Etereo; posee efecto de invencibilidad durante la ejecuciòn del movimiento.",
+            description: "Al activar una (Tècnica en Cadena), seleccionar al personaje correspondiente para lanzar: Realiz mùltiples ataques hacia adelante, infligiendo una gran cantidad de Daño Etèreo; posee efecto de invencibilidad durante la ejecuciòn del movimiento.",
             tags: ["Etereo"]
         },
         {
             type: "Tecnica Definitiva",
             name: "Tecnica Definitiva",
-            description: "Cuando el nivel de decibelios llega a (Màximo), pulsar [Icono Definitiva]: Realiza mùltiples ataques hacia adelante, infligiendo una gran cantidad de Daño Etereo; al lanzar el movimiento, Nangong Yu despliega el (Velo Etereo: Repeticiòn Delirante), durante la duraciòn del (Velo Etereo: Repeticiòn Delirante), el Ataque de todos los personajes del equipo aumenta adicionalmente en 50 puntos, con una duraciòn de 30 segundos; si Nangong Yu vuelve a desplegar el (Velo Etereo: Repeticiòn Delirante), se cerrarà el (Velo Etereo: Repeticiòn Delirante) existente; posee efecto de invencibilidad durante la ejecuciòn del movimiento.",
+            description: "Cuando el nivel de decibelios llega a (Màximo), pulsar [Icono Definitiva]: Realiza mùltiples ataques hacia adelante, infligiendo una gran cantidad de Daño Etèreo; al lanzar el movimiento, Nangong Yu despliega el (Velo Etereo: Repeticiòn Delirante), durante la duraciòn del (Velo Etereo: Repeticiòn Delirante), el Ataque de todos los personajes del equipo aumenta adicionalmente en 50 puntos, con una duraciòn de 30 segundos; si Nangong Yu vuelve a desplegar el (Velo Etereo: Repeticiòn Delirante), se cerrarà el (Velo Etereo: Repeticiòn Delirante) existente; posee efecto de invencibilidad durante la ejecuciòn del movimiento.",
             tags: ["Etereo"]
         },
         {
             type: "Pasiva Central",
             name: "Pasiva Central",
-            description: "La Maestrìa de Anomalìa de Nangong Yu aumenta en {VALOR_1} puntos; cuando la Tasa de Anomalìa de Nangong Yu es superior a 100 puntos, cada 1 punto que exceda la Tasa de Anomalìa inicial aumentarà su propio impacto en 0.8; cuando un enemigo se encuentra en estado de Aturdimiento, cada vez que entra en un estado de Anomalìa, recibe un ataque de (Abloom) o un ataque de (Desorden), acumularà 1 cada de (Marca); un mismo enemigo puede ser acumulado hasta un màximo de 5 capas de (Marcas) se acumulan hasta el nùmero màximo de capas o cuando un enemigo que posee (Marcas) se recupera del estado de Aturdimiento, todas las (Marcas) seràn eliminadas; cuando las (Marcas) son eliminadas, se activarà un efecto especial de (Desorden) llamado (Desorden de Polaridad), infligiendo al enemigo un {VALOR_2} del daño del efecto de (Desorden) original, por cada 1 capa de (Marca) que tenga el enemigo, el daño de este (Desorden de Polaridad) infligirà un 10% adicional del daño del efecto de (Desorden) original, el (Desorden de Polaridad) no eliminarà el efecto de Anomalìa de Atributo en el que se encuentra el objetivo; durante un mismo periodo de Aturdimiento, si las (Marcas) ya han sido elimindas, el enemigo no podrà volver a recibir (Marcas), cuando el (Ataque Basico: Ataque Cargado) o la (Tècnica Especial EX) de Nangong Yu golpean a un enemigo, aumentan su propia Eficiencia de Acumulaciòn de Anomalìa en un {VALOR_3}, la Eficiencia de Aturdimiento en un {VALOR_4}, y aumentan el daño infligido por todo el equipo en un 30%, con una duraciòn de 20 segundos, al activarse de nuevo se reinicia la duraciòn. Cuando el (Ataque Basico: Ataque Cargado) de Nangong Yu golpea a un enemigo, el enemigo obtiene el efecto (Mareo), los enemigos bajo este efecto ven aumentada su duraciòn de Aturdimiento en 3 segundos tras entrar en estado de Aturdimiento, el efecto (Mareo) se activa como màximo una vez por objetivo antes de recuperarse del estado de Aturdimiento, el efecto de aumento de duraciòn de Aturdimiento no se puede acumular con efectos del mismo tipo, cuando termina el Aturdmiento del enemigo con efecto (Mareo), el efecto (Mareo) tèrmina; cuando cualquier personaje del equipo hace que un enemigo entre en estado de Aturdimiento, el multiplicador de daño de Aturdmiento del enemigo aumenta un 30%; al estar en estado de combate, Nangong Yu recupera 4 puntos de (Valor de Baile) por segundo, cuando cualquier personaje del equipo hace que un enemigo entre en estado de Anomalìa, recuperarà adicionalmente 20 puntos de (Valor de Baile) para Nangong Yu, este efecto se activa como màximo una vez cada 8 segundos, Nangong Yu puede poseer un màximo de 100 puntos de (Valor de Baile)",
+            description: "La Maestrìa de Anomalìa de Nangong Yu aumenta en {VALOR_1} puntos; cuando la Tasa de Anomalìa de Nangong Yu es superior a 100 puntos, cada 1 punto que exceda la Tasa de Anomalìa inicial aumentarà su propio impacto en 0.8; cuando un enemigo se encuentra en estado de Aturdimiento, cada vez que entra en un estado de Anomalìa, recibe un ataque de (Abloom) o un ataque de (Desorden), acumularà 1 capa de (Marca); un mismo enemigo puede ser acumulado hasta un màximo de 5 capas de (Marcas) se acumulan hasta el nùmero màximo de capas o cuando un enemigo que posee (Marcas) se recupera del estado de Aturdimiento, todas las (Marcas) seràn eliminadas; cuando las (Marcas) son eliminadas, se activarà un efecto especial de (Desorden) llamado (Desorden de Polaridad), infligiendo al enemigo un {VALOR_2} del daño del efecto de (Desorden) original, por cada 1 capa de (Marca) que tenga el enemigo, el daño de este (Desorden de Polaridad) infligirà un 10% adicional del daño del efecto de (Desorden) original, el (Desorden de Polaridad) no eliminarà el efecto de Anomalìa de Atributo en el que se encuentra el objetivo; durante un mismo periodo de Aturdimiento, si las (Marcas) ya han sido elimindas, el enemigo no podrà volver a recibir (Marcas), cuando el (Ataque Basico: Ataque Cargado) o la (Tècnica Especial EX) de Nangong Yu golpean a un enemigo, aumentan su propia Eficiencia de Acumulaciòn de Anomalìa en un {VALOR_3}, la Eficiencia de Aturdimiento en un {VALOR_4}, y aumentan el daño infligido por todo el equipo en un 30%, con una duraciòn de 20 segundos, al activarse de nuevo se reinicia la duraciòn. Cuando el (Ataque Basico: Ataque Cargado) de Nangong Yu golpea a un enemigo, el enemigo obtiene el efecto (Mareo), los enemigos bajo este efecto ven aumentada su duraciòn de Aturdimiento en 3 segundos tras entrar en estado de Aturdimiento, el efecto (Mareo) se activa como màximo una vez por objetivo antes de recuperarse del estado de Aturdimiento, el efecto de aumento de duraciòn de Aturdimiento no se puede acumular con efectos del mismo tipo, cuando termina el Aturdmiento del enemigo con efecto (Mareo), el efecto (Mareo) tèrmina; cuando cualquier personaje del equipo hace que un enemigo entre en estado de Aturdimiento, el multiplicador de daño de Aturdmiento del enemigo aumenta un 30%; al estar en estado de combate, Nangong Yu recupera 4 puntos de (Valor de Baile) por segundo, cuando cualquier personaje del equipo hace que un enemigo entre en estado de Anomalìa, recuperarà adicionalmente 20 puntos de (Valor de Baile) para Nangong Yu, este efecto se activa como màximo una vez cada 8 segundos, Nangong Yu puede poseer un màximo de 100 puntos de (Valor de Baile)",
             tags: ["Etereo"]
         },
         {
