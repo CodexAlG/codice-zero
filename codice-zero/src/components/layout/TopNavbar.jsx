@@ -147,9 +147,12 @@ export default function TopNavbar({ isVisible }) {
 
             {/* Bottom Decoration or Settings if needed */}
             <div className="mt-auto w-full px-6 flex flex-col gap-4">
+                <Link href="/sobre-mi" className="flex items-center justify-center gap-2 text-xs text-gray-500 hover:text-yellow-400 transition-colors uppercase tracking-wider font-bold">
+                    <span>Sobre mí</span>
+                </Link>
                 <div className="w-full h-[1px] bg-white/10"></div>
                 <div className="flex justify-center opacity-50 text-[10px] text-gray-500 font-mono">
-                    v2.5
+                    v2.6
                 </div>
             </div>
         </header>

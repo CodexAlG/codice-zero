@@ -161,6 +161,19 @@ export default function Sidebar({ isExpanded, isMobile, toggleDrawer }) {
 
         </ul>
       </nav>
-    </aside>
+
+      {/* Footer / About Me */}
+      <div className="mt-auto pt-4 border-t border-white/5">
+        <Link
+          href="/sobre-mi"
+          onClick={handleLinkClick}
+          className="flex items-center justify-center gap-2 py-2 text-xs text-gray-400 hover:text-yellow-400 transition-colors uppercase tracking-wider font-bold"
+        >
+          <span>Sobre mí</span>
+        </Link>
+        <div className="flex justify-center mt-2 opacity-50 text-[10px] text-gray-500 font-mono">
+          v2.6
+        </div>
+      </div>    </aside >
   );
 }
