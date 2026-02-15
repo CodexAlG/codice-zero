@@ -1,5 +1,29 @@
 
 export const agents = [
+  // --- VERSION 2.7 ---
+  {
+    id: 51,
+    name: "Cissia",
+    rank: "S",
+    element: "Electrico",
+    rol: "Ataque",
+    faction: "Divisiòn de Òrdenes Metropolitanas",
+    version: "2.7",
+    image: "",
+    customStyle: "scale-[1.00] group-hover:scale-[1.10] object-[center_top]",
+  },
+  {
+    id: 50,
+    name: "Nangong Yu",
+    rank: "S",
+    element: "Etereo",
+    rol: "Aturdidor",
+    faction: "Angels of Delusion",
+    version: "2.7",
+    image: "",
+    customStyle: "scale-[1.00] group-hover:scale-[1.10] object-[center_top]",
+  },
+
   // --- VERSIÓN 2.6---
   {
     id: 49,
