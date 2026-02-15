@@ -35,6 +35,73 @@ export default {
       icon: "Item_Higher_Dimensional_Data_Ethereal_Pursuit.webp",
     }
   },
+  strategy: {
+    // Orden de Habilidades (Optional/Default if not provided)
+    skillPriority: ["Técnica Especial", "Técnica Definitiva", "Ataque Básico", "Evasión", "Asistencia"],
+
+    // Estadísticas Principales
+    statsPriority: ["Daño Crítico", "Prob. Crítica", "Bono de Daño Éter", "Ataque %"],
+
+    // Top 5 Mejores Armas
+    bestWeapons: [
+      { id: "5512", name: "Supresor Antidisturbios VI", tier: "S", tag: "BiS", icon: "/CodiceZero/Armas/Ataque/W-Engine_Riot_Suppressor_Mark_VI.webp" },
+      { id: "5508", name: "Cojin de Acero", tier: "S", tag: "Alternativa", icon: "/CodiceZero/Armas/Ataque/W-Engine_Steel_Cushion.webp" },
+      { id: "5509", name: "Azufre", tier: "S", tag: "Alternativa", icon: "/CodiceZero/Armas/Ataque/W-Engine_The_Brimstone.webp" },
+      { id: "5606", name: "Anhelo Marcato", tier: "A", tag: "Evento W5", icon: "/CodiceZero/Armas/Ataque/W-Engine_Marcato_Desire.webp" },
+      { id: "5610", name: "Rotor de Cañon", tier: "A", tag: "Pase de Batalla", icon: "/CodiceZero/Armas/Ataque/W-Engine_Cannon_Rotor.webp" },
+    ],
+
+    // Mejores Builds de Discos
+    driveDiscSetups: [
+      {
+        name: "Opción A: Estándar (Consistente)",
+        sets: [
+          { name: "Metal Caótico", count: 4, icon: "/CodiceZero/Discos/Drive_Disc_Chaotic_Metal_Icon.webp" },
+          { name: "Pájaro Carpintería", count: 2, icon: "/CodiceZero/Discos/Drive_Disc_Woodpecker_Electro_Icon.png" }
+        ],
+        mainStats: { iv: "Daño Crítico / Prob. Crítica", v: "Bono de Daño Éter", vi: "Ataque %" }
+      },
+      {
+        name: "Opción B: Burst / Ulti Spam (Con Dialyn)",
+        sets: [
+          { name: "Pez Globo", count: 4, icon: "/CodiceZero/Discos/Drive_Disc_Puffer_Electro_Icon.webp" },
+          { name: "Metal Caótico", count: 2, icon: "/CodiceZero/Discos/Drive_Disc_Chaotic_Metal_Icon.webp" }
+        ],
+        mainStats: { iv: "Daño Crítico / Prob. Crítica", v: "Bono de Daño Éter", vi: "Ataque %" }
+      }
+    ],
+
+    // Mejores Equipos
+    teams: [
+      {
+        name: "Equipo Premium (Meta v2.6)",
+        members: [
+          { id: 2, name: "Zhu Yuan", icon: "/CodiceZero/ICONOS/Agent_Zhu_Yuan_Icon.webp" },
+          { id: 44, name: "Dialyn", icon: "/CodiceZero/ICONOS/Agent_Dialyn_Icon.webp" },
+          { id: 27, name: "Astra Yao", icon: "/CodiceZero/ICONOS/Agent_Astra_Yao_Icon.webp" },
+          { name: "Resonaboo", icon: "/CodiceZero/Bangboo/Resonaboo_Portrait.webp" }
+        ]
+      },
+      {
+        name: "Equipo Semi-Premium (Estándar)",
+        members: [
+          { id: 2, name: "Zhu Yuan", icon: "/CodiceZero/ICONOS/Agent_Zhu_Yuan_Icon.webp" },
+          { id: 9, name: "Qingyi", icon: "/CodiceZero/ICONOS/Agent_Qingyi_Icon.webp" },
+          { id: 12, name: "Nicole", icon: "/CodiceZero/ICONOS/Agent_Nicole_Demara_Icon.webp" },
+          { name: "Resonaboo", icon: "/CodiceZero/Bangboo/Resonaboo_Portrait.webp" }
+        ]
+      },
+      {
+        name: "Equipo F2P",
+        members: [
+          { id: 2, name: "Zhu Yuan", icon: "/CodiceZero/ICONOS/Agent_Zhu_Yuan_Icon.webp" },
+          { id: 11, name: "Anby", icon: "/CodiceZero/ICONOS/Agent_Anby_Demara_Icon.webp" },
+          { id: 12, name: "Nicole", icon: "/CodiceZero/ICONOS/Agent_Nicole_Demara_Icon.webp" },
+          { name: "Devilboo", icon: "/CodiceZero/Bangboo/Devilboo_Portrait.webp" }
+        ]
+      }
+    ]
+  },
   coreSkillScaling: [
     ["20%"], ["23.9%"], ["26.6%"], ["30%"], ["33.3%"], ["36.6%"], ["40%"] // Placeholders for user to fill
   ],
