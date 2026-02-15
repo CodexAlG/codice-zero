@@ -1893,49 +1893,47 @@ export const weapons = [
   },
   {
     id: 5540,
-    name: "Golpe de Vitalidad",
+    name: "Espíritu en la Cáscara",
     rank: "S",
     rol: "Anomalia",
-    leak: "Beta",
     detailStats: {
       baseAtk: { min: 48, max: 713 },
       subStat: { name: "Tasa de Anomalía", min: "12%", max: "30%" }
     },
     effect: {
       title: "Golpe de Vitalidad",
-      description: "Aumenta el ATK del equipador en un 15%. Cuando el equipador de atributo Etéreo entra al campo o activa (Técnica Especial) o (Técnica Especial EX), obtiene un efecto de mejora: el DAÑO infligido a enemigos afectados por Anomalía de Atributo aumenta en un 25%, y todo el daño de Anomalía de Atributo después de activarse aumenta en un 12%. El efecto dura 15 segundos, los disparadores repetidos reinician la duración. El efecto se elimina al cambiar al campo trasero.",
+      description: "La Maestrìa de Anomalìa del portador aumenta en 90 puntos; Cuando un portador de Atributo Etereo entra al campo o activa una (Tenica Especial) o (Tenica Especial EX), obtiene un efecto de mejora: el daño inflingido a enemigos que se encuentran bajo un estado de Anomalìa de Atributo aumenta un 20%, el daño de todas las Anomalìas de Atributo activadas aumenta un 10%, el efecto dura 15 segundos, al activarse de nuevo se reinicia la duraciòn, y al cambiar a la reserva este efecto se elimina.",
       refinements: [ // Tabla de Mejora (R1 - R5)
-        { level: 1, DañoIgnored: "15%", Daño: "25%", DañoCritico: "12%" },
-        { level: 2, DañoIgnored: "17.3%", Daño: "28.8%", DañoCritico: "13.8%" },
-        { level: 3, DañoIgnored: "19.5%", Daño: "32.5%", DañoCritico: "15.6%" },
-        { level: 4, DañoIgnored: "21.8%", Daño: "36.3%", DañoCritico: "17.4%" },
-        { level: 5, DañoIgnored: "24%", Daño: "40%", DañoCritico: "19.2%" }
+        { level: 1, MaestríaAnomalía: "90", Daño: "20%", DañoCritico: "10%" },
+        { level: 2, MaestríaAnomalía: "103", Daño: "23%", DañoCritico: "11.5%" },
+        { level: 3, MaestríaAnomalía: "117", Daño: "26%", DañoCritico: "13%" },
+        { level: 4, MaestríaAnomalía: "130", Daño: "29%", DañoCritico: "14.5%" },
+        { level: 5, MaestríaAnomalía: "144", Daño: "32%", DañoCritico: "16%" }
       ]
     },
-    image: ""
+    image: "/CodiceZero/Armas/Anomalia/W-Engine_Spirit.webp"
   },
   {
     id: 5541,
-    name: "Song of Thoughts",
+    name: "Melodía de Pensamientos",
     rank: "S",
     rol: "Soporte",
-    leak: "Beta",
     detailStats: {
       baseAtk: { min: 48, max: 713 },
       subStat: { name: "Recuperación de Energia", min: "24%", max: "60%" }
     },
     effect: {
-      title: "Monólogo Decibel",
-      description: "Aumenta la Regeneración de Energía del equipador en 0.6 por segundo. Cuando el equipador usa una (Técnica Especial EX) para infligir Daño Físico, otorga un buff a todos los miembros del escuadrón: Aumenta el DAÑO tratado en un 12.5% durante 6s. Puede acumularse hasta 2 veces, los triggers repetidos reinician la duración. Cuando tiene 2 acumulaciones, adicionalmente aumenta el ATK en un 10%. Solo una instancia de este efecto puede existir en el mismo escuadrón.",
+      title: "Monólogo Resonante",
+      description: "Cuando el portador es un personaje que no està en uso, la Recuperaciòn de Energìa aumenta en 0.6/s; Cuando el portador actuva una (Tècnica Especial EX) e inflinge Daño Fisico, otorga un efecto de mejora a todos los personajes del equipo: el daño inflingido por el personaje aumenta un 12.5%, el efecto dura 40 segundos, se puede acumular hasta 2 veces, al activarse de nuevo se reinicia la duraciòn; al tener 2 acumulaciones del efecto, el Ataque del personaje aumenta adicionalmente un 10%, este efecto es ùnico para todo el equipo.",
       refinements: [ // Tabla de Mejora (R1 - R5)
-        { level: 1, DañoIgnored: "0.6", Daño: "12.5%", DañoCritico: "10%" },
-        { level: 2, DañoIgnored: "0.69", Daño: "14.3%", DañoCritico: "11.5%" },
-        { level: 3, DañoIgnored: "0.78", Daño: "16.1%", DañoCritico: "13%" },
-        { level: 4, DañoIgnored: "0.87", Daño: "18.9%", DañoCritico: "14.5%" },
-        { level: 5, DañoIgnored: "0.96", Daño: "20%", DañoCritico: "16%" }
+        { level: 1, RecuperaciónEnergía: "0.6", Daño: "12.5%", Ataque: "10%" },
+        { level: 2, RecuperaciónEnergía: "0.69", Daño: "14.3%", Ataque: "11.5%" },
+        { level: 3, RecuperaciónEnergía: "0.78", Daño: "16.1%", Ataque: "13%" },
+        { level: 4, RecuperaciónEnergía: "0.87", Daño: "17.9%", Ataque: "14.5%" },
+        { level: 5, RecuperaciónEnergía: "0.96", Daño: "20%", Ataque: "16%" }
       ]
     },
-    image: ""
+    image: "/CodiceZero/Armas/Soporte/W-Engine-Thougtbop.webp"
   },
 ];
 
