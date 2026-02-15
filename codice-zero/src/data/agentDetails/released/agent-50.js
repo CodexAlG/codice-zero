@@ -95,14 +95,14 @@ export default {
             tags: ["Etereo",]
         },
         {
-            type: "Tecnica Definitiva",
-            name: "Tecnica en Cadena",
+            type: "Tècnica Definitiva",
+            name: "Tècnica en Cadena",
             description: "Al activar una (Tècnica en Cadena), seleccionar al personaje correspondiente para lanzar: Realiz mùltiples ataques hacia adelante, infligiendo una gran cantidad de Daño Etèreo; posee efecto de invencibilidad durante la ejecuciòn del movimiento.",
             tags: ["Etereo"]
         },
         {
-            type: "Tecnica Definitiva",
-            name: "Tecnica Definitiva",
+            type: "Tècnica Definitiva",
+            name: "Tècnica Definitiva",
             description: "Cuando el nivel de decibelios llega a (Màximo), pulsar [Icono Definitiva]: Realiza mùltiples ataques hacia adelante, infligiendo una gran cantidad de Daño Etèreo; al lanzar el movimiento, Nangong Yu despliega el (Velo Etereo: Repeticiòn Delirante), durante la duraciòn del (Velo Etereo: Repeticiòn Delirante), el Ataque de todos los personajes del equipo aumenta adicionalmente en 50 puntos, con una duraciòn de 30 segundos; si Nangong Yu vuelve a desplegar el (Velo Etereo: Repeticiòn Delirante), se cerrarà el (Velo Etereo: Repeticiòn Delirante) existente; posee efecto de invencibilidad durante la ejecuciòn del movimiento.",
             tags: ["Etereo"]
         },
