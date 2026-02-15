@@ -6,7 +6,7 @@ export const driveDiscs = [
     leak: "Beta",
     twoPiece: "",
     fourPiece: "",
-    image: "/CodiceZero/Discos/SuitNotesOfTheChained.png"
+    image: "/CodiceZero/Discos/SuitNotesOfTheChained.png",
   },
   {
     id: 9927,
@@ -14,7 +14,7 @@ export const driveDiscs = [
     leak: "Beta",
     twoPiece: "HP +10%",
     fourPiece: "Cuando lo equipa un personaje (Defensivo): Cuando el portador activa una (Técnica Especial EX) o cualquier compañero activa una (Asistencia Defensiva) o (Asistencia Evasiva), el daño infligido por todos los agentes del equipo aumenta un 6%, acumulable hasta un máxmimo de 3 capas, con una duración de 25 segundos, las capas decaen una por una, al obtener o decaer una capa se reinicia la duración; los efectos pasivos con el mismo nombre no se pueden acumular",
-    image: "/CodiceZero/Discos/SuitBunnyInWonderland.png"
+    image: "/CodiceZero/Discos/SuitBunnyInWonderland.png",
   },
   // --- VERSIÓN 1.4 / 1.5 (Lo Más Nuevo) ---
   {
