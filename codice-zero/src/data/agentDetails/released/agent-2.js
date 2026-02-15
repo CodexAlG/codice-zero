@@ -40,7 +40,7 @@ export default {
     skillPriority: ["Técnica Especial", "Técnica Definitiva", "Ataque Básico", "Evasión", "Asistencia"],
 
     // Estadísticas Principales
-    statsPriority: ["Daño Crítico", "Prob. Crítica", "Bono de Daño Éter", "Ataque %"],
+    statsPriority: ["Daño Crítico", "Prob. Crítica", "Ataque %", "Ataque"],
 
     // Top 5 Mejores Armas
     bestWeapons: [
