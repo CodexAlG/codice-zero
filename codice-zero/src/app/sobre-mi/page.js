@@ -21,9 +21,9 @@ export default function AboutMePage() {
                         <div className="bg-[#18181b] border border-white/10 rounded-2xl p-6 flex flex-col items-center text-center relative overflow-hidden group">
 
                             {/* Background Glow */}
-                            <div className="absolute inset-0 bg-gradient-to-br from-yellow-500/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                            <div className="absolute inset-0 bg-gradient-to-br from-yellow-500/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
 
-                            <div className="relative w-32 h-32 rounded-full overflow-hidden border-2 border-yellow-500 mb-4 shadow-[0_0_20px_rgba(234,179,8,0.4)] transition-transform duration-300 group-hover:scale-105">
+                            <div className="relative w-32 h-32 rounded-full overflow-hidden border-2 border-yellow-500 mb-4 shadow-[0_0_20px_rgba(234,179,8,0.4)] transition-transform duration-300 group-hover:scale-105 z-10">
                                 <Image
                                     src="/CodiceZero/IconoEgo.jpg"
                                     alt="Ego"
@@ -32,12 +32,12 @@ export default function AboutMePage() {
                                 />
                             </div>
 
-                            <h2 className="text-3xl font-display font-black italic text-white mb-1">Ego</h2>
-                            <p className="text-yellow-400 font-bold text-xs uppercase tracking-widest mb-6 border-b border-yellow-500/30 pb-4 w-full">
+                            <h2 className="text-3xl font-display font-black italic text-white mb-1 relative z-10">Ego</h2>
+                            <p className="text-yellow-400 font-bold text-xs uppercase tracking-widest mb-6 border-b border-yellow-500/30 pb-4 w-full relative z-10">
                                 Developer & Proxy
                             </p>
 
-                            <div className="w-full space-y-3 text-left">
+                            <div className="w-full space-y-3 text-left relative z-10">
                                 <div className="flex items-center gap-3 text-sm text-gray-300">
                                     <span className="text-yellow-500">📍</span>
                                     <span>México, 22 Años</span>
@@ -56,7 +56,7 @@ export default function AboutMePage() {
                                 </div>
                             </div>
 
-                            <div className="flex gap-3 justify-center mt-8 w-full border-t border-white/5 pt-6">
+                            <div className="flex gap-3 justify-center mt-8 w-full border-t border-white/5 pt-6 relative z-10">
                                 <Link
                                     href="https://discord.gg/RBzdz2Bn4u"
                                     target="_blank"
