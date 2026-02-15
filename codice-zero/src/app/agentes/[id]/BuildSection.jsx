@@ -80,9 +80,13 @@ export default function BuildSection({ strategy }) {
 
                         <div className="space-y-2">
                             {strategy.bestWeapons?.map((w, i) => (
-                                <div key={i} className="group flex items-center gap-4 p-2 rounded-lg hover:bg-white/5 transition-colors">
+                                <Link
+                                    key={i}
+                                    href={w.id ? `/armas/${w.id}` : '#'}
+                                    className="group flex items-center gap-4 p-2 rounded-lg hover:bg-white/5 transition-colors cursor-pointer"
+                                >
                                     {/* Weapon Icon */}
-                                    <div className="relative w-20 h-20 shrink-0 rounded-xl overflow-hidden bg-black/50 border border-white/10">
+                                    <div className="relative w-20 h-20 shrink-0 rounded-xl overflow-hidden bg-black/50 border border-white/10 group-hover:border-white/30 transition-colors">
                                         {w.icon ? (
                                             <Image
                                                 src={w.icon}
@@ -115,7 +119,7 @@ export default function BuildSection({ strategy }) {
                                             </span>
                                         )}
                                     </div>
-                                </div>
+                                </Link>
                             ))}
                         </div>
                     </div>

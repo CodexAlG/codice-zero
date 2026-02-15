@@ -43,11 +43,11 @@ export default {
 
     // 5 ARMAS (BiS -> F2P)
     bestWeapons: [
-      { id: "w1", name: "Visitante de las Profundidades", tier: "S+", tag: "BiS", icon: "/CodiceZero/Armas/Ataque/W-Engine_Deep_Sea_Visitor.webp" },
-      { id: "w2", name: "Eclipse Infinito", tier: "S", tag: "Alternativa", icon: "/CodiceZero/Armas/Ataque/W-Engine_Myriad_Eclipse.webp" },
-      { id: "w3", name: "Azufre", tier: "S", tag: "Alternativa", icon: "/CodiceZero/Armas/Ataque/W-Engine_The_Brimstone.webp" },
-      { id: "w4", name: "Anhelo Marcato", tier: "A", tag: "Pase de Batalla", icon: "/CodiceZero/Armas/Ataque/W-Engine_Marcato_Desire.webp" },
-      { id: "w5", name: "Motor Estelar", tier: "A", tag: "F2P", icon: "/CodiceZero/Armas/Ataque/W-Engine_Starlight_Engine.webp" },
+      { id: "5510", name: "Visitante de las Profundidades", tier: "S+", tag: "BiS", icon: "/CodiceZero/Armas/Ataque/W-Engine_Deep_Sea_Visitor.webp" },
+      { id: "5513", name: "Eclipse de Miríada", tier: "S", tag: "Alternativa", icon: "/CodiceZero/Armas/Ataque/W-Engine_Myriad_Eclipse.webp" },
+      { id: "5509", name: "La Azufrera", tier: "S", tag: "Alternativa", icon: "/CodiceZero/Armas/Ataque/W-Engine_The_Brimstone.webp" },
+      { id: "5606", name: "Anhelo Marcato", tier: "A", tag: "Evento W5", icon: "/CodiceZero/Armas/Ataque/W-Engine_Marcato_Desire.webp" },
+      { id: "5612", name: "Motor Estelar", tier: "A", tag: "F2P", icon: "/CodiceZero/Armas/Ataque/W-Engine_Starlight_Engine.webp" },
     ],
 
     // 2 BUILDS DE DISCOS DIFERENTES
@@ -85,7 +85,7 @@ export default {
         members: [
           { id: 1, name: "Ellen Joe", icon: "/CodiceZero/ICONOS/Agent_Ellen_Joe_Icon.webp" },
           { id: 40, name: "Lighter", icon: "/CodiceZero/ICONOS/Agent_Lighter_Icon.webp" },
-          { id: 7, name: "Astra Yavo", icon: "/CodiceZero/ICONOS/Agent_Astra_Yao.webp" }
+          { id: 7, name: "Astra Yavo", icon: "/CodiceZero/ICONOS/Agent_Astra_Yao_Icon.webp" }
         ]
       },
       {
