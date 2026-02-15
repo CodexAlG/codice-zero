@@ -1947,13 +1947,13 @@ export const weapons = [
     },
     effect: {
       title: "",
-      description: "La Maestría de Anomalía del portador aumenta en 90 puntos; cuando la (Técnica Especial EX) o el (Ataque Básico) del portador infligen Daño Etéreo, el daño infligido por todo el equipo aumenta en 15%, con una duración de 40 segundos, acumulable hasta un máximo de 2 capas, se activa como máximo una vez dentro del mismo movimiento, al activarse de nuevo se reinicia la duración, al poseer 2 capas del efecto, la Maestriía de Anomalía del portador aumenta adicionalmente en 60%, este efecto es único para todo el equipo.",
+      description: "La Maestría de Anomalía del portador aumenta en 90 puntos; cuando la (Técnica Especial EX) o el (Ataque Básico) del portador infligen Daño Etéreo, el daño infligido por todo el equipo aumenta en 15%, con una duración de 40 segundos, acumulable hasta un máximo de 2 capas, se activa como máximo una vez dentro del mismo movimiento, al activarse de nuevo se reinicia la duración, al poseer 2 capas del efecto, la Maestriía de Anomalía del portador aumenta adicionalmente en 60, este efecto es único para todo el equipo.",
       refinements: [ // Tabla de Mejora (R1 - R5)
         { level: 1, MaestríaAnomalía1: "90", Daño: "15%", MaestríaAnomalía2: "60" },
-        { level: 2, MaestríaAnomalía1: "", Daño: "", MaestríaAnomalía2: "" },
-        { level: 3, MaestríaAnomalía1: "", Daño: "", MaestríaAnomalía2: "" },
-        { level: 4, MaestríaAnomalía1: "", Daño: "", MaestríaAnomalía2: "" },
-        { level: 5, MaestríaAnomalía1: "", Daño: "", MaestríaAnomalía2: "" }
+        { level: 2, MaestríaAnomalía1: "90", Daño: "15%", MaestríaAnomalía2: "60" },
+        { level: 3, MaestríaAnomalía1: "90", Daño: "15%", MaestríaAnomalía2: "60" },
+        { level: 4, MaestríaAnomalía1: "90", Daño: "15%", MaestríaAnomalía2: "60" },
+        { level: 5, MaestríaAnomalía1: "90", Daño: "15%", MaestríaAnomalía2: "60" }
       ]
     },
     image: ""
