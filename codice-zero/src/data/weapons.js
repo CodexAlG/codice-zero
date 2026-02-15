@@ -1924,7 +1924,7 @@ export const weapons = [
     },
     effect: {
       title: "Monólogo Resonante",
-      description: "Cuando el portador es un personaje que no està en uso, la Recuperaciòn de Energìa aumenta en 0.6/s; Cuando el portador actuva una (Tècnica Especial EX) e inflinge Daño Fisico, otorga un efecto de mejora a todos los personajes del equipo: el daño inflingido por el personaje aumenta un 12.5%, el efecto dura 40 segundos, se puede acumular hasta 2 veces, al activarse de nuevo se reinicia la duraciòn; al tener 2 acumulaciones del efecto, el Ataque del personaje aumenta adicionalmente un 10%, este efecto es ùnico para todo el equipo.",
+      description: "Cuando el portador es un personaje que no està en uso, la Recuperaciòn de Energìa aumenta en 0.6/s; Cuando el portador actuva una (Técnica Especial EX) e inflinge Daño Fisico, otorga un efecto de mejora a todos los personajes del equipo: el daño inflingido por el personaje aumenta un 12.5%, el efecto dura 40 segundos, se puede acumular hasta 2 veces, al activarse de nuevo se reinicia la duraciòn; al tener 2 acumulaciones del efecto, el Ataque del personaje aumenta adicionalmente un 10%, este efecto es ùnico para todo el equipo.",
       refinements: [ // Tabla de Mejora (R1 - R5)
         { level: 1, RecuperaciónEnergía: "0.6", Daño: "12.5%", Ataque: "10%" },
         { level: 2, RecuperaciónEnergía: "0.69", Daño: "14.3%", Ataque: "11.5%" },
