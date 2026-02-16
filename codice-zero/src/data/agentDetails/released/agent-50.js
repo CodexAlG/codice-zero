@@ -163,7 +163,7 @@ export default {
             { id: "5519", name: "Engranajes Infernales", tier: "S", tag: "Alternativa", icon: "/CodiceZero/Armas/Aturdidor/W-Engine_Hellfire_Gears.webp" },
             { id: "5502", name: "Aguijón Afilado", tier: "S", tag: "Jane F2P", icon: "/CodiceZero/Armas/Anomalia/W-Engine_Sharpened_Stinger.webp" },
             { id: "5615", name: "Horno de Vapor", tier: "A", tag: "F2P W5", icon: "/CodiceZero/Armas/Aturdidor/W-Engine_Steam_Oven.webp" },
-            { id: "5613", name: "Cilindro Precioso", tier: "A", tag: "F2P", icon: "/CodiceZero/Armas/Aturdidor/W-Engine_Precious_Fossilized_Core.webp" },
+            { id: "5613", name: "Cilindro Precioso", tier: "A", tag: "F2P W5", icon: "/CodiceZero/Armas/Aturdidor/W-Engine_Precious_Fossilized_Core.webp" },
         ],
         driveDiscSetups: [
             {
