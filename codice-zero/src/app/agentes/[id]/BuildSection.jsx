@@ -86,7 +86,7 @@ export default function BuildSection({ strategy }) {
                                     className="group flex items-center gap-4 p-2 rounded-lg hover:bg-white/5 transition-colors cursor-pointer"
                                 >
                                     {/* Weapon Icon */}
-                                    <div className="relative w-20 h-20 shrink-0 rounded-xl overflow-hidden bg-black/50 border border-white/10 group-hover:border-white/30 transition-colors">
+                                    <div className="relative w-24 h-24 shrink-0 rounded-xl overflow-hidden bg-black/50 border border-white/10 group-hover:border-white/30 transition-colors">
                                         {w.icon ? (
                                             <Image
                                                 src={w.icon}
@@ -110,7 +110,7 @@ export default function BuildSection({ strategy }) {
                                     </div>
 
                                     <div className="flex-1 min-w-0">
-                                        <h4 className="text-base font-bold text-white truncate group-hover:text-cyan-300 transition-colors">
+                                        <h4 className="text-lg font-bold text-white truncate group-hover:text-cyan-300 transition-colors">
                                             {w.name}
                                         </h4>
                                         {w.tag && (
@@ -149,7 +149,7 @@ export default function BuildSection({ strategy }) {
                                                 {setup.sets.map((set, sIdx) => (
                                                     <div key={sIdx} className="flex items-center gap-2">
                                                         <div className="relative">
-                                                            <div className="w-14 h-14 rounded-full bg-black/50 border border-white/10 overflow-hidden relative">
+                                                            <div className="w-16 h-16 rounded-full bg-black/50 border border-white/10 overflow-hidden relative">
                                                                 {set.icon && (
                                                                     <Image
                                                                         src={set.icon}
@@ -160,7 +160,7 @@ export default function BuildSection({ strategy }) {
                                                                     />
                                                                 )}
                                                             </div>
-                                                            <div className="absolute -bottom-1 -right-1 w-5 h-5 bg-purple-600 rounded-full flex items-center justify-center text-[10px] font-bold text-white border-2 border-[#0f0f11]">
+                                                            <div className="absolute -bottom-1 -right-1 w-6 h-6 bg-purple-600 rounded-full flex items-center justify-center text-xs font-bold text-white border-2 border-[#0f0f11]">
                                                                 {set.count}
                                                             </div>
                                                         </div>
@@ -208,16 +208,16 @@ export default function BuildSection({ strategy }) {
 
                             <div className="space-y-2">
                                 {strategy.teams?.map((team, idx) => (
-                                    <div key={idx} className="flex items-center justify-between p-3 bg-white/[0.03] border border-white/5 rounded-lg hover:border-green-500/20 transition-colors">
-                                        <span className="text-base font-bold text-white">{team.name}</span>
+                                    <div key={idx} className="flex items-center justify-between p-4 bg-white/[0.03] border border-white/5 rounded-lg hover:border-green-500/20 transition-colors">
+                                        <span className="text-lg font-bold text-white">{team.name}</span>
 
                                         {/* Team portraits */}
-                                        <div className="flex items-center -space-x-3">
+                                        <div className="flex items-center -space-x-4">
                                             {team.members.map((member, mIdx) => (
                                                 <Link
                                                     key={mIdx}
                                                     href={member.id ? `/agentes/${member.id}` : '#'}
-                                                    className="relative w-14 h-14 rounded-full overflow-hidden border-2 border-[#0f0f11] bg-gray-800 hover:z-10 hover:scale-110 hover:border-green-400 transition-all cursor-pointer block"
+                                                    className="relative w-20 h-20 rounded-full overflow-hidden border-2 border-[#0f0f11] bg-gray-800 hover:z-10 hover:scale-110 hover:border-green-400 transition-all cursor-pointer block"
                                                     title={member.name}
                                                 >
                                                     {member.icon && member.icon !== "..." ? (
