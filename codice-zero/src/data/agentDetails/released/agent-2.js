@@ -74,7 +74,7 @@ export default {
     // Mejores Equipos
     teams: [
       {
-        name: "Equipo Premium (Meta v2.6)",
+        name: "Equipo Premium",
         members: [
           { id: 2, name: "Zhu Yuan", icon: "/CodiceZero/ICONOS/Agent_Zhu_Yuan_Icon.webp" },
           { id: 44, name: "Dialyn", icon: "/CodiceZero/ICONOS/Agent_Dialyn_Icon.webp" },

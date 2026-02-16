@@ -22,7 +22,7 @@ export default {
     energyRegen: "1.2",
   },
   coreStats: {
-    statName: "Impacto",
+    statName: "impact",
     valuePerNode: 6
   },
   materials: {
@@ -34,6 +34,61 @@ export default {
       name: "Higher Dimensional Data: Ethereal Pursuit",
       icon: "Item_Higher_Dimensional_Data_Ethereal_Pursuit.webp",
     }
+  },
+  strategy: {
+    skillPriority: ["Técnica Especial", "Técnica Definitiva", "Ataque Básico", "Evasión", "Asistencia"],
+    statsPriority: ["Daño Crítico", "Prob. Crítica", "Ataque %", "Ataque"],
+    bestWeapons: [
+      { id: "5518", name: "El Sometido", tier: "S", tag: "BiS", icon: "/CodiceZero/Armas/Aturdidor/W-Engine_The_Restrained.webp" },
+      { id: "5519", name: "Engranajes Infernales", tier: "S", tag: "Alternativa", icon: "/CodiceZero/Armas/Aturdidor/W-Engine_Hellfire_Gears.webp" },
+      { id: "5615", name: "Horno de Vapor", tier: "A", tag: "F2P W5", icon: "/CodiceZero/Armas/Aturdidor/W-Engine_Steam_Oven.webp" },
+      { id: "5613", name: "Cilindro Precioso", tier: "A", tag: "F2P", icon: "/CodiceZero/Armas/Aturdidor/W-Engine_Precious_Fossilized_Core.webp" },
+      { id: "5614", name: "Seis Tiros", tier: "A", tag: "Pase de Batalla", icon: "/CodiceZero/Armas/Aturdidor/W-Engine_Six_Shooter.webp" },
+    ],
+    driveDiscSetups: [
+      {
+        name: "Opción 1: Aturdidor Ofensivo",
+        sets: [
+          { name: "Rey de la Cima", count: 4, icon: "/CodiceZero/Discos/Drive_Disc_King_of_the_Summit_Icon.webp" },
+          { name: "Jazz Swing", count: 2, icon: "/CodiceZero/Discos/Drive_Disc_Swing_Jazz_Icon.webp" }
+        ],
+        mainStats: { iv: "Daño Crítico / Prob. Crítica", v: "Bono de Daño Hielo", vi: "Impacto" }
+      },
+      {
+        name: "Opción 2: Aturdidor Puro",
+        sets: [
+          { name: "Disco de Choque", count: 4, icon: "/CodiceZero/Discos/Drive_Disc_Shockstar_Disco_Icon.webp" },
+          { name: "Rey de la Cima", count: 2, icon: "/CodiceZero/Discos/Drive_Disc_King_of_the_Summit_Icon.webp" }
+        ],
+        mainStats: { iv: "Daño Crítico / Prob. Crítica", v: "Bono de Daño Hielo", vi: "Impacto" }
+      }
+    ],
+    teams: [
+      {
+        name: "Equipo Hielo (Miyabi)",
+        members: [
+          { id: 26, name: "Miyabi", icon: "/CodiceZero/ICONOS/Agent_Hoshimi_Miyabi_Icon.webp" },
+          { id: 3, name: "Lycaon", icon: "/CodiceZero/ICONOS/Agent_Von_Lycaon_Icon.webp" },
+          { id: 37, name: "Yuzuha", icon: "/CodiceZero/ICONOS/Agent_Ukinami_Yuzuha_Icon.webp" }
+        ]
+      },
+      {
+        name: "Equipo Hielo (Ellen)",
+        members: [
+          { id: 1, name: "Ellen", icon: "/CodiceZero/ICONOS/Agent_Ellen_Joe_Icon.webp" },
+          { id: 3, name: "Lycaon", icon: "/CodiceZero/ICONOS/Agent_Von_Lycaon_Icon.webp" },
+          { id: 27, name: "Astra Yao", icon: "/CodiceZero/ICONOS/Agent_Astra_Yao_Icon.webp" }
+        ]
+      },
+      {
+        name: "Equipo Hielo (Hugo)",
+        members: [
+          { id: 33, name: "Hugo Vlad", icon: "/CodiceZero/ICONOS/Agent_Hugo_Vlad_Icon.webp" },
+          { id: 3, name: "Lycaon", icon: "/CodiceZero/ICONOS/Agent_Von_Lycaon_Icon.webp" },
+          { id: 24, name: "Lighter", icon: "/CodiceZero/ICONOS/Agent_Lighter_Icon.webp" }
+        ]
+      }
+    ]
   },
   coreSkillScalingColors: [
     "text-[#22d3ee]", // Hielo (Cyan)
