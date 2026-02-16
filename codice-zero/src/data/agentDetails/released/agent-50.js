@@ -155,4 +155,59 @@ export default {
             tags: ["Etereo", "Mindscape 6"]
         },
     ],
+    strategy: {
+        skillPriority: ["Técnica Especial", "Técnica Definitiva", "Ataque Básico", "Evasión", "Asistencia"],
+        statsPriority: ["Maestria de Anomalia", "Ataque %", "Ataque"],
+        bestWeapons: [
+            { id: "5542", name: "Arma de Prueba de Nangong Yu", tier: "S", tag: "BiS", icon: "/CodiceZero/Armas/Aturdidor/W-Engine_Yesterday_Calls.webp" },
+            { id: "5519", name: "Engranajes Infernales", tier: "S", tag: "Alternativa", icon: "/CodiceZero/Armas/Aturdidor/W-Engine_Hellfire_Gears.webp" },
+            { id: "5502", name: "Aguijón Afilado", tier: "S", tag: "Jane F2P", icon: "/CodiceZero/Armas/Anomalia/W-Engine_Sharpened_Stinger.webp" },
+            { id: "5615", name: "Horno de Vapor", tier: "A", tag: "F2P W5", icon: "/CodiceZero/Armas/Aturdidor/W-Engine_Steam_Oven.webp" },
+            { id: "5613", name: "Cilindro Precioso", tier: "A", tag: "F2P", icon: "/CodiceZero/Armas/Aturdidor/W-Engine_Precious_Fossilized_Core.webp" },
+        ],
+        driveDiscSetups: [
+            {
+                name: "Opción 1: Melodía Libre",
+                sets: [
+                    { name: "Melodía de Faeton", count: 4, icon: "/CodiceZero/Discos/Drive_Disc_Phaethon's_Melody_Icon.webp" },
+                    { name: "Blues de la Libertad", count: 2, icon: "/CodiceZero/Discos/Drive_Disc_Freedom_Blues_Icon.webp" }
+                ],
+                mainStats: { iv: "Maestria de Anomalía", v: "Bono de Daño Etéreo", vi: "Tasa de Anomalía" }
+            },
+            {
+                name: "Opción 2: Melodía Brillante",
+                sets: [
+                    { name: "Melodía de Faeton", count: 4, icon: "/CodiceZero/Discos/Drive_Disc_Phaethon's_Melody_Icon.webp" },
+                    { name: "Aria Brillante", count: 2, icon: "/CodiceZero/Discos/SuitShiningAria.png" }
+                ],
+                mainStats: { iv: "Maestria de Anomalía", v: "Bono de Daño Etéreo", vi: "Tasa de Anomalía" }
+            }
+        ],
+        teams: [
+            {
+                name: "Equipo Idol",
+                members: [
+                    { id: 48, name: "Aria", icon: "/CodiceZero/ICONOS/Agent_Aria_Icon.webp" },
+                    { id: 49, name: "Sunna", icon: "/CodiceZero/ICONOS/Agent_Sunna_Icon.webp" },
+                    { id: 50, name: "Nangong Yu", icon: "/CodiceZero/ICONOS/Agent_Nangong_Yu_Icon.webp" }
+                ]
+            },
+            {
+                name: "Equipo Miyabi",
+                members: [
+                    { id: 26, name: "Miyabi", icon: "/CodiceZero/ICONOS/Agent_Hoshimi_Miyabi_Icon.webp" },
+                    { id: 37, name: "Yuzuha", icon: "/CodiceZero/ICONOS/Agent_Ukinami_Yuzuha_Icon.webp" },
+                    { id: 50, name: "Nangong Yu", icon: "/CodiceZero/ICONOS/Agent_Nangong_Yu_Icon.webp" }
+                ]
+            },
+            {
+                name: "Equipo Alice",
+                members: [
+                    { id: 38, name: "Alice", icon: "/CodiceZero/ICONOS/Agent_Alice_Thymefield_Icon.webp" },
+                    { id: 37, name: "Yuzuha", icon: "/CodiceZero/ICONOS/Agent_Ukinami_Yuzuha_Icon.webp" },
+                    { id: 50, name: "Nangong Yu", icon: "/CodiceZero/ICONOS/Agent_Nangong_Yu_Icon.webp" }
+                ]
+            }
+        ]
+    },
 }
