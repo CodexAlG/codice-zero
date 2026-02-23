@@ -13,8 +13,7 @@ const pathTitles = {
   '/agentes': 'Agentes',
   '/armas': 'Armas',
   '/discos': 'Discos',
-  '/guias': 'Guías',
-  '/bangboo': 'Bangboo',
+
   '/tier-list': 'Tier List',
   '/diff': 'Diferencias',
   '/sobre-mi': 'Sobre mí'

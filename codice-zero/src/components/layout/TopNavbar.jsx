@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import { usePathname } from 'next/navigation';
 import Image from 'next/image';
-import { BookOpen, Home, List, GitCompare } from 'lucide-react';
+import { Home, List, GitCompare } from 'lucide-react';
 import Link from 'next/link';
 import appIcon from '@/app/icon.png';
 
@@ -19,16 +19,12 @@ export default function TopNavbar({ isVisible }) {
             setActiveItem(0); // Agentes
         } else if (pathname.startsWith('/armas')) {
             setActiveItem(1); // Armas
-        } else if (pathname.startsWith('/guias')) {
-            setActiveItem(2); // Guías
-        } else if (pathname.startsWith('/bangboos')) {
-            setActiveItem(3); // Bangboo
         } else if (pathname.startsWith('/discos')) {
-            setActiveItem(4); // Discos
+            setActiveItem(2); // Discos
         } else if (pathname.startsWith('/tierlist')) {
-            setActiveItem(5); // Tier List
+            setActiveItem(3); // Tier List
         } else if (pathname.startsWith('/diff')) {
-            setActiveItem(6); // Diferencias
+            setActiveItem(4); // Diferencias
         }
     }, [pathname]);
 
@@ -113,32 +109,20 @@ export default function TopNavbar({ isVisible }) {
                         label="Armas"
                     />
                     <NavItem
-                        href="/guias"
-                        index={2}
-                        icon={BookOpen}
-                        label="Guías"
-                    />
-                    <NavItem
-                        href="/bangboos"
-                        index={3}
-                        icon="/CodiceZero/Bangboo/INTER-KNOT_Bangboo.webp"
-                        label="Bangboo"
-                    />
-                    <NavItem
                         href="/discos"
-                        index={4}
+                        index={2}
                         icon="/CodiceZero/Discos/Icon_Storage_Drive_Disc.webp"
                         label="Discos"
                     />
                     <NavItem
                         href="/tierlist"
-                        index={5}
+                        index={3}
                         icon={List}
                         label="Tier List"
                     />
                     <NavItem
                         href="/diff"
-                        index={6}
+                        index={4}
                         icon={GitCompare}
                         label="Diferencias"
                     />
