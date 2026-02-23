@@ -80,6 +80,7 @@ const TIER_DATA = {
 
         ],
         "support": [
+            49, // Sunna
             12, // Nicole
 
         ]
