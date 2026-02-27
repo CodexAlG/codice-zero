@@ -136,8 +136,10 @@ export default function AgentsPageClient() {
                 {hasBetaContent && <BetaWarning />}
 
                 {/* --- PANEL DE FILTROS --- */}
-                <div className="w-full mb-10 p-6 md:p-8 bg-black/40 border border-white/5 md:rounded-3xl backdrop-blur-2xl shadow-[0_20px_40px_rgba(0,0,0,0.4)] flex flex-col gap-6 relative overflow-hidden">
+                <div className="w-full mb-10 p-6 md:p-8 bg-black/40 border border-white/5 md:rounded-3xl backdrop-blur-md shadow-[0_20px_40px_rgba(0,0,0,0.4)] flex flex-col gap-6 relative overflow-hidden">
                     <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-white/20 to-transparent"></div>
+                    {/* Brillo Superior Elegante */}
+                    <div className="absolute top-0 right-1/4 w-64 h-32 bg-yellow-500/5 rounded-full blur-[60px] pointer-events-none"></div>
 
 
                     {/* FILA 1: Búsqueda y Filtros Principales */}

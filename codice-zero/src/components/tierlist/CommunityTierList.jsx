@@ -230,7 +230,7 @@ export default function CommunityTierList() {
             </div>
 
             {/* Toolbar */}
-            <div className="flex flex-wrap items-center justify-between mb-8 gap-4 bg-black/40 backdrop-blur-xl p-5 rounded-2xl border border-white/5 shadow-[0_10px_30px_rgba(0,0,0,0.3)] select-none">
+            <div className="flex flex-wrap items-center justify-between mb-8 gap-4 bg-black/40 backdrop-blur-md p-5 rounded-2xl border border-white/5 shadow-[0_10px_30px_rgba(0,0,0,0.3)] select-none">
                 {/* Left: Reset */}
                 <div className="space-x-2">
                     <button onClick={handleReset} className="px-5 py-2.5 bg-red-600/10 hover:bg-red-600/30 text-red-400 hover:text-white rounded-xl font-bold text-sm tracking-wide uppercase flex items-center gap-2 transition-all border border-red-500/20 hover:border-red-500/50 shadow-[0_0_10px_rgba(239,68,68,0.1)]">
@@ -255,7 +255,7 @@ export default function CommunityTierList() {
 
             {/* Capture Area (VISIBLE RESPONSIVE VERSION) */}
             <div className="overflow-x-auto rounded-3xl pb-4">
-                <div ref={captureRef} className="w-full border border-white/5 rounded-3xl overflow-hidden bg-black/40 backdrop-blur-2xl inline-block shadow-[0_20px_50px_rgba(0,0,0,0.5)]">
+                <div ref={captureRef} className="w-full border border-white/5 rounded-3xl overflow-hidden bg-black/40 backdrop-blur-md inline-block shadow-[0_20px_50px_rgba(0,0,0,0.5)]">
 
                     {/* Header (Roles) - Hidden on Mobile */}
                     <div className="hidden md:grid" style={gridColsStyle}>
@@ -338,7 +338,7 @@ export default function CommunityTierList() {
                                                     draggable
                                                     onDragStart={(e) => onDragStart(e, agent.id, { type: 'cell', tierId: tier.id, roleId: col.id })}
                                                     onClick={(e) => handleAgentClick(e, agent.id, 'cell')}
-                                                    className={`relative group/agent w-16 h-16 md:w-20 md:h-20 bg-black/50 rounded-xl overflow-hidden border backdrop-blur-md transition-all duration-300 cursor-grab active:cursor-grabbing hover:-translate-y-1 z-10
+                                                    className={`relative group/agent w-16 h-16 md:w-20 md:h-20 bg-black/50 rounded-xl overflow-hidden border backdrop-blur-sm transition-all duration-300 cursor-grab active:cursor-grabbing hover:-translate-y-1 z-10 will-change-transform
                                                         ${selectedAgent?.id === agent.id
                                                             ? 'border-yellow-400 ring-[3px] ring-yellow-400/50 shadow-[0_0_20px_rgba(234,179,8,0.5)] scale-110 z-20'
                                                             : 'border-white/10 hover:border-white/30 hover:shadow-[0_10px_20px_rgba(0,0,0,0.5)]'}`}
@@ -448,7 +448,7 @@ export default function CommunityTierList() {
 
             {/* Pool Area */}
             <div
-                className={`mt-12 bg-black/40 backdrop-blur-xl p-8 rounded-3xl border transition-all duration-300 min-h-[180px] shadow-[0_15px_40px_rgba(0,0,0,0.5)] ${selectedAgent ? 'border-yellow-500/50 shadow-[0_0_30px_rgba(234,179,8,0.1)] cursor-pointer' : 'border-white/5'}`}
+                className={`mt-12 bg-black/40 backdrop-blur-md p-8 rounded-3xl border transition-all duration-300 min-h-[180px] shadow-[0_15px_40px_rgba(0,0,0,0.5)] ${selectedAgent ? 'border-yellow-500/50 shadow-[0_0_30px_rgba(234,179,8,0.1)] cursor-pointer' : 'border-white/5'}`}
                 onDragOver={onDragOver}
                 onDrop={onDropPool}
                 onClick={handlePoolClick} // Click to return to pool
@@ -463,7 +463,7 @@ export default function CommunityTierList() {
                             draggable
                             onDragStart={(e) => onDragStart(e, agent.id, { type: 'pool' })}
                             onClick={(e) => handleAgentClick(e, agent.id, 'pool')}
-                            className={`relative group/pool w-16 h-16 md:w-20 md:h-20 bg-black/50 backdrop-blur-md rounded-xl overflow-hidden border transition-all duration-300 cursor-grab active:cursor-grabbing hover:-translate-y-2
+                            className={`relative group/pool w-16 h-16 md:w-20 md:h-20 bg-black/50 backdrop-blur-sm rounded-xl overflow-hidden border transition-all duration-300 cursor-grab active:cursor-grabbing hover:-translate-y-2 will-change-transform
                                 ${selectedAgent?.id === agent.id
                                     ? 'border-yellow-400 ring-[3px] ring-yellow-400/50 shadow-[0_0_20px_rgba(234,179,8,0.5)] scale-110 z-20'
                                     : 'border-white/10 hover:border-white/30 hover:shadow-[0_10px_20px_rgba(0,0,0,0.5)]'}`}
@@ -487,10 +487,10 @@ export default function CommunityTierList() {
 
             {/* Download Preview Modal */}
             {previewImage && (
-                <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/80 backdrop-blur-xl p-4 transition-all">
+                <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/80 backdrop-blur-md p-4 transition-all">
                     <div className="bg-[#0f0f12] border border-white/5 rounded-3xl p-8 max-w-5xl w-full max-h-[90vh] flex flex-col shadow-[0_30px_60px_rgba(0,0,0,0.8)] relative overflow-hidden">
 
-                        <div className="absolute top-0 right-0 w-96 h-96 bg-yellow-500/5 rounded-full blur-[100px] pointer-events-none"></div>
+                        <div className="absolute top-0 right-0 w-96 h-96 bg-yellow-500/5 rounded-full blur-[60px] pointer-events-none"></div>
 
                         <h3 className="text-2xl font-display font-black italic text-white mb-6 relative z-10 flex items-center gap-3">
                             <span className="w-1.5 h-6 bg-yellow-500 rounded-full shadow-[0_0_10px_rgba(234,179,8,0.8)]"></span>

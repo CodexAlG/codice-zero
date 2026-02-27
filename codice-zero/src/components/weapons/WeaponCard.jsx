@@ -7,19 +7,20 @@ const normalize = (str) => str ? str.normalize("NFD").replace(/[\u0300-\u036f]/g
 const WeaponCard = memo(({ weapon, priority = false }) => {
   const [imageLoaded, setImageLoaded] = useState(false);
   const rankColor = weapon.rank === 'S' ? 'border-yellow-500' : weapon.rank === 'A' ? 'border-purple-500' : 'border-blue-500';
+  const hoverGlow = weapon.rank === 'S' ? 'hover:border-yellow-400 hover:shadow-[0_0_20px_rgba(234,179,8,0.5)]' : weapon.rank === 'A' ? 'hover:border-purple-400 hover:shadow-[0_0_20px_rgba(168,85,247,0.5)]' : 'hover:border-blue-400 hover:shadow-[0_0_20px_rgba(59,130,246,0.5)]';
   const rankIcon = `/CodiceZero/Rango/Icon_Item_Rank_${weapon.rank}.webp`;
 
   return (
-    <div className={`relative w-full max-w-[160px] mx-auto aspect-[4/5] bg-[#0f0f12] rounded-xl border-b-[3px] ${rankColor} overflow-hidden group hover:-translate-y-2 hover:shadow-[0_10px_30px_rgba(0,0,0,0.5)] transition-all duration-300 cursor-pointer border border-white/5`}>
+    <div className={`relative w-full max-w-[160px] mx-auto aspect-[4/5] bg-[#0f0f12] rounded-xl border-b-[3px] ${rankColor} overflow-hidden group hover:-translate-y-2 ${hoverGlow} transition-all duration-300 cursor-pointer border border-white/5 will-change-transform`}>
 
       {/* Glow interactivo de fondo en hover basado en Rango */}
-      <div className={`absolute -inset-10 opacity-0 group-hover:opacity-20 transition-opacity duration-500 blur-2xl pointer-events-none ${weapon.rank === 'S' ? 'bg-yellow-500' :
-          weapon.rank === 'A' ? 'bg-purple-500' : 'bg-blue-500'
+      <div className={`absolute -inset-10 opacity-0 group-hover:opacity-20 transition-opacity duration-500 blur-xl pointer-events-none ${weapon.rank === 'S' ? 'bg-yellow-500' :
+        weapon.rank === 'A' ? 'bg-purple-500' : 'bg-blue-500'
         }`}></div>
 
       {/* Iconos Superiores - Rol */}
       <div className="absolute top-2 left-2 z-20 group/role">
-        <div className="relative w-7 h-7 flex items-center justify-center bg-black/40 backdrop-blur-md rounded-lg border border-white/10 shadow-lg group-hover/role:border-white/30 transition-colors">
+        <div className="relative w-7 h-7 flex items-center justify-center bg-black/40 backdrop-blur-sm rounded-lg border border-white/10 shadow-lg group-hover/role:border-white/30 transition-colors">
           <Image
             src={`/CodiceZero/Agentes/Rol/${normalize(weapon.rol)}.webp`}
             alt={weapon.rol}
@@ -46,8 +47,8 @@ const WeaponCard = memo(({ weapon, priority = false }) => {
       {/* Imagen Arma */}
       <div className="absolute inset-0 flex items-center justify-center p-3 group-hover:scale-110 transition-transform duration-500 z-10">
         {/* Forma brillante detrÃ¡s del arma */}
-        <div className={`absolute bg-white/5 rounded-full blur-xl w-24 h-24 group-hover:scale-125 transition-transform duration-700 ${weapon.rank === 'S' ? 'group-hover:bg-yellow-500/10' :
-            weapon.rank === 'A' ? 'group-hover:bg-purple-500/10' : 'group-hover:bg-blue-500/10'
+        <div className={`absolute bg-white/5 rounded-full blur-lg w-24 h-24 group-hover:scale-125 transition-transform duration-700 ${weapon.rank === 'S' ? 'group-hover:bg-yellow-500/10' :
+          weapon.rank === 'A' ? 'group-hover:bg-purple-500/10' : 'group-hover:bg-blue-500/10'
           }`}></div>
 
         {/* Skeleton Overlay */}

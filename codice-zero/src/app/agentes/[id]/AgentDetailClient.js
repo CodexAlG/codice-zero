@@ -269,15 +269,17 @@ export default function AgentDetailPage() {
 
                     {/* Contenido Potencial - Solo visible si Nivel > 0 */}
                     {potentialLevel > 0 ? (
-                        <div className="bg-black/40 backdrop-blur-xl border border-white/5 rounded-2xl p-6 relative overflow-hidden animate-fadeIn shadow-[0_10px_30px_rgba(0,0,0,0.5)] group/pot">
-                            {/* Premium Glow sobre la tarjeta */}
-                            <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover/pot:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
-                            <div className="absolute left-0 top-0 bottom-0 w-1.5 shadow-[0_0_15px_currentColor] rounded-l-2xl" style={{ backgroundColor: themeColor, color: themeColor }}></div>
+                        <div className="md:col-span-1 min-h-[500px] flex items-stretch">
+                            <div className="bg-black/40 backdrop-blur-md border border-white/5 rounded-2xl p-6 relative overflow-hidden animate-fadeIn shadow-[0_10px_30px_rgba(0,0,0,0.5)] group/pot w-full">
+                                {/* Premium Glow sobre la tarjeta */}
+                                <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover/pot:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
+                                <div className="absolute left-0 top-0 bottom-0 w-1.5 shadow-[0_0_15px_currentColor] rounded-l-2xl" style={{ backgroundColor: themeColor, color: themeColor }}></div>
 
-                            <h4 className="text-xl font-display italic font-black text-white mb-3 ml-2 drop-shadow-md">{details.potential.name || "Sin nombre"}</h4>
+                                <h4 className="text-xl font-display italic font-black text-white mb-3 ml-2 drop-shadow-md">{details.potential.name || "Sin nombre"}</h4>
 
-                            <div className="text-gray-300 text-sm md:text-base leading-relaxed space-y-3 font-sans relative z-10 ml-2">
-                                <HighlightText text={replaceIcons(description)} skills={details.skills} skillIcons={skillIcons} elementColor={themeColor} />
+                                <div className="text-gray-300 text-sm md:text-base leading-relaxed space-y-3 font-sans relative z-10 ml-2">
+                                    <HighlightText text={replaceIcons(description)} skills={details.skills} skillIcons={skillIcons} elementColor={themeColor} />
+                                </div>
                             </div>
                         </div>
                     ) : (
@@ -333,7 +335,7 @@ export default function AgentDetailPage() {
                             : skill.type.replace("Mindscape ", "").replace(/[^\d]/g, '') || (idx + 1);
 
                         return (
-                            <div key={idx} className="bg-black/40 backdrop-blur-xl border border-white/5 rounded-3xl p-6 md:p-8 relative overflow-hidden group hover:border-white/10 hover:shadow-[0_15px_40px_rgba(0,0,0,0.5)] transition-all duration-500 h-full">
+                            <div key={idx} className="bg-black/40 backdrop-blur-md border border-white/5 rounded-3xl p-6 md:p-8 relative overflow-hidden group hover:border-white/10 hover:shadow-[0_15px_40px_rgba(0,0,0,0.5)] transition-all duration-500 h-full will-change-transform">
                                 {/* Premium Element Glow */}
                                 <div className="absolute inset-0 bg-gradient-to-br from-white/0 to-white/5 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"></div>
 
@@ -416,7 +418,7 @@ export default function AgentDetailPage() {
                         const description = processScaling(skill.description);
 
                         return (
-                            <div key={idx} className="bg-black/40 backdrop-blur-xl border border-white/5 rounded-3xl p-6 md:p-8 hover:-translate-y-1 hover:shadow-[0_15px_40px_rgba(0,0,0,0.5)] transition-all duration-500 relative overflow-hidden group h-full flex flex-col">
+                            <div key={idx} className="bg-black/40 backdrop-blur-md border border-white/5 rounded-3xl p-6 md:p-8 hover:-translate-y-1 hover:shadow-[0_15px_40px_rgba(0,0,0,0.5)] transition-all duration-500 relative overflow-hidden group h-full flex flex-col will-change-transform">
                                 <div className="absolute inset-0 bg-gradient-to-br from-white/0 to-white/5 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"></div>
                                 <div className="absolute left-0 top-0 bottom-0 w-1.5 shadow-[0_0_15px_currentColor] rounded-l-3xl opacity-80 group-hover:opacity-100 transition-opacity" style={{ backgroundColor: themeColor, color: themeColor }}></div>
 
@@ -563,8 +565,8 @@ export default function AgentDetailPage() {
 
                     {/* Notice */}
 
-                    {/* Panel de Estadísticas Estilo Premium */}
-                    <div id="stats" className="bg-black/40 backdrop-blur-2xl border border-white/5 shadow-[0_20px_40px_rgba(0,0,0,0.5),inset_0_1px_1px_rgba(255,255,255,0.05)] rounded-3xl p-6 md:p-8 relative overflow-hidden group w-full max-w-[480px] mx-auto lg:mr-0 z-20">
+                    {/* Panel Derecho (Contenido Principal - Scrollable en desktop) */}
+                    <div id="stats" className="bg-black/40 backdrop-blur-md border border-white/5 shadow-[0_20px_40px_rgba(0,0,0,0.5),inset_0_1px_1px_rgba(255,255,255,0.05)] rounded-3xl p-6 md:p-8 relative overflow-hidden group w-full max-w-[480px] mx-auto lg:mr-0 z-20">
                         {/* Highlights de fondo */}
                         <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full blur-[80px] -translate-y-1/2 translate-x-1/2 pointer-events-none transition-transform duration-700 group-hover:scale-110"></div>
                         <div className="absolute bottom-0 left-0 w-48 h-48 rounded-full blur-[60px] translate-y-1/2 -translate-x-1/2 pointer-events-none opacity-20 transition-opacity duration-700 group-hover:opacity-40" style={{ backgroundColor: themeColor }}></div>
@@ -644,7 +646,7 @@ export default function AgentDetailPage() {
                     <div className="flex flex-col gap-10">
 
                         {/* 1. TABS NAVIGATION */}
-                        <div className="flex flex-wrap items-center justify-center gap-3 lg:gap-4 bg-black/40 border border-white/5 p-3 rounded-3xl mx-auto w-full max-w-5xl backdrop-blur-xl shadow-[0_10px_30px_rgba(0,0,0,0.5)] select-none relative z-20">
+                        <div className="flex flex-wrap items-center justify-center gap-3 lg:gap-4 bg-black/40 border border-white/5 p-3 rounded-3xl mx-auto w-full max-w-5xl backdrop-blur-md shadow-[0_10px_30px_rgba(0,0,0,0.5)] select-none relative z-20">
                             {SKILL_GROUPS.map((group) => {
                                 const isActive = activeSkillTab === group.id;
                                 return (

@@ -91,20 +91,19 @@ export default function Home() {
         </div>
 
         {/* CARTA DEL CREADOR (EGO) - Premium */}
-        <div className="mb-10 w-full max-w-[280px] xs:max-w-xs sm:max-w-sm">
-          <div className="relative group bg-[#0f0f12]/80 backdrop-blur-xl border border-white/5 rounded-2xl p-4 flex items-center gap-4 hover:border-yellow-500/30 transition-all duration-500 overflow-hidden shadow-[0_10px_30px_rgba(0,0,0,0.5)] cursor-pointer hover:-translate-y-1">
+        <div className="mb-10 w-full max-w-[280px] xs:max-w-xs sm:max-w-sm relative z-10">
+          <div className="relative bg-[#0f0f12]/80 backdrop-blur-md border border-white/5 rounded-2xl p-4 flex items-center gap-4 overflow-hidden shadow-[0_10px_30px_rgba(0,0,0,0.5)]">
 
             {/* Premium Glow Effect */}
-            <div className="absolute -inset-2 bg-gradient-to-r from-yellow-500/0 via-yellow-500/10 to-yellow-500/0 group-hover:translate-x-full transition-transform duration-1000 ease-in-out"></div>
-            <div className="absolute top-0 right-0 w-32 h-32 bg-yellow-500/5 rounded-full blur-2xl group-hover:bg-yellow-500/20 transition-colors pointer-events-none"></div>
+            <div className="absolute top-0 right-0 w-32 h-32 bg-yellow-500/5 rounded-full blur-2xl pointer-events-none"></div>
 
             {/* Avatar */}
-            <div className="relative w-16 h-16 rounded-full border-2 border-[#151518] ring-2 ring-yellow-500/30 group-hover:ring-yellow-400 group-hover:shadow-[0_0_15px_rgba(250,204,21,0.5)] transition-all overflow-hidden shrink-0 bg-black">
+            <div className="relative w-16 h-16 rounded-full border-2 border-[#151518] ring-2 ring-yellow-500/30 overflow-hidden shrink-0 bg-black">
               <Image
                 src="/CodiceZero/IconoEgo.jpg"
                 alt="Ego"
                 fill
-                className="object-cover group-hover:scale-110 transition-transform duration-500"
+                className="object-cover"
               />
             </div>
 
@@ -112,7 +111,7 @@ export default function Home() {
             <div className="flex flex-col justify-center items-start gap-1 relative z-10 w-full">
               <span className="text-[9px] font-black uppercase tracking-[0.2em] text-yellow-500/80 leading-none">Líder del Proyecto</span>
               <div className="flex items-center justify-between w-full">
-                <h3 className="text-xl font-bold text-gray-100 group-hover:text-yellow-400 transition-colors duration-300 leading-tight drop-shadow-sm">Ego</h3>
+                <h3 className="text-xl font-bold text-gray-100 leading-tight drop-shadow-sm">Ego</h3>
                 <div className="relative flex h-1.5 w-1.5">
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
                   <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-green-500" title="Online"></span>

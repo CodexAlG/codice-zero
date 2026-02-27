@@ -29,9 +29,7 @@ export default function BuildSection({ strategy }) {
             </div>
 
             {/* MAIN CONTAINER */}
-            <div className="bg-[#0f0f11]/80 backdrop-blur-xl border border-white/10 rounded-2xl shadow-[0_0_40px_rgba(0,0,0,0.5)] overflow-hidden relative">
-
-                {/* Decoración de fondo */}
+            <div className="bg-[#0f0f11]/80 backdrop-blur-md border border-white/10 rounded-2xl shadow-[0_0_40px_rgba(0,0,0,0.5)] overflow-hidden relative">
                 <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-white/[0.02] to-transparent pointer-events-none"></div>
 
                 {/* SKILL PRIORITY */}

@@ -62,7 +62,7 @@ export default function TopNavbar({ isVisible }) {
 
     return (
         <header
-            className={`fixed top-0 left-0 h-full w-56 z-50 bg-[#09090b] backdrop-blur-md border-r border-white/5 shadow-2xl transition-transform duration-300 ease-in-out ${isVisible ? 'translate-x-0' : '-translate-x-full'
+            className={`fixed top-0 left-0 h-full w-56 z-50 bg-[#0a0a0c]/80 backdrop-blur-md border-r border-white/5 shadow-[5px_0_30px_rgba(0,0,0,0.3)] transition-transform duration-300 ease-in-out will-change-transform ${isVisible ? 'translate-x-0' : '-translate-x-full'
                 } hidden lg:flex flex-col items-center py-8`}
         >
             {/* Logo CZ */}
@@ -79,7 +79,7 @@ export default function TopNavbar({ isVisible }) {
                 </div>
 
                 {/* Texto CodiceZero */}
-                <span className="text-sm uppercase font-bold tracking-widest text-yellow-300 drop-shadow-[0_0_5px_rgba(234,179,8,0.8)] font-display text-center leading-none mt-2">
+                <span className="text-sm uppercase font-bold tracking-widest text-yellow-500 drop-shadow-[0_0_5px_rgba(234,179,8,0.3)] font-display text-center leading-none mt-2">
                     Codice<br />Zero
                 </span>
 

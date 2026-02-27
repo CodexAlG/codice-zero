@@ -27,7 +27,7 @@ export default function MobileHeader({ toggleSidebar }) {
   }, [pathname]);
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 h-16 bg-[#09090b]/95 backdrop-blur-md border-b border-white/10 flex items-center justify-between px-4 lg:hidden">
+    <header className="fixed top-0 left-0 right-0 z-50 h-16 bg-[#0a0a0c]/80 backdrop-blur-md border-b border-white/5 shadow-[0_5px_30px_rgba(0,0,0,0.3)] flex items-center justify-between px-4 lg:hidden">
 
       {/* 1. Logo CZ (Izquierda) */}
       <Link href="/" className="flex-shrink-0 relative w-8 h-8">
@@ -45,7 +45,7 @@ export default function MobileHeader({ toggleSidebar }) {
       {/* 3. Botón Hamburguesa (Derecha) */}
       <button
         onClick={toggleSidebar}
-        className="text-yellow-400 hover:text-yellow-300 transition-colors p-2 rounded-lg hover:bg-yellow-400/10"
+        className="text-yellow-500 hover:text-yellow-400 transition-colors p-2 rounded-lg hover:bg-yellow-500/10 drop-shadow-[0_0_8px_rgba(234,179,8,0.5)]"
         aria-label="Abrir menú"
       >
         <Menu className="w-6 h-6" />

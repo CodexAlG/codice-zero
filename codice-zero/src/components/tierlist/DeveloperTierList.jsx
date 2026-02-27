@@ -190,9 +190,9 @@ export default function DeveloperTierList() {
                 </div>
 
                 {/* Criteria Box */}
-                <div className="bg-black/40 backdrop-blur-xl border border-white/5 rounded-3xl p-6 md:p-8 relative overflow-hidden shadow-[0_15px_40px_rgba(0,0,0,0.5)]">
-                    <div className="absolute top-0 right-0 w-48 h-48 bg-yellow-500/10 rounded-full blur-[60px] -mr-16 -mt-16 pointer-events-none"></div>
-                    <div className="absolute bottom-0 left-0 w-32 h-32 bg-purple-500/5 rounded-full blur-[50px] pointer-events-none"></div>
+                <div className="bg-black/40 backdrop-blur-md border border-white/5 rounded-3xl p-6 md:p-8 relative overflow-hidden shadow-[0_15px_40px_rgba(0,0,0,0.5)]">
+                    <div className="absolute top-0 right-0 w-48 h-48 bg-yellow-500/10 rounded-full blur-[40px] -mr-16 -mt-16 pointer-events-none"></div>
+                    <div className="absolute bottom-0 left-0 w-32 h-32 bg-purple-500/5 rounded-full blur-[40px] pointer-events-none"></div>
 
                     <h3 className="text-white font-display font-black italic text-xl mb-6 flex items-center gap-3 drop-shadow-md">
                         <span className="w-1.5 h-6 bg-yellow-500 rounded-full shadow-[0_0_10px_rgba(234,179,8,0.8)]"></span>
@@ -229,7 +229,7 @@ export default function DeveloperTierList() {
             </div>
 
             {/* Grid Container */}
-            <div className="w-full border border-white/5 rounded-3xl overflow-hidden bg-black/40 backdrop-blur-2xl shadow-[0_20px_50px_rgba(0,0,0,0.5)]">
+            <div className="w-full border border-white/5 rounded-3xl overflow-hidden bg-black/40 backdrop-blur-md shadow-[0_20px_50px_rgba(0,0,0,0.5)]">
 
                 {/* Header Row (Roles) - Hidden on Mobile */}
                 <div className="hidden md:grid md:grid-cols-[120px_1fr_1fr_1fr_1fr]">
@@ -273,7 +273,7 @@ export default function DeveloperTierList() {
 
                                     <div className="flex flex-wrap gap-4 justify-center">
                                         {cellAgents.map(agent => (
-                                            <div key={agent.id} className="relative group w-16 h-16 md:w-20 md:h-20 bg-black/50 rounded-xl overflow-hidden border border-white/10 backdrop-blur-md hover:border-white/30 hover:-translate-y-2 hover:shadow-[0_10px_20px_rgba(0,0,0,0.5)] transition-all duration-300 cursor-pointer">
+                                            <div key={agent.id} className="relative group w-16 h-16 md:w-20 md:h-20 bg-black/50 rounded-xl overflow-hidden border border-white/10 backdrop-blur-sm hover:border-white/30 hover:-translate-y-2 hover:shadow-[0_10px_20px_rgba(0,0,0,0.5)] transition-all duration-300 cursor-pointer will-change-transform">
                                                 <Link href={`/agentes/${agent.id}`} className="block w-full h-full relative">
                                                     <Image
                                                         src={agent.image || agent.icon}

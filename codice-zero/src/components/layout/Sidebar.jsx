@@ -37,9 +37,9 @@ export default function Sidebar({ isExpanded, isMobile, toggleDrawer }) {
 
   return (
     <aside
-      className={`h-screen border-r border-white/5 flex flex-col overflow-hidden bg-[#09090b] text-white p-4 transition-all duration-300 ease-in-out ${isMobile
-        ? 'fixed top-0 left-0 w-64 z-[90]'
-        : 'relative w-full' // Full width of container (w-48 from LayoutWrapper)
+      className={`h-screen flex flex-col overflow-hidden text-white p-4 transition-transform duration-300 ease-in-out will-change-transform ${isMobile
+        ? 'fixed top-0 left-0 w-64 z-[90] bg-[#0f0f12]/95 backdrop-blur-md border-r border-white/10 shadow-[10px_0_40px_rgba(0,0,0,0.8)]'
+        : 'relative w-full bg-[#0a0a0c]/80 backdrop-blur-md border-r border-white/5 shadow-[5px_0_30px_rgba(0,0,0,0.3)]'
         }`}
     >
       {/* Logo CZ y Botón Cerrar Móvil */}
@@ -80,60 +80,59 @@ export default function Sidebar({ isExpanded, isMobile, toggleDrawer }) {
       </Link>
 
       {/* Navigation */}
-      <nav>
-        <ul className="space-y-2">
+      <nav className="mt-4">
+        <ul className="space-y-3">
+          {/* Item 1: Inicio */}
           <li>
-            <Link href="/" onClick={handleLinkClick} className={`relative flex items-center h-12 py-2 px-2 rounded-md transition-all duration-200 ${activeItem === -1 ? 'text-yellow-300 bg-yellow-500/10 text-yellow-300 shadow-lg shadow-yellow-500/20 border border-yellow-400/30' : 'text-gray-100 hover:bg-cyan-500/10 hover:text-cyan-300 hover:shadow-md hover:shadow-cyan-400/20'} hover:border hover:border-cyan-400/20`}>
-              {activeItem === -1 && <div className="absolute left-0 top-0 bottom-0 w-[3px] bg-gradient-to-b from-yellow-300 to-yellow-500 shadow-lg shadow-yellow-500/50"></div>}
-              <Home size={32} className={`transition-all duration-200 ${activeItem === -1 ? 'text-yellow-300 drop-shadow-lg shadow-yellow-400/50' : 'text-gray-200 opacity-80 hover:text-cyan-300 hover:opacity-100 hover:drop-shadow-md hover:shadow-cyan-400/50'}`} />
-              <span className={`ml-3 font-medium transition-opacity`}>
-                Inicio
-              </span>
+            <Link href="/" onClick={handleLinkClick} className={`group relative flex items-center h-12 py-2 px-3 rounded-xl transition-all duration-300 font-medium ${activeItem === -1 ? 'bg-yellow-500/10 shadow-[0_0_15px_rgba(234,179,8,0.1)] border border-yellow-500/20 text-yellow-500' : 'text-gray-400 hover:bg-white/5 border border-transparent hover:border-white/10 hover:text-gray-100 hover:shadow-[0_4px_10px_rgba(0,0,0,0.5)]'}`}>
+              {activeItem === -1 && <div className="absolute left-0 top-1/4 bottom-1/4 w-[3px] bg-gradient-to-b from-yellow-300 to-yellow-500 rounded-r-full shadow-[0_0_10px_rgba(234,179,8,0.5)]"></div>}
+              <Home size={26} className={`transition-all duration-300 ml-1 ${activeItem === -1 ? 'drop-shadow-[0_0_8px_rgba(234,179,8,0.5)] text-yellow-400' : 'opacity-70 group-hover:opacity-100 group-hover:drop-shadow-md'}`} />
+              <span className={`ml-4 tracking-wide`}>Inicio</span>
             </Link>
           </li>
+
+          {/* Item 2: Agentes */}
           <li>
-            <Link href="/agentes" onClick={handleLinkClick} className={`relative flex items-center h-12 py-2 px-2 rounded-md transition-all duration-200 ${activeItem === 0 ? 'text-yellow-300 bg-yellow-500/10 text-yellow-300 shadow-lg shadow-yellow-500/20 border border-yellow-400/30' : 'text-gray-100 hover:bg-cyan-500/10 hover:text-cyan-300 hover:shadow-md hover:shadow-cyan-400/20'} hover:border hover:border-cyan-400/20`}>
-              {activeItem === 0 && <div className="absolute left-0 top-0 bottom-0 w-[3px] bg-gradient-to-b from-yellow-300 to-yellow-500 shadow-lg shadow-yellow-500/50"></div>}
-              <Image src="/CodiceZero/Agentes/Icon_Agents.webp" alt="Icono Agentes" width={32} height={32} className={`transition-all duration-200 ${activeItem === 0 ? 'drop-shadow-lg shadow-yellow-400/50 saturate-200 contrast-200' : 'opacity-80 hover:opacity-100 hover:drop-shadow-md hover:shadow-cyan-400/50 saturate-150 hover:saturate-200 hover:contrast-150'}`} />
-              <span className={`ml-3 font-medium transition-opacity`}>
-                Agentes
-              </span>
+            <Link href="/agentes" onClick={handleLinkClick} className={`group relative flex items-center h-12 py-2 px-3 rounded-xl transition-all duration-300 font-medium ${activeItem === 0 ? 'bg-yellow-500/10 shadow-[0_0_15px_rgba(234,179,8,0.1)] border border-yellow-500/20 text-yellow-500' : 'text-gray-400 hover:bg-white/5 border border-transparent hover:border-white/10 hover:text-gray-100 hover:shadow-[0_4px_10px_rgba(0,0,0,0.5)]'}`}>
+              {activeItem === 0 && <div className="absolute left-0 top-1/4 bottom-1/4 w-[3px] bg-gradient-to-b from-yellow-300 to-yellow-500 rounded-r-full shadow-[0_0_10px_rgba(234,179,8,0.5)]"></div>}
+              <Image src="/CodiceZero/Agentes/Icon_Agents.webp" alt="Icono Agentes" width={26} height={26} className={`transition-all duration-300 object-contain ml-1 ${activeItem === 0 ? 'drop-shadow-[0_0_8px_rgba(234,179,8,0.5)] saturate-200' : 'opacity-70 group-hover:opacity-100 group-hover:saturate-200 filter group-hover:drop-shadow-md'}`} />
+              <span className={`ml-4 tracking-wide`}>Agentes</span>
             </Link>
           </li>
+
+          {/* Item 3: Armas */}
           <li>
-            <Link href="/armas" onClick={handleLinkClick} className={`relative flex items-center h-12 py-2 px-2 rounded-md transition-all duration-200 ${activeItem === 1 ? 'text-yellow-300 bg-yellow-500/10 text-yellow-300 shadow-lg shadow-yellow-500/20 border border-yellow-400/30' : 'text-gray-100 hover:bg-cyan-500/10 hover:text-cyan-300 hover:shadow-md hover:shadow-cyan-400/20'} hover:border hover:border-cyan-400/20`}>
-              {activeItem === 1 && <div className="absolute left-0 top-0 bottom-0 w-[3px] bg-gradient-to-b from-yellow-300 to-yellow-500 shadow-lg shadow-yellow-500/50"></div>}
-              <Image src="/CodiceZero/Armas/Icon_Storage_W-Engine.webp" alt="Icono Armas" width={32} height={32} className={`transition-all duration-200 ${activeItem === 1 ? 'drop-shadow-lg shadow-yellow-400/50 saturate-200 contrast-200' : 'opacity-80 hover:opacity-100 hover:drop-shadow-md hover:shadow-cyan-400/50 saturate-150 hover:saturate-200 hover:contrast-150'}`} />
-              <span className={`ml-3 font-medium transition-opacity`}>
-                Armas
-              </span>
+            <Link href="/armas" onClick={handleLinkClick} className={`group relative flex items-center h-12 py-2 px-3 rounded-xl transition-all duration-300 font-medium ${activeItem === 1 ? 'bg-yellow-500/10 shadow-[0_0_15px_rgba(234,179,8,0.1)] border border-yellow-500/20 text-yellow-500' : 'text-gray-400 hover:bg-white/5 border border-transparent hover:border-white/10 hover:text-gray-100 hover:shadow-[0_4px_10px_rgba(0,0,0,0.5)]'}`}>
+              {activeItem === 1 && <div className="absolute left-0 top-1/4 bottom-1/4 w-[3px] bg-gradient-to-b from-yellow-300 to-yellow-500 rounded-r-full shadow-[0_0_10px_rgba(234,179,8,0.5)]"></div>}
+              <Image src="/CodiceZero/Armas/Icon_Storage_W-Engine.webp" alt="Icono Armas" width={26} height={26} className={`transition-all duration-300 object-contain ml-1 ${activeItem === 1 ? 'drop-shadow-[0_0_8px_rgba(234,179,8,0.5)] saturate-200' : 'opacity-70 group-hover:opacity-100 group-hover:saturate-200 filter group-hover:drop-shadow-md'}`} />
+              <span className={`ml-4 tracking-wide`}>Armas</span>
             </Link>
           </li>
+
+          {/* Item 4: Discos */}
           <li>
-            <Link href="/discos" onClick={handleLinkClick} className={`relative flex items-center h-12 py-2 px-2 rounded-md transition-all duration-200 ${activeItem === 2 ? 'text-yellow-300 bg-yellow-500/10 text-yellow-300 shadow-lg shadow-yellow-500/20 border border-yellow-400/30' : 'text-gray-100 hover:bg-cyan-500/10 hover:text-cyan-300 hover:shadow-md hover:shadow-cyan-400/20'} hover:border hover:border-cyan-400/20`}>
-              {activeItem === 2 && <div className="absolute left-0 top-0 bottom-0 w-[3px] bg-gradient-to-b from-yellow-300 to-yellow-500 shadow-lg shadow-yellow-500/50"></div>}
-              <Image src="/CodiceZero/Discos/Icon_Storage_Drive_Disc.webp" alt="Icono Discos" width={32} height={32} className={`transition-all duration-200 ${activeItem === 2 ? 'drop-shadow-lg shadow-yellow-400/50 saturate-200 contrast-200' : 'opacity-80 hover:opacity-100 hover:drop-shadow-md hover:shadow-cyan-400/50 saturate-150 hover:saturate-200 hover:contrast-150'}`} />
-              <span className={`ml-3 font-medium transition-opacity`}>
-                Discos
-              </span>
+            <Link href="/discos" onClick={handleLinkClick} className={`group relative flex items-center h-12 py-2 px-3 rounded-xl transition-all duration-300 font-medium ${activeItem === 2 ? 'bg-yellow-500/10 shadow-[0_0_15px_rgba(234,179,8,0.1)] border border-yellow-500/20 text-yellow-500' : 'text-gray-400 hover:bg-white/5 border border-transparent hover:border-white/10 hover:text-gray-100 hover:shadow-[0_4px_10px_rgba(0,0,0,0.5)]'}`}>
+              {activeItem === 2 && <div className="absolute left-0 top-1/4 bottom-1/4 w-[3px] bg-gradient-to-b from-yellow-300 to-yellow-500 rounded-r-full shadow-[0_0_10px_rgba(234,179,8,0.5)]"></div>}
+              <Image src="/CodiceZero/Discos/Icon_Storage_Drive_Disc.webp" alt="Icono Discos" width={26} height={26} className={`transition-all duration-300 object-contain ml-1 ${activeItem === 2 ? 'drop-shadow-[0_0_8px_rgba(234,179,8,0.5)] saturate-200' : 'opacity-70 group-hover:opacity-100 group-hover:saturate-200 filter group-hover:drop-shadow-md'}`} />
+              <span className={`ml-4 tracking-wide`}>Discos</span>
             </Link>
           </li>
+
+          {/* Item 5: Tier List */}
           <li>
-            <Link href="/tierlist" onClick={handleLinkClick} className={`relative flex items-center h-12 py-2 px-2 rounded-md transition-all duration-200 ${activeItem === 3 ? 'text-yellow-300 bg-yellow-500/10 text-yellow-300 shadow-lg shadow-yellow-500/20 border border-yellow-400/30' : 'text-gray-100 hover:bg-cyan-500/10 hover:text-cyan-300 hover:shadow-md hover:shadow-cyan-400/20'} hover:border hover:border-cyan-400/20`}>
-              {activeItem === 3 && <div className="absolute left-0 top-0 bottom-0 w-[3px] bg-gradient-to-b from-yellow-300 to-yellow-500 shadow-lg shadow-yellow-500/50"></div>}
-              <List size={32} className={`transition-all duration-200 ${activeItem === 3 ? 'text-yellow-300 drop-shadow-lg shadow-yellow-400/50' : 'text-gray-200 opacity-80 hover:text-cyan-300 hover:opacity-100 hover:drop-shadow-md hover:shadow-cyan-400/50'}`} />
-              <span className={`ml-3 font-medium transition-opacity`}>
-                Tier List
-              </span>
+            <Link href="/tierlist" onClick={handleLinkClick} className={`group relative flex items-center h-12 py-2 px-3 rounded-xl transition-all duration-300 font-medium ${activeItem === 3 ? 'bg-yellow-500/10 shadow-[0_0_15px_rgba(234,179,8,0.1)] border border-yellow-500/20 text-yellow-500' : 'text-gray-400 hover:bg-white/5 border border-transparent hover:border-white/10 hover:text-gray-100 hover:shadow-[0_4px_10px_rgba(0,0,0,0.5)]'}`}>
+              {activeItem === 3 && <div className="absolute left-0 top-1/4 bottom-1/4 w-[3px] bg-gradient-to-b from-yellow-300 to-yellow-500 rounded-r-full shadow-[0_0_10px_rgba(234,179,8,0.5)]"></div>}
+              <List size={26} className={`transition-all duration-300 ml-1 ${activeItem === 3 ? 'drop-shadow-[0_0_8px_rgba(234,179,8,0.5)] text-yellow-400' : 'opacity-70 group-hover:opacity-100 group-hover:drop-shadow-md'}`} />
+              <span className={`ml-4 tracking-wide`}>Tier List</span>
             </Link>
           </li>
+
+          {/* Item 6: Diferencias */}
           <li>
-            <Link href="/diff" onClick={handleLinkClick} className={`relative flex items-center h-12 py-2 px-2 rounded-md transition-all duration-200 ${activeItem === 4 ? 'text-yellow-300 bg-yellow-500/10 text-yellow-300 shadow-lg shadow-yellow-500/20 border border-yellow-400/30' : 'text-gray-100 hover:bg-cyan-500/10 hover:text-cyan-300 hover:shadow-md hover:shadow-cyan-400/20'} hover:border hover:border-cyan-400/20`}>
-              {activeItem === 4 && <div className="absolute left-0 top-0 bottom-0 w-[3px] bg-gradient-to-b from-yellow-300 to-yellow-500 shadow-lg shadow-yellow-500/50"></div>}
-              <Scale size={32} className={`transition-all duration-200 ${activeItem === 4 ? 'text-yellow-300 drop-shadow-lg shadow-yellow-400/50' : 'text-gray-200 opacity-80 hover:text-cyan-300 hover:opacity-100 hover:drop-shadow-md hover:shadow-cyan-400/50'}`} />
-              <span className={`ml-3 font-medium transition-opacity`}>
-                Diferencias
-              </span>
+            <Link href="/diff" onClick={handleLinkClick} className={`group relative flex items-center h-12 py-2 px-3 rounded-xl transition-all duration-300 font-medium ${activeItem === 4 ? 'bg-yellow-500/10 shadow-[0_0_15px_rgba(234,179,8,0.1)] border border-yellow-500/20 text-yellow-500' : 'text-gray-400 hover:bg-white/5 border border-transparent hover:border-white/10 hover:text-gray-100 hover:shadow-[0_4px_10px_rgba(0,0,0,0.5)]'}`}>
+              {activeItem === 4 && <div className="absolute left-0 top-1/4 bottom-1/4 w-[3px] bg-gradient-to-b from-yellow-300 to-yellow-500 rounded-r-full shadow-[0_0_10px_rgba(234,179,8,0.5)]"></div>}
+              <Scale size={26} className={`transition-all duration-300 ml-1 ${activeItem === 4 ? 'drop-shadow-[0_0_8px_rgba(234,179,8,0.5)] text-yellow-400' : 'opacity-70 group-hover:opacity-100 group-hover:drop-shadow-md'}`} />
+              <span className={`ml-4 tracking-wide`}>Diferencias</span>
             </Link>
           </li>
 

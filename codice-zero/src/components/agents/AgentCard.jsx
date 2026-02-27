@@ -8,6 +8,7 @@ const normalize = (str) => str ? str.normalize("NFD").replace(/[\u0300-\u036f]/g
 const AgentCard = memo(({ agent, priority = false }) => {
   const [imageLoaded, setImageLoaded] = useState(false);
   const rankColor = agent.rank === 'S' ? 'border-yellow-500' : agent.rank === 'A' ? 'border-purple-500' : 'border-blue-500';
+  const hoverGlow = agent.rank === 'S' ? 'hover:border-yellow-400 hover:shadow-[0_0_20px_rgba(234,179,8,0.5)]' : agent.rank === 'A' ? 'hover:border-purple-400 hover:shadow-[0_0_20px_rgba(168,85,247,0.5)]' : 'hover:border-blue-400 hover:shadow-[0_0_20px_rgba(59,130,246,0.5)]';
   const rankIcon = `/CodiceZero/Rango/Icon_Item_Rank_${agent.rank}.webp`;
 
   // Función para obtener icono de elemento (con casos especiales si los hay)
@@ -28,13 +29,13 @@ const AgentCard = memo(({ agent, priority = false }) => {
   };
 
   return (
-    <div className={`relative w-full max-w-[140px] mx-auto aspect-[4/5] bg-[#0f0f12] rounded-xl border-b-[3px] ${rankColor} overflow-hidden group hover:-translate-y-2 hover:shadow-[0_10px_30px_rgba(0,0,0,0.5)] transition-all duration-300 cursor-pointer border border-white/5`}>
+    <div className={`relative w-full max-w-[140px] mx-auto aspect-[4/5] bg-[#0f0f12] rounded-xl border-b-[3px] ${rankColor} overflow-hidden group hover:-translate-y-2 ${hoverGlow} transition-all duration-300 cursor-pointer border border-white/5 will-change-transform`}>
 
       {/* Glow interactivo de fondo en hover */}
-      <div className={`absolute -inset-10 opacity-0 group-hover:opacity-20 transition-opacity duration-500 blur-2xl pointer-events-none ${agent.element === 'Fuego' ? 'bg-red-500' :
-          agent.element === 'Hielo' ? 'bg-cyan-500' :
-            agent.element === 'Electrico' ? 'bg-blue-500' :
-              agent.element === 'Fisico' ? 'bg-yellow-500' : 'bg-pink-500'
+      <div className={`absolute -inset-10 opacity-0 group-hover:opacity-20 transition-opacity duration-500 blur-xl pointer-events-none ${agent.element === 'Fuego' ? 'bg-red-500' :
+        agent.element === 'Hielo' ? 'bg-cyan-500' :
+          agent.element === 'Electrico' ? 'bg-blue-500' :
+            agent.element === 'Fisico' ? 'bg-yellow-500' : 'bg-pink-500'
         }`}></div>
 
       {/* Element Icon with Aura - Top Left */}
@@ -45,7 +46,7 @@ const AgentCard = memo(({ agent, priority = false }) => {
               agent.element === 'Electrico' ? 'bg-blue-500' :
                 agent.element === 'Fisico' ? 'bg-yellow-400' : 'bg-pink-500'
             }`}></div>
-          <div className="relative w-6 h-6 bg-black/40 backdrop-blur-md rounded-lg p-0.5 border border-white/20 shadow-lg">
+          <div className="relative w-6 h-6 bg-black/40 backdrop-blur-sm rounded-lg p-0.5 border border-white/20 shadow-lg">
             <Image
               src={getElementIcon(agent)}
               alt={agent.element}
@@ -58,7 +59,7 @@ const AgentCard = memo(({ agent, priority = false }) => {
         </div>
 
         {/* Role Icon - Below Element - Matches Element Box Style */}
-        <div className="relative w-6 h-6 flex items-center justify-center bg-black/40 backdrop-blur-md rounded-lg border border-white/10 shadow-lg group-hover:border-white/30 transition-colors">
+        <div className="relative w-6 h-6 flex items-center justify-center bg-black/40 backdrop-blur-sm rounded-lg border border-white/10 shadow-lg group-hover:border-white/30 transition-colors">
           <Image
             src={`/CodiceZero/Agentes/Rol/${normalize(agent.rol)}.webp`}
             alt={agent.rol}
