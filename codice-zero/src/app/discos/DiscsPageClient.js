@@ -62,7 +62,7 @@ export default function DiscsPageClient() {
                                 <motion.div
                                     key={disc.id}
                                     layout
-                                    className="relative flex flex-row h-full bg-[#0f0f12]/80 backdrop-blur-md border border-white/5 rounded-2xl overflow-hidden group hover:border-yellow-500/30 hover:shadow-[0_10px_30px_rgba(0,0,0,0.5)] hover:-translate-y-1 transition-all duration-500 cursor-pointer will-change-transform"
+                                    className="relative flex flex-row h-full bg-[#0f0f12]/80 backdrop-blur-md border border-white/5 rounded-2xl overflow-hidden group cursor-pointer"
                                 >
                                     {/* Premium Glow sobre la tarjeta en hover */}
                                     <div className="absolute inset-0 bg-gradient-to-br from-yellow-500/0 via-yellow-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
