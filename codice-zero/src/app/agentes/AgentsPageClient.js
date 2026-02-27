@@ -211,22 +211,21 @@ export default function AgentsPageClient() {
                                 ))}
                             </FilterCategory>
                         </div>
-
                     </div>
+                </div>
 
-                    {/* GRID DE PERSONAJES OPTIMIZADO */}
-                    <div className="w-full max-w-7xl mx-auto">
-                        <div className="flex flex-wrap justify-center gap-3 content-start transition-none" style={{ minHeight: '50vh' }}>
-                            {filteredAgents.map((agent, index) => (
-                                <Link
-                                    key={agent.id}
-                                    href={`/agentes/${agent.id}`}
-                                    className="w-[30%] sm:w-[23%] md:w-[18%] lg:w-[15%] xl:w-[13%] 2xl:w-[11%]"
-                                >
-                                    <AgentCard agent={agent} priority={index < 8} />
-                                </Link>
-                            ))}
-                        </div>
+                {/* GRID DE PERSONAJES OPTIMIZADO */}
+                <div className="w-full max-w-7xl mx-auto">
+                    <div className="flex flex-wrap justify-center gap-3 content-start transition-none" style={{ minHeight: '50vh' }}>
+                        {filteredAgents.map((agent, index) => (
+                            <Link
+                                key={agent.id}
+                                href={`/agentes/${agent.id}`}
+                                className="w-[30%] sm:w-[23%] md:w-[18%] lg:w-[15%] xl:w-[13%] 2xl:w-[11%]"
+                            >
+                                <AgentCard agent={agent} priority={index < 8} />
+                            </Link>
+                        ))}
                     </div>
                 </div>
             </div>

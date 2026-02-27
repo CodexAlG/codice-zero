@@ -6,12 +6,12 @@ const normalize = (str) => str ? str.normalize("NFD").replace(/[\u0300-\u036f]/g
 
 const WeaponCard = memo(({ weapon, priority = false }) => {
   const [imageLoaded, setImageLoaded] = useState(false);
-  const rankColor = weapon.rank === 'S' ? 'border-yellow-500' : weapon.rank === 'A' ? 'border-purple-500' : 'border-blue-500';
+  const rankColor = weapon.rank === 'S' ? 'border-yellow-500 border-b-yellow-500' : weapon.rank === 'A' ? 'border-purple-500 border-b-purple-500' : 'border-blue-500 border-b-blue-500';
   const hoverGlow = weapon.rank === 'S' ? 'hover:border-yellow-400 hover:shadow-[0_0_20px_rgba(234,179,8,0.5)]' : weapon.rank === 'A' ? 'hover:border-purple-400 hover:shadow-[0_0_20px_rgba(168,85,247,0.5)]' : 'hover:border-blue-400 hover:shadow-[0_0_20px_rgba(59,130,246,0.5)]';
   const rankIcon = `/CodiceZero/Rango/Icon_Item_Rank_${weapon.rank}.webp`;
 
   return (
-    <div className={`relative w-full max-w-[160px] mx-auto aspect-[4/5] bg-[#0f0f12] rounded-xl border-b-[3px] ${rankColor} overflow-hidden group hover:-translate-y-2 ${hoverGlow} transition-all duration-300 cursor-pointer will-change-transform`}>
+    <div className={`relative w-full max-w-[160px] mx-auto aspect-[4/5] bg-[#0f0f12] rounded-xl border border-white/5 border-b-[3px] ${rankColor} overflow-hidden group hover:-translate-y-2 ${hoverGlow} transition-all duration-300 cursor-pointer will-change-transform`}>
 
       {/* Glow interactivo de fondo en hover basado en Rango */}
       <div className={`absolute -inset-10 opacity-0 group-hover:opacity-20 transition-opacity duration-500 blur-xl pointer-events-none ${weapon.rank === 'S' ? 'bg-yellow-500' :
