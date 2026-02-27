@@ -174,11 +174,12 @@ export default function DeveloperTierList() {
                 <h2 className="text-3xl font-bold text-white mb-4">Tier List</h2>
 
                 {/* Disclaimer Box */}
-                <div className="bg-red-500/10 border border-red-500/20 rounded-xl p-5 backdrop-blur-sm">
-                    <div className="flex items-start gap-3">
-                        <div className="mt-1 min-w-[4px] h-12 bg-red-500 rounded-full"></div>
+                <div className="bg-black/40 border border-red-500/30 rounded-2xl p-6 backdrop-blur-md shadow-[0_0_20px_rgba(239,68,68,0.1)] relative overflow-hidden group">
+                    <div className="absolute inset-0 bg-red-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    <div className="flex items-start gap-4 relative z-10">
+                        <div className="mt-1 min-w-[4px] h-12 bg-red-500 rounded-full shadow-[0_0_10px_rgba(239,68,68,0.8)]"></div>
                         <div>
-                            <h3 className="text-red-400 font-bold mb-1 uppercase text-xs tracking-widest">Aviso Importante</h3>
+                            <h3 className="text-red-400 font-black mb-1 uppercase text-xs tracking-widest drop-shadow-md">Aviso Importante</h3>
                             <p className="text-gray-300 text-sm leading-relaxed">
                                 Esta clasificación es una guía referencial basada en análisis detallados del meta actual.
                                 Recuerda que la efectividad de cada agente puede variar según la composición de tu equipo
@@ -189,36 +190,37 @@ export default function DeveloperTierList() {
                 </div>
 
                 {/* Criteria Box */}
-                <div className="bg-white/5 border border-white/10 rounded-xl p-6 relative overflow-hidden">
-                    <div className="absolute top-0 right-0 w-32 h-32 bg-yellow-500/5 rounded-full blur-3xl -mr-16 -mt-16 pointer-events-none"></div>
+                <div className="bg-black/40 backdrop-blur-xl border border-white/5 rounded-3xl p-6 md:p-8 relative overflow-hidden shadow-[0_15px_40px_rgba(0,0,0,0.5)]">
+                    <div className="absolute top-0 right-0 w-48 h-48 bg-yellow-500/10 rounded-full blur-[60px] -mr-16 -mt-16 pointer-events-none"></div>
+                    <div className="absolute bottom-0 left-0 w-32 h-32 bg-purple-500/5 rounded-full blur-[50px] pointer-events-none"></div>
 
-                    <h3 className="text-white font-bold text-lg mb-4 flex items-center gap-2">
-                        <span className="w-1.5 h-6 bg-yellow-500 rounded-full"></span>
+                    <h3 className="text-white font-display font-black italic text-xl mb-6 flex items-center gap-3 drop-shadow-md">
+                        <span className="w-1.5 h-6 bg-yellow-500 rounded-full shadow-[0_0_10px_rgba(234,179,8,0.8)]"></span>
                         Criterios de Evaluación
                     </h3>
 
-                    <div className="grid md:grid-cols-2 gap-4 text-sm">
-                        <ul className="space-y-3">
-                            <li className="flex items-center gap-3 text-gray-300 group">
-                                <span className="w-8 h-8 rounded-lg bg-black/50 border border-white/10 flex items-center justify-center font-bold text-yellow-500 group-hover:border-yellow-500/50 transition-colors">S</span>
-                                <span>Evaluados en base (M0) + Arma (W1)</span>
+                    <div className="grid md:grid-cols-2 gap-6 text-sm relative z-10">
+                        <ul className="space-y-4">
+                            <li className="flex items-center gap-4 text-gray-300 group">
+                                <span className="w-10 h-10 rounded-xl bg-black/50 border border-white/10 flex items-center justify-center font-black text-lg text-yellow-500 group-hover:border-yellow-500/50 group-hover:shadow-[0_0_15px_rgba(234,179,8,0.3)] transition-all">S</span>
+                                <span className="font-medium tracking-wide">Evaluados en base (M0) + Arma (W1)</span>
                             </li>
-                            <li className="flex items-center gap-3 text-gray-300 group">
-                                <span className="w-8 h-8 rounded-lg bg-black/50 border border-white/10 flex items-center justify-center font-bold text-purple-400 group-hover:border-purple-400/50 transition-colors">A</span>
-                                <span>Evaluados a máximo potencial (M6)</span>
+                            <li className="flex items-center gap-4 text-gray-300 group">
+                                <span className="w-10 h-10 rounded-xl bg-black/50 border border-white/10 flex items-center justify-center font-black text-lg text-purple-400 group-hover:border-purple-400/50 group-hover:shadow-[0_0_15px_rgba(168,85,247,0.3)] transition-all">A</span>
+                                <span className="font-medium tracking-wide">Evaluados a máximo potencial (M6)</span>
                             </li>
                         </ul>
-                        <ul className="space-y-3">
-                            <li className="flex items-center gap-2 text-gray-400">
-                                <span className="text-yellow-500">❖</span>
+                        <ul className="space-y-4">
+                            <li className="flex items-center gap-3 text-gray-300 bg-white/5 px-4 py-2 rounded-lg border border-white/5 backdrop-blur-sm">
+                                <span className="text-yellow-500 drop-shadow-[0_0_5px_rgba(234,179,8,0.8)]">❖</span>
                                 Desempeño general en End-Game
                             </li>
-                            <li className="flex items-center gap-2 text-gray-400">
-                                <span className="text-yellow-500">❖</span>
+                            <li className="flex items-center gap-3 text-gray-300 bg-white/5 px-4 py-2 rounded-lg border border-white/5 backdrop-blur-sm">
+                                <span className="text-yellow-500 drop-shadow-[0_0_5px_rgba(234,179,8,0.8)]">❖</span>
                                 Coste de inversión vs Beneficio
                             </li>
-                            <li className="flex items-center gap-2 text-gray-400">
-                                <span className="text-yellow-500">❖</span>
+                            <li className="flex items-center gap-3 text-gray-300 bg-white/5 px-4 py-2 rounded-lg border border-white/5 backdrop-blur-sm">
+                                <span className="text-yellow-500 drop-shadow-[0_0_5px_rgba(234,179,8,0.8)]">❖</span>
                                 Versatilidad en equipos
                             </li>
                         </ul>
@@ -227,16 +229,16 @@ export default function DeveloperTierList() {
             </div>
 
             {/* Grid Container */}
-            <div className="w-full border border-white/10 rounded-lg overflow-hidden bg-[#09090b]">
+            <div className="w-full border border-white/5 rounded-3xl overflow-hidden bg-black/40 backdrop-blur-2xl shadow-[0_20px_50px_rgba(0,0,0,0.5)]">
 
                 {/* Header Row (Roles) - Hidden on Mobile */}
                 <div className="hidden md:grid md:grid-cols-[120px_1fr_1fr_1fr_1fr]">
-                    <div className="bg-[#18181b] p-4 border-b border-r border-white/10 flex items-center justify-center">
-                        <span className="font-bold text-gray-500 text-xs uppercase">Rango</span>
+                    <div className="bg-black/60 p-4 border-b border-r border-white/10 flex items-center justify-center backdrop-blur-md">
+                        <span className="font-black text-gray-500 text-[10px] uppercase tracking-widest">Rango</span>
                     </div>
                     {ROLES.map(role => (
-                        <div key={role.id} className="bg-[#18181b] p-4 border-b border-white/10 border-l border-white/5 text-center flex items-center justify-center">
-                            <span className="font-black italic text-yellow-500 text-xl drop-shadow-sm tracking-wider">
+                        <div key={role.id} className="bg-black/60 p-4 border-b border-white/10 border-l border-white/5 text-center flex items-center justify-center backdrop-blur-md">
+                            <span className="font-display font-black italic text-gray-300 text-xl tracking-widest drop-shadow-md">
                                 {role.label}
                             </span>
                         </div>
@@ -263,25 +265,28 @@ export default function DeveloperTierList() {
                             const cellAgents = agentIds.map(id => agents.find(a => a.id === id)).filter(Boolean);
 
                             return (
-                                <div key={`${tier}-${role.id}`} className="bg-[#09090b]/50 p-4 flex flex-col md:justify-center border-l-0 md:border-l border-white/5 border-b md:border-b-0 border-white/5 last:border-b-0">
+                                <div key={`${tier}-${role.id}`} className="p-4 flex flex-col md:justify-center border-l-0 md:border-l border-white/5 border-b md:border-b-0 border-white/5 last:border-b-0 group/cell hover:bg-white/[0.02] transition-colors">
                                     {/* Mobile Role Label */}
-                                    <span className="md:hidden text-yellow-500 font-bold text-sm mb-3 uppercase tracking-wider text-center border-b border-white/10 pb-1">
+                                    <span className="md:hidden text-gray-400 font-black text-[10px] mb-3 uppercase tracking-widest text-center border-b border-white/5 pb-2">
                                         {role.label}
                                     </span>
 
-                                    <div className="flex flex-wrap gap-3 justify-center">
+                                    <div className="flex flex-wrap gap-4 justify-center">
                                         {cellAgents.map(agent => (
-                                            <div key={agent.id} className="relative group w-16 h-16 md:w-20 md:h-20 bg-[#18181b] rounded-lg overflow-hidden border border-white/10 hover:border-yellow-500/50 transition-colors shadow-lg cursor-pointer">
+                                            <div key={agent.id} className="relative group w-16 h-16 md:w-20 md:h-20 bg-black/50 rounded-xl overflow-hidden border border-white/10 backdrop-blur-md hover:border-white/30 hover:-translate-y-2 hover:shadow-[0_10px_20px_rgba(0,0,0,0.5)] transition-all duration-300 cursor-pointer">
                                                 <Link href={`/agentes/${agent.id}`} className="block w-full h-full relative">
                                                     <Image
                                                         src={agent.image || agent.icon}
                                                         alt={agent.name}
                                                         fill
-                                                        className={`object-cover ${agent.customStyle ? agent.customStyle.replace('scale-[1.00] group-hover:scale-[1.10]', '') : ''}`}
+                                                        className={`object-cover group-hover:scale-110 transition-transform duration-500 ${agent.customStyle ? agent.customStyle.replace('scale-[1.00] group-hover:scale-[1.10]', '') : ''}`}
                                                     />
+                                                    {/* Premium Hover Glow */}
+                                                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+
                                                     {/* Tooltip */}
-                                                    <div className="absolute bottom-0 left-0 right-0 bg-black/80 text-[9px] text-center py-0.5 truncate px-1 opacity-0 group-hover:opacity-100 transition-opacity z-10">
-                                                        {agent.name}
+                                                    <div className="absolute bottom-1 left-0 right-0 text-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10">
+                                                        <span className="text-[9px] font-black uppercase tracking-widest text-white drop-shadow-md truncate px-1 block">{agent.name}</span>
                                                     </div>
                                                 </Link>
                                             </div>

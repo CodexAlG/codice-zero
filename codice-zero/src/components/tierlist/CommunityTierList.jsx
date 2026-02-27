@@ -219,59 +219,59 @@ export default function CommunityTierList() {
         <div className="w-full max-w-7xl mx-auto pb-20">
 
             {/* Title Input */}
-            <div className="mb-6">
+            <div className="mb-8 mt-2 relative w-full max-w-2xl mx-auto">
                 <input
                     type="text"
                     value={tierListTitle}
                     onChange={(e) => setTierListTitle(e.target.value)}
-                    className="w-full bg-transparent text-center text-4xl md:text-5xl font-black italic text-white uppercase placeholder-white/20 focus:outline-none border-b-2 border-transparent focus:border-yellow-500 transition-all font-display"
+                    className="w-full bg-black/40 text-center text-4xl md:text-5xl font-black italic text-white uppercase placeholder-white/20 focus:outline-none border-b-2 border-white/10 focus:border-yellow-500 transition-all font-display py-4 rounded-t-2xl backdrop-blur-md shadow-[0_4px_30px_rgba(0,0,0,0.1)] focus:shadow-[0_10px_40px_rgba(234,179,8,0.15)] focus:bg-white/5"
                     placeholder="Escribe un título..."
                 />
             </div>
 
             {/* Toolbar */}
-            <div className="flex flex-wrap items-center justify-between mb-6 gap-4 bg-[#18181b]/50 p-4 rounded-xl border border-white/5">
+            <div className="flex flex-wrap items-center justify-between mb-8 gap-4 bg-black/40 backdrop-blur-xl p-5 rounded-2xl border border-white/5 shadow-[0_10px_30px_rgba(0,0,0,0.3)] select-none">
                 {/* Left: Reset */}
                 <div className="space-x-2">
-                    <button onClick={handleReset} className="px-4 py-2 bg-red-600/20 hover:bg-red-600 text-red-200 hover:text-white rounded-lg font-bold text-sm flex items-center gap-2 transition-colors">
+                    <button onClick={handleReset} className="px-5 py-2.5 bg-red-600/10 hover:bg-red-600/30 text-red-400 hover:text-white rounded-xl font-bold text-sm tracking-wide uppercase flex items-center gap-2 transition-all border border-red-500/20 hover:border-red-500/50 shadow-[0_0_10px_rgba(239,68,68,0.1)]">
                         <RotateCcw size={16} /> Reset
                     </button>
                 </div>
 
                 {/* Right: Actions */}
-                <div className="flex flex-wrap items-center gap-2">
-                    <button onClick={addRow} className="px-4 py-2 bg-blue-600/20 hover:bg-blue-600/80 hover:text-white text-blue-300 rounded-lg font-bold text-sm flex items-center gap-2 transition-colors border border-blue-500/30">
-                        <Rows size={16} /> + Fila
+                <div className="flex flex-wrap items-center gap-3">
+                    <button onClick={addRow} className="px-5 py-2.5 bg-blue-600/10 hover:bg-blue-600/30 hover:text-white text-blue-400 rounded-xl font-bold text-sm flex items-center gap-2 transition-all border border-blue-500/20 hover:border-blue-500/50 uppercase tracking-wide">
+                        <Rows size={18} /> <span className="hidden sm:inline"> + Fila</span>
                     </button>
-                    <button onClick={addCol} className="px-4 py-2 bg-purple-600/20 hover:bg-purple-600/80 hover:text-white text-purple-300 rounded-lg font-bold text-sm flex items-center gap-2 transition-colors border border-purple-500/30">
-                        <Columns size={16} /> + Columna
+                    <button onClick={addCol} className="px-5 py-2.5 bg-purple-600/10 hover:bg-purple-600/30 hover:text-white text-purple-400 rounded-xl font-bold text-sm flex items-center gap-2 transition-all border border-purple-500/20 hover:border-purple-500/50 uppercase tracking-wide">
+                        <Columns size={18} /> <span className="hidden sm:inline"> + Columna</span>
                     </button>
-                    <div className="w-[1px] h-8 bg-white/10 mx-2 hidden md:block"></div>
-                    <button onClick={handleDownload} className="px-6 py-2 bg-yellow-500 hover:bg-yellow-400 text-black rounded-lg font-bold flex items-center gap-2 shadow-lg shadow-yellow-500/20 transition-all transform hover:scale-105">
-                        <Download size={18} /> Descargar Imagen
+                    <div className="w-px h-8 bg-white/10 mx-2 hidden md:block"></div>
+                    <button onClick={handleDownload} className="px-8 py-2.5 bg-yellow-500 hover:bg-yellow-400 text-black rounded-xl font-black italic tracking-widest flex items-center gap-2 shadow-[0_0_20px_rgba(234,179,8,0.3)] hover:shadow-[0_0_30px_rgba(234,179,8,0.5)] transition-all transform hover:-translate-y-1">
+                        <Download size={20} /> Descargar
                     </button>
                 </div>
             </div>
 
             {/* Capture Area (VISIBLE RESPONSIVE VERSION) */}
-            <div className="overflow-x-auto">
-                <div ref={captureRef} className="w-full border border-white/10 rounded-lg overflow-hidden bg-[#09090b] inline-block">
+            <div className="overflow-x-auto rounded-3xl pb-4">
+                <div ref={captureRef} className="w-full border border-white/5 rounded-3xl overflow-hidden bg-black/40 backdrop-blur-2xl inline-block shadow-[0_20px_50px_rgba(0,0,0,0.5)]">
 
                     {/* Header (Roles) - Hidden on Mobile */}
                     <div className="hidden md:grid" style={gridColsStyle}>
-                        <div className="bg-[#18181b] p-4 border-b border-r border-white/10 flex items-center justify-center">
-                            <span className="font-bold text-gray-500 text-xs uppercase">Rango</span>
+                        <div className="bg-black/60 p-4 border-b border-r border-white/10 flex items-center justify-center backdrop-blur-md">
+                            <span className="font-black text-gray-500 text-[10px] uppercase tracking-widest">Rango</span>
                         </div>
                         {tierCols.map(col => (
-                            <div key={col.id} className="bg-[#18181b] border-b border-white/10 border-l border-white/5 text-center flex items-center justify-center relative group p-2">
+                            <div key={col.id} className="bg-black/60 border-b border-white/10 border-l border-white/5 text-center flex items-center justify-center relative group p-3 backdrop-blur-md">
                                 <input
                                     value={col.label}
                                     onChange={(e) => updateColLabel(col.id, e.target.value)}
-                                    className="bg-transparent font-black italic text-yellow-500 text-xl drop-shadow-sm tracking-wider text-center w-full focus:outline-none uppercase placeholder-white/20"
+                                    className="bg-transparent font-display font-black italic text-gray-300 text-xl tracking-widest text-center w-full focus:outline-none uppercase placeholder-white/20 drop-shadow-md focus:text-white transition-colors"
                                 />
                                 <button
                                     onClick={() => removeCol(col.id)}
-                                    className="absolute top-1 right-1 text-red-500 hover:text-red-400 hover:scale-110 drop-shadow-[0_0_8px_rgba(239,68,68,0.5)] rounded-full w-6 h-6 flex items-center justify-center transition-all z-10"
+                                    className="absolute top-2 right-2 text-red-500/50 hover:text-red-400 hover:scale-110 hover:bg-red-500/10 drop-shadow-md rounded-full w-8 h-8 flex items-center justify-center transition-all z-10 opacity-0 group-hover:opacity-100"
                                 >
                                     <Trash2 size={16} strokeWidth={2.5} />
                                 </button>
@@ -331,30 +331,35 @@ export default function CommunityTierList() {
                                             {col.label}
                                         </span>
 
-                                        <div className="flex flex-wrap gap-2 justify-center">
+                                        <div className="flex flex-wrap gap-3 justify-center">
                                             {itemsInCell.map(agent => (
                                                 <div
                                                     key={agent.id}
                                                     draggable
                                                     onDragStart={(e) => onDragStart(e, agent.id, { type: 'cell', tierId: tier.id, roleId: col.id })}
                                                     onClick={(e) => handleAgentClick(e, agent.id, 'cell')}
-                                                    className={`relative group w-16 h-16 md:w-20 md:h-20 bg-[#18181b] rounded-lg overflow-hidden border transition-all shadow-lg cursor-grab active:cursor-grabbing hover:scale-110 z-10
+                                                    className={`relative group/agent w-16 h-16 md:w-20 md:h-20 bg-black/50 rounded-xl overflow-hidden border backdrop-blur-md transition-all duration-300 cursor-grab active:cursor-grabbing hover:-translate-y-1 z-10
                                                         ${selectedAgent?.id === agent.id
-                                                            ? 'border-yellow-400 ring-2 ring-yellow-400 ring-offset-2 ring-offset-black scale-110'
-                                                            : 'border-white/10 hover:border-yellow-500/50'}`}
+                                                            ? 'border-yellow-400 ring-[3px] ring-yellow-400/50 shadow-[0_0_20px_rgba(234,179,8,0.5)] scale-110 z-20'
+                                                            : 'border-white/10 hover:border-white/30 hover:shadow-[0_10px_20px_rgba(0,0,0,0.5)]'}`}
                                                 >
                                                     <Image
                                                         src={agent.image || agent.icon}
                                                         alt={agent.name}
                                                         fill
-                                                        className="object-cover pointer-events-none"
+                                                        className="object-cover pointer-events-none group-hover/agent:scale-110 transition-transform duration-500"
                                                     />
+                                                    {/* Tooltip Hover Overlay */}
+                                                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover/agent:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
+                                                    <div className="absolute bottom-1 left-0 right-0 text-center opacity-0 group-hover/agent:opacity-100 transition-opacity duration-300 pointer-events-none">
+                                                        <span className="text-[9px] font-black uppercase tracking-widest text-white drop-shadow-md truncate px-1 block">{agent.name}</span>
+                                                    </div>
                                                 </div>
                                             ))}
 
                                             {itemsInCell.length === 0 && (
-                                                <div className="w-full h-8 md:h-full flex items-center justify-center pointer-events-none opacity-5">
-                                                    <span className="text-xs font-mono uppercase text-white">Drop</span>
+                                                <div className="w-full h-8 md:h-full flex items-center justify-center pointer-events-none opacity-20 border-2 border-dashed border-white/5 rounded-xl m-1">
+                                                    <span className="text-[10px] font-black uppercase tracking-widest text-gray-500">Drop</span>
                                                 </div>
                                             )}
                                         </div>
@@ -443,32 +448,37 @@ export default function CommunityTierList() {
 
             {/* Pool Area */}
             <div
-                className={`mt-12 bg-[#09090b]/80 p-6 rounded-xl border transition-colors min-h-[150px] ${selectedAgent ? 'border-yellow-500/30 bg-yellow-900/5 cursor-pointer' : 'border-white/10'}`}
+                className={`mt-12 bg-black/40 backdrop-blur-xl p-8 rounded-3xl border transition-all duration-300 min-h-[180px] shadow-[0_15px_40px_rgba(0,0,0,0.5)] ${selectedAgent ? 'border-yellow-500/50 shadow-[0_0_30px_rgba(234,179,8,0.1)] cursor-pointer' : 'border-white/5'}`}
                 onDragOver={onDragOver}
                 onDrop={onDropPool}
                 onClick={handlePoolClick} // Click to return to pool
             >
-                <h3 className="text-gray-400 font-bold mb-4 uppercase tracking-widest text-sm text-center">
+                <h3 className="text-gray-400 font-black mb-6 uppercase tracking-[0.2em] text-sm text-center">
                     {selectedAgent ? "Toca aquí para devolver al banco" : "Banco de Agentes (Arrastra o Toca para mover)"}
                 </h3>
-                <div className="flex flex-wrap gap-2 justify-center">
+                <div className="flex flex-wrap gap-3 justify-center">
                     {agents.filter(a => isInPool(a.id)).map((agent) => (
                         <div
                             key={agent.id}
                             draggable
                             onDragStart={(e) => onDragStart(e, agent.id, { type: 'pool' })}
                             onClick={(e) => handleAgentClick(e, agent.id, 'pool')}
-                            className={`relative w-16 h-16 md:w-20 md:h-20 bg-[#18181b] rounded-lg overflow-hidden border transition-all shadow-lg cursor-grab hover:scale-105 active:scale-95
+                            className={`relative group/pool w-16 h-16 md:w-20 md:h-20 bg-black/50 backdrop-blur-md rounded-xl overflow-hidden border transition-all duration-300 cursor-grab active:cursor-grabbing hover:-translate-y-2
                                 ${selectedAgent?.id === agent.id
-                                    ? 'border-yellow-400 ring-2 ring-yellow-400 ring-offset-2 ring-offset-black scale-110'
-                                    : 'border-white/10 hover:border-yellow-500/50'}`}
+                                    ? 'border-yellow-400 ring-[3px] ring-yellow-400/50 shadow-[0_0_20px_rgba(234,179,8,0.5)] scale-110 z-20'
+                                    : 'border-white/10 hover:border-white/30 hover:shadow-[0_10px_20px_rgba(0,0,0,0.5)]'}`}
                         >
                             <Image
                                 src={agent.image || agent.icon}
                                 alt={agent.name}
                                 fill
-                                className="object-cover pointer-events-none"
+                                className="object-cover pointer-events-none group-hover/pool:scale-110 transition-transform duration-500"
                             />
+                            {/* Pool Tooltip */}
+                            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover/pool:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
+                            <div className="absolute bottom-1 left-0 right-0 text-center opacity-0 group-hover/pool:opacity-100 transition-opacity duration-300 pointer-events-none">
+                                <span className="text-[9px] font-black uppercase tracking-widest text-white drop-shadow-md truncate px-1 block">{agent.name}</span>
+                            </div>
                         </div>
                     ))}
                 </div>
@@ -477,31 +487,37 @@ export default function CommunityTierList() {
 
             {/* Download Preview Modal */}
             {previewImage && (
-                <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/80 backdrop-blur-sm p-4">
-                    <div className="bg-[#09090b] border border-white/10 rounded-xl p-6 max-w-4xl w-full max-h-[90vh] flex flex-col shadow-2xl">
-                        <h3 className="text-xl font-bold text-white mb-4">Vista Previa</h3>
+                <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/80 backdrop-blur-xl p-4 transition-all">
+                    <div className="bg-[#0f0f12] border border-white/5 rounded-3xl p-8 max-w-5xl w-full max-h-[90vh] flex flex-col shadow-[0_30px_60px_rgba(0,0,0,0.8)] relative overflow-hidden">
+
+                        <div className="absolute top-0 right-0 w-96 h-96 bg-yellow-500/5 rounded-full blur-[100px] pointer-events-none"></div>
+
+                        <h3 className="text-2xl font-display font-black italic text-white mb-6 relative z-10 flex items-center gap-3">
+                            <span className="w-1.5 h-6 bg-yellow-500 rounded-full shadow-[0_0_10px_rgba(234,179,8,0.8)]"></span>
+                            Vista Previa
+                        </h3>
 
                         {/* Fixed: Image container scaling */}
-                        <div className="flex-1 overflow-hidden bg-[#09090b] rounded-lg border border-white/5 mb-6 flex items-center justify-center p-4">
+                        <div className="flex-1 overflow-auto bg-black/50 rounded-2xl border border-white/5 mb-8 flex items-center justify-center p-6 shadow-[inset_0_10px_30px_rgba(0,0,0,0.5)] relative z-10 custom-scrollbar">
                             <img
                                 src={previewImage}
                                 alt="Tier List Preview"
-                                className="max-w-full max-h-[60vh] object-contain rounded shadow-lg"
+                                className="max-w-full h-auto object-contain rounded-xl shadow-2xl ring-1 ring-white/10"
                             />
                         </div>
 
-                        <div className="flex justify-end gap-4">
+                        <div className="flex flex-col sm:flex-row justify-end gap-4 relative z-10">
                             <button
                                 onClick={() => setPreviewImage(null)}
-                                className="px-6 py-2 rounded-lg font-bold text-gray-300 hover:text-white hover:bg-white/10 transition-colors"
+                                className="px-8 py-3 rounded-xl font-bold uppercase tracking-wide text-gray-400 hover:text-white bg-white/5 hover:bg-white/10 transition-colors border border-transparent hover:border-white/10"
                             >
-                                Regresar
+                                Cancelar
                             </button>
                             <button
                                 onClick={confirmDownload}
-                                className="px-6 py-2 bg-yellow-500 hover:bg-yellow-400 text-black rounded-lg font-bold shadow-lg shadow-yellow-500/20 transition-transform hover:scale-105"
+                                className="px-10 py-3 bg-yellow-500 hover:bg-yellow-400 text-black rounded-xl font-black italic text-lg tracking-widest shadow-[0_0_20px_rgba(234,179,8,0.3)] hover:shadow-[0_0_30px_rgba(234,179,8,0.5)] transition-all transform hover:-translate-y-1 flex items-center justify-center gap-2"
                             >
-                                Descargar
+                                <Download size={20} /> Guardar
                             </button>
                         </div>
                     </div>

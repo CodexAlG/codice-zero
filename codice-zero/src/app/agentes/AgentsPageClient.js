@@ -136,7 +136,8 @@ export default function AgentsPageClient() {
                 {hasBetaContent && <BetaWarning />}
 
                 {/* --- PANEL DE FILTROS --- */}
-                <div className="w-full mb-8 p-6 bg-[#09090b]/80 border-y border-white/10 backdrop-blur-md shadow-2xl flex flex-col gap-6">
+                <div className="w-full mb-10 p-6 md:p-8 bg-black/40 border border-white/5 md:rounded-3xl backdrop-blur-2xl shadow-[0_20px_40px_rgba(0,0,0,0.4)] flex flex-col gap-6 relative overflow-hidden">
+                    <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-white/20 to-transparent"></div>
 
 
                     {/* FILA 1: Búsqueda y Filtros Principales */}
@@ -147,29 +148,31 @@ export default function AgentsPageClient() {
                             <div className="flex items-center gap-4">
                                 <button
                                     onClick={() => toggleFilter("Todos")}
-                                    className={`h-10 px-6 rounded-lg font-bold font-display text-sm tracking-wider border transition-all ${activeFilters.length === 0
-                                        ? "bg-yellow-400 text-black border-yellow-400 shadow-[0_0_15px_#facc15]"
-                                        : "bg-black/50 text-gray-400 border-white/10 hover:border-white/30 hover:text-white"
+                                    className={`relative group h-10 px-6 rounded-full font-bold font-display text-xs tracking-widest border transition-all duration-300 overflow-hidden ${activeFilters.length === 0
+                                        ? "bg-yellow-500/20 text-yellow-400 border-yellow-500/50 shadow-[0_0_20px_rgba(234,179,8,0.3)]"
+                                        : "bg-black/40 text-gray-400 border-white/10 hover:border-white/30 hover:bg-white/5 hover:text-white hover:shadow-[0_0_15px_rgba(255,255,255,0.1)]"
                                         }`}
                                 >
-                                    TODOS
+                                    <div className="absolute inset-0 bg-gradient-to-r from-yellow-400/0 via-yellow-400/10 to-yellow-400/0 -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
+                                    <span className="relative z-10">TODOS</span>
                                 </button>
-                                <span className="text-gray-500 text-sm hidden md:inline">|</span>
-                                <div className="text-gray-400 text-sm hidden md:block">
+                                <span className="text-white/20 text-lg hidden md:inline">|</span>
+                                <div className="text-gray-400 text-xs font-bold tracking-widest uppercase hidden md:block">
                                     Filtra por categorías
                                 </div>
                             </div>
 
-                            {/* Buscador */}
-                            <div className="relative w-full md:w-64">
+                            {/* Buscador Premium */}
+                            <div className="relative w-full md:w-72 group">
+                                <div className="absolute -inset-0.5 bg-gradient-to-r from-yellow-500/20 to-cyan-500/20 rounded-xl blur opacity-0 group-hover:opacity-100 transition duration-500"></div>
                                 <input
                                     type="text"
                                     placeholder="Buscar Agente..."
                                     value={searchTerm}
                                     onChange={(e) => setSearchTerm(e.target.value)}
-                                    className="w-full bg-black/50 border border-white/10 rounded-lg py-2.5 pl-10 pr-4 text-sm text-white focus:outline-none focus:border-yellow-500 focus:shadow-[0_0_15px_rgba(234,179,8,0.2)] transition-all"
+                                    className="relative w-full bg-[#0f0f11]/90 backdrop-blur-md border border-white/10 rounded-xl py-2.5 pl-11 pr-4 text-sm font-medium text-white focus:outline-none focus:border-yellow-500/50 focus:ring-1 focus:ring-yellow-500/50 transition-all placeholder:text-gray-600"
                                 />
-                                <svg className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <svg className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-500 group-hover:text-yellow-500 transition-colors duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
                                 </svg>
                             </div>

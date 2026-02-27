@@ -108,28 +108,30 @@ export default function WeaponsPageClient() {
                 {hasBetaContent && <BetaWarning />}
 
                 {/* --- PANEL DE FILTROS --- */}
-                <div className="w-full mb-8 p-6 bg-[#09090b]/80 border-y border-white/10 backdrop-blur-md shadow-2xl flex flex-col gap-6">
+                <div className="w-full mb-10 p-6 md:p-8 bg-black/40 border border-white/5 md:rounded-3xl backdrop-blur-2xl shadow-[0_20px_40px_rgba(0,0,0,0.4)] flex flex-col gap-6 relative overflow-hidden">
+                    <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-white/20 to-transparent"></div>
 
                     {/* Header del Panel: Botón Todos y Contador */}
                     <div className="flex flex-col md:flex-row items-center justify-between gap-4">
                         <div className="flex items-center gap-4">
                             <button
                                 onClick={() => toggleFilter("Todos")}
-                                className={`h-10 px-6 rounded-lg font-bold font-display text-sm tracking-wider border transition-all ${activeFilters.length === 0
-                                    ? "bg-yellow-400 text-black border-yellow-400 shadow-[0_0_15px_#facc15]"
-                                    : "bg-black/50 text-gray-400 border-white/10 hover:border-white/30 hover:text-white"
+                                className={`relative group h-10 px-6 rounded-full font-bold font-display text-xs tracking-widest border transition-all duration-300 overflow-hidden ${activeFilters.length === 0
+                                    ? "bg-yellow-500/20 text-yellow-400 border-yellow-500/50 shadow-[0_0_20px_rgba(234,179,8,0.3)]"
+                                    : "bg-black/40 text-gray-400 border-white/10 hover:border-white/30 hover:bg-white/5 hover:text-white hover:shadow-[0_0_15px_rgba(255,255,255,0.1)]"
                                     }`}
                             >
-                                TODOS
+                                <div className="absolute inset-0 bg-gradient-to-r from-yellow-400/0 via-yellow-400/10 to-yellow-400/0 -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
+                                <span className="relative z-10">TODOS</span>
                             </button>
-                            <span className="text-gray-500 text-sm hidden md:inline">|</span>
-                            <div className="text-gray-400 text-sm hidden md:block">
+                            <span className="text-white/20 text-lg hidden md:inline">|</span>
+                            <div className="text-gray-400 text-xs font-bold tracking-widest uppercase hidden md:block">
                                 Filtra por categorías
                             </div>
                         </div>
 
                         {/* Contador de Armas */}
-                        <div className="text-gray-400 text-sm font-mono">
+                        <div className="text-yellow-500/80 text-sm font-mono tracking-widest uppercase bg-black/40 px-4 py-2 rounded-lg border border-white/5 shadow-inner">
                             {filteredWeapons.length} arma{filteredWeapons.length !== 1 ? 's' : ''} encontrada{filteredWeapons.length !== 1 ? 's' : ''}
                         </div>
                     </div>

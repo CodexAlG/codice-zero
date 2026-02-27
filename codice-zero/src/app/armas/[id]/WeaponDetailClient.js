@@ -82,36 +82,49 @@ export default function WeaponDetailClient({ params }) {
     };
 
     return (
-        <div className="min-h-screen bg-[#09090b]">
+        <div className="min-h-screen bg-[#0f0f12] bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-black/20 via-[#0f0f12] to-black relative overflow-hidden font-sans">
+            {/* Decoración de fondo */}
+            <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:32px_32px] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_0%,#000_70%,transparent_100%)] pointer-events-none opacity-50"></div>
+
             {/* Botón Volver Flotante */}
-            <Link href="/armas" className="absolute top-8 left-8 z-50 inline-flex items-center text-gray-400 hover:text-yellow-400 transition-colors group">
-                <ArrowLeft className="w-6 h-6 mr-2 group-hover:-translate-x-1 transition-transform" />
-                <span className="font-bold text-lg">Volver al Armamento</span>
+            <Link href="/armas" className="absolute top-8 left-8 z-50 inline-flex items-center text-gray-400 hover:text-yellow-400 transition-colors group bg-black/40 backdrop-blur-md px-4 py-2 rounded-full border border-white/5 hover:border-yellow-500/30 hover:shadow-[0_0_15px_rgba(250,204,21,0.2)]">
+                <ArrowLeft className="w-5 h-5 mr-2 group-hover:-translate-x-1 transition-transform" />
+                <span className="font-bold text-sm tracking-widest uppercase">Volver al Armamento</span>
             </Link>
 
             <div className="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 min-h-screen items-center p-8">
 
                 {/* COLUMNA IZQUIERDA: IMAGEN HERO + MATERIALES */}
-                <div className="flex flex-col items-center justify-center space-y-8">
-                    <div className="relative aspect-square flex items-center justify-center w-80 mx-auto">
-                        {/* Fondo de aura sutil */}
-                        <div className={`absolute inset-0 bg-[${rankColor}] opacity-10 blur-[100px] rounded-full pointer-events-none`}></div>
-                        <Image
-                            src={weapon.image}
-                            alt={weapon.name}
-                            fill
-                            className="object-contain drop-shadow-2xl z-10"
-                            sizes="(max-width: 768px) 50vw, 400px"
-                            unoptimized
-                        />
-                        {/* Icono de Rango Flotante */}
-                        <Image
-                            src={`/CodiceZero/Rango/Icon_Item_Rank_${weapon.rank}.webp`}
-                            alt={weapon.rank}
-                            width={80}
-                            height={80}
-                            className="absolute -top-4 -right-4 z-20 w-15 h-15 drop-shadow-lg"
-                        />
+                <div className="flex flex-col items-center justify-center space-y-8 relative z-10 w-full">
+                    <div className="relative aspect-square flex items-center justify-center w-full max-w-[400px] mx-auto group">
+                        {/* Fondo de aura premium */}
+                        <div className="absolute inset-4 blur-[80px] rounded-full pointer-events-none opacity-30 group-hover:opacity-50 transition-opacity duration-700" style={{ backgroundColor: rankColor }}></div>
+
+                        {/* Círculo tecnológico de fondo */}
+                        <div className="absolute inset-8 rounded-full border-[1px] border-white/5 bg-gradient-to-br from-white/5 to-transparent backdrop-blur-3xl group-hover:border-white/10 transition-colors shadow-[inset_0_0_40px_rgba(255,255,255,0.02)] hidden md:block"></div>
+
+                        <div className="relative w-full h-full drop-shadow-[0_20px_40px_rgba(0,0,0,0.8)] group-hover:scale-105 transition-transform duration-700 hover:drop-shadow-[0_30px_50px_rgba(0,0,0,1)]">
+                            <Image
+                                src={weapon.image}
+                                alt={weapon.name}
+                                fill
+                                className="object-contain z-10"
+                                sizes="(max-width: 768px) 80vw, 400px"
+                                unoptimized
+                            />
+                        </div>
+                        {/* Icono de Rango Flotante (Premium) */}
+                        <div className="absolute top-4 right-4 z-20 w-20 h-20 p-2 bg-black/40 backdrop-blur-xl rounded-full border border-white/10 shadow-[0_10px_30px_rgba(0,0,0,0.5)] group-hover:scale-110 transition-transform duration-500 overflow-hidden flex justify-center items-center">
+                            <div className="absolute inset-0 opacity-20 blur-xl" style={{ backgroundColor: rankColor }}></div>
+                            <Image
+                                src={`/CodiceZero/Rango/Icon_Item_Rank_${weapon.rank}.webp`}
+                                alt={weapon.rank}
+                                width={60}
+                                height={60}
+                                className="drop-shadow-lg relative z-10"
+                                unoptimized
+                            />
+                        </div>
                     </div>
 
                     {/* Materiales de Ascensión (Desktop: Columna Izquierda) */}
@@ -121,28 +134,28 @@ export default function WeaponDetailClient({ params }) {
                 </div>
 
                 {/* COLUMNA DERECHA: INFORMACIÓN UNIFICADA */}
-                <div className="flex flex-col justify-center space-y-10 w-full">
+                <div className="flex flex-col justify-center space-y-10 w-full relative z-10">
 
                     {/* 1. Header Info */}
-                    <div>
-                        <div className="flex items-center gap-3 mb-2">
-                            <div className="flex items-center gap-2 px-3 py-1 bg-gray-800 rounded-full border border-white/10">
-                                <Image src={`/CodiceZero/Agentes/Rol/${normalize(weapon.rol)}.webp`} alt={weapon.rol} width={16} height={16} className="invert" />
-                                <span className="text-xs font-bold uppercase">{weapon.rol}</span>
+                    <div className="relative">
+                        <div className="flex items-center gap-3 mb-4">
+                            <div className="flex items-center gap-2 px-4 py-1.5 bg-black/50 backdrop-blur-md rounded-full border border-white/10 shadow-[inset_0_1px_1px_rgba(255,255,255,0.1)]">
+                                <Image src={`/CodiceZero/Agentes/Rol/${normalize(weapon.rol)}.webp`} alt={weapon.rol} width={16} height={16} className="invert opacity-90" unoptimized />
+                                <span className="text-xs font-black tracking-widest text-gray-300 uppercase">{weapon.rol}</span>
                             </div>
-                            <span className="text-xs font-mono text-gray-500">W-ENGINE</span>
+                            <span className="text-xs font-mono font-bold tracking-widest text-gray-500 bg-white/5 px-3 py-1.5 rounded-full border border-white/5">W-ENGINE</span>
 
                             {/* Chip Advertencia Beta */}
                             {weapon.leak && weapon.leak.includes("Beta") && (
-                                <div className="flex items-center gap-2 bg-red-500/20 px-4 py-1 rounded border border-red-500/50 backdrop-blur-sm">
-                                    <svg className="w-4 h-4 text-red-400" fill="currentColor" viewBox="0 0 20 20">
+                                <div className="flex items-center gap-2 bg-red-500/10 px-4 py-1.5 rounded-full border border-red-500/30 backdrop-blur-md shadow-[0_0_15px_rgba(239,68,68,0.2)]">
+                                    <svg className="w-3.5 h-3.5 text-red-400 animate-pulse" fill="currentColor" viewBox="0 0 20 20">
                                         <path fillRule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clipRule="evenodd" />
                                     </svg>
-                                    <span className="font-bold text-red-400 uppercase text-xs">BETA</span>
+                                    <span className="font-black text-red-400 tracking-widest uppercase text-[10px]">BETA</span>
                                 </div>
                             )}
                         </div>
-                        <h1 className="text-5xl font-display font-black italic text-white leading-none mb-1">
+                        <h1 className="text-4xl sm:text-5xl md:text-6xl font-display font-black italic text-transparent bg-clip-text bg-gradient-to-r from-white via-gray-200 to-gray-400 leading-none mb-2 drop-shadow-[0_0_30px_rgba(255,255,255,0.2)] tracking-tight pr-4">
                             {weapon.name}
                         </h1>
 
@@ -157,22 +170,29 @@ export default function WeaponDetailClient({ params }) {
                         )}
                     </div>
 
-                    {/* 2. Panel de Stats (Expandido) */}
-                    <div className="bg-[#18181b]/80 border border-white/10 rounded-xl p-6 backdrop-blur-sm relative overflow-hidden w-full">
-                        <div className="space-y-2">
-                            <div className="flex justify-between text-sm font-mono text-gray-400">
-                                <span>Nivel {level}</span>
-                                <span>MAX 60</span>
+                    {/* 2. Panel de Stats (Premium Glassmorphism) */}
+                    <div className="bg-black/40 border border-white/10 shadow-[0_20px_40px_rgba(0,0,0,0.5),inset_0_1px_1px_rgba(255,255,255,0.05)] rounded-2xl p-6 md:p-8 backdrop-blur-2xl relative overflow-hidden w-full group">
+                        {/* Highlights de fondo */}
+                        <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full blur-[80px] -translate-y-1/2 translate-x-1/2 pointer-events-none"></div>
+
+                        <div className="space-y-4 relative z-10">
+                            <div className="flex justify-between text-xs font-black tracking-widest text-gray-400 uppercase">
+                                <span className="text-white drop-shadow-[0_0_10px_rgba(255,255,255,0.5)]">Nivel {level}</span>
+                                <span className="text-yellow-500 shadow-yellow-500/50">MAX 60</span>
                             </div>
-                            {/* Slider Horizontal */}
-                            <input
-                                type="range"
-                                min="1"
-                                max="60"
-                                value={level}
-                                onChange={(e) => setLevel(Number(e.target.value))}
-                                className="w-full h-2 bg-gray-800 rounded-lg appearance-none cursor-pointer accent-white"
-                            />
+
+                            {/* Slider Horizontal Premium */}
+                            <div className="relative group/slider py-2">
+                                <div className="absolute inset-0 bg-yellow-500/20 blur-md rounded-full scale-y-150 opacity-0 group-hover/slider:opacity-100 transition-opacity"></div>
+                                <input
+                                    type="range"
+                                    min="1"
+                                    max="60"
+                                    value={level}
+                                    onChange={(e) => setLevel(Number(e.target.value))}
+                                    className="relative z-10 w-full h-1.5 bg-gray-800/80 rounded-full appearance-none outline-none focus:outline-none focus:ring-4 focus:ring-white/10 [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:w-5 [&::-webkit-slider-thumb]:h-5 [&::-webkit-slider-thumb]:bg-white [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:shadow-[0_0_15px_rgba(255,255,255,0.8)] [&::-webkit-slider-thumb]:cursor-grab"
+                                />
+                            </div>
                             <div className="flex gap-12 mt-4">
                                 <div>
                                     <p className="text-xs text-gray-500 uppercase">Ataque Base</p>
@@ -214,24 +234,32 @@ export default function WeaponDetailClient({ params }) {
                         <WeaponAscensionMaterials level={level} weaponRole={weapon.rol} themeColor={rankColor} />
                     </div>
 
-                    {/* 3. Efecto Pasivo (Expandido) */}
-                    <div className="pt-4 border-t border-white/10 w-full">
-                        <div className="flex justify-between items-end mb-4">
-                            <h3 className="text-xl text-yellow-400 font-display italic">{weapon.effect?.title || "Pasiva"}</h3>
+                    {/* 3. Efecto Pasivo (Premium) */}
+                    <div className="pt-8 border-t border-white/10 w-full relative">
+                        <div className="absolute font-display font-black text-9xl text-white/5 right-0 top-6 select-none pointer-events-none italic tracking-tighter">PASSIVE</div>
 
-                            {/* Slider Refinamiento */}
-                            <div className="flex flex-col items-end w-32">
-                                <span className="text-xs font-mono text-yellow-400 mb-1">Refinamiento {refinement}</span>
-                                <input
-                                    type="range"
-                                    min="1"
-                                    max="5"
-                                    step="1"
-                                    value={refinement}
-                                    onChange={(e) => setRefinement(Number(e.target.value))}
-                                    className="w-full h-1 bg-gray-800 rounded-lg appearance-none cursor-pointer accent-yellow-400"
-                                />
-                                <div className="flex justify-between w-full text-[10px] text-gray-600 mt-1 font-mono">
+                        <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-6 relative z-10">
+                            <h3 className="text-2xl text-yellow-500 font-display font-black italic drop-shadow-[0_0_15px_rgba(234,179,8,0.4)] tracking-wide relative inline-block">
+                                {weapon.effect?.title || "Pasiva"}
+                                <div className="absolute -bottom-2 left-0 w-12 h-1 bg-yellow-500 rounded-full shadow-[0_0_8px_rgba(234,179,8,0.8)]"></div>
+                            </h3>
+
+                            {/* Slider Refinamiento Premium */}
+                            <div className="flex flex-col items-start md:items-end w-40 bg-black/40 p-3 rounded-xl border border-white/5 backdrop-blur-md">
+                                <span className="text-[10px] font-black tracking-widest uppercase text-yellow-500 mb-2 font-mono">Refinamiento {refinement}</span>
+                                <div className="w-full relative group/refslider">
+                                    <input
+                                        type="range"
+                                        min="1"
+                                        max="5"
+                                        step="1"
+                                        value={refinement}
+                                        onChange={(e) => setRefinement(Number(e.target.value))}
+                                        className="relative z-10 w-full h-1 bg-gray-800 rounded-lg appearance-none cursor-pointer outline-none [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:w-4 [&::-webkit-slider-thumb]:h-4 [&::-webkit-slider-thumb]:bg-yellow-400 [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:shadow-[0_0_10px_rgba(250,204,21,0.8)]"
+                                    />
+                                    <div className="absolute inset-0 bg-yellow-500/20 blur-md rounded-full scale-y-150 opacity-0 group-hover/refslider:opacity-100 transition-opacity"></div>
+                                </div>
+                                <div className="flex justify-between w-full text-[9px] text-gray-500 mt-1 font-mono font-bold">
                                     <span>1</span><span>5</span>
                                 </div>
                             </div>

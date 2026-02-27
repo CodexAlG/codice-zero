@@ -269,15 +269,19 @@ export default function AgentDetailPage() {
 
                     {/* Contenido Potencial - Solo visible si Nivel > 0 */}
                     {potentialLevel > 0 ? (
-                        <div className="bg-[#18181b] border border-white/5 rounded-xl p-5 hover:bg-white/[0.02] transition-colors relative overflow-hidden animate-fadeIn">
-                            <div className="absolute left-0 top-0 bottom-0 w-1" style={{ backgroundColor: themeColor }}></div>
-                            <h4 className="text-lg font-bold text-white mb-2">{details.potential.name || "Sin nombre"}</h4>
-                            <div className="text-gray-300 text-sm leading-relaxed space-y-2 font-sans">
+                        <div className="bg-black/40 backdrop-blur-xl border border-white/5 rounded-2xl p-6 relative overflow-hidden animate-fadeIn shadow-[0_10px_30px_rgba(0,0,0,0.5)] group/pot">
+                            {/* Premium Glow sobre la tarjeta */}
+                            <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover/pot:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
+                            <div className="absolute left-0 top-0 bottom-0 w-1.5 shadow-[0_0_15px_currentColor] rounded-l-2xl" style={{ backgroundColor: themeColor, color: themeColor }}></div>
+
+                            <h4 className="text-xl font-display italic font-black text-white mb-3 ml-2 drop-shadow-md">{details.potential.name || "Sin nombre"}</h4>
+
+                            <div className="text-gray-300 text-sm md:text-base leading-relaxed space-y-3 font-sans relative z-10 ml-2">
                                 <HighlightText text={replaceIcons(description)} skills={details.skills} skillIcons={skillIcons} elementColor={themeColor} />
                             </div>
                         </div>
                     ) : (
-                        <div className="h-24 bg-[#18181b]/50 border border-white/5 rounded-xl flex items-center justify-center text-gray-600 italic border-dashed">
+                        <div className="h-24 bg-black/20 backdrop-blur-sm border border-white/5 rounded-2xl flex items-center justify-center text-gray-500 font-mono font-bold tracking-widest uppercase border-dashed">
                             Potencial inactivo
                         </div>
                     )}
@@ -329,20 +333,25 @@ export default function AgentDetailPage() {
                             : skill.type.replace("Mindscape ", "").replace(/[^\d]/g, '') || (idx + 1);
 
                         return (
-                            <div key={idx} className="bg-[#18181b] border border-white/5 rounded-xl p-6 relative overflow-hidden group hover:border-white/20 transition-all h-full">
+                            <div key={idx} className="bg-black/40 backdrop-blur-xl border border-white/5 rounded-3xl p-6 md:p-8 relative overflow-hidden group hover:border-white/10 hover:shadow-[0_15px_40px_rgba(0,0,0,0.5)] transition-all duration-500 h-full">
+                                {/* Premium Element Glow */}
+                                <div className="absolute inset-0 bg-gradient-to-br from-white/0 to-white/5 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"></div>
+
                                 {/* Número Grande de Fondo */}
-                                <div className="absolute -right-4 -bottom-4 text-9xl font-black text-white/5 select-none pointer-events-none group-hover:text-white/10 transition-colors">
+                                <div className="absolute -right-4 -bottom-4 text-[12rem] font-black text-white/5 select-none pointer-events-none group-hover:text-white/[0.07] transition-colors duration-700 italic font-display">
                                     {mindscapeNumber}
                                 </div>
 
-                                <div className="flex items-center gap-4 mb-4">
-                                    <div className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center border border-white/10 font-bold text-white shrink-0 z-10">
+                                <div className="flex items-center gap-4 mb-6 relative z-10">
+                                    <div className="w-12 h-12 rounded-2xl bg-black/50 backdrop-blur-md flex items-center justify-center border border-white/10 font-bold text-lg text-white shrink-0 shadow-[inset_0_1px_1px_rgba(255,255,255,0.1)] group-hover:border-white/20 transition-colors" style={{ color: themeColor, textShadow: `0 0 10px ${themeColor}80` }}>
                                         {mindscapeNumber}
                                     </div>
-                                    <h4 className="text-xl font-bold text-white z-10">{skill.name || "Mindscape"}</h4>
+                                    <h4 className="text-2xl font-display font-black italic text-white group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-white group-hover:to-gray-400 transition-all drop-shadow-md">
+                                        {skill.name || "Mindscape"}
+                                    </h4>
                                 </div>
 
-                                <div className="text-gray-300 text-sm leading-relaxed relative z-10">
+                                <div className="text-gray-300 text-base leading-relaxed relative z-10 space-y-3">
                                     <HighlightText text={skill.description} skills={details.skills} skillIcons={skillIcons} elementColor={themeColor} />
                                 </div>
                             </div>
@@ -407,33 +416,37 @@ export default function AgentDetailPage() {
                         const description = processScaling(skill.description);
 
                         return (
-                            <div key={idx} className="bg-[#18181b] border border-white/5 rounded-xl p-6 hover:bg-white/[0.02] transition-colors relative overflow-hidden group h-full flex flex-col">
-                                <div className="absolute left-0 top-0 bottom-0 w-1" style={{ backgroundColor: themeColor }}></div>
+                            <div key={idx} className="bg-black/40 backdrop-blur-xl border border-white/5 rounded-3xl p-6 md:p-8 hover:-translate-y-1 hover:shadow-[0_15px_40px_rgba(0,0,0,0.5)] transition-all duration-500 relative overflow-hidden group h-full flex flex-col">
+                                <div className="absolute inset-0 bg-gradient-to-br from-white/0 to-white/5 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"></div>
+                                <div className="absolute left-0 top-0 bottom-0 w-1.5 shadow-[0_0_15px_currentColor] rounded-l-3xl opacity-80 group-hover:opacity-100 transition-opacity" style={{ backgroundColor: themeColor, color: themeColor }}></div>
 
-                                <div className="flex flex-col xl:flex-row justify-between items-start xl:items-center gap-4 mb-4 pl-3 pr-2 pt-2">
-                                    <h4 className="text-lg font-bold text-white">{skill.name || "Sin nombre"}</h4>
+                                <div className="flex flex-col xl:flex-row justify-between items-start xl:items-center gap-4 mb-6 pl-4 pr-2 pt-2 relative z-10">
+                                    <h4 className="text-xl md:text-2xl font-display font-black italic text-white drop-shadow-md">{skill.name || "Sin nombre"}</h4>
 
                                     {/* Slider integrado en la tarjeta (Solo para Pasiva Central) */}
                                     {details?.coreSkillScaling && (skill.type === 'Pasiva Central' || skill.type === 'Pasiva') && (
-                                        <div className="flex flex-col w-full max-w-[200px]">
-                                            <div className="flex justify-between items-center mb-1 px-1">
-                                                <span className="text-[10px] font-bold uppercase text-gray-400">Nivel</span>
-                                                <span className="text-xs font-bold text-white font-mono">{coreLevels[coreSkillLevel]}</span>
+                                        <div className="flex flex-col w-full max-w-[200px] bg-white/5 backdrop-blur-md px-4 py-2 rounded-xl border border-white/5 group/coreslider">
+                                            <div className="flex justify-between items-center mb-2">
+                                                <span className="text-[10px] font-black uppercase text-gray-400 tracking-widest">Nivel</span>
+                                                <span className="text-xs font-black text-white font-mono drop-shadow-[0_0_8px_rgba(255,255,255,0.8)]">{coreLevels[coreSkillLevel]}</span>
                                             </div>
-                                            <input
-                                                type="range"
-                                                min="0"
-                                                max="6"
-                                                step="1"
-                                                value={coreSkillLevel}
-                                                onChange={(e) => setCoreSkillLevel(parseInt(e.target.value))}
-                                                className="w-full h-1 bg-white/20 rounded-lg appearance-none cursor-pointer accent-white hover:bg-white/30 transition-colors mb-1"
-                                            />
-                                            <div className="flex justify-between px-0.5">
+                                            <div className="relative py-1">
+                                                <div className="absolute inset-0 blur-md rounded-full scale-y-150 opacity-0 group-hover/coreslider:opacity-50 transition-opacity" style={{ backgroundColor: themeColor }}></div>
+                                                <input
+                                                    type="range"
+                                                    min="0"
+                                                    max="6"
+                                                    step="1"
+                                                    value={coreSkillLevel}
+                                                    onChange={(e) => setCoreSkillLevel(parseInt(e.target.value))}
+                                                    className="relative z-10 w-full h-1.5 bg-gray-800 rounded-full appearance-none cursor-pointer outline-none [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:w-4 [&::-webkit-slider-thumb]:h-4 [&::-webkit-slider-thumb]:bg-white [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:shadow-[0_0_10px_rgba(255,255,255,0.8)]"
+                                                />
+                                            </div>
+                                            <div className="flex justify-between px-0.5 mt-1">
                                                 {coreLevels.map((lvl, idx) => (
                                                     <span
                                                         key={lvl}
-                                                        className={`text-[8px] font-mono font-bold transition-colors ${coreSkillLevel === idx ? 'text-white' : 'text-gray-600'}`}
+                                                        className={`text-[9px] font-mono font-bold transition-colors ${coreSkillLevel === idx ? 'text-white scale-110' : 'text-gray-600'}`}
                                                     >
                                                         {lvl}
                                                     </span>
@@ -443,17 +456,17 @@ export default function AgentDetailPage() {
                                     )}
                                 </div>
 
-                                <div className="text-gray-300 text-sm leading-relaxed space-y-2 font-sans flex-grow">
+                                <div className="text-gray-300 text-sm md:text-base leading-relaxed space-y-3 font-sans flex-grow relative z-10 ml-2">
                                     <HighlightText text={replaceIcons(description)} skills={details.skills} skillIcons={skillIcons} elementColor={themeColor} />
                                 </div>
 
-                                {/* Multiplicadores Compactos */}
+                                {/* Multiplicadores Compactos Premium */}
                                 {skill.attributes && skill.attributes.length > 0 && (
-                                    <div className="mt-5 pt-4 border-t border-white/5 grid grid-cols-2 gap-y-2 gap-x-4">
+                                    <div className="mt-6 pt-5 border-t border-white/5 grid grid-cols-2 lg:grid-cols-3 gap-y-3 gap-x-6 relative z-10">
                                         {skill.attributes.slice(0, 6).map((attr, aIdx) => (
-                                            <div key={aIdx} className="flex justify-between text-xs text-gray-500">
-                                                <span>{attr.label}</span>
-                                                <span className="font-mono text-gray-300">{attr.values[attr.values.length - 1]}</span>
+                                            <div key={aIdx} className="flex flex-col gap-1 bg-black/40 px-3 py-2 rounded-xl border border-white/5">
+                                                <span className="text-[10px] uppercase font-black tracking-widest text-gray-500 truncate">{attr.label}</span>
+                                                <span className="font-mono text-sm font-bold text-white tracking-wide" style={{ textShadow: `0 0 10px ${themeColor}40` }}>{attr.values[attr.values.length - 1]}</span>
                                             </div>
                                         ))}
                                     </div>
@@ -468,15 +481,16 @@ export default function AgentDetailPage() {
 
     // --- LAYOUT ---
     return (
-        <div className="min-h-screen bg-[#09090b] text-white selection:bg-yellow-500/30 overflow-x-hidden">
-
+        <div className="min-h-screen bg-[#0f0f12] bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-black/20 via-[#0f0f12] to-black text-white selection:bg-yellow-500/30 overflow-x-hidden relative font-sans">
+            {/* Decoración de fondo */}
+            <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:32px_32px] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_0%,#000_70%,transparent_100%)] pointer-events-none opacity-50"></div>
 
 
             {/* AVISO BETA (Top of Page) */}
             {agent.leak === "Beta" && (
-                <div className="w-full bg-yellow-500/10 border-b border-yellow-500/20 py-2 px-4 text-center z-50 relative">
-                    <p className="text-yellow-200/80 text-xs md:text-sm font-bold flex items-center justify-center gap-2">
-                        <TriangleAlert className="text-yellow-500 w-4 h-4" />
+                <div className="w-full bg-red-500/10 border-b border-red-500/30 py-3 px-4 text-center z-50 relative backdrop-blur-md shadow-[0_0_20px_rgba(239,68,68,0.2)]">
+                    <p className="text-red-400 text-xs md:text-sm font-black tracking-widest uppercase flex items-center justify-center gap-2">
+                        <TriangleAlert className="text-red-500 w-4 h-4 animate-pulse" />
                         Este personaje se encuentra en fase Beta. Stats y habilidades sujetas a cambios.
                     </p>
                 </div>
@@ -486,12 +500,13 @@ export default function AgentDetailPage() {
             <div className="relative w-full max-w-[1600px] mx-auto p-4 pt-10 lg:p-8 pb-0 flex flex-col lg:flex-row gap-6 lg:gap-12 min-h-screen lg:min-h-[85vh]">
 
                 {/* BOTÓN VOLVER */}
-                <Link href="/agentes" className="absolute top-4 left-4 z-50 p-2 bg-black/50 rounded-full border border-white/10 hover:bg-white/10 transition-colors">
-                    <ArrowLeft className="w-6 h-6 text-white" />
+                <Link href="/agentes" className="absolute top-8 left-8 z-50 inline-flex items-center text-gray-400 hover:text-white transition-colors group bg-black/40 backdrop-blur-md px-4 py-2 rounded-full border border-white/5 hover:border-white/30 hover:shadow-[0_0_15px_rgba(255,255,255,0.1)]">
+                    <ArrowLeft className="w-5 h-5 mr-2 group-hover:-translate-x-1 transition-transform" />
+                    <span className="font-bold text-sm tracking-widest uppercase">Volver</span>
                 </Link>
 
                 {/* COLUMNA IZQUIERDA: IMAGEN (Sticky en Desktop, Relative en Móvil para evitar cortes) */}
-                <div className="w-full lg:w-[45%] h-[60vh] lg:h-[85vh] relative lg:sticky top-0 flex items-center justify-center z-10">
+                <div className="w-full lg:w-[45%] h-[60vh] lg:h-[85vh] relative lg:sticky top-0 flex items-center justify-center z-10 group">
                     <div className="relative w-full h-full flex items-center justify-center">
                         {/* Fondo Decorativo: Radial Gradient Seguro */}
                         <div
@@ -516,69 +531,69 @@ export default function AgentDetailPage() {
                 <div className="w-full lg:w-[55%] flex flex-col justify-center animate-fadeIn delay-100 z-20 bg-transparent">
 
                     {/* Header Info */}
-                    <div className="mb-10 text-center lg:text-right">
-                        <div className="flex items-center justify-center lg:justify-end gap-3 mb-2 opacity-60">
-                            <Image src={`/CodiceZero/Agentes/Faction/Faction_${agent.faction.replace(/ /g, "_")}_Icon.webp`} width={24} height={24} alt={agent.faction} className="opacity-80" unoptimized onError={(e) => e.target.style.display = 'none'} />
-                            <span className="font-mono text-sm uppercase tracking-[0.2em]">{agent.faction}</span>
+                    <div className="mb-10 text-center lg:text-right drop-shadow-xl">
+                        <div className="flex items-center justify-center lg:justify-end gap-3 mb-4 opacity-80">
+                            <Image src={`/CodiceZero/Agentes/Faction/Faction_${agent.faction.replace(/ /g, "_")}_Icon.webp`} width={24} height={24} alt={agent.faction} className="opacity-80 drop-shadow-md" unoptimized onError={(e) => e.target.style.display = 'none'} />
+                            <span className="font-mono text-xs font-black uppercase tracking-[0.3em] text-gray-300">{agent.faction}</span>
                         </div>
-                        <h1 className="text-5xl md:text-7xl font-black italic tracking-tighter mb-4 text-transparent bg-clip-text bg-gradient-to-b from-white to-gray-400 drop-shadow-lg">
+                        <h1 className="text-5xl sm:text-6xl md:text-8xl font-black italic tracking-tighter mb-6 text-transparent bg-clip-text bg-gradient-to-r from-white via-gray-200 to-gray-400 drop-shadow-[0_0_30px_rgba(255,255,255,0.2)]">
                             {agent.name}
                         </h1>
 
-                        {/* Badges */}
-                        <div className="flex flex-wrap justify-center lg:justify-end gap-3">
-                            <span className={`px-3 py-1 bg-black/40 border border-white/10 rounded text-sm font-bold uppercase flex items-center gap-2 ${agent.rank === 'S' ? 'text-yellow-400 border-yellow-400/30' : 'text-purple-400 border-purple-400/30'}`}>
+                        {/* Badges Premium */}
+                        <div className="flex flex-wrap justify-center lg:justify-end gap-3 select-none">
+                            <span className={`px-4 py-1.5 bg-black/40 backdrop-blur-md rounded-full text-xs font-black uppercase tracking-widest flex items-center gap-2 border shadow-[inset_0_1px_1px_rgba(255,255,255,0.1)] ${agent.rank === 'S' ? 'text-yellow-400 border-yellow-400/30 shadow-[0_0_15px_rgba(234,179,8,0.2)]' : 'text-purple-400 border-purple-400/30 shadow-[0_0_15px_rgba(168,85,247,0.2)]'}`}>
                                 Rank {agent.rank}
                             </span>
-                            <span className="px-3 py-1 bg-black/40 border border-white/10 rounded text-sm font-bold uppercase flex items-center gap-2" style={{ color: themeColor, borderColor: `${themeColor}40` }}>
-                                <Image src={getElementIcon()} width={16} height={16} alt={agent.element} unoptimized onError={(e) => e.target.style.display = 'none'} />
+                            <span className="px-4 py-1.5 bg-black/40 backdrop-blur-md rounded-full text-xs font-black uppercase tracking-widest flex items-center gap-2 border shadow-[inset_0_1px_1px_rgba(255,255,255,0.1)] hover:shadow-lg transition-shadow" style={{ color: themeColor, borderColor: `${themeColor}40` }}>
+                                <Image src={getElementIcon()} width={16} height={16} alt={agent.element} className="drop-shadow-md" unoptimized onError={(e) => e.target.style.display = 'none'} />
                                 {agent.element}
                             </span>
-                            <span className="px-3 py-1 bg-black/40 border border-white/10 rounded text-sm font-bold uppercase text-gray-300 flex items-center gap-2">
-                                <Image src={`/CodiceZero/Agentes/Rol/${normalize(agent.rol)}.webp`} width={16} height={16} alt={agent.rol} className="invert" unoptimized />
+                            <span className="px-4 py-1.5 bg-black/40 backdrop-blur-md rounded-full text-xs font-black uppercase tracking-widest text-gray-300 border border-white/10 flex items-center gap-2 shadow-[inset_0_1px_1px_rgba(255,255,255,0.1)]">
+                                <Image src={`/CodiceZero/Agentes/Rol/${normalize(agent.rol)}.webp`} width={16} height={16} alt={agent.rol} className="invert opacity-90" unoptimized />
                                 {agent.rol}
                             </span>
                             {agent.leak === "Beta" && (
-                                <span className="px-3 py-1 bg-red-500/10 border border-red-500/50 rounded text-sm font-bold uppercase text-red-500 flex items-center gap-2">
-                                    <TriangleAlert size={14} /> Beta
+                                <span className="px-4 py-1.5 bg-red-500/10 backdrop-blur-md rounded-full text-[10px] font-black uppercase tracking-widest text-red-400 border border-red-500/30 flex items-center gap-2 shadow-[inset_0_1px_1px_rgba(255,255,255,0.1),0_0_15px_rgba(239,68,68,0.2)]">
+                                    <TriangleAlert className="w-3.5 h-3.5 animate-pulse" /> BETA
                                 </span>
                             )}
                         </div>
                     </div>
 
-                    {/* Aviso Beta REMOVED from here */}
+                    {/* Notice */}
 
-                    {/* Panel de Estadísticas Estilo "Hakush" (Tarjeta Oscura con Datos) */}
-                    <div id="stats" className="bg-[#18181b]/80 backdrop-blur-md border border-white/10 rounded-xl p-4 shadow-2xl relative overflow-hidden group w-full max-w-[480px] mx-auto lg:mr-0">
-                        <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-white/5 to-transparent rounded-full -translate-y-1/2 translate-x-1/2 blur-2xl pointer-events-none"></div>
-
-                        {/* Sub-Header: Materiales REMOVED */}
+                    {/* Panel de Estadísticas Estilo Premium */}
+                    <div id="stats" className="bg-black/40 backdrop-blur-2xl border border-white/5 shadow-[0_20px_40px_rgba(0,0,0,0.5),inset_0_1px_1px_rgba(255,255,255,0.05)] rounded-3xl p-6 md:p-8 relative overflow-hidden group w-full max-w-[480px] mx-auto lg:mr-0 z-20">
+                        {/* Highlights de fondo */}
+                        <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full blur-[80px] -translate-y-1/2 translate-x-1/2 pointer-events-none transition-transform duration-700 group-hover:scale-110"></div>
+                        <div className="absolute bottom-0 left-0 w-48 h-48 rounded-full blur-[60px] translate-y-1/2 -translate-x-1/2 pointer-events-none opacity-20 transition-opacity duration-700 group-hover:opacity-40" style={{ backgroundColor: themeColor }}></div>
 
 
                         {/* Control de Nivel + Stats */}
-                        <div className="space-y-4">
-                            <div className="flex justify-between items-center border-b border-white/10 pb-3">
-                                <h3 className="text-lg font-display italic font-bold">ATRIBUTOS BASE</h3>
-                                <div className="flex items-center gap-4">
-                                    <span className="text-xs font-mono text-gray-400">Nv.{level}</span>
-                                    <input
-                                        type="range" min="1" max="60" value={level}
-                                        onChange={(e) => setLevel(Number(e.target.value))}
-                                        className="w-24 h-1 bg-gray-800 rounded-lg appearance-none cursor-pointer accent-white"
-                                    />
+                        <div className="space-y-6 relative z-10">
+                            <div className="flex justify-between items-center border-b border-white/5 pb-4">
+                                <h3 className="text-xl font-display italic font-black tracking-wide text-white drop-shadow-md">ATRIBUTOS BASE</h3>
+                                <div className="flex items-center gap-4 bg-white/5 px-4 py-1.5 rounded-full border border-white/10 backdrop-blur-md group/slider">
+                                    <span className="text-xs font-black tracking-widest uppercase text-gray-400">Nv.{level}</span>
+                                    <div className="relative w-24 py-1">
+                                        <div className="absolute inset-0 blur-md rounded-full scale-y-150 opacity-0 group-hover/slider:opacity-50 transition-opacity" style={{ backgroundColor: themeColor }}></div>
+                                        <input
+                                            type="range" min="1" max="60" value={level}
+                                            onChange={(e) => setLevel(Number(e.target.value))}
+                                            className="relative z-10 w-full h-1.5 bg-gray-800/80 rounded-full appearance-none outline-none focus:outline-none focus:ring-4 focus:ring-white/10 [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:w-4 [&::-webkit-slider-thumb]:h-4 [&::-webkit-slider-thumb]:bg-white [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:shadow-[0_0_15px_rgba(255,255,255,0.8)] [&::-webkit-slider-thumb]:cursor-grab"
+                                        />
+                                    </div>
                                 </div>
                             </div>
 
                             {/* Tabla de Stats */}
                             {isLoading ? (
-                                <div className="h-40 flex items-center justify-center text-gray-600">Cargando datos...</div>
+                                <div className="h-40 flex items-center justify-center text-gray-500 font-mono text-sm uppercase tracking-widest animate-pulse">Cargando datos...</div>
                             ) : (
                                 <StatsTable currentStats={currentStats} themeColor={themeColor} agentRole={agent.rol} />
                             )}
                         </div>
-
-                        {/* Barra Decorativa Inferior */}
-                        <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-white/20 to-transparent"></div>
                     </div>
 
                 </div>
@@ -615,18 +630,21 @@ export default function AgentDetailPage() {
             <div id="skills" className="relative w-full max-w-[1400px] mx-auto p-4 lg:p-12 pt-12 lg:pt-8">
 
                 {/* Section Title */}
-                <div className="flex items-center gap-4 mb-12">
-                    <div className="h-px bg-white/20 flex-1"></div>
-                    <h2 className="text-3xl font-display italic font-bold text-center tracking-widest">HABILIDADES DE COMBATE</h2>
-                    <div className="h-px bg-white/20 flex-1"></div>
+                <div className="flex items-center justify-center gap-6 mb-12 lg:mb-16 relative">
+                    <div className="absolute inset-0 bg-yellow-500/5 blur-[100px] rounded-full"></div>
+                    <div className="h-[2px] w-24 md:w-48 bg-gradient-to-r from-transparent to-yellow-500/50"></div>
+                    <h2 className="text-3xl md:text-5xl font-display italic font-black text-center tracking-widest text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 to-yellow-600 drop-shadow-[0_0_15px_rgba(234,179,8,0.3)] select-none">
+                        HABILIDADES DE COMBATE
+                    </h2>
+                    <div className="h-[2px] w-24 md:w-48 bg-gradient-to-l from-transparent to-yellow-500/50"></div>
                 </div>
 
                 {/* Grid de Habilidades Agrupadas (TABS UI) */}
                 {details?.skills && (
-                    <div className="flex flex-col gap-8">
+                    <div className="flex flex-col gap-10">
 
                         {/* 1. TABS NAVIGATION */}
-                        <div className="flex flex-wrap items-center justify-center gap-2 lg:gap-4 bg-[#18181b]/50 border border-white/5 p-2 rounded-2xl mx-auto w-full overflow-x-auto selection-none">
+                        <div className="flex flex-wrap items-center justify-center gap-3 lg:gap-4 bg-black/40 border border-white/5 p-3 rounded-3xl mx-auto w-full max-w-5xl backdrop-blur-xl shadow-[0_10px_30px_rgba(0,0,0,0.5)] select-none relative z-20">
                             {SKILL_GROUPS.map((group) => {
                                 const isActive = activeSkillTab === group.id;
                                 return (
@@ -634,12 +652,15 @@ export default function AgentDetailPage() {
                                         key={group.id}
                                         onClick={() => setActiveSkillTab(group.id)}
                                         className={`
-                      relative px-3 lg:px-6 py-3 rounded-xl transition-all duration-300 flex items-center gap-2 lg:gap-3 border shrink-0
-                      ${isActive
-                                                ? 'bg-white/10 border-white/20 text-white shadow-lg z-10'
-                                                : 'bg-transparent border-transparent text-gray-500 hover:bg-white/5 hover:text-gray-300'}
-                    `}
+                                            relative px-4 lg:px-6 py-3 rounded-2xl transition-all duration-500 flex items-center gap-2 lg:gap-3 shrink-0 overflow-hidden group border
+                                            ${isActive
+                                                ? 'bg-white/10 text-white shadow-[0_0_20px_rgba(255,255,255,0.1)] border-white/20'
+                                                : 'bg-transparent text-gray-500 hover:text-gray-200 border-transparent hover:bg-white/5'
+                                            }
+                                        `}
                                     >
+                                        {/* Hover Overlay */}
+                                        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
                                         {/* Icon Container */}
                                         <div className={`
                       w-5 h-5 lg:w-6 lg:h-6 rounded flex items-center justify-center transition-opacity
@@ -655,9 +676,9 @@ export default function AgentDetailPage() {
                                             {group.label}
                                         </span>
 
-                                        {/* Active Indicator Line */}
+                                        {/* Active Line Effect */}
                                         {isActive && (
-                                            <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-1/2 h-[2px]" style={{ backgroundColor: themeColor }}></div>
+                                            <div className="absolute bottom-0 left-4 right-4 h-[3px] rounded-t-full shadow-[0_0_10px_currentColor] animate-pulse" style={{ backgroundColor: themeColor, color: themeColor }}></div>
                                         )}
                                     </button>
                                 );
