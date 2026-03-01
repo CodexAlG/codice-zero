@@ -75,9 +75,7 @@ export const versionedAgents = {
                     { type: "Mindscape 5", name: "Mindscape 5", description: "(Ataque Básico), (Evasión), (Asistencia), (Técnica Especial) y (Ataque en Cadena) Lv. +2", tags: ["Etereo", "Mindscape 5"] },
                     { type: "Mindscape 6", name: "Mindscape 6", description: "Cuando el enemigo no se encuentra en estado de Aturdmiento, al entrar en un estado de Anomalìa o ser golpeado por un ataque pesado de (Técnica Especial EX), acumularà 1 capa de (Marca: Modificada), al ser golpeado por un ataque pesado de (Técnica Definitiva) acumularà 2 capas de (Marca: Modificada); (Marca: Modificada) se puede acumular hasta un màximo de 5 capas, cuando las capas de (Marca: Modificada) acumuladas en el enemigo alcanzan el limite superior, se activara una vez el (Desorden de Polaridad) y se eliminaràn todas las (Marca: Modificada), infligiendo al objetivo un 40% del dañño del efecto de (Desorden) original, por cada 1 capa de (Marca: Modificada) que tenga el enemigo, el multiplicador de daño de este (Desorden de Polaridad) aumentarà adicionalmente en un 8%, el (Desorden de Polaridad) no eliminarà el estado de Anomalìa de Atributo en el que se encuentra el objetivo; para un mismo enemigo, despuès de activar (Desorden de Polaridad) a travès de (Marca: Modificada), no se podràn volver a acumular (Marca: Modificada) hasta que se recupere del estado de Aturdmiento; (Marca: Modificada) y (Marca) no se pueden superponer entre si.", tags: ["Etereo", "Mindscape 6"] }
                 ]
-            }
-        },
-        versions: {
+            },
             "v2.7.2": {
                 versionLabel: "v2.7.2",
                 coreSkillScalingColors: [
