@@ -22,7 +22,7 @@ export const versionedWeapons = {
     // }
     5542: {
         id: 5542,
-        name: "Arma de Prueba de Nangong Yu",
+        name: "Delirio de Neón",
         rol: "Aturdidor",
         versions: {
             "v2.7.1": {
@@ -57,7 +57,7 @@ export const versionedWeapons = {
     },
     5543: {
         id: 5543,
-        name: "Arma de Prueba de Cissia",
+        name: "Rastreo de Colmillos y Escamas",
         rol: "Ataque",
         versions: {
             "v2.7.1": {
