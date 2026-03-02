@@ -703,7 +703,8 @@ export default function AgentDetailPage() {
             </div >
 
             {/* --- ESTRATEGIA DE EQUIPAMIENTO --- */}
-            <BuildSection strategy={details?.strategy} />
+            {/* TODO: Descomentar cuando todos los agentes tengan su estrategia */}
+            {false && <BuildSection strategy={details?.strategy} />}
 
         </div >
     );
