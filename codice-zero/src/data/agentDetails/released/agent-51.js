@@ -25,13 +25,13 @@ export default {
         valuePerNode: 0.12,
     },
     coreSkillScaling: [
-        ["3%", "0.52%", "12.88%", "302%"],
-        ["3.5%", "0.6%", "14.9%", "320%"],
-        ["4%", "0.68%", "16.92%", "338%"],
-        ["4.5%", "0.76%", "18.94%", "356%"],
-        ["5%", "0.84%", "20.96%", "374%"],
-        ["5.5%", "0.92%", "22.98%", "392%"],
-        ["6%", "1%", "25%", "410%"]
+        ["3%", "0.52%", "12.88%", "242%"],
+        ["3.5%", "0.6%", "14.9%", "260%"],
+        ["4%", "0.68%", "16.92%", "278%"],
+        ["4.5%", "0.76%", "18.94%", "296%"],
+        ["5%", "0.84%", "20.96%", "314%"],
+        ["5.5%", "0.92%", "22.98%", "332%"],
+        ["6%", "1%", "25%", "350%"]
     ],
     skills: [
         {
@@ -49,7 +49,7 @@ export default {
         {
             type: "Ataque Básico",
             name: "Hueso Corrosivo",
-            description: "Inflige Daño Eléctrico a los enemigos cercanos, cada vez que se activa, aumenta su propia Prababilidad Critica en un 6%, con una duración de 15 segundos, acumulable hasta un máxmimo de 3 capas, al activarse de nuevo se reinicia la duración; por cada 6 veces que se activa, obtiene 1 capa del efecto (Sombra de Serptiene), pudiendo obtener hasta el máxmimo de 2 capas; al entrar al campo de batalla, obtiene 1 capa del efecto (Sombra de Serpiente).",
+            description: "Inflige Daño Eléctrico a los enemigos cercanos, cada vez que se activa, aumenta su propia Prababilidad Critica en un 6%, con una duración de 15 segundos, acumulable hasta un máxmimo de 3 capas, al activarse de nuevo se reinicia la duración; por cada 6 veces que se activa, obtiene 1 capa del efecto (Sombra de Serptiene), pudiendo obtener hasta un máxmimo de 2 capas; al entrar al campo de batalla, obtiene 1 capa del efecto (Sombra de Serpiente).",
             tags: ["Electrico"]
         },
         {
@@ -103,7 +103,7 @@ export default {
         {
             type: "Pasiva Central",
             name: "Pasiva Central: Brebaje Letal",
-            description: "Al entrar al campo de batalla, obtiene 3 puntos de (Toxina), en el modo de Cavidad Cero este efecto se activa como máximo una vez cada 180 segundos. Al poseer (Toxina), en estado de combate se consume 1 punto de (Toxina) cada 5 segundos, activando una vez (Hueso Corrosivo), causando Daño Eléctrico; hace que el Daño Eléctrico infligido por todos los personajes del equipo ignore un {VALOR_1} de la defensa del enemigo, si la Recuperación de Energía inicial automática es mayor a 1.4, por cada 0.12 que exceda, ignorará adicionalmente un {VALOR_2} de la defensa del enemigo, hasta ignorar un maximo de {VALOR_3} de la defensa del enemigo, dura hasta 30 segundos despues de que se agote el (Toxina). (Hueso Corrosivo) añade adicionalmente un Daño Electríco del {VALOR_4} del Ataque de Cissia; Cuando hay 1 o 2 personaje de Atributo Eléctrico en el equipo, el valor de aturdimiento causado por (Hueso Corrosivo) aumenta un 30%/60%; al obtener (Toxina), por cada 1 punto de (Toxina) que se desborde, se activa una vez (Hueso Corrosivo).",
+            description: "Al entrar al campo de batalla, obtiene 3 puntos de (Toxina), en el modo de Cavidad Cero este efecto se activa como máximo una vez cada 180 segundos. Al poseer (Toxina), en estado de combate se consume 1 punto de (Toxina) cada 5 segundos, activando una vez (Hueso Corrosivo), causando Daño Eléctrico; hace que el Daño Eléctrico infligido por todos los personajes del equipo ignore un {VALOR_1} de la defensa del enemigo, si la Recuperación de Energía inicial automática es mayor a 1.4, por cada 0.12 que exceda, ignorará adicionalmente un {VALOR_2} de la defensa del enemigo, hasta ignorar un maximo de {VALOR_3} de la defensa del enemigo, dura hasta 30 segundos despues de que se agote el (Toxina). (Hueso Corrosivo) añade adicionalmente un Daño Electríco del {VALOR_4} del Ataque de Cissia; Cuando hay 1 o 2 personaje de Atributo Eléctrico en el equipo, el valor de aturdimiento causado por (Hueso Corrosivo) aumenta un 40%/60%; al obtener (Toxina), por cada 1 punto de (Toxina) que se desborde, se activa una vez (Hueso Corrosivo).",
             tags: ["Electrico"]
         },
         {
@@ -127,13 +127,13 @@ export default {
         {
             type: "Mindscape 1",
             name: "Viajero y Presa",
-            description: "Al entrar al campo de batalla, los puntos de (Toxina) obtenidos aumentan a 6; el efecto de ignorar defensa enemiga en la (Pasiva Central) aumenta al 140% del original; el daño infligido por (Hueso Corrosivo) ignora un 140% de la Resistencia al Daño Eléctrico del objetivo.",
+            description: "Al entrar al campo de batalla, los puntos de (Toxina) obtenidos aumentan a 6; el efecto de ignorar defensa enemiga en la (Pasiva Central) aumenta al 140% del original; el daño infligido por (Hueso Corrosivo) ignora un 20% de la Resistencia al Daño Eléctrico del objetivo.",
             tags: ["Electrico"]
         },
         {
             type: "Mindscape 2",
             name: "Hambre y Mentiras",
-            description: "Cuando la (Ataque en Cadena) o la (Técnica Definitiva) golpean a un enemigo en estado de Aturdimiento, obtiene adicionalmente 3 puntos de (Toxina); el daño infligido por (Ataque Cargado: Beso de Serpiente) aumenta un 20%.",
+            description: "Cuando la (Ataque en Cadena) o la (Técnica Definitiva) golpean a un enemigo en estado de Aturdimiento, obtiene adicionalmente 3 puntos de (Toxina); el daño infligido por (Ataque Cargado: Beso de Serpiente) aumenta un 35%.",
             tags: ["Electrico"]
         },
         {

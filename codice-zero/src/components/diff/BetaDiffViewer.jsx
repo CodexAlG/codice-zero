@@ -417,14 +417,12 @@ export default function BetaDiffViewer() {
                 }
             }
 
-            // Only return a match if score is above threshold (0.3)
-            // Below threshold = consider it a NEW skill with no match
-            if (bestMatch && bestScore > 0.3) {
-                if (bestKey) usedOldSkills.add(bestKey);
-                return { skill: bestMatch, version: bestVersion };
+            // Mark best match as used even if below threshold
+            if (bestMatch && bestKey) {
+                usedOldSkills.add(bestKey);
             }
 
-            return null;
+            return bestMatch ? { skill: bestMatch, version: bestVersion } : null;
         };
 
         // PRE-COMPUTE MATCHES: Process skills sorted by description length (longest first)
@@ -486,21 +484,11 @@ export default function BetaDiffViewer() {
 
             // Diff on RAW TEXT with {VALOR_X} placeholders
             // processScaling will replace them AFTER diff in renderDiffWithHighlight
-            // If this is a new skill (newSkill exists but no oldSkill), mark all content as 'added'
-            const isNewSkill = isComparison && newSkill && !oldSkill;
-            const nameDiff = isComparison
-                ? (isNewSkill
-                    ? [{ value: protectIcons(newName), added: true, removed: false }]
-                    : compareText(protectIcons(oldName), protectIcons(newName)))
-                : [{ value: protectIcons(newName), added: false, removed: false }];
-            const descDiff = isComparison
-                ? (isNewSkill
-                    ? [{ value: protectIcons(newDesc), added: true, removed: false }]
-                    : compareText(protectIcons(oldDesc), protectIcons(newDesc)))
-                : [{ value: protectIcons(newDesc), added: false, removed: false }];
+            const nameDiff = isComparison ? compareText(protectIcons(oldName), protectIcons(newName)) : [{ value: protectIcons(newName), added: false, removed: false }];
+            const descDiff = isComparison ? compareText(protectIcons(oldDesc), protectIcons(newDesc)) : [{ value: protectIcons(newDesc), added: false, removed: false }];
 
             const hasChanges = isComparison
-                ? (isNewSkill || nameDiff.some(t => t.added || t.removed) || descDiff.some(t => t.added || t.removed))
+                ? (nameDiff.some(t => t.added || t.removed) || descDiff.some(t => t.added || t.removed))
                 : true; // Always show in single view
 
             // Filter unchanged in comparison mode
@@ -509,14 +497,7 @@ export default function BetaDiffViewer() {
             return (
                 <div key={skillObj.id || index} className="skill-group icon-override">
                     <div className="flex items-center justify-between mb-2">
-                        <div className="skill-type flex items-center gap-2">
-                            {skillObj.type}
-                            {isNewSkill && (
-                                <span className="px-2 py-0.5 text-xs font-bold bg-green-500/20 text-green-400 border border-green-500/40 rounded-md uppercase tracking-wider">
-                                    Nueva
-                                </span>
-                            )}
-                        </div>
+                        <div className="skill-type">{skillObj.type}</div>
                         {(skillObj.type === "Pasiva Central" || skillObj.type === "Pasiva") && (
                             <div className="flex flex-col items-center w-64 mr-4">
                                 <h5 className="text-xs text-gray-400 font-bold uppercase tracking-wider mb-2 self-start w-full text-left flex items-center gap-2">
