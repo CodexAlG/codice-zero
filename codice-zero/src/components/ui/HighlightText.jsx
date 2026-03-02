@@ -38,7 +38,7 @@ const createHighlightRules = (elementColor = "#facc15") => [
   // Dynamic scaling values (Green)
   {
     pattern: /\[VAL\](.*?)\[\/VAL\]/g,
-    color: "text-[#86efac] font-bold",
+    color: "text-[#00ff00] font-bold",
     extract: true,
   },
   // Custom Colored Values [CV="text-red-500"]value[/CV]
