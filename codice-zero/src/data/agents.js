@@ -10,7 +10,7 @@ export const agents = [
     faction: "Divisiòn de Òrdenes Metropolitanas",
     version: "2.7",
     leak: "Beta",
-    image: "",
+    image: "/CodiceZero/ICONOS/Agent_Cissia_Icon.png",
     customStyle: "scale-[1.00] group-hover:scale-[1.10] object-[center_top]",
   },
   {
