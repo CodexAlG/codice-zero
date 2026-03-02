@@ -121,14 +121,14 @@ const processWithParenthesesPriority = (text, rules) => {
   let currentPos = 0;
 
   parensData.forEach((paren) => {
-    // Process text before parentheses
+    // Process text before parentheses (exclude the '(' character)
     if (paren.start > currentPos) {
       const beforeText = text.slice(currentPos, paren.start);
       result.push(...applyHighlightRules(beforeText, rules));
     }
 
     // Process content INSIDE parentheses to allow coloring
-    // Default to white/bold if no rule matches
+    // The ( and ) characters are NOT rendered — only the inner content
     const contentSegments = applyHighlightRules(paren.content, rules);
 
     contentSegments.forEach(seg => {
@@ -143,7 +143,7 @@ const processWithParenthesesPriority = (text, rules) => {
       }
     });
 
-    currentPos = paren.end;
+    currentPos = paren.end; // Skip past the closing ')'
   });
 
   // Process remaining text after last parentheses

@@ -482,10 +482,13 @@ export default function BetaDiffViewer() {
             const oldDesc = oldSkill?.description || "";
             const newDesc = newSkill?.description || "";
 
-            // Diff on RAW TEXT with {VALOR_X} placeholders
-            // processScaling will replace them AFTER diff in renderDiffWithHighlight
-            const nameDiff = isComparison ? compareText(protectIcons(oldName), protectIcons(newName)) : [{ value: protectIcons(newName), added: false, removed: false }];
-            const descDiff = isComparison ? compareText(protectIcons(oldDesc), protectIcons(newDesc)) : [{ value: protectIcons(newDesc), added: false, removed: false }];
+            // Strip parentheses before diffing to prevent the diff algorithm from
+            // splitting (word) across tokens. HighlightText keyword rules will still
+            // match and bold the keywords without parentheses.
+            const stripParens = (t) => t.replace(/\(([^)]+)\)/g, '$1');
+
+            const nameDiff = isComparison ? compareText(protectIcons(stripParens(oldName)), protectIcons(stripParens(newName))) : [{ value: protectIcons(stripParens(newName)), added: false, removed: false }];
+            const descDiff = isComparison ? compareText(protectIcons(stripParens(oldDesc)), protectIcons(stripParens(newDesc))) : [{ value: protectIcons(stripParens(newDesc)), added: false, removed: false }];
 
             const hasChanges = isComparison
                 ? (nameDiff.some(t => t.added || t.removed) || descDiff.some(t => t.added || t.removed))
@@ -634,7 +637,7 @@ export default function BetaDiffViewer() {
             let valueIndex = 0;
             result = result.replace(/\d+(?:\.\d+)?%?/g, (match) => {
                 if (valueIndex < values.length) {
-                    const replacement = `{${values[valueIndex]}}`;
+                    const replacement = `[VAL]${values[valueIndex]}[/VAL]`;
                     valueIndex++;
                     return replacement;
                 }
@@ -642,9 +645,11 @@ export default function BetaDiffViewer() {
             });
             return result;
         };
+        // Strip parentheses so HighlightText keyword rules handle the styling
+        const stripParens = (t) => t ? t.replace(/\(([^)]+)\)/g, '$1') : '';
 
-        const newDescWithValues = getDescriptionWithValues(newEffect.description, currentNewRefinement);
-        const oldDescWithValues = isComparison ? getDescriptionWithValues(oldEffect.description, currentOldRefinement) : "";
+        const newDescWithValues = stripParens(getDescriptionWithValues(newEffect.description, currentNewRefinement));
+        const oldDescWithValues = isComparison ? stripParens(getDescriptionWithValues(oldEffect.description, currentOldRefinement)) : "";
         const descDiff = isComparison ? compareText(oldDescWithValues, newDescWithValues) : [{ value: newDescWithValues, added: false, removed: false }];
 
         return (
@@ -652,22 +657,26 @@ export default function BetaDiffViewer() {
                 <h3>Efecto del Arma</h3>
                 <div className="effect-title">{newEffect.title}</div>
                 {newEffect.refinements && newEffect.refinements.length > 0 && (
-                    <div className="mb-6">
-                        <div className="flex items-center justify-between mb-2">
-                            <span className="text-sm text-gray-400 uppercase tracking-wider">Nivel de Refinamiento</span>
-                            <span className="text-sm font-mono text-yellow-500">{REFINEMENT_LABELS[refinementLevel]}</span>
+                    <div className="mt-2 mb-6">
+                        <div className="flex items-center justify-between mb-3">
+                            <span className="text-xs font-bold text-[#71717a] uppercase tracking-[0.1em]">Nivel de Refinamiento</span>
+                            <span className="text-xs font-mono font-bold text-[#fbbf24]">{REFINEMENT_LABELS[refinementLevel]}</span>
                         </div>
-                        <div className="relative h-8 w-full flex items-center bg-gray-800/50 rounded-lg px-2">
-                            <input type="range" min="0" max="4" step="1" value={refinementLevel} onChange={(e) => setRefinementLevel(Number(e.target.value))} className="w-full absolute z-20 cursor-pointer opacity-0 h-8" title={`Nivel: ${REFINEMENT_LABELS[refinementLevel]}`} />
-                            <div className="w-full flex justify-between absolute z-10 pointer-events-none px-1">
+                        <div className="relative h-10 w-full flex items-center">
+                            <input type="range" min="0" max="4" step="1" value={refinementLevel} onChange={(e) => setRefinementLevel(Number(e.target.value))} className="w-full absolute z-20 cursor-pointer opacity-0 h-10" title={`Nivel: ${REFINEMENT_LABELS[refinementLevel]}`} />
+                            {/* Track background */}
+                            <div className="absolute w-full h-[3px] bg-[#1e1e21] rounded-full" />
+                            {/* Track fill */}
+                            <div className="absolute h-[3px] bg-gradient-to-r from-[#fbbf24] to-[#f59e0b] rounded-full transition-all duration-300 ease-out" style={{ width: `${(refinementLevel / 4) * 100}%` }} />
+                            {/* Dots and labels */}
+                            <div className="w-full flex justify-between absolute z-10 pointer-events-none">
                                 {REFINEMENT_LABELS.map((label, idx) => (
-                                    <div key={label} className={`relative flex flex-col items-center group transition-all duration-300 ${idx === refinementLevel ? 'scale-110' : ''}`}>
-                                        <div className={`w-3 h-3 rounded-full mb-2 transition-all duration-300 ${idx === refinementLevel ? 'bg-white shadow-[0_0_10px_rgba(255,255,255,0.8)] scale-125' : idx < refinementLevel ? 'bg-yellow-500/50' : 'bg-gray-700'}`}></div>
-                                        <span className={`text-[10px] font-mono font-bold transition-colors duration-300 ${idx === refinementLevel ? 'text-white' : 'text-gray-600'}`}>{label}</span>
+                                    <div key={label} className="relative flex flex-col items-center transition-all duration-300">
+                                        <div className={`w-2.5 h-2.5 rounded-full mb-1.5 transition-all duration-300 ${idx === refinementLevel ? 'bg-[#fbbf24] shadow-[0_0_8px_rgba(251,191,36,0.6)] scale-150' : idx < refinementLevel ? 'bg-[#fbbf24]/40' : 'bg-[#27272a]'}`} />
+                                        <span className={`text-[9px] font-mono font-bold tracking-wider transition-colors duration-300 ${idx === refinementLevel ? 'text-[#fbbf24]' : 'text-[#3f3f46]'}`}>{label}</span>
                                     </div>
                                 ))}
                             </div>
-                            <div className="absolute h-1 bg-yellow-500/50 rounded-full transition-all duration-300 left-0" style={{ width: `${(refinementLevel / 4) * 100}%` }}></div>
                         </div>
                     </div>
                 )}
@@ -678,7 +687,7 @@ export default function BetaDiffViewer() {
                             <div className="effect-description">{renderDiffWithHighlight(descDiff, 'left', beforeData)}</div>
                         </div>
                     )}
-                    <div className="effect-column effect-after" style={{ width: isComparison ? '50%' : '100%' }}>
+                    <div className={`effect-column effect-after`}>
                         <h4>{isComparison ? `Después (${versionAfter})` : `Descripción (${versionAfter})`}</h4>
                         <div className="effect-description">
                             {isComparison
