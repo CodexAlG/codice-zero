@@ -5,6 +5,7 @@ import Sidebar from "./Sidebar";
 import MobileHeader from "./MobileHeader";
 import TopNavbar from "./TopNavbar";
 import Footer from "./Footer";
+import UpdateNotifier from "../ui/UpdateNotifier";
 
 export default function LayoutWrapper({ children }) {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
@@ -97,6 +98,9 @@ export default function LayoutWrapper({ children }) {
           onClick={toggleDrawer}
         />
       )}
+
+      {/* Update Notification Banner */}
+      <UpdateNotifier />
 
     </div>
   );
