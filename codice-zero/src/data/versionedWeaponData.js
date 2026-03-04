@@ -127,3 +127,49 @@ export function getWeaponVersionData(weaponId, versionLabel) {
     if (!weapon || !weapon.versions || !weapon.versions[versionLabel]) return null;
     return weapon.versions[versionLabel];
 }
+
+/**
+ * Get all hotfixes for a specific weapon version
+ * @param {number} weaponId
+ * @param {string} versionLabel
+ * @returns {Array} Array of hotfix objects
+ */
+export function getWeaponHotfixes(weaponId, versionLabel) {
+    const weapon = versionedWeapons[weaponId];
+    if (!weapon || !weapon.versions || !weapon.versions[versionLabel]) return [];
+    return weapon.versions[versionLabel].hotfixes || [];
+}
+
+/**
+ * Get a specific hotfix data for a weapon
+ * @param {number} weaponId
+ * @param {string} versionLabel
+ * @param {number} hotfixId
+ * @returns {Object|null} The hotfix data
+ */
+export function getWeaponHotfixData(weaponId, versionLabel, hotfixId) {
+    const hotfixes = getWeaponHotfixes(weaponId, versionLabel);
+    return hotfixes.find(hf => hf.id === hotfixId) || null;
+}
+
+/**
+ * Get the version data with latest hotfix effect merged in
+ * @param {number} weaponId
+ * @param {string} versionLabel
+ * @returns {Object|null} Version data with merged effect
+ */
+export function getWeaponLatestVersionData(weaponId, versionLabel) {
+    const versionData = getWeaponVersionData(weaponId, versionLabel);
+    if (!versionData) return null;
+
+    const hotfixes = versionData.hotfixes || [];
+    if (hotfixes.length === 0) return versionData;
+
+    // Last hotfix wins
+    const lastHotfix = hotfixes[hotfixes.length - 1];
+    return {
+        ...versionData,
+        effect: lastHotfix.effect || versionData.effect,
+        detailStats: lastHotfix.detailStats || versionData.detailStats
+    };
+}

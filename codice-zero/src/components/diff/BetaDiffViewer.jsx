@@ -6,13 +6,18 @@ import {
     getAvailableAgents,
     getAgentVersions,
     getAgentVersionData,
-    getAgentSkills // IMPORTED
+    getAgentSkills,
+    getAgentHotfixData,
+    getAgentHotfixes
 } from '@/data/versionedAgentData';
 import {
     getAvailableWeapons,
     getWeaponVersions,
-    getWeaponVersionData
+    getWeaponVersionData,
+    getWeaponHotfixData,
+    getWeaponHotfixes
 } from '@/data/versionedWeaponData';
+import { agents as agentsData } from '@/data/agents';
 import { replaceIcons } from '@/components/utils/TextWithIcons';
 import { compareText, renderDiffText, compareNumber } from '@/utils/diffUtils';
 import HighlightText from '../ui/HighlightText';
@@ -52,8 +57,14 @@ export default function BetaDiffViewer() {
     const CORE_PASSIVE_LABELS = ['0', 'A', 'B', 'C', 'D', 'E', 'F'];
     const REFINEMENT_LABELS = ['R1', 'R2', 'R3', 'R4', 'R5'];
 
+    // Hotfix mode detection
+    const hotfixParam = searchParams.get('hotfix');
+    const isHotfixMode = !!hotfixParam && !!selectedEntity && !!selectedVersion;
+
     // Dynamic Title Management
-    useDynamicTitle(selectedEntity ? `Beta Diff: ${selectedEntity.name}` : null);
+    useDynamicTitle(isHotfixMode
+        ? `Hotfix #${hotfixParam}: ${selectedEntity?.name}`
+        : (selectedEntity ? `Beta Diff: ${selectedEntity.name}` : null));
 
 
     // Get available entities
@@ -700,6 +711,145 @@ export default function BetaDiffViewer() {
             </div>
         );
     };
+
+    // === HOTFIX VIEW ===
+    const renderHotfixView = () => {
+        if (!selectedEntity || !selectedVersion || !hotfixParam) return null;
+
+        const hotfixId = parseInt(hotfixParam);
+        const hotfixData = selectedType === 'agentes'
+            ? getAgentHotfixData(selectedEntity.id, selectedVersion, hotfixId)
+            : getWeaponHotfixData(selectedEntity.id, selectedVersion, hotfixId);
+
+        if (!hotfixData) {
+            return (
+                <div className="beta-diff-viewer">
+                    <div className="diff-content">
+                        <div className="empty-state">
+                            <p>Hotfix #{hotfixId} no encontrado para {selectedEntity.name} ({selectedVersion})</p>
+                        </div>
+                    </div>
+                </div>
+            );
+        }
+
+        // Get agent icon
+        const agentInfo = agentsData.find(a => a.id === selectedEntity.id);
+        const entityIcon = agentInfo?.image;
+
+        // Get original version data (or previous hotfix data)
+        const originalData = selectedType === 'agentes'
+            ? getAgentVersionData(selectedEntity.id, selectedVersion)
+            : getWeaponVersionData(selectedEntity.id, selectedVersion);
+
+        // For agents: compare original skills vs hotfix skills
+        const hotfixSkills = hotfixData.skills || [];
+
+        // Find what the skill looked like before this hotfix
+        // If hotfixId > 1, look at previous hotfix; otherwise use original
+        const getPreviousSkill = (hotfixSkill) => {
+            if (!originalData?.skills) return null;
+            // Check previous hotfixes first
+            const allHotfixes = selectedType === 'agentes'
+                ? getAgentHotfixes(selectedEntity.id, selectedVersion)
+                : getWeaponHotfixes(selectedEntity.id, selectedVersion);
+
+            // Look through previous hotfixes (before current one) in reverse
+            for (let i = allHotfixes.length - 1; i >= 0; i--) {
+                const hf = allHotfixes[i];
+                if (hf.id >= hotfixId) continue;
+                const prevSkill = hf.skills?.find(s => s.type === hotfixSkill.type);
+                if (prevSkill) return prevSkill;
+            }
+
+            // Fall back to original
+            return originalData.skills.find(s => s.type === hotfixSkill.type);
+        };
+
+        return (
+            <div className="beta-diff-viewer">
+                {/* Hotfix Header */}
+                <div className="diff-header" style={{ borderColor: 'rgba(239, 68, 68, 0.3)' }}>
+                    <div className="flex items-center gap-4">
+                        {entityIcon && (
+                            <img
+                                src={entityIcon}
+                                alt={selectedEntity.name}
+                                className="w-16 h-16 rounded-xl border border-white/10 object-cover"
+                            />
+                        )}
+                        <div>
+                            <div className="flex items-center gap-2 mb-1">
+                                <span className="px-2 py-0.5 bg-red-500/20 text-red-400 text-xs font-bold rounded uppercase tracking-wider">Hotfix #{hotfixId}</span>
+                                <span className="text-[#71717a] text-xs">{selectedVersion}</span>
+                                {hotfixData.date && <span className="text-[#52525b] text-xs">• {hotfixData.date}</span>}
+                            </div>
+                            <h1 className="text-xl font-bold text-white m-0">{selectedEntity.name}</h1>
+                        </div>
+                    </div>
+                </div>
+
+                {/* Hotfix Content */}
+                <div className="diff-content">
+                    {selectedType === 'agentes' && hotfixSkills.length > 0 && (
+                        <div className="skills-section">
+                            <h3>Cambios del Hotfix</h3>
+                            {hotfixSkills.map((hfSkill, index) => {
+                                const prevSkill = getPreviousSkill(hfSkill);
+                                const oldDesc = prevSkill?.description || "";
+                                const newDesc = hfSkill.description || "";
+                                const oldName = prevSkill?.name || "";
+                                const newName = hfSkill.name || "";
+
+                                const stripParens = (t) => t.replace(/\(([^)]+)\)/g, '$1');
+
+                                const nameDiff = compareText(protectIcons(stripParens(oldName)), protectIcons(stripParens(newName)));
+                                const descDiff = compareText(protectIcons(stripParens(oldDesc)), protectIcons(stripParens(newDesc)));
+
+                                return (
+                                    <div key={hfSkill.type + index} className="skill-group icon-override">
+                                        <div className="flex items-center justify-between mb-2">
+                                            <div className="skill-type">{hfSkill.type}</div>
+                                        </div>
+                                        <div className="skill-comparison-item">
+                                            <div className="skill-grid">
+                                                <div className="skill-column skill-before">
+                                                    <h4>Antes</h4>
+                                                    <div className="skill-name">
+                                                        {prevSkill ? renderDiffWithHighlight(nameDiff, 'left', originalData) : <span className="text-gray-500 italic">No existe</span>}
+                                                    </div>
+                                                    <div className="skill-description">
+                                                        {prevSkill ? renderDiffWithHighlight(descDiff, 'left', originalData) : null}
+                                                    </div>
+                                                </div>
+                                                <div className="skill-column skill-after">
+                                                    <h4>Después (Hotfix)</h4>
+                                                    <div className="skill-name">
+                                                        {renderDiffWithHighlight(nameDiff, 'right', originalData)}
+                                                    </div>
+                                                    <div className="skill-description">
+                                                        {renderDiffWithHighlight(descDiff, 'right', originalData)}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                );
+                            })}
+                        </div>
+                    )}
+                    {hotfixSkills.length === 0 && (
+                        <div className="empty-state"><p>No se encontraron cambios en este hotfix</p></div>
+                    )}
+                </div>
+            </div>
+        );
+    };
+
+    // === HOTFIX MODE: Render hotfix view instead of normal view ===
+    if (isHotfixMode) {
+        return renderHotfixView();
+    }
 
     return (
         <div className="beta-diff-viewer">

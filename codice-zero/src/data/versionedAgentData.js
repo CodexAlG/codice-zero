@@ -212,6 +212,17 @@ export const versionedAgents = {
                     { type: "Mindscape 6", name: "Casa y Calle Sexta", description: "...", tags: ["Electrico"] }
 
 
+                ],
+                hotfixes: [
+                    {
+                        id: 1,
+                        revision: "14050658",
+                        date: "2026-03-04",
+                        skills: [
+                            { type: "Ataque Básico", name: "Ataque Cargado: Beso de Serpiente", description: "Al poseer (Sombra de Serpiente) mantener pulsado [Icono Ataque] para activar: Cissia salta en el aire y fija el objetivo, luego cae al suelo infligiendo Daño Eléctrico a los enemigos en el área; durante el periodo de fijación, mantener pulsado [Icono Ataque] o arrastrar el stick permite extender el tiempo de fijación, y controlar libremente el punto de caída; al activar el movimiento consume 1 capa de (Sombra de Serpiente); tras golpear al enemigo, consume rápidamente todas las (Toxinas) y activa (Hueso Corrosivo); al activar el movimiento, activará (Asistencia Rápida); posee efecto de invencibilidad durante la ejecución del movimiento." },
+                            { type: "Mindscape 6", name: "Casa y Calle Sexta", description: "Cada vez que se activa (Hueso Corrosivo), obtiene 1 capa de (Marca de Hueso Corrosivo); cuando cualquier personaje activa (Ataque Básico), (Ataque de Carrera) o (Contraataque de Evasión) y golpea a un enemigo, consume 1 capa de (Marca de Hueso Corrosivo), activando 1 vez un (Hueso Corrosivo) especial, este (Hueso Corrosivo) no puede acumular ni obtener (Sombra de Serpiente), cada personaje puede consumir como máximo 1 capa de (Marca de Hueso Corrosivo) en un intervalo de 0.5 segundos.", tags: ["Electrico"] }
+                        ]
+                    }
                 ]
             }
         }
@@ -298,14 +309,15 @@ export function getAgentSkills(agentId) {
 
     allVersions.forEach(version => {
         const vData = agent.versions[version];
-        if (!vData.skills || !Array.isArray(vData.skills)) return;
 
-        vData.skills.forEach(skill => {
+        // Get the latest skills for this version (original + hotfix merged)
+        const latestSkills = getLatestSkillsForVersion(vData);
+        if (!latestSkills || !Array.isArray(latestSkills)) return;
+
+        latestSkills.forEach(skill => {
             const type = skill.type || "Unknown";
             const name = skill.name || "Unknown";
 
-            // Use skill name as key for proper matching across versions
-            // This ensures new skills with different names appear as [NUEVA]
             const key = `${type}::${name}`;
 
             if (!skillMap.has(key)) {
@@ -322,3 +334,85 @@ export function getAgentSkills(agentId) {
 
     return Array.from(skillMap.values());
 }
+
+/**
+ * Merge hotfix skills into the original version skills
+ * Returns the latest version of each skill (last hotfix wins)
+ * @param {Object} versionData - The version data object
+ * @returns {Array} Merged skills array
+ */
+function getLatestSkillsForVersion(versionData) {
+    if (!versionData || !versionData.skills) return [];
+
+    // If no hotfixes, return original skills
+    if (!versionData.hotfixes || versionData.hotfixes.length === 0) {
+        return versionData.skills;
+    }
+
+    // Start with original skills
+    const skillsByType = new Map();
+    versionData.skills.forEach(skill => {
+        const key = `${skill.type}::${skill.name}`;
+        skillsByType.set(key, { ...skill });
+    });
+
+    // Apply hotfixes in order (last hotfix wins)
+    versionData.hotfixes.forEach(hotfix => {
+        if (!hotfix.skills) return;
+        hotfix.skills.forEach(hfSkill => {
+            // Find the original skill by type to replace it
+            // A hotfix skill replaces the skill with matching type
+            const existingKeys = [...skillsByType.keys()].filter(k => k.startsWith(`${hfSkill.type}::`));
+            if (existingKeys.length > 0) {
+                // Remove old skill(s) of same type and add the hotfix version
+                existingKeys.forEach(k => skillsByType.delete(k));
+            }
+            const key = `${hfSkill.type}::${hfSkill.name}`;
+            skillsByType.set(key, { ...hfSkill });
+        });
+    });
+
+    return Array.from(skillsByType.values());
+}
+
+/**
+ * Get all hotfixes for a specific agent version
+ * @param {number} agentId
+ * @param {string} versionLabel
+ * @returns {Array} Array of hotfix objects
+ */
+export function getAgentHotfixes(agentId, versionLabel) {
+    const agent = versionedAgents[agentId];
+    if (!agent || !agent.versions || !agent.versions[versionLabel]) return [];
+    return agent.versions[versionLabel].hotfixes || [];
+}
+
+/**
+ * Get a specific hotfix data
+ * @param {number} agentId
+ * @param {string} versionLabel
+ * @param {number} hotfixId
+ * @returns {Object|null} The hotfix data
+ */
+export function getAgentHotfixData(agentId, versionLabel, hotfixId) {
+    const hotfixes = getAgentHotfixes(agentId, versionLabel);
+    return hotfixes.find(hf => hf.id === hotfixId) || null;
+}
+
+/**
+ * Get the version data with latest hotfix skills merged in
+ * Used by the main diff view to always show the most current data
+ * @param {number} agentId
+ * @param {string} versionLabel
+ * @returns {Object|null} Version data with merged skills
+ */
+export function getAgentLatestVersionData(agentId, versionLabel) {
+    const versionData = getAgentVersionData(agentId, versionLabel);
+    if (!versionData) return null;
+
+    return {
+        ...versionData,
+        skills: getLatestSkillsForVersion(versionData)
+    };
+}
+
