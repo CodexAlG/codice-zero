@@ -18,6 +18,17 @@ export const versionedAgents = {
     //             potential: { name: "string", description: "string" },
     //             skills: [
     //                 { type: "string", name: "string", description: "string", tags: ["string"] }
+    //             ],
+    //             hotfixes: [
+    //                 {
+    //                     id: number,           // ID secuencial (1, 2, 3...) — se usa en la URL
+    //                     revision: "string",    // Número de revisión del juego (ej: "14050658")
+    //                     date: "YYYY-MM-DD",
+    //                     skills: [
+    //                         { type: "string", name: "string", description: "string", tags: ["string"] }
+    //                         // Solo las habilidades que cambiaron en este hotfix
+    //                     ]
+    //                 }
     //             ]
     //         }
     //     }

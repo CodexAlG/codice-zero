@@ -16,7 +16,21 @@ export const versionedWeapons = {
     //                 refinements: [
     //                     { level: number, DañoIgnored: "string", Daño: "string", DañoCritico: "string" }
     //                 ]
-    //             }
+    //             },
+    //             hotfixes: [
+    //                 {
+    //                     id: number,           // ID secuencial (1, 2, 3...) — se usa en la URL
+    //                     revision: "string",    // Número de revisión del juego (ej: "14050658")
+    //                     date: "YYYY-MM-DD",
+    //                     effect: {
+    //                         title: "string",
+    //                         description: "string",
+    //                         refinements: [...]
+    //                     },
+    //                     detailStats: { ... }
+    //                     // Solo los campos que cambiaron en este hotfix
+    //                 }
+    //             ]
     //         }
     //     }
     // }
