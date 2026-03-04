@@ -770,21 +770,26 @@ export default function BetaDiffViewer() {
             <div className="beta-diff-viewer">
                 {/* Hotfix Header */}
                 <div className="diff-header" style={{ borderColor: 'rgba(239, 68, 68, 0.3)' }}>
-                    <div className="flex items-center gap-4">
+                    <div className="flex items-center gap-5">
                         {entityIcon && (
                             <img
                                 src={entityIcon}
                                 alt={selectedEntity.name}
-                                className="w-16 h-16 rounded-xl border border-white/10 object-cover"
+                                className="rounded-xl border-2 border-red-500/30 object-cover shadow-lg shadow-red-500/10"
+                                style={{ width: '80px', height: '80px' }}
                             />
                         )}
                         <div>
-                            <div className="flex items-center gap-2 mb-1">
-                                <span className="px-2 py-0.5 bg-red-500/20 text-red-400 text-xs font-bold rounded uppercase tracking-wider">Hotfix #{hotfixId}</span>
-                                <span className="text-[#71717a] text-xs">{selectedVersion}</span>
-                                {hotfixData.date && <span className="text-[#52525b] text-xs">• {hotfixData.date}</span>}
+                            <div className="flex items-center gap-3 mb-2">
+                                <span className="px-3 py-1 bg-red-500/20 text-red-400 text-sm font-bold rounded-md uppercase tracking-wider border border-red-500/30">
+                                    Hotfix Rev. {hotfixData.revision || hotfixId}
+                                </span>
                             </div>
-                            <h1 className="text-xl font-bold text-white m-0">{selectedEntity.name}</h1>
+                            <h1 className="text-2xl font-bold text-white m-0 mb-1">{selectedEntity.name}</h1>
+                            <div className="flex items-center gap-2">
+                                <span className="text-[#a1a1aa] text-sm font-medium">{selectedVersion}</span>
+                                {hotfixData.date && <span className="text-[#71717a] text-sm">• {hotfixData.date}</span>}
+                            </div>
                         </div>
                     </div>
                 </div>
