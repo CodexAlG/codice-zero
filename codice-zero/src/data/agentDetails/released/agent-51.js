@@ -43,7 +43,7 @@ export default {
         {
             type: "Ataque Básico",
             name: "Ataque Cargado: Beso de Serpiente",
-            description: "Al poseer (Sombra de Serpiente) mantener pulsado [Icono Ataque] para activar: Cissia salta en el aire y fija el objetivo, luego cae al suelo infligiendo Daño Eléctrico a los enemigos en el área; al activar el movimiento consume 1 capa de (Sombra de Serpiente); tras golpear al enemigo, consume rápidamente todas las (Toxinas) y activa (Hueso Corrosivo); al activar el movimiento, activará (Asistencia Rápida); posee efecto de invencibilidad durante la ejecución del movimiento.",
+            description: "Al poseer (Sombra de Serpiente) mantener pulsado [Icono Ataque] para activar: Cissia salta en el aire y fija el objetivo, luego cae al suelo infligiendo Daño Eléctrico a los enemigos en el área; durante el periodo de fijación, mantener pulsado [Icono Ataque] o arrastrar el stick permite extender el tiempo de fijación, y controlar libremente el punto de caída; al activar el movimiento consume 1 capa de (Sombra de Serpiente); tras golpear al enemigo, consume rápidamente todas las (Toxinas) y activa (Hueso Corrosivo); al activar el movimiento, activará (Asistencia Rápida); posee efecto de invencibilidad durante la ejecución del movimiento.",
             tags: ["Electrico"]
         },
         {
@@ -157,7 +157,7 @@ export default {
         {
             type: "Mindscape 6",
             name: "Casa y Calle Sexta",
-            description: "...",
+            description: "Cada vez que se activa (Hueso Corrosivo), obtiene 1 capa de (Marca de Hueso Corrosivo); cuando cualquier personaje activa (Ataque Básico), (Ataque de Carrera) o (Contraataque de Evasión) y golpea a un enemigo, consume 1 capa de (Marca de Hueso Corrosivo), activando 1 vez un (Hueso Corrosivo) especial, este (Hueso Corrosivo) no puede acumular ni obtener (Sombra de Serpiente), cada personaje puede consumir como máximo 1 capa de (Marca de Hueso Corrosivo) en un intervalo de 0.5 segundos.",
             tags: ["Electrico"]
         },
 
