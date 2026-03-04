@@ -351,30 +351,24 @@ function getLatestSkillsForVersion(versionData) {
         return versionData.skills;
     }
 
-    // Start with original skills
-    const skillsByType = new Map();
-    versionData.skills.forEach(skill => {
-        const key = `${skill.type}::${skill.name}`;
-        skillsByType.set(key, { ...skill });
-    });
+    // Start with a copy of original skills array (preserves order!)
+    const result = versionData.skills.map(s => ({ ...s }));
 
     // Apply hotfixes in order (last hotfix wins)
     versionData.hotfixes.forEach(hotfix => {
         if (!hotfix.skills) return;
         hotfix.skills.forEach(hfSkill => {
-            // Find the original skill by type to replace it
-            // A hotfix skill replaces the skill with matching type
-            const existingKeys = [...skillsByType.keys()].filter(k => k.startsWith(`${hfSkill.type}::`));
-            if (existingKeys.length > 0) {
-                // Remove old skill(s) of same type and add the hotfix version
-                existingKeys.forEach(k => skillsByType.delete(k));
+            // Find matching skill by name (exact match)
+            const idx = result.findIndex(s => s.name === hfSkill.name);
+            if (idx !== -1) {
+                // Replace in-place — keeps original position/order
+                result[idx] = { ...hfSkill };
             }
-            const key = `${hfSkill.type}::${hfSkill.name}`;
-            skillsByType.set(key, { ...hfSkill });
+            // If name not found, skill might be new — don't add to avoid duplication
         });
     });
 
-    return Array.from(skillsByType.values());
+    return result;
 }
 
 /**

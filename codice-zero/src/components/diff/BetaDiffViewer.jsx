@@ -758,12 +758,12 @@ export default function BetaDiffViewer() {
             for (let i = allHotfixes.length - 1; i >= 0; i--) {
                 const hf = allHotfixes[i];
                 if (hf.id >= hotfixId) continue;
-                const prevSkill = hf.skills?.find(s => s.type === hotfixSkill.type);
+                const prevSkill = hf.skills?.find(s => s.name === hotfixSkill.name);
                 if (prevSkill) return prevSkill;
             }
 
             // Fall back to original
-            return originalData.skills.find(s => s.type === hotfixSkill.type);
+            return originalData.skills.find(s => s.name === hotfixSkill.name);
         };
 
         return (
