@@ -4,7 +4,7 @@ export const driveDiscs = [
     id: 9928,
     name: "Notas de los Encadenados",
     leak: "Beta",
-    twoPiece: "Daño de Hielo +10%",
+    twoPiece: "Daño Hielo +10%",
     fourPiece: "Cuando el portador activa (Desorden), la Maestría de Anomalía del portador aumenta en 48 puntos, con una duración de 30 segundos; al activarse de nuevo se reinicia la duración. Cuando el portador activa el efecto de (Congelación), el daño de Anomalía de Atributo infligido por el portador y el daño de (Desorden) aumentan un 16%, con una duración de 30 segundos, al activarse de nuevo se reinicia la duración.",
     image: "/CodiceZero/Discos/SuitNotesFromtheChained.png",
   },
