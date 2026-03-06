@@ -43,13 +43,13 @@ export default {
         {
             type: "Ataque Básico",
             name: "Ataque Cargado: Beso de Serpiente",
-            description: "Al poseer (Sombra de Serpiente) mantener pulsado [Icono Ataque] para activar: Cissia salta en el aire y fija el objetivo, luego cae al suelo infligiendo Daño Eléctrico a los enemigos en el área; durante el periodo de fijación, mantener pulsado [Icono Ataque] o arrastrar el stick permite extender el tiempo de fijación, y controlar libremente el punto de caída; al activar el movimiento consume 1 capa de (Sombra de Serpiente); tras golpear al enemigo, consume rápidamente todas las (Toxinas) y activa (Hueso Corrosivo); al activar el movimiento, activará (Asistencia Rápida); posee efecto de invencibilidad durante la ejecución del movimiento.",
+            description: "Al poseer (Sombra de Serpiente) mantener pulsado [Icono Ataque] para activar: Cissia salta en el aire y fija el objetivo, luego cae al suelo infligiendo Daño Eléctrico a los enemigos en el área; durante el periodo de fijación, mantener pulsado [Icono Ataque] y arrastrar el stick permite extender el tiempo de fijación, y controlar libremente el punto de caída; por cada 6 puntos de (Toxina) obtenidos, obtiene 1 capa del efecto (Sombra de Serpiente), pudiendo obtener hasta un máximo de 3 capas; al entrar al campo de batalla, obtiene 1 capa de (Sombra de Serpiente); al activar el movimiento consume (Sombra de Serpiente); tras golpear al enemigo, consume rápidamente todas las (Toxinas) y activa (Hueso Corrosivo); al activar el movimiento, activará (Asistencia Rápida); posee efecto de invencibilidad durante la ejecución del movimiento.",
             tags: ["Electrico"]
         },
         {
             type: "Ataque Básico",
             name: "Hueso Corrosivo",
-            description: "Inflige Daño Eléctrico a los enemigos cercanos, cada vez que se activa, aumenta su propia Prababilidad Critica en un 6%, con una duración de 15 segundos, acumulable hasta un máxmimo de 3 capas, al activarse de nuevo se reinicia la duración; por cada 6 veces que se activa, obtiene 1 capa del efecto (Sombra de Serptiene), pudiendo obtener hasta un máxmimo de 2 capas; al entrar al campo de batalla, obtiene 1 capa del efecto (Sombra de Serpiente).",
+            description: "Inflige Daño Eléctrico a los enemigos cercanos; cada vez que se activa, aumenta su propia Probabilidad Crítica en un 6%, con una duración de 15 segundos, acumulable hasta un máximo de 3 capas, al activarse de nuevo se reinicia la duración.",
             tags: ["Electrico"]
         },
         {
@@ -121,7 +121,7 @@ export default {
         {
             type: "Técnica Definitiva",
             name: "Técnica Definitiva: Miedo Reptante",
-            description: "Cuando el nivel de decibelios llega a (Máximo), pulsar [Icono Definitiva]: Realiza un ataque de aplastamiento hacia adelante, infligiendo una gran cantidad de Daño Eléctrico;tras lanzar el movimiento, obtiene 3 puntos de (Toxina); tras lanzar el movimiento, despliega (Velo Etereo: Ojo de Serpiente), con una duración de 30 segundos, durante este periodo la Probabilidad Crítica de todo el equipo aumenta un 8 %; Antes de volver a desplegar (Velo Etereo: Ojo de Serpiente), se cerrará el (Velo Etereo: Ojo de Serpiente) existente; al golpear al enemigo con el movimiento, activara (Asistencia Rápida); posee efecto de invencibilidad durante la ejecución del movimiento.",
+            description: "Cuando el nivel de decibelios llega a (Máximo), pulsar [Icono Definitiva]: Realiza un ataque de aplastamiento hacia adelante, infligiendo una gran cantidad de Daño Eléctrico; tras lanzar el movimiento, obtiene 3 puntos de (Toxina); tras lanzar el movimiento, despliega (Velo Etéreo: Sangre Fría), con una duración de 30 segundos, durante este periodo el Daño de Golpe Crítico de todo el equipo aumenta un 8%; Antes de volver a desplegar (Velo Etéreo: Sangre Fría), se cerrará el (Velo Etéreo: Sangre Fría) existente; al golpear al enemigo con el movimiento, activará (Asistencia Rápida); posee efecto de invencibilidad durante la ejecución del movimiento.",
             tags: ["Electrico"]
         },
         {
@@ -145,7 +145,7 @@ export default {
         {
             type: "Mindscape 4",
             name: "Despertar del Villano",
-            description: "Al activar (Técnica Especial EX), (Ataque en Cadena) o (Técnica Definitiva), obtiene 1 capa de (Colmillo Venenoso), acumulable hasta un máximo de 3 capas; al activar (Ataque Cargado: Beso de Serpiente), consume todos los (Colmillos Venenosos), por cada 1 capa consumida activa adicionalmente 1 vez (Hueso Corrosivo) que no consume (Toxina).",
+            description: "Al activar (Técnica Especial EX), (Ataque en Cadena) o (Técnica Definitiva), obtiene 1 capa de (Despertar), acumulable hasta un máximo de 3 capas; al activar (Ataque Cargado: Beso de Serpiente), consume todos los (Despertar), por cada 1 capa consumida activa adicionalmente 1 vez un (Hueso Corrosivo) especial que no consume (Toxina), este (Hueso Corrosivo) no puede causar valor de Aturdimiento.",
             tags: ["Electrico"]
         },
         {
@@ -157,7 +157,7 @@ export default {
         {
             type: "Mindscape 6",
             name: "Casa y Calle Sexta",
-            description: "Cada vez que se activa (Hueso Corrosivo), obtiene 1 capa de (Marca de Hueso Corrosivo); cuando cualquier personaje activa (Ataque Básico), (Ataque de Carrera) o (Contraataque de Evasión) y golpea a un enemigo, consume 1 capa de (Marca de Hueso Corrosivo), activando 1 vez un (Hueso Corrosivo) especial, este (Hueso Corrosivo) no puede acumular ni obtener (Sombra de Serpiente), cada personaje puede consumir como máximo 1 capa de (Marca de Hueso Corrosivo) en un intervalo de 0.5 segundos.",
+            description: "Cada vez que se activa (Hueso Corrosivo), obtiene 1 capa de (Marca de Hueso Corrosivo); cuando cualquier personaje del equipo, excepto (Hueso Corrosivo), golpea a un enemigo con un ataque, consume 1 capa de (Marca de Hueso Corrosivo), activando 1 vez un (Hueso Corrosivo) especial, este (Hueso Corrosivo) no puede causar valor de Aturdimiento, cada personaje puede consumir como máximo 1 capa de (Marca de Hueso Corrosivo) en un intervalo de 2 segundos.",
             tags: ["Electrico"]
         },
 
