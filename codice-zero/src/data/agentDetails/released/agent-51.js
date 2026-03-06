@@ -85,7 +85,7 @@ export default {
         {
             type: "Asistencia",
             name: "Asistencia Rápida: Dispostivo de Alarma",
-            description: "Cuando el personaje en uso es lanzado por los aires, pulsar [Icono Assist]: Salta hacia adelante y realiza un ataque de barrido al aterrizar, infligiendo Daño Eléctrico; al golpear a un enemigo, posee efecto de invencibilidad durante la ejecución del movimiento.",
+            description: "Cuando el personaje en uso es lanzado por los aires, pulsar [Icono Assist]: Salta hacia adelante y realiza un ataque de barrido al aterrizar, infligiendo Daño Eléctrico; durante la ejecución del movimiento, se puede conectar rápidamente con (Técnica Especial: Dientes de Mono), (Técnica Especial EX: Colmillo Venenoso) y (Ataque Cargado: Beso de Serpiente); posee efecto de invencibilidad durante la ejecución del movimiento.",
             tags: ["Electrico"]
         },
         {
@@ -121,7 +121,7 @@ export default {
         {
             type: "Técnica Definitiva",
             name: "Técnica Definitiva: Miedo Reptante",
-            description: "Cuando el nivel de decibelios llega a (Máximo), pulsar [Icono Definitiva]: Realiza un ataque de aplastamiento hacia adelante, infligiendo una gran cantidad de Daño Eléctrico; tras lanzar el movimiento, obtiene 3 puntos de (Toxina); tras lanzar el movimiento, despliega (Velo Etéreo: Sangre Fría), con una duración de 30 segundos, durante este periodo el Daño de Golpe Crítico de todo el equipo aumenta un 8%; Antes de volver a desplegar (Velo Etéreo: Sangre Fría), se cerrará el (Velo Etéreo: Sangre Fría) existente; al golpear al enemigo con el movimiento, activará (Asistencia Rápida); posee efecto de invencibilidad durante la ejecución del movimiento.",
+            description: "Cuando el nivel de decibelios llega a (Máximo), pulsar [Icono Definitiva]: Realiza un ataque de aplastamiento hacia adelante, infligiendo una gran cantidad de Daño Eléctrico; tras lanzar el movimiento, obtiene 3 puntos de (Toxina); tras lanzar el movimiento, despliega (Velo Etéreo: Sangre Fría), con una duración de 30 segundos, durante este periodo el Daño de Golpe Crítico de todos los personajes del equipo aumenta un 8%; Antes de volver a desplegar (Velo Etéreo: Sangre Fría), se cerrará el (Velo Etéreo: Sangre Fría) existente; al golpear al enemigo con el movimiento, activará (Asistencia Rápida); posee efecto de invencibilidad durante la ejecución del movimiento.",
             tags: ["Electrico"]
         },
         {
@@ -157,7 +157,7 @@ export default {
         {
             type: "Mindscape 6",
             name: "Casa y Calle Sexta",
-            description: "Cada vez que se activa (Hueso Corrosivo), obtiene 1 capa de (Marca de Hueso Corrosivo); cuando cualquier personaje del equipo, excepto (Hueso Corrosivo), golpea a un enemigo con un ataque, consume 1 capa de (Marca de Hueso Corrosivo), activando 1 vez un (Hueso Corrosivo) especial, este (Hueso Corrosivo) no puede causar valor de Aturdimiento, cada personaje puede consumir como máximo 1 capa de (Marca de Hueso Corrosivo) en un intervalo de 2 segundos.",
+            description: "Cada vez que se activa (Hueso Corrosivo), obtiene 1 capa de (Marca de Hueso Corrosivo); cuando cualquier personaje del equipo, excepto (Hueso Corrosivo), golpea a un enemigo con un ataque, consume 1 capa de (Marca de Hueso Corrosivo), activando 1 vez un (Hueso Corrosivo) especial, este (Hueso Corrosivo) no puede causar valor de Aturdimiento, cada personaje puede consumir como máximo 1 capa de (Marca de Hueso Corrosivo) en un intervalo de 3 segundos.",
             tags: ["Electrico"]
         },
 
