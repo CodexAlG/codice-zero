@@ -496,10 +496,9 @@ export default function BetaDiffViewer() {
             // Strip parentheses before diffing to prevent the diff algorithm from
             // splitting (word) across tokens. HighlightText keyword rules will still
             // match and bold the keywords without parentheses.
-            const stripParens = (t) => t.replace(/\(([^)]+)\)/g, '$1');
 
-            const nameDiff = isComparison ? compareText(protectIcons(stripParens(oldName)), protectIcons(stripParens(newName))) : [{ value: protectIcons(stripParens(newName)), added: false, removed: false }];
-            const descDiff = isComparison ? compareText(protectIcons(stripParens(oldDesc)), protectIcons(stripParens(newDesc))) : [{ value: protectIcons(stripParens(newDesc)), added: false, removed: false }];
+            const nameDiff = isComparison ? compareText(protectIcons(oldName), protectIcons(newName)) : [{ value: protectIcons(newName), added: false, removed: false }];
+            const descDiff = isComparison ? compareText(protectIcons(oldDesc), protectIcons(newDesc)) : [{ value: protectIcons(newDesc), added: false, removed: false }];
 
             const hasChanges = isComparison
                 ? (nameDiff.some(t => t.added || t.removed) || descDiff.some(t => t.added || t.removed))
@@ -657,10 +656,9 @@ export default function BetaDiffViewer() {
             return result;
         };
         // Strip parentheses so HighlightText keyword rules handle the styling
-        const stripParens = (t) => t ? t.replace(/\(([^)]+)\)/g, '$1') : '';
 
-        const newDescWithValues = stripParens(getDescriptionWithValues(newEffect.description, currentNewRefinement));
-        const oldDescWithValues = isComparison ? stripParens(getDescriptionWithValues(oldEffect.description, currentOldRefinement)) : "";
+        const newDescWithValues = getDescriptionWithValues(newEffect.description, currentNewRefinement);
+        const oldDescWithValues = isComparison ? getDescriptionWithValues(oldEffect.description, currentOldRefinement) : "";
         const descDiff = isComparison ? compareText(oldDescWithValues, newDescWithValues) : [{ value: newDescWithValues, added: false, removed: false }];
 
         return (
@@ -806,10 +804,9 @@ export default function BetaDiffViewer() {
                                 const oldName = prevSkill?.name || "";
                                 const newName = hfSkill.name || "";
 
-                                const stripParens = (t) => t.replace(/\(([^)]+)\)/g, '$1');
 
-                                const nameDiff = compareText(protectIcons(stripParens(oldName)), protectIcons(stripParens(newName)));
-                                const descDiff = compareText(protectIcons(stripParens(oldDesc)), protectIcons(stripParens(newDesc)));
+                                const nameDiff = compareText(protectIcons(oldName), protectIcons(newName));
+                                const descDiff = compareText(protectIcons(oldDesc), protectIcons(newDesc));
 
                                 return (
                                     <div key={hfSkill.type + index} className="skill-group icon-override">
