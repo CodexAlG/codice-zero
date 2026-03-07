@@ -157,7 +157,7 @@ export default {
         {
             type: "Mindscape 6",
             name: "Casa y Calle Sexta",
-            description: "Cada vez que se activa (Hueso Corrosivo), obtiene 1 capa de (Marca de Hueso Corrosivo); cuando cualquier personaje del equipo, excepto (Hueso Corrosivo), golpea a un enemigo con un ataque, consume 1 capa de (Marca de Hueso Corrosivo), activando 1 vez un (Hueso Corrosivo) especial, este (Hueso Corrosivo) no puede causar valor de Aturdimiento, cada personaje puede consumir como máximo 1 capa de (Marca de Hueso Corrosivo) en un intervalo de 3 segundos.",
+            description: "Cada vez que se activa (Hueso Corrosivo), obtiene 1 capa de (Marca de Hueso Corrosivo); cuando cualquier personaje del equipo, excepto (Hueso Corrosivo), golpea a un enemigo con un ataque, consume 1 capa de (Marca de Hueso Corrosivo), activando 1 vez un (Hueso Corrosivo) especial, este (Hueso Corrosivo) no puede causar valor de Aturdimiento, se puede consumir como máximo 1 capa de (Marca de Hueso Corrosivo) en un intervalo de 3 segundos.",
             tags: ["Electrico"]
         },
 
