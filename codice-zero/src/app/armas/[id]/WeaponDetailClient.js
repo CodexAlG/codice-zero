@@ -97,8 +97,7 @@ export default function WeaponDetailClient({ params }) {
                 {/* COLUMNA IZQUIERDA: IMAGEN HERO + MATERIALES */}
                 <div className="flex flex-col items-center justify-center space-y-8 relative z-10 w-full">
                     <div className="relative aspect-square flex items-center justify-center w-full max-w-[400px] mx-auto group">
-                        {/* Fondo de aura premium */}
-                        <div className="absolute inset-4 blur-[80px] rounded-full pointer-events-none opacity-30 group-hover:opacity-50 transition-opacity duration-700" style={{ backgroundColor: rankColor }}></div>
+
 
                         {/* Línea de borde sutil giratoria (opcional, le da un toque premium) */}
                         <div className="absolute inset-8 rounded-full border-[1px] border-white/5 bg-gradient-to-br from-white/5 to-transparent backdrop-blur-md group-hover:border-white/10 transition-colors shadow-[inset_0_0_40px_rgba(255,255,255,0.02)] hidden md:block"></div>
@@ -115,7 +114,7 @@ export default function WeaponDetailClient({ params }) {
                         </div>
                         {/* Rank Badge Header */}
                         <div className="absolute top-4 right-4 z-20 w-20 h-20 p-2 bg-black/40 backdrop-blur-md rounded-full border border-white/10 shadow-[0_10px_30px_rgba(0,0,0,0.5)] group-hover:scale-110 transition-transform duration-500 overflow-hidden flex justify-center items-center will-change-transform">
-                            <div className="absolute inset-0 opacity-20 blur-xl" style={{ backgroundColor: rankColor }}></div>
+
                             <Image
                                 src={`/CodiceZero/Rango/Icon_Item_Rank_${weapon.rank}.webp`}
                                 alt={weapon.rank}
