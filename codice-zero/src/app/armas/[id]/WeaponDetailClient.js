@@ -132,35 +132,35 @@ export default function WeaponDetailClient({ params }) {
 
                     {/* 1. Header Info */}
                     <div className="relative">
-                        <div className="flex items-center gap-3 mb-4">
-                            <div className="flex items-center gap-2 px-4 py-1.5 bg-black/50 backdrop-blur-md rounded-full border border-white/10 shadow-[inset_0_1px_1px_rgba(255,255,255,0.1)]">
-                                <Image src={`/CodiceZero/Agentes/Rol/${normalize(weapon.rol)}.webp`} alt={weapon.rol} width={16} height={16} className="invert opacity-90" unoptimized />
-                                <span className="text-xs font-black tracking-widest text-gray-300 uppercase">{weapon.rol}</span>
+                        <div className="flex items-center gap-3 mb-4 flex-wrap">
+                            <div className="flex items-center gap-2 px-5 py-2 bg-black/50 backdrop-blur-md rounded-full border border-white/10 shadow-[inset_0_1px_1px_rgba(255,255,255,0.1)]">
+                                <Image src={`/CodiceZero/Agentes/Rol/${normalize(weapon.rol)}.webp`} alt={weapon.rol} width={20} height={20} className="invert opacity-90" unoptimized />
+                                <span className="text-sm font-black tracking-widest text-gray-300 uppercase">{weapon.rol}</span>
                             </div>
-                            <span className="text-xs font-mono font-bold tracking-widest text-gray-500 bg-white/5 px-3 py-1.5 rounded-full border border-white/5">W-ENGINE</span>
+                            <span className="text-sm font-mono font-bold tracking-widest text-gray-500 bg-white/5 px-5 py-2 rounded-full border border-white/5">W-ENGINE</span>
 
                             {/* Chip Agente Exclusivo */}
                             {weapon.exclusiveAgent && (
-                                <div className="flex items-center gap-2 px-4 py-1.5 bg-yellow-500/10 rounded-full border border-yellow-500/30 backdrop-blur-md">
+                                <div className="flex items-center gap-2.5 pl-1 pr-5 py-1 bg-yellow-500/10 rounded-full border border-yellow-500/30 backdrop-blur-md">
                                     <Image
                                         src={weapon.exclusiveAgent.icon}
                                         alt={weapon.exclusiveAgent.name}
-                                        width={28}
-                                        height={28}
-                                        className="rounded-full"
+                                        width={34}
+                                        height={34}
+                                        className="rounded-full object-cover"
                                         unoptimized
                                     />
-                                    <span className="text-xs font-black tracking-widest text-yellow-400 uppercase">{weapon.exclusiveAgent.name}</span>
+                                    <span className="text-sm font-black tracking-widest text-yellow-400 uppercase">{weapon.exclusiveAgent.name}</span>
                                 </div>
                             )}
 
                             {/* Chip Advertencia Beta */}
                             {weapon.leak && weapon.leak.includes("Beta") && (
-                                <div className="flex items-center gap-2 bg-red-500/10 px-4 py-1.5 rounded-full border border-red-500/30 backdrop-blur-md shadow-[0_0_15px_rgba(239,68,68,0.2)]">
-                                    <svg className="w-3.5 h-3.5 text-red-400 animate-pulse" fill="currentColor" viewBox="0 0 20 20">
+                                <div className="flex items-center gap-2 bg-red-500/10 px-5 py-2 rounded-full border border-red-500/30 backdrop-blur-md shadow-[0_0_15px_rgba(239,68,68,0.2)]">
+                                    <svg className="w-4 h-4 text-red-400 animate-pulse" fill="currentColor" viewBox="0 0 20 20">
                                         <path fillRule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clipRule="evenodd" />
                                     </svg>
-                                    <span className="font-black text-red-400 tracking-widest uppercase text-[10px]">BETA</span>
+                                    <span className="font-black text-red-400 tracking-widest uppercase text-sm">BETA</span>
                                 </div>
                             )}
                         </div>
