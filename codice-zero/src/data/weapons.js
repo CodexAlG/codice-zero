@@ -1956,7 +1956,7 @@ export const weapons = [
         { level: 5, MaestríaAnomalía1: "90", Daño: "15%", MaestríaAnomalía2: "60" }
       ]
     },
-    image: ""
+    image: "/CodiceZero/Armas/Aturdidor/W-Engine-Delirio_de_Neon.webp"
   },
   {
     id: 5543,
@@ -1979,7 +1979,7 @@ export const weapons = [
         { level: 5, ProbablidadCrit: "40%", DañoDef: "48%" }
       ]
     },
-    image: ""
+    image: "/CodiceZero/Armas/Ataque/W-Engine-Rastreo_de_Colmillos_y_Escamas.webp"
   },
 ];
 
