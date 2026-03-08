@@ -34,6 +34,16 @@ export default {
         "text-[#00ff00]",  // Ninguno (Verde)
         "text-[#00ff00]"  // Ninguno (Verde)
     ],
+    materials: {
+        weeklyBoss: {
+            name: "",
+            icon: "",
+        },
+        eliteBoss: {
+            name: "Datos de Dimensiones Superiores: Núcleo de Corrupción Espinoso",
+            icon: "Item_Higher_Dimensional_Data_Spiked_Corruption_Core.webp"
+        }
+    },
     coreSkillScaling: [
         ["60", "720%", "360%", "900%", "63%", "90%", "15%", "11%"],
         ["70", "720%", "360%", "900%", "63%", "90%", "17.5%", "12.5%"],
