@@ -141,16 +141,16 @@ export default function WeaponDetailClient({ params }) {
 
                             {/* Chip Agente Exclusivo */}
                             {weapon.exclusiveAgent && (
-                                <div className="flex items-center gap-2 px-3 py-1.5 bg-yellow-500/10 rounded-full border border-yellow-500/30 backdrop-blur-md">
+                                <div className="flex items-center gap-2 px-4 py-1.5 bg-yellow-500/10 rounded-full border border-yellow-500/30 backdrop-blur-md">
                                     <Image
                                         src={weapon.exclusiveAgent.icon}
                                         alt={weapon.exclusiveAgent.name}
-                                        width={20}
-                                        height={20}
+                                        width={28}
+                                        height={28}
                                         className="rounded-full"
                                         unoptimized
                                     />
-                                    <span className="text-[10px] font-black tracking-widest text-yellow-400 uppercase">{weapon.exclusiveAgent.name}</span>
+                                    <span className="text-xs font-black tracking-widest text-yellow-400 uppercase">{weapon.exclusiveAgent.name}</span>
                                 </div>
                             )}
 
