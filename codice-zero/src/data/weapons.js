@@ -31,7 +31,11 @@ export const weapons = [
         { level: 5, atk: "24%", mastery: "50" }
       ]
     },
-    image: "/CodiceZero/Armas/Anomalia/W-Engine_Fusion_Compiler.webp"
+    image: "/CodiceZero/Armas/Anomalia/W-Engine_Fusion_Compiler.webp",
+    exclusiveAgent: {
+      name: "Grace",
+      icon: "/CodiceZero/ICONOS/Agent_Grace_Howard_Icon.webp"
+    }
   },
   {
     id: 5502,
@@ -53,7 +57,11 @@ export const weapons = [
         { level: 5, atk: "24%", mastery: "80%" }
       ]
     },
-    image: "/CodiceZero/Armas/Anomalia/W-Engine_Sharpened_Stinger.webp"
+    image: "/CodiceZero/Armas/Anomalia/W-Engine_Sharpened_Stinger.webp",
+    exclusiveAgent: {
+      name: "Jane Doe",
+      icon: "/CodiceZero/ICONOS/Agent_Jane_Doe_Icon.webp"
+    }
   },
   {
     id: 5503,
@@ -75,7 +83,11 @@ export const weapons = [
         { level: 5, atk: "1.2/s", tasa: "7.0%", mastery: "100" }
       ]
     },
-    image: "/CodiceZero/Armas/Anomalia/W-Engine_Flamemaker_Shaker.png" // Es PNG
+    image: "/CodiceZero/Armas/Anomalia/W-Engine_Flamemaker_Shaker.png", // Es PNG
+    exclusiveAgent: {
+      name: "Burnice",
+      icon: "/CodiceZero/ICONOS/Agent_Burnice_White_Icon.webp"
+    }
   },
   {
     id: 5504,
@@ -97,7 +109,11 @@ export const weapons = [
         { level: 5, atk: "50%", mastery: "115", damage: "35%" }
       ]
     },
-    image: "/CodiceZero/Armas/Anomalia/W-Engine_Timeweaver.webp"
+    image: "/CodiceZero/Armas/Anomalia/W-Engine_Timeweaver.webp",
+    exclusiveAgent: {
+      name: "Yanagi",
+      icon: "/CodiceZero/ICONOS/Agent_Tsukishiro_Yanagi_Icon.webp"
+    }
   },
   {
     id: 5505,
@@ -119,7 +135,11 @@ export const weapons = [
         { level: 5, atk: "80%", damage: "32%" }
       ]
     },
-    image: "/CodiceZero/Armas/Anomalia/W-Engine_Hailstorm_Shrine.webp"
+    image: "/CodiceZero/Armas/Anomalia/W-Engine_Hailstorm_Shrine.webp",
+    exclusiveAgent: {
+      name: "Miyabi",
+      icon: "/CodiceZero/ICONOS/Agent_Hoshimi_Miyabi_Icon.webp"
+    }
   },
   {
     id: 5506,
@@ -141,7 +161,11 @@ export const weapons = [
         { level: 5, atk: "64%", damage: "32" }
       ]
     },
-    image: "/CodiceZero/Armas/Anomalia/W-Engine_Flight_of_Fancy.webp"
+    image: "/CodiceZero/Armas/Anomalia/W-Engine_Flight_of_Fancy.webp",
+    exclusiveAgent: {
+      name: "Vivian",
+      icon: "/CodiceZero/ICONOS/Agent_Vivian_Banshee_Icon.webp"
+    }
   },
   {
     id: 5507,
@@ -163,7 +187,11 @@ export const weapons = [
         { level: 5, atk: "96", damage: "32%" }
       ]
     },
-    image: "/CodiceZero/Armas/Anomalia/W-Engine_Practiced_Perfection.webp"
+    image: "/CodiceZero/Armas/Anomalia/W-Engine_Practiced_Perfection.webp",
+    exclusiveAgent: {
+      name: "Alice",
+      icon: "/CodiceZero/ICONOS/Agent_Alice_Thymefield_Icon.webp"
+    }
   },
 
   // --- RANGO A (IDs 56XX) ---
@@ -253,7 +281,11 @@ export const weapons = [
         { level: 5, atk: "12.8%", damage: "64", atkSpeed: "40%" }
       ]
     },
-    image: "/CodiceZero/Armas/Anomalia/W-Engine_Roaring_Ride.webp"
+    image: "/CodiceZero/Armas/Anomalia/W-Engine_Roaring_Ride.webp",
+    exclusiveAgent: {
+      name: "Piper",
+      icon: "/CodiceZero/ICONOS/Agent_Piper_Wheel_Icon.webp"
+    }
   },
 
   // --- RANGO B (IDs 57XX) ---
@@ -349,7 +381,11 @@ export const weapons = [
         { level: 5, atk: "40%", atkBack: "50%" }
       ]
     },
-    image: "/CodiceZero/Armas/Ataque/W-Engine_Steel_Cushion.webp"
+    image: "/CodiceZero/Armas/Ataque/W-Engine_Steel_Cushion.webp",
+    exclusiveAgent: {
+      name: "Nekomata",
+      icon: "/CodiceZero/ICONOS/Agent_Nekomiya_Mana_Icon.webp"
+    }
   },
   {
     id: 5509,
@@ -371,7 +407,11 @@ export const weapons = [
         { level: 5, atk: "7%" }
       ]
     },
-    image: "/CodiceZero/Armas/Ataque/W-Engine_The_Brimstone.webp"
+    image: "/CodiceZero/Armas/Ataque/W-Engine_The_Brimstone.webp",
+    exclusiveAgent: {
+      name: "Soldier 11",
+      icon: "/CodiceZero/ICONOS/Agent_Soldier_11_Icon.webp"
+    }
   },
   {
     id: 5510,
@@ -393,7 +433,11 @@ export const weapons = [
         { level: 5, damage: "50%", prob: "20%", probDash: "20%" }
       ]
     },
-    image: "/CodiceZero/Armas/Ataque/W-Engine_Deep_Sea_Visitor.webp"
+    image: "/CodiceZero/Armas/Ataque/W-Engine_Deep_Sea_Visitor.webp",
+    exclusiveAgent: {
+      name: "Ellen",
+      icon: "/CodiceZero/ICONOS/Agent_Ellen_Joe_Icon.webp"
+    }
   },
   {
     id: 5511,
@@ -415,7 +459,11 @@ export const weapons = [
         { level: 5, prob: "16%", damageDash: "64%", probadd: "16%" }
       ]
     },
-    image: "/CodiceZero/Armas/Ataque/W-Engine_Zanshin_Herb_Case.webp"
+    image: "/CodiceZero/Armas/Ataque/W-Engine_Zanshin_Herb_Case.webp",
+    exclusiveAgent: {
+      name: "Harumasa",
+      icon: "/CodiceZero/ICONOS/Agent_Asaba_Harumasa_Icon.webp"
+    }
   },
   {
     id: 5512,
@@ -437,7 +485,11 @@ export const weapons = [
         { level: 5, prob: "30%", damageDash: "70%" }
       ]
     },
-    image: "/CodiceZero/Armas/Ataque/W-Engine_Riot_Suppressor_Mark_VI.webp"
+    image: "/CodiceZero/Armas/Ataque/W-Engine_Riot_Suppressor_Mark_VI.webp",
+    exclusiveAgent: {
+      name: "Zhu Yuan",
+      icon: "/CodiceZero/ICONOS/Agent_Zhu_Yuan_Icon.webp"
+    }
   },
   {
     id: 5513,
@@ -459,7 +511,11 @@ export const weapons = [
         { level: 5, DañoCrit: "72%", DEF: "40%" }
       ]
     },
-    image: "/CodiceZero/Armas/Ataque/W-Engine_Myriad_Eclipse.webp"
+    image: "/CodiceZero/Armas/Ataque/W-Engine_Myriad_Eclipse.webp",
+    exclusiveAgent: {
+      name: "Hugo",
+      icon: "/CodiceZero/ICONOS/Agent_Hugo_Vlad_Icon.webp"
+    }
   },
   {
     id: 5514,
@@ -481,7 +537,11 @@ export const weapons = [
         { level: 5, prob: "32%", DEF: "24%" }
       ]
     },
-    image: "/CodiceZero/Armas/Ataque/W-Engine_Bellicose_Blaze.webp"
+    image: "/CodiceZero/Armas/Ataque/W-Engine_Bellicose_Blaze.webp",
+    exclusiveAgent: {
+      name: "Orphie",
+      icon: "/CodiceZero/ICONOS/Agent_Orphie_Magnusson_&_Magus_Icon.webp"
+    }
   },
   {
     id: 5515,
@@ -503,7 +563,11 @@ export const weapons = [
         { level: 5, DañoCrit: "80%", FireRes: "20%" }
       ]
     },
-    image: "/CodiceZero/Armas/Ataque/W-Engine_Heartstring_Nocturne.webp"
+    image: "/CodiceZero/Armas/Ataque/W-Engine_Heartstring_Nocturne.webp",
+    exclusiveAgent: {
+      name: "Evelyn",
+      icon: "/CodiceZero/ICONOS/Agent_Evelyn_Chevalier_Icon.webp"
+    }
   },
   {
     id: 5516,
@@ -525,7 +589,11 @@ export const weapons = [
         { level: 5, DañoAnomalo: "48%", dañocritadd: "16%", Electrico: "32%" }
       ]
     },
-    image: "/CodiceZero/Armas/Ataque/W-Engine_Severed_Innocence.webp"
+    image: "/CodiceZero/Armas/Ataque/W-Engine_Severed_Innocence.webp",
+    exclusiveAgent: {
+      name: "Sanby",
+      icon: "/CodiceZero/ICONOS/Agent_Soldier_0_-_Anby_Icon.webp"
+    }
   },
   {
     id: 5517,
@@ -547,7 +615,11 @@ export const weapons = [
         { level: 5, ProbCrit: "23%", DañoElectrico: "20%", DEF: "32%" }
       ]
     },
-    image: "/CodiceZero/Armas/Ataque/W-Engine_Cordis_Germina.webp"
+    image: "/CodiceZero/Armas/Ataque/W-Engine_Cordis_Germina.webp",
+    exclusiveAgent: {
+      name: "Seed",
+      icon: "/CodiceZero/ICONOS/Agent_Seed_Icon.webp"
+    }
   },
 
   // --- RANGO A (A partir de ID 5605) ---
@@ -571,7 +643,11 @@ export const weapons = [
         { level: 5, ATK: "57.5%" }
       ]
     },
-    image: "/CodiceZero/Armas/Ataque/W-Engine_Starlight_Engine_Replica.webp"
+    image: "/CodiceZero/Armas/Ataque/W-Engine_Starlight_Engine_Replica.webp",
+    exclusiveAgent: {
+      name: "Billy",
+      icon: "/CodiceZero/ICONOS/Agent_Billy_Kid_Icon.webp"
+    }
   },
   {
     id: 5606,
@@ -637,7 +713,11 @@ export const weapons = [
         { level: 5, RecupEnergia: "0.72", dañoFisico: "4.8%" }
       ]
     },
-    image: "/CodiceZero/Armas/Ataque/W-Engine_Housekeeper.webp"
+    image: "/CodiceZero/Armas/Ataque/W-Engine_Housekeeper.webp",
+    exclusiveAgent: {
+      name: "Corin",
+      icon: "/CodiceZero/ICONOS/Agent_Corin_Wickes_Icon.webp"
+    }
   },
   {
     id: 5609,
@@ -659,7 +739,11 @@ export const weapons = [
         { level: 5, dañoElectrico: "80%" }
       ]
     },
-    image: "/CodiceZero/Armas/Ataque/W-Engine_Drill_Rig_-_Red_Axis.webp"
+    image: "/CodiceZero/Armas/Ataque/W-Engine_Drill_Rig_-_Red_Axis.webp",
+    exclusiveAgent: {
+      name: "Anton",
+      icon: "/CodiceZero/ICONOS/Agent_Anton_Ivanov_Icon.webp"
+    }
   },
   {
     id: 5610,
@@ -821,7 +905,11 @@ export const weapons = [
         { level: 5, ATK: "12%" }
       ]
     },
-    image: "/CodiceZero/Armas/Aturdidor/W-Engine_The_Restrained.webp"
+    image: "/CodiceZero/Armas/Aturdidor/W-Engine_The_Restrained.webp",
+    exclusiveAgent: {
+      name: "Lycaon",
+      icon: "/CodiceZero/ICONOS/Agent_Von_Lycaon_Icon.webp"
+    }
   },
   {
     id: 5519,
@@ -843,7 +931,11 @@ export const weapons = [
         { level: 5, RegeneracionEnergy: "1.2/s", impacto: "20%" }
       ]
     },
-    image: "/CodiceZero/Armas/Aturdidor/W-Engine_Hellfire_Gears.webp"
+    image: "/CodiceZero/Armas/Aturdidor/W-Engine_Hellfire_Gears.webp",
+    exclusiveAgent: {
+      name: "Koleda",
+      icon: "/CodiceZero/ICONOS/Agent_Koleda_Belobog_Icon.webp"
+    }
   },
   {
     id: 5520,
@@ -865,7 +957,11 @@ export const weapons = [
         { level: 5, Impacto: "1.4%", daño: "32%" }
       ]
     },
-    image: "/CodiceZero/Armas/Aturdidor/W-Engine_Ice-Jade_Teapot.webp"
+    image: "/CodiceZero/Armas/Aturdidor/W-Engine_Ice-Jade_Teapot.webp",
+    exclusiveAgent: {
+      name: "Qingyi",
+      icon: "/CodiceZero/ICONOS/Agent_Qingyi_Icon.webp"
+    }
   },
   {
     id: 5521,
@@ -887,7 +983,11 @@ export const weapons = [
         { level: 5, Impacto: "40%", daño: "2.5%" }
       ]
     },
-    image: "/CodiceZero/Armas/Aturdidor/W-Engine_Blazing_Laurel.webp"
+    image: "/CodiceZero/Armas/Aturdidor/W-Engine_Blazing_Laurel.webp",
+    exclusiveAgent: {
+      name: "Lighter",
+      icon: "/CodiceZero/ICONOS/Agent_Lighter_Icon.webp"
+    }
   },
   {
     id: 5522,
@@ -909,7 +1009,11 @@ export const weapons = [
         { level: 5, DEF: "40%", Impacto: "6.4%", ImpactAdd: "12.8%" }
       ]
     },
-    image: "/CodiceZero/Armas/Aturdidor/W-Engine_Spectral_Gaze.webp"
+    image: "/CodiceZero/Armas/Aturdidor/W-Engine_Spectral_Gaze.webp",
+    exclusiveAgent: {
+      name: "Trigger",
+      icon: "/CodiceZero/ICONOS/Agent_Trigger_Icon.webp"
+    }
   },
   {
     id: 5523,
@@ -931,7 +1035,11 @@ export const weapons = [
         { level: 5, Daze: "44.8%", Damage: "16%" }
       ]
     },
-    image: "/CodiceZero/Armas/Aturdidor/W-Engine_Roaring_Fur-nace.webp"
+    image: "/CodiceZero/Armas/Aturdidor/W-Engine_Roaring_Fur-nace.webp",
+    exclusiveAgent: {
+      name: "Jufufu",
+      icon: "/CodiceZero/ICONOS/Agent_Ju_Fufu_Icon.webp"
+    }
   },
 
   // --- RANGO A (Desde 5613) ---
@@ -1021,7 +1129,11 @@ export const weapons = [
         { level: 5, Electrico: "24%", Energy: "27.5%" }
       ]
     },
-    image: "/CodiceZero/Armas/Aturdidor/W-Engine_Demara_Battery_Mark_II.webp"
+    image: "/CodiceZero/Armas/Aturdidor/W-Engine_Demara_Battery_Mark_II.webp",
+    exclusiveAgent: {
+      name: "Anby",
+      icon: "/CodiceZero/ICONOS/Agent_Anby_Demara_Icon.webp"
+    }
   },
   {
     id: 5617,
@@ -1043,7 +1155,11 @@ export const weapons = [
         { level: 5, DañoFisico: "24%", Daze: "16%" }
       ]
     },
-    image: "/CodiceZero/Armas/Aturdidor/W-Engine_Box_Cutter.webp"
+    image: "/CodiceZero/Armas/Aturdidor/W-Engine_Box_Cutter.webp",
+    exclusiveAgent: {
+      name: "Pulchra",
+      icon: "/CodiceZero/ICONOS/Agent_Pulchra_Fellini_Icon.webp"
+    }
   },
 
 
@@ -1140,7 +1256,11 @@ export const weapons = [
         { level: 5, Escudo: "62%", Daño: "36%", Daze: "24%" }
       ]
     },
-    image: "/CodiceZero/Armas/Defensa/W-Engine_Tusks_of_Fury.webp"
+    image: "/CodiceZero/Armas/Defensa/W-Engine_Tusks_of_Fury.webp",
+    exclusiveAgent: {
+      name: "Caesar",
+      icon: "/CodiceZero/ICONOS/Agent_Caesar_King_Icon.webp"
+    }
   },
 
 
@@ -1165,7 +1285,11 @@ export const weapons = [
         { level: 5, DañoReducido: "11.5%", GolpeCritico: "960%" }
       ]
     },
-    image: "/CodiceZero/Armas/Defensa/W-Engine_Big_Cylinder.png" // Ojo: PNG
+    image: "/CodiceZero/Armas/Defensa/W-Engine_Big_Cylinder.png", // Ojo: PNG
+    exclusiveAgent: {
+      name: "Ben Bigger",
+      icon: "/CodiceZero/ICONOS/Agent_Ben_Bigger_Icon.webp"
+    }
   },
   {
     id: 5624,
@@ -1297,7 +1421,11 @@ export const weapons = [
         { level: 5, Energia: "0.64/s", Anomalía: "55%" }
       ]
     },
-    image: "/CodiceZero/Armas/Defensa/W-Engine_Peacekeeper_-_Specialized.png" // Ojo: PNG
+    image: "/CodiceZero/Armas/Defensa/W-Engine_Peacekeeper_-_Specialized.png",
+    exclusiveAgent: {
+      name: "Seth Lowell",
+      icon: "/CodiceZero/ICONOS/Agent_Seth_Lowell_Icon.webp"
+    } // Ojo: PNG
   },
 
   // --- RANGO B (Desde 5713 para evitar conflictos) ---
@@ -1371,7 +1499,11 @@ export const weapons = [
         { level: 5, DañoHieloPuro: "10%", ProbabilidadCrit: "32%" }
       ]
     },
-    image: "/CodiceZero/Armas/Ruptura/W-Engine_Kraken's_Cradle.webp"
+    image: "/CodiceZero/Armas/Ruptura/W-Engine_Kraken's_Cradle.webp",
+    exclusiveAgent: {
+      name: "Yidhari",
+      icon: "/CodiceZero/ICONOS/Agent_Yidhari_Murphy_Icon.webp"
+    }
   },
   {
     id: 5531,
@@ -1393,7 +1525,11 @@ export const weapons = [
         { level: 5, TasaCrit: "32%", DañoEtéreo: "12.8%", DañoPuro: "16%" }
       ]
     },
-    image: "/CodiceZero/Armas/Ruptura/W-Engine_Qingming_Birdcage.webp"
+    image: "/CodiceZero/Armas/Ruptura/W-Engine_Qingming_Birdcage.webp",
+    exclusiveAgent: {
+      name: "Yixuan",
+      icon: "/CodiceZero/ICONOS/Agent_Yixuan_Icon.webp"
+    }
   },
   // --- RANGO A (Desde 5628 para evitar conflictos) ---
 
@@ -1417,7 +1553,11 @@ export const weapons = [
         { level: 5, TasaCrit: "24%", DañoFuego: "24%" }
       ]
     },
-    image: "/CodiceZero/Armas/Ruptura/W-Engine_Grill_O'Wisp.webp"
+    image: "/CodiceZero/Armas/Ruptura/W-Engine_Grill_O'Wisp.webp",
+    exclusiveAgent: {
+      name: "Komano Manato",
+      icon: "/CodiceZero/ICONOS/Agent_Komano_Manato_Icon.webp"
+    }
   },
   {
     id: 5631,
@@ -1513,7 +1653,11 @@ export const weapons = [
         { level: 5, Energia: "1.2/s", Daño: "20%", Adicional: "3.3%", Maximo: "19.8%" }
       ]
     },
-    image: "/CodiceZero/Armas/Soporte/W-Engine_Weeping_Cradle.webp"
+    image: "/CodiceZero/Armas/Soporte/W-Engine_Weeping_Cradle.webp",
+    exclusiveAgent: {
+      name: "Rina",
+      icon: "/CodiceZero/ICONOS/Agent_Alexandrina_Sebastiane_Icon.webp"
+    }
   },
   {
     id: 5533,
@@ -1535,7 +1679,11 @@ export const weapons = [
         { level: 5, Energia: "0.64/s", Daño: "40%", HpMax: "24%" }
       ]
     },
-    image: "/CodiceZero/Armas/Soporte/W-Engine_Dreamlit_Hearth.webp"
+    image: "/CodiceZero/Armas/Soporte/W-Engine_Dreamlit_Hearth.webp",
+    exclusiveAgent: {
+      name: "Lucia",
+      icon: "/CodiceZero/ICONOS/Agent_Lucia_Elowen_Icon.webp"
+    }
   },
   {
     id: 5534,
@@ -1557,7 +1705,11 @@ export const weapons = [
         { level: 5, Energia: "7", Daño: "16%" }
       ]
     },
-    image: "/CodiceZero/Armas/Soporte/W-Engine_Elegant_Vanity.webp"
+    image: "/CodiceZero/Armas/Soporte/W-Engine_Elegant_Vanity.webp",
+    exclusiveAgent: {
+      name: "Astra Yao",
+      icon: "/CodiceZero/ICONOS/Agent_Astra_Yao_Icon.webp"
+    }
   },
   {
     id: 5535,
@@ -1579,7 +1731,11 @@ export const weapons = [
         { level: 5, Tasa: "48", Maestría: "96" }
       ]
     },
-    image: "/CodiceZero/Armas/Soporte/W-Engine_Metanukimorphosis.webp"
+    image: "/CodiceZero/Armas/Soporte/W-Engine_Metanukimorphosis.webp",
+    exclusiveAgent: {
+      name: "Yuzuha",
+      icon: "/CodiceZero/ICONOS/Agent_Ukinami_Yuzuha_Icon.webp"
+    }
   },
 
   // --- RANGO A (Desde 5633) ---
@@ -1625,7 +1781,11 @@ export const weapons = [
         { level: 5, Energia: "0.8/s", Daño: "24%" }
       ]
     },
-    image: "/CodiceZero/Armas/Soporte/W-Engine_The_Vault.webp"
+    image: "/CodiceZero/Armas/Soporte/W-Engine_The_Vault.webp",
+    exclusiveAgent: {
+      name: "Nicole",
+      icon: "/CodiceZero/ICONOS/Agent_Nicole_Demara_Icon.webp"
+    }
   },
   {
     id: 5635,
@@ -1647,7 +1807,11 @@ export const weapons = [
         { level: 5, ATK: "4%" }
       ]
     },
-    image: "/CodiceZero/Armas/Soporte/W-Engine_Kaboom_the_Cannon.webp"
+    image: "/CodiceZero/Armas/Soporte/W-Engine_Kaboom_the_Cannon.webp",
+    exclusiveAgent: {
+      name: "Lucy",
+      icon: "/CodiceZero/ICONOS/Agent_Luciana_de_Montefio_Icon.webp"
+    }
   },
   {
     id: 5636,
@@ -1691,7 +1855,11 @@ export const weapons = [
         { level: 5, DañoHielo: "24%", ATK: "3.2%" }
       ]
     },
-    image: "/CodiceZero/Armas/Soporte/W-Engine_Bashful_Demon.webp"
+    image: "/CodiceZero/Armas/Soporte/W-Engine_Bashful_Demon.webp",
+    exclusiveAgent: {
+      name: "Soukaku",
+      icon: "/CodiceZero/ICONOS/Agent_Soukaku_Icon.webp"
+    }
   },
 
 
@@ -1789,7 +1957,11 @@ export const weapons = [
         { level: 5, RegenEnergia: "2.3/s", Daze: "14.5%", DañoCrit: "48%" }
       ]
     },
-    image: "/CodiceZero/Armas/Aturdidor/W-Engine_Yesterday_Calls.webp"
+    image: "/CodiceZero/Armas/Aturdidor/W-Engine_Yesterday_Calls.webp",
+    exclusiveAgent: {
+      name: "Dialyn",
+      icon: "/CodiceZero/ICONOS/Agent_Dialyn_Icon.webp"
+    }
   },
   {
     id: 5537, //arma Banyue
@@ -1815,7 +1987,11 @@ export const weapons = [
         { level: 5, ProbCrit: "32%", DañoFuegoPuro: "14.4%" }
       ]
     },
-    image: "/CodiceZero/Armas/Ruptura/Weapon_S_1471.webp"
+    image: "/CodiceZero/Armas/Ruptura/Weapon_S_1471.webp",
+    exclusiveAgent: {
+      name: "Banyue",
+      icon: "/CodiceZero/ICONOS/Agent_Banyue_Icon.webp"
+    }
   },
   {
     id: 5538, //arma Zhao
@@ -1841,7 +2017,11 @@ export const weapons = [
         { level: 5, Energia: "0.74/s", ATK: "16%", HpMax: "16%", DañoCrit: "48%" }
       ]
     },
-    image: "/CodiceZero/Armas/Defensa/Weapon_S_1341Big.png"
+    image: "/CodiceZero/Armas/Defensa/Weapon_S_1341Big.png",
+    exclusiveAgent: {
+      name: "Zhao",
+      icon: "/CodiceZero/ICONOS/Agent_Zhao_Icon.webp"
+    }
   },
   {
     id: 5539, //arma Ye Shunguang
@@ -1865,7 +2045,11 @@ export const weapons = [
         { level: 5, DañoIgnored: "28%", Daño: "40%", DañoCritico: "40%" }
       ]
     },
-    image: "/CodiceZero/Armas/Ataque/W-Engine_Cloudcleave_Radiance.webp"
+    image: "/CodiceZero/Armas/Ataque/W-Engine_Cloudcleave_Radiance.webp",
+    exclusiveAgent: {
+      name: "Ye Shunguang",
+      icon: "/CodiceZero/ICONOS/Agent_Ye_Shunguang_Icon.webp"
+    }
   },
 
   {
@@ -1911,7 +2095,11 @@ export const weapons = [
         { level: 5, MaestríaAnomalía: "144", Daño: "32%", DañoCritico: "16%" }
       ]
     },
-    image: "/CodiceZero/Armas/Anomalia/W-Engine_Spirit.webp"
+    image: "/CodiceZero/Armas/Anomalia/W-Engine_Spirit.webp",
+    exclusiveAgent: {
+      name: "Aria",
+      icon: "/CodiceZero/ICONOS/Agent_Aria_Icon.webp"
+    }
   },
   {
     id: 5541,
@@ -1933,7 +2121,11 @@ export const weapons = [
         { level: 5, RecuperaciónEnergía: "0.96", Daño: "20%", Ataque: "16%" }
       ]
     },
-    image: "/CodiceZero/Armas/Soporte/W-Engine-Thougtbop.webp"
+    image: "/CodiceZero/Armas/Soporte/W-Engine-Thougtbop.webp",
+    exclusiveAgent: {
+      name: "Sunna",
+      icon: "/CodiceZero/ICONOS/Agent_Sunna_Icon.webp"
+    }
   },
   {
     id: 5542,
@@ -1956,7 +2148,11 @@ export const weapons = [
         { level: 5, MaestríaAnomalía1: "90", Daño: "15%", MaestríaAnomalía2: "60" }
       ]
     },
-    image: "/CodiceZero/Armas/Aturdidor/W-Engine_Delirio_de_Neon.webp"
+    image: "/CodiceZero/Armas/Aturdidor/W-Engine_Delirio_de_Neon.webp",
+    exclusiveAgent: {
+      name: "Nangong Yu",
+      icon: "/CodiceZero/ICONOS/Agent_Nangong_Yu_Icon.webp"
+    }
   },
   {
     id: 5543,
