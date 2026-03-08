@@ -139,6 +139,21 @@ export default function WeaponDetailClient({ params }) {
                             </div>
                             <span className="text-xs font-mono font-bold tracking-widest text-gray-500 bg-white/5 px-3 py-1.5 rounded-full border border-white/5">W-ENGINE</span>
 
+                            {/* Chip Agente Exclusivo */}
+                            {weapon.exclusiveAgent && (
+                                <div className="flex items-center gap-2 px-3 py-1.5 bg-yellow-500/10 rounded-full border border-yellow-500/30 backdrop-blur-md">
+                                    <Image
+                                        src={weapon.exclusiveAgent.icon}
+                                        alt={weapon.exclusiveAgent.name}
+                                        width={20}
+                                        height={20}
+                                        className="rounded-full"
+                                        unoptimized
+                                    />
+                                    <span className="text-[10px] font-black tracking-widest text-yellow-400 uppercase">{weapon.exclusiveAgent.name}</span>
+                                </div>
+                            )}
+
                             {/* Chip Advertencia Beta */}
                             {weapon.leak && weapon.leak.includes("Beta") && (
                                 <div className="flex items-center gap-2 bg-red-500/10 px-4 py-1.5 rounded-full border border-red-500/30 backdrop-blur-md shadow-[0_0_15px_rgba(239,68,68,0.2)]">

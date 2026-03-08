@@ -1979,7 +1979,11 @@ export const weapons = [
         { level: 5, ProbablidadCrit: "40%", DañoDef: "48%" }
       ]
     },
-    image: "/CodiceZero/Armas/Ataque/W-Engine_Rastreo_de_Colmillos_y_Escamas.webp"
+    image: "/CodiceZero/Armas/Ataque/W-Engine_Rastreo_de_Colmillos_y_Escamas.webp",
+    exclusiveAgent: {
+      name: "Cissia",
+      icon: "/CodiceZero/ICONOS/Agent_Cissia_Icon.png"
+    }
   },
 ];
 
