@@ -143,7 +143,7 @@ export default {
         {
             type: "Mindscape 2",
             name: "Hambre y Mentiras",
-            description: "Tras golpear a un enemigo en estado de Aturdimiento con [Técnica en Cadena: Crimen en Banda] o [Técnica Definitiva: Miedo Reptante], obtiene adicionalmente 3 puntos de (Toxina); el daño infligido por (Ataque Cargado: Beso de Serpiente) aumenta un 35%.",
+            description: "Tras golpear a un enemigo en estado de Aturdimiento con (Ataque en Cadena: Crimen en Banda) o (Técnica Definitiva: Miedo Reptante), obtiene adicionalmente 3 puntos de (Toxina); el daño infligido por (Ataque Cargado: Beso de Serpiente) aumenta un 35%.",
             tags: ["Electrico"]
         },
         {
