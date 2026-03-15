@@ -34,13 +34,13 @@ export default {
             icon: ""
         },
         coreSkillScaling: [
-            ["3%", "0.52%", "12.88%", "242%"],
-            ["3.5%", "0.6%", "14.9%", "260%"],
-            ["4%", "0.68%", "16.92%", "278%"],
-            ["4.5%", "0.76%", "18.94%", "296%"],
-            ["5%", "0.84%", "20.96%", "314%"],
-            ["5.5%", "0.92%", "22.98%", "332%"],
-            ["6%", "1%", "25%", "350%"]
+            ["3%", "0.52%", "12.88%", "212%"],
+            ["3.5%", "0.6%", "14.9%", "230%"],
+            ["4%", "0.68%", "16.92%", "248%"],
+            ["4.5%", "0.76%", "18.94%", "266%"],
+            ["5%", "0.84%", "20.96%", "284%"],
+            ["5.5%", "0.92%", "22.98%", "302%"],
+            ["6%", "1%", "25%", "320%"]
         ],
         skills: [
             {
@@ -64,7 +64,7 @@ export default {
             {
                 type: "Evasión",
                 name: "Evasión: Serpentear",
-                description: "Pulsar [Icono Dodges]: Realiza una evasión rápida; posee efecto de invencibilidad durante la ejecuión del movimiento.",
+                description: "Pulsar [Icono Dodges]: Realiza una evasión rápida; posee efecto de invencibilidad durante la ejecución del movimiento.",
                 tags: ["Electrico"]
             },
             {
@@ -76,7 +76,7 @@ export default {
             {
                 type: "Evasión",
                 name: "Contraataque de Evasión: Devolver el Mordisco",
-                description: "Tras activar una (Evasión Perfecta), pulsar [Icono Ataque]: Salta hacia adelante y realiza un ataque de barrio al aterrizar, infligiendo Daño Eléctrico; al golpear a un enemigo; posee efecto de invencibilidad durante la ejecución del movimiento.",
+                description: "Tras activar una (Evasión Perfecta), pulsar [Icono Ataque]: Salta hacia adelante y realiza un ataque de barrido al aterrizar, infligiendo Daño Eléctrico; al golpear a un enemigo; posee efecto de invencibilidad durante la ejecución del movimiento.",
                 tags: ["Electrico"]
             },
             {
@@ -93,7 +93,7 @@ export default {
             },
             {
                 type: "Asistencia",
-                name: "Asistencia Rápida: Dispostivo de Alarma",
+                name: "Asistencia Rápida: Dispositivo de Alarma",
                 description: "Cuando el personaje en uso es lanzado por los aires, pulsar [Icono Assist]: Salta hacia adelante y realiza un ataque de barrido al aterrizar, infligiendo Daño Eléctrico; durante la ejecución del movimiento, se puede conectar rápidamente con (Técnica Especial: Dientes de Mono), (Técnica Especial EX: Colmillo Venenoso) y (Ataque Cargado: Beso de Serpiente); posee efecto de invencibilidad durante la ejecución del movimiento.",
                 tags: ["Electrico"]
             },
@@ -112,7 +112,7 @@ export default {
             {
                 type: "Pasiva Central",
                 name: "Pasiva Central: Brebaje Letal",
-                description: "Al entrar al campo de batalla, obtiene 3 puntos de (Toxina), en el modo de Cavidad Cero este efecto se activa como máximo una vez cada 180 segundos. Al poseer (Toxina), en estado de combate se consume 1 punto de (Toxina) cada 5 segundos, activando una vez (Hueso Corrosivo), causando Daño Eléctrico; hace que el Daño Eléctrico infligido por todos los personajes del equipo ignore un {VALOR_1} de la defensa del enemigo, si la Recuperación de Energía inicial automática es mayor a 1.4, por cada 0.12 que exceda, ignorará adicionalmente un {VALOR_2} de la defensa del enemigo, hasta ignorar un maximo de {VALOR_3} de la defensa del enemigo, dura hasta 30 segundos despues de que se agote el (Toxina). (Hueso Corrosivo) añade adicionalmente un Daño Electríco del {VALOR_4} del Ataque de Cissia; Cuando hay 1 o 2 personaje de Atributo Eléctrico en el equipo, el valor de aturdimiento causado por (Hueso Corrosivo) aumenta un 40%/60%; al obtener (Toxina), por cada 1 punto de (Toxina) que se desborde, se activa una vez (Hueso Corrosivo).",
+                description: "Al entrar al campo de batalla, obtiene 3 puntos de (Toxina), en el modo de Cavidad Cero este efecto se activa como máximo una vez cada 180 segundos. Al poseer (Toxina), en estado de combate se consume 1 punto de (Toxina) cada 5 segundos, activando una vez (Hueso Corrosivo), causando Daño Eléctrico; hace que el Daño Eléctrico infligido por todos los personajes del equipo ignore un {VALOR_1} de la defensa del enemigo, si la Recuperación de Energía inicial automática es mayor a 1.4, por cada 0.12 que exceda, ignorará adicionalmente un {VALOR_2} de la defensa del enemigo, hasta ignorar un máximo de {VALOR_3} de la defensa del enemigo, dura hasta 30 segundos después de que se agote el (Toxina). (Hueso Corrosivo) añade adicionalmente un Daño Eléctrico del {VALOR_4} del Ataque de Cissia; Cuando hay 1 o 2 personaje de Atributo Eléctrico en el equipo, el valor de aturdimiento causado por (Hueso Corrosivo) aumenta un 40%/60%; al obtener (Toxina), por cada 1 punto de (Toxina) que se desborde, se activa una vez (Hueso Corrosivo).",
                 tags: ["Electrico"]
             },
             {
@@ -124,25 +124,25 @@ export default {
             {
                 type: "Técnica Definitiva",
                 name: "Ataque en Cadena: Crimen en Banda",
-                description: "Al activar un (Ataque en Cadena), selecionar al personaje correspondiente para lanzar: Realiza múltiples ataques hacia adelante, infligiendo una gran cantidad de Daño Eléctrico; tras lanar el movimiento, obtiene 3 puntos de (Toxina); al golpear a un enemigo; al golpear al enemigo con el movimiento, activará (Asistencia Rápida); posee efecto de invencibilidad durante la ejecución del movimiento.",
+                description: "Al activar un (Ataque en Cadena), seleccionar al personaje correspondiente para lanzar: Realiza múltiples ataques hacia adelante, infligiendo una gran cantidad de Daño Eléctrico; tras lanzar el movimiento, obtiene 3 puntos de (Toxina); al golpear a un enemigo; al golpear al enemigo con el movimiento, activará (Asistencia Rápida); posee efecto de invencibilidad durante la ejecución del movimiento.",
                 tags: ["Electrico"]
             },
             {
                 type: "Técnica Definitiva",
                 name: "Técnica Definitiva: Miedo Reptante",
-                description: "Cuando el nivel de decibelios llega a (Máximo), pulsar [Icono Definitiva]: Realiza un ataque de aplastamiento hacia adelante, infligiendo una gran cantidad de Daño Eléctrico; tras lanzar el movimiento, obtiene 3 puntos de (Toxina); tras lanzar el movimiento, despliega (Velo Etereo: Sangre Fría), con una duración de 30 segundos, durante este periodo el Daño de Golpe Crítico de todos los personajes del equipo aumenta un 8%; Antes de volver a desplegar (Velo Etereo: Sangre Fría), se cerrará el (Velo Etereo: Sangre Fría) existente; al golpear al enemigo con el movimiento, activará (Asistencia Rápida); posee efecto de invencibilidad durante la ejecución del movimiento.",
+                description: "Cuando el nivel de decibelios llega a (Máximo), pulsar [Icono Definitiva]: Realiza un ataque de aplastamiento hacia adelante, infligiendo una gran cantidad de Daño Eléctrico; tras lanzar el movimiento, obtiene 3 puntos de (Toxina); tras lanzar el movimiento, despliega (Velo Etereo: Sangre Fría), con una duración de 30 segundos, durante este periodo el Daño de Golpe Crítico de todo el equipo aumenta un 4%; Antes de volver a desplegar (Velo Etereo: Sangre Fría), se cerrará el (Velo Etereo: Sangre Fría) existente; al golpear al enemigo con el movimiento, activará (Asistencia Rápida); posee efecto de invencibilidad durante la ejecución del movimiento.",
                 tags: ["Electrico"]
             },
             {
                 type: "Mindscape 1",
                 name: "Viajero y Presa",
-                description: "Al entrar al campo de batalla, los puntos de (Toxina) obtenidos aumentan a 6; el efecto de ignorar defensa enemiga en la (Pasiva Central) aumenta al 140% del original; el daño infligido por (Hueso Corrosivo) ignora un 20% de la Resistencia al Daño Eléctrico del objetivo.",
+                description: "Al entrar al campo de batalla, los puntos de (Toxina) obtenidos aumentan a 6; el efecto de ignorar defensa enemiga en la (Pasiva Central) aumenta al 140% del original, y hace que el daño infligido por todos los personajes del equipo ignore un 5% de la Resistencia al Daño de Atributo Eléctrico del objetivo; el daño infligido por (Hueso Corrosivo) ignora un 10% de la Resistencia al Daño Eléctrico del objetivo.",
                 tags: ["Electrico"]
             },
             {
                 type: "Mindscape 2",
                 name: "Hambre y Mentiras",
-                description: "Cuando la (Ataque en Cadena) o la (Técnica Definitiva) golpean a un enemigo en estado de Aturdimiento, obtiene adicionalmente 3 puntos de (Toxina); el daño infligido por (Ataque Cargado: Beso de Serpiente) aumenta un 35%.",
+                description: "Tras golpear a un enemigo en estado de Aturdimiento con [Técnica en Cadena: Crimen en Banda] o [Técnica Definitiva: Miedo Reptante], obtiene adicionalmente 3 puntos de (Toxina); el daño infligido por (Ataque Cargado: Beso de Serpiente) aumenta un 35%.",
                 tags: ["Electrico"]
             },
             {
