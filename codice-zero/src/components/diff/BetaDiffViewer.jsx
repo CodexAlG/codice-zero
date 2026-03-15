@@ -506,18 +506,23 @@ export default function BetaDiffViewer() {
             const oldDescRaw = oldSkill?.description || "";
             const newDescRaw = newSkill?.description || "";
 
-            // For diffing: use plain scaling (no tags) so the diff algorithm
-            // can detect value changes without breaking [VAL]/[CV] tag syntax.
-            // The actual rendering still uses processScaling with full tags.
+            // Keep raw {VALOR_X} templates for diff tokens so that
+            // renderDiffWithHighlight can apply processScaling with full
+            // [VAL]/[CV] tags and proper colors for each side.
             const oldScalingData = oldSkillVersionData || beforeData;
-            const oldDesc = isComparison ? processScalingPlain(oldDescRaw, oldScalingData) : oldDescRaw;
-            const newDesc = isComparison ? processScalingPlain(newDescRaw, afterData) : newDescRaw;
+            const oldDesc = oldDescRaw;
+            const newDesc = newDescRaw;
 
             const nameDiff = isComparison ? compareText(protectIcons(oldName), protectIcons(newName)) : [{ value: protectIcons(newName), added: false, removed: false }];
             const descDiff = isComparison ? compareText(protectIcons(oldDesc), protectIcons(newDesc)) : [{ value: protectIcons(newDesc), added: false, removed: false }];
 
+            // Check if coreSkillScaling values changed even when text template is identical
+            const hasScalingChanges = isComparison && oldDescRaw && newDescRaw
+                && oldDescRaw.includes('{VALOR_')
+                && processScalingPlain(oldDescRaw, oldScalingData) !== processScalingPlain(newDescRaw, afterData);
+
             const hasChanges = isComparison
-                ? (nameDiff.some(t => t.added || t.removed) || descDiff.some(t => t.added || t.removed))
+                ? (nameDiff.some(t => t.added || t.removed) || descDiff.some(t => t.added || t.removed) || hasScalingChanges)
                 : true; // Always show in single view
 
             // Filter unchanged in comparison mode
