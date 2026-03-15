@@ -304,9 +304,16 @@
   color: #f87171;
   text-decoration: line-through;
   text-decoration-color: rgba(248, 113, 113, 0.5);
-  background: rgba(248, 113, 113, 0.06);
+  background: rgba(248, 113, 113, 0.15);
   padding: 0 0.15em;
   border-radius: 2px;
+}
+
+/* Force all children inside diff-removed to show the strikethrough and red color */
+.diff-removed span {
+  color: #f87171 !important;
+  text-decoration: line-through;
+  text-decoration-color: rgba(248, 113, 113, 0.5);
 }
 
 .diff-added {
