@@ -306,6 +306,19 @@ export default function BetaDiffViewer() {
         });
     };
 
+    // Plain version for diffing: replaces {VALOR_X} with raw values (no [VAL]/[CV] tags)
+    // so the diff algorithm can detect value changes without breaking tag syntax
+    const processScalingPlain = (text, data) => {
+        if (!data?.coreSkillScaling || !text) return text;
+        const currentScalingValues = data.coreSkillScaling[corePassiveLevel] || data.coreSkillScaling[0];
+        if (!currentScalingValues) return text;
+        return text.replace(/\{VALOR_(\d+)\}/g, (_, number) => {
+            const index = parseInt(number) - 1;
+            const val = currentScalingValues[index];
+            return val !== undefined ? val : `{VALOR_${number}}`;
+        });
+    };
+
     const protectIcons = (text) => text ? text.replace(/\[Icono ([^\]]+)\]/g, (match, type) => `__ICON_${type.replace(/\s+/g, '_')}__`) : "";
     const restoreIcons = (text) => text ? text.replace(/__ICON_(.*?)__/g, (match, type) => `[Icono ${type.replace(/_/g, ' ')}]`) : "";
 
@@ -493,11 +506,12 @@ export default function BetaDiffViewer() {
             const oldDescRaw = oldSkill?.description || "";
             const newDescRaw = newSkill?.description || "";
 
-            // Apply scaling values BEFORE diffing so that coreSkillScaling
-            // changes are detected even when text templates are identical.
+            // For diffing: use plain scaling (no tags) so the diff algorithm
+            // can detect value changes without breaking [VAL]/[CV] tag syntax.
+            // The actual rendering still uses processScaling with full tags.
             const oldScalingData = oldSkillVersionData || beforeData;
-            const oldDesc = processScaling(oldDescRaw, oldScalingData);
-            const newDesc = processScaling(newDescRaw, afterData);
+            const oldDesc = isComparison ? processScalingPlain(oldDescRaw, oldScalingData) : oldDescRaw;
+            const newDesc = isComparison ? processScalingPlain(newDescRaw, afterData) : newDescRaw;
 
             const nameDiff = isComparison ? compareText(protectIcons(oldName), protectIcons(newName)) : [{ value: protectIcons(newName), added: false, removed: false }];
             const descDiff = isComparison ? compareText(protectIcons(oldDesc), protectIcons(newDesc)) : [{ value: protectIcons(newDesc), added: false, removed: false }];
