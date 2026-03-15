@@ -130,7 +130,7 @@ export default {
             {
                 type: "Técnica Definitiva",
                 name: "Técnica Definitiva: Miedo Reptante",
-                description: "Cuando el nivel de decibelios llega a (Máximo), pulsar [Icono Definitiva]: Realiza un ataque de aplastamiento hacia adelante, infligiendo una gran cantidad de Daño Eléctrico; tras lanzar el movimiento, obtiene 3 puntos de (Toxina); tras lanzar el movimiento, despliega (Velo Etéreo: Sangre Fría), con una duración de 30 segundos, durante este periodo el Daño de Golpe Crítico de todos los personajes del equipo aumenta un 8%; Antes de volver a desplegar (Velo Etéreo: Sangre Fría), se cerrará el (Velo Etéreo: Sangre Fría) existente; al golpear al enemigo con el movimiento, activará (Asistencia Rápida); posee efecto de invencibilidad durante la ejecución del movimiento.",
+                description: "Cuando el nivel de decibelios llega a (Máximo), pulsar [Icono Definitiva]: Realiza un ataque de aplastamiento hacia adelante, infligiendo una gran cantidad de Daño Eléctrico; tras lanzar el movimiento, obtiene 3 puntos de (Toxina); tras lanzar el movimiento, despliega (Velo Etereo: Sangre Fría), con una duración de 30 segundos, durante este periodo el Daño de Golpe Crítico de todos los personajes del equipo aumenta un 8%; Antes de volver a desplegar (Velo Etereo: Sangre Fría), se cerrará el (Velo Etereo: Sangre Fría) existente; al golpear al enemigo con el movimiento, activará (Asistencia Rápida); posee efecto de invencibilidad durante la ejecución del movimiento.",
                 tags: ["Electrico"]
             },
             {

@@ -490,12 +490,14 @@ export default function BetaDiffViewer() {
             // Prepare content for diffing
             const oldName = oldSkill?.name || "";
             const newName = newSkill?.name || "";
-            const oldDesc = oldSkill?.description || "";
-            const newDesc = newSkill?.description || "";
+            const oldDescRaw = oldSkill?.description || "";
+            const newDescRaw = newSkill?.description || "";
 
-            // Strip parentheses before diffing to prevent the diff algorithm from
-            // splitting (word) across tokens. HighlightText keyword rules will still
-            // match and bold the keywords without parentheses.
+            // Apply scaling values BEFORE diffing so that coreSkillScaling
+            // changes are detected even when text templates are identical.
+            const oldScalingData = oldSkillVersionData || beforeData;
+            const oldDesc = processScaling(oldDescRaw, oldScalingData);
+            const newDesc = processScaling(newDescRaw, afterData);
 
             const nameDiff = isComparison ? compareText(protectIcons(oldName), protectIcons(newName)) : [{ value: protectIcons(newName), added: false, removed: false }];
             const descDiff = isComparison ? compareText(protectIcons(oldDesc), protectIcons(newDesc)) : [{ value: protectIcons(newDesc), added: false, removed: false }];
