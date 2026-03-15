@@ -71,7 +71,7 @@ export const versionedWeapons = {
                 versionLabel: "v2.7.12",
                 effect: {
                     title: "Demonio del Disco",
-                    description: "La Maestría de Anomalía del portador aumenta en 90 puntos; cuando la (Técnica Especial EX) o el (Ataque Basico) del portador infligen Daño Etéreo, el daño infligido por todos los personajes del equipo aumenta un 15%, con una duración de 40 segundos, acumulable hasta un máximo de 2 capas, se activa como máximo una vez dentro del mismo movimiento, al activarse de nuevo se reinicia la duración, al poseer 2 capas del efecto, la Maestría de Anomalía del portador aumenta adicionalmente en 60 puntos, este efecto es único para todo el equipo.",
+                    description: "La Maestría de Anomalía del portador aumenta en 90 puntos; cuando la (Técnica Especial EX) o el (Ataque Básico) del portador infligen Daño Etéreo, el daño infligido por todos los personajes del equipo aumenta un 15%, con una duración de 40 segundos, acumulable hasta un máximo de 2 capas, se activa como máximo una vez dentro del mismo movimiento, al activarse de nuevo se reinicia la duración, al poseer 2 capas del efecto, la Maestría de Anomalía del portador aumenta adicionalmente en 60 puntos, este efecto es único para todo el equipo.",
                     refinements: [
                         { level: 1, MaestríaAnomalía1: "90", Daño: "15%", MaestríaAnomalía2: "60" },
                         { level: 2, MaestríaAnomalía1: "103", Daño: "17%", MaestríaAnomalía2: "69" },
