@@ -682,27 +682,90 @@ export default function BetaDiffViewer() {
         const currentNewRefinement = newEffect.refinements?.[refinementLevel];
         const currentOldRefinement = oldEffect?.refinements?.[refinementLevel];
 
-        const getDescriptionWithValues = (description, refinement) => {
-            if (!refinement || !description) return description;
-            const values = Object.entries(refinement).filter(([key]) => key !== 'level').map(([_, value]) => value);
-            if (values.length === 0) return description;
-            let result = description;
-            let valueIndex = 0;
-            result = result.replace(/\d+(?:\.\d+)?%?/g, (match) => {
-                if (valueIndex < values.length) {
-                    const replacement = `[VAL]${values[valueIndex]}[/VAL]`;
-                    valueIndex++;
-                    return replacement;
-                }
-                return match;
-            });
-            return result;
+        // Get refinement values as an ordered array (excluding 'level' key)
+        const getRefinementValues = (refinement) => {
+            if (!refinement) return [];
+            return Object.entries(refinement).filter(([key]) => key !== 'level').map(([_, value]) => value);
         };
-        // Strip parentheses so HighlightText keyword rules handle the styling
 
-        const newDescWithValues = getDescriptionWithValues(newEffect.description, currentNewRefinement);
-        const oldDescWithValues = isComparison ? getDescriptionWithValues(oldEffect.description, currentOldRefinement) : "";
+        // Replace {VALOR_X} placeholders with actual values wrapped in [VAL] tags
+        const processWeaponScaling = (description, refinement) => {
+            if (!refinement || !description) return description;
+            const values = getRefinementValues(refinement);
+            return description.replace(/\{VALOR_(\d+)\}/g, (_, number) => {
+                const index = parseInt(number) - 1;
+                const val = values[index];
+                return val !== undefined ? `[VAL]${val}[/VAL]` : `{VALOR_${number}}`;
+            });
+        };
+
+        // Replace {VALOR_X} with opaque tokens for diffing (same strategy as agents)
+        const processWeaponScalingForDiff = (description, refinement, side, otherRefinement) => {
+            if (!refinement || !description) return description;
+            const values = getRefinementValues(refinement);
+            const otherValues = otherRefinement ? getRefinementValues(otherRefinement) : [];
+            return description.replace(/\{VALOR_(\d+)\}/g, (_, number) => {
+                const index = parseInt(number) - 1;
+                const val = values[index];
+                if (val === undefined) return `{VALOR_${number}}`;
+                const otherVal = otherValues[index];
+                if (val === otherVal) return `__SVC${number}__`;
+                return side === 'old' ? `__SVA${number}__` : `__SVB${number}__`;
+            });
+        };
+
+        // Restore opaque tokens to [VAL] tags using side-specific refinement data
+        const restoreWeaponScalingTokens = (text, refinement) => {
+            if (!text || !refinement) return text;
+            const values = getRefinementValues(refinement);
+            return text.replace(/__SV[ABC](\d+)__/g, (_, number) => {
+                const index = parseInt(number) - 1;
+                const val = values[index];
+                return val !== undefined ? `[VAL]${val}[/VAL]` : '';
+            });
+        };
+
+        // For comparison: use opaque tokens for proper diff detection
+        // For single view: use raw {VALOR_X} (processScaling applied at render time)
+        let newDescWithValues, oldDescWithValues;
+        if (isComparison) {
+            newDescWithValues = processWeaponScalingForDiff(newEffect.description, currentNewRefinement, 'new', currentOldRefinement);
+            oldDescWithValues = processWeaponScalingForDiff(oldEffect.description, currentOldRefinement, 'old', currentNewRefinement);
+        } else {
+            newDescWithValues = processWeaponScaling(newEffect.description, currentNewRefinement);
+            oldDescWithValues = "";
+        }
         const descDiff = isComparison ? compareText(oldDescWithValues, newDescWithValues) : [{ value: newDescWithValues, added: false, removed: false }];
+
+        // Custom renderDiffWithHighlight for weapons that restores weapon scaling tokens
+        const renderWeaponDiff = (diffTokens, side) => {
+            if (!diffTokens || diffTokens.length === 0) return [];
+            const refinement = side === 'left' ? currentOldRefinement : currentNewRefinement;
+            const data = side === 'left' ? beforeData : afterData;
+            return diffTokens.map((part, index) => {
+                let className = "diff-unchanged";
+                if (side === 'left') {
+                    if (part.added) return null;
+                    if (part.removed) className = "diff-removed";
+                } else {
+                    if (part.removed) return null;
+                    if (part.added) className = "diff-added";
+                }
+                let processedText = restoreWeaponScalingTokens(part.value, refinement);
+                processedText = processWeaponScaling(processedText, refinement);
+                processedText = replaceIcons(processedText);
+                return (
+                    <span key={index} className={className}>
+                        <HighlightText
+                            text={processedText}
+                            elementColor={data?.elementColor || "#facc15"}
+                            skillIcons={skillIcons}
+                            skills={[]}
+                        />
+                    </span>
+                );
+            }).filter(Boolean);
+        };
 
         return (
             <div className="effect-section">
@@ -736,15 +799,15 @@ export default function BetaDiffViewer() {
                     {isComparison && (
                         <div className="effect-column effect-before">
                             <h4>Antes ({versionBefore})</h4>
-                            <div className="effect-description">{renderDiffWithHighlight(descDiff, 'left', beforeData)}</div>
+                            <div className="effect-description">{renderWeaponDiff(descDiff, 'left')}</div>
                         </div>
                     )}
                     <div className={`effect-column effect-after`}>
                         <h4>{isComparison ? `Después (${versionAfter})` : `Descripción (${versionAfter})`}</h4>
                         <div className="effect-description">
                             {isComparison
-                                ? renderDiffWithHighlight(descDiff, 'right', afterData)
-                                : <HighlightText text={replaceIcons(newDescWithValues)} elementColor={afterData.elementColor} skillIcons={skillIcons} />
+                                ? renderWeaponDiff(descDiff, 'right')
+                                : <HighlightText text={replaceIcons(newDescWithValues)} elementColor={afterData?.elementColor} skillIcons={skillIcons} />
                             }
                         </div>
                     </div>
