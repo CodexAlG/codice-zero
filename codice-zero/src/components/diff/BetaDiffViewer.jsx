@@ -306,16 +306,28 @@ export default function BetaDiffViewer() {
         });
     };
 
-    // Plain version for diffing: replaces {VALOR_X} with raw values (no [VAL]/[CV] tags)
-    // so the diff algorithm can detect value changes without breaking tag syntax
-    const processScalingPlain = (text, data) => {
+    // For diffing: replaces {VALOR_X} with protected markers __SVAL_X_value__
+    // These won't be split by the diff algorithm (no spaces) and can be
+    // restored to [VAL]/[CV] tags after diffing
+    const processScalingForDiff = (text, data) => {
         if (!data?.coreSkillScaling || !text) return text;
         const currentScalingValues = data.coreSkillScaling[corePassiveLevel] || data.coreSkillScaling[0];
         if (!currentScalingValues) return text;
         return text.replace(/\{VALOR_(\d+)\}/g, (_, number) => {
             const index = parseInt(number) - 1;
             const val = currentScalingValues[index];
-            return val !== undefined ? val : `{VALOR_${number}}`;
+            return val !== undefined ? `__SVAL_${number}_${val}__` : `{VALOR_${number}}`;
+        });
+    };
+
+    // Converts __SVAL_X_value__ markers back to [VAL]value[/VAL] or [CV="color"]value[/CV]
+    const restoreScalingMarkers = (text, data) => {
+        if (!text) return text;
+        const scalingColors = data?.coreSkillScalingColors || [];
+        return text.replace(/__SVAL_(\d+)_(.*?)__/g, (_, number, val) => {
+            const index = parseInt(number) - 1;
+            if (scalingColors[index]) return `[CV="${scalingColors[index]}"]${val}[/CV]`;
+            return `[VAL]${val}[/VAL]`;
         });
     };
 
@@ -336,8 +348,10 @@ export default function BetaDiffViewer() {
             }
 
             let value = restoreIcons(part.value);
-            // Replace {VALOR_X} with values from this version's coreSkillScaling
-            let processedText = processScaling(value, data);
+            // Restore scaling markers __SVAL_X_value__ to [VAL]/[CV] tags,
+            // then fall back to processScaling for any remaining {VALOR_X}
+            let processedText = restoreScalingMarkers(value, data);
+            processedText = processScaling(processedText, data);
             processedText = replaceIcons(processedText);
 
             return (
@@ -506,23 +520,19 @@ export default function BetaDiffViewer() {
             const oldDescRaw = oldSkill?.description || "";
             const newDescRaw = newSkill?.description || "";
 
-            // Keep raw {VALOR_X} templates for diff tokens so that
-            // renderDiffWithHighlight can apply processScaling with full
-            // [VAL]/[CV] tags and proper colors for each side.
+            // For comparison: replace {VALOR_X} with protected markers
+            // __SVAL_X_value__ so the diff algorithm detects value changes
+            // without breaking [VAL]/[CV] syntax. Markers are restored
+            // to proper tags in renderDiffWithHighlight.
             const oldScalingData = oldSkillVersionData || beforeData;
-            const oldDesc = oldDescRaw;
-            const newDesc = newDescRaw;
+            const oldDesc = isComparison ? processScalingForDiff(oldDescRaw, oldScalingData) : oldDescRaw;
+            const newDesc = isComparison ? processScalingForDiff(newDescRaw, afterData) : newDescRaw;
 
             const nameDiff = isComparison ? compareText(protectIcons(oldName), protectIcons(newName)) : [{ value: protectIcons(newName), added: false, removed: false }];
             const descDiff = isComparison ? compareText(protectIcons(oldDesc), protectIcons(newDesc)) : [{ value: protectIcons(newDesc), added: false, removed: false }];
 
-            // Check if coreSkillScaling values changed even when text template is identical
-            const hasScalingChanges = isComparison && oldDescRaw && newDescRaw
-                && oldDescRaw.includes('{VALOR_')
-                && processScalingPlain(oldDescRaw, oldScalingData) !== processScalingPlain(newDescRaw, afterData);
-
             const hasChanges = isComparison
-                ? (nameDiff.some(t => t.added || t.removed) || descDiff.some(t => t.added || t.removed) || hasScalingChanges)
+                ? (nameDiff.some(t => t.added || t.removed) || descDiff.some(t => t.added || t.removed))
                 : true; // Always show in single view
 
             // Filter unchanged in comparison mode
