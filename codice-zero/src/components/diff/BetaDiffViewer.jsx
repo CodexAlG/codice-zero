@@ -306,26 +306,38 @@ export default function BetaDiffViewer() {
         });
     };
 
-    // For diffing: replaces {VALOR_X} with protected markers __SVAL_X_value__
-    // These won't be split by the diff algorithm (no spaces) and can be
-    // restored to [VAL]/[CV] tags after diffing
-    const processScalingForDiff = (text, data) => {
+    // For diffing: replaces {VALOR_X} with side-specific opaque tokens.
+    // OLD side uses __SVA{X}__ and NEW side uses __SVB{X}__ when values differ,
+    // or __SVC{X}__ for both sides when values are the same.
+    // These tokens have NO common characters between old/new, preventing diffWords
+    // from splitting them. restoreScalingTokens converts them back to [VAL]/[CV] tags.
+    const processScalingForDiff = (text, data, side, otherData) => {
         if (!data?.coreSkillScaling || !text) return text;
         const currentScalingValues = data.coreSkillScaling[corePassiveLevel] || data.coreSkillScaling[0];
         if (!currentScalingValues) return text;
+        const otherScalingValues = otherData?.coreSkillScaling?.[corePassiveLevel] || otherData?.coreSkillScaling?.[0] || [];
         return text.replace(/\{VALOR_(\d+)\}/g, (_, number) => {
             const index = parseInt(number) - 1;
             const val = currentScalingValues[index];
-            return val !== undefined ? `__SVAL_${number}_${val}__` : `{VALOR_${number}}`;
+            if (val === undefined) return `{VALOR_${number}}`;
+            const otherVal = otherScalingValues[index];
+            // If values are the same, use shared token (won't create diff)
+            if (val === otherVal) return `__SVC${number}__`;
+            // Different values: use side-specific token (will create diff)
+            return side === 'old' ? `__SVA${number}__` : `__SVB${number}__`;
         });
     };
 
-    // Converts __SVAL_X_value__ markers back to [VAL]value[/VAL] or [CV="color"]value[/CV]
-    const restoreScalingMarkers = (text, data) => {
-        if (!text) return text;
+    // Converts opaque scaling tokens back to [VAL]value[/VAL] or [CV="color"]value[/CV]
+    const restoreScalingTokens = (text, data) => {
+        if (!text || !data?.coreSkillScaling) return text;
+        const currentScalingValues = data.coreSkillScaling[corePassiveLevel] || data.coreSkillScaling[0];
+        if (!currentScalingValues) return text;
         const scalingColors = data?.coreSkillScalingColors || [];
-        return text.replace(/__SVAL_(\d+)_(.*?)__/g, (_, number, val) => {
+        return text.replace(/__SV[ABC](\d+)__/g, (_, number) => {
             const index = parseInt(number) - 1;
+            const val = currentScalingValues[index];
+            if (val === undefined) return '';
             if (scalingColors[index]) return `[CV="${scalingColors[index]}"]${val}[/CV]`;
             return `[VAL]${val}[/VAL]`;
         });
@@ -348,9 +360,9 @@ export default function BetaDiffViewer() {
             }
 
             let value = restoreIcons(part.value);
-            // Restore scaling markers __SVAL_X_value__ to [VAL]/[CV] tags,
+            // Restore scaling tokens __SV[ABC]X__ to [VAL]/[CV] tags,
             // then fall back to processScaling for any remaining {VALOR_X}
-            let processedText = restoreScalingMarkers(value, data);
+            let processedText = restoreScalingTokens(value, data);
             processedText = processScaling(processedText, data);
             processedText = replaceIcons(processedText);
 
@@ -520,13 +532,13 @@ export default function BetaDiffViewer() {
             const oldDescRaw = oldSkill?.description || "";
             const newDescRaw = newSkill?.description || "";
 
-            // For comparison: replace {VALOR_X} with protected markers
-            // __SVAL_X_value__ so the diff algorithm detects value changes
-            // without breaking [VAL]/[CV] syntax. Markers are restored
-            // to proper tags in renderDiffWithHighlight.
+            // For comparison: replace {VALOR_X} with side-specific opaque tokens
+            // (__SVA{X}__ for old, __SVB{X}__ for new when values differ,
+            // __SVC{X}__ when same). diffWords treats these as atomic tokens.
+            // restoreScalingTokens in renderDiffWithHighlight converts them back.
             const oldScalingData = oldSkillVersionData || beforeData;
-            const oldDesc = isComparison ? processScalingForDiff(oldDescRaw, oldScalingData) : oldDescRaw;
-            const newDesc = isComparison ? processScalingForDiff(newDescRaw, afterData) : newDescRaw;
+            const oldDesc = isComparison ? processScalingForDiff(oldDescRaw, oldScalingData, 'old', afterData) : oldDescRaw;
+            const newDesc = isComparison ? processScalingForDiff(newDescRaw, afterData, 'new', oldScalingData) : newDescRaw;
 
             const nameDiff = isComparison ? compareText(protectIcons(oldName), protectIcons(newName)) : [{ value: protectIcons(newName), added: false, removed: false }];
             const descDiff = isComparison ? compareText(protectIcons(oldDesc), protectIcons(newDesc)) : [{ value: protectIcons(newDesc), added: false, removed: false }];
