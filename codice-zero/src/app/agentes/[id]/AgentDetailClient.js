@@ -561,7 +561,7 @@ export default function AgentDetailPage() {
             <div className="relative w-full max-w-[1600px] mx-auto p-4 pt-10 lg:p-8 pb-0 flex flex-col lg:flex-row gap-6 lg:gap-12 min-h-screen lg:min-h-[85vh]">
 
                 {/* BOTÓN VOLVER */}
-                <Link href="/agentes" className="absolute top-8 left-8 z-50 inline-flex items-center text-gray-400 hover:text-white transition-colors group bg-black/40 backdrop-blur-md px-4 py-2 rounded-full border border-white/5 hover:border-white/30 hover:shadow-[0_0_15px_rgba(255,255,255,0.1)]">
+                <Link href={`/${language}/agentes`} className="absolute top-8 left-8 z-50 inline-flex items-center text-gray-400 hover:text-white transition-colors group bg-black/40 backdrop-blur-md px-4 py-2 rounded-full border border-white/5 hover:border-white/30 hover:shadow-[0_0_15px_rgba(255,255,255,0.1)]">
                     <ArrowLeft className="w-5 h-5 mr-2 group-hover:-translate-x-1 transition-transform" />
                     <span className="font-bold text-sm tracking-widest uppercase">{language === 'en' ? 'Back' : 'Volver'}</span>
                 </Link>

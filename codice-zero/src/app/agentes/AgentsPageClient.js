@@ -248,7 +248,7 @@ export default function AgentsPageClient() {
                         {filteredAgents.map((agent, index) => (
                             <Link
                                 key={agent.id}
-                                href={`/agentes/${agent.id}`}
+                                href={`/${language}/agentes/${agent.id}`}
                                 className="w-[30%] sm:w-[23%] md:w-[18%] lg:w-[15%] xl:w-[13%] 2xl:w-[11%]"
                             >
                                 <AgentCard agent={agent} priority={index < 8} />

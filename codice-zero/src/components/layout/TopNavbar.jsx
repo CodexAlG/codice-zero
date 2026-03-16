@@ -22,17 +22,21 @@ export default function TopNavbar({ isVisible }) {
 
     // Sincronizar el estado activo con la ruta actual
     useEffect(() => {
-        if (pathname === '/') {
+        // Limpiar prefijos /es o /en para comparar
+        const strippedPath = pathname.replace(/^\/(es|en)(\/|$)/, '/') || '/';
+        const cleanPath = strippedPath === '//' ? '/' : strippedPath;
+
+        if (cleanPath === '/') {
             setActiveItem(-1); // Inicio
-        } else if (pathname.startsWith('/agentes')) {
+        } else if (cleanPath.startsWith('/agentes')) {
             setActiveItem(0); // Agentes
-        } else if (pathname.startsWith('/armas')) {
+        } else if (cleanPath.startsWith('/armas')) {
             setActiveItem(1); // Armas
-        } else if (pathname.startsWith('/discos')) {
+        } else if (cleanPath.startsWith('/discos')) {
             setActiveItem(2); // Discos
-        } else if (pathname.startsWith('/tierlist')) {
+        } else if (cleanPath.startsWith('/tierlist')) {
             setActiveItem(3); // Tier List
-        } else if (pathname.startsWith('/diff')) {
+        } else if (cleanPath.startsWith('/diff')) {
             setActiveItem(4); // Diferencias
         }
     }, [pathname]);
@@ -75,7 +79,7 @@ export default function TopNavbar({ isVisible }) {
                 } hidden lg:flex flex-col items-center py-8`}
         >
             {/* Logo CZ */}
-            <Link href="/" className="flex flex-col items-center justify-center group relative mb-8 gap-2 w-full px-6">
+            <Link href={`/${language}`} className="flex flex-col items-center justify-center group relative mb-8 gap-2 w-full px-6">
                 <div className="relative w-20 h-20 transition-transform duration-300 group-hover:scale-110">
                     <div className="absolute inset-0 bg-yellow-400 blur-xl opacity-40 rounded-full animate-pulse"></div>
                     <Image
@@ -100,37 +104,37 @@ export default function TopNavbar({ isVisible }) {
             <nav className="flex-1 w-full overflow-y-auto custom-scrollbar">
                 <ul className="flex flex-col gap-2 w-full">
                     <NavItem
-                        href="/"
+                        href={`/${language}`}
                         index={-1}
                         icon={Home}
                         label={t.inicio}
                     />
                     <NavItem
-                        href="/agentes"
+                        href={`/${language}/agentes`}
                         index={0}
                         icon="/CodiceZero/Agentes/Icon_Agents.webp"
                         label={t.agentes}
                     />
                     <NavItem
-                        href="/armas"
+                        href={`/${language}/armas`}
                         index={1}
                         icon="/CodiceZero/Armas/Icon_Storage_W-Engine.webp"
                         label={t.armas}
                     />
                     <NavItem
-                        href="/discos"
+                        href={`/${language}/discos`}
                         index={2}
                         icon="/CodiceZero/Discos/Icon_Storage_Drive_Disc.webp"
                         label={t.discos}
                     />
                     <NavItem
-                        href="/tierlist"
+                        href={`/${language}/tierlist`}
                         index={3}
                         icon={List}
                         label={t.tierlist}
                     />
                     <NavItem
-                        href="/diff"
+                        href={`/${language}/diff`}
                         index={4}
                         icon={GitCompare}
                         label={t.diff}

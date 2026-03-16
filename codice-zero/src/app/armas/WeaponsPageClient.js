@@ -200,7 +200,7 @@ export default function WeaponsPageClient() {
                     >
                         <AnimatePresence mode="popLayout">
                             {filteredWeapons.map((weapon, index) => (
-                                <Link key={weapon.id} href={`/armas/${weapon.id}`}>
+                                <Link key={weapon.id} href={`/${language}/armas/${weapon.id}`}>
                                     <motion.div
                                         layout // Animación suave de movimiento
                                         className="w-full sm:w-[140px] md:w-[150px] lg:w-[160px]"

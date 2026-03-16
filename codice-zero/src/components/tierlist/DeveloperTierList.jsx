@@ -307,7 +307,7 @@ const TIER_DATA = {
                                     <div className="flex flex-wrap gap-4 justify-center">
                                         {cellAgents.map(agent => (
                                             <div key={agent.id} className="relative group w-16 h-16 md:w-20 md:h-20 bg-black/50 rounded-xl overflow-hidden border border-white/10 backdrop-blur-sm hover:border-white/30 hover:-translate-y-2 hover:shadow-[0_10px_20px_rgba(0,0,0,0.5)] transition-all duration-300 cursor-pointer will-change-transform">
-                                                <Link href={`/agentes/${agent.id}`} className="block w-full h-full relative">
+                                                <Link href={`/${language}/agentes/${agent.id}`} className="block w-full h-full relative">
                                                     <Image
                                                         src={agent.image || agent.icon}
                                                         alt={agent.name}
