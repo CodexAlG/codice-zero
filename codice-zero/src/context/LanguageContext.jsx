@@ -5,6 +5,51 @@ import { useRouter, usePathname } from 'next/navigation';
 
 const LanguageContext = createContext();
 
+// Cola de traducción global para evitar ráfagas concurrentes que saturen la API
+let translationQueue = [];
+let isProcessingQueue = false;
+
+// Procesador de la cola
+const processQueue = async (translateFn) => {
+  if (isProcessingQueue || translationQueue.length === 0) return;
+  isProcessingQueue = true;
+
+  while (translationQueue.length > 0) {
+    const { text, language, resolve, reject, cacheKey } = translationQueue[0]; // Mirar el primero
+
+    try {
+      const res = await fetch('/api/translate', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ text, targetLang: language })
+      });
+
+      const data = await res.json();
+
+      if (data.error) {
+         console.warn("API Error en cola:", data.error);
+         resolve(text); // Fallback
+      } else if (data.translatedText) {
+        try {
+          localStorage.setItem(cacheKey, data.translatedText);
+        } catch (e) {}
+        resolve(data.translatedText);
+      } else {
+        resolve(text);
+      }
+    } catch (error) {
+      console.error("Fallo de red en cola:", error);
+      resolve(text);
+    }
+
+    translationQueue.shift(); // Quitar de la cola
+    // Pequeño retardo para no saturar 
+    await new Promise(r => setTimeout(r, 70)); 
+  }
+
+  isProcessingQueue = false;
+};
+
 export function LanguageProvider({ children }) {
   const router = useRouter();
   const pathname = usePathname();
@@ -69,43 +114,35 @@ export function LanguageProvider({ children }) {
     }, 1200);
   };
 
-  // Helper function to translate text with localStorage caching
-  const translateText = useCallback(async (text) => {
-    if (!text || language === 'es') return text;
-
-    const cacheKey = `trans_v15_${language}_${text}`;
-    
-    // Check localStorage cache first
-    try {
-      const cached = localStorage.getItem(cacheKey);
-      if (cached) return cached;
-    } catch (e) {
-      console.warn("localStorage not available or full");
-    }
-
-    try {
-      const res = await fetch('/api/translate', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ text, targetLang: language })
-      });
-      
-      const data = await res.json();
-      
-      if (data.translatedText) {
-        // Save to localStorage
-        try {
-          localStorage.setItem(cacheKey, data.translatedText);
-        } catch (e) {
-          console.warn("Could not save to localStorage");
-        }
-        return data.translatedText;
+  // Helper function to translate text with sequential and batch queue support
+  const translateText = useCallback((text) => {
+    return new Promise((resolve, reject) => {
+      if (!text || language === 'es') {
+        return resolve(text);
       }
-      return text; // Fallback to original text on error
-    } catch (error) {
-      console.error("Translation failed:", error);
-      return text;
-    }
+
+      const cacheKey = `trans_v15_${language}_${text}`;
+
+      // 1. Check client-side cache first
+      try {
+        const cached = localStorage.getItem(cacheKey);
+        if (cached) {
+          return resolve(cached);
+        }
+      } catch (e) {}
+
+      // 2. Queue the request
+      translationQueue.push({
+        text,
+        language,
+        resolve,
+        reject,
+        cacheKey
+      });
+
+      // 3. Trigger queue processor
+      processQueue();
+    });
   }, [language]);
 
   return (
