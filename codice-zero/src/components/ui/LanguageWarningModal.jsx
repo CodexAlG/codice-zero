@@ -72,7 +72,7 @@ export default function LanguageWarningModal() {
           <div className="flex flex-col gap-3 w-full">
             {/* Discord CTA */}
             <a
-              href="https://discord.gg/your_discord_link" // Placeholder as approved in plan
+              href="https://discord.gg/RBzdz2Bn4u" // Placeholder as approved in plan
               target="_blank"
               rel="noopener noreferrer"
               className="group flex items-center justify-center gap-2 w-full py-2.5 px-4 bg-[#5865F2] hover:bg-[#4752C4] text-white font-bold rounded-xl transition-all duration-300 shadow-lg shadow-[#5865F2]/20 hover:scale-[1.02] active:scale-[0.98]"
