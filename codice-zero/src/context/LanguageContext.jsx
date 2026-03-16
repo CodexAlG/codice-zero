@@ -7,7 +7,7 @@ const LanguageContext = createContext();
 export function LanguageProvider({ children }) {
   const [language, setLanguage] = useState('es'); // Default is Spanish
   const [showWarningModal, setShowWarningModal] = useState(false);
-  const [hasShownWarning, setHasShownWarning] = useState(false);
+  const [hasApprovedWarning, setHasApprovedWarning] = useState(false);
 
   // Load language preference from localStorage on mount
   useEffect(() => {
@@ -18,18 +18,26 @@ export function LanguageProvider({ children }) {
   }, []);
 
   const toggleLanguage = () => {
-    setLanguage((prev) => {
-      const newLang = prev === 'es' ? 'en' : 'es';
-      localStorage.setItem('app_language', newLang);
-      
-      // Trigger warning modal when switching to English for the first time in this session
-      if (newLang === 'en' && !hasShownWarning) {
+    if (language === 'es') {
+      // Intentando cambiar a Inglés
+      if (!hasApprovedWarning) {
         setShowWarningModal(true);
-        setHasShownWarning(true);
+        return; // No cambia el idioma todavía
       }
-      
-      return newLang;
-    });
+      setLanguage('en');
+      localStorage.setItem('app_language', 'en');
+    } else {
+      // Volver a Español
+      setLanguage('es');
+      localStorage.setItem('app_language', 'es');
+    }
+  };
+
+  const approveWarning = () => {
+    setHasApprovedWarning(true);
+    setLanguage('en');
+    localStorage.setItem('app_language', 'en');
+    setShowWarningModal(false);
   };
 
   // Helper function to translate text with localStorage caching
@@ -72,7 +80,7 @@ export function LanguageProvider({ children }) {
   }, [language]);
 
   return (
-    <LanguageContext.Provider value={{ language, toggleLanguage, translateText, showWarningModal, setShowWarningModal }}>
+    <LanguageContext.Provider value={{ language, toggleLanguage, translateText, showWarningModal, setShowWarningModal, approveWarning }}>
       {children}
     </LanguageContext.Provider>
   );

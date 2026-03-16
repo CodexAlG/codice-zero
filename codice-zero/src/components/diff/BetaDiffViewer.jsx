@@ -291,6 +291,7 @@ export default function BetaDiffViewer() {
                 if (hfData) {
                     if (selectedType === 'agentes' && hfData.skills) {
                         hfData.skills.forEach(s => {
+                            if (s.type && !translatedTexts[s.type]) stringsToTranslate.add(s.type);
                             if (s.name && !translatedTexts[s.name]) stringsToTranslate.add(s.name);
                             if (s.description && !translatedTexts[s.description]) stringsToTranslate.add(s.description);
                         });
@@ -303,6 +304,7 @@ export default function BetaDiffViewer() {
                 if (origData) {
                     if (selectedType === 'agentes' && origData.skills) {
                         origData.skills.forEach(s => {
+                            if (s.type && !translatedTexts[s.type]) stringsToTranslate.add(s.type);
                             if (s.name && !translatedTexts[s.name]) stringsToTranslate.add(s.name);
                             if (s.description && !translatedTexts[s.description]) stringsToTranslate.add(s.description);
                         });
@@ -315,6 +317,7 @@ export default function BetaDiffViewer() {
 
             if (selectedType === 'agentes' && agentSkills.length) {
                 agentSkills.forEach(skillObj => {
+                    if (skillObj.type && !translatedTexts[skillObj.type]) stringsToTranslate.add(skillObj.type);
                     Object.values(skillObj.versions || {}).forEach(v => {
                         if (v.name && !translatedTexts[v.name]) stringsToTranslate.add(v.name);
                         if (v.description && !translatedTexts[v.description]) stringsToTranslate.add(v.description);
@@ -332,15 +335,16 @@ export default function BetaDiffViewer() {
             }
 
             const arr = Array.from(stringsToTranslate);
-            const translations = await Promise.all(arr.map(async (t) => {
+            const translations = [];
+            for (const t of arr) {
                 let res = await translateText(t);
                 if (res && typeof res === 'string') {
                     // Clean DeepL breaking scaling tags
                     res = res.replace(/(^|[^0-9])(?:0\.\s*|1\s*)(\{VALOR_\d+\})/g, '$1$2');
                     res = res.replace(/([a-zA-Z]+(?:\s+[a-zA-Z]+)*)\s*\(\s*\)/g, '($1)');
                 }
-                return res;
-            }));
+                translations.push(res);
+            }
 
             if (!isActive || arr.length === 0) return;
 
@@ -713,7 +717,7 @@ export default function BetaDiffViewer() {
             return (
                 <div key={skillObj.id || index} className="skill-group icon-override">
                     <div className="flex items-center justify-between mb-2">
-                        <div className="skill-type">{translateText(skillObj.type, skillObj.type)}</div>
+                        <div className="skill-type">{translatedTexts[skillObj.type] || skillObj.type}</div>
                         {(skillObj.type === "Pasiva Central" || skillObj.type === "Pasiva") && (
                             <div className="flex flex-col items-center w-64 mr-4">
                                 <h5 className="text-xs text-gray-400 font-bold uppercase tracking-wider mb-2 self-start w-full text-left flex items-center gap-2">
@@ -1074,7 +1078,7 @@ export default function BetaDiffViewer() {
                                 return (
                                     <div key={hfSkill.type + index} className="skill-group icon-override">
                                         <div className="flex items-center justify-between mb-2">
-                                            <div className="skill-type">{translateText(hfSkill.type, hfSkill.type)}</div>
+                                            <div className="skill-type">{translatedTexts[hfSkill.type] || hfSkill.type}</div>
                                             {(hfSkill.type === "Pasiva Central" || hfSkill.type === "Pasiva") && (
                                                 <div className="flex flex-col items-center w-64 mr-4">
                                                     <h5 className="text-xs text-gray-400 font-bold uppercase tracking-wider mb-2 self-start w-full text-left flex items-center gap-2">

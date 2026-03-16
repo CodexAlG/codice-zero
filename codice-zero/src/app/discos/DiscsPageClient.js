@@ -36,11 +36,10 @@ const DiscItem = memo(({ disc, t }) => {
     useEffect(() => {
         let isActive = true;
         async function doTranslate() {
-            const [tName, tTwo, tFour] = await Promise.all([
-                translateText(disc.name),
-                translateText(disc.twoPiece),
-                translateText(disc.fourPiece)
-            ]);
+            const tName = await translateText(disc.name);
+            const tTwo = await translateText(disc.twoPiece);
+            const tFour = await translateText(disc.fourPiece);
+
             if (isActive) {
                 setTranslatedContent({ name: tName, twoPiece: tTwo, fourPiece: tFour });
             }

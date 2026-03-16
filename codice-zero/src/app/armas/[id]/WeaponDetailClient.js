@@ -60,13 +60,12 @@ export default function WeaponDetailClient({ params }) {
         if (!weapon) return;
         let isActive = true;
         async function doTranslate() {
-            const [tName, tRol, tSubStat, tTitle, tDesc] = await Promise.all([
-                translateText(weapon.name),
-                translateText(weapon.rol),
-                translateText(weapon.detailStats?.subStat.name || weapon.stats.main),
-                translateText(weapon.effect?.title || ""),
-                translateText(weapon.effect?.description || "")
-            ]);
+            const tName = await translateText(weapon.name);
+            const tRol = await translateText(weapon.rol);
+            const tSubStat = await translateText(weapon.detailStats?.subStat.name || weapon.stats.main);
+            const tTitle = await translateText(weapon.effect?.title || "");
+            const tDesc = await translateText(weapon.effect?.description || "");
+
             if (isActive) {
                 setTranslatedContent({
                     name: tName,

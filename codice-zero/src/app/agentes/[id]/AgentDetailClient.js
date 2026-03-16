@@ -153,21 +153,20 @@ export default function AgentDetailPage() {
         }
 
         const translateAllSkills = async () => {
-            const translated = await Promise.all(
-                details.skills.map(async (skill) => {
-                    const translatedName = await translateText(skill.name);
-                    let translatedDesc = await translateText(skill.description);
+            const translated = [];
+            for (const skill of details.skills) {
+                if (!isActive) break;
+                const translatedName = await translateText(skill.name);
+                let translatedDesc = await translateText(skill.description);
 
-                    // Fix DeepL adding "1 " or "0." before {VALOR_1} due to un->1 translation
-                    // Capture optional boundary or space to avoid deleting parts of numbers like 11
-                    translatedDesc = translatedDesc.replace(/(^|[^0-9])(?:0\.\s*|1\s*)(\{VALOR_\d+\})/g, '$1$2');
+                // Fix DeepL adding "1 " or "0." before {VALOR_1} due to un->1 translation
+                translatedDesc = translatedDesc.replace(/(^|[^0-9])(?:0\.\s*|1\s*)(\{VALOR_\d+\})/g, '$1$2');
 
-                    // Fix DeepL pulling terms out of parentheses e.g. "Chain Attack ( )" -> "(Chain Attack)"
-                    translatedDesc = translatedDesc.replace(/([a-zA-Z]+(?:\s+[a-zA-Z]+)*)\s*\(\s*\)/g, '($1)');
+                // Fix DeepL pulling terms out of parentheses e.g. "Chain Attack ( )" -> "(Chain Attack)"
+                translatedDesc = translatedDesc.replace(/([a-zA-Z]+(?:\s+[a-zA-Z]+)*)\s*\(\s*\)/g, '($1)');
 
-                    return { ...skill, name: translatedName, description: translatedDesc };
-                })
-            );
+                translated.push({ ...skill, name: translatedName, description: translatedDesc });
+            }
             if (isActive) setTranslatedSkills(translated);
         };
 

@@ -10,6 +10,27 @@ const nextConfig = {
     // Opcional: Desactivar el formato AVIF/WEBP si Next.js está fallando al crearlos.
     formats: ['image/webp'], 
   },
+
+  async rewrites() {
+    return [
+      {
+        source: '/es',
+        destination: '/?lang=es',
+      },
+      {
+        source: '/en',
+        destination: '/?lang=en',
+      },
+      {
+        source: '/es/:path*',
+        destination: '/:path*?lang=es',
+      },
+      {
+        source: '/en/:path*',
+        destination: '/:path*?lang=en',
+      },
+    ];
+  },
 };
 
 export default nextConfig;

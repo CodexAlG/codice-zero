@@ -5,13 +5,14 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { MessageSquare, AlertCircle, X } from 'lucide-react';
 
 export default function LanguageWarningModal() {
-  const { showWarningModal, setShowWarningModal } = useLanguage();
+  const { showWarningModal, setShowWarningModal, approveWarning } = useLanguage();
 
   if (!showWarningModal) return null;
 
   const handleClose = () => {
     setShowWarningModal(false);
   };
+
 
   return (
     <AnimatePresence>
@@ -83,7 +84,7 @@ export default function LanguageWarningModal() {
 
             {/* Accept Button */}
             <button
-              onClick={handleClose}
+              onClick={approveWarning}
               className="flex items-center justify-center w-full py-2.5 px-4 bg-yellow-500 hover:bg-yellow-400 text-black font-bold rounded-xl transition-all duration-300 shadow-lg shadow-yellow-500/20 hover:scale-[1.02] active:scale-[0.98] cursor-pointer text-xs uppercase tracking-wider"
             >
               Entendido / Understood
