@@ -155,6 +155,10 @@ export async function POST(request) {
     // 4. DEEPL API CALL
     const DEEPL_URL = 'https://api-free.deepl.com/v2/translate';
 
+    if (!process.env.DEEPL_API_KEY) {
+      return NextResponse.json({ error: 'Config Error', details: 'Missing DEEPL_API_KEY in environment variables' }, { status: 500 });
+    }
+
     const response = await fetch(DEEPL_URL, {
       method: 'POST',
       headers: {
@@ -172,7 +176,7 @@ export async function POST(request) {
     if (!response.ok) {
       const errorData = await response.text();
       console.error(`DeepL Error: ${response.status} - ${errorData}`);
-      throw new Error(`DeepL API Error: ${response.status}`);
+      throw new Error(`DeepL API Error: ${response.status} - ${errorData}`);
     }
 
     const data = await response.json();
@@ -192,6 +196,6 @@ export async function POST(request) {
 
   } catch (error) {
     console.error('API Translate Error:', error);
-    return NextResponse.json({ error: 'Failed to process translation' }, { status: 500 });
+    return NextResponse.json({ error: 'Failed to process translation', details: error.message }, { status: 500 });
   }
 }

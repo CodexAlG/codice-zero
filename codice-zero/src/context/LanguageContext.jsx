@@ -27,7 +27,7 @@ const processQueue = async (translateFn) => {
       const data = await res.json();
 
       if (data.error) {
-         console.warn("API Error en cola:", data.error);
+         console.warn("API Error en cola:", data.error, data.details ? ` | Detalles: ${data.details}` : "");
          resolve(text); // Fallback
       } else if (data.translatedText) {
         try {
