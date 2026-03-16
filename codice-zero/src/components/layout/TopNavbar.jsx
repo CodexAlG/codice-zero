@@ -10,8 +10,8 @@ import LanguageToggle from '@/components/ui/LanguageToggle';
 import { useLanguage } from '@/context/LanguageContext';
 
 const navTranslations = {
-  es: { inicio: "Inicio", agentes: "Agentes", armas: "Armas", discos: "Discos", tierlist: "Tier List", diff: "Diferencias" },
-  en: { inicio: "Home", agentes: "Agents", armas: "Weapons", discos: "Drive Discs", tierlist: "Tier List", diff: "Diff" }
+    es: { inicio: "Inicio", agentes: "Agentes", armas: "Armas", discos: "Discos", tierlist: "Tier List", diff: "Diferencias" },
+    en: { inicio: "Home", agentes: "Agents", armas: "Weapons", discos: "Drive Discs", tierlist: "Tier List", diff: "Diff" }
 };
 
 export default function TopNavbar({ isVisible }) {
@@ -144,7 +144,7 @@ export default function TopNavbar({ isVisible }) {
 
             {/* Bottom Decoration or Settings if needed */}
             <div className="mt-auto w-full px-6 flex flex-col gap-4">
-                <LanguageToggle />
+                {/* <LanguageToggle />*/}
                 <div className="w-full h-[1px] bg-white/10"></div>
                 <div className="flex justify-center opacity-50 text-[10px] text-gray-500 font-mono">
                     v2.6

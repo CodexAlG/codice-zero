@@ -58,7 +58,7 @@ export default function MobileHeader({ toggleSidebar }) {
 
       {/* 3. Controles Derecha (Idioma + Menú) */}
       <div className="flex items-center gap-2">
-        <LanguageToggle />
+        {/* <LanguageToggle />*/}
         <button
           onClick={toggleSidebar}
           className="text-yellow-500 hover:text-yellow-400 transition-colors p-2 rounded-lg hover:bg-yellow-500/10 drop-shadow-[0_0_8px_rgba(234,179,8,0.5)]"
