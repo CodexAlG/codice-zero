@@ -9,42 +9,48 @@ const LanguageContext = createContext();
 let translationQueue = [];
 let isProcessingQueue = false;
 
-// Procesador de la cola
-const processQueue = async (translateFn) => {
+// Procesador de la cola en lotes (batching) para acelerar sin saturar
+const processQueue = async () => {
   if (isProcessingQueue || translationQueue.length === 0) return;
   isProcessingQueue = true;
 
+  const BATCH_SIZE = 4; // Procesa 3 a 5 a la vez en paralelo (seguro para DeepL)
+
   while (translationQueue.length > 0) {
-    const { text, language, resolve, reject, cacheKey } = translationQueue[0]; // Mirar el primero
+    // Tomar un lote de tareas
+    const currentBatch = translationQueue.splice(0, BATCH_SIZE);
 
-    try {
-      const res = await fetch('/api/translate', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ text, targetLang: language })
-      });
+    await Promise.all(currentBatch.map(async (item) => {
+      const { text, language, resolve, reject, cacheKey } = item;
 
-      const data = await res.json();
+      try {
+        const res = await fetch('/api/translate', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ text, targetLang: language })
+        });
 
-      if (data.error) {
-         console.warn("API Error en cola:", data.error, data.details ? ` | Detalles: ${data.details}` : "");
-         resolve(text); // Fallback
-      } else if (data.translatedText) {
-        try {
-          localStorage.setItem(cacheKey, data.translatedText);
-        } catch (e) {}
-        resolve(data.translatedText);
-      } else {
+        const data = await res.json();
+
+        if (data.error) {
+           console.warn("API Error en lote:", data.error, data.details ? ` | Detalles: ${data.details}` : "");
+           resolve(text); // Fallback
+        } else if (data.translatedText) {
+          try {
+            localStorage.setItem(cacheKey, data.translatedText);
+          } catch (e) {}
+          resolve(data.translatedText);
+        } else {
+          resolve(text);
+        }
+      } catch (error) {
+        console.error("Fallo de red en lote:", error);
         resolve(text);
       }
-    } catch (error) {
-      console.error("Fallo de red en cola:", error);
-      resolve(text);
-    }
+    }));
 
-    translationQueue.shift(); // Quitar de la cola
-    // Pequeño retardo para no saturar 
-    await new Promise(r => setTimeout(r, 70)); 
+    // Pequeño retardo entre lotes para evitar rebasar límites de ráfagas
+    await new Promise(r => setTimeout(r, 50)); 
   }
 
   isProcessingQueue = false;
