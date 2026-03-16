@@ -5,15 +5,58 @@ import Image from "next/image";
 import { agents } from "@/data/agents";
 import { Download, RotateCcw, Plus, Trash2, Columns, Rows } from "lucide-react";
 
+import { useLanguage } from "@/context/LanguageContext";
+
 // Updated Tiers T0-T5
 const TIERS = ["S", "A", "B", "C"];
 
-const DEFAULT_ROLES = [
-    { id: "dps", label: "DPS" },
-    { id: "subdps", label: "SUB-DPS" },
-    { id: "stun", label: "ATURDIDOR" },
-    { id: "support", label: "SOPORTE" },
-];
+const staticTranslations = {
+    es: {
+        roles: { dps: "DPS", subdps: "SUB-DPS", stun: "ATURDIDOR", support: "SOPORTE" },
+        titlePlaceholder: "Escribe un título...",
+        defaultTitle: "Mi Tier List",
+        reset: "Reset",
+        addRow: "Fila",
+        addCol: "Columna",
+        download: "Descargar",
+        rank: "Rango",
+        drop: "Drop",
+        poolTitle: "Banco de Agentes (Arrastra o Toca para mover)",
+        poolReturn: "Toca aquí para devolver al banco",
+        preview: "Vista Previa",
+        cancel: "Cancelar",
+        save: "Guardar",
+        errors: { download: "Error al descargar" }
+    },
+    en: {
+        roles: { dps: "DPS", subdps: "SUB-DPS", stun: "STUNNER", support: "SUPPORT" },
+        titlePlaceholder: "Write a title...",
+        defaultTitle: "My Tier List",
+        reset: "Reset",
+        addRow: "Row",
+        addCol: "Column",
+        download: "Download",
+        rank: "Rank",
+        drop: "Drop",
+        poolTitle: "Agent Pool (Drag or Tap to move)",
+        poolReturn: "Tap here to return to pool",
+        preview: "Preview",
+        cancel: "Cancel",
+        save: "Save",
+        errors: { download: "Download Error" }
+    }
+};
+
+export default function CommunityTierList() {
+    const { language } = useLanguage();
+    const t = staticTranslations[language] || staticTranslations.es;
+
+    const DEFAULT_ROLES = [
+        { id: "dps", label: t.roles.dps },
+        { id: "subdps", label: t.roles.subdps },
+        { id: "stun", label: t.roles.stun },
+        { id: "support", label: t.roles.support },
+    ];
 
 const DEFAULT_TIER_COLORS = [
     "#ff7f7f", // T0
@@ -21,8 +64,6 @@ const DEFAULT_TIER_COLORS = [
     "#ffff7f", // T1
     "#7fff7f", // T2
 ];
-
-export default function CommunityTierList() {
     // Rows State
     const [tierRows, setTierRows] = useState(
         TIERS.map((label, index) => ({
@@ -225,7 +266,7 @@ export default function CommunityTierList() {
                     value={tierListTitle}
                     onChange={(e) => setTierListTitle(e.target.value)}
                     className="w-full bg-black/40 text-center text-4xl md:text-5xl font-black italic text-white uppercase placeholder-white/20 focus:outline-none border-b-2 border-white/10 focus:border-yellow-500 transition-all font-display py-4 rounded-t-2xl backdrop-blur-md shadow-[0_4px_30px_rgba(0,0,0,0.1)] focus:shadow-[0_10px_40px_rgba(234,179,8,0.15)] focus:bg-white/5"
-                    placeholder="Escribe un título..."
+                    placeholder={t.titlePlaceholder}
                 />
             </div>
 
@@ -234,21 +275,21 @@ export default function CommunityTierList() {
                 {/* Left: Reset */}
                 <div className="space-x-2">
                     <button onClick={handleReset} className="px-5 py-2.5 bg-red-600/10 hover:bg-red-600/30 text-red-400 hover:text-white rounded-xl font-bold text-sm tracking-wide uppercase flex items-center gap-2 transition-all border border-red-500/20 hover:border-red-500/50 shadow-[0_0_10px_rgba(239,68,68,0.1)]">
-                        <RotateCcw size={16} /> Reset
+                        <RotateCcw size={16} /> {t.reset}
                     </button>
                 </div>
 
                 {/* Right: Actions */}
                 <div className="flex flex-wrap items-center gap-3">
                     <button onClick={addRow} className="px-5 py-2.5 bg-blue-600/10 hover:bg-blue-600/30 hover:text-white text-blue-400 rounded-xl font-bold text-sm flex items-center gap-2 transition-all border border-blue-500/20 hover:border-blue-500/50 uppercase tracking-wide">
-                        <Rows size={18} /> <span className="hidden sm:inline"> + Fila</span>
+                        <Rows size={18} /> <span className="hidden sm:inline"> + {t.addRow}</span>
                     </button>
                     <button onClick={addCol} className="px-5 py-2.5 bg-purple-600/10 hover:bg-purple-600/30 hover:text-white text-purple-400 rounded-xl font-bold text-sm flex items-center gap-2 transition-all border border-purple-500/20 hover:border-purple-500/50 uppercase tracking-wide">
-                        <Columns size={18} /> <span className="hidden sm:inline"> + Columna</span>
+                        <Columns size={18} /> <span className="hidden sm:inline"> + {t.addCol}</span>
                     </button>
                     <div className="w-px h-8 bg-white/10 mx-2 hidden md:block"></div>
                     <button onClick={handleDownload} className="px-8 py-2.5 bg-yellow-500 hover:bg-yellow-400 text-black rounded-xl font-black italic tracking-widest flex items-center gap-2 shadow-[0_0_20px_rgba(234,179,8,0.3)] hover:shadow-[0_0_30px_rgba(234,179,8,0.5)] transition-all transform hover:-translate-y-1">
-                        <Download size={20} /> Descargar
+                        <Download size={20} /> {t.download}
                     </button>
                 </div>
             </div>
@@ -260,7 +301,7 @@ export default function CommunityTierList() {
                     {/* Header (Roles) - Hidden on Mobile */}
                     <div className="hidden md:grid" style={gridColsStyle}>
                         <div className="bg-black/60 p-4 border-b border-r border-white/10 flex items-center justify-center backdrop-blur-md">
-                            <span className="font-black text-gray-500 text-[10px] uppercase tracking-widest">Rango</span>
+                            <span className="font-black text-gray-500 text-[10px] uppercase tracking-widest">{t.rank}</span>
                         </div>
                         {tierCols.map(col => (
                             <div key={col.id} className="bg-black/60 border-b border-white/10 border-l border-white/5 text-center flex items-center justify-center relative group p-3 backdrop-blur-md">
@@ -359,7 +400,7 @@ export default function CommunityTierList() {
 
                                             {itemsInCell.length === 0 && (
                                                 <div className="w-full h-8 md:h-full flex items-center justify-center pointer-events-none opacity-20 border-2 border-dashed border-white/5 rounded-xl m-1">
-                                                    <span className="text-[10px] font-black uppercase tracking-widest text-gray-500">Drop</span>
+                                                    <span className="text-[10px] font-black uppercase tracking-widest text-gray-500">{t.drop}</span>
                                                 </div>
                                             )}
                                         </div>
@@ -379,14 +420,14 @@ export default function CommunityTierList() {
                     {/* NEW: Export Title */}
                     <div className="bg-[#18181b] p-6 border-b border-white/10 flex items-center justify-center">
                         <h1 className="text-5xl font-black italic text-white uppercase font-display tracking-wider drop-shadow-lg">
-                            {tierListTitle || "My Tier List"}
+                            {tierListTitle || t.defaultTitle}
                         </h1>
                     </div>
 
                     {/* PC Header (Always Visible) */}
                     <div className="grid" style={gridColsStyle}>
                         <div className="bg-[#18181b] p-4 border-b border-r border-white/10 flex items-center justify-center">
-                            <span className="font-bold text-gray-500 text-xs uppercase">Rango</span>
+                            <span className="font-bold text-gray-500 text-xs uppercase">{t.rank}</span>
                         </div>
                         {tierCols.map(col => (
                             <div key={col.id} className="bg-[#18181b] border-b border-white/10 border-l border-white/5 text-center flex items-center justify-center p-2">
@@ -454,7 +495,7 @@ export default function CommunityTierList() {
                 onClick={handlePoolClick} // Click to return to pool
             >
                 <h3 className="text-gray-400 font-black mb-6 uppercase tracking-[0.2em] text-sm text-center">
-                    {selectedAgent ? "Toca aquí para devolver al banco" : "Banco de Agentes (Arrastra o Toca para mover)"}
+                    {selectedAgent ? t.poolReturn : t.poolTitle}
                 </h3>
                 <div className="flex flex-wrap gap-3 justify-center">
                     {agents.filter(a => isInPool(a.id)).map((agent) => (
@@ -494,7 +535,7 @@ export default function CommunityTierList() {
 
                         <h3 className="text-2xl font-display font-black italic text-white mb-6 relative z-10 flex items-center gap-3">
                             <span className="w-1.5 h-6 bg-yellow-500 rounded-full shadow-[0_0_10px_rgba(234,179,8,0.8)]"></span>
-                            Vista Previa
+                            {t.preview}
                         </h3>
 
                         {/* Fixed: Image container scaling */}
@@ -511,13 +552,13 @@ export default function CommunityTierList() {
                                 onClick={() => setPreviewImage(null)}
                                 className="px-8 py-3 rounded-xl font-bold uppercase tracking-wide text-gray-400 hover:text-white bg-white/5 hover:bg-white/10 transition-colors border border-transparent hover:border-white/10"
                             >
-                                Cancelar
+                                {t.cancel}
                             </button>
                             <button
                                 onClick={confirmDownload}
                                 className="px-10 py-3 bg-yellow-500 hover:bg-yellow-400 text-black rounded-xl font-black italic text-lg tracking-widest shadow-[0_0_20px_rgba(234,179,8,0.3)] hover:shadow-[0_0_30px_rgba(234,179,8,0.5)] transition-all transform hover:-translate-y-1 flex items-center justify-center gap-2"
                             >
-                                <Download size={20} /> Guardar
+                                <Download size={20} /> {t.save}
                             </button>
                         </div>
                     </div>

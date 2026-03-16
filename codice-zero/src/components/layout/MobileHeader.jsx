@@ -8,23 +8,36 @@ import { useMemo } from 'react';
 import appIcon from '@/app/icon.png';
 
 // Mapa simple para mostrar el título de la página actual
-const pathTitles = {
-  '/': 'Inicio',
-  '/agentes': 'Agentes',
-  '/armas': 'Armas',
-  '/discos': 'Discos',
+import { useLanguage } from '@/context/LanguageContext';
 
-  '/tier-list': 'Tier List',
-  '/diff': 'Diferencias',
-  '/sobre-mi': 'Sobre mí'
+// Mapa simple para mostrar el título de la página actual
+const pathTitles = {
+  es: {
+    '/': 'Inicio',
+    '/agentes': 'Agentes',
+    '/armas': 'Armas',
+    '/discos': 'Discos',
+    '/tierlist': 'Tier List',
+    '/diff': 'Diferencias'
+  },
+  en: {
+    '/': 'Home',
+    '/agentes': 'Agents',
+    '/armas': 'Weapons',
+    '/discos': 'Drive Discs',
+    '/tierlist': 'Tier List',
+    '/diff': 'Diff'
+  }
 };
 
 export default function MobileHeader({ toggleSidebar }) {
   const pathname = usePathname();
+  const { language } = useLanguage();
 
   const currentTitle = useMemo(() => {
-    return pathTitles[pathname] || 'Inicio';
-  }, [pathname]);
+    const t = pathTitles[language] || pathTitles.es;
+    return t[pathname] || t['/'] || 'Inicio';
+  }, [pathname, language]);
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 h-16 bg-[#0a0a0c]/80 backdrop-blur-md border-b border-white/5 shadow-[0_5px_30px_rgba(0,0,0,0.3)] flex items-center justify-between px-4 lg:hidden">

@@ -87,11 +87,9 @@ const AgentCard = memo(({ agent, priority = false }) => {
       <div className="absolute inset-0 group-hover:scale-110 transition-transform duration-500 z-10">
 
         {/* Skeleton Overlay - Visible until image loads */}
-        {!imageLoaded && (
-          <div className="absolute inset-0 z-10">
-            <SkeletonCard aspectRatio="4/5" />
-          </div>
-        )}
+        <div className={`absolute inset-0 z-10 transition-opacity duration-300 ${imageLoaded ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}>
+          <SkeletonCard aspectRatio="4/5" />
+        </div>
 
         <Image
           src={agent.image}

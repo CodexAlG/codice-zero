@@ -1,4 +1,7 @@
+import { useLanguage } from '@/context/LanguageContext';
+
 export default function StatsTable({ currentStats, themeColor, agentRole }) {
+  const { language } = useLanguage();
   // Componente de Fila de Atributo - Mejorado para mostrar bonus inmediatamente
   const AttributeRow = ({ label, value, highlight, bonusValue }) => {
     const hasBonus = highlight && bonusValue > 0;
@@ -53,20 +56,20 @@ export default function StatsTable({ currentStats, themeColor, agentRole }) {
 
   return (
     <>
-      <AttributeRow label="Hp Base" value={currentStats.hp} highlight={currentStats.buffedStat === 'hp'} bonusValue={currentStats.bonusValue} />
-      <AttributeRow label="Ataque Base" value={currentStats.atk} highlight={currentStats.buffedStat === 'atk'} bonusValue={currentStats.bonusValue} />
-      <AttributeRow label="Defensa Base" value={currentStats.def} highlight={currentStats.buffedStat === 'def'} bonusValue={currentStats.bonusValue} />
-      <AttributeRow label="Impacto Base" value={currentStats.impact} highlight={currentStats.buffedStat === 'impact'} bonusValue={currentStats.bonusValue} />
+      <AttributeRow label={language === 'en' ? 'Base HP' : 'Hp Base'} value={currentStats.hp} highlight={currentStats.buffedStat === 'hp'} bonusValue={currentStats.bonusValue} />
+      <AttributeRow label={language === 'en' ? 'Base ATK' : 'Ataque Base'} value={currentStats.atk} highlight={currentStats.buffedStat === 'atk'} bonusValue={currentStats.bonusValue} />
+      <AttributeRow label={language === 'en' ? 'Base DEF' : 'Defensa Base'} value={currentStats.def} highlight={currentStats.buffedStat === 'def'} bonusValue={currentStats.bonusValue} />
+      <AttributeRow label={language === 'en' ? 'Base Impact' : 'Impacto Base'} value={currentStats.impact} highlight={currentStats.buffedStat === 'impact'} bonusValue={currentStats.bonusValue} />
       {/* Fuerza Bruta - Solo para agentes de Ruptura */}
       {agentRole === "Ruptura" && currentStats.sheerForce && (
-        <AttributeRow label="Fuerza Bruta" value={currentStats.sheerForce} highlight={currentStats.buffedStat === 'sheerForce'} bonusValue={currentStats.bonusValue} />
+        <AttributeRow label={language === 'en' ? 'Sheer Force' : 'Fuerza Bruta'} value={currentStats.sheerForce} highlight={currentStats.buffedStat === 'sheerForce'} bonusValue={currentStats.bonusValue} />
       )}
-      <AttributeRow label="Prob. Crítico" value={currentStats.crit} highlight={currentStats.buffedStat === 'crit'} bonusValue={currentStats.bonusValue} />
-      <AttributeRow label="Daño Crítico" value={currentStats.critDmg} highlight={currentStats.buffedStat === 'critDmg'} bonusValue={currentStats.bonusValue} />
-      <AttributeRow label="Tasa de Anomalía" value={currentStats.anomalyRate} highlight={currentStats.buffedStat === 'anomalyRate'} bonusValue={currentStats.bonusValue} />
-      <AttributeRow label="Maestría de Anomalía" value={currentStats.anomalyMastery} highlight={currentStats.buffedStat === 'anomalyMastery'} bonusValue={currentStats.bonusValue} />
-      <AttributeRow label="Tasa de Perforación" value={currentStats.penRatio} highlight={currentStats.buffedStat === 'penRatio'} bonusValue={currentStats.bonusValue} />
-      <AttributeRow label="Recup. de Energía" value={currentStats.energyRegen} highlight={currentStats.buffedStat === 'energyRegen'} bonusValue={currentStats.bonusValue} />
+      <AttributeRow label={language === 'en' ? 'CRIT Rate' : 'Prob. Crítico'} value={currentStats.crit} highlight={currentStats.buffedStat === 'crit'} bonusValue={currentStats.bonusValue} />
+      <AttributeRow label={language === 'en' ? 'CRIT DMG' : 'Daño Crítico'} value={currentStats.critDmg} highlight={currentStats.buffedStat === 'critDmg'} bonusValue={currentStats.bonusValue} />
+      <AttributeRow label={language === 'en' ? 'Anomaly Mastery' : 'Tasa de Anomalía'} value={currentStats.anomalyRate} highlight={currentStats.buffedStat === 'anomalyRate'} bonusValue={currentStats.bonusValue} />
+      <AttributeRow label={language === 'en' ? 'Anomaly Proficiency' : 'Maestría de Anomalía'} value={currentStats.anomalyMastery} highlight={currentStats.buffedStat === 'anomalyMastery'} bonusValue={currentStats.bonusValue} />
+      <AttributeRow label={language === 'en' ? 'PEN Ratio' : 'Tasa de Perforación'} value={currentStats.penRatio} highlight={currentStats.buffedStat === 'penRatio'} bonusValue={currentStats.bonusValue} />
+      <AttributeRow label={language === 'en' ? 'Energy Regen' : 'Recup. de Energía'} value={currentStats.energyRegen} highlight={currentStats.buffedStat === 'energyRegen'} bonusValue={currentStats.bonusValue} />
     </>
   );
 }

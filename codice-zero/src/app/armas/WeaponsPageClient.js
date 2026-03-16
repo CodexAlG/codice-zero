@@ -10,8 +10,32 @@ import LoadingSpinner from '@/components/ui/LoadingSpinner';
 import BetaWarning from "@/components/ui/BetaWarning";
 import FilterCategory from "@/components/filters/FilterCategory";
 import FilterIcon from "@/components/filters/FilterIcon";
+import { useLanguage } from '@/context/LanguageContext';
+
+const staticTranslations = {
+  es: {
+    todos: "TODOS",
+    filterTitle: "Filtra por categorías",
+    rango: "RANGO",
+    rol: "ROL",
+    found: "arma encontrada",
+    founds: "armas encontradas",
+    Ataque: "Ataque", Aturdidor: "Aturdidor", Anomalia: "Anomalía", Soporte: "Soporte", Defensa: "Defensa", Ruptura: "Ruptura"
+  },
+  en: {
+    todos: "ALL",
+    filterTitle: "Filter by categories",
+    rango: "RANK",
+    rol: "ROLE",
+    found: "weapon found",
+    founds: "weapons found",
+    Ataque: "Attack", Aturdidor: "Stun", Anomalia: "Anomaly", Soporte: "Support", Defensa: "Defense", Ruptura: "Rupture"
+  }
+};
 
 export default function WeaponsPageClient() {
+    const { language } = useLanguage();
+    const t = staticTranslations[language] || staticTranslations.es;
     const [activeFilters, setActiveFilters] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
 
@@ -122,24 +146,24 @@ export default function WeaponsPageClient() {
                                     }`}
                             >
                                 <div className="absolute inset-0 bg-gradient-to-r from-yellow-400/0 via-yellow-400/10 to-yellow-400/0 -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
-                                <span className="relative z-10">TODOS</span>
+                                <span className="relative z-10">{t.todos}</span>
                             </button>
                             <span className="text-white/20 text-lg hidden md:inline">|</span>
                             <div className="text-gray-400 text-xs font-bold tracking-widest uppercase hidden md:block">
-                                Filtra por categorías
+                                {t.filterTitle}
                             </div>
                         </div>
 
                         {/* Contador de Armas */}
                         <div className="text-yellow-500/80 text-sm font-mono tracking-widest uppercase bg-black/40 px-4 py-2 rounded-lg border border-white/5 shadow-inner">
-                            {filteredWeapons.length} arma{filteredWeapons.length !== 1 ? 's' : ''} encontrada{filteredWeapons.length !== 1 ? 's' : ''}
+                            {filteredWeapons.length} {filteredWeapons.length !== 1 ? t.founds : t.found}
                         </div>
                     </div>
 
                     {/* GRUPOS DE FILTROS (Desktop: Row, Mobile: Stack Accordions) */}
                     <div className="flex flex-wrap gap-4 items-start">
 
-                        <FilterCategory title="RANGO">
+                        <FilterCategory title={t.rango}>
                             {rankFilters.map((rank) => (
                                 <FilterIcon
                                     key={rank}
@@ -152,7 +176,7 @@ export default function WeaponsPageClient() {
                             ))}
                         </FilterCategory>
 
-                        <FilterCategory title="ROL">
+                        <FilterCategory title={t.rol}>
                             {roleFilters.map((role) => (
                                 <FilterIcon
                                     key={role}
@@ -160,6 +184,7 @@ export default function WeaponsPageClient() {
                                     icon={filterIcons[role]}
                                     activeFilters={activeFilters}
                                     toggleFilter={toggleFilter}
+                                    translatedName={t[role]}
                                 />
                             ))}
                         </FilterCategory>

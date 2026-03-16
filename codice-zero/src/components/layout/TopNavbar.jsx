@@ -6,8 +6,17 @@ import Image from 'next/image';
 import { Home, List, GitCompare } from 'lucide-react';
 import Link from 'next/link';
 import appIcon from '@/app/icon.png';
+import LanguageToggle from '@/components/ui/LanguageToggle';
+import { useLanguage } from '@/context/LanguageContext';
+
+const navTranslations = {
+  es: { inicio: "Inicio", agentes: "Agentes", armas: "Armas", discos: "Discos", tierlist: "Tier List", diff: "Diferencias" },
+  en: { inicio: "Home", agentes: "Agents", armas: "Weapons", discos: "Drive Discs", tierlist: "Tier List", diff: "Diff" }
+};
 
 export default function TopNavbar({ isVisible }) {
+    const { language } = useLanguage();
+    const t = navTranslations[language] || navTranslations.es;
     const [activeItem, setActiveItem] = useState(-1);
     const pathname = usePathname();
 
@@ -94,46 +103,44 @@ export default function TopNavbar({ isVisible }) {
                         href="/"
                         index={-1}
                         icon={Home}
-                        label="Inicio"
+                        label={t.inicio}
                     />
                     <NavItem
                         href="/agentes"
                         index={0}
                         icon="/CodiceZero/Agentes/Icon_Agents.webp"
-                        label="Agentes"
+                        label={t.agentes}
                     />
                     <NavItem
                         href="/armas"
                         index={1}
                         icon="/CodiceZero/Armas/Icon_Storage_W-Engine.webp"
-                        label="Armas"
+                        label={t.armas}
                     />
                     <NavItem
                         href="/discos"
                         index={2}
                         icon="/CodiceZero/Discos/Icon_Storage_Drive_Disc.webp"
-                        label="Discos"
+                        label={t.discos}
                     />
                     <NavItem
                         href="/tierlist"
                         index={3}
                         icon={List}
-                        label="Tier List"
+                        label={t.tierlist}
                     />
                     <NavItem
                         href="/diff"
                         index={4}
                         icon={GitCompare}
-                        label="Diferencias"
+                        label={t.diff}
                     />
                 </ul>
             </nav>
 
             {/* Bottom Decoration or Settings if needed */}
             <div className="mt-auto w-full px-6 flex flex-col gap-4">
-                <Link href="/sobre-mi" className="flex items-center justify-center gap-2 text-xs text-gray-500 hover:text-yellow-400 transition-colors uppercase tracking-wider font-bold">
-                    <span>Sobre mí</span>
-                </Link>
+                <LanguageToggle />
                 <div className="w-full h-[1px] bg-white/10"></div>
                 <div className="flex justify-center opacity-50 text-[10px] text-gray-500 font-mono">
                     v2.6

@@ -1,3 +1,5 @@
+'use client';
+
 /**
  * SkeletonCard - Loading placeholder with shimmer animation
  * Used for agent, weapon, bangboo, and disc cards

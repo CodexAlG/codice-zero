@@ -1,6 +1,8 @@
 import { Orbitron, Oxanium } from "next/font/google";
 import "./globals.css";
 import LayoutWrapper from '@/components/layout/LayoutWrapper';
+import { LanguageProvider } from "@/context/LanguageContext";
+import LanguageWarningModal from "@/components/ui/LanguageWarningModal";
 
 const orbitron = Orbitron({
   variable: "--font-orbitron",
@@ -20,7 +22,10 @@ export default function RootLayout({ children }) {
       <body
         className={`${orbitron.variable} ${oxanium.variable} antialiased`}
       >
-        <LayoutWrapper>{children}</LayoutWrapper>
+        <LanguageProvider>
+          <LanguageWarningModal />
+          <LayoutWrapper>{children}</LayoutWrapper>
+        </LanguageProvider>
       </body>
     </html>
   );

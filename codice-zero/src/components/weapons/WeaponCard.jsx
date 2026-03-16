@@ -1,11 +1,26 @@
 import Image from "next/image";
-import { memo, useState } from 'react';
+import { memo, useState, useEffect } from 'react';
 import SkeletonCard from '@/components/ui/SkeletonCard';
+
+import { useLanguage } from '@/context/LanguageContext';
 
 const normalize = (str) => str ? str.normalize("NFD").replace(/[\u0300-\u036f]/g, "") : "";
 
 const WeaponCard = memo(({ weapon, priority = false }) => {
   const [imageLoaded, setImageLoaded] = useState(false);
+  const { language, translateText } = useLanguage();
+  const [displayName, setDisplayName] = useState(weapon.name);
+
+  useEffect(() => {
+    let isActive = true;
+    async function updateName() {
+      const translated = await translateText(weapon.name);
+      if (isActive) setDisplayName(translated);
+    }
+    updateName();
+    return () => { isActive = false; };
+  }, [weapon.name, language, translateText]);
+
   const rankBottomColor = weapon.rank === 'S' ? 'border-b-yellow-500' : weapon.rank === 'A' ? 'border-b-purple-500' : 'border-b-blue-500';
   const hoverGlow = weapon.rank === 'S' ? 'hover:shadow-[0_0_20px_rgba(234,179,8,0.5)]' : weapon.rank === 'A' ? 'hover:shadow-[0_0_20px_rgba(168,85,247,0.5)]' : 'hover:shadow-[0_0_20px_rgba(59,130,246,0.5)]';
   const rankIcon = `/CodiceZero/Rango/Icon_Item_Rank_${weapon.rank}.webp`;
@@ -52,11 +67,9 @@ const WeaponCard = memo(({ weapon, priority = false }) => {
           }`}></div>
 
         {/* Skeleton Overlay */}
-        {!imageLoaded && (
-          <div className="absolute inset-0 z-10">
-            <SkeletonCard aspectRatio="4/5" />
-          </div>
-        )}
+        <div className={`absolute inset-0 z-10 transition-opacity duration-300 ${imageLoaded ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}>
+          <SkeletonCard aspectRatio="4/5" />
+        </div>
 
         <Image
           src={weapon.image}
@@ -85,7 +98,7 @@ const WeaponCard = memo(({ weapon, priority = false }) => {
       {/* Nombre */}
       <div className="absolute bottom-0 w-full p-3 pt-8 pb-3 bg-gradient-to-t from-[#09090b] via-black/80 to-transparent z-20">
         <h3 className="text-gray-200 font-bold text-xs text-center leading-tight group-hover:text-yellow-400 drop-shadow-md tracking-wide transition-colors duration-300">
-          {weapon.name}
+          {displayName}
         </h3>
       </div>
     </div>

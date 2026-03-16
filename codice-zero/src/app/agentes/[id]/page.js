@@ -2,7 +2,8 @@ import { agents } from '@/data/agents';
 import AgentDetailClient from './AgentDetailClient';
 
 export async function generateMetadata({ params }) {
-  const agentId = parseInt(params.id);
+  const { id } = await params;
+  const agentId = parseInt(id);
   const agent = agents.find(a => a.id === agentId);
 
   if (!agent) {

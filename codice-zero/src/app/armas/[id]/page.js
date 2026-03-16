@@ -2,7 +2,8 @@ import { weapons } from '@/data/weapons';
 import WeaponDetailClient from './WeaponDetailClient';
 
 export async function generateMetadata({ params }) {
-  const weaponId = parseInt(params.id);
+  const unwrappedParams = await params;
+  const weaponId = parseInt(unwrappedParams.id);
   const weapon = weapons.find(w => w.id === weaponId);
 
   if (!weapon) {
@@ -17,6 +18,7 @@ export async function generateMetadata({ params }) {
   };
 }
 
-export default function WeaponPage({ params }) {
-  return <WeaponDetailClient params={params} />;
+export default async function WeaponPage({ params }) {
+  const unwrappedParams = await params;
+  return <WeaponDetailClient params={unwrappedParams} />;
 }

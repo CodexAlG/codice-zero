@@ -14,6 +14,7 @@ import SkillMaterials from '@/components/agents/SkillMaterials';
 import { replaceIcons } from '@/components/utils/TextWithIcons';
 import HighlightText from '@/components/ui/HighlightText'; // Import directly here
 import BuildSection from './BuildSection';
+import { useLanguage } from '@/context/LanguageContext';
 
 
 
@@ -100,6 +101,8 @@ export default function AgentDetailPage() {
     const [details, setDetails] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
     const [activeSkillTab, setActiveSkillTab] = useState("basic");
+    const { language, translateText } = useLanguage();
+    const [translatedSkills, setTranslatedSkills] = useState([]);
 
     // Load details
     useEffect(() => {
@@ -137,6 +140,42 @@ export default function AgentDetailPage() {
         }
     }, [agentId]);
 
+    // Translate Skills whenever details or language changes
+    useEffect(() => {
+        if (!details?.skills) return;
+
+        // Anti-race condition flag
+        let isActive = true;
+
+        if (language === 'es') {
+            setTranslatedSkills(details.skills);
+            return;
+        }
+
+        const translateAllSkills = async () => {
+            const translated = await Promise.all(
+                details.skills.map(async (skill) => {
+                    const translatedName = await translateText(skill.name);
+                    let translatedDesc = await translateText(skill.description);
+
+                    // Fix DeepL adding "1 " or "0." before {VALOR_1} due to un->1 translation
+                    // Capture optional boundary or space to avoid deleting parts of numbers like 11
+                    translatedDesc = translatedDesc.replace(/(^|[^0-9])(?:0\.\s*|1\s*)(\{VALOR_\d+\})/g, '$1$2');
+
+                    // Fix DeepL pulling terms out of parentheses e.g. "Chain Attack ( )" -> "(Chain Attack)"
+                    translatedDesc = translatedDesc.replace(/([a-zA-Z]+(?:\s+[a-zA-Z]+)*)\s*\(\s*\)/g, '($1)');
+
+                    return { ...skill, name: translatedName, description: translatedDesc };
+                })
+            );
+            if (isActive) setTranslatedSkills(translated);
+        };
+
+        translateAllSkills();
+
+        return () => { isActive = false; };
+    }, [details, language, translateText]);
+
     // Skill Icons Mapping
     const skillIcons = {
         "Ataque Básico": "/CodiceZero/Habilidades/Icon_Basic_Attack.webp",
@@ -160,6 +199,23 @@ export default function AgentDetailPage() {
     if (!agent) {
         return <div className="min-h-screen bg-[#09090b] flex items-center justify-center text-white">Agente no encontrado</div>;
     }
+
+    const translateTerm = (term) => {
+        if (language === 'es') return term;
+        const map = {
+            "Eléctrico": "Electric",
+            "Fuego": "Fire",
+            "Hielo": "Ice",
+            "Físico": "Physical",
+            "Etéreo": "Ether",
+            "Anomalía": "Anomaly",
+            "Ataque": "Attack",
+            "Defensa": "Defense",
+            "Apoyo": "Support",
+            "Ruptura": "Stun"
+        };
+        return map[term] || term;
+    };
 
     // --- THEME & COLORS ---
     const normalize = (str) => str ? str.normalize("NFD").replace(/[\u0300-\u036f]/g, "") : "";
@@ -236,7 +292,7 @@ export default function AgentDetailPage() {
                                     alt="Potencial" width={20} height={20} className="object-contain opacity-80" unoptimized
                                 />
                             </div>
-                            <h3 className="text-xl font-bold uppercase tracking-wide text-white/90">Potencial</h3>
+                            <h3 className="text-xl font-bold uppercase tracking-wide text-white/90">{language === 'en' ? 'Potential' : 'Potencial'}</h3>
                         </div>
 
                         {/* Selector de Nivel Para Potencial (Barra Deslizante) */}
@@ -278,7 +334,7 @@ export default function AgentDetailPage() {
                                 <h4 className="text-xl font-display italic font-black text-white mb-3 ml-2 drop-shadow-md">{details.potential.name || "Sin nombre"}</h4>
 
                                 <div className="text-gray-300 text-sm md:text-base leading-relaxed space-y-3 font-sans relative z-10 ml-2">
-                                    <HighlightText text={replaceIcons(description)} skills={details.skills} skillIcons={skillIcons} elementColor={themeColor} />
+                                    <HighlightText text={replaceIcons(description)} skills={translatedSkills.length > 0 ? translatedSkills : details.skills} skillIcons={skillIcons} elementColor={themeColor} />
                                 </div>
                             </div>
                         </div>
@@ -294,12 +350,12 @@ export default function AgentDetailPage() {
 
     // --- CONSTANTS: SKILL GROUPS ---
     const SKILL_GROUPS = [
-        { id: 'basic', label: 'ATAQUE BÁSICO', keys: ['Ataque Básico', 'Ataque Normal'], icon: 'Ataque Básico' },
-        { id: 'dodge', label: 'EVASIÓN', keys: 'Evasión', icon: 'Evasión' },
-        { id: 'assist', label: 'ASISTENCIA', keys: 'Asistencia', icon: 'Asistencia' },
-        { id: 'special', label: 'TÉCNICA ESPECIAL', keys: ['Técnica Especial', 'Técnica Especial EX', 'Habilidad Especial', 'Habilidad Especial EX'], icon: 'Técnica Especial' },
-        { id: 'chain', label: 'TÉCNICA DEFINITIVA', keys: ['Técnica Definitiva', 'Definitiva'], icon: 'Técnica Definitiva' },
-        { id: 'passive', label: 'TALENTO PASIVO', keys: ['Pasiva', 'Pasiva Central', 'Habilidad Adicional'], icon: 'Pasiva Central' },
+        { id: 'basic', label: language === 'en' ? 'BASIC ATTACK' : 'ATAQUE BÁSICO', keys: ['Ataque Básico', 'Ataque Normal'], icon: 'Ataque Básico' },
+        { id: 'dodge', label: language === 'en' ? 'DODGE' : 'EVASIÓN', keys: 'Evasión', icon: 'Evasión' },
+        { id: 'assist', label: language === 'en' ? 'ASSIST' : 'ASISTENCIA', keys: 'Asistencia', icon: 'Asistencia' },
+        { id: 'special', label: language === 'en' ? 'SPECIAL ATTACK' : 'TÉCNICA ESPECIAL', keys: ['Técnica Especial', 'Técnica Especial EX', 'Habilidad Especial', 'Habilidad Especial EX'], icon: 'Técnica Especial' },
+        { id: 'chain', label: language === 'en' ? 'ULTIMATE' : 'TÉCNICA DEFINITIVA', keys: ['Técnica Definitiva', 'Definitiva'], icon: 'Técnica Definitiva' },
+        { id: 'passive', label: language === 'en' ? 'PASSIVE TALENT' : 'TALENTO PASIVO', keys: ['Pasiva', 'Pasiva Central', 'Habilidad Adicional'], icon: 'Pasiva Central' },
         { id: 'mindscape', label: 'MINDSCAPE CINEMA', keys: 'Mindscape', icon: 'MINDSCAPE' },
     ];
 
@@ -312,7 +368,8 @@ export default function AgentDetailPage() {
 
         // --- MINDSCAPE SPECIAL RENDERING ---
         if (id === 'mindscape') {
-            const mindscapeSkills = (details?.skills || []).filter(s => {
+            const currentSkills = translatedSkills.length > 0 ? translatedSkills : (details?.skills || []);
+            const mindscapeSkills = currentSkills.filter(s => {
                 if (!s.type) return false;
                 if (typeof s.type === 'string') return s.type.startsWith("Mindscape") || s.type.includes("Mindscape");
                 if (Array.isArray(s.type)) return s.type.includes("Mindscape");
@@ -354,7 +411,7 @@ export default function AgentDetailPage() {
                                 </div>
 
                                 <div className="text-gray-300 text-base leading-relaxed relative z-10 space-y-3">
-                                    <HighlightText text={skill.description} skills={details.skills} skillIcons={skillIcons} elementColor={themeColor} />
+                                    <HighlightText text={skill.description} skills={translatedSkills.length > 0 ? translatedSkills : details.skills} skillIcons={skillIcons} elementColor={themeColor} />
                                 </div>
                             </div>
                         );
@@ -365,13 +422,14 @@ export default function AgentDetailPage() {
         // --- END MINDSCAPE SPECIAL RENDERING ---
 
         let groupSkills = [];
+        const currentSkills = translatedSkills.length > 0 ? translatedSkills : (details?.skills || []);
         if (Array.isArray(keys)) {
             keys.forEach(k => {
-                const found = details?.skills?.filter(s => s.type === k) || [];
+                const found = currentSkills.filter(s => s.type === k) || [];
                 groupSkills = [...groupSkills, ...found];
             });
         } else {
-            groupSkills = details?.skills?.filter(s => s.type === keys) || [];
+            groupSkills = currentSkills.filter(s => s.type === keys) || [];
         }
 
         if (groupSkills.length === 0) {
@@ -459,7 +517,7 @@ export default function AgentDetailPage() {
                                 </div>
 
                                 <div className="text-gray-300 text-sm md:text-base leading-relaxed space-y-3 font-sans flex-grow relative z-10 ml-2">
-                                    <HighlightText text={replaceIcons(description)} skills={details.skills} skillIcons={skillIcons} elementColor={themeColor} />
+                                    <HighlightText text={replaceIcons(description)} skills={translatedSkills.length > 0 ? translatedSkills : details.skills} skillIcons={skillIcons} elementColor={themeColor} />
                                 </div>
 
                                 {/* Multiplicadores Compactos Premium */}
@@ -493,7 +551,9 @@ export default function AgentDetailPage() {
                 <div className="w-full bg-red-500/10 border-b border-red-500/30 py-3 px-4 text-center z-50 relative backdrop-blur-md shadow-[0_0_20px_rgba(239,68,68,0.2)]">
                     <p className="text-red-400 text-xs md:text-sm font-black tracking-widest uppercase flex items-center justify-center gap-2">
                         <TriangleAlert className="text-red-500 w-4 h-4 animate-pulse" />
-                        Este personaje se encuentra en fase Beta. Stats y habilidades sujetas a cambios.
+                        {language === 'en' 
+                            ? "This character is in Beta. Stats and skills subject to change." 
+                            : "Este personaje se encuentra en fase Beta. Stats y habilidades sujetas a cambios."}
                     </p>
                 </div>
             )}
@@ -504,7 +564,7 @@ export default function AgentDetailPage() {
                 {/* BOTÓN VOLVER */}
                 <Link href="/agentes" className="absolute top-8 left-8 z-50 inline-flex items-center text-gray-400 hover:text-white transition-colors group bg-black/40 backdrop-blur-md px-4 py-2 rounded-full border border-white/5 hover:border-white/30 hover:shadow-[0_0_15px_rgba(255,255,255,0.1)]">
                     <ArrowLeft className="w-5 h-5 mr-2 group-hover:-translate-x-1 transition-transform" />
-                    <span className="font-bold text-sm tracking-widest uppercase">Volver</span>
+                    <span className="font-bold text-sm tracking-widest uppercase">{language === 'en' ? 'Back' : 'Volver'}</span>
                 </Link>
 
                 {/* COLUMNA IZQUIERDA: IMAGEN (Sticky en Desktop, Relative en Móvil para evitar cortes) */}
@@ -549,11 +609,11 @@ export default function AgentDetailPage() {
                             </span>
                             <span className="px-4 py-1.5 bg-black/40 backdrop-blur-md rounded-full text-xs font-black uppercase tracking-widest flex items-center gap-2 border shadow-[inset_0_1px_1px_rgba(255,255,255,0.1)] hover:shadow-lg transition-shadow" style={{ color: themeColor, borderColor: `${themeColor}40` }}>
                                 <Image src={getElementIcon()} width={16} height={16} alt={agent.element} className="drop-shadow-md" unoptimized onError={(e) => e.target.style.display = 'none'} />
-                                {agent.element}
+                                {translateTerm(agent.element)}
                             </span>
                             <span className="px-4 py-1.5 bg-black/40 backdrop-blur-md rounded-full text-xs font-black uppercase tracking-widest text-gray-300 border border-white/10 flex items-center gap-2 shadow-[inset_0_1px_1px_rgba(255,255,255,0.1)]">
                                 <Image src={`/CodiceZero/Agentes/Rol/${normalize(agent.rol)}.webp`} width={16} height={16} alt={agent.rol} className="invert opacity-90" unoptimized />
-                                {agent.rol}
+                                {translateTerm(agent.rol)}
                             </span>
                             {agent.leak === "Beta" && (
                                 <span className="px-4 py-1.5 bg-red-500/10 backdrop-blur-md rounded-full text-[10px] font-black uppercase tracking-widest text-red-400 border border-red-500/30 flex items-center gap-2 shadow-[inset_0_1px_1px_rgba(255,255,255,0.1),0_0_15px_rgba(239,68,68,0.2)]">
@@ -575,9 +635,9 @@ export default function AgentDetailPage() {
                         {/* Control de Nivel + Stats */}
                         <div className="space-y-6 relative z-10">
                             <div className="flex justify-between items-center border-b border-white/5 pb-4">
-                                <h3 className="text-xl font-display italic font-black tracking-wide text-white drop-shadow-md">ATRIBUTOS BASE</h3>
+                                <h3 className="text-xl font-display italic font-black tracking-wide text-white drop-shadow-md">{language === 'en' ? 'BASE ATTRIBUTES' : 'ATRIBUTOS BASE'}</h3>
                                 <div className="flex items-center gap-4 bg-white/5 px-4 py-1.5 rounded-full border border-white/10 backdrop-blur-md group/slider">
-                                    <span className="text-xs font-black tracking-widest uppercase text-gray-400">Nv.{level}</span>
+                                    <span className="text-xs font-black tracking-widest uppercase text-gray-400">{language === 'en' ? 'Lv.' : 'Nv.'}{level}</span>
                                     <div className="relative w-24 py-1">
                                         <div className="absolute inset-0 blur-md rounded-full scale-y-150 opacity-0 group-hover/slider:opacity-50 transition-opacity" style={{ backgroundColor: themeColor }}></div>
                                         <input
@@ -608,7 +668,7 @@ export default function AgentDetailPage() {
 
                     {/* Bloque 1: Ascensión (Alineado a la derecha hacia el centro) */}
                     <div className="flex flex-col items-center lg:items-end">
-                        <h3 className="text-sm font-mono text-gray-400 uppercase tracking-widest mb-6 text-center lg:text-right">Materiales de Ascensión</h3>
+                        <h3 className="text-sm font-mono text-gray-400 uppercase tracking-widest mb-6 text-center lg:text-right">{language === 'en' ? 'Ascension Materials' : 'Materiales de Ascensión'}</h3>
                         <div className="flex justify-center lg:justify-end w-full">
                             <AscensionMaterials level={level} agentRole={agent.rol} themeColor={themeColor} />
                         </div>
@@ -616,7 +676,7 @@ export default function AgentDetailPage() {
 
                     {/* Bloque 2: Habilidades (Alineado a la izquierda desde el centro) */}
                     <div className="flex flex-col items-center lg:items-start">
-                        <h3 className="text-sm font-mono text-gray-400 uppercase tracking-widest mb-6 text-center lg:text-left">Materiales de Habilidad</h3>
+                        <h3 className="text-sm font-mono text-gray-400 uppercase tracking-widest mb-6 text-center lg:text-left">{language === 'en' ? 'Skill Materials' : 'Materiales de Habilidad'}</h3>
                         <div className="flex justify-center lg:justify-start w-full">
                             <SkillMaterials agentElement={agent.element} themeColor={themeColor} materials={details?.materials} />
                         </div>
@@ -636,7 +696,7 @@ export default function AgentDetailPage() {
                     <div className="absolute inset-0 bg-yellow-500/5 blur-[100px] rounded-full"></div>
                     <div className="h-[2px] w-24 md:w-48 bg-gradient-to-r from-transparent to-yellow-500/50"></div>
                     <h2 className="text-3xl md:text-5xl font-display italic font-black text-center tracking-widest text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 to-yellow-600 drop-shadow-[0_0_15px_rgba(234,179,8,0.3)] select-none">
-                        HABILIDADES DE COMBATE
+                        {language === 'en' ? 'COMBAT SKILLS' : 'HABILIDADES DE COMBATE'}
                     </h2>
                     <div className="h-[2px] w-24 md:w-48 bg-gradient-to-l from-transparent to-yellow-500/50"></div>
                 </div>

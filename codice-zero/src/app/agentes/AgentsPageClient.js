@@ -9,8 +9,36 @@ import LoadingSpinner from '@/components/ui/LoadingSpinner';
 import BetaWarning from "@/components/ui/BetaWarning";
 import FilterCategory from "@/components/filters/FilterCategory";
 import FilterIcon from "@/components/filters/FilterIcon";
+import { useLanguage } from '@/context/LanguageContext';
+
+const staticTranslations = {
+  es: {
+    todos: "TODOS",
+    filterTitle: "Filtra por categorías",
+    search: "Buscar Agente...",
+    elemento: "ELEMENTO",
+    rango: "RANGO",
+    rol: "ROL",
+    faction: "FACCIÓN",
+    Fuego: "Fuego", Hielo: "Hielo", Electrico: "Eléctrico", Fisico: "Físico", Etereo: "Etéreo",
+    Ataque: "Ataque", Aturdidor: "Aturdidor", Anomalia: "Anomalía", Soporte: "Soporte", Defensa: "Defensa", Ruptura: "Ruptura"
+  },
+  en: {
+    todos: "ALL",
+    filterTitle: "Filter by categories",
+    search: "Search Agent...",
+    elemento: "ELEMENT",
+    rango: "RANK",
+    rol: "ROLE",
+    faction: "FACTION",
+    Fuego: "Fire", Hielo: "Ice", Electrico: "Electric", Fisico: "Physical", Etereo: "Ether",
+    Ataque: "Attack", Aturdidor: "Stun", Anomalia: "Anomaly", Soporte: "Support", Defensa: "Defense", Ruptura: "Rupture"
+  }
+};
 
 export default function AgentsPageClient() {
+    const { language } = useLanguage();
+    const t = staticTranslations[language] || staticTranslations.es;
     const [activeFilters, setActiveFilters] = useState([]);
     const [searchTerm, setSearchTerm] = useState("");
     const [isLoading, setIsLoading] = useState(true);
@@ -156,11 +184,11 @@ export default function AgentsPageClient() {
                                         }`}
                                 >
                                     <div className="absolute inset-0 bg-gradient-to-r from-yellow-400/0 via-yellow-400/10 to-yellow-400/0 -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
-                                    <span className="relative z-10">TODOS</span>
+                                    <span className="relative z-10">{t.todos}</span>
                                 </button>
                                 <span className="text-white/20 text-lg hidden md:inline">|</span>
                                 <div className="text-gray-400 text-xs font-bold tracking-widest uppercase hidden md:block">
-                                    Filtra por categorías
+                                    {t.filterTitle}
                                 </div>
                             </div>
 
@@ -169,7 +197,7 @@ export default function AgentsPageClient() {
                                 <div className="absolute -inset-0.5 bg-gradient-to-r from-yellow-500/20 to-cyan-500/20 rounded-xl blur opacity-0 group-hover:opacity-100 transition duration-500"></div>
                                 <input
                                     type="text"
-                                    placeholder="Buscar Agente..."
+                                    placeholder={t.search}
                                     value={searchTerm}
                                     onChange={(e) => setSearchTerm(e.target.value)}
                                     className="relative w-full bg-[#0f0f11]/90 backdrop-blur-md border border-white/10 rounded-xl py-2.5 pl-11 pr-4 text-sm font-medium text-white focus:outline-none focus:border-yellow-500/50 focus:ring-1 focus:ring-yellow-500/50 transition-all placeholder:text-gray-600"
@@ -183,21 +211,21 @@ export default function AgentsPageClient() {
                         {/* GRUPOS DE FILTROS (Desktop: Row, Mobile: Stack) */}
                         <div className="flex flex-wrap gap-4 items-start">
 
-                            <FilterCategory title="ELEMENTO">
+                            <FilterCategory title={t.elemento}>
                                 {elementFilters.map((el) => (
-                                    <FilterIcon key={el} name={el} icon={elementIcons[el]} activeFilters={activeFilters} toggleFilter={toggleFilter} />
+                                    <FilterIcon key={el} name={el} icon={elementIcons[el]} activeFilters={activeFilters} toggleFilter={toggleFilter} translatedName={t[el]} />
                                 ))}
                             </FilterCategory>
 
-                            <FilterCategory title="RANGO">
+                            <FilterCategory title={t.rango}>
                                 {rankFilters.map((r) => (
                                     <FilterIcon key={r} name={r} icon={elementIcons[r]} activeFilters={activeFilters} toggleFilter={toggleFilter} size={28} />
                                 ))}
                             </FilterCategory>
 
-                            <FilterCategory title="ROL">
+                            <FilterCategory title={t.rol}>
                                 {roleFilters.map((rol) => (
-                                    <FilterIcon key={rol} name={rol} icon={elementIcons[rol]} activeFilters={activeFilters} toggleFilter={toggleFilter} />
+                                    <FilterIcon key={rol} name={rol} icon={elementIcons[rol]} activeFilters={activeFilters} toggleFilter={toggleFilter} translatedName={t[rol]} />
                                 ))}
                             </FilterCategory>
 
@@ -205,7 +233,7 @@ export default function AgentsPageClient() {
 
                         {/* FACCIONES (Separado por longitud) */}
                         <div className="w-full">
-                            <FilterCategory title="FACCIÓN" isFullWidth>
+                            <FilterCategory title={t.faction} isFullWidth>
                                 {factionFilters.map((fac) => (
                                     <FilterIcon key={fac} name={fac} icon={elementIcons[fac]} activeFilters={activeFilters} toggleFilter={toggleFilter} size={32} />
                                 ))}

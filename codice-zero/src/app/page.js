@@ -2,8 +2,33 @@
 import Image from "next/image";
 import { Coffee } from "lucide-react";
 import { agents } from "@/data/agents";
+import { useLanguage } from "@/context/LanguageContext";
+
+const staticTranslations = {
+  es: {
+    subtitle: "La Referencia Estratégica Hispana",
+    desc: "La base de datos definitiva para Zenless Zone Zero. Análisis profundo de builds, sinergias de equipo y estrategias avanzadas, diseñada por y para la comunidad.",
+    database: "DATABASE: ONLINE",
+    gameVer: "VER. JUEGO: ",
+    agents: "AGENTES: ",
+    projectLeader: "Líder del Proyecto",
+    slogan: '"Construyendo para la comunidad."'
+  },
+  en: {
+    subtitle: "The Ultimate Strategic Reference",
+    desc: "The definitive database for Zenless Zone Zero. Deep analysis of builds, team synergies, and advanced strategies, designed by and for the community.",
+    database: "DATABASE: ONLINE",
+    gameVer: "GAME VER: ",
+    agents: "AGENTS: ",
+    projectLeader: "Project Leader",
+    slogan: '"Building for the community."'
+  }
+};
 
 export default function Home() {
+  const { language } = useLanguage();
+  const t = staticTranslations[language] || staticTranslations.es;
+
   // Filter agents that don't have leak: "Beta"
   const releaseAgents = agents.filter(agent => agent.leak !== "Beta");
 
@@ -62,13 +87,13 @@ export default function Home() {
         </div>
 
         <p className="text-lg xs:text-xl md:text-2xl text-gray-100 font-bold mb-4 drop-shadow-md">
-          La Referencia Estratégica Hispana
+          {t.subtitle}
         </p>
 
         <p className="text-gray-400 text-sm md:text-base leading-relaxed mb-10 max-w-2xl mx-auto font-medium">
-          La base de datos definitiva para <strong className="text-gray-200">Zenless Zone Zero</strong>.
-          Análisis profundo de builds, sinergias de equipo y estrategias avanzadas,
-          diseñada por y para la comunidad.
+          {t.desc.split('Zenless Zone Zero')[0]}
+          <strong className="text-gray-200">Zenless Zone Zero</strong>
+          {t.desc.split('Zenless Zone Zero')[1]}
         </p>
 
         {/* Barra de Estado (Premium Glassmorphism) */}
@@ -78,15 +103,15 @@ export default function Home() {
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
               <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500 shadow-[0_0_8px_rgba(34,197,94,0.8)]"></span>
             </div>
-            <span className="tracking-widest">DATABASE: ONLINE</span>
+            <span className="tracking-widest">{t.database}</span>
           </div>
           <div className="flex items-center gap-2">
             <div className="w-2 h-2 bg-yellow-500 rounded-full shadow-[0_0_8px_rgba(234,179,8,0.8)]"></div>
-            <span className="tracking-widest">GAME VER: {latestVersion.toFixed(1)}</span>
+            <span className="tracking-widest">{t.gameVer}{latestVersion.toFixed(1)}</span>
           </div>
           <div className="flex items-center gap-2">
             <div className="w-2 h-2 bg-cyan-400 rounded-full shadow-[0_0_8px_rgba(34,211,238,0.8)]"></div>
-            <span className="tracking-widest">AGENTS: {agentCount}</span>
+            <span className="tracking-widest">{t.agents}{agentCount}</span>
           </div>
         </div>
 
@@ -109,7 +134,7 @@ export default function Home() {
 
             {/* Info */}
             <div className="flex flex-col justify-center items-start gap-1 relative z-10 w-full">
-              <span className="text-[9px] font-black uppercase tracking-[0.2em] text-yellow-500/80 leading-none">Líder del Proyecto</span>
+              <span className="text-[9px] font-black uppercase tracking-[0.2em] text-yellow-500/80 leading-none">{t.projectLeader}</span>
               <div className="flex items-center justify-between w-full">
                 <h3 className="text-xl font-bold text-gray-100 leading-tight drop-shadow-sm">Ego</h3>
                 <div className="relative flex h-1.5 w-1.5">
@@ -117,7 +142,7 @@ export default function Home() {
                   <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-green-500" title="Online"></span>
                 </div>
               </div>
-              <p className="text-[11px] text-gray-400 italic leading-snug mt-1 border-t border-white/5 pt-1 w-full">"Construyendo para la comunidad."</p>
+              <p className="text-[11px] text-gray-400 italic leading-snug mt-1 border-t border-white/5 pt-1 w-full">{t.slogan}</p>
             </div>
           </div>
         </div>

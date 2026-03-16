@@ -2,16 +2,18 @@
 import React, { memo } from "react";
 import Image from "next/image";
 
-const FilterIcon = memo(({ name, icon, activeFilters, toggleFilter, size = 24 }) => {
+const FilterIcon = memo(({ name, icon, activeFilters, toggleFilter, size = 24, translatedName }) => {
     const isActive = activeFilters.includes(name);
+
+    const displayName = translatedName || name;
 
     return (
         <button
             onClick={() => toggleFilter(name)}
             className={`relative group transition-all duration-200 ${isActive ? "scale-110 z-10" : "scale-100 opacity-60 hover:opacity-100 hover:scale-105"
                 }`}
-            title={name}
-            aria-label={`Filtrar por ${name}`}
+            title={displayName}
+            aria-label={`Filtrar por ${displayName}`}
         >
             {/* Glow Effect (Active) - Optimizado: Solo mostrar si activo */}
             {isActive && (
@@ -40,8 +42,11 @@ const FilterIcon = memo(({ name, icon, activeFilters, toggleFilter, size = 24 })
     // Custom memo comparison for performance
     const prevActive = prevProps.activeFilters.includes(prevProps.name);
     const nextActive = nextProps.activeFilters.includes(nextProps.name);
-    // Only re-render if active state changes OR if icon/size props change (unlikely)
-    return prevActive === nextActive && prevProps.icon === nextProps.icon && prevProps.size === nextProps.size;
+    // Only re-render if active state changes OR if icon/size/translatedName props change
+    return prevActive === nextActive && 
+           prevProps.icon === nextProps.icon && 
+           prevProps.size === nextProps.size &&
+           prevProps.translatedName === nextProps.translatedName;
 });
 
 export default FilterIcon;

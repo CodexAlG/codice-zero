@@ -1,36 +1,92 @@
 "use client";
-import { useState, use } from "react";
+import { useState, use, useEffect } from "react";
 import Image from "next/image";
 import HighlightText from "@/components/ui/HighlightText";
 import Link from "next/link";
 import { weapons } from "@/data/weapons";
 import { ArrowLeft, TriangleAlert } from "lucide-react";
 import WeaponAscensionMaterials from "@/components/weapons/WeaponAscensionMaterials";
+import { useLanguage } from "@/context/LanguageContext";
 const normalize = (str) => str ? str.normalize("NFD").replace(/[\u0300-\u036f]/g, "") : "";
 
+const staticTranslations = {
+  es: {
+    back: "Volver al Armamiento",
+    notFound: "Arma no encontrada",
+    level: "Nivel ",
+    max: "MAX 60",
+    baseAtk: "Ataque Base",
+    refinement: "Refinamiento ",
+    passive: "Pasiva",
+    betaWarn: "Este arma se encuentra en fase Beta. Sus estadísticas y efectos están sujetos a cambios antes del lanzamiento oficial."
+  },
+  en: {
+    back: "Back to Arsenal",
+    notFound: "Weapon not found",
+    level: "Level ",
+    max: "MAX 60",
+    baseAtk: "Base ATK",
+    refinement: "Refinement ",
+    passive: "Passive",
+    betaWarn: "This weapon is in Beta phase. Its stats and effects are subject to change before the official release."
+  }
+};
+
 export default function WeaponDetailClient({ params }) {
-    // Desempaquetar params de forma segura (compatible con Next.js 13/14/15)
-    // Si params es una promesa (Next.js 15), usa 'use'. Si es objeto, úsalo directo.
+    const { language, translateText } = useLanguage();
+    const t = staticTranslations[language] || staticTranslations.es;
+
+    // Desempaquetar params de forma segura
     const unwrappedParams = params instanceof Promise ? use(params) : params;
     const id = Number(unwrappedParams.id);
 
     // Buscar el arma
     const weapon = weapons.find((w) => w.id === id);
 
-    // Debugging (Ver en consola del navegador)
-    console.log("ID buscado:", id);
-    console.log("Arma encontrada:", weapon);
-
     // Estados para sliders
     const [level, setLevel] = useState(60); // Slider Nivel
     const [refinement, setRefinement] = useState(1); // Slider Refinamiento (1-5)
 
+    // Estados para traducciones
+    const [translatedContent, setTranslatedContent] = useState({
+        name: weapon?.name || "",
+        rol: weapon?.rol || "",
+        subStatName: weapon?.detailStats?.subStat.name || weapon?.stats.main || "",
+        effectTitle: weapon?.effect?.title || "",
+        effectDesc: weapon?.effect?.description || ""
+    });
+
+    useEffect(() => {
+        if (!weapon) return;
+        let isActive = true;
+        async function doTranslate() {
+            const [tName, tRol, tSubStat, tTitle, tDesc] = await Promise.all([
+                translateText(weapon.name),
+                translateText(weapon.rol),
+                translateText(weapon.detailStats?.subStat.name || weapon.stats.main),
+                translateText(weapon.effect?.title || ""),
+                translateText(weapon.effect?.description || "")
+            ]);
+            if (isActive) {
+                setTranslatedContent({
+                    name: tName,
+                    rol: tRol,
+                    subStatName: tSubStat,
+                    effectTitle: tTitle,
+                    effectDesc: tDesc
+                });
+            }
+        }
+        doTranslate();
+        return () => { isActive = false; };
+    }, [weapon, language, translateText]);
+
     if (!weapon) return (
         <div className="min-h-screen bg-gray-950 flex items-center justify-center">
             <div className="text-center">
-                <h1 className="text-4xl font-display text-red-400 mb-4">Arma no encontrada</h1>
+                <h1 className="text-4xl font-display text-red-400 mb-4">{t.notFound}</h1>
                 <Link href="/armas" className="text-yellow-400 hover:text-yellow-300 transition-colors">
-                    ← Volver a Armas
+                    ← {t.back}
                 </Link>
             </div>
         </div>
@@ -38,16 +94,15 @@ export default function WeaponDetailClient({ params }) {
 
     // Helper para colores según rango 
     const rankColor = weapon.rank === 'S' ? '#eab308' : weapon.rank === 'A' ? '#a855f7' : '#3b82f6';
-    const rankShadow = weapon.rank === 'S' ? 'shadow-yellow-500/50' : weapon.rank === 'A' ? 'shadow-purple-500/50' : 'shadow-blue-500/50';
-
-    // Helper: Calcular valores dinámicos 
+    const rankShadow = weapon.rank === 'S' ? 'shadow-yellow-500/50' : weapon.rank === 'A' ? 'shadow-purple-500/50' : 'shadow-blue-500/50'    // Helper: Calcular valores dinámicos 
     const getDynamicDescription = () => {
-        if (!weapon.effect?.refinements) return weapon.effect || "";
+        const descText = translatedContent.effectDesc || weapon.effect?.description || "";
+        if (!weapon.effect?.refinements) return descText;
 
         const baseRef = weapon.effect.refinements[0]; // Nivel 1
         const currentRef = weapon.effect.refinements[refinement - 1]; // Nivel Actual
 
-        let desc = weapon.effect.description;
+        let desc = descText;
 
         // PASO 1: Crear un mapa de reemplazos (baseVal -> placeholder -> currentVal)
         const replacements = [];
@@ -89,7 +144,7 @@ export default function WeaponDetailClient({ params }) {
             {/* Botón Volver Flotante */}
             <Link href="/armas" className="absolute top-8 left-8 z-50 inline-flex items-center text-gray-400 hover:text-yellow-400 transition-colors group bg-black/40 backdrop-blur-md px-4 py-2 rounded-full border border-white/5 hover:border-yellow-500/30 hover:shadow-[0_0_15px_rgba(250,204,21,0.2)]">
                 <ArrowLeft className="w-5 h-5 mr-2 group-hover:-translate-x-1 transition-transform" />
-                <span className="font-bold text-sm tracking-widest uppercase">Volver al Armamento</span>
+                <span className="font-bold text-sm tracking-widest uppercase">{t.back}</span>
             </Link>
 
             <div className="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 min-h-screen items-center p-8">
@@ -135,7 +190,7 @@ export default function WeaponDetailClient({ params }) {
                         <div className="flex items-center gap-3 mb-4 flex-wrap">
                             <div className="flex items-center gap-2 px-5 py-2 bg-black/50 backdrop-blur-md rounded-full border border-white/10 shadow-[inset_0_1px_1px_rgba(255,255,255,0.1)]">
                                 <Image src={`/CodiceZero/Agentes/Rol/${normalize(weapon.rol)}.webp`} alt={weapon.rol} width={20} height={20} className="invert opacity-90" unoptimized />
-                                <span className="text-sm font-black tracking-widest text-gray-300 uppercase">{weapon.rol}</span>
+                                <span className="text-sm font-black tracking-widest text-gray-300 uppercase">{translatedContent.rol}</span>
                             </div>
                             <span className="text-sm font-mono font-bold tracking-widest text-gray-500 bg-white/5 px-5 py-2 rounded-full border border-white/5">W-ENGINE</span>
 
@@ -165,7 +220,7 @@ export default function WeaponDetailClient({ params }) {
                             )}
                         </div>
                         <h1 className="text-4xl sm:text-5xl md:text-6xl font-display font-black italic text-transparent bg-clip-text bg-gradient-to-r from-white via-gray-200 to-gray-400 leading-none mb-2 drop-shadow-[0_0_30px_rgba(255,255,255,0.2)] tracking-tight pr-4">
-                            {weapon.name}
+                            {translatedContent.name}
                         </h1>
 
                         {/* Advertencia de Beta Texto Completo */}
@@ -173,12 +228,11 @@ export default function WeaponDetailClient({ params }) {
                             <div className="mt-4 w-full p-3 bg-yellow-500/10 border border-yellow-500/20 rounded-lg flex items-start gap-3 text-yellow-500">
                                 <TriangleAlert className="w-5 h-5 flex-shrink-0 mt-0.5" />
                                 <p className="text-sm font-medium leading-relaxed text-left">
-                                    Este arma se encuentra en fase Beta. Sus estadísticas y efectos están sujetos a cambios antes del lanzamiento oficial.
+                                    {t.betaWarn}
                                 </p>
                             </div>
                         )}
                     </div>
-
                     {/* 2. Panel de Stats (Premium Glassmorphism) */}
                     <div className="bg-black/40 border border-white/10 shadow-[0_20px_40px_rgba(0,0,0,0.5),inset_0_1px_1px_rgba(255,255,255,0.05)] rounded-2xl p-6 md:p-8 backdrop-blur-md relative overflow-hidden w-full group">
                         {/* Highlights de fondo */}
@@ -186,8 +240,8 @@ export default function WeaponDetailClient({ params }) {
 
                         <div className="space-y-4 relative z-10">
                             <div className="flex justify-between text-xs font-black tracking-widest text-gray-400 uppercase">
-                                <span className="text-white drop-shadow-[0_0_10px_rgba(255,255,255,0.5)]">Nivel {level}</span>
-                                <span className="text-yellow-500 shadow-yellow-500/50">MAX 60</span>
+                                <span className="text-white drop-shadow-[0_0_10px_rgba(255,255,255,0.5)]">{t.level} {level}</span>
+                                <span className="text-yellow-500 shadow-yellow-500/50">{t.max}</span>
                             </div>
 
                             {/* Slider Horizontal Premium */}
@@ -204,7 +258,7 @@ export default function WeaponDetailClient({ params }) {
                             </div>
                             <div className="flex gap-12 mt-4">
                                 <div>
-                                    <p className="text-xs text-gray-500 uppercase">Ataque Base</p>
+                                    <p className="text-xs text-gray-500 uppercase">{t.baseAtk}</p>
                                     <span className="text-3xl font-mono font-bold text-white">
                                         {/* Cálculo simple de progresión visual */}
                                         {weapon.detailStats
@@ -215,7 +269,7 @@ export default function WeaponDetailClient({ params }) {
                                 {/* Stat Secundario Dinámico */}
                                 <div>
                                     <span className="text-gray-500 text-xs font-mono block mb-1 uppercase">
-                                        {weapon.detailStats?.subStat.name || weapon.stats.main}
+                                        {translatedContent.subStatName}
                                     </span>
                                     <p className="text-3xl font-bold font-mono text-white">
                                         {(() => {
@@ -249,13 +303,13 @@ export default function WeaponDetailClient({ params }) {
 
                         <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-6 relative z-10">
                             <h3 className="text-2xl text-yellow-500 font-display font-black italic drop-shadow-[0_0_15px_rgba(234,179,8,0.4)] tracking-wide relative inline-block">
-                                {weapon.effect?.title || "Pasiva"}
+                                {translatedContent.effectTitle || t.passive}
                                 <div className="absolute -bottom-2 left-0 w-12 h-1 bg-yellow-500 rounded-full shadow-[0_0_8px_rgba(234,179,8,0.8)]"></div>
                             </h3>
 
                             {/* Slider Refinamiento Premium */}
                             <div className="flex flex-col items-start md:items-end w-40 bg-black/40 p-3 rounded-xl border border-white/5 backdrop-blur-md">
-                                <span className="text-[10px] font-black tracking-widest uppercase text-yellow-500 mb-2 font-mono">Refinamiento {refinement}</span>
+                                <span className="text-[10px] font-black tracking-widest uppercase text-yellow-500 mb-2 font-mono">{t.refinement} {refinement}</span>
                                 <div className="w-full relative group/refslider">
                                     <input
                                         type="range"
@@ -273,7 +327,6 @@ export default function WeaponDetailClient({ params }) {
                                 </div>
                             </div>
                         </div>
-
                         {/* Descripción Dinámica */}
                         <div className="text-lg text-gray-300 leading-relaxed">
                             {getDynamicDescription()}

@@ -1,26 +1,63 @@
-"use client";
-
 import Image from "next/image";
 import Link from "next/link";
 import { agents } from "@/data/agents";
+import { useLanguage } from "@/context/LanguageContext";
 
 const TIERS = ["T0", "T0.5", "T1", "T2", "T3", "T4", "T5"];
-const ROLES = [
-    { id: "dps", label: "DPS" },
-    { id: "subdps", label: "SUB-DPS" },
-    { id: "stun", label: "ATURDIDOR" },
-    { id: "support", label: "SOPORTE" },
-];
 
-const TIER_COLORS = {
-    "T0": "#ff7f7f", // Redish
-    "T0.5": "#ffbf7f", // Orange
-    "T1": "#ffff7f", // Yellow
-    "T2": "#7fff7f", // Green
-    "T3": "#7fbfff", // Blue
-    "T4": "#7f7fff", // Indigo
-    "T5": "#ff7fff", // Violet
+const staticTranslations = {
+    es: {
+        roles: { dps: "DPS", subdps: "SUB-DPS", stun: "ATURDIDOR", support: "SOPORTE" },
+        tierlist: "Tier List",
+        importantNotice: "Aviso Importante",
+        disclaimer: "Esta clasificación es una guía referencial basada en análisis detallados del meta actual. Recuerda que la efectividad de cada agente puede variar según la composición de tu equipo y tu estilo de juego personal. No tomes esto como una verdad absoluta.",
+        evaluationCriteria: "Criterios de Evaluación",
+        criteria: [
+            "Evaluados en base (M0) + Arma (W1)",
+            "Evaluados a máximo potencial (M6)",
+            "Desempeño general en End-Game",
+            "Coste de inversión vs Beneficio",
+            "Versatilidad en equipos"
+        ],
+        rank: "Rango"
+    },
+    en: {
+        roles: { dps: "DPS", subdps: "SUB-DPS", stun: "STUNNER", support: "SUPPORT" },
+        tierlist: "Tier List",
+        importantNotice: "Important Notice",
+        disclaimer: "This ranking is a reference guide based on detailed analysis of the current meta. Remember that the effectiveness of each agent may vary depending on your team composition and your personal playstyle. Do not take this as absolute truth.",
+        evaluationCriteria: "Evaluation Criteria",
+        criteria: [
+            "Evaluated at base (M0) + Weapon (W1)",
+            "Evaluated at maximum potential (M6)",
+            "General Performance in End-Game",
+            "Investment Cost vs Benefit",
+            "Team Versatility"
+        ],
+        rank: "Rank"
+    }
 };
+
+export default function DeveloperTierList() {
+    const { language } = useLanguage();
+    const t = staticTranslations[language] || staticTranslations.es;
+
+    const ROLES = [
+        { id: "dps", label: t.roles.dps },
+        { id: "subdps", label: t.roles.subdps },
+        { id: "stun", label: t.roles.stun },
+        { id: "support", label: t.roles.support },
+    ];
+
+    const TIER_COLORS = {
+        "T0": "#ff7f7f", // Redish
+        "T0.5": "#ffbf7f", // Orange
+        "T1": "#ffff7f", // Yellow
+        "T2": "#7fff7f", // Green
+        "T3": "#7fbfff", // Blue
+        "T4": "#7f7fff", // Indigo
+        "T5": "#ff7fff", // Violet
+    };
 
 // --- MANUAL CONFIGURATION ---
 // Add Agent IDs to the corresponding arrays to place them.
@@ -162,8 +199,6 @@ const TIER_DATA = {
         ]
     }
 };
-
-export default function DeveloperTierList() {
     return (
         <div className="w-full max-w-7xl mx-auto overflow-x-auto pb-10">
 
@@ -171,7 +206,7 @@ export default function DeveloperTierList() {
             <div className="mb-8 space-y-6">
 
                 {/* Title */}
-                <h2 className="text-3xl font-bold text-white mb-4">Tier List</h2>
+                <h2 className="text-3xl font-bold text-white mb-4">{t.tierlist}</h2>
 
                 {/* Disclaimer Box */}
                 <div className="bg-black/40 border border-red-500/30 rounded-2xl p-6 backdrop-blur-md shadow-[0_0_20px_rgba(239,68,68,0.1)] relative overflow-hidden group">
@@ -179,11 +214,9 @@ export default function DeveloperTierList() {
                     <div className="flex items-start gap-4 relative z-10">
                         <div className="mt-1 min-w-[4px] h-12 bg-red-500 rounded-full shadow-[0_0_10px_rgba(239,68,68,0.8)]"></div>
                         <div>
-                            <h3 className="text-red-400 font-black mb-1 uppercase text-xs tracking-widest drop-shadow-md">Aviso Importante</h3>
+                            <h3 className="text-red-400 font-black mb-1 uppercase text-xs tracking-widest drop-shadow-md">{t.importantNotice}</h3>
                             <p className="text-gray-300 text-sm leading-relaxed">
-                                Esta clasificación es una guía referencial basada en análisis detallados del meta actual.
-                                Recuerda que la efectividad de cada agente puede variar según la composición de tu equipo
-                                y tu estilo de juego personal. No tomes esto como una verdad absoluta.
+                                {t.disclaimer}
                             </p>
                         </div>
                     </div>
@@ -196,32 +229,32 @@ export default function DeveloperTierList() {
 
                     <h3 className="text-white font-display font-black italic text-xl mb-6 flex items-center gap-3 drop-shadow-md">
                         <span className="w-1.5 h-6 bg-yellow-500 rounded-full shadow-[0_0_10px_rgba(234,179,8,0.8)]"></span>
-                        Criterios de Evaluación
+                        {t.evaluationCriteria}
                     </h3>
 
                     <div className="grid md:grid-cols-2 gap-6 text-sm relative z-10">
                         <ul className="space-y-4">
                             <li className="flex items-center gap-4 text-gray-300 group">
                                 <span className="w-10 h-10 rounded-xl bg-black/50 border border-white/10 flex items-center justify-center font-black text-lg text-yellow-500 group-hover:border-yellow-500/50 group-hover:shadow-[0_0_15px_rgba(234,179,8,0.3)] transition-all">S</span>
-                                <span className="font-medium tracking-wide">Evaluados en base (M0) + Arma (W1)</span>
+                                <span className="font-medium tracking-wide">{t.criteria[0]}</span>
                             </li>
                             <li className="flex items-center gap-4 text-gray-300 group">
                                 <span className="w-10 h-10 rounded-xl bg-black/50 border border-white/10 flex items-center justify-center font-black text-lg text-purple-400 group-hover:border-purple-400/50 group-hover:shadow-[0_0_15px_rgba(168,85,247,0.3)] transition-all">A</span>
-                                <span className="font-medium tracking-wide">Evaluados a máximo potencial (M6)</span>
+                                <span className="font-medium tracking-wide">{t.criteria[1]}</span>
                             </li>
                         </ul>
                         <ul className="space-y-4">
                             <li className="flex items-center gap-3 text-gray-300 bg-white/5 px-4 py-2 rounded-lg border border-white/5 backdrop-blur-sm">
                                 <span className="text-yellow-500 drop-shadow-[0_0_5px_rgba(234,179,8,0.8)]">❖</span>
-                                Desempeño general en End-Game
+                                {t.criteria[2]}
                             </li>
                             <li className="flex items-center gap-3 text-gray-300 bg-white/5 px-4 py-2 rounded-lg border border-white/5 backdrop-blur-sm">
                                 <span className="text-yellow-500 drop-shadow-[0_0_5px_rgba(234,179,8,0.8)]">❖</span>
-                                Coste de inversión vs Beneficio
+                                {t.criteria[3]}
                             </li>
                             <li className="flex items-center gap-3 text-gray-300 bg-white/5 px-4 py-2 rounded-lg border border-white/5 backdrop-blur-sm">
                                 <span className="text-yellow-500 drop-shadow-[0_0_5px_rgba(234,179,8,0.8)]">❖</span>
-                                Versatilidad en equipos
+                                {t.criteria[4]}
                             </li>
                         </ul>
                     </div>
@@ -234,7 +267,7 @@ export default function DeveloperTierList() {
                 {/* Header Row (Roles) - Hidden on Mobile */}
                 <div className="hidden md:grid md:grid-cols-[120px_1fr_1fr_1fr_1fr]">
                     <div className="bg-black/60 p-4 border-b border-r border-white/10 flex items-center justify-center backdrop-blur-md">
-                        <span className="font-black text-gray-500 text-[10px] uppercase tracking-widest">Rango</span>
+                        <span className="font-black text-gray-500 text-[10px] uppercase tracking-widest">{t.rank}</span>
                     </div>
                     {ROLES.map(role => (
                         <div key={role.id} className="bg-black/60 p-4 border-b border-white/10 border-l border-white/5 text-center flex items-center justify-center backdrop-blur-md">

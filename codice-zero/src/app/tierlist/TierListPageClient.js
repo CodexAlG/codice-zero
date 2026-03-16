@@ -4,8 +4,22 @@ import { useState } from "react";
 import TierListLayout from "@/components/tierlist/TierListLayout";
 import DeveloperTierList from "@/components/tierlist/DeveloperTierList";
 import CommunityTierList from "@/components/tierlist/CommunityTierList";
+import { useLanguage } from "@/context/LanguageContext";
+
+const staticTranslations = {
+    es: {
+        creator: "Creador",
+        community: "Comunidad"
+    },
+    en: {
+        creator: "Creator",
+        community: "Community"
+    }
+};
 
 export default function TierListPageClient() {
+    const { language } = useLanguage();
+    const t = staticTranslations[language] || staticTranslations.es;
     const [activeTab, setActiveTab] = useState("developer");
 
     return (
@@ -25,13 +39,13 @@ export default function TierListPageClient() {
                         onClick={() => setActiveTab("developer")}
                         className={`relative z-10 px-6 py-2 rounded-full text-sm font-bold tracking-wide transition-colors duration-300 ${activeTab === 'developer' ? 'text-black' : 'text-gray-400 hover:text-white'}`}
                     >
-                        Creador
+                        {t.creator}
                     </button>
                     <button
                         onClick={() => setActiveTab("community")}
                         className={`relative z-10 px-6 py-2 rounded-full text-sm font-bold tracking-wide transition-colors duration-300 ${activeTab === 'community' ? 'text-black' : 'text-gray-400 hover:text-white'}`}
                     >
-                        Comunidad
+                        {t.community}
                     </button>
                 </div>
             </header>
