@@ -106,9 +106,9 @@ export default {
     },
     {
       type: "Técnica Definitiva",
-      name: "Técnica en Cadena: Construcción Colaborativa",
+      name: "Ataque en Cadena: Construcción Colaborativa",
       description: "Cuando se activa un (Ataque en Cadena), selecciona al personaje para activar: Lanza tres granadas al aire y luego ametralla para detonarlas, infligiendo Daño Eléctrico masivo. El personaje es invulnerable mientras usa esta habilidad.",
-      tags: ["Eléctrico", "Técnica en Cadena"]
+      tags: ["Eléctrico", "Ataque en Cadena"]
     },
     {
       type: "Técnica Definitiva",

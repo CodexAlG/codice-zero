@@ -112,9 +112,9 @@ export default {
     },
     {
       type: "Técnica Definitiva",
-      name: "Técnica en Cadena: Llama Alimentada por Combustible",
+      name: "Ataque en Cadena: Llama Alimentada por Combustible",
       description: "Cuando se activa un (Ataque en Cadena), selecciona al personaje para activar: Corre rápidamente hacia adelante mientras rocía llamas en todas direcciones, luego lanza una ráfaga de fuego en un área en forma de abanico hacia adelante, infligiendo Daño Fuego masivo. El personaje es invulnerable mientras usa esta habilidad. Después de usar la habilidad, presiona [Icono Especial EX] para seguir inmediatamente con (Técnica Especial EX: Método de Agitación de Calor Intenso - Disparo Doble).",
-      tags: ["Fuego", "Técnica en Cadena"]
+      tags: ["Fuego", "Ataque en Cadena"]
     },
     {
       type: "Técnica Definitiva",

@@ -112,9 +112,9 @@ export default {
     },
     {
       type: "Técnica Definitiva",
-      name: "Técnica en Cadena: Llama Edificante",
+      name: "Ataque en Cadena: Llama Edificante",
       description: "Cuando se activa un (Ataque en Cadena), selecciona al personaje para activar: Corta enemigos en una pequeña área adelante, luego ejecuta un poderoso corte hacia arriba, infligiendo Daño Fuego masivo. El personaje es invulnerable mientras usa esta habilidad.\nDespués de usar esta habilidad, los (Ataques Básicos) y (Ataques de Carrera) de Soldier 11 están garantizados para activar (Supresión de Fuego) por hasta 30s u 8 veces.\nDespués de usar esta habilidad, presiona [Icono Ataque] para seguir inmediatamente con el 4to golpe de un (Ataque Básico).\nSoldier 11 entra en la (Postura de Alerta) después de usar esta habilidad. Mientras está en (Postura de Alerta), si es golpeada durante un (Ataque Básico), activa (Ataque Básico: Carga de Fuego) para bloquear el ataque, seguido por (Ataque Básico: Asalto de Fuego). Después de realizar (Ataque Básico: Asalto de Fuego), presiona [Icono Ataque] para reanudar (Ataque Básico) desde el conteo de golpes de (Ataque Básico) retenido.",
-      tags: ["Fuego", "Técnica en Cadena"]
+      tags: ["Fuego", "Ataque en Cadena"]
     },
     {
       type: "Técnica Definitiva",

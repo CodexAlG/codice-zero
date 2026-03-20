@@ -200,9 +200,9 @@ export default {
     },
     {
       type: "Técnica Definitiva",
-      name: "Técnica en Cadena: Avalancha",
+      name: "Ataque en Cadena: Avalancha",
       description: "Cuando se activa un (Ataque en Cadena), selecciona al personaje para activar: Cae desde arriba y desata una tormenta de hielo, infligiendo Daño Hielo masivo. El personaje es invulnerable mientras usa esta habilidad.",
-      tags: ["Hielo", "Técnica en Cadena"]
+      tags: ["Hielo", "Ataque en Cadena"]
     },
     {
       type: "Técnica Definitiva",
