@@ -9,7 +9,7 @@ export default function SkillsModule({ skills, color }) {
   // Mapeo de iconos de habilidades
   const skillIcons = {
     "Ataque Básico": "/CodiceZero/Habilidades/Icon_Basic_Attack.webp",
-    "Ataque Normal": "/CodiceZero/Habilidades/Icon_Basic_Attack.webp", 
+    "Ataque Normal": "/CodiceZero/Habilidades/Icon_Basic_Attack.webp",
     "Ataque": "/CodiceZero/Habilidades/Icon_Basic_Attack.webp", // Alias// Alias
     "Evasión": "/CodiceZero/Habilidades/Icon_Dodge.webp",
     "Asistencia": "/CodiceZero/Habilidades/Icon_Assist_Attack.png",
@@ -31,27 +31,27 @@ export default function SkillsModule({ skills, color }) {
   // Filtrar habilidades por categoría con lógica expandida
   const filteredSkills = skills.filter(skill => {
     const skillType = skill.type.toLowerCase();
-    
+
     switch (activeCategory) {
       case "Ataque Básico":
-        return skillType.includes("ataque básico") || skillType.includes("ataque normal");
-        
+        return skillType.includes("ataque básico") || skillType.includes("Ataque Básico");
+
       case "Evasión":
         return skillType.includes("evasión") || skillType.includes("evasion") || skillType.includes("rapido") || skillType.includes("contraataque");
-        
+
       case "Técnica Especial":
-        return skillType.includes("técnica especial") || skillType.includes("habilidad especial") || 
-               skillType.includes("técnica especial ex") || skillType.includes("habilidad especial ex");
-        
+        return skillType.includes("técnica especial") || skillType.includes("habilidad especial") ||
+          skillType.includes("técnica especial ex") || skillType.includes("habilidad especial ex");
+
       case "Técnica Definitiva":
         return skillType.includes("definitiva") || skillType.includes("técnica definitiva") || skillType.includes("cadena") || skillType.includes("ataque en cadena");
-        
+
       case "Pasiva Central":
         return skillType.includes("pasiva") || skillType.includes("habilidad adicional") || skillType.includes("central");
-        
+
       case "Asistencia":
         return skillType.includes("asistencia") || skillType.includes("seguimiento");
-        
+
       default:
         return skill.type.includes(activeCategory);
     }
@@ -72,10 +72,10 @@ export default function SkillsModule({ skills, color }) {
   // Función para reemplazar nombres de habilidades en paréntesis con iconos
   const processSkillDescription = (text) => {
     if (!text) return text;
-    
+
     // Patrón para encontrar habilidades entre paréntesis
-    const skillPattern = /\((Ataque Normal|Evasión|Asistencia|Técnica Especial|Habilidad Especial|Técnica Especial EX|Habilidad Especial EX|Técnica Definitiva|Definitiva|Pasiva Central|Pasiva)\)/g;
-    
+    const skillPattern = /\((Ataque Básico|Evasión|Asistencia|Técnica Especial|Habilidad Especial|Técnica Especial EX|Habilidad Especial EX|Técnica Definitiva|Definitiva|Pasiva Central|Pasiva)\)/g;
+
     return text.replace(skillPattern, (match, skillName) => {
       const iconPath = skillIcons[skillName];
       if (iconPath) {
@@ -98,7 +98,7 @@ export default function SkillsModule({ skills, color }) {
             <span className="text-cyan-400 font-bold text-lg">{skillLevel + 1}/12</span>
           </div>
         </div>
-        
+
         <div className="relative">
           <input
             type="range"
@@ -128,18 +128,17 @@ export default function SkillsModule({ skills, color }) {
           <button
             key={cat}
             onClick={() => setActiveCategory(cat)}
-            className={`px-4 py-3 text-sm font-bold uppercase tracking-wide transition-all border-b-2 flex items-center ${
-              activeCategory === cat 
-                ? "border-yellow-400 text-yellow-400 bg-white/5" 
-                : "border-transparent text-gray-500 hover:text-white hover:bg-white/5"
-            }`}
+            className={`px-4 py-3 text-sm font-bold uppercase tracking-wide transition-all border-b-2 flex items-center ${activeCategory === cat
+              ? "border-yellow-400 text-yellow-400 bg-white/5"
+              : "border-transparent text-gray-500 hover:text-white hover:bg-white/5"
+              }`}
           >
             {skillIcons[cat] && (
-              <Image 
-                src={skillIcons[cat]} 
-                alt={cat} 
-                width={20} 
-                height={20} 
+              <Image
+                src={skillIcons[cat]}
+                alt={cat}
+                width={20}
+                height={20}
                 className="w-5 h-5 mr-2 inline-block object-contain"
                 unoptimized
               />
@@ -152,8 +151,8 @@ export default function SkillsModule({ skills, color }) {
       {/* LISTA DE HABILIDADES FILTRADAS */}
       <div className="space-y-4">
         {filteredSkills.map((skill, index) => (
-          <div 
-            key={index} 
+          <div
+            key={index}
             className="bg-gray-900 border border-white/10 rounded-xl overflow-hidden hover:border-white/20 transition-all duration-300"
           >
             {/* HEADER DE LA HABILIDAD */}
@@ -164,7 +163,7 @@ export default function SkillsModule({ skills, color }) {
                     <span className="text-xs font-mono text-gray-500 uppercase tracking-widest">
                       {skill.type}
                     </span>
-                    <div 
+                    <div
                       className="w-1 h-6 rounded-full"
                       style={{ backgroundColor: color || '#06b6d4' }}
                     />
@@ -173,12 +172,12 @@ export default function SkillsModule({ skills, color }) {
                     {skill.name}
                   </h4>
                 </div>
-                
+
                 {/* Tags */}
                 <div className="flex flex-wrap gap-2">
                   {skill.tags?.map(tag => (
-                    <span 
-                      key={tag} 
+                    <span
+                      key={tag}
                       className="text-[10px] uppercase px-2 py-1 rounded bg-black/40 border border-white/10 text-gray-400"
                     >
                       {tag}
@@ -186,12 +185,12 @@ export default function SkillsModule({ skills, color }) {
                   ))}
                 </div>
               </div>
-              
+
               {/* Descripción con Highlight */}
               <div className="text-gray-300 text-sm leading-relaxed">
-                <HighlightText 
-                  text={processSkillDescription(skill.description)} 
-                  skills={skills} 
+                <HighlightText
+                  text={processSkillDescription(skill.description)}
+                  skills={skills}
                   skillIcons={skillIcons}
                   elementColor={color}
                 />
@@ -204,18 +203,17 @@ export default function SkillsModule({ skills, color }) {
                 <h5 className="text-sm font-mono text-cyan-400 uppercase tracking-wider mb-4">
                   Multiplicadores de Daño
                 </h5>
-                
+
                 <div className="space-y-3">
                   {skill.attributes.map((attribute, attrIndex) => {
                     const currentValue = getAttributeValue(attribute, skillLevel);
                     const progressWidth = ((skillLevel + 1) / 12) * 100;
-                    
+
                     return (
-                      <div 
+                      <div
                         key={attrIndex}
-                        className={`flex items-center justify-between p-3 rounded-lg transition-colors ${
-                          attrIndex % 2 === 0 ? 'bg-white/5' : 'bg-transparent'
-                        }`}
+                        className={`flex items-center justify-between p-3 rounded-lg transition-colors ${attrIndex % 2 === 0 ? 'bg-white/5' : 'bg-transparent'
+                          }`}
                       >
                         {/* Nombre del Atributo */}
                         <div className="flex-1">
@@ -223,21 +221,21 @@ export default function SkillsModule({ skills, color }) {
                             {attribute.label}
                           </span>
                         </div>
-                        
+
                         {/* Valor con Barra de Progreso */}
                         <div className="flex items-center gap-3 min-w-[120px]">
                           {/* Barra de Progreso de Fondo */}
                           <div className="relative w-20 h-2 bg-gray-800 rounded-full overflow-hidden">
-                            <div 
+                            <div
                               className="absolute top-0 left-0 h-full transition-all duration-300 rounded-full"
-                              style={{ 
+                              style={{
                                 width: `${progressWidth}%`,
                                 backgroundColor: color || '#06b6d4',
                                 boxShadow: `0 0 8px ${color || '#06b6d4'}40`
                               }}
                             />
                           </div>
-                          
+
                           {/* Valor Actual */}
                           <span className="text-cyan-400 font-mono font-bold min-w-[80px] text-right">
                             {currentValue}
