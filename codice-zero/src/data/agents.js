@@ -8,6 +8,7 @@ export const agents = [
     element: "Hielo",
     rol: "Anomalia",
     faction: "",
+    leak: "Beta",
     version: "2.8",
     image: "",
     customStyle: "scale-[1.00] group-hover:scale-[1.10] object-[center_top]",

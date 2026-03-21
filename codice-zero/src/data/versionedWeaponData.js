@@ -131,6 +131,27 @@ export const versionedWeapons = {
                 }
             }
         }
+    },
+    5544: {
+        id: 5544,
+        name: "Arma de Prueba de Promeia",
+        rol: "Anomalia",
+        versions: {
+            "v2.8.0": {
+                versionLabel: "v2.8.0",
+                effect: {
+                    title: "Efecto del Arma de Prueba de Promeia",
+                    description: "El Daño Hielo infligido por el portador aumenta un {VALOR_1}; cuando el portador activa la (Técnica Especial EX) e inflige Daño Hielo, el daño de Anomalía de Atributo infligido por sí mismo aumenta un {VALOR_2}, con una duración de 30 segundos, acumulable hasta un máximo de 2 capas, se activa como máximo una vez dentro del mismo movimiento, al activarse de nuevo se reinicia la duración.",
+                    refinements: [
+                        { level: 1, ProbablidadCrit: "35%", DañoDef: "15%" },
+                        { level: 2, ProbablidadCrit: "41%", DañoDef: "16.5%" },
+                        { level: 3, ProbablidadCrit: "47%", DañoDef: "18%" },
+                        { level: 4, ProbablidadCrit: "53%", DañoDef: "19.5%" },
+                        { level: 5, ProbablidadCrit: "60%", DañoDef: "21%" }
+                    ]
+                }
+            }
+        }
     }
 }
 

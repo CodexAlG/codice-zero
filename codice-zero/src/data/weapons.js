@@ -2179,6 +2179,33 @@ export const weapons = [
       icon: "/CodiceZero/ICONOS/Agent_Cissia_Icon.png"
     }
   },
+  {
+    id: 5544,
+    name: "Arma de Prueba de Promeia",
+    rank: "S",
+    rol: "Anomalia",
+    leak: "Beta",
+    detailStats: {
+      baseAtk: { min: 48, max: 713 },
+      subStat: { name: "Tasa de Anomalía", min: "12%", max: "30%" }
+    },
+    effect: {
+      title: "Efecto del Arma de Prueba de Promeia",
+      description: "El Daño Hielo infligido por el portador aumenta un 35%; cuando el portador activa la (Técnica Especial EX) e inflige Daño Hielo, el daño de Anomalía de Atributo infligido por sí mismo aumenta un 15%, con una duración de 30 segundos, acumulable hasta un máximo de 2 capas, se activa como máximo una vez dentro del mismo movimiento, al activarse de nuevo se reinicia la duración.",
+      refinements: [
+        { level: 1, ProbablidadCrit: "35%", DañoDef: "15%" },
+        { level: 2, ProbablidadCrit: "41%", DañoDef: "16.5%" },
+        { level: 3, ProbablidadCrit: "47%", DañoDef: "18%" },
+        { level: 4, ProbablidadCrit: "53%", DañoDef: "19.5%" },
+        { level: 5, ProbablidadCrit: "60%", DañoDef: "21%" }
+      ]
+    },
+    image: "/CodiceZero/Armas/Anomalia/W-Engine_de_Prueba_de_Promeia.webp",
+    exclusiveAgent: {
+      name: "Promeia",
+      icon: "/CodiceZero/ICONOS/Agent_Promeia_Icon.webp"
+    }
+  },
 ];
 
 // Función para obtener armas por rango
