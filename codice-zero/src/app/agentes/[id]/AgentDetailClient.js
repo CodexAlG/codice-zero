@@ -37,6 +37,7 @@ export default function AgentDetailPage() {
     // Helper: Get Full Image
     const getAgentFullImage = (agent) => {
         const imageMap = {
+            52: "/CodiceZero/Agentes/Promeia.png",
             51: "/CodiceZero/Agentes/Cissia.webp",
             50: "/CodiceZero/Agentes/NangongYu.webp",
             49: "/CodiceZero/Agentes/Sunna.webp",
@@ -550,8 +551,8 @@ export default function AgentDetailPage() {
                 <div className="w-full bg-red-500/10 border-b border-red-500/30 py-3 px-4 text-center z-50 relative backdrop-blur-md shadow-[0_0_20px_rgba(239,68,68,0.2)]">
                     <p className="text-red-400 text-xs md:text-sm font-black tracking-widest uppercase flex items-center justify-center gap-2">
                         <TriangleAlert className="text-red-500 w-4 h-4 animate-pulse" />
-                        {language === 'en' 
-                            ? "This character is in Beta. Stats and skills subject to change." 
+                        {language === 'en'
+                            ? "This character is in Beta. Stats and skills subject to change."
                             : "Este personaje se encuentra en fase Beta. Stats y habilidades sujetas a cambios."}
                     </p>
                 </div>
