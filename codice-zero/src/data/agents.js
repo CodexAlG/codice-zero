@@ -1,5 +1,17 @@
 
 export const agents = [
+  // --- VERSION 2.8 ---
+  {
+    id: 52,
+    name: "Promeia",
+    rank: "S",
+    element: "Hielo",
+    rol: "Anomalia",
+    faction: "",
+    version: "2.8",
+    image: "",
+    customStyle: "scale-[1.00] group-hover:scale-[1.10] object-[center_top]",
+  },
   // --- VERSION 2.7 ---
   {
     id: 51,
@@ -9,7 +21,6 @@ export const agents = [
     rol: "Ataque",
     faction: "Divisiòn de Òrdenes Metropolitanas",
     version: "2.7",
-    leak: "Beta",
     image: "/CodiceZero/ICONOS/Agent_Cissia_Icon.png",
     customStyle: "scale-[1.00] group-hover:scale-[1.10] object-[center_top]",
   },
@@ -21,7 +32,6 @@ export const agents = [
     rol: "Aturdidor",
     faction: "Angels of Delusion",
     version: "2.7",
-    leak: "Beta",
     image: "/CodiceZero/ICONOS/Agent_Nangong_Yu_Icon.webp",
     customStyle: "scale-[1.00] group-hover:scale-[1.10] object-[center_top]",
   },

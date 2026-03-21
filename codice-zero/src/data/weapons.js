@@ -2132,7 +2132,6 @@ export const weapons = [
     name: "Delirio de Neón",
     rank: "S",
     rol: "Aturdidor",
-    leak: "Beta",
     detailStats: {
       baseAtk: { min: 48, max: 713 },
       subStat: { name: "Tasa de Anomalía", min: "12%", max: "30%" }
@@ -2159,7 +2158,6 @@ export const weapons = [
     name: "Rastreo de Colmillos y Escamas",
     rank: "S",
     rol: "Ataque",
-    leak: "Beta",
     detailStats: {
       baseAtk: { min: 48, max: 713 },
       subStat: { name: "Recuperación de Energía", min: "24%", max: "60%" }

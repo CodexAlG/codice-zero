@@ -3,7 +3,6 @@ export const driveDiscs = [
   {
     id: 9928,
     name: "Notas de los Encadenados",
-    leak: "Beta",
     twoPiece: "Daño Hielo +10%",
     fourPiece: "Cuando el portador activa (Abloom), la Maestría de Anomalía del portador aumenta en 48 puntos, con una duración de 30 segundos; al activarse de nuevo se reinicia la duración. Cuando el portador activa el efecto de (Congelación), el daño de Anomalía de Atributo infligido por el portador y el daño de (Desorden) aumentan un 16%, con una duración de 30 segundos, al activarse de nuevo se reinicia la duración.",
     image: "/CodiceZero/Discos/SuitNotesFromtheChained.png",
@@ -11,7 +10,6 @@ export const driveDiscs = [
   {
     id: 9927,
     name: "Conejito en el País de las Maravillas",
-    leak: "Beta",
     twoPiece: "HP +10%",
     fourPiece: "Cuando lo equipa un personaje (Defensivo): Cuando el portador activa una (Técnica Especial EX) o cualquier compañero activa una (Asistencia Defensiva) o (Asistencia Evasiva), el daño infligido por todos los agentes del equipo aumenta un 6%, acumulable hasta un máxmimo de 3 capas, con una duración de 25 segundos, las capas decaen una por una, al obtener o decaer una capa se reinicia la duración; los efectos pasivos con el mismo nombre no se pueden acumular",
     image: "/CodiceZero/Discos/SuitBunnyinWonderland.png",
