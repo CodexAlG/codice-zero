@@ -2206,6 +2206,33 @@ export const weapons = [
       icon: "/CodiceZero/ICONOS/Agent_Promeia_Icon.webp"
     }
   },
+  {
+    id: 5545,
+    name: "Arma de Prueba de Starlight - Billy",
+    rank: "S",
+    rol: "Ataque",
+    leak: "Beta",
+    detailStats: {
+      baseAtk: { min: 48, max: 713 },
+      subStat: { name: "HP%", min: "12%", max: "30%" }
+    },
+    effect: {
+      title: "Efecto del Arma de Prueba de Starlight - Billy",
+      description: "Pendiente de descripción oficial de la beta.",
+      refinements: [
+        { level: 1, Placeholder: "0%" },
+        { level: 2, Placeholder: "0%" },
+        { level: 3, Placeholder: "0%" },
+        { level: 4, Placeholder: "0%" },
+        { level: 5, Placeholder: "0%" }
+      ]
+    },
+    image: "/CodiceZero/Armas/Ataque/W-Engine_de_Prueba_de_Starlight_Billy.webp",
+    exclusiveAgent: {
+      name: "Starlight - Billy",
+      icon: "/CodiceZero/ICONOS/Agent_Starlight_Billy_Icon.webp"
+    }
+  }
 ];
 
 // Función para obtener armas por rango

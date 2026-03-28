@@ -2,6 +2,18 @@
 export const agents = [
   // --- VERSION 2.8 ---
   {
+    id: 53,
+    name: "Starlight - Billy",
+    rank: "S",
+    element: "Fisico",
+    rol: "Ruptura",
+    faction: "",
+    leak: "Beta",
+    version: "2.8",
+    image: "",
+    customStyle: "scale-[1.00] group-hover:scale-[1.10] object-[center_top]",
+  },
+  {
     id: 52,
     name: "Promeia",
     rank: "S",

@@ -37,6 +37,7 @@ export default function AgentDetailPage() {
     // Helper: Get Full Image
     const getAgentFullImage = (agent) => {
         const imageMap = {
+            53: "/CodiceZero/Agentes/Starlight-Billy",
             52: "/CodiceZero/Agentes/Promeia.png",
             51: "/CodiceZero/Agentes/Cissia.webp",
             50: "/CodiceZero/Agentes/NangongYu.webp",

@@ -152,6 +152,27 @@ export const versionedWeapons = {
                 }
             }
         }
+    },
+    5545: {
+        id: 5545,
+        name: "Arma de Prueba de Starlight - Billy",
+        rol: "Ruptura",
+        versions: {
+            "v2.8.2": {
+                versionLabel: "v2.8.2",
+                effecto: {
+                    title: "Efecto del arma de Prueba de Starlight - Billy",
+                    description: "La Probabilidad Crítica aumenta un {VALOR_1}; cuando el portador activa un (Ataque Normal), el (Daño de Perforación de Atributo Físico) infligido por el portador aumenta un {VALOR_2}, acumulable hasta un máximo de 2 capas, con una duración de 12 segundos, al activarse de nuevo se reinicia la duración.",
+                    refinements: [
+                        { level: 1, ProbablidadCrit: "20%", DañoDef: "12%" },
+                        { level: 2, ProbablidadCrit: "23%", DañoDef: "13.5%" },
+                        { level: 3, ProbablidadCrit: "26%", DañoDef: "15%" },
+                        { level: 4, ProbablidadCrit: "29%", DañoDef: "16.5%" },
+                        { level: 5, ProbablidadCrit: "32%", DañoDef: "18%" }
+                    ]
+                }
+            }
+        }
     }
 }
 
