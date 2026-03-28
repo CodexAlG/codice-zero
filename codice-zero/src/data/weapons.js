@@ -2217,14 +2217,14 @@ export const weapons = [
       subStat: { name: "HP%", min: "12%", max: "30%" }
     },
     effect: {
-      title: "Efecto del Arma de Prueba de Starlight - Billy",
-      description: "Pendiente de descripción oficial de la beta.",
+      title: "Efecto del arma de Prueba de Starlight - Billy",
+      description: "La Probabilidad Crítica aumenta un 20%; cuando el portador activa un (Ataque Normal), el (Daño de Perforación de Atributo Físico) infligido por el portador aumenta un 12%, acumulable hasta un máximo de 2 capas, con una duración de 12 segundos, al activarse de nuevo se reinicia la duración.",
       refinements: [
-        { level: 1, Placeholder: "0%" },
-        { level: 2, Placeholder: "0%" },
-        { level: 3, Placeholder: "0%" },
-        { level: 4, Placeholder: "0%" },
-        { level: 5, Placeholder: "0%" }
+        { level: 1, ProbablidadCrit: "20%", DañoDef: "12%" },
+        { level: 2, ProbablidadCrit: "23%", DañoDef: "13.5%" },
+        { level: 3, ProbablidadCrit: "26%", DañoDef: "15%" },
+        { level: 4, ProbablidadCrit: "29%", DañoDef: "16.5%" },
+        { level: 5, ProbablidadCrit: "32%", DañoDef: "18%" }
       ]
     },
     image: "/CodiceZero/Armas/Ataque/W-Engine_de_Prueba_de_Starlight_Billy.webp",
