@@ -246,19 +246,36 @@ export default function BetaDiffViewer() {
 
     const { current: versionAfter, previous: versionBefore } = comparisonState;
 
+    // Helper to merge base data with its hotfixes to get the fully patched version data
+    const getMergedData = (entityId, versionLabel, type) => {
+        const rawData = type === 'agentes' 
+            ? getAgentVersionData(entityId, versionLabel) 
+            : getWeaponVersionData(entityId, versionLabel);
+            
+        if (!rawData) return null;
+        
+        const merged = { ...rawData };
+        if (merged.hotfixes && merged.hotfixes.length > 0) {
+            merged.hotfixes.forEach(hf => {
+                if (hf.coreSkillScaling) merged.coreSkillScaling = hf.coreSkillScaling;
+                if (hf.coreSkillScalingColors) merged.coreSkillScalingColors = hf.coreSkillScalingColors;
+                if (hf.baseStats) {
+                    merged.baseStats = { ...merged.baseStats, ...hf.baseStats };
+                }
+            });
+        }
+        return merged;
+    };
+
     // Get Data
     const beforeData = useMemo(() => {
         if (!selectedEntity || !versionBefore) return null;
-        return selectedType === 'agentes'
-            ? getAgentVersionData(selectedEntity.id, versionBefore)
-            : getWeaponVersionData(selectedEntity.id, versionBefore);
+        return getMergedData(selectedEntity.id, versionBefore, selectedType);
     }, [selectedEntity, versionBefore, selectedType]);
 
     const afterData = useMemo(() => {
         if (!selectedEntity || !versionAfter) return null;
-        return selectedType === 'agentes'
-            ? getAgentVersionData(selectedEntity.id, versionAfter)
-            : getWeaponVersionData(selectedEntity.id, versionAfter);
+        return getMergedData(selectedEntity.id, versionAfter, selectedType);
     }, [selectedEntity, versionAfter, selectedType]);
 
     // Get Skills
