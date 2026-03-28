@@ -64,7 +64,7 @@ export const versionedWeapons = {
                 versionLabel: "v2.8.1",
                 effect: {
                     title: "Efecto del arma de Prueba de Starlight - Billy",
-                    description: "La Probabilidad Crítica aumenta un {VALOR_1}; cuando el portador activa un (Ataque Normal), el (Daño de Fuerza Pura de Atributo Físico) infligido por el portador aumenta un {VALOR_2}, acumulable hasta un máximo de 2 capas, con una duración de 12 segundos, al activarse de nuevo se reinicia la duración.",
+                    description: "La Probabilidad Crítica aumenta un {VALOR_1}; cuando el portador activa un (Ataque Básico), el (Daño de Fuerza Pura de Atributo Físico) infligido por el portador aumenta un {VALOR_2}, acumulable hasta un máximo de 2 capas, con una duración de 12 segundos, al activarse de nuevo se reinicia la duración.",
                     refinements: [
                         { level: 1, ProbablidadCrit: "20%", DañoDef: "12%" },
                         { level: 2, ProbablidadCrit: "23%", DañoDef: "13.5%" },
