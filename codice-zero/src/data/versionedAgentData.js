@@ -512,8 +512,8 @@ export const versionedAgents = {
                     { type: "Habilidad Adicional", name: "Habilidad Adicional: Beber Hielo", description: "Se activa cuando existe otro personaje de (Anomalía) o personaje de (Soporte) en el equipo: Al activar la (Técnica Especial EX), la Eficiencia de Acumulación de Atributo Hielo de Promeia aumenta en un 40%, con una duración de 30 segundos, al activarse de nuevo se reinicia la duración; cuando los ataques de Promeia golpean a un enemigo, el enemigo obtiene el estado de (Perforahuesos), la velocidad de recuperación de aturdimiento de los enemigos en estado de (Perforahuesos) se reduce en un 20%, con una duración de 30 segundos, al activarse de nuevo se reinicia la duración.", tags: ["Hielo"] }
                 ]
             },
-            "v2.8.2": {
-                versionLabel: "v2.8.2",
+            "v2.8.1": {
+                versionLabel: "v2.8.1",
                 coreSkillScaling: [
 
                 ],
@@ -534,8 +534,8 @@ export const versionedAgents = {
         id: 53,
         name: "Starlight - Billy",
         versions: {
-            "v2.8.2": {
-                verisonLabel: "v2.8.2",
+            "v2.8.1": {
+                verisonLabel: "v2.8.1",
                 baseStats: {
                     hp: { min: 683, max: 8497 },
                     atk: { min: 124, max: 784 },
