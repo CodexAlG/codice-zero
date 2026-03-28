@@ -1141,10 +1141,10 @@ export default function BetaDiffViewer() {
                                                 <div className="skill-column skill-after">
                                                     <h4>{t.after} (Hotfix)</h4>
                                                     <div className="skill-name">
-                                                        {renderDiffWithHighlight(nameDiff, 'right', originalData)}
+                                                        {renderDiffWithHighlight(nameDiff, 'right', { ...originalData, ...hotfixData })}
                                                     </div>
                                                     <div className="skill-description">
-                                                        {renderDiffWithHighlight(descDiff, 'right', originalData)}
+                                                        {renderDiffWithHighlight(descDiff, 'right', { ...originalData, ...hotfixData })}
                                                     </div>
                                                 </div>
                                             </div>
