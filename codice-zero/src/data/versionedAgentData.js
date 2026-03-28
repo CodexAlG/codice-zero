@@ -123,7 +123,7 @@ export const versionedAgents = {
                 verisonLabel: "v2.8.1",
                 baseStats: {
                     hp: { min: 683, max: 8497 },
-                    atk: { min: 124, max: 784 },
+                    atk: { min: 124, max: 859 },
                     def: { min: 36, max: 445 },
                     impact: 95,
                     crit: "5%",
