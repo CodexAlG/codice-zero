@@ -113,7 +113,7 @@ export const versionedAgents = {
                     },
                     {
                         id: 2,
-                        revsion: "14590149",
+                        revision: "14590149",
                         date: "2026-03-28",
                         skills: [
                             { type: "Técnica Definitiva", name: "Técnica Definitiva: Castigo Perforahuesos", description: "Cuando el nivel de decibelios llega a (Máximo), pulsar [Icono Definitiva] para activar: Realiza múltiples ataques hacia adelante, infligiendo una gran cantidad de Daño Hielo; cuando el golpe pesado golpea a un enemigo en estado de Anomalía de Atributo Hielo, estado de Anomalía de Atributo Etéreo, estado de Anomalía de Atributo Eléctrico, estado de Anomalía de Atributo Fuego, estado de Anomalía de Atributo Físico o estado de Anomalía de Atributo Viento, activa 1 vez el efecto (Abloom), calculando de forma fija una vez el 410% del multiplicador de daño de Anomalía de Atributo correspondiente; tras lanzar el movimiento, se puede conectar directamente con el cuarto golpe del (Ataque Básico: Sesgo); posee efecto de invencibilidad durante la ejecución del movimiento.", tags: ["Hielo"] },
