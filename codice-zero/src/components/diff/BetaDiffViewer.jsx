@@ -618,22 +618,14 @@ export default function BetaDiffViewer() {
         sortedSkills.sort((a, b) => {
             const aKey = getSortKey(a);
             const bKey = getSortKey(b);
-            const aHasCurrent = !!a.versions?.[versionAfter];
-            const bHasCurrent = !!b.versions?.[versionAfter];
+            const aIndex = currentOrder.has(aKey)
+                ? currentOrder.get(aKey)
+                : oldOrder.get(aKey) ?? Number.MAX_SAFE_INTEGER;
+            const bIndex = currentOrder.has(bKey)
+                ? currentOrder.get(bKey)
+                : oldOrder.get(bKey) ?? Number.MAX_SAFE_INTEGER;
 
-            if (aHasCurrent && bHasCurrent) {
-                const aIndex = currentOrder.get(aKey) ?? Number.MAX_SAFE_INTEGER;
-                const bIndex = currentOrder.get(bKey) ?? Number.MAX_SAFE_INTEGER;
-                if (aIndex !== bIndex) return aIndex - bIndex;
-            }
-            if (aHasCurrent !== bHasCurrent) {
-                return aHasCurrent ? -1 : 1;
-            }
-
-            const aOldIndex = oldOrder.get(aKey) ?? Number.MAX_SAFE_INTEGER;
-            const bOldIndex = oldOrder.get(bKey) ?? Number.MAX_SAFE_INTEGER;
-            if (aOldIndex !== bOldIndex) return aOldIndex - bOldIndex;
-
+            if (aIndex !== bIndex) return aIndex - bIndex;
             if (a.type !== b.type) return a.type.localeCompare(b.type);
             return aKey.localeCompare(bKey);
         });
