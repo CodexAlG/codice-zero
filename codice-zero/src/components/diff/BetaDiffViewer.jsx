@@ -915,20 +915,62 @@ export default function BetaDiffViewer() {
         // For agents: compare original skills vs hotfix skills
         const hotfixSkills = hotfixData.skills || [];
 
-        // Find what the skill looked like before this hotfix
-        const getPreviousSkill = (hotfixSkill) => {
-            if (!originalData?.skills) return null;
-            const allHotfixes = selectedType === 'agentes'
-                ? getAgentHotfixes(selectedEntity.id, selectedVersion)
-                : getWeaponHotfixes(selectedEntity.id, selectedVersion);
+        const getMergedVersionDataFor = (version) => {
+            if (!version) return null;
+            return getMergedData(selectedEntity.id, version, selectedType);
+        };
 
-            for (let i = allHotfixes.length - 1; i >= 0; i--) {
-                const hf = allHotfixes[i];
-                if (hf.id >= hotfixId) continue;
-                const prevSkill = hf.skills?.find(s => s.name === hotfixSkill.name);
-                if (prevSkill) return prevSkill;
+        // Find what the skill looked like before this hotfix
+        const getPreviousSkillInfo = (hotfixSkill) => {
+            if (!hotfixSkill?.name) return null;
+            const versions = availableVersions;
+            const currentIndex = versions.indexOf(selectedVersion);
+            if (currentIndex === -1) return null;
+
+            const searchVersion = (versionLabel) => {
+                const versionData = selectedType === 'agentes'
+                    ? getAgentVersionData(selectedEntity.id, versionLabel)
+                    : getWeaponVersionData(selectedEntity.id, versionLabel);
+                if (!versionData?.skills) return null;
+
+                const hotfixes = selectedType === 'agentes'
+                    ? getAgentHotfixes(selectedEntity.id, versionLabel)
+                    : getWeaponHotfixes(selectedEntity.id, versionLabel);
+
+                const orderedHotfixes = (hotfixes || []).slice().sort((a, b) => b.id - a.id);
+                for (const hf of orderedHotfixes) {
+                    if (versionLabel === selectedVersion && hf.id >= hotfixId) continue;
+                    const prevSkill = hf.skills?.find(s => s.name === hotfixSkill.name);
+                    if (prevSkill) {
+                        return {
+                            skill: prevSkill,
+                            version: versionLabel,
+                            versionData: getMergedVersionDataFor(versionLabel)
+                        };
+                    }
+                }
+
+                const baseSkill = versionData.skills.find(s => s.name === hotfixSkill.name);
+                if (baseSkill) {
+                    return {
+                        skill: baseSkill,
+                        version: versionLabel,
+                        versionData: getMergedVersionDataFor(versionLabel)
+                    };
+                }
+
+                return null;
+            };
+
+            let result = searchVersion(selectedVersion);
+            if (result) return result;
+
+            for (let i = currentIndex - 1; i >= 0; i--) {
+                result = searchVersion(versions[i]);
+                if (result) return result;
             }
-            return originalData.skills.find(s => s.name === hotfixSkill.name);
+
+            return null;
         };
 
         return (
@@ -965,7 +1007,9 @@ export default function BetaDiffViewer() {
                         <div className="skills-section">
                             <h3>{t.hotfixChanges}</h3>
                             {hotfixSkills.map((hfSkill, index) => {
-                                const prevSkill = getPreviousSkill(hfSkill);
+                                const prevSkillInfo = getPreviousSkillInfo(hfSkill);
+                                const prevSkill = prevSkillInfo?.skill;
+                                const prevSkillData = prevSkillInfo?.versionData || originalData;
                                 const oldDesc = translatedTexts[prevSkill?.description] || prevSkill?.description || "";
                                 const newDesc = translatedTexts[hfSkill.description] || hfSkill.description || "";
                                 const oldName = translatedTexts[prevSkill?.name] || prevSkill?.name || "";
@@ -1014,10 +1058,10 @@ export default function BetaDiffViewer() {
                                                 <div className="skill-column skill-before">
                                                     <h4>{t.before}</h4>
                                                     <div className="skill-name">
-                                                        {prevSkill ? renderDiffWithHighlight(nameDiff, 'left', originalData) : <span className="text-gray-500 italic">{t.before}</span>}
+                                                        {prevSkill ? renderDiffWithHighlight(nameDiff, 'left', prevSkillData) : <span className="text-gray-500 italic">{t.before}</span>}
                                                     </div>
                                                     <div className="skill-description">
-                                                        {prevSkill ? renderDiffWithHighlight(descDiff, 'left', originalData) : null}
+                                                        {prevSkill ? renderDiffWithHighlight(descDiff, 'left', prevSkillData) : null}
                                                     </div>
                                                 </div>
                                                 <div className="skill-column skill-after">
