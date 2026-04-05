@@ -605,7 +605,26 @@ export default function BetaDiffViewer() {
             });
         }
 
-        const getSortKey = (skillObj) => {
+        const typePriority = {
+            'Ataque Básico': 0,
+            'Evasión': 1,
+            'Técnica Especial': 2,
+            'Técnica Especial EX': 2,
+            'Asistencia': 3,
+            'Técnica Definitiva': 4,
+            'Pasiva Central': 5,
+            'Habilidad Adicional': 6,
+            'Mindscape': 7,
+        };
+
+        const normalizeType = (type) => {
+            if (!type) return type;
+            if (type.startsWith('Mindscape')) return 'Mindscape';
+            if (type === 'Técnica Especial EX') return 'Técnica Especial';
+            return type;
+        };
+
+        const getSkillOrderKey = (skillObj) => {
             const currentSkill = skillObj.versions?.[versionAfter];
             if (currentSkill?.name) {
                 return `${skillObj.type}::${currentSkill.name}`;
@@ -615,17 +634,40 @@ export default function BetaDiffViewer() {
             return previousSkill?.name ? `${skillObj.type}::${previousSkill.name}` : `${skillObj.type}::`;
         };
 
-        sortedSkills.sort((a, b) => {
-            const aKey = getSortKey(a);
-            const bKey = getSortKey(b);
-            const aIndex = currentOrder.has(aKey)
-                ? currentOrder.get(aKey)
-                : oldOrder.get(aKey) ?? Number.MAX_SAFE_INTEGER;
-            const bIndex = currentOrder.has(bKey)
-                ? currentOrder.get(bKey)
-                : oldOrder.get(bKey) ?? Number.MAX_SAFE_INTEGER;
+        const getSkillGroupOrder = (skillObj) => {
+            const type = normalizeType(skillObj.type);
+            return typePriority[type] ?? Number.MAX_SAFE_INTEGER;
+        };
 
+        const getMindscapeIndex = (type) => {
+            if (!type?.startsWith('Mindscape')) return -1;
+            const match = type.match(/Mindscape\s*(\d+)/i);
+            return match ? parseInt(match[1], 10) : -1;
+        };
+
+        const getSkillVersionIndex = (skillObj, key) => {
+            if (currentOrder.has(key)) return currentOrder.get(key);
+            if (oldOrder.has(key)) return oldOrder.get(key);
+            return Number.MAX_SAFE_INTEGER;
+        };
+
+        sortedSkills.sort((a, b) => {
+            const aGroup = getSkillGroupOrder(a);
+            const bGroup = getSkillGroupOrder(b);
+            if (aGroup !== bGroup) return aGroup - bGroup;
+
+            if (aGroup === typePriority['Mindscape']) {
+                const aMindIndex = getMindscapeIndex(a.type);
+                const bMindIndex = getMindscapeIndex(b.type);
+                if (aMindIndex !== bMindIndex) return aMindIndex - bMindIndex;
+            }
+
+            const aKey = getSkillOrderKey(a);
+            const bKey = getSkillOrderKey(b);
+            const aIndex = getSkillVersionIndex(a, aKey);
+            const bIndex = getSkillVersionIndex(b, bKey);
             if (aIndex !== bIndex) return aIndex - bIndex;
+
             if (a.type !== b.type) return a.type.localeCompare(b.type);
             return aKey.localeCompare(bKey);
         });
