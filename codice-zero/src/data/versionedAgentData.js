@@ -281,13 +281,13 @@ export const versionedAgents = {
                         revision: "14738091",
                         date: "2026-04-04",
                         coreSkillScaling: [
-                    ["40%"],
-                    ["47%"],
-                    ["53%"],
-                    ["60%"],
-                    ["67%"],
-                    ["73%"],
-                    ["80%"]
+                            ["40%"],
+                            ["47%"],
+                            ["53%"],
+                            ["60%"],
+                            ["67%"],
+                            ["73%"],
+                            ["80%"]
                         ],
                         skills: [
                             { type: "Técnica Especial", name: "Técnica Especial EX: Aplastamiento de Motocicleta", description: "Cuando la energía es suficiente y la Vida actual no es inferior al 20% de la Vida Máxima, mantener pulsado [Icono Especial EX] para activar: Usa la motocicleta para aplastar hacia abajo, infligiendo Daño Físico; Al activar el movimiento entra en (Estado de Motocicleta), al terminar el movimiento entra en (Estado Libre) y recupera Vida equivalente al 20% de su Vida Máxima; Posee efecto de invencibilidad durante la ejecución del movimiento." },
