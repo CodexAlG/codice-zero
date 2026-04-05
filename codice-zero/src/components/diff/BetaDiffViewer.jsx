@@ -49,6 +49,8 @@ const staticTranslations = {
         onlyChanges: "(Solo Cambios)",
         noChanges: "No hay cambios en habilidades entre {v1} y {v2}.",
         noSkills: "No se encontraron habilidades para esta versión.",
+        deletedSkills: "Habilidades Eliminadas",
+        newSkills: "Nuevas Habilidades",
         hotfixRev: "Hotfix Rev.",
         hotfixChanges: "Cambios del Hotfix",
         hotfixNotFound: "Hotfix #{id} no encontrado para {name} ({version})",
@@ -84,6 +86,8 @@ const staticTranslations = {
         onlyChanges: "(Only Changes)",
         noChanges: "No changes in skills between {v1} and {v2}.",
         noSkills: "No skills found for this version.",
+        deletedSkills: "Deleted Skills",
+        newSkills: "New Skills",
         hotfixRev: "Hotfix Rev.",
         hotfixChanges: "Hotfix Changes",
         hotfixNotFound: "Hotfix #{id} not found for {name} ({version})",
@@ -679,7 +683,23 @@ export default function BetaDiffViewer() {
             );
         }).filter(Boolean);
 
-        if (comparisonElements.length === 0) {
+        const deletedSkills = isComparison ? agentSkills.reduce((acc, skillObj) => {
+            const newSkill = skillObj.versions[versionAfter];
+            const oldSkillVersion = getLastKnownSkillVersion(skillObj.versions, versionAfter);
+            const oldSkill = oldSkillVersion ? skillObj.versions[oldSkillVersion] : null;
+            if (oldSkill && !newSkill) acc.push(oldSkill);
+            return acc;
+        }, []) : [];
+
+        const addedSkills = isComparison ? agentSkills.reduce((acc, skillObj) => {
+            const newSkill = skillObj.versions[versionAfter];
+            const oldSkillVersion = getLastKnownSkillVersion(skillObj.versions, versionAfter);
+            const oldSkill = oldSkillVersion ? skillObj.versions[oldSkillVersion] : null;
+            if (newSkill && !oldSkill) acc.push(newSkill);
+            return acc;
+        }, []) : [];
+
+        if (comparisonElements.length === 0 && deletedSkills.length === 0 && addedSkills.length === 0) {
             return (
                 <div className="skills-section">
                     <h3>{t.skills} ({versionAfter})</h3>
@@ -693,10 +713,32 @@ export default function BetaDiffViewer() {
         }
 
         return (
-            <div className="skills-section">
-                <h3>{t.skills} {isComparison && t.onlyChanges}</h3>
-                {comparisonElements}
-            </div>
+            <>
+                <div className="skills-section">
+                    <h3>{t.skills} {isComparison && t.onlyChanges}</h3>
+                    {comparisonElements}
+                </div>
+                {deletedSkills.length > 0 && (
+                    <div className="skills-section deleted-skills-section mt-6">
+                        <h3>{t.deletedSkills}</h3>
+                        <ul className="list-disc list-inside text-sm text-red-300">
+                            {deletedSkills.map((skill, idx) => (
+                                <li key={`${skill.name}-${idx}`} className="py-1">{skill.name}</li>
+                            ))}
+                        </ul>
+                    </div>
+                )}
+                {addedSkills.length > 0 && (
+                    <div className="skills-section new-skills-section mt-6">
+                        <h3>{t.newSkills}</h3>
+                        <ul className="list-disc list-inside text-sm text-green-300">
+                            {addedSkills.map((skill, idx) => (
+                                <li key={`${skill.name}-${idx}`} className="py-1">{skill.name}</li>
+                            ))}
+                        </ul>
+                    </div>
+                )}
+            </>
         );
     };
 
