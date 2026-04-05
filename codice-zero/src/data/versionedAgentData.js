@@ -435,8 +435,12 @@ function getLatestSkillsForVersion(versionData) {
             if (idx !== -1) {
                 // Replace in-place — keeps original position/order
                 result[idx] = { ...hfSkill };
+            } else {
+                // If name not found, add the hotfix skill.
+                // This covers cases where the base version list is incomplete
+                // or the hotfix introduces a new skill entry.
+                result.push({ ...hfSkill });
             }
-            // If name not found, skill might be new — don't add to avoid duplication
         });
     });
 
