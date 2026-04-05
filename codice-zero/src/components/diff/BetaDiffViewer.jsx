@@ -591,7 +591,24 @@ export default function BetaDiffViewer() {
             return data;
         };
 
-        const comparisonElements = agentSkills.map((skillObj, index) => {
+        const sortedSkills = [...agentSkills];
+        const currentOrder = new Map();
+        if (afterData?.skills) {
+            afterData.skills.forEach((skill, idx) => {
+                currentOrder.set(`${skill.type}::${skill.name}`, idx);
+            });
+        }
+        sortedSkills.sort((a, b) => {
+            const aKey = `${a.type}::${a.versions?.[versionAfter]?.name || ''}`;
+            const bKey = `${b.type}::${b.versions?.[versionAfter]?.name || ''}`;
+            const aIndex = currentOrder.has(aKey) ? currentOrder.get(aKey) : Number.MAX_SAFE_INTEGER;
+            const bIndex = currentOrder.has(bKey) ? currentOrder.get(bKey) : Number.MAX_SAFE_INTEGER;
+            if (aIndex !== bIndex) return aIndex - bIndex;
+            if (a.type !== b.type) return a.type.localeCompare(b.type);
+            return aKey.localeCompare(bKey);
+        });
+
+        const comparisonElements = sortedSkills.map((skillObj, index) => {
             const newSkill = skillObj.versions[versionAfter];
             const oldSkillVersion = isComparison ? getLastKnownSkillVersion(skillObj.versions, versionAfter) : null;
             const oldSkill = oldSkillVersion ? skillObj.versions[oldSkillVersion] : null;
