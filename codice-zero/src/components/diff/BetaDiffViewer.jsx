@@ -600,6 +600,10 @@ export default function BetaDiffViewer() {
 
             if (!newSkill && !oldSkill) return null;
 
+            const isDeleted = isComparison && oldSkill && !newSkill;
+            const isAdded = isComparison && newSkill && !oldSkill;
+            const isMatched = isComparison && oldSkill && newSkill;
+
             const oldName = translatedTexts[oldSkill?.name] || oldSkill?.name || "";
             const newName = translatedTexts[newSkill?.name] || newSkill?.name || "";
             const oldDescRaw = translatedTexts[oldSkill?.description] || oldSkill?.description || "";
@@ -608,11 +612,11 @@ export default function BetaDiffViewer() {
             const oldDesc = isComparison ? processScalingForDiff(oldDescRaw, oldScalingData, 'old', afterData) : oldDescRaw;
             const newDesc = isComparison ? processScalingForDiff(newDescRaw, afterData, 'new', oldScalingData) : newDescRaw;
 
-            const nameDiff = isComparison ? compareText(protectIcons(oldName), protectIcons(newName)) : [{ value: protectIcons(newName), added: false, removed: false }];
-            const descDiff = isComparison ? compareText(protectIcons(oldDesc), protectIcons(newDesc)) : [{ value: protectIcons(newDesc), added: false, removed: false }];
+            const nameDiff = isMatched ? compareText(protectIcons(oldName), protectIcons(newName)) : [{ value: protectIcons(isDeleted ? oldName : newName), added: false, removed: false }];
+            const descDiff = isMatched ? compareText(protectIcons(oldDesc), protectIcons(newDesc)) : [{ value: protectIcons(isDeleted ? oldDesc : newDesc), added: false, removed: false }];
 
             const hasChanges = isComparison
-                ? (oldSkill ? (nameDiff.some(t => t.added || t.removed) || descDiff.some(t => t.added || t.removed)) : true)
+                ? (isMatched ? (nameDiff.some(t => t.added || t.removed) || descDiff.some(t => t.added || t.removed)) : true)
                 : true;
 
             if (isComparison && !hasChanges) return null;
@@ -658,23 +662,27 @@ export default function BetaDiffViewer() {
                             {isComparison && (
                                 <div className="skill-column skill-before">
                                     <div className="skill-name">
-                                        {oldSkill ? renderDiffWithHighlight(nameDiff, 'left', oldSkillVersionData || beforeData, beforeSkillsContext) : <span className="text-gray-500 italic">{t.before}</span>}
+                                        {oldSkill && !isAdded
+                                            ? renderDiffWithHighlight(nameDiff, 'left', oldSkillVersionData || beforeData, beforeSkillsContext)
+                                            : <div className="skill-empty skill-empty-added" />}
                                     </div>
                                     <div className="skill-description">
-                                        {oldSkill ? renderDiffWithHighlight(descDiff, 'left', oldSkillVersionData || beforeData, beforeSkillsContext) : null}
+                                        {oldSkill && !isAdded
+                                            ? renderDiffWithHighlight(descDiff, 'left', oldSkillVersionData || beforeData, beforeSkillsContext)
+                                            : <div className="skill-empty skill-empty-added" />}
                                     </div>
                                 </div>
                             )}
                             <div className="skill-column skill-after">
                                 <div className="skill-name">
-                                    {newSkill
-                                        ? (isComparison ? renderDiffWithHighlight(nameDiff, 'right', afterData, afterSkillsContext) : <HighlightText text={replaceIcons(processScaling(restoreIcons(newName), afterData))} skillIcons={skillIcons} skills={afterSkillsContext} />)
-                                        : <span className="text-gray-500 italic">Eliminado</span>}
+                                    {newSkill && !isDeleted
+                                        ? renderDiffWithHighlight(nameDiff, 'right', afterData, afterSkillsContext)
+                                        : <div className="skill-empty skill-empty-added" />}
                                 </div>
                                 <div className="skill-description">
-                                    {newSkill
-                                        ? (isComparison ? renderDiffWithHighlight(descDiff, 'right', afterData, afterSkillsContext) : <HighlightText text={replaceIcons(processScaling(restoreIcons(newDesc), afterData))} skillIcons={skillIcons} skills={afterSkillsContext} />)
-                                        : null}
+                                    {newSkill && !isDeleted
+                                        ? renderDiffWithHighlight(descDiff, 'right', afterData, afterSkillsContext)
+                                        : <div className="skill-empty skill-empty-added" />}
                                 </div>
                             </div>
                         </div>
@@ -683,23 +691,7 @@ export default function BetaDiffViewer() {
             );
         }).filter(Boolean);
 
-        const deletedSkills = isComparison ? agentSkills.reduce((acc, skillObj) => {
-            const newSkill = skillObj.versions[versionAfter];
-            const oldSkillVersion = getLastKnownSkillVersion(skillObj.versions, versionAfter);
-            const oldSkill = oldSkillVersion ? skillObj.versions[oldSkillVersion] : null;
-            if (oldSkill && !newSkill) acc.push(oldSkill);
-            return acc;
-        }, []) : [];
-
-        const addedSkills = isComparison ? agentSkills.reduce((acc, skillObj) => {
-            const newSkill = skillObj.versions[versionAfter];
-            const oldSkillVersion = getLastKnownSkillVersion(skillObj.versions, versionAfter);
-            const oldSkill = oldSkillVersion ? skillObj.versions[oldSkillVersion] : null;
-            if (newSkill && !oldSkill) acc.push(newSkill);
-            return acc;
-        }, []) : [];
-
-        if (comparisonElements.length === 0 && deletedSkills.length === 0 && addedSkills.length === 0) {
+        if (comparisonElements.length === 0) {
             return (
                 <div className="skills-section">
                     <h3>{t.skills} ({versionAfter})</h3>
@@ -713,32 +705,10 @@ export default function BetaDiffViewer() {
         }
 
         return (
-            <>
-                <div className="skills-section">
-                    <h3>{t.skills} {isComparison && t.onlyChanges}</h3>
-                    {comparisonElements}
-                </div>
-                {deletedSkills.length > 0 && (
-                    <div className="skills-section deleted-skills-section mt-6">
-                        <h3>{t.deletedSkills}</h3>
-                        <ul className="list-disc list-inside text-sm text-red-300">
-                            {deletedSkills.map((skill, idx) => (
-                                <li key={`${skill.name}-${idx}`} className="py-1">{skill.name}</li>
-                            ))}
-                        </ul>
-                    </div>
-                )}
-                {addedSkills.length > 0 && (
-                    <div className="skills-section new-skills-section mt-6">
-                        <h3>{t.newSkills}</h3>
-                        <ul className="list-disc list-inside text-sm text-green-300">
-                            {addedSkills.map((skill, idx) => (
-                                <li key={`${skill.name}-${idx}`} className="py-1">{skill.name}</li>
-                            ))}
-                        </ul>
-                    </div>
-                )}
-            </>
+            <div className="skills-section">
+                <h3>{t.skills} {isComparison && t.onlyChanges}</h3>
+                {comparisonElements}
+            </div>
         );
     };
 
