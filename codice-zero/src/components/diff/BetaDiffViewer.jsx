@@ -604,20 +604,34 @@ export default function BetaDiffViewer() {
                 oldOrder.set(`${skill.type}::${skill.name}`, idx);
             });
         }
-        sortedSkills.sort((a, b) => {
-            const aKey = `${a.type}::${a.versions?.[versionAfter]?.name || ''}`;
-            const bKey = `${b.type}::${b.versions?.[versionAfter]?.name || ''}`;
-            const aCurrentIndex = currentOrder.has(aKey) ? currentOrder.get(aKey) : null;
-            const bCurrentIndex = currentOrder.has(bKey) ? currentOrder.get(bKey) : null;
 
-            if (aCurrentIndex !== null && bCurrentIndex !== null) {
-                return aCurrentIndex - bCurrentIndex;
+        const getSortKey = (skillObj) => {
+            const currentSkill = skillObj.versions?.[versionAfter];
+            if (currentSkill?.name) {
+                return `${skillObj.type}::${currentSkill.name}`;
             }
-            if (aCurrentIndex !== null) return -1;
-            if (bCurrentIndex !== null) return 1;
+            const previousVersion = getLastKnownSkillVersion(skillObj.versions, versionAfter);
+            const previousSkill = previousVersion ? skillObj.versions[previousVersion] : null;
+            return previousSkill?.name ? `${skillObj.type}::${previousSkill.name}` : `${skillObj.type}::`;
+        };
 
-            const aOldIndex = oldOrder.has(aKey) ? oldOrder.get(aKey) : Number.MAX_SAFE_INTEGER;
-            const bOldIndex = oldOrder.has(bKey) ? oldOrder.get(bKey) : Number.MAX_SAFE_INTEGER;
+        sortedSkills.sort((a, b) => {
+            const aKey = getSortKey(a);
+            const bKey = getSortKey(b);
+            const aHasCurrent = !!a.versions?.[versionAfter];
+            const bHasCurrent = !!b.versions?.[versionAfter];
+
+            if (aHasCurrent && bHasCurrent) {
+                const aIndex = currentOrder.get(aKey) ?? Number.MAX_SAFE_INTEGER;
+                const bIndex = currentOrder.get(bKey) ?? Number.MAX_SAFE_INTEGER;
+                if (aIndex !== bIndex) return aIndex - bIndex;
+            }
+            if (aHasCurrent !== bHasCurrent) {
+                return aHasCurrent ? -1 : 1;
+            }
+
+            const aOldIndex = oldOrder.get(aKey) ?? Number.MAX_SAFE_INTEGER;
+            const bOldIndex = oldOrder.get(bKey) ?? Number.MAX_SAFE_INTEGER;
             if (aOldIndex !== bOldIndex) return aOldIndex - bOldIndex;
 
             if (a.type !== b.type) return a.type.localeCompare(b.type);
