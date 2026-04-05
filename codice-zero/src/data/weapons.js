@@ -2191,7 +2191,7 @@ export const weapons = [
     },
     effect: {
                     title: "Efecto del Arma de Prueba de Promeia",
-                    description: "El Daño Hielo infligido por el portador aumenta un {VALOR_1}; cuando un portador de Atributo Hielo activa la (Técnica Especial EX), el daño de Anomalía de Atributo y el daño de (Desorden) infligidos por sí mismo aumentan un {VALOR_2}, con una duración de 40 segundos, acumulable hasta un máximo de 2 capas, se activa como máximo una vez dentro del mismo movimiento, al activarse de nuevo se reinicia la duración, al poseer 2 capas del efecto, el daño de (Abloom) infligido por el personaje aumenta adicionalmente un {VALOR_3}.",
+                    description: "El Daño Hielo infligido por el portador aumenta un 35%; cuando un portador de Atributo Hielo activa la (Técnica Especial EX), el daño de Anomalía de Atributo y el daño de (Desorden) infligidos por sí mismo aumentan un 7.5%, con una duración de 40 segundos, acumulable hasta un máximo de 2 capas, se activa como máximo una vez dentro del mismo movimiento, al activarse de nuevo se reinicia la duración, al poseer 2 capas del efecto, el daño de (Abloom) infligido por el personaje aumenta adicionalmente un 25%.",
                     refinements: [
                         { level: 1, ProbablidadCrit: "35%", DañoDef: "7.5%" , DañoAbloom: "25%"},
                         { level: 2, ProbablidadCrit: "41%", DañoDef: "8.5", DañoAbloom: "28.7" },
