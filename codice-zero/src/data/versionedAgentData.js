@@ -302,6 +302,36 @@ export const versionedAgents = {
                         { type: "Mindscape 4", name: "Mindscape 4", description: ""},
                         { type: "Mindscape 5", name: "Mindscape 5", description: "Nivel de Ataque Básico, Evasión, Asistencia, Técnica Especial y Ataque en Cadena +2", tags: ["Electrico"]},
                         { type: "Mindscape 6", name: "Mindscape 6", description: ""},
+                ],
+                hotfixes: [
+                    {
+                        id: 1,
+                        revision: "14745356",
+                        date: "2026-04-05",
+                        coreSkillScaling: [
+                            ["50%"],
+                            ["58%"],
+                            ["67%"],
+                            ["75%"],
+                            ["83%"],
+                            ["92%"],
+                            ["100%"]
+                        ],
+                        skills: [
+                        { type: "Evasión", name: "Evasión: Deslizamiento", description: "Estando en (Estado Libre), pulsar [Icono Dodges] para activar: Una esquiva rápida de carrera; Posee efecto de invencibilidad durante la ejecución del movimiento."},
+                        { type: "Evasión", name: "Evasión: Derrape", description: "En (Estado de Motocicleta) mantener pulsado [Icono Dodges] para activar: Controla la motocicleta para derrapar, en un corto periodo de tiempo puede activar (Evasión Perfecta); Durante la ejecución del movimiento, acumulará carga continuamente, al completarse la carga, conectará automáticamente con la (Técnica Especial EX: Levantamiento de Motocicleta); Posee un breve efecto de invencibilidad durante la ejecución del movimiento."},
+                        { type: "Evasión", name: "Ataque de Carrera: Corte inverso de Luz Estelar", description: "Pulsar [Icono Ataque] para activar: Realiza un corte rápido hacia adelante, infligiendo Daño Físico."},
+                        { type: "Evasión", name: "Contraataque de Evasión: Cañón de Mano", description: "Fuera del (Estado de Motocicleta), tras activar una (Evasión Perfecta), pulsar [Icono Ataque] para activar: Dispara un cañón de mano hacia adelante, infligiendo Daño Físico; Si se ha activado una (Evasión Perfecta), tras lanzar este movimiento se puede conectar con el cuarto golpe del (Ataque Básico); Posee efecto de invencibilidad durante la ejecución del movimiento."},
+                        { type: "Técnica Especial", name: "Técnica Especial: Embestida de Motocicleta", description: "Cuando su propia Vida es mayor al 33%, pulsar [Icono Especial] para activar: Invoca la motocicleta para chocar rápidamente contra el enemigo, infligiendo Daño Físico; Al activar el movimiento entra en (Estado de Motocicleta), consumiendo una cierta cantidad de Vida; Durante la ejecución del movimiento, si recibe un ataque enemigo, activará un bloqueo, y será inmune a ese ataque; Al activar el bloqueo, conectará automáticamente con la (Técnica Especial EX: Levantamiento de Motocicleta)."},
+                        { type: "Técnica Especial", name: "Técnica Especial: Patear Motocicleta", description: "Se activa automáticamente al retroceder al finalizar el movimiento: Patea la motocicleta hacia el enemigo, infligiendo Daño Físico; Tras lanzar el movimiento, se puede conectar con el (Contraataque de Evasión: Cañón de Mano)."},
+                        { type: "Técnica Especial", name: "Técnica Especial EX: Levantamiento de Motocicleta", description: "En la (Técnica Especial: Embestida de Motocicleta) al activar un bloqueo se activa automáticamente: Levanta la motocicleta para lanzar al enemigo por los aires, infligiendo Daño Físico; Tras lanzar el movimiento, si la energía es suficiente, pulsar [Icono Especial EX] permite conectar con el (Contraataque de Evasión: Cañón de Mano)."},
+                        { type: "Técnica Especial", name: "Técnica Especial EX: Aplastamiento de Motocicleta", description: "Cuando la energía es suficiente, mantener pulsado [Icono Especial EX] para activar: Usa la motocicleta para aplastar hacia abajo, infligiendo Daño Físico; Al salir del (Estado de Motocicleta) tras finalizar el movimiento, recupera su propia Vida; Posee efecto de invencibilidad durante la ejecución del movimiento."},
+                        { type: "Técnica Especial", name: "Técnica Especial EX: Patada Voladora de Caballero", description: "Cuando el (Valor Térmico) es suficiente, mantener pulsado [Icono Especial EX] para activar: Salta por los aires y lanza una patada voladora hacia el objetivo, infligiendo una gran cantidad de Daño Físico; Al salir del (Estado de Motocicleta) tras finalizar el movimiento, recupera su propia Vida; Posee efecto de invencibilidad durante la ejecución del movimiento."},
+                        { type: "Técnica Especial", name: "Técnica Especial EX: Golpe de Justicia", description: "Tras activar la (Técnica Especial EX: Levantamiento de Motocicleta), y si la energía es suficiente, pulsar [Icono Especial EX] para activar: Usa la motocicleta y el cañón de mano para realizar un ataque combinado, infligiendo Daño Físico; Sale del (Estado de Motocicleta) tras finalizar el movimiento; Posee efecto de invencibilidad durante la ejecución del movimiento."},
+                        { type: "Pasiva Central", name: "Pasiva Central: Determinación de Caballero", description: "Starlight - Billy aumentará adicionalmente su Perforación según su Vida Máxima, cada 1 punto de Vida Máxima aumentará 0.1 puntos de Perforación; El daño causado por los movimientos de Starlight - Billy que infligen Daño Físico es todo daño de perforación, ignorando la defensa del enemigo, y utiliza la Perforación como multiplicador de daño del movimiento; cuando Starlight - Billy entra al campo de batalla recupera inmediatamente 60 puntos de energía de destello, en el modo de exploración este efecto se activa como máximo una vez cada 180 segundos; Cuando la Vida es mayor al 33%, se puede pulsar [Icono Especial] para activar la (Técnica Especial: Embestida de Motocicleta), y cada vez que se activa este movimiento su propio Daño Crítico aumenta un {VALOR_1}, con una duración de 30 segundos; Cuando los ataques de Starlight - Billy golpean a un enemigo, obtendrá (Valor Térmico), la cantidad de recuperación varía según el movimiento, el límite máximo de (Valor Térmico) es de 120 puntos, al estar en estado de combate, recuperará (Valor Térmico) lentamente; al activar (Evasión Perfecta), activar (Asistencia Defensiva: Escudo de Vehículo) o al activar un bloqueo, recuperará (Valor Térmico) adicional. Cuando el (Valor Térmico) supera los 100 puntos, mantener pulsado [Icono Especial EX] consumirá 100 puntos de (Valor Térmico), activando con prioridad la (Técnica Especial EX: Patada Voladora de Caballero); Después de que el cuarto golpe del (Ataque Básico: Ataque de Luz Estelar) golpea a un enemigo, recupera 12% de Vida; tras activar la (Técnica Especial EX: Aplastamiento de Motocicleta), recupera 20% de Vida; tras activar la (Técnica Especial EX: Patada Voladora de Caballero), recupera 20% de Vida." },
+
+                        ]
+                    }
                 ]
             }
         }
