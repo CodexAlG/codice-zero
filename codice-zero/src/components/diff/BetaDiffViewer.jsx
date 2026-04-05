@@ -593,17 +593,33 @@ export default function BetaDiffViewer() {
 
         const sortedSkills = [...agentSkills];
         const currentOrder = new Map();
+        const oldOrder = new Map();
         if (afterData?.skills) {
             afterData.skills.forEach((skill, idx) => {
                 currentOrder.set(`${skill.type}::${skill.name}`, idx);
             });
         }
+        if (beforeData?.skills) {
+            beforeData.skills.forEach((skill, idx) => {
+                oldOrder.set(`${skill.type}::${skill.name}`, idx);
+            });
+        }
         sortedSkills.sort((a, b) => {
             const aKey = `${a.type}::${a.versions?.[versionAfter]?.name || ''}`;
             const bKey = `${b.type}::${b.versions?.[versionAfter]?.name || ''}`;
-            const aIndex = currentOrder.has(aKey) ? currentOrder.get(aKey) : Number.MAX_SAFE_INTEGER;
-            const bIndex = currentOrder.has(bKey) ? currentOrder.get(bKey) : Number.MAX_SAFE_INTEGER;
-            if (aIndex !== bIndex) return aIndex - bIndex;
+            const aCurrentIndex = currentOrder.has(aKey) ? currentOrder.get(aKey) : null;
+            const bCurrentIndex = currentOrder.has(bKey) ? currentOrder.get(bKey) : null;
+
+            if (aCurrentIndex !== null && bCurrentIndex !== null) {
+                return aCurrentIndex - bCurrentIndex;
+            }
+            if (aCurrentIndex !== null) return -1;
+            if (bCurrentIndex !== null) return 1;
+
+            const aOldIndex = oldOrder.has(aKey) ? oldOrder.get(aKey) : Number.MAX_SAFE_INTEGER;
+            const bOldIndex = oldOrder.has(bKey) ? oldOrder.get(bKey) : Number.MAX_SAFE_INTEGER;
+            if (aOldIndex !== bOldIndex) return aOldIndex - bOldIndex;
+
             if (a.type !== b.type) return a.type.localeCompare(b.type);
             return aKey.localeCompare(bKey);
         });
