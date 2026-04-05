@@ -700,8 +700,6 @@ export default function BetaDiffViewer() {
                 ? (isMatched ? (nameDiff.some(t => t.added || t.removed) || descDiff.some(t => t.added || t.removed)) : true)
                 : true;
 
-            if (isComparison && !hasChanges) return null;
-
             return (
                 <div key={skillObj.id || index} className="skill-group icon-override">
                     <div className="flex items-center justify-between mb-2">
