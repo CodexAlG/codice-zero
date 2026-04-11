@@ -4,6 +4,7 @@ const inlineIcons = {
     "[Icono Ataque]": "/CodiceZero/Habilidades/ZZZ-Icon-System-Skill-Basic-Attack-White-Alt-01.webp",
     "[Icono Dodges]": "/CodiceZero/Habilidades/ZZZ-Icon-System-Skill-Dodge-02.webp",
     "[Icono Especial]": "/CodiceZero/Habilidades/ZZZ-Icon-System-Skill-Special-02-691x675.webp",
+    "[Icono Especial R]": "/CodiceZero/Habilidades/Icon_EX_Special_Attack_Rupture.webp",
     "[Icono Especial EX]": "/CodiceZero/Habilidades/ZZZ-Icon-System-Skill-Special-01-675x675.webp",
     "[Icono Assist]": "/CodiceZero/Habilidades/ZZZ-Icon-System-Skill-Assist-01-675x675.webp",
     "[Icono Definitiva]": "/CodiceZero/Habilidades/ZZZ-Icon-System-Skill-QTE-Ultimate-Colored-Inverted-01-691x675.webp",
