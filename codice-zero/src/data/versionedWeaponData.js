@@ -107,7 +107,7 @@ export const versionedWeapons = {
                 name: "Armadura Facial de Caballero Brillante",
                 effect: {
                     title: "Aura de Caballero",
-                    description: "La Probabilidad Crítica aumenta un {VALOR_1}; cuando el portador activa (Técnica Especial), el Daño de Perforación de Atributo Físico infligido por el portador aumenta un {VALOR_2}, acumulable hasta un máximo de 2 capas, dura 30 segundos, al activarse repetidamente reinicia el tiempo de duración.",
+                    description: "La Probabilidad Crítica aumenta un {VALOR_1}; cuando el portador activa (Técnica Especial), el Daño de Fuerza Bruta de Atributo Físico infligido por el portador aumenta un {VALOR_2}, acumulable hasta un máximo de 2 capas, dura 30 segundos, al activarse repetidamente reinicia el tiempo de duración.",
                     refinements: [
                         { level: 1, ProbablidadCrit: "20%", DañoPerforacion: "10%" },
                         { level: 2, ProbablidadCrit: "23%", DañoPerforacion: "11.5%" },
