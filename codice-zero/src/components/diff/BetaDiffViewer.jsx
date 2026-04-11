@@ -625,9 +625,10 @@ export default function BetaDiffViewer() {
 
         const normalizeType = (type) => {
             if (!type) return type;
-            if (type.startsWith('Mindscape')) return 'Mindscape';
-            if (type === 'Técnica Especial EX') return 'Técnica Especial';
-            return type;
+            let normalized = type.replace(/ò/g, 'ó');
+            if (normalized.startsWith('Mindscape')) return 'Mindscape';
+            if (normalized === 'Técnica Especial EX') return 'Técnica Especial';
+            return normalized;
         };
 
         const getSkillOrderKey = (skillObj) => {
