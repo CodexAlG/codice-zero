@@ -51,6 +51,9 @@ const staticTranslations = {
         noSkills: "No se encontraron habilidades para esta versión.",
         deletedSkills: "Habilidades Eliminadas",
         newSkills: "Nuevas Habilidades",
+        renamed: "(Antes: {old})",
+        deletedTag: "[ELIMINADA]",
+        newTag: "[NUEVA]",
         hotfixRev: "Hotfix Rev.",
         hotfixChanges: "Cambios del Hotfix",
         hotfixNotFound: "Hotfix #{id} no encontrado para {name} ({version})",
@@ -88,6 +91,9 @@ const staticTranslations = {
         noSkills: "No skills found for this version.",
         deletedSkills: "Deleted Skills",
         newSkills: "New Skills",
+        renamed: "(Before: {old})",
+        deletedTag: "[DELETED]",
+        newTag: "[NEW]",
         hotfixRev: "Hotfix Rev.",
         hotfixChanges: "Hotfix Changes",
         hotfixNotFound: "Hotfix #{id} not found for {name} ({version})",
@@ -690,10 +696,30 @@ export default function BetaDiffViewer() {
             const oldDescRaw = translatedTexts[oldSkill?.description] || oldSkill?.description || "";
             const newDescRaw = translatedTexts[newSkill?.description] || newSkill?.description || "";
 
+            let finalOldName = oldName;
+            let finalNewName = newName;
+
+            if (isDeleted) finalOldName = `${oldName} ${t.deletedTag}`;
+            if (isAdded) finalNewName = `${newName} ${t.newTag}`;
+
+            let nameDiff;
+            if (isMatched) {
+                if (oldName !== newName) {
+                    const renamedLabel = t.renamed.replace('{old}', oldName);
+                    nameDiff = [
+                        { value: protectIcons(oldName), added: false, removed: true },
+                        { value: protectIcons(`${newName} ${renamedLabel}`), added: true, removed: false }
+                    ];
+                } else {
+                    nameDiff = compareText(protectIcons(oldName), protectIcons(newName));
+                }
+            } else {
+                nameDiff = [{ value: protectIcons(isDeleted ? finalOldName : finalNewName), added: false, removed: false }];
+            }
+
             const oldDesc = isComparison ? processScalingForDiff(oldDescRaw, oldScalingData, 'old', afterData) : oldDescRaw;
             const newDesc = isComparison ? processScalingForDiff(newDescRaw, afterData, 'new', oldScalingData) : newDescRaw;
 
-            const nameDiff = isMatched ? compareText(protectIcons(oldName), protectIcons(newName)) : [{ value: protectIcons(isDeleted ? oldName : newName), added: false, removed: false }];
             const descDiff = isMatched ? compareText(protectIcons(oldDesc), protectIcons(newDesc)) : [{ value: protectIcons(isDeleted ? oldDesc : newDesc), added: false, removed: false }];
 
             const hasChanges = isComparison

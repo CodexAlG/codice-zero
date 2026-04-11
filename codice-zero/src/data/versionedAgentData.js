@@ -455,29 +455,108 @@ export function getAgentSkills(agentId) {
     const allVersions = Object.keys(agent.versions).sort();
     const skillMap = new Map(); // key -> skillObj
 
-    allVersions.forEach(version => {
+    allVersions.forEach((version, vIndex) => {
         const vData = agent.versions[version];
-
-        // Get the latest skills for this version (original + hotfix merged)
         const latestSkills = getLatestSkillsForVersion(vData);
         if (!latestSkills || !Array.isArray(latestSkills)) return;
 
-        latestSkills.forEach(skill => {
+        const prevVersion = vIndex > 0 ? allVersions[vIndex - 1] : null;
+
+        const unmatchedInPrev = [];
+        if (prevVersion) {
+            for (const [key, skillObj] of skillMap.entries()) {
+                if (skillObj.versions[prevVersion]) {
+                    unmatchedInPrev.push({ key, skill: skillObj.versions[prevVersion], matched: false });
+                }
+            }
+        }
+
+        const unmatchedNew = [];
+
+        latestSkills.forEach((skill, index) => {
             const type = skill.type || "Unknown";
             const name = skill.name || "Unknown";
+            const exactKey = `${type}::${name}`;
 
-            const key = `${type}::${name}`;
+            // Priority 1: Exact Name
+            if (skillMap.has(exactKey)) {
+                skillMap.get(exactKey).versions[version] = skill;
+                const prev = unmatchedInPrev.find(p => p.key === exactKey);
+                if (prev) prev.matched = true;
+            } else {
+                unmatchedNew.push({ skill, index, mappedKey: null });
+            }
+        });
 
-            if (!skillMap.has(key)) {
-                skillMap.set(key, {
-                    id: key,
-                    type: type,
-                    versions: {}
-                });
+        // Priority 2: Fuzzy Match
+        for (const newSkillObj of unmatchedNew) {
+            if (newSkillObj.mappedKey) continue;
+            let bestMatch = null;
+            let bestSim = 0;
+
+            for (const prevSkillObj of unmatchedInPrev) {
+                if (prevSkillObj.matched) continue;
+                const sim = calculateSimilarity(prevSkillObj.skill.description, newSkillObj.skill.description);
+                if (sim > 0.60 && sim > bestSim) {
+                    bestSim = sim;
+                    bestMatch = prevSkillObj;
+                }
             }
 
-            skillMap.get(key).versions[version] = skill;
-        });
+            if (bestMatch) {
+                newSkillObj.mappedKey = bestMatch.key;
+                bestMatch.matched = true;
+            }
+        }
+
+        // Priority 3: Tag / Category Analysis
+        const getSkillsByType = (skills) => {
+            const grouped = {};
+            skills.forEach(s => {
+                if (!grouped[s.type]) grouped[s.type] = [];
+                grouped[s.type].push(s);
+            });
+            return grouped;
+        };
+
+        const prevSkillsByType = prevVersion ? getSkillsByType(getLatestSkillsForVersion(agent.versions[prevVersion])) : {};
+        const newSkillsByType = getSkillsByType(latestSkills);
+
+        for (const newSkillObj of unmatchedNew) {
+            if (newSkillObj.mappedKey) continue;
+
+            const type = newSkillObj.skill.type;
+            const newTypeArr = newSkillsByType[type] || [];
+            const indexInType = newTypeArr.findIndex(s => s.name === newSkillObj.skill.name);
+
+            const prevTypeArr = prevSkillsByType[type] || [];
+
+            if (indexInType !== -1 && prevTypeArr[indexInType]) {
+                const prevSkillDef = prevTypeArr[indexInType];
+                const prevExactKey = `${prevSkillDef.type}::${prevSkillDef.name}`;
+                const prevMatchData = unmatchedInPrev.find(p => p.key === prevExactKey);
+                if (prevMatchData && !prevMatchData.matched) {
+                    newSkillObj.mappedKey = prevExactKey;
+                    prevMatchData.matched = true;
+                }
+            }
+        }
+
+        // Apply
+        for (const newSkillObj of unmatchedNew) {
+            if (newSkillObj.mappedKey) {
+                skillMap.get(newSkillObj.mappedKey).versions[version] = newSkillObj.skill;
+            } else {
+                const type = newSkillObj.skill.type || "Unknown";
+                const name = newSkillObj.skill.name || "Unknown";
+                const newKey = `${type}::${name}`;
+                skillMap.set(newKey, {
+                    id: newKey,
+                    type: type,
+                    versions: { [version]: newSkillObj.skill }
+                });
+            }
+        }
     });
 
     return Array.from(skillMap.values());
