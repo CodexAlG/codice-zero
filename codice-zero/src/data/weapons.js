@@ -2181,7 +2181,7 @@ export const weapons = [
   },
   {
     id: 5544,
-    name: "Arma de Prueba de Promeia",
+    name: "Corte de Escarcha de Luna Nueva",
     rank: "S",
     rol: "Anomalia",
     leak: "Beta",
@@ -2190,16 +2190,16 @@ export const weapons = [
       subStat: { name: "Tasa de Anomalía", min: "12%", max: "30%" }
     },
     effect: {
-                    title: "Efecto del Arma de Prueba de Promeia",
-                    description: "El Daño Hielo infligido por el portador aumenta un 35%; cuando un portador de Atributo Hielo activa la (Técnica Especial EX), el daño de Anomalía de Atributo y el daño de (Desorden) infligidos por sí mismo aumentan un 7.5%, con una duración de 40 segundos, acumulable hasta un máximo de 2 capas, se activa como máximo una vez dentro del mismo movimiento, al activarse de nuevo se reinicia la duración, al poseer 2 capas del efecto, el daño de (Abloom) infligido por el personaje aumenta adicionalmente un 25%.",
-                    refinements: [
-                        { level: 1, ProbablidadCrit: "35%", DañoDef: "7.5%" , DañoAbloom: "25%"},
-                        { level: 2, ProbablidadCrit: "41%", DañoDef: "8.5", DañoAbloom: "28.7" },
-                        { level: 3, ProbablidadCrit: "47%", DañoDef: "9.5%", DañoAbloom: "32.5" },
-                        { level: 4, ProbablidadCrit: "53%", DañoDef: "10.5%", DañoAbloom: "36.2", },
-                        { level: 5, ProbablidadCrit: "60%", DañoDef: "11.5%", DañoAbloom: "40%" }
-                    ]
-                },
+      title: "Veredicto Final",
+      description: "Cuando un portador de Atributo Hielo activa (Técnica Especial), (Técnica Especial EX), el Daño Hielo infligido por sí mismo aumenta un 20%, dura 40 segundos, acumulable hasta un máximo de 2 capas, dentro del mismo movimiento se activa como máximo una vez, al activarse repetidamente reinicia el tiempo de duración, al poseer 2 capas de efecto, el daño de (Abloom) infligido por el personaje aumenta adicionalmente un 35%.",
+      refinements: [
+        { level: 1, DañoHielo: "20%", DañoAbloom: "35%" },
+        { level: 2, DañoHielo: "23%", DañoAbloom: "38.5%" },
+        { level: 3, DañoHielo: "26%", DañoAbloom: "42%" },
+        { level: 4, DañoHielo: "29%", DañoAbloom: "45.5%" },
+        { level: 5, DañoHielo: "32%", DañoAbloom: "50%" }
+      ]
+    },
     image: "/CodiceZero/Armas/Anomalia/W-Engine_de_Prueba_de_Promeia.webp",
     exclusiveAgent: {
       name: "Promeia",
@@ -2208,7 +2208,7 @@ export const weapons = [
   },
   {
     id: 5545,
-    name: "Arma de Prueba de Starlight - Billy",
+    name: "Armadura Facial de Caballero Brillante",
     rank: "S",
     rol: "Ataque",
     leak: "Beta",
@@ -2217,14 +2217,14 @@ export const weapons = [
       subStat: { name: "HP%", min: "12%", max: "30%" }
     },
     effect: {
-      title: "Efecto del arma de Prueba de Starlight - Billy",
-      description: "La Probabilidad Crítica aumenta un 20%; cuando el portador activa un (Ataque Básico), el (Daño de Perforación de Atributo Físico) infligido por el portador aumenta un 12%, acumulable hasta un máximo de 2 capas, con una duración de 12 segundos, al activarse de nuevo se reinicia la duración.",
+      title: "Aura de Caballero",
+      description: "La Probabilidad Crítica aumenta un 20%; cuando el portador activa (Técnica Especial), el Daño de Fuerza Bruta de Atributo Físico infligido por el portador aumenta un 10%, acumulable hasta un máximo de 2 capas, dura 30 segundos, al activarse repetidamente reinicia el tiempo de duración.",
       refinements: [
-        { level: 1, ProbablidadCrit: "20%", DañoDef: "12%" },
-        { level: 2, ProbablidadCrit: "23%", DañoDef: "13.5%" },
-        { level: 3, ProbablidadCrit: "26%", DañoDef: "15%" },
-        { level: 4, ProbablidadCrit: "29%", DañoDef: "16.5%" },
-        { level: 5, ProbablidadCrit: "32%", DañoDef: "18%" }
+        { level: 1, ProbablidadCrit: "20%", DañoPerforacion: "10%" },
+        { level: 2, ProbablidadCrit: "23%", DañoPerforacion: "11.5%" },
+        { level: 3, ProbablidadCrit: "26%", DañoPerforacion: "13%" },
+        { level: 4, ProbablidadCrit: "29%", DañoPerforacion: "14.5%" },
+        { level: 5, ProbablidadCrit: "32%", DañoPerforacion: "16%" }
       ]
     },
     image: "/CodiceZero/Armas/Ataque/W-Engine_de_Prueba_de_Starlight_Billy.webp",
