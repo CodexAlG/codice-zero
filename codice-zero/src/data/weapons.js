@@ -1592,7 +1592,7 @@ export const weapons = [
     },
     effect: {
       title: "Zancadas Ligeras",
-      description: "Al lanzar un (Ataque en Cadena) o (Definitiva), el portador gana 1 acumulación de un efecto de mejora. Cada acumulación aumenta la Fuerza Pura del portador en 80, acumulándose hasta 3 veces, y durando 12s. La duración de cada acumulación se calcula por separado.",
+      description: "Al lanzar un (Ataque en Cadena) o (Definitiva), el portador gana 1 acumulación de un efecto de mejora. Cada acumulación aumenta la Fuerza Bruta del portador en 80, acumulándose hasta 3 veces, y durando 12s. La duración de cada acumulación se calcula por separado.",
       refinements: [ // Tabla de Mejora (R1 - R5)
         { level: 1, FuerzaPura: "80" },
         { level: 2, FuerzaPura: "92" },
