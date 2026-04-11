@@ -7,7 +7,9 @@ import { diffWords } from 'diff';
  * @returns {Array} Array of diff tokens with added/removed flags
  */
 export function compareText(oldText, newText) {
-  if (!oldText || !newText) return [];
+  if (!oldText && !newText) return [];
+  if (!oldText) return [{ value: newText, added: true, removed: false }];
+  if (!newText) return [{ value: oldText, added: false, removed: true }];
   return diffWords(String(oldText), String(newText));
 }
 
