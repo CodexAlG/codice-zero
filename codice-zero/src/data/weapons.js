@@ -2228,7 +2228,7 @@ export const weapons = [
     image: "/CodiceZero/Armas/Ruptura/BillyS.png",
     exclusiveAgent: {
       name: "Starlight - Billy",
-      icon: "/CodiceZero/ICONOS/Agent_Starlight_Billy_Icon.webp"
+      icon: "/CodiceZero/ICONOS/Agent_Starlight_-_Billy_Icon.webp"
     }
   },
   {
@@ -2255,7 +2255,7 @@ export const weapons = [
     image: "/CodiceZero/Armas/Anomalia/W-Engine_de_Prueba_de_Velina.webp",
     exclusiveAgent: {
       name: "Velina",
-      icon: "/CodiceZero/ICONOS/Agent_Velina_Icon.webp"
+      icon: "/CodiceZero/ICONOS/Agent_Velina_Airgid_Icon.webp"
     }
   },
   {
@@ -2282,7 +2282,7 @@ export const weapons = [
     image: "/CodiceZero/Armas/Anomalia/W-Engine_de_Prueba_de_Norma.webp",
     exclusiveAgent: {
       name: "Norma",
-      icon: "/CodiceZero/ICONOS/Agent_Norma_Icon.webp"
+      icon: "/CodiceZero/ICONOS/Agent_Norma_Hollowell_Icon.webp"
     }
   }
 ];
