@@ -1,7 +1,7 @@
 /**
  * Agent Details Static Loader
  * 
- * All 47 agents are statically imported for Webpack compatibility.
+ * All 55 agents are statically imported for Webpack compatibility.
  */
 
 // Import all agent detail files
@@ -52,6 +52,14 @@ import agent44 from './released/agent-44.js';
 import agent45 from './released/agent-45.js';
 import agent46 from './released/agent-46.js';
 import agent47 from './released/agent-47.js';
+import agent48 from './released/agent-48.js';
+import agent49 from './released/agent-49.js';
+import agent50 from './released/agent-50.js';
+import agent51 from './released/agent-51.js';
+import agent52 from './released/agent-52.js';
+import agent53 from './released/agent-53.js';
+import agent54 from './released/agent-54.js';
+import agent55 from './released/agent-55.js';
 
 // Create a lookup map
 const agentDetailsMap = {
@@ -102,6 +110,14 @@ const agentDetailsMap = {
   45: agent45,
   46: agent46,
   47: agent47,
+  48: agent48,
+  49: agent49,
+  50: agent50,
+  51: agent51,
+  52: agent52,
+  53: agent53,
+  54: agent54,
+  55: agent55,
 };
 
 /**
