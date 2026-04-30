@@ -12,28 +12,28 @@ import FilterIcon from "@/components/filters/FilterIcon";
 import { useLanguage } from '@/context/LanguageContext';
 
 const staticTranslations = {
-  es: {
-    todos: "TODOS",
-    filterTitle: "Filtra por categorías",
-    search: "Buscar Agente...",
-    elemento: "ELEMENTO",
-    rango: "RANGO",
-    rol: "ROL",
-    faction: "FACCIÓN",
-    Fuego: "Fuego", Hielo: "Hielo", Electrico: "Eléctrico", Fisico: "Físico", Etereo: "Etéreo",
-    Ataque: "Ataque", Aturdidor: "Aturdidor", Anomalia: "Anomalía", Soporte: "Soporte", Defensa: "Defensa", Ruptura: "Ruptura"
-  },
-  en: {
-    todos: "ALL",
-    filterTitle: "Filter by categories",
-    search: "Search Agent...",
-    elemento: "ELEMENT",
-    rango: "RANK",
-    rol: "ROLE",
-    faction: "FACTION",
-    Fuego: "Fire", Hielo: "Ice", Electrico: "Electric", Fisico: "Physical", Etereo: "Ether",
-    Ataque: "Attack", Aturdidor: "Stun", Anomalia: "Anomaly", Soporte: "Support", Defensa: "Defense", Ruptura: "Rupture"
-  }
+    es: {
+        todos: "TODOS",
+        filterTitle: "Filtra por categorías",
+        search: "Buscar Agente...",
+        elemento: "ELEMENTO",
+        rango: "RANGO",
+        rol: "ROL",
+        faction: "FACCIÓN",
+        Fuego: "Fuego", Hielo: "Hielo", Electrico: "Eléctrico", Fisico: "Físico", Etereo: "Etéreo", Viento: "Viento",
+        Ataque: "Ataque", Aturdidor: "Aturdidor", Anomalia: "Anomalía", Soporte: "Soporte", Defensa: "Defensa", Ruptura: "Ruptura"
+    },
+    en: {
+        todos: "ALL",
+        filterTitle: "Filter by categories",
+        search: "Search Agent...",
+        elemento: "ELEMENT",
+        rango: "RANK",
+        rol: "ROLE",
+        faction: "FACTION",
+        Fuego: "Fire", Hielo: "Ice", Electrico: "Electric", Fisico: "Physical", Etereo: "Ether", Viento: "Wind",
+        Ataque: "Attack", Aturdidor: "Stun", Anomalia: "Anomaly", Soporte: "Support", Defensa: "Defense", Ruptura: "Rupture"
+    }
 };
 
 export default function AgentsPageClient() {
@@ -80,7 +80,7 @@ export default function AgentsPageClient() {
         });
     };
 
-    const elementFilters = ["Fuego", "Hielo", "Electrico", "Fisico", "Etereo"];
+    const elementFilters = ["Fuego", "Hielo", "Electrico", "Fisico", "Etereo", "Viento"];
     const rankFilters = ["S", "A"];
     const roleFilters = ["Ataque", "Aturdidor", "Anomalia", "Soporte", "Defensa", "Ruptura"];
     const factionFilters = [
@@ -97,6 +97,7 @@ export default function AgentsPageClient() {
         Electrico: "/CodiceZero/Agentes/Elemento/Electrico.webp",
         Fisico: "/CodiceZero/Agentes/Elemento/Fisico.webp",
         Etereo: "/CodiceZero/Agentes/Elemento/Etereo.webp",
+        Viento: "/CodiceZero/Agentes/Elemento/Viento.webp",
 
         // Rangos
         "S": "/CodiceZero/Rango/Icon_Item_Rank_S.webp",

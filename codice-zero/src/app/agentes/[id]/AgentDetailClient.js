@@ -228,6 +228,7 @@ export default function AgentDetailPage() {
         "electrico": "#3b82f6",
         "fisico": "#eab308",
         "etereo": "#d946ef",
+        "viento": "#38bdf8",
     };
 
     const getElementIcon = () => {
