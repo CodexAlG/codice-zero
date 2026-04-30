@@ -1,5 +1,30 @@
 
 export const agents = [
+  // --- VERSION 3.0 ---
+  {
+    id: 55,
+    name: "Norma",
+    rank: "S",
+    element: "Fuego",
+    rol: "Aturdidor",
+    faction: "",
+    leak: "Beta",
+    version: "3.0",
+    image: "",
+    customStyle: "scale-[1.00] group-hover:scale-[1.10] object-[center_top]",
+  },
+  {
+    id: 54,
+    name: "Velina",
+    rank: "S",
+    element: "Viento",
+    rol: "Anomalia",
+    faction: "",
+    leak: "Beta",
+    version: "3.0",
+    image: "",
+    customStyle: "scale-[1.00] group-hover:scale-[1.10] object-[center_top]",
+  },
   // --- VERSION 2.8 ---
   {
     id: 53,
