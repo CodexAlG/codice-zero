@@ -2225,7 +2225,7 @@ export const weapons = [
         { level: 5, ProbablidadCrit: "32%", DañoPerforacion: "16%" }
       ]
     },
-    image: "/CodiceZero/Armas/Ruptura/BillyW.png",
+    image: "/CodiceZero/Armas/Ruptura/BillyS.png",
     exclusiveAgent: {
       name: "Starlight - Billy",
       icon: "/CodiceZero/ICONOS/Agent_Starlight_Billy_Icon.webp"
