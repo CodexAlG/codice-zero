@@ -34,86 +34,43 @@ export const versionedWeapons = {
     //         }
     //     }
     // }
-    5544: {
-        id: 5544,
-        name: "Arma de Prueba de Promeia",
+    5546: {
+        id: 5546,
+        name: "Arma de Prueba de Velina",
         rol: "Anomalia",
         versions: {
-            "v2.8.0": {
-                versionLabel: "v2.8.0",
+            "v3.0.1": {
+                versionLabel: "v3.0.1",
                 effect: {
-                    title: "Efecto del Arma de Prueba de Promeia",
-                    description: "El Daño Hielo infligido por el portador aumenta un {VALOR_1}; cuando el portador activa la (Técnica Especial EX) e inflige Daño Hielo, el daño de Anomalía de Atributo infligido por sí mismo aumenta un {VALOR_2}, con una duración de 30 segundos, acumulable hasta un máximo de 2 capas, se activa como máximo una vez dentro del mismo movimiento, al activarse de nuevo se reinicia la duración.",
+                    title: "Efecto del Arma de Prueba de Velina",
+                    description: "La Maestría de Anomalía del portador aumenta [VALOR_1]; cuando el portador activa (Técnica Especial EX), el daño de (Turbulencia) y (Corrosión) infligido por sí mismo aumenta un [VALOR_2], con una duración de 40 segundos, acumulable hasta un máximo de 2 capas, al activarse repetidamente reinicia el tiempo de duración.",
                     refinements: [
-                        { level: 1, ProbablidadCrit: "35%", DañoDef: "15%" },
-                        { level: 2, ProbablidadCrit: "41%", DañoDef: "16.5%" },
-                        { level: 3, ProbablidadCrit: "47%", DañoDef: "18%" },
-                        { level: 4, ProbablidadCrit: "53%", DañoDef: "19.5%" },
-                        { level: 5, ProbablidadCrit: "60%", DañoDef: "21%" }
-                    ]
-                }
-            },
-            "v2.8.2": {
-                versionLabel: "v2.8.2",
-                effect: {
-                    title: "Efecto del Arma de Prueba de Promeia",
-                    description: "El Daño Hielo infligido por el portador aumenta un {VALOR_1}; cuando un portador de Atributo Hielo activa la (Técnica Especial EX), el daño de Anomalía de Atributo y el daño de (Desorden) infligidos por sí mismo aumentan un {VALOR_2}, con una duración de 40 segundos, acumulable hasta un máximo de 2 capas, se activa como máximo una vez dentro del mismo movimiento, al activarse de nuevo se reinicia la duración, al poseer 2 capas del efecto, el daño de (Abloom) infligido por el personaje aumenta adicionalmente un {VALOR_3}.",
-                    refinements: [
-                        { level: 1, ProbablidadCrit: "35%", DañoDef: "7.5%", DañoAbloom: "25%" },
-                        { level: 2, ProbablidadCrit: "41%", DañoDef: "8.5", DañoAbloom: "28.7" },
-                        { level: 3, ProbablidadCrit: "47%", DañoDef: "9.5%", DañoAbloom: "32.5" },
-                        { level: 4, ProbablidadCrit: "53%", DañoDef: "10.5%", DañoAbloom: "36.2", },
-                        { level: 5, ProbablidadCrit: "60%", DañoDef: "11.5%", DañoAbloom: "40%" }
-                    ]
-                }
-            },
-            "v2.8.3": {
-                versionLabel: "v2.8.3",
-                effect: {
-                    title: "Veredicto Final",
-                    description: "Cuando un portador de Atributo Hielo activa (Técnica Especial), (Técnica Especial EX), el Daño Hielo infligido por sí mismo aumenta un {VALOR_1}, dura 40 segundos, acumulable hasta un máximo de 2 capas, dentro del mismo movimiento se activa como máximo una vez, al activarse repetidamente reinicia el tiempo de duración, al poseer 2 capas de efecto, el daño de (Abloom) infligido por el personaje aumenta adicionalmente un {VALOR_2}.",
-                    refinements: [
-                        { level: 1, DañoHielo: "20%", DañoAbloom: "35%" },
-                        { level: 2, DañoHielo: "23%", DañoAbloom: "38.5%" },
-                        { level: 3, DañoHielo: "26%", DañoAbloom: "42%" },
-                        { level: 4, DañoHielo: "29%", DañoAbloom: "45.5%" },
-                        { level: 5, DañoHielo: "32%", DañoAbloom: "50%" }
+                        { level: 1, MaestríaAnomalía: "105", DañoTurb: "10%" },
+                        { level: 2, MaestríaAnomalía: "105", DañoTurb: "10%" },
+                        { level: 3, MaestríaAnomalía: "105", DañoTurb: "10%" },
+                        { level: 4, MaestríaAnomalía: "105", DañoTurb: "10%" },
+                        { level: 5, MaestríaAnomalía: "105", DañoTurb: "10%" }
                     ]
                 }
             }
         }
     },
-    5545: {
-        id: 5545,
-        name: "Arma de Prueba de Starlight - Billy",
-        rol: "Ruptura",
+    5547: {
+        id: 5547,
+        name: "Arma de Prueba de Norma",
+        rol: "Aturdidor",
         versions: {
-            "v2.8.1": {
-                versionLabel: "v2.8.1",
+            "v3.0.1": {
+                versionLabel: "v3.0.1",
                 effect: {
-                    title: "Efecto del arma de Prueba de Starlight - Billy",
-                    description: "La Probabilidad Crítica aumenta un {VALOR_1}; cuando el portador activa un (Ataque Básico), el (Daño de Fuerza Bruta de Atributo Físico) infligido por el portador aumenta un {VALOR_2}, acumulable hasta un máximo de 2 capas, con una duración de 12 segundos, al activarse de nuevo se reinicia la duración.",
+                    title: "Efecto del Arma de Prueba de Norma",
+                    description: "El Impacto del portador aumenta un [VALOR_1]; el daño infligido ignora un [VALOR_2] de la Res Fuego del objetivo; cuando el portador activa (Técnica Especial EX) e inflige daño, hace que el daño infligido por todo el equipo aumente un [VALOR_3], con una duración de 8 segundos, acumulable hasta un máximo de 3 capas, al activarse repetidamente reinicia el tiempo de duración, dentro del mismo movimiento se activa como máximo 1 vez, este efecto es único para todo el equipo.",
                     refinements: [
-                        { level: 1, ProbablidadCrit: "20%", DañoDef: "12%" },
-                        { level: 2, ProbablidadCrit: "23%", DañoDef: "13.5%" },
-                        { level: 3, ProbablidadCrit: "26%", DañoDef: "15%" },
-                        { level: 4, ProbablidadCrit: "29%", DañoDef: "16.5%" },
-                        { level: 5, ProbablidadCrit: "32%", DañoDef: "18%" }
-                    ]
-                }
-            },
-            "v2.8.3": {
-                versionLabel: "v2.8.3",
-                name: "Armadura Facial de Caballero Brillante",
-                effect: {
-                    title: "Aura de Caballero",
-                    description: "La Probabilidad Crítica aumenta un {VALOR_1}; cuando el portador activa (Técnica Especial), el Daño de Fuerza Bruta de Atributo Físico infligido por el portador aumenta un {VALOR_2}, acumulable hasta un máximo de 2 capas, dura 30 segundos, al activarse repetidamente reinicia el tiempo de duración.",
-                    refinements: [
-                        { level: 1, ProbablidadCrit: "20%", DañoPerforacion: "10%" },
-                        { level: 2, ProbablidadCrit: "23%", DañoPerforacion: "11.5%" },
-                        { level: 3, ProbablidadCrit: "26%", DañoPerforacion: "13%" },
-                        { level: 4, ProbablidadCrit: "29%", DañoPerforacion: "14.5%" },
-                        { level: 5, ProbablidadCrit: "32%", DañoPerforacion: "16%" }
+                        { level: 1, Impacto: "15%", PenRatio: "10%", DañoEquipo: "8%" },
+                        { level: 2, Impacto: "17.25%", PenRatio: "11.5%", DañoEquipo: "9.2%" },
+                        { level: 3, Impacto: "19.5%", PenRatio: "13%", DañoEquipo: "10.4%" },
+                        { level: 4, Impacto: "21.75%", PenRatio: "14.5%", DañoEquipo: "11.6%" },
+                        { level: 5, Impacto: "24%", PenRatio: "16%", DañoEquipo: "12.8%" }
                     ]
                 }
             }
