@@ -1944,7 +1944,7 @@ export const weapons = [
     // Info para el Detalle (Vista completa)
     detailStats: {
       baseAtk: { min: 48, max: 713 },     // Nvl 1 -> 60
-      subStat: { name: "Porb. Critica", min: "9.6%", max: "24%" } // Nvl 1 -> 60
+      subStat: { name: "Prob. Critica", min: "9.6%", max: "24%" } // Nvl 1 -> 60
     },
     effect: {
       title: "24/7",
@@ -2231,6 +2231,60 @@ export const weapons = [
     exclusiveAgent: {
       name: "Starlight - Billy",
       icon: "/CodiceZero/ICONOS/Agent_Starlight_Billy_Icon.webp"
+    }
+  },
+  {
+    id: 5546,
+    name: "Arma de Prueba de Velina",
+    rank: "S",
+    rol: "Anomalia",
+    leak: "Beta",
+    detailStats: {
+      baseAtk: { min: 48, max: 713 },
+      subStat: { name: "Recuperación de Energía", min: "24%", max: "60%" }
+    },
+    effect: {
+      title: "Efecto del Arma de Prueba de Velina",
+      description: "La Maestría de Anomalía del portador aumenta 105; cuando el portador activa (Técnica Especial EX), el daño de (Turbulencia) y (Corrosión) infligido por sí mismo aumenta un 10%, con una duración de 40 segundos, acumulable hasta un máximo de 2 capas, al activarse repetidamente reinicia el tiempo de duración.",
+      refinements: [
+        { level: 1, MaestríaAnomalía: "105", DañoTurb: "10%" },
+        { level: 2, MaestríaAnomalía: "105", DañoTurb: "10%" },
+        { level: 3, MaestríaAnomalía: "105", DañoTurb: "10%" },
+        { level: 4, MaestríaAnomalía: "105", DañoTurb: "10%" },
+        { level: 5, MaestríaAnomalía: "105", DañoTurb: "10%" }
+      ]
+    },
+    image: "/CodiceZero/Armas/Anomalia/W-Engine_de_Prueba_de_Velina.webp",
+    exclusiveAgent: {
+      name: "Velina",
+      icon: "/CodiceZero/ICONOS/Agent_Velina_Icon.webp"
+    }
+  },
+  {
+    id: 5547,
+    name: "Arma de Prueba de Norma",
+    rank: "S",
+    rol: "Aturdidor",
+    leak: "Beta",
+    detailStats: {
+      baseAtk: { min: 48, max: 713 },
+      subStat: { name: "Prob. Critico", min: "9.6%", max: "24%" }
+    },
+    effect: {
+      title: "Efecto del Arma de Prueba de Norma",
+      description: "El Impacto del portador aumenta un 15%; el daño infligido ignora un 10% de la Res Fuego del objetivo; cuando el portador activa (Técnica Especial EX) e inflige daño, hace que el daño infligido por todo el equipo aumente un 8%, con una duración de 8 segundos, acumulable hasta un máximo de 3 capas, al activarse repetidamente reinicia el tiempo de duración, dentro del mismo movimiento se activa como máximo 1 vez, este efecto es único para todo el equipo.",
+      refinements: [
+        { level: 1, Impacto: "15%", PenRatio: "10%", DañoEquipo: "8%" },
+        { level: 2, Impacto: "17.25%", PenRatio: "11.5%", DañoEquipo: "9.2%" },
+        { level: 3, Impacto: "19.5%", PenRatio: "13%", DañoEquipo: "10.4%" },
+        { level: 4, Impacto: "21.75%", PenRatio: "14.5%", DañoEquipo: "11.6%" },
+        { level: 5, Impacto: "24%", PenRatio: "16%", DañoEquipo: "12.8%" }
+      ]
+    },
+    image: "/CodiceZero/Armas/Anomalia/W-Engine_de_Prueba_de_Norma.webp",
+    exclusiveAgent: {
+      name: "Norma",
+      icon: "/CodiceZero/ICONOS/Agent_Norma_Icon.webp"
     }
   }
 ];
