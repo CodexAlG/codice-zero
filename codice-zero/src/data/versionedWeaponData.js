@@ -43,7 +43,7 @@ export const versionedWeapons = {
                 versionLabel: "v3.0.1",
                 effect: {
                     title: "Efecto del Arma de Prueba de Velina",
-                    description: "La Maestría de Anomalía del portador aumenta [VALOR_1]; cuando el portador activa (Técnica Especial EX), el daño de (Turbulencia) y (Corrosión) infligido por sí mismo aumenta un [VALOR_2], con una duración de 40 segundos, acumulable hasta un máximo de 2 capas, al activarse repetidamente reinicia el tiempo de duración.",
+                    description: "La Maestría de Anomalía del portador aumenta {VALOR_1}; cuando el portador activa (Técnica Especial EX), el daño de (Turbulencia) y (Corrosión) infligido por sí mismo aumenta un {VALOR_2}, con una duración de 40 segundos, acumulable hasta un máximo de 2 capas, al activarse repetidamente reinicia el tiempo de duración.",
                     refinements: [
                         { level: 1, MaestríaAnomalía: "105", DañoTurb: "10%" },
                         { level: 2, MaestríaAnomalía: "105", DañoTurb: "10%" },
@@ -64,7 +64,7 @@ export const versionedWeapons = {
                 versionLabel: "v3.0.1",
                 effect: {
                     title: "Efecto del Arma de Prueba de Norma",
-                    description: "El Impacto del portador aumenta un [VALOR_1]; el daño infligido ignora un [VALOR_2] de la Res Fuego del objetivo; cuando el portador activa (Técnica Especial EX) e inflige daño, hace que el daño infligido por todo el equipo aumente un [VALOR_3], con una duración de 8 segundos, acumulable hasta un máximo de 3 capas, al activarse repetidamente reinicia el tiempo de duración, dentro del mismo movimiento se activa como máximo 1 vez, este efecto es único para todo el equipo.",
+                    description: "El Impacto del portador aumenta un {VALOR_1}; el daño infligido ignora un {VALOR_2} de la Res Fuego del objetivo; cuando el portador activa (Técnica Especial EX) e inflige daño, hace que el daño infligido por todo el equipo aumente un {VALOR_3}, con una duración de 8 segundos, acumulable hasta un máximo de 3 capas, al activarse repetidamente reinicia el tiempo de duración, dentro del mismo movimiento se activa como máximo 1 vez, este efecto es único para todo el equipo.",
                     refinements: [
                         { level: 1, Impacto: "15%", PenRatio: "10%", DañoEquipo: "8%" },
                         { level: 2, Impacto: "17.25%", PenRatio: "11.5%", DañoEquipo: "9.2%" },
