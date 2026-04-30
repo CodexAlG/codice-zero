@@ -10,7 +10,7 @@ export const agents = [
     faction: "",
     leak: "Beta",
     version: "3.0",
-    image: "",
+    image: "/CodiceZero/ICONOS/Agent_Norma_Hollowell_Icon.webp",
     customStyle: "scale-[1.00] group-hover:scale-[1.10] object-[center_top]",
   },
   {
@@ -23,7 +23,7 @@ export const agents = [
     faction: "",
     leak: "Beta",
     version: "3.0",
-    image: "",
+    image: "/CodiceZero/ICONOS/Agent_Velina_Airgid_Icon.webp",
     customStyle: "scale-[1.00] group-hover:scale-[1.10] object-[center_top]",
   },
   // --- VERSION 2.8 ---
@@ -36,7 +36,7 @@ export const agents = [
     faction: "",
     leak: "Beta",
     version: "2.8",
-    image: "",
+    image: "/CodiceZero/ICONOS/Agent_Starlight_-_Billy_Icon.webp",
     customStyle: "scale-[1.00] group-hover:scale-[1.10] object-[center_top]",
   },
   {
@@ -48,7 +48,7 @@ export const agents = [
     faction: "",
     leak: "Beta",
     version: "2.8",
-    image: "",
+    image: "/CodiceZero/ICONOS/Agent_Promeia_Icon.webp",
     customStyle: "scale-[1.00] group-hover:scale-[1.10] object-[center_top]",
   },
   // --- VERSION 2.7 ---

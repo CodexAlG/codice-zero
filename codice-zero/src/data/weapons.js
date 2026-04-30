@@ -2184,7 +2184,6 @@ export const weapons = [
     name: "Corte de Escarcha de Luna Nueva",
     rank: "S",
     rol: "Anomalia",
-    leak: "Beta",
     detailStats: {
       baseAtk: { min: 48, max: 713 },
       subStat: { name: "Tasa de Anomalía", min: "12%", max: "30%" }
@@ -2211,7 +2210,6 @@ export const weapons = [
     name: "Armadura Facial de Caballero Brillante",
     rank: "S",
     rol: "Ataque",
-    leak: "Beta",
     detailStats: {
       baseAtk: { min: 48, max: 713 },
       subStat: { name: "HP%", min: "12%", max: "30%" }
