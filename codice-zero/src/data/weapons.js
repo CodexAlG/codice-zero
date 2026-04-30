@@ -2199,7 +2199,7 @@ export const weapons = [
         { level: 5, DañoHielo: "32%", DañoAbloom: "50%" }
       ]
     },
-    image: "/CodiceZero/Armas/Anomalia/W-Engine_de_Prueba_de_Promeia.webp",
+    image: "/CodiceZero/Armas/Anomalia/PromeiaW.png",
     exclusiveAgent: {
       name: "Promeia",
       icon: "/CodiceZero/ICONOS/Agent_Promeia_Icon.webp"
@@ -2209,7 +2209,7 @@ export const weapons = [
     id: 5545,
     name: "Armadura Facial de Caballero Brillante",
     rank: "S",
-    rol: "Ataque",
+    rol: "Ruptura",
     detailStats: {
       baseAtk: { min: 48, max: 713 },
       subStat: { name: "HP%", min: "12%", max: "30%" }
@@ -2225,7 +2225,7 @@ export const weapons = [
         { level: 5, ProbablidadCrit: "32%", DañoPerforacion: "16%" }
       ]
     },
-    image: "/CodiceZero/Armas/Ataque/W-Engine_de_Prueba_de_Starlight_Billy.webp",
+    image: "/CodiceZero/Armas/Ruptura/BillyW.png",
     exclusiveAgent: {
       name: "Starlight - Billy",
       icon: "/CodiceZero/ICONOS/Agent_Starlight_Billy_Icon.webp"
