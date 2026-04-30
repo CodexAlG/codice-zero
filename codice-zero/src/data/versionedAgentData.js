@@ -435,7 +435,7 @@ export const versionedAgents = {
                 },
                 coreStats: {
                     statName: "maestría de anomalía",
-                    valuePerNode: 12
+                    valuePerNode: 18
                 },
                 coreSkillScaling: [
                     ["0%"],
