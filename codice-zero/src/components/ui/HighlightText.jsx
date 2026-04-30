@@ -20,7 +20,7 @@ const createHighlightRules = (elementColor = "#facc15") => [
   // Etéreo
   { pattern: /(Acumulaci[oó]n\s+de\s+Anomal[ií]a\s+(?:Et[é]rea|[EÉ]ter|Tinta\s+Aurica)|Daño\s+(?:Et[é]reo|[EÉ]ter|Tinta\s+Aurica)(?:\s+Puro)?|Corrupci[oó]n|Anomal[ií]a\s+(?:Et[é]rea|[EÉ]ter|Tinta\s+Aurica|Et[é]reo)|Res\s+(?:Et[é]rea|[EÉ]ter|Tinta\s+Aurica)|Resistencia\s+(?:Et[é]rea|[EÉ]ter|Tinta\s+Aurica)|Tinta\s+Aurica(?:\s+Pura)?|Et[é]reo(?:\s+Puro)?|[EÉ]ter(?:\s+Puro)?|Et[é]rea(?:\s+Pura)?|Anomal[ií]a\s+de\s+Atributo\s+(?:de\s+)?(?:Et[é]re[oa]|[EÉ]ter|Tinta\s+Aurica)|Ether Damage|Corruption|Ether Anomaly|Ether Resistance|Ether Attribute Anomaly|Ether Anomaly Buildup|\bEther\b|\bEthereal\b)/gi, color: "text-[#d946ef] font-bold" },
   // Viento
-  { pattern: /(Acumulaci[oó]n\s+de\s+Anomal[ií]a\s+Viento|Daño\s+Viento(?:\s+Puro)?|Anomal[ií]a\s+Viento|Res\s+Viento|Resistencia\s+Viento|Viento(?:\s+Puro)?|Anomal[ií]a\s+de\s+Atributo\s+(?:de\s+)?Viento|Wind Damage|Wind Anomaly|Wind Resistance|Wind Attribute Anomaly|Wind Anomaly Buildup|\bWind\b)/gi, color: "text-[#4ade80] font-bold" },
+  { pattern: /(Acumulaci[oó]n\s+de\s+Anomal[ií]a\s+Viento|Daño\s+Viento(?:\s+Puro)?|Anomal[ií]a\s+Viento|Res\s+Viento|Resistencia\s+Viento|Viento(?:\s+Puro)?|Anomal[ií]a\s+de\s+Atributo\s+(?:de\s+)?Viento|Wind Damage|Wind Anomaly|Wind Resistance|Wind Attribute Anomaly|Wind Anomaly Buildup|\bWind\b)/gi, color: "text-[#38bdf8] font-bold" },
   // Massive / Severe damage – use element colour
 
 

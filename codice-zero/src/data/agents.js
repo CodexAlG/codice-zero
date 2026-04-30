@@ -18,6 +18,7 @@ export const agents = [
     name: "Velina",
     rank: "S",
     element: "Viento",
+    elementColor: "#38bdf8",
     rol: "Anomalia",
     faction: "",
     leak: "Beta",

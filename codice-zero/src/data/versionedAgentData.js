@@ -464,6 +464,7 @@ export const versionedAgents = {
         versions: {
             "v3.0.1": {
                 versionLabel: "3.0.1",
+                elementColor: "#38bdf8",
                 baseStats: {
                     hp: { min: 626, max: 7788 },
                     atk: { min: 126, max: 872 },
