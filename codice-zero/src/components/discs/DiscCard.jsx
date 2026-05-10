@@ -21,22 +21,28 @@ const DiscCard = memo(({ disc, priority = false, minimal = false }) => {
         )}
         
         <div className="w-20 h-20 relative flex items-center justify-center mt-2 group-hover:scale-110 transition-transform duration-300">
-          {!imageLoaded && (
+          {!imageLoaded && disc.image && (
             <div className="absolute inset-0 z-10 flex items-center justify-center">
               <div className="w-16 h-16 bg-white/5 rounded-full animate-pulse" />
             </div>
           )}
-          <Image
-            src={disc.image}
-            alt={disc.name}
-            width={80}
-            height={80}
-            className={`object-contain drop-shadow-xl ${imageLoaded ? 'opacity-100' : 'opacity-0'} transition-opacity duration-300`}
-            onLoad={() => setImageLoaded(true)}
-            loading={priority ? "eager" : "lazy"}
-            priority={priority}
-            unoptimized
-          />
+          {disc.image ? (
+            <Image
+              src={disc.image}
+              alt={disc.name}
+              width={80}
+              height={80}
+              className={`object-contain drop-shadow-xl ${imageLoaded ? 'opacity-100' : 'opacity-0'} transition-opacity duration-300`}
+              onLoad={() => setImageLoaded(true)}
+              loading={priority ? "eager" : "lazy"}
+              priority={priority}
+              unoptimized
+            />
+          ) : (
+            <div className="w-16 h-16 bg-white/5 rounded-full border border-white/10 flex items-center justify-center">
+              <span className="text-[10px] font-black text-gray-500 text-center leading-none">NO<br/>ASSET</span>
+            </div>
+          )}
         </div>
 
         <div className="w-full text-center mt-auto pt-4 relative z-10">
@@ -74,17 +80,23 @@ const DiscCard = memo(({ disc, priority = false, minimal = false }) => {
             </div>
           )}
 
-          <Image
-            src={disc.image}
-            alt={disc.name}
-            width={64}
-            height={64}
-            className={`object-contain w-full h-full drop-shadow-xl group-hover:scale-110 transition-transform duration-300 ${imageLoaded ? 'opacity-100' : 'opacity-0'}`}
-            onLoad={() => setImageLoaded(true)}
-            loading={priority ? "eager" : "lazy"}
-            priority={priority}
-            unoptimized
-          />
+          {disc.image ? (
+            <Image
+              src={disc.image}
+              alt={disc.name}
+              width={64}
+              height={64}
+              className={`object-contain w-full h-full drop-shadow-xl group-hover:scale-110 transition-transform duration-300 ${imageLoaded ? 'opacity-100' : 'opacity-0'}`}
+              onLoad={() => setImageLoaded(true)}
+              loading={priority ? "eager" : "lazy"}
+              priority={priority}
+              unoptimized
+            />
+          ) : (
+            <div className="w-full h-full flex items-center justify-center">
+              <span className="text-[8px] font-black text-gray-500 text-center leading-none">NO<br/>ASSET</span>
+            </div>
+          )}
         </div>
         <h3 className="text-lg font-bold text-white leading-tight group-hover:text-yellow-400 transition-colors">
           {disc.name}
