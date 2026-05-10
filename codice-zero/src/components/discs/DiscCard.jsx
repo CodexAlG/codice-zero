@@ -3,8 +3,50 @@ import { memo, useState } from 'react';
 import HighlightText from "@/components/ui/HighlightText";
 import SkeletonCard from '@/components/ui/SkeletonCard';
 
-const DiscCard = memo(({ disc, priority = false }) => {
+const DiscCard = memo(({ disc, priority = false, minimal = false }) => {
   const [imageLoaded, setImageLoaded] = useState(false);
+
+  if (minimal) {
+    return (
+      <div className="relative w-full max-w-[160px] mx-auto aspect-[4/5] bg-[#0f0f12] rounded-xl border border-white/5 border-b-[3px] border-b-gray-500 overflow-hidden group hover:-translate-y-2 hover:shadow-[0_0_20px_rgba(255,255,255,0.1)] transition-all duration-300 cursor-pointer flex flex-col items-center justify-center p-4">
+        {/* Beta Warning Icon */}
+        {disc.leak && disc.leak.includes("Beta") && (
+          <div className="absolute top-2 left-2 z-30 filter drop-shadow-lg" title="Contenido Beta">
+            <div className="w-5 h-5 bg-red-500 rounded-full flex items-center justify-center animate-pulse">
+              <svg className="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
+                <path fillRule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clipRule="evenodd" />
+              </svg>
+            </div>
+          </div>
+        )}
+        
+        <div className="w-20 h-20 relative flex items-center justify-center mt-2 group-hover:scale-110 transition-transform duration-300">
+          {!imageLoaded && (
+            <div className="absolute inset-0 z-10 flex items-center justify-center">
+              <div className="w-16 h-16 bg-white/5 rounded-full animate-pulse" />
+            </div>
+          )}
+          <Image
+            src={disc.image}
+            alt={disc.name}
+            width={80}
+            height={80}
+            className={`object-contain drop-shadow-xl ${imageLoaded ? 'opacity-100' : 'opacity-0'} transition-opacity duration-300`}
+            onLoad={() => setImageLoaded(true)}
+            loading={priority ? "eager" : "lazy"}
+            priority={priority}
+            unoptimized
+          />
+        </div>
+
+        <div className="w-full text-center mt-auto pt-4 relative z-10">
+          <h3 className="text-[13px] font-bold text-white leading-tight drop-shadow-md">
+            {disc.name}
+          </h3>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div

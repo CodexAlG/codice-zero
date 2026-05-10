@@ -79,7 +79,7 @@ export default function BetaPageClient() {
           <div className="flex flex-wrap gap-4">
             {betaDiscs.map(disc => (
               <div key={disc.id} className="w-[160px] flex flex-col gap-3">
-                <DiscCard disc={disc} />
+                <DiscCard disc={disc} minimal={true} />
                 <Link 
                   href={`/${language}/beta/discos/${disc.id}`}
                   className="w-full text-center py-2 px-3 bg-yellow-500/10 hover:bg-yellow-500/20 border border-yellow-500/30 hover:border-yellow-500 text-yellow-500 hover:text-yellow-400 text-xs font-bold rounded-lg transition-all duration-300"
