@@ -1,6 +1,3 @@
-import { image } from "html2canvas/dist/types/css/types/image";
-
-
 // Base de Datos de Armas (W-Engines) - Datos Reales
 export const weapons = [
   // ========================================================================

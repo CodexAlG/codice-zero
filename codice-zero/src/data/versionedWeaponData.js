@@ -78,21 +78,25 @@ export const versionedWeapons = {
     },
     5639: {
         id: 5639,
-        name: "",
+        name: "???",
         rol: "Anomalia",
         versions: {
             "v3.0.2": {
                 versionLabel: "v3.0.2",
+                detailStats: {
+                    baseAtk: { min: 42, max: 624 },
+                    subStat: { name: "Maestría de Anomalía", min: "30", max: "75" }
+                },
                 effect: {
-      title: "???",
-      description: "Cuando se activa (Vórtice), recupera {VALOR_1} de Energía. Este efecto puede activarse una vez cada 10 segundos. El Daño infligido por el portador a los enemigos afectados por Anomalía de Atributo aumenta en un {VALOR_2}",
-      refinements: [
-        { level: 1, Energia: "2", Daño: "11.5%" },
-        { level: 2, Energia: "2.3", Daño: "13.2%" },
-        { level: 3, Energia: "2.6", Daño: "15%" },
-        { level: 4, Energia: "2.9", Daño: "16.7%" },
-        { level: 5, Energia: "3.2", Daño: "18.4%" }
-      ]
+                    title: "???",
+                    description: "Cuando se activa (Vórtice), recupera {VALOR_1} de Energía. Este efecto puede activarse una vez cada 10 segundos. El Daño infligido por el portador a los enemigos afectados por Anomalía de Atributo aumenta en un {VALOR_2}.",
+                    refinements: [
+                        { level: 1, Energia: "2", Daño: "11.5%" },
+                        { level: 2, Energia: "2.3", Daño: "13.2%" },
+                        { level: 3, Energia: "2.6", Daño: "15%" },
+                        { level: 4, Energia: "2.9", Daño: "16.7%" },
+                        { level: 5, Energia: "3.2", Daño: "18.4%" }
+                    ]
                 }
             }
         }
