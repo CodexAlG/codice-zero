@@ -6,9 +6,32 @@ import { useLanguage } from '@/context/LanguageContext';
 import { agents } from '@/data/agents';
 import { weapons } from '@/data/weapons';
 import { driveDiscs } from '@/data/discs';
+import { getAgentVersions } from '@/data/versionedAgentData';
+import { getWeaponVersions, versionedWeapons } from '@/data/versionedWeaponData';
 import AgentCard from '@/components/agents/AgentCard';
 import WeaponCard from '@/components/weapons/WeaponCard';
 import DiscCard from '@/components/discs/DiscCard';
+
+const getAgentBetaVersion = (agentId) => {
+    const versions = getAgentVersions(agentId);
+    if (!versions || versions.length === 0) return "Nuevo";
+    return versions[versions.length - 1];
+};
+
+const getWeaponBetaVersion = (weaponId) => {
+    const versions = getWeaponVersions(weaponId);
+    if (!versions || versions.length === 0) return "Nuevo";
+    const latestVersion = versions[versions.length - 1];
+    
+    const weaponData = versionedWeapons[weaponId];
+    if (weaponData && weaponData.versions && weaponData.versions[latestVersion]) {
+        const hotfixes = weaponData.versions[latestVersion].hotfixes;
+        if (hotfixes && hotfixes.length > 0) {
+            return `${latestVersion} HF${hotfixes.length}`;
+        }
+    }
+    return latestVersion;
+};
 
 export default function BetaPageClient() {
   const { language } = useLanguage();
@@ -31,9 +54,14 @@ export default function BetaPageClient() {
             Agentes
           </h2>
           <div className="flex flex-wrap gap-4">
-            {betaAgents.map(agent => (
+            {betaAgents.map(agent => {
+              const version = getAgentBetaVersion(agent.id);
+              return (
               <div key={agent.id} className="w-[140px] flex flex-col gap-3">
                 <AgentCard agent={agent} />
+                <div className="text-center text-[10px] font-black text-gray-400 bg-white/5 rounded py-1 uppercase tracking-widest border border-white/5 shadow-inner">
+                    {version}
+                </div>
                 <Link 
                   href={`/${language}/beta/agentes/${agent.id}`}
                   className="w-full text-center py-2 px-3 bg-yellow-500/10 hover:bg-yellow-500/20 border border-yellow-500/30 hover:border-yellow-500 text-yellow-500 hover:text-yellow-400 text-xs font-bold rounded-lg transition-all duration-300"
@@ -41,7 +69,7 @@ export default function BetaPageClient() {
                   VER CAMBIOS
                 </Link>
               </div>
-            ))}
+            )})}
           </div>
         </div>
       )}
@@ -54,9 +82,14 @@ export default function BetaPageClient() {
             Armas
           </h2>
           <div className="flex flex-wrap gap-4">
-            {betaWeapons.map(weapon => (
+            {betaWeapons.map(weapon => {
+              const version = getWeaponBetaVersion(weapon.id);
+              return (
               <div key={weapon.id || weapon.name} className="w-[160px] flex flex-col gap-3">
                 <WeaponCard weapon={weapon} />
+                <div className="text-center text-[10px] font-black text-gray-400 bg-white/5 rounded py-1 uppercase tracking-widest border border-white/5 shadow-inner">
+                    {version}
+                </div>
                 <Link 
                   href={`/${language}/beta/armas/${weapon.id}`}
                   className="w-full text-center py-2 px-3 bg-yellow-500/10 hover:bg-yellow-500/20 border border-yellow-500/30 hover:border-yellow-500 text-yellow-500 hover:text-yellow-400 text-xs font-bold rounded-lg transition-all duration-300"
@@ -64,7 +97,7 @@ export default function BetaPageClient() {
                   VER CAMBIOS
                 </Link>
               </div>
-            ))}
+            )})}
           </div>
         </div>
       )}
@@ -80,6 +113,9 @@ export default function BetaPageClient() {
             {betaDiscs.map(disc => (
               <div key={disc.id} className="w-[160px] flex flex-col gap-3">
                 <DiscCard disc={disc} minimal={true} />
+                <div className="text-center text-[10px] font-black text-gray-400 bg-white/5 rounded py-1 uppercase tracking-widest border border-white/5 shadow-inner">
+                    v3.0.2
+                </div>
                 <Link 
                   href={`/${language}/beta/discos/${disc.id}`}
                   className="w-full text-center py-2 px-3 bg-yellow-500/10 hover:bg-yellow-500/20 border border-yellow-500/30 hover:border-yellow-500 text-yellow-500 hover:text-yellow-400 text-xs font-bold rounded-lg transition-all duration-300"
