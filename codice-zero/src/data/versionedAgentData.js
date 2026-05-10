@@ -129,7 +129,7 @@ export const versionedAgents = {
                     impact: 86,
                     crit: "5%",
                     critDmg: "50%",
-                    anomalyRate: "112",
+                    anomalyRate: "120",
                     anomalyMastery: "114",
                     penRatio: "0%",
                     energyRegen: "1.2"
