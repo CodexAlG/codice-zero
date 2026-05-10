@@ -2289,7 +2289,7 @@ export const weapons = [
 
   {
     id: 5639,
-    name: "",
+    name: "???",
     rank: "A",
     rol: "Anomalia",
     leak: "Beta",

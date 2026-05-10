@@ -76,7 +76,7 @@ export const versionedWeapons = {
             }
         }
     },
-5639: {
+    5639: {
         id: 5639,
         name: "",
         rol: "Anomalia",
