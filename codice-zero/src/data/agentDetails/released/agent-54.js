@@ -7,7 +7,7 @@ export default {
         crit: "5%",
         critDmg: "50%",
         anomalyRate: "120",
-        anomalyMastery: "114",
+        anomalyMastery: "111",
         penRatio: "0%",
         energyRegen: "1.2"
     },

@@ -120,7 +120,7 @@ export const versionedAgents = {
                 ]
             },
             "v3.0.2": {
-                 versionLabel: "3.0.2",
+                versionLabel: "3.0.2",
                 elementColor: "#38bdf8",
                 baseStats: {
                     hp: { min: 626, max: 7788 },
@@ -130,7 +130,7 @@ export const versionedAgents = {
                     crit: "5%",
                     critDmg: "50%",
                     anomalyRate: "120",
-                    anomalyMastery: "114",
+                    anomalyMastery: "111",
                     penRatio: "0%",
                     energyRegen: "1.2"
                 },
@@ -170,8 +170,8 @@ export const versionedAgents = {
                             { type: "Mindscape 5", name: "Bruja Anunciadora de Muerte", description: "Nivel de habilidad de (Ataque Básico), (Evasión), (Técnica de Asistencia), (Técnica Especial), (Ataque en Cadena) +2." },
                             { type: "Mindscape 6", name: "Ángel Principal", description: "Tras el cuarto golpe de (Ataque Básico: Danza de Abanico), (Contraataque de Evasión), (Asistencia Rápida), (Técnica Especial EX), mantener pulsado [Icono Ataque] puede consumir 2 (Puntos de Asistencia) para conectar con (Ataque de Asistencia: Tácticas de Negociación); cuando el golpe pesado de (Ataque de Asistencia: Tácticas de Negociación) golpea a un enemigo en estado de anomalía de atributo viento, causará al objetivo 1 vez un daño de (Abloom): calcula adicionalmente una vez el daño de anomalía de atributo, calculando de forma fija el 120% del multiplicador de daño de anomalía de atributo viento; Cuando el ataque de Velina golpea a un enemigo en estado de anomalía de atributo viento, el valor de acumulación de anomalía causado aumenta un 20%; Cuando Velina vuelve a aplicar (Corrosión) a un enemigo en estado de (Corrosión), aumentará el daño de esta (Corrosión) basándose en el tiempo de duración restante de la (Corrosión) anterior, por cada 1 segundo de duración restante el daño aumentará un 2%, aumentando como máximo un 36%." }
                 ]
-            }
         }
+    }
     },
     55: {
         id: 55,
@@ -273,7 +273,7 @@ export const versionedAgents = {
             "v3.0.2": {
                 versionLabel: "3.0.2",
                 elementColor: "#ef4444",
-               coreSkillScaling: [
+                coreSkillScaling: [
                             ["0.5%", "45%", "0.35%", "32%", "30%"],
                             ["0.58%", "53%", "0.41%", "37%", "30%"],
                             ["0.67%", "60%", "0.47%", "42%", "30%"],
