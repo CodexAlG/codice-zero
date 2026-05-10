@@ -3,14 +3,14 @@
 import { useState, useEffect } from 'react';
 import { usePathname } from 'next/navigation';
 import Image from 'next/image';
-import { Home, X, List, Scale } from 'lucide-react';
+import { Home, X, List, Scale, TriangleAlert } from 'lucide-react';
 import Link from 'next/link';
 import appIcon from '@/app/icon.png';
 import { useLanguage } from '@/context/LanguageContext';
 
 const navTranslations = {
-  es: { inicio: "Inicio", agentes: "Agentes", armas: "Armas", discos: "Discos", tierlist: "Tier List", diff: "Diferencias" },
-  en: { inicio: "Home", agentes: "Agents", armas: "Weapons", discos: "Drive Discs", tierlist: "Tier List", diff: "Diff" }
+  es: { inicio: "Inicio", agentes: "Agentes", armas: "Armas", discos: "Discos", tierlist: "Tier List", diff: "Diferencias", beta: "Novedades Beta" },
+  en: { inicio: "Home", agentes: "Agents", armas: "Weapons", discos: "Drive Discs", tierlist: "Tier List", diff: "Diff", beta: "Beta Changes" }
 };
 
 export default function Sidebar({ isExpanded, isMobile, toggleDrawer }) {
@@ -37,6 +37,8 @@ export default function Sidebar({ isExpanded, isMobile, toggleDrawer }) {
       setActiveItem(3); // Tier List
     } else if (cleanPath.startsWith('/diff')) {
       setActiveItem(4); // Diff
+    } else if (cleanPath.startsWith('/beta')) {
+      setActiveItem(5); // Beta
     }
   }, [pathname]);
 
@@ -145,6 +147,14 @@ export default function Sidebar({ isExpanded, isMobile, toggleDrawer }) {
               {activeItem === 4 && <div className="absolute left-0 top-1/4 bottom-1/4 w-[3px] bg-gradient-to-b from-yellow-300 to-yellow-500 rounded-r-full shadow-[0_0_10px_rgba(234,179,8,0.5)]"></div>}
               <Scale size={26} className={`transition-all duration-300 ml-1 ${activeItem === 4 ? 'drop-shadow-[0_0_8px_rgba(234,179,8,0.5)] text-yellow-400' : 'opacity-70 group-hover:opacity-100 group-hover:drop-shadow-md'}`} />
               <span className={`ml-4 tracking-wide`}>{t.diff}</span>
+            </Link>
+          </li>
+          {/* Item 7: Novedades Beta */}
+          <li>
+            <Link href={`/${language}/beta`} onClick={handleLinkClick} className={`group relative flex items-center h-12 py-2 px-3 rounded-xl transition-all duration-300 font-medium ${activeItem === 5 ? 'bg-red-500/10 shadow-[0_0_15px_rgba(239,68,68,0.1)] border border-red-500/20 text-red-400' : 'text-gray-400 hover:bg-white/5 border border-transparent hover:border-white/10 hover:text-gray-100 hover:shadow-[0_4px_10px_rgba(0,0,0,0.5)]'}`}>
+              {activeItem === 5 && <div className="absolute left-0 top-1/4 bottom-1/4 w-[3px] bg-gradient-to-b from-red-400 to-red-600 rounded-r-full shadow-[0_0_10px_rgba(239,68,68,0.5)]"></div>}
+              <TriangleAlert size={26} className={`transition-all duration-300 ml-1 ${activeItem === 5 ? 'drop-shadow-[0_0_8px_rgba(239,68,68,0.5)] text-red-500' : 'opacity-70 group-hover:opacity-100 group-hover:drop-shadow-md group-hover:text-red-400'}`} />
+              <span className={`ml-4 tracking-wide`}>{t.beta}</span>
             </Link>
           </li>
         </ul>

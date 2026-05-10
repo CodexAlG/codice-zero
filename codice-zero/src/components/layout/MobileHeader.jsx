@@ -19,7 +19,8 @@ const pathTitles = {
     '/armas': 'Armas',
     '/discos': 'Discos',
     '/tierlist': 'Tier List',
-    '/diff': 'Diferencias'
+    '/diff': 'Diferencias',
+    '/beta': 'Novedades Beta'
   },
   en: {
     '/': 'Home',
@@ -27,7 +28,8 @@ const pathTitles = {
     '/armas': 'Weapons',
     '/discos': 'Drive Discs',
     '/tierlist': 'Tier List',
-    '/diff': 'Diff'
+    '/diff': 'Diff',
+    '/beta': 'Beta Changes'
   }
 };
 

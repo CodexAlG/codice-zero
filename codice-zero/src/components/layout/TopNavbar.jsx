@@ -3,15 +3,15 @@
 import { useState, useEffect } from 'react';
 import { usePathname } from 'next/navigation';
 import Image from 'next/image';
-import { Home, List, GitCompare } from 'lucide-react';
+import { Home, List, GitCompare, TriangleAlert } from 'lucide-react';
 import Link from 'next/link';
 import appIcon from '@/app/icon.png';
 import LanguageToggle from '@/components/ui/LanguageToggle';
 import { useLanguage } from '@/context/LanguageContext';
 
 const navTranslations = {
-    es: { inicio: "Inicio", agentes: "Agentes", armas: "Armas", discos: "Discos", tierlist: "Tier List", diff: "Diferencias" },
-    en: { inicio: "Home", agentes: "Agents", armas: "Weapons", discos: "Drive Discs", tierlist: "Tier List", diff: "Diff" }
+    es: { inicio: "Inicio", agentes: "Agentes", armas: "Armas", discos: "Discos", tierlist: "Tier List", diff: "Diferencias", beta: "Novedades Beta" },
+    en: { inicio: "Home", agentes: "Agents", armas: "Weapons", discos: "Drive Discs", tierlist: "Tier List", diff: "Diff", beta: "Beta Changes" }
 };
 
 export default function TopNavbar({ isVisible }) {
@@ -38,6 +38,8 @@ export default function TopNavbar({ isVisible }) {
             setActiveItem(3); // Tier List
         } else if (cleanPath.startsWith('/diff')) {
             setActiveItem(4); // Diferencias
+        } else if (cleanPath.startsWith('/beta')) {
+            setActiveItem(5); // Beta
         }
     }, [pathname]);
 
@@ -138,6 +140,12 @@ export default function TopNavbar({ isVisible }) {
                         index={4}
                         icon={GitCompare}
                         label={t.diff}
+                    />
+                    <NavItem
+                        href={`/${language}/beta`}
+                        index={5}
+                        icon={TriangleAlert}
+                        label={t.beta}
                     />
                 </ul>
             </nav>
