@@ -1,4 +1,13 @@
 export const driveDiscs = [
+  // --- VERSIÓN 3.0.2 ---
+  {
+    id: 9929,
+    name: "Viento de la Primavera",
+    leak: "Beta",
+    twoPiece: "???",
+    fourPiece: "Cuando el portador activa (Técnica Especial EX), la Maestría de Anomalía del portador aumenta 25 puntos, acumulable hasta un máximo de 2 capas, con una duración de 40 segundos, al activarse repetidamente reinicia el tiempo de duración; después de que el portador activa el efecto de (Corrosión), el daño infligido por el portador aumenta un 18%, con una duración de 40 segundos, al activarse repetidamente reinicia el tiempo de duración.",
+    image: "",
+  },
   // --- VERSIÓN 2.7 ---
   {
     id: 9928,
