@@ -1,3 +1,4 @@
+import { image } from "html2canvas/dist/types/css/types/image";
 
 
 // Base de Datos de Armas (W-Engines) - Datos Reales
@@ -2284,6 +2285,30 @@ export const weapons = [
       name: "Norma",
       icon: "/CodiceZero/ICONOS/Agent_Norma_Hollowell_Icon.webp"
     }
+  },
+
+  {
+    id: 5639,
+    name: "",
+    rank: "A",
+    rol: "Anomalia",
+    leak: "Beta",
+    detailStats: {
+      baseAtk: { min: 42, max: 624 },
+      subStat: { name: "Maestría de Anomalía", min: "30", max: "75" }
+    },
+    effect: {
+      title: "???",
+      description: "Cuando se activa (Vórtice), recupera 2 de Energía. Este efecto puede activarse una vez cada 10 segundos. El Daño infligido por el portador a los enemigos afectados por Anomalía de Atributo aumenta en un 11.5%",
+      refinements: [
+        { level: 1, Energia: "2", Daño: "11.5%" },
+        { level: 2, Energia: "2.3", Daño: "13.2%" },
+        { level: 3, Energia: "2.6", Daño: "15%" },
+        { level: 4, Energia: "2.9", Daño: "16.7%" },
+        { level: 5, Energia: "3.2", Daño: "18.4%" }
+      ]
+    },
+    image: "/CodiceZero/Armas/Anomalia/armavelinaf2p.webp",
   }
 ];
 
