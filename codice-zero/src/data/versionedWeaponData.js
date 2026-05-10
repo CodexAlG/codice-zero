@@ -52,6 +52,20 @@ export const versionedWeapons = {
                         { level: 5, MaestríaAnomalía: "105", DañoTurb: "10%" }
                     ]
                 }
+            },
+            "v3.0.2": {
+                versionLabel: "v3.0.2",
+                effect: {
+                    title: "Efecto del Arma de Prueba de Velina",
+                    description: "La Maestría de Anomalía del portador aumenta {VALOR_1} puntos; cuando el portador activa (Técnica Especial EX), el daño de (Turbulencia) y (Corrosión) infligido por sí mismo aumenta un {VALOR_2}, con una duración de 40 segundos, acumulable hasta un máximo de 2 capas, al activarse repetidamente reinicia el tiempo de duración; al poseer 2 capas de este efecto, la Maestría de Anomalía de todo el equipo aumenta {VALOR_3} puntos, con una duración de 40 segundos, al activarse repetidamente reinicia el tiempo de duración, este efecto es único para todo el equipo.",
+                    refinements: [
+                        { level: 1, MaestríaAnomalía: "60", DañoTurb: "9%", MaestríaEquipo: "60" },
+                        { level: 2, MaestríaAnomalía: "69", DañoTurb: "10%", MaestríaEquipo: "69" },
+                        { level: 3, MaestríaAnomalía: "79", DañoTurb: "11%", MaestríaEquipo: "79" },
+                        { level: 4, MaestríaAnomalía: "87", DañoTurb: "12%", MaestríaEquipo: "87" },
+                        { level: 5, MaestríaAnomalía: "96", DañoTurb: "13%", MaestríaEquipo: "96" }
+                    ]
+                }
             }
         }
     },
@@ -71,6 +85,20 @@ export const versionedWeapons = {
                         { level: 3, Impacto: "19.5%", PenRatio: "13%", DañoEquipo: "10.4%" },
                         { level: 4, Impacto: "21.75%", PenRatio: "14.5%", DañoEquipo: "11.6%" },
                         { level: 5, Impacto: "24%", PenRatio: "16%", DañoEquipo: "12.8%" }
+                    ]
+                }
+            },
+            "v3.0.2": {
+                versionLabel: "v3.0.2",
+                effect: {
+                    title: "Efecto del Arma de Prueba de Norma",
+                    description: "El Impacto del portador aumenta un {VALOR_1}; el daño infligido ignora un {VALOR_2} de la (resistencia al daño de atributo fuego) del objetivo; cuando el portador activa (Técnica Especial EX) e inflige (Daño Fuego), hace que el daño infligido por todo el equipo aumente un {VALOR_3}, con una duración de 8 segundos, acumulable hasta un máximo de 3 capas, al activarse repetidamente reinicia el tiempo de duración, dentro del mismo movimiento se activa como máximo 1 vez, este efecto es único para todo el equipo.",
+                    refinements: [
+                        { level: 1, Impacto: "12%", PenRatio: "20%", DañoEquipo: "10%" },
+                        { level: 2, Impacto: "13.8%", PenRatio: "23%", DañoEquipo: "11.5%" },
+                        { level: 3, Impacto: "15.6%", PenRatio: "26%", DañoEquipo: "13%" },
+                        { level: 4, Impacto: "17.4%", PenRatio: "29%", DañoEquipo: "14.5%" },
+                        { level: 5, Impacto: "19.2", PenRatio: "32%", DañoEquipo: "16%" }
                     ]
                 }
             }
