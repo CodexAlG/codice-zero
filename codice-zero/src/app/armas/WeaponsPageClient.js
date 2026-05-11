@@ -61,39 +61,6 @@ export default function WeaponsPageClient({ weapons }) {
         }
     }, []);
 
-    useEffect(() => {
-        let active = true;
-        const prepareNames = async () => {
-            const baseWeapons = filteredWeapons.map((weapon) => ({
-                ...weapon,
-                displayName: weapon.name,
-            }));
-
-            if (language === 'es') {
-                if (active) setDebouncedWeapons(baseWeapons);
-                return;
-            }
-
-            const translatedList = await Promise.all(
-                baseWeapons.map(async (weapon) => {
-                    const translatedName = await translateText(weapon.name);
-                    return {
-                        ...weapon,
-                        displayName: translatedName,
-                    };
-                })
-            );
-
-            if (active) setDebouncedWeapons(translatedList);
-        };
-
-        prepareNames();
-
-        return () => {
-            active = false;
-        };
-    }, [filteredWeapons, language, translateText]);
-
     const toggleFilter = (newFilter) => {
         if (newFilter === "Todos") {
             setActiveFilters([]); // Limpiar todo
@@ -151,6 +118,39 @@ export default function WeaponsPageClient({ weapons }) {
             return b.id - a.id;
         });
     }, [activeFilters, rankPriority]);
+
+    useEffect(() => {
+        let active = true;
+        const prepareNames = async () => {
+            const baseWeapons = filteredWeapons.map((weapon) => ({
+                ...weapon,
+                displayName: weapon.name,
+            }));
+
+            if (language === 'es') {
+                if (active) setDebouncedWeapons(baseWeapons);
+                return;
+            }
+
+            const translatedList = await Promise.all(
+                baseWeapons.map(async (weapon) => {
+                    const translatedName = await translateText(weapon.name);
+                    return {
+                        ...weapon,
+                        displayName: translatedName,
+                    };
+                })
+            );
+
+            if (active) setDebouncedWeapons(translatedList);
+        };
+
+        prepareNames();
+
+        return () => {
+            active = false;
+        };
+    }, [filteredWeapons, language, translateText]);
 
     const displayedWeapons = debouncedWeapons.length > 0 ? debouncedWeapons : filteredWeapons;
 
