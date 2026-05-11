@@ -1,32 +1,19 @@
 import Image from "next/image";
-import { memo, useState, useEffect } from 'react';
+import { memo, useState } from 'react';
 import SkeletonCard from '@/components/ui/SkeletonCard';
-
-import { useLanguage } from '@/context/LanguageContext';
 
 const normalize = (str) => str ? str.normalize("NFD").replace(/[\u0300-\u036f]/g, "") : "";
 
 const WeaponCard = memo(({ weapon, priority = false }) => {
   const [imageLoaded, setImageLoaded] = useState(false);
-  const { language, translateText } = useLanguage();
-  const [displayName, setDisplayName] = useState(weapon.name);
-
-  useEffect(() => {
-    let isActive = true;
-    async function updateName() {
-      const translated = await translateText(weapon.name);
-      if (isActive) setDisplayName(translated);
-    }
-    updateName();
-    return () => { isActive = false; };
-  }, [weapon.name, language, translateText]);
+  const displayName = weapon.displayName || weapon.name;
 
   const rankBottomColor = weapon.rank === 'S' ? 'border-b-yellow-500' : weapon.rank === 'A' ? 'border-b-purple-500' : 'border-b-blue-500';
   const hoverGlow = weapon.rank === 'S' ? 'hover:shadow-[0_0_20px_rgba(234,179,8,0.5)]' : weapon.rank === 'A' ? 'hover:shadow-[0_0_20px_rgba(168,85,247,0.5)]' : 'hover:shadow-[0_0_20px_rgba(59,130,246,0.5)]';
   const rankIcon = `/CodiceZero/Rango/Icon_Item_Rank_${weapon.rank}.webp`;
 
   return (
-    <div className={`relative w-full max-w-[160px] mx-auto aspect-[4/5] bg-[#0f0f12] rounded-xl border border-white/5 border-b-[3px] ${rankBottomColor} overflow-hidden group hover:-translate-y-2 ${hoverGlow} transition-all duration-300 cursor-pointer will-change-transform`}>
+    <div className={`relative w-full max-w-[160px] mx-auto aspect-[4/5] bg-[#0f0f12] rounded-xl border border-white/5 border-b-[3px] ${rankBottomColor} overflow-hidden group hover:-translate-y-2 ${hoverGlow} transition-transform transition-opacity duration-300 cursor-pointer will-change-transform`}>
 
       {/* Glow interactivo de fondo en hover basado en Rango */}
       <div className={`absolute -inset-10 opacity-0 group-hover:opacity-20 transition-opacity duration-500 blur-xl pointer-events-none ${weapon.rank === 'S' ? 'bg-yellow-500' :
@@ -35,14 +22,14 @@ const WeaponCard = memo(({ weapon, priority = false }) => {
 
       {/* Iconos Superiores - Rol */}
       <div className="absolute top-2 left-2 z-20 group/role">
-        <div className="relative w-7 h-7 flex items-center justify-center bg-black/40 backdrop-blur-sm rounded-lg border border-white/10 shadow-lg group-hover/role:border-white/30 transition-colors">
+        <div className="relative w-7 h-7 flex items-center justify-center bg-zinc-900/80 rounded-lg border border-white/10 shadow-lg group-hover/role:border-white/30 transition-colors">
           <Image
             src={`/CodiceZero/Agentes/Rol/${normalize(weapon.rol)}.webp`}
             alt={weapon.rol}
             width={20}
             height={20}
             className="invert opacity-90 group-hover/role:opacity-100 transition-opacity drop-shadow-md"
-            unoptimized
+            sizes="20px"
           />
         </div>
       </div>
@@ -55,7 +42,7 @@ const WeaponCard = memo(({ weapon, priority = false }) => {
           width={28}
           height={28}
           className="drop-shadow-lg"
-          unoptimized
+          sizes="28px"
         />
       </div>
 
@@ -80,7 +67,7 @@ const WeaponCard = memo(({ weapon, priority = false }) => {
           onLoad={() => setImageLoaded(true)}
           loading={priority ? "eager" : "lazy"}
           priority={priority}
-          unoptimized
+          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 25vw, 160px"
         />
       </div>
 

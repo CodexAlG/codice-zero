@@ -30,7 +30,7 @@ const AgentCard = memo(({ agent, priority = false }) => {
   };
 
   return (
-    <div className={`relative w-full max-w-[140px] mx-auto aspect-[4/5] bg-[#0f0f12] rounded-xl border border-white/5 border-b-[3px] ${rankBottomColor} overflow-hidden group hover:-translate-y-2 ${hoverGlow} transition-all duration-300 cursor-pointer will-change-transform`}>
+    <div className={`relative w-full max-w-[140px] mx-auto aspect-[4/5] bg-[#0f0f12] rounded-xl border border-white/5 border-b-[3px] ${rankBottomColor} overflow-hidden group hover:-translate-y-2 ${hoverGlow} transition-transform transition-opacity duration-300 cursor-pointer will-change-transform`}>
 
       {/* Glow interactivo de fondo en hover */}
       <div className={`absolute -inset-10 opacity-0 group-hover:opacity-20 transition-opacity duration-500 blur-xl pointer-events-none ${agent.element === 'Fuego' ? 'bg-red-500' :
@@ -47,27 +47,27 @@ const AgentCard = memo(({ agent, priority = false }) => {
               agent.element === 'Electrico' ? 'bg-blue-500' :
                 agent.element === 'Fisico' ? 'bg-yellow-400' : 'bg-pink-500'
             }`}></div>
-          <div className="relative w-6 h-6 bg-black/40 backdrop-blur-sm rounded-lg p-0.5 border border-white/20 shadow-lg">
+          <div className="relative w-6 h-6 bg-zinc-900/80 rounded-lg p-0.5 border border-white/20 shadow-lg">
             <Image
               src={getElementIcon(agent)}
               alt={agent.element}
               width={20}
               height={20}
               className="object-contain drop-shadow-md"
-              unoptimized
+              sizes="20px"
             />
           </div>
         </div>
 
         {/* Role Icon - Below Element - Matches Element Box Style */}
-        <div className="relative w-6 h-6 flex items-center justify-center bg-black/40 backdrop-blur-sm rounded-lg border border-white/10 shadow-lg group-hover:border-white/30 transition-colors">
+        <div className="relative w-6 h-6 flex items-center justify-center bg-zinc-900/80 rounded-lg border border-white/10 shadow-lg group-hover:border-white/30 transition-colors">
           <Image
             src={`/CodiceZero/Agentes/Rol/${normalize(agent.rol)}.webp`}
             alt={agent.rol}
             width={16}
             height={16}
             className="object-contain opacity-90 group-hover:opacity-100 transition-opacity"
-            unoptimized
+            sizes="16px"
           />
         </div>
       </div>
@@ -80,7 +80,7 @@ const AgentCard = memo(({ agent, priority = false }) => {
           width={22}
           height={22}
           className="drop-shadow-lg"
-          unoptimized
+          sizes="22px"
         />
       </div>
 
@@ -100,7 +100,7 @@ const AgentCard = memo(({ agent, priority = false }) => {
           onLoad={() => setImageLoaded(true)}
           loading={priority ? "eager" : "lazy"}
           priority={priority}
-          unoptimized
+          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 25vw, 140px"
         />
 
         {/* Overlay con degradado sobre la imagen para resaltar texturas */}

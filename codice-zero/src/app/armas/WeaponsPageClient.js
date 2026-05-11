@@ -6,7 +6,8 @@ import WeaponCard from '@/components/weapons/WeaponCard';
 import LoadingSpinner from '@/components/ui/LoadingSpinner';
 import BetaWarning from "@/components/ui/BetaWarning";
 import FilterCategory from "@/components/filters/FilterCategory";
-import FilterIcon from "@/components/filters/FilterIcon";
+import FilterIcon from '@/components/filters/FilterIcon';
+import VirtualizedGrid from '@/components/ui/VirtualizedGrid';
 import { useLanguage } from '@/context/LanguageContext';
 
 const staticTranslations = {
@@ -31,9 +32,10 @@ const staticTranslations = {
 };
 
 export default function WeaponsPageClient({ weapons }) {
-    const { language } = useLanguage();
+    const { language, translateText } = useLanguage();
     const t = staticTranslations[language] || staticTranslations.es;
     const [activeFilters, setActiveFilters] = useState([]);
+    const [debouncedWeapons, setDebouncedWeapons] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
 
     // Lógica de tiempo de gracia con sessionStorage
@@ -58,6 +60,39 @@ export default function WeaponsPageClient({ weapons }) {
             setIsLoading(false);
         }
     }, []);
+
+    useEffect(() => {
+        let active = true;
+        const prepareNames = async () => {
+            const baseWeapons = filteredWeapons.map((weapon) => ({
+                ...weapon,
+                displayName: weapon.name,
+            }));
+
+            if (language === 'es') {
+                if (active) setDebouncedWeapons(baseWeapons);
+                return;
+            }
+
+            const translatedList = await Promise.all(
+                baseWeapons.map(async (weapon) => {
+                    const translatedName = await translateText(weapon.name);
+                    return {
+                        ...weapon,
+                        displayName: translatedName,
+                    };
+                })
+            );
+
+            if (active) setDebouncedWeapons(translatedList);
+        };
+
+        prepareNames();
+
+        return () => {
+            active = false;
+        };
+    }, [filteredWeapons, language, translateText]);
 
     const toggleFilter = (newFilter) => {
         if (newFilter === "Todos") {
@@ -116,6 +151,8 @@ export default function WeaponsPageClient({ weapons }) {
             return b.id - a.id;
         });
     }, [activeFilters, rankPriority]);
+
+    const displayedWeapons = debouncedWeapons.length > 0 ? debouncedWeapons : filteredWeapons;
 
     const hasBetaContent = weapons.some(weapon => weapon.leak === "Beta");
 
@@ -190,20 +227,16 @@ export default function WeaponsPageClient({ weapons }) {
 
                 {/* GRID DE ARMAS OPTIMIZADO */}
                 <div className="w-full max-w-7xl mx-auto">
-                    <div
-                        className="grid grid-cols-3 sm:flex sm:flex-wrap justify-center gap-3 sm:gap-4 content-start"
-                        style={{ minHeight: '80vh' }}
-                    >
-                        {filteredWeapons.map((weapon, index) => (
-                            <Link key={weapon.id} href={`/${language}/armas/${weapon.id}`}>
-                                <div
-                                    className="w-full sm:w-[140px] md:w-[150px] lg:w-[160px]"
-                                >
-                                    <WeaponCard weapon={weapon} priority={index < 6} />
-                                </div>
+                        <VirtualizedGrid
+                        items={displayedWeapons}
+                        minColumnWidth={140}
+                        gap={16}
+                        renderItem={(weapon, index) => (
+                            <Link key={weapon.id} href={`/${language}/armas/${weapon.id}`} className="block">
+                                <WeaponCard weapon={weapon} priority={index < 6} />
                             </Link>
-                        ))}
-                    </div>
+                        )}
+                    />
                 </div>
             </div>
         </>

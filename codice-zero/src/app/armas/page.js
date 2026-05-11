@@ -6,6 +6,8 @@ export const metadata = {
   description: 'Catálogo de W-Engines (Armas) de Zenless Zone Zero. Filtra por rango, rol y estadísticas.',
 };
 
+export const dynamic = 'force-dynamic';
+
 export default function WeaponsPage() {
   return <WeaponsPageClient weapons={weapons} />;
 }
