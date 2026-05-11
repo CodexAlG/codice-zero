@@ -1,9 +1,6 @@
 'use client';
 
 import { useState, useEffect, useMemo } from 'react';
-import Image from 'next/image';
-import Link from 'next/link';
-import { motion, AnimatePresence } from "framer-motion";
 import { weapons } from '@/data/weapons';
 import WeaponCard from '@/components/weapons/WeaponCard';
 import LoadingSpinner from '@/components/ui/LoadingSpinner';
@@ -191,30 +188,22 @@ export default function WeaponsPageClient() {
                     </div>
                 </div>
 
-                {/* GRID DE ARMAS ANIMADO */}
+                {/* GRID DE ARMAS OPTIMIZADO */}
                 <div className="w-full max-w-7xl mx-auto">
-                    <motion.div
-                        layout
-                        className="grid grid-cols-3 sm:flex sm:flex-wrap justify-center gap-3 sm:gap-4 content-start transition-none"
+                    <div
+                        className="grid grid-cols-3 sm:flex sm:flex-wrap justify-center gap-3 sm:gap-4 content-start"
                         style={{ minHeight: '80vh' }}
                     >
-                        <AnimatePresence mode="popLayout">
-                            {filteredWeapons.map((weapon, index) => (
-                                <Link key={weapon.id} href={`/${language}/armas/${weapon.id}`}>
-                                    <motion.div
-                                        layout // Animación suave de movimiento
-                                        className="w-full sm:w-[140px] md:w-[150px] lg:w-[160px]"
-                                        initial={{ opacity: 0 }}
-                                        animate={{ opacity: 1 }}
-                                        exit={{ opacity: 0 }}
-                                        transition={{ duration: 0 }}
-                                    >
-                                        <WeaponCard weapon={weapon} priority={index < 10} />
-                                    </motion.div>
-                                </Link>
-                            ))}
-                        </AnimatePresence>
-                    </motion.div>
+                        {filteredWeapons.map((weapon, index) => (
+                            <Link key={weapon.id} href={`/${language}/armas/${weapon.id}`}>
+                                <div
+                                    className="w-full sm:w-[140px] md:w-[150px] lg:w-[160px]"
+                                >
+                                    <WeaponCard weapon={weapon} priority={index < 10} />
+                                </div>
+                            </Link>
+                        ))}
+                    </div>
                 </div>
             </div>
         </>

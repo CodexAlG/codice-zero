@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, useMemo } from 'react';
+import { useState, useEffect, useMemo, useCallback } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { agents } from '@/data/agents';
@@ -41,6 +41,7 @@ export default function AgentsPageClient() {
     const t = staticTranslations[language] || staticTranslations.es;
     const [activeFilters, setActiveFilters] = useState([]);
     const [searchTerm, setSearchTerm] = useState("");
+    const [debouncedSearchTerm, setDebouncedSearchTerm] = useState("");
     const [isLoading, setIsLoading] = useState(true);
 
     // Lógica de tiempo de gracia con sessionStorage
@@ -66,9 +67,13 @@ export default function AgentsPageClient() {
         }
     }, []);
 
+    // Debounce para la búsqueda
+    useEffect(() => {
+        const timer = setTimeout(() => setDebouncedSearchTerm(searchTerm), 300);
+        return () => clearTimeout(timer);
+    }, [searchTerm]);
 
-
-    const toggleFilter = (newFilter) => {
+    const toggleFilter = useCallback((newFilter) => {
         if (newFilter === "Todos") {
             setActiveFilters([]); // Limpiar todo
             return;
@@ -78,7 +83,7 @@ export default function AgentsPageClient() {
             if (prev.includes(newFilter)) return prev.filter(f => f !== newFilter);
             return [...prev, newFilter];
         });
-    };
+    }, []);
 
     const elementFilters = ["Fuego", "Hielo", "Electrico", "Fisico", "Etereo", "Viento"];
     const rankFilters = ["S", "A"];
@@ -131,7 +136,7 @@ export default function AgentsPageClient() {
     const filteredAgents = useMemo(() => {
         return agents.filter((agent) => {
             // 1. Filtro de Búsqueda (Texto)
-            const matchesSearch = agent.name.toLowerCase().includes(searchTerm.toLowerCase());
+            const matchesSearch = agent.name.toLowerCase().includes(debouncedSearchTerm.toLowerCase());
 
             // 2. Separar filtros activos por categoría
             const activeElements = activeFilters.filter(f => elementFilters.includes(f));
@@ -148,7 +153,7 @@ export default function AgentsPageClient() {
             // Lógica Final: Debe cumplir Búsqueda Y (Elemento Y Rango Y Rol Y Facción)
             return matchesSearch && matchElement && matchRank && matchRole && matchFaction;
         });
-    }, [activeFilters, searchTerm]);
+    }, [activeFilters, debouncedSearchTerm]);
 
     // ----------------------------------------------------
 
