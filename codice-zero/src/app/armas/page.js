@@ -1,3 +1,4 @@
+import { weapons } from '@/data/weapons';
 import WeaponsPageClient from './WeaponsPageClient';
 
 export const metadata = {
@@ -6,5 +7,5 @@ export const metadata = {
 };
 
 export default function WeaponsPage() {
-  return <WeaponsPageClient />;
+  return <WeaponsPageClient weapons={weapons} />;
 }

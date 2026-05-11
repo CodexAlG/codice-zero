@@ -1,6 +1,7 @@
 'use client';
 
-import { useState, useEffect, useMemo } from 'react';import Link from 'next/link';import { weapons } from '@/data/weapons';
+import { useState, useEffect, useMemo } from 'react';
+import Link from 'next/link';
 import WeaponCard from '@/components/weapons/WeaponCard';
 import LoadingSpinner from '@/components/ui/LoadingSpinner';
 import BetaWarning from "@/components/ui/BetaWarning";
@@ -29,7 +30,7 @@ const staticTranslations = {
   }
 };
 
-export default function WeaponsPageClient() {
+export default function WeaponsPageClient({ weapons }) {
     const { language } = useLanguage();
     const t = staticTranslations[language] || staticTranslations.es;
     const [activeFilters, setActiveFilters] = useState([]);
@@ -198,7 +199,7 @@ export default function WeaponsPageClient() {
                                 <div
                                     className="w-full sm:w-[140px] md:w-[150px] lg:w-[160px]"
                                 >
-                                    <WeaponCard weapon={weapon} priority={index < 10} />
+                                    <WeaponCard weapon={weapon} priority={index < 6} />
                                 </div>
                             </Link>
                         ))}

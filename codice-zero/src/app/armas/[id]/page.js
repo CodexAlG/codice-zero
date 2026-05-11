@@ -1,5 +1,9 @@
+import dynamic from 'next/dynamic';
 import { weapons } from '@/data/weapons';
-import WeaponDetailClient from './WeaponDetailClient';
+
+const WeaponDetailClient = dynamic(() => import('./WeaponDetailClient'), {
+  loading: () => <div className="text-center py-12 text-gray-300">Cargando detalles del arma...</div>,
+});
 
 export async function generateMetadata({ params }) {
   const unwrappedParams = await params;

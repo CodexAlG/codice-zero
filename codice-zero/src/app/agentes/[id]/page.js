@@ -1,5 +1,9 @@
+import dynamic from 'next/dynamic';
 import { agents } from '@/data/agents';
-import AgentDetailClient from './AgentDetailClient';
+
+const AgentDetailClient = dynamic(() => import('./AgentDetailClient'), {
+  loading: () => <div className="text-center py-12 text-gray-300">Cargando detalles del agente...</div>,
+});
 
 export async function generateMetadata({ params }) {
   const { id } = await params;

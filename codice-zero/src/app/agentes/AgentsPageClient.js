@@ -8,8 +8,7 @@ import AgentCard from '@/components/agents/AgentCard';
 import LoadingSpinner from '@/components/ui/LoadingSpinner';
 import BetaWarning from "@/components/ui/BetaWarning";
 import FilterCategory from "@/components/filters/FilterCategory";
-import FilterIcon from "@/components/filters/FilterIcon";
-import { useLanguage } from '@/context/LanguageContext';
+import FilterIcon from "@/components/filters/FilterIcon";import VirtualizedGrid from '@/components/ui/VirtualizedGrid';import { useLanguage } from '@/context/LanguageContext';
 
 const staticTranslations = {
     es: {
@@ -250,17 +249,16 @@ export default function AgentsPageClient() {
 
                 {/* GRID DE PERSONAJES OPTIMIZADO */}
                 <div className="w-full max-w-7xl mx-auto">
-                    <div className="flex flex-wrap justify-center gap-3 content-start transition-none" style={{ minHeight: '50vh' }}>
-                        {filteredAgents.map((agent, index) => (
-                            <Link
-                                key={agent.id}
-                                href={`/${language}/agentes/${agent.id}`}
-                                className="w-[30%] sm:w-[23%] md:w-[18%] lg:w-[15%] xl:w-[13%] 2xl:w-[11%]"
-                            >
-                                <AgentCard agent={agent} priority={index < 8} />
+                    <VirtualizedGrid
+                        items={filteredAgents}
+                        minColumnWidth={140}
+                        gap={16}
+                        renderItem={(agent, index) => (
+                            <Link href={`/${language}/agentes/${agent.id}`} className="block">
+                                <AgentCard agent={agent} priority={index < 6} />
                             </Link>
-                        ))}
-                    </div>
+                        )}
+                    />
                 </div>
             </div>
         </>
