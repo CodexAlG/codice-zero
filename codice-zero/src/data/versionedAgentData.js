@@ -305,7 +305,18 @@ export const versionedAgents = {
                             { type: "Mindscape 4", name: "Doctrina de Bangboo Superior", description: "Cuando Norma consume (Recursos Personales) para activar (Ataque en Cadena): hace que Norma y el agente correspondiente recuperen 50 puntos de decibelios.", tags: ["Fuego"] },
                             { type: "Mindscape 5", name: "Gran Explosión Uh-huh", description: "Nivel de habilidad de (Ataque Básico), (Evasión), (Técnica de Asistencia), (Técnica Especial), (Ataque en Cadena) +2.", tags: ["Fuego"] },
                             { type: "Mindscape 6", name: "Primera Causa Genial", description: "Tras activar (Técnica Definitiva), Norma invocará continuamente misiles para bombardear a enemigos aleatorios en el campo, con una duración de 12 segundos, cada misil tiene un intervalo de 0.75 segundos, e inflige Daño Fuego a los enemigos dentro del rango equivalente al 330% del ataque de Norma, este daño será considerado como daño de (Técnica Definitiva), al activarse repetidamente reinicia el tiempo de duración.", tags: ["Fuego"] }
-                        ]
+                        ],
+                    hotfixes: [
+                        {
+                            id: 1,
+                            revision: "15625449 ",
+                            date: "2026-05-11",
+                            skills: [
+                                { type: "Mindscape 4", name: "Doctrina de Bangboo Superior", description: "Cuando Norma consume (Recursos Personales) para activar (Ataque en Cadena): hace que Norma y el agente correspondiente recuperen 200 puntos de decibelios.", tags: ["Fuego"] },
+
+                            ]
+                        }
+                    ]
             }
         }
     }
