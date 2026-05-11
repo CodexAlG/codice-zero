@@ -1,7 +1,6 @@
 'use client';
 
-import { useState, useEffect, useMemo } from 'react';
-import { weapons } from '@/data/weapons';
+import { useState, useEffect, useMemo } from 'react';import Link from 'next/link';import { weapons } from '@/data/weapons';
 import WeaponCard from '@/components/weapons/WeaponCard';
 import LoadingSpinner from '@/components/ui/LoadingSpinner';
 import BetaWarning from "@/components/ui/BetaWarning";
