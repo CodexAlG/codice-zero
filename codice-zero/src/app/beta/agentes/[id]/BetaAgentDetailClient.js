@@ -110,6 +110,7 @@ export default function BetaAgentDetailClient() {
     const elementColors = {
         "fuego": "#ef4444", "hielo": "#22d3ee", "electrico": "#3b82f6",
         "fisico": "#eab308", "etereo": "#d946ef", "viento": "#38bdf8",
+        "lumen": "#f472b6",
     };
     const themeColor = elementColors[normalize(agent.element).toLowerCase()] || "#eab308";
 
@@ -124,7 +125,7 @@ export default function BetaAgentDetailClient() {
 
     const translateTerm = (term) => {
         if (language === 'es') return term;
-        const map = { "Eléctrico": "Electric", "Fuego": "Fire", "Hielo": "Ice", "Físico": "Physical", "Etéreo": "Ether", "Anomalía": "Anomaly", "Ataque": "Attack", "Defensa": "Defense", "Apoyo": "Support", "Ruptura": "Stun" };
+        const map = { "Eléctrico": "Electric", "Fuego": "Fire", "Hielo": "Ice", "Físico": "Physical", "Etéreo": "Ether", "Lumen": "Lumen", "Anomalía": "Anomaly", "Ataque": "Attack", "Defensa": "Defense", "Apoyo": "Support", "Ruptura": "Stun" };
         return map[term] || term;
     };
 

@@ -181,6 +181,7 @@ export default function AgentDetailPage() {
             "Hielo": "Ice",
             "Físico": "Physical",
             "Etéreo": "Ether",
+            "Lumen": "Lumen",
             "Anomalía": "Anomaly",
             "Ataque": "Attack",
             "Defensa": "Defense",
@@ -199,6 +200,7 @@ export default function AgentDetailPage() {
         "fisico": "#eab308",
         "etereo": "#d946ef",
         "viento": "#38bdf8",
+        "lumen": "#f472b6",
     };
 
     const getElementIcon = () => {

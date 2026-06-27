@@ -19,7 +19,7 @@ const staticTranslations = {
         rango: "RANGO",
         rol: "ROL",
         faction: "FACCIÓN",
-        Fuego: "Fuego", Hielo: "Hielo", Electrico: "Eléctrico", Fisico: "Físico", Etereo: "Etéreo", Viento: "Viento",
+        Fuego: "Fuego", Hielo: "Hielo", Electrico: "Eléctrico", Fisico: "Físico", Etereo: "Etéreo", Viento: "Viento", Lumen: "Lumen",
         Ataque: "Ataque", Aturdidor: "Aturdidor", Anomalia: "Anomalía", Soporte: "Soporte", Defensa: "Defensa", Ruptura: "Ruptura"
     },
     en: {
@@ -30,7 +30,7 @@ const staticTranslations = {
         rango: "RANK",
         rol: "ROLE",
         faction: "FACTION",
-        Fuego: "Fire", Hielo: "Ice", Electrico: "Electric", Fisico: "Physical", Etereo: "Ether", Viento: "Wind",
+        Fuego: "Fire", Hielo: "Ice", Electrico: "Electric", Fisico: "Physical", Etereo: "Ether", Viento: "Wind", Lumen: "Lumen",
         Ataque: "Attack", Aturdidor: "Stun", Anomalia: "Anomaly", Soporte: "Support", Defensa: "Defense", Ruptura: "Rupture"
     }
 };
@@ -63,7 +63,7 @@ export default function AgentsPageClient() {
         });
     }, []);
 
-    const elementFilters = ["Fuego", "Hielo", "Electrico", "Fisico", "Etereo", "Viento"];
+    const elementFilters = ["Fuego", "Hielo", "Electrico", "Fisico", "Etereo", "Viento", "Lumen"];
     const rankFilters = ["S", "A"];
     const roleFilters = ["Ataque", "Aturdidor", "Anomalia", "Soporte", "Defensa", "Ruptura"];
     const factionFilters = [
@@ -81,6 +81,7 @@ export default function AgentsPageClient() {
         Fisico: "/CodiceZero/Agentes/Elemento/Fisico.webp",
         Etereo: "/CodiceZero/Agentes/Elemento/Etereo.webp",
         Viento: "/CodiceZero/Agentes/Elemento/Viento.webp",
+        Lumen: "/CodiceZero/Agentes/Elemento/Lumen.webp",
 
         // Rangos
         "S": "/CodiceZero/Rango/Icon_Item_Rank_S.webp",
