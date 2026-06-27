@@ -3,7 +3,7 @@
 import { useState, useEffect, useMemo, useCallback } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { agents } from '@/data/agents';
+import { useAgents } from '@/hooks/useAgents';
 import AgentCard from '@/components/agents/AgentCard';
 import LoadingSpinner from '@/components/ui/LoadingSpinner';
 import BetaWarning from "@/components/ui/BetaWarning";
@@ -41,30 +41,9 @@ export default function AgentsPageClient() {
     const [activeFilters, setActiveFilters] = useState([]);
     const [searchTerm, setSearchTerm] = useState("");
     const [debouncedSearchTerm, setDebouncedSearchTerm] = useState("");
-    const [isLoading, setIsLoading] = useState(true);
 
-    // Lógica de tiempo de gracia con sessionStorage
-    const GRACE_PERIOD = 300000; // 5 minutos en milisegundos
-
-    useEffect(() => {
-        const lastLoadTime = sessionStorage.getItem('lastLoadTime');
-        const currentTime = new Date().getTime();
-
-        // Comprobar si el tiempo de gracia ha expirado (o si es la primera vez)
-        if (!lastLoadTime || (currentTime - lastLoadTime) > GRACE_PERIOD) {
-            // Mostrar spinner solo la primera vez o si el tiempo expiró
-            const timer = setTimeout(() => {
-                setIsLoading(false);
-                // Actualizar el timestamp
-                sessionStorage.setItem('lastLoadTime', new Date().getTime());
-            }, 500); // 500ms de carga mínima simulada
-
-            return () => clearTimeout(timer);
-        } else {
-            // Si está dentro del tiempo de gracia, cargamos al instante
-            setIsLoading(false);
-        }
-    }, []);
+    const { agents, loading: agentsLoading } = useAgents();
+    const isLoading = agentsLoading;
 
     // Debounce para la búsqueda
     useEffect(() => {
@@ -152,7 +131,7 @@ export default function AgentsPageClient() {
             // Lógica Final: Debe cumplir Búsqueda Y (Elemento Y Rango Y Rol Y Facción)
             return matchesSearch && matchElement && matchRank && matchRole && matchFaction;
         });
-    }, [activeFilters, debouncedSearchTerm]);
+    }, [activeFilters, debouncedSearchTerm, agents]);
 
     // ----------------------------------------------------
 
