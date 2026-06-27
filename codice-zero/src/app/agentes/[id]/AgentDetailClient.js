@@ -5,8 +5,8 @@ import { useParams, useRouter } from 'next/navigation';
 import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowLeft, TriangleAlert } from 'lucide-react';
-import { agents } from '@/data/agents';
-import { getAgentDetails } from '@/data/agentDetails/';
+import { useAgents } from '@/hooks/useAgents';
+import { useAgentDetails } from '@/hooks/useAgentDetails';
 import { calculateStatsWithCore } from '@/utils/statCalculator';
 import StatsTable from '@/components/agents/StatsTable';
 import AscensionMaterials from '@/components/agents/AscensionMaterials';
@@ -16,26 +16,20 @@ import HighlightText from '@/components/ui/HighlightText'; // Import directly he
 import BuildSection from './BuildSection';
 import { useLanguage } from '@/context/LanguageContext';
 
-
-
 export default function AgentDetailPage() {
     const params = useParams();
     const router = useRouter();
 
     const agentId = parseInt(params.id);
-    const agent = agents.find(a => a.id === agentId);
 
-    // RETURN EARLY IF NO AGENT
-    if (!agent) {
-        return (
-            <div className="min-h-screen bg-[#09090b] flex items-center justify-center text-white">
-                Agente no encontrado
-            </div>
-        );
-    }
+    const { agents } = useAgents();
+    const { details: sheetDetails, loading: detailsLoading } = useAgentDetails(agentId);
+
+    const agent = agents.find(a => a.id === agentId);
 
     // Helper: Get Full Image
     const getAgentFullImage = (agent) => {
+        if (!agent) return "";
         const imageMap = {
             55: "/CodiceZero/Agentes/Agent_Norma_Hollowell_Portrait.webp",
             54: "/CodiceZero/Agentes/Agent_Velina_Airgid_Portrait.webp",
@@ -100,49 +94,14 @@ export default function AgentDetailPage() {
 
     // States
     const [level, setLevel] = useState(60);
-    const [coreSkillLevel, setCoreSkillLevel] = useState(0); // 0=Default, 1-6=A-F
-    const [potentialLevel, setPotentialLevel] = useState(0); // 0-5
-    const [details, setDetails] = useState(null);
-    const [isLoading, setIsLoading] = useState(true);
+    const [coreSkillLevel, setCoreSkillLevel] = useState(0);
+    const [potentialLevel, setPotentialLevel] = useState(0);
     const [activeSkillTab, setActiveSkillTab] = useState("basic");
     const { language, translateText } = useLanguage();
     const [translatedSkills, setTranslatedSkills] = useState([]);
 
-    // Load details
-    useEffect(() => {
-        async function loadDetails() {
-            setIsLoading(true);
-            try {
-                console.log("Fetching details for agent:", agentId);
-                let data = await getAgentDetails(agentId);
-
-                // Fallback: Try dynamic import if static lookup fails
-                if (!data) {
-                    console.log("Static lookup failed, attempting dynamic import from /released/...");
-                    try {
-                        const module = await import(`@/data/agentDetails/released/agent-${agentId}.js`);
-                        data = module.default;
-                    } catch (e) {
-                        console.error("Dynamic import failed:", e);
-                    }
-                }
-
-                if (data) {
-                    setDetails(data);
-                } else {
-                    console.error("No details found for agent:", agentId);
-                }
-            } catch (err) {
-                console.error("Error in loadDetails:", err);
-            } finally {
-                setIsLoading(false);
-            }
-        }
-
-        if (agentId) {
-            loadDetails();
-        }
-    }, [agentId]);
+    const details = sheetDetails;
+    const isLoading = detailsLoading;
 
     // Translate Skills whenever details or language changes
     useEffect(() => {
@@ -198,6 +157,16 @@ export default function AgentDetailPage() {
         "Potencial": "/CodiceZero/Habilidades/Icon_Core_Skill.webp",
         "MINDSCAPE": "/CodiceZero/Habilidades/Icon_Core_Skill.webp", // Fallback for Mindscape tab icon
     };
+
+    const isPageLoading = agents.length === 0 || isLoading;
+
+    if (isPageLoading) {
+        return (
+            <div className="min-h-screen bg-[#09090b] flex items-center justify-center text-white">
+                <div className="text-center py-12 text-gray-300">Cargando detalles del agente...</div>
+            </div>
+        );
+    }
 
     if (!agent) {
         return <div className="min-h-screen bg-[#09090b] flex items-center justify-center text-white">Agente no encontrado</div>;

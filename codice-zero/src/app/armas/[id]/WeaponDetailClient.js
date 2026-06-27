@@ -3,7 +3,7 @@ import { useState, use, useEffect } from "react";
 import Image from "next/image";
 import HighlightText from "@/components/ui/HighlightText";
 import Link from "next/link";
-import { weapons } from "@/data/weapons";
+import { useWeapons } from "@/hooks/useWeapons";
 import { ArrowLeft, TriangleAlert } from "lucide-react";
 import WeaponAscensionMaterials from "@/components/weapons/WeaponAscensionMaterials";
 import { useLanguage } from "@/context/LanguageContext";
@@ -40,8 +40,9 @@ export default function WeaponDetailClient({ params }) {
     const unwrappedParams = params instanceof Promise ? use(params) : params;
     const id = Number(unwrappedParams.id);
 
-    // Buscar el arma
-    const weapon = weapons.find((w) => w.id === id);
+    // Buscar el arma dinámicamente desde el hook
+    const { weapons: sheetWeapons, loading: weaponsLoading } = useWeapons();
+    const weapon = sheetWeapons.find((w) => w.id === id);
 
     // Estados para sliders
     const [level, setLevel] = useState(60); // Slider Nivel
@@ -49,11 +50,11 @@ export default function WeaponDetailClient({ params }) {
 
     // Estados para traducciones
     const [translatedContent, setTranslatedContent] = useState({
-        name: weapon?.name || "",
-        rol: weapon?.rol || "",
-        subStatName: weapon?.detailStats?.subStat.name || weapon?.stats.main || "",
-        effectTitle: weapon?.effect?.title || "",
-        effectDesc: weapon?.effect?.description || ""
+        name: "",
+        rol: "",
+        subStatName: "",
+        effectTitle: "",
+        effectDesc: ""
     });
 
     useEffect(() => {
@@ -79,6 +80,14 @@ export default function WeaponDetailClient({ params }) {
         doTranslate();
         return () => { isActive = false; };
     }, [weapon, language, translateText]);
+
+    if (weaponsLoading) {
+        return (
+            <div className="min-h-screen bg-gray-950 flex items-center justify-center text-white">
+                <div className="text-center py-12 text-gray-300">Cargando detalles del arma...</div>
+            </div>
+        );
+    }
 
     if (!weapon) return (
         <div className="min-h-screen bg-gray-950 flex items-center justify-center">
