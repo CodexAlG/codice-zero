@@ -67,13 +67,13 @@ export default function AcercaHub() {
   ];
 
   return (
-    <div className="min-h-screen w-full flex flex-col items-center justify-center text-white font-sans selection:bg-yellow-500/20 selection:text-yellow-200 landing-bg py-8 md:py-16 overflow-y-auto px-6">
+    <div className="min-h-screen w-full flex flex-col items-center justify-center text-white font-sans selection:bg-yellow-500/20 selection:text-yellow-200 acerca-bg py-10 md:py-16 overflow-y-auto px-6">
       
       {/* Container */}
-      <div className="w-full max-w-[800px] flex flex-col gap-10 relative z-10">
+      <div className="w-full max-w-[900px] flex flex-col gap-10 relative z-10">
         
         {/* HEADER */}
-        <header className="w-full flex items-center justify-between">
+        <header className="w-full flex items-center justify-between border-b border-zinc-900 pb-4">
           <Link 
             href="/"
             className="flex items-center gap-2 font-mono text-[10px] font-bold text-zinc-500 hover:text-[#f5c518] transition-colors uppercase tracking-widest group"
@@ -86,22 +86,22 @@ export default function AcercaHub() {
           </div>
         </header>
 
-        {/* SECTION 1: FAQ (GRID DE TARJETAS SUPERIOR) */}
+        {/* SECTION 1: FAQ (TARJETAS GRANDES Y RECTANGULARES) */}
         <section className="flex flex-col gap-6">
           <h2 className="text-xl font-black italic tracking-wide text-white border-l-2 border-[#f5c518] pl-3 uppercase">
             Preguntas Frecuentes
           </h2>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="flex flex-col gap-5">
             {faqs.map((faq, index) => (
               <div 
                 key={index} 
-                className="border border-zinc-800/80 bg-[#0e0e11]/50 backdrop-blur-sm rounded-2xl p-6 transition-all duration-300 hover:border-zinc-700/80"
+                className="border border-zinc-800/80 bg-[#0e0e11]/50 backdrop-blur-sm rounded-2xl p-8 transition-all duration-300 hover:border-zinc-700/80 flex flex-col gap-3"
               >
-                <h4 className="text-sm font-bold text-[#f5c518] tracking-wide mb-2.5">
+                <h4 className="text-lg md:text-xl font-black text-[#f5c518] tracking-wide">
                   {faq.title}
                 </h4>
-                <p className="text-xs text-zinc-400 leading-relaxed">
+                <p className="text-sm md:text-base text-zinc-300 leading-relaxed font-medium">
                   {faq.text}
                 </p>
               </div>
@@ -110,15 +110,12 @@ export default function AcercaHub() {
         </section>
 
         {/* SECTION 2: PERFIL (FIRMA / TARJETA INFERIOR) */}
-        <section className="flex flex-col gap-4 border-t border-zinc-800/60 pt-8">
-          <div className="border border-zinc-800 bg-[#0e0e11]/60 backdrop-blur-md rounded-3xl p-6 flex flex-col sm:flex-row items-center sm:items-start gap-5 relative overflow-hidden transition-all duration-300 hover:border-zinc-700/80">
-            {/* Grid decoration */}
-            <div className="absolute inset-0 opacity-[0.01] pointer-events-none" style={{ backgroundImage: 'repeating-linear-gradient(45deg, #fff 0px, #fff 1px, transparent 1px, transparent 10px)' }} />
-
+        <section className="flex flex-col gap-4 border-t border-zinc-900 pt-6">
+          <div className="border border-zinc-800 bg-[#0e0e11]/60 backdrop-blur-md rounded-2xl p-8 flex flex-col sm:flex-row items-center sm:items-start gap-6 relative overflow-hidden transition-all duration-300 hover:border-zinc-700/80">
             {/* Profile Avatar */}
             <div className="relative w-20 h-20 rounded-full border border-zinc-800 ring-2 ring-yellow-500/5 overflow-hidden bg-zinc-900 shrink-0 shadow-md select-none">
               <Image
-                src="/CodiceZero/Landingpage/Icono.webp"
+                src="/CodiceZero/IconoEgo.jpg"
                 alt="Ego"
                 fill
                 className="object-cover"
@@ -131,10 +128,10 @@ export default function AcercaHub() {
                 <h3 className="text-xl font-black tracking-tight text-white">Ego</h3>
                 <span className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse mt-0.5" />
               </div>
-              <p className="font-mono text-[9px] font-bold uppercase tracking-[0.2em] text-[#f5c518] mb-2">
+              <p className="font-mono text-[9px] font-bold uppercase tracking-[0.2em] text-[#f5c518] mb-3">
                 Desarrollador & Casual Gamer
               </p>
-              <p className="text-xs text-zinc-400 leading-relaxed">
+              <p className="text-sm text-zinc-300 leading-relaxed">
                 En la comunidad probablemente me conozcas por analizar y filtrar información de ZZZ, o por el contenido de YouTube y Discord. Simplemente soy alguien que disfruta jugar y armar herramientas en su tiempo libre para sacarle más provecho a los juegos.
               </p>
             </div>
@@ -142,7 +139,7 @@ export default function AcercaHub() {
         </section>
 
         {/* SOCIAL & FOOTER */}
-        <div className="flex flex-col items-center gap-6 border-t border-zinc-800/40 pt-6">
+        <div className="flex flex-col items-center gap-6 border-t border-zinc-900 pt-6">
           
           {/* Networks */}
           <div className="flex items-center gap-6">
