@@ -3,7 +3,7 @@ import "./globals.css";
 import LayoutWrapper from '@/components/layout/LayoutWrapper';
 import { LanguageProvider } from "@/context/LanguageContext";
 import LanguageWarningModal from "@/components/ui/LanguageWarningModal";
-import { Analytics } from '@vercel/analytics/react';
+import { Analytics } from '@vercel/analytics/next';
 
 const orbitron = Orbitron({
   variable: "--font-orbitron",
