@@ -24,6 +24,7 @@ const AgentCard = memo(({ agent, priority = false }) => {
       "fisico": "Fisico.webp",
       "etereo": "Etereo.webp",
       "viento": "Viento.webp",
+      "lumen": "Lumen.webp"
     };
     const normalizedElement = agent.element.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
     return `/CodiceZero/Agentes/Elemento/${iconMap[normalizedElement] || "Fisico.webp"}`;
@@ -45,7 +46,8 @@ const AgentCard = memo(({ agent, priority = false }) => {
           <div className={`absolute inset-0 blur-md rounded-full opacity-70 group-hover/icon:opacity-100 transition-opacity ${agent.element === 'Fuego' ? 'bg-red-500' :
             agent.element === 'Hielo' ? 'bg-cyan-400' :
               agent.element === 'Electrico' ? 'bg-blue-500' :
-                agent.element === 'Fisico' ? 'bg-yellow-400' : 'bg-pink-500'
+                agent.element === 'Fisico' ? 'bg-yellow-400' : 'bg-pink-500',
+                  agent.element === 'Viento' ? 'bg-blue-400' : agent.element === 'Lumen' ? 'bg-pink-500' : ''
             }`}></div>
           <div className="relative w-6 h-6 bg-zinc-900/80 rounded-lg p-0.5 border border-white/20 shadow-lg">
             <Image
