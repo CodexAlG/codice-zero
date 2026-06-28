@@ -132,7 +132,7 @@ body {
 
 @keyframes typing {
   from { width: 0 }
-  to { width: 28ch }
+  to { width: 35ch }
 }
 
 @keyframes blink-caret {
@@ -153,13 +153,13 @@ body {
 
 @keyframes scanline-sweep {
   0% {
-    top: -120px;
+    top: -10vh;
   }
   100% {
-    top: 100vh;
+    top: 110vh;
   }
 }
 
 .animate-scanline {
-  animation: scanline-sweep 8s linear infinite;
+  animation: scanline-sweep 6s linear infinite;
 }
