@@ -30,7 +30,9 @@ export default function SkillMaterials({ agentElement, themeColor, materials: bo
             "Electrico": "Shock",
             "Hielo": "Freeze",
             "Fisico": "Physical",
-            "Etereo": "Ether"
+            "Etereo": "Ether",
+            "Viento": "Wind",
+            "Lumen": "Lumen",
         };
         return map[el] || el;
     };
