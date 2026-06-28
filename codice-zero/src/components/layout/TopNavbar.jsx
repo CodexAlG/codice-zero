@@ -98,8 +98,8 @@ export default function TopNavbar({ isVisible }) {
                 </div>
 
                 {/* Texto CodiceZero */}
-                <span className="text-sm uppercase font-bold tracking-widest text-yellow-500 drop-shadow-[0_0_5px_rgba(234,179,8,0.3)] font-display text-center leading-none mt-2">
-                    Codice<br />Zero
+                <span className="text-sm uppercase font-black tracking-widest text-white drop-shadow-[0_0_8px_rgba(245,197,24,0.15)] font-sans text-center leading-none mt-2 select-none">
+                    CODICE<br /><span className="text-[#f5c518]">ZERO</span>
                 </span>
 
                 {/* Overlay de Brillo para el hover */}

@@ -68,8 +68,8 @@ export default function WikiHome() {
         <span className="text-xs font-mono text-yellow-500/50 tracking-[0.5em] mb-[-10px] block">SYSTEM.ROOT.ACCESS</span>
 
         {/* Título */}
-        <h1 className="text-6xl md:text-8xl font-display font-black italic text-transparent bg-clip-text bg-gradient-to-b from-yellow-300 to-yellow-600 drop-shadow-[0_5px_5px_rgba(0,0,0,0.5)] mb-6 tracking-tighter pr-4 select-none">
-          CODICEZERO
+        <h1 className="text-6xl md:text-8xl font-sans font-black tracking-tighter text-white select-none leading-none mb-6">
+          CODICE<span className="text-[#f5c518] drop-shadow-[0_0_20px_rgba(245,197,24,0.25)]">ZERO</span>
         </h1>
 
         {/* Subtítulo */}

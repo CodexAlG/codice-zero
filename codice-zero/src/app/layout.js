@@ -3,6 +3,7 @@ import "./globals.css";
 import LayoutWrapper from '@/components/layout/LayoutWrapper';
 import { LanguageProvider } from "@/context/LanguageContext";
 import LanguageWarningModal from "@/components/ui/LanguageWarningModal";
+import { Analytics } from '@vercel/analytics/react';
 
 const orbitron = Orbitron({
   variable: "--font-orbitron",
@@ -25,6 +26,7 @@ export default function RootLayout({ children }) {
         <LanguageProvider>
           <LanguageWarningModal />
           <LayoutWrapper>{children}</LayoutWrapper>
+          <Analytics />
         </LanguageProvider>
       </body>
     </html>

@@ -77,8 +77,8 @@ export default function Sidebar({ isExpanded, isMobile, toggleDrawer }) {
           </div>
 
           {/* Texto CodiceZero */}
-          <span className="text-[10px] uppercase font-bold tracking-[0.15em] text-yellow-300 drop-shadow-[0_0_5px_rgba(234,179,8,0.8)] font-display">
-            CodiceZero
+          <span className="text-[11px] uppercase font-black tracking-[0.15em] font-sans text-white select-none drop-shadow-[0_0_8px_rgba(245,197,24,0.15)]">
+            CODICE<span className="text-[#f5c518]">ZERO</span>
           </span>
         </div>
 
