@@ -31,7 +31,7 @@ export default function SkillMaterials({ agentElement, themeColor, materials: bo
             "Hielo": "Freeze",
             "Fisico": "Physical",
             "Etereo": "Ether",
-            "Viento": "Wind",
+            "Viento": "Windbite",
             "Lumen": "Lumen",
         };
         return map[el] || el;
