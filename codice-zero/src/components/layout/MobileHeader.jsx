@@ -46,7 +46,7 @@ export default function MobileHeader({ toggleSidebar }) {
     <header className="fixed top-0 left-0 right-0 z-50 h-16 bg-[#0a0a0c]/80 backdrop-blur-md border-b border-white/5 shadow-[0_5px_30px_rgba(0,0,0,0.3)] flex items-center justify-between px-4 lg:hidden">
 
       {/* 1. Logo CZ (Izquierda) */}
-      <Link href={`/${language}`} className="flex-shrink-0 relative w-8 h-8">
+      <Link href={language === 'es' ? '/' : `/${language}`} className="flex-shrink-0 relative w-8 h-8">
         <Image
           src={appIcon}
           alt="Codice Zero"

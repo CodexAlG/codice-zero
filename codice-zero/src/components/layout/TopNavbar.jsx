@@ -43,6 +43,10 @@ export default function TopNavbar({ isVisible }) {
         }
     }, [pathname]);
 
+    const getHref = (path) => {
+        return language === 'es' ? path : `/${language}${path}`;
+    };
+
     const NavItem = ({ href, index, icon: Icon, label }) => {
         const isActive = activeItem === index;
 
@@ -81,7 +85,7 @@ export default function TopNavbar({ isVisible }) {
                 } hidden lg:flex flex-col items-center py-8`}
         >
             {/* Logo CZ */}
-            <Link href={`/${language}`} className="flex flex-col items-center justify-center group relative mb-8 gap-2 w-full px-6">
+            <Link href={getHref('/')} className="flex flex-col items-center justify-center group relative mb-8 gap-2 w-full px-6">
                 <div className="relative w-20 h-20 transition-transform duration-300 group-hover:scale-110">
                     <div className="absolute inset-0 bg-yellow-400 blur-xl opacity-40 rounded-full animate-pulse"></div>
                     <Image
@@ -106,46 +110,34 @@ export default function TopNavbar({ isVisible }) {
             <nav className="flex-1 w-full overflow-y-auto custom-scrollbar">
                 <ul className="flex flex-col gap-2 w-full">
                     <NavItem
-                        href={`/${language}`}
+                        href={getHref('/')}
                         index={-1}
                         icon={Home}
                         label={t.inicio}
                     />
                     <NavItem
-                        href={`/${language}/agentes`}
+                        href={getHref('/agentes')}
                         index={0}
                         icon="/CodiceZero/Agentes/Icon_Agents.webp"
                         label={t.agentes}
                     />
                     <NavItem
-                        href={`/${language}/armas`}
+                        href={getHref('/armas')}
                         index={1}
                         icon="/CodiceZero/Armas/Icon_Storage_W-Engine.webp"
                         label={t.armas}
                     />
                     <NavItem
-                        href={`/${language}/discos`}
+                        href={getHref('/discos')}
                         index={2}
                         icon="/CodiceZero/Discos/Icon_Storage_Drive_Disc.webp"
                         label={t.discos}
                     />
                     <NavItem
-                        href={`/${language}/tierlist`}
+                        href={getHref('/tierlist')}
                         index={3}
                         icon={List}
                         label={t.tierlist}
-                    />
-                    <NavItem
-                        href={`/${language}/diff`}
-                        index={4}
-                        icon={GitCompare}
-                        label={t.diff}
-                    />
-                    <NavItem
-                        href={`/${language}/beta`}
-                        index={5}
-                        icon={TriangleAlert}
-                        label={t.beta}
                     />
                 </ul>
             </nav>

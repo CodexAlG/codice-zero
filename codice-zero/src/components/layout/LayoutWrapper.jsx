@@ -16,8 +16,10 @@ export default function LayoutWrapper({ children }) {
 
   const toggleDrawer = () => setIsDrawerOpen(prev => !prev);
 
-  // Verificar si estamos en la ruta de detalles de materiales
+  // Verificar si estamos en la ruta de detalles de materiales o la Landing Page
   const isMaterialDetail = pathname?.startsWith("/materiales");
+  const cleanPath = pathname?.replace(/\/$/, "") || "";
+  const isLandingPage = cleanPath === "" || cleanPath === "/es" || cleanPath === "/en";
 
   // Reset navbar visibility and Scroll to Top when changing routes
   useEffect(() => {
@@ -52,9 +54,9 @@ export default function LayoutWrapper({ children }) {
     };
   }, [pathname]);
 
-  if (isMaterialDetail) {
+  if (isMaterialDetail || isLandingPage) {
     return (
-      <div className="h-screen w-screen overflow-hidden bg-black text-white">
+      <div className="min-h-screen w-full bg-[#09090b] text-white">
         {children}
       </div>
     );

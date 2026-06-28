@@ -93,7 +93,7 @@ export default function WeaponDetailClient({ params }) {
         <div className="min-h-screen bg-gray-950 flex items-center justify-center">
             <div className="text-center">
                 <h1 className="text-4xl font-display text-red-400 mb-4">{t.notFound}</h1>
-                <Link href={`/${language}/armas`} className="text-yellow-400 hover:text-yellow-300 transition-colors">
+                <Link href={language === 'es' ? '/armas' : `/${language}/armas`} className="text-yellow-400 hover:text-yellow-300 transition-colors">
                     ← {t.back}
                 </Link>
             </div>
@@ -150,7 +150,7 @@ export default function WeaponDetailClient({ params }) {
             <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:32px_32px] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_0%,#000_70%,transparent_100%)] pointer-events-none opacity-50"></div>
 
             {/* Botón Volver Flotante */}
-            <Link href={`/${language}/armas`} className="absolute top-8 left-8 z-50 inline-flex items-center text-gray-400 hover:text-yellow-400 transition-colors group bg-black/40 backdrop-blur-md px-4 py-2 rounded-full border border-white/5 hover:border-yellow-500/30 hover:shadow-[0_0_15px_rgba(250,204,21,0.2)]">
+            <Link href={language === 'es' ? '/armas' : `/${language}/armas`} className="absolute top-8 left-8 z-50 inline-flex items-center text-gray-400 hover:text-yellow-400 transition-colors group bg-black/40 backdrop-blur-md px-4 py-2 rounded-full border border-white/5 hover:border-yellow-500/30 hover:shadow-[0_0_15px_rgba(250,204,21,0.2)]">
                 <ArrowLeft className="w-5 h-5 mr-2 group-hover:-translate-x-1 transition-transform" />
                 <span className="font-bold text-sm tracking-widest uppercase">{t.back}</span>
             </Link>

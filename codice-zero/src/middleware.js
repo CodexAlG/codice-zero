@@ -3,9 +3,6 @@ import { NextResponse } from 'next/server';
 export function middleware(request) {
   const { pathname } = request.nextUrl;
 
-  const supportedLangs = ['/es', '/en'];
-  const hasLangPrefix = supportedLangs.some(lang => pathname.startsWith(`${lang}/`) || pathname === lang);
-
   // 1. Omitir rutas de API, Next.js estáticos, imágenes, etc.
   if (
     pathname.startsWith('/api') ||
@@ -16,17 +13,17 @@ export function middleware(request) {
     return NextResponse.next();
   }
 
-  // 2. Si NO tiene prefijo de idioma, redirigir a /es + pathname
-  if (!hasLangPrefix) {
-    const targetLang = 'es'; // Por defecto Español
-    const redirectUrl = pathname === '/' ? `/${targetLang}` : `/${targetLang}${pathname}`;
-    return NextResponse.redirect(new URL(redirectUrl, request.url));
+  // 2. Si empieza por /es, hacer un redireccionamiento limpio (301) para quitarlo de la URL del navegador
+  if (pathname.startsWith('/es/') || pathname === '/es') {
+    const cleanPath = pathname === '/es' ? '/' : pathname.replace(/^\/es/, '');
+    const url = new URL(cleanPath, request.url);
+    url.search = request.nextUrl.search;
+    return NextResponse.redirect(url);
   }
 
   return NextResponse.next();
 }
 
 export const config = {
-  // Ajustar el matcher para no interceptar todas las peticiones
   matcher: ['/((?!api|_next/static|_next/image|assets|favicon.ico).*)'],
 };

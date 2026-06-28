@@ -92,7 +92,7 @@ export default function BuildSection({ strategy }) {
                             {strategy.bestWeapons?.map((w, i) => (
                                 <Link
                                     key={i}
-                                    href={w.id ? `/${language}/armas/${w.id}` : '#'}
+                                    href={w.id ? (language === 'es' ? `/armas/${w.id}` : `/${language}/armas/${w.id}`) : '#'}
                                     className="group flex items-center gap-4 p-3 rounded-xl bg-white/[0.02] border border-white/5 hover:bg-white/[0.04] hover:border-cyan-500/30 hover:shadow-[0_4px_20px_rgba(34,211,238,0.1)] hover:-translate-y-0.5 transition-all duration-300 cursor-pointer"
                                 >
                                     {/* Weapon Icon */}
@@ -238,7 +238,7 @@ export default function BuildSection({ strategy }) {
                                             {team.members.map((member, mIdx) => (
                                                 <Link
                                                     key={mIdx}
-                                                    href={member.id ? `/${language}/agentes/${member.id}` : '#'}
+                                                    href={member.id ? (language === 'es' ? `/agentes/${member.id}` : `/${language}/agentes/${member.id}`) : '#'}
                                                     className={`
                                                         relative w-[4.5rem] h-[4.5rem] rounded-full overflow-hidden border-[3px] border-[#151518] bg-gray-900 
                                                         hover:!z-20 hover:scale-110 hover:border-green-400 transition-all duration-300 cursor-pointer block drop-shadow-lg

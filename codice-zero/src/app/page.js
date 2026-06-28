@@ -1,27 +1,38 @@
 "use client";
 import Image from "next/image";
-import { Coffee } from "lucide-react";
-import { agents } from "@/data/agents";
+import Link from "next/link";
 import { useLanguage } from "@/context/LanguageContext";
 
 const staticTranslations = {
   es: {
-    subtitle: "La Referencia Estratégica Hispana",
-    desc: "La base de datos definitiva para Zenless Zone Zero. Análisis profundo de builds, sinergias de equipo y estrategias avanzadas, diseñada por y para la comunidad.",
-    database: "DATABASE: ONLINE",
-    gameVer: "VER. JUEGO: ",
-    agents: "AGENTES: ",
-    projectLeader: "Líder del Proyecto",
-    slogan: '"Construyendo para la comunidad."'
+    subtitle: "Hub de proyectos digitales",
+    projects: "Proyectos",
+    zzzTitle: "CodiceZero ZZZ",
+    zzzDesc: "La referencia estratégica hispana para Zenless Zone Zero. Builds, agentes, armas y más.",
+    zzzEnter: "ACCEDER —",
+    soonTitle: "Próximamente",
+    soonDesc: "Nuevo proyecto en desarrollo.",
+    soonBadge: "RESTRINGIDO",
+    soonRibbon: "PRÓXIMAMENTE",
+    creatorRole: "Jugador & Developer",
+    creatorBio: "Jugador casual y desarrollador. CodiceZero es donde ambas cosas se juntan.",
+    seeMore: "VER MÁS —",
+    logo: "codicezero.cc"
   },
   en: {
-    subtitle: "The Ultimate Strategic Reference",
-    desc: "The definitive database for Zenless Zone Zero. Deep analysis of builds, team synergies, and advanced strategies, designed by and for the community.",
-    database: "DATABASE: ONLINE",
-    gameVer: "GAME VER: ",
-    agents: "AGENTS: ",
-    projectLeader: "Project Leader",
-    slogan: '"Building for the community."'
+    subtitle: "Digital projects hub",
+    projects: "Projects",
+    zzzTitle: "CodiceZero ZZZ",
+    zzzDesc: "The premier Spanish strategic reference for Zenless Zone Zero. Builds, agents, weapons, and more.",
+    zzzEnter: "ENTER —",
+    soonTitle: "Coming Soon",
+    soonDesc: "New project under development.",
+    soonBadge: "RESTRICTED",
+    soonRibbon: "COMING SOON",
+    creatorRole: "Gamer & Developer",
+    creatorBio: "Casual gamer and developer. CodiceZero is where both worlds meet.",
+    seeMore: "SEE MORE —",
+    logo: "codicezero.cc"
   }
 };
 
@@ -29,152 +40,141 @@ export default function Home() {
   const { language } = useLanguage();
   const t = staticTranslations[language] || staticTranslations.es;
 
-  // Filter agents that don't have leak: "Beta"
-  const releaseAgents = agents.filter(agent => agent.leak !== "Beta");
-
-  // Get the latest version from released agents
-  const latestVersion = releaseAgents.reduce((maxVersion, agent) => {
-    const agentVersion = parseFloat(agent.version || "0");
-    return agentVersion > maxVersion ? agentVersion : maxVersion;
-  }, 0);
-
-  // Count released agents
-  const agentCount = releaseAgents.length;
-
-  const socialNetworks = [
-    {
-      name: "Discord",
-      icon: "/CodiceZero/Redes/Discord.png",
-      link: "https://discord.gg/RBzdz2Bn4u",
-      customClass: "scale-110"
-    },
-    {
-      name: "X (Twitter)",
-      icon: "/CodiceZero/Redes/Twitter.webp",
-      link: "https://x.com/EgoBl9",
-      customClass: "scale-[1.35]"
-    },
-    {
-      name: "Ko-Fi",
-      icon: Coffee,
-      link: "https://ko-fi.com/codicezero",
-      isComponent: true,
-      customClass: "text-gray-300 group-hover:text-cyan-400 p-1"
-    },
-  ];
-
   return (
-    <div className="flex-1 w-full h-full flex flex-col relative overflow-hidden font-sans">
+    <div className="min-h-screen w-full flex flex-col items-center justify-center text-white font-sans selection:bg-yellow-500/30 selection:text-yellow-200 landing-bg py-8 overflow-y-auto">
+      
+      <div className="w-full max-w-[1080px] px-6 flex flex-col gap-6">
+        
+        {/* HEADER */}
+        <header className="w-full flex items-center">
+          <div className="logo font-mono text-[11px] font-black uppercase tracking-[0.25em] text-[#f5c518] drop-shadow-[0_0_8px_rgba(245,197,24,0.15)]">
+            {t.logo}
+          </div>
+        </header>
 
-      {/* Fondo de Malla (Grid) con más blur/fusión */}
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px] [mask-image:radial-gradient(ellipse_70%_50%_at_50%_0%,#000_60%,transparent_100%)] pointer-events-none opacity-80 backdrop-blur-[2px]"></div>
+        {/* HERO */}
+        <section className="hero py-2 flex flex-col items-center text-center">
+          <h1 className="hero-title text-6xl sm:text-7xl font-black tracking-tighter text-white select-none leading-none mb-2">
+            CODICE<span className="text-[#f5c518] drop-shadow-[0_0_20px_rgba(245,197,24,0.25)]">ZERO</span>
+          </h1>
+          <p className="hero-sub font-mono text-[10px] font-medium tracking-[0.2em] text-zinc-500 uppercase leading-none">
+            {t.subtitle}
+          </p>
+        </section>
 
-      {/* Contenido Principal */}
-      <main className="flex-1 flex flex-col items-center justify-center w-full max-w-4xl px-4 sm:px-6 text-center mx-auto py-8 sm:py-12 relative z-10">
+        {/* PROJECTS */}
+        <div className="w-full">
+          <div className="section-label font-mono text-[10px] font-bold uppercase tracking-[0.25em] text-[#f5c518] mb-2">
+            {t.projects}
+          </div>
+          
+          <div className="projects flex flex-col gap-4">
+            
+            {/* ZZZ Card */}
+            <a 
+              href="https://zzz.codicezero.cc" 
+              className="group relative border border-zinc-800 border-l-[3px] border-l-[#f5c518] bg-[#0c0c0e]/80 hover:bg-[#0e0e12]/90 backdrop-blur-md rounded-2xl p-7 flex items-center justify-between gap-6 overflow-hidden transition-all duration-300 hover:border-[#f5c518]/50 hover:shadow-[0_0_30px_rgba(245,197,24,0.08)] min-h-[120px]"
+            >
+              {/* Background Art */}
+              <div 
+                className="absolute inset-0 bg-cover opacity-[0.55] transition-all duration-700 group-hover:scale-[1.03] group-hover:opacity-[0.70] pointer-events-none"
+                style={{ 
+                  backgroundImage: `url('/CodiceZero/Landingpage/zenlesszonezerohoshimimiyabitrailer-ign-blogroll-1734449473359.jpg')`,
+                  backgroundPosition: 'center 60%'
+                }}
+              />
+              
+              {/* Dark Gradient Overlay */}
+              <div className="absolute inset-0 bg-gradient-to-r from-[#0c0c0e] via-[#0c0c0e]/60 to-transparent pointer-events-none" />
+              
+              {/* Content */}
+              <div className="relative z-10 flex-1 flex flex-col gap-1">
+                <h3 className="text-base font-black text-white tracking-wide transition-colors group-hover:text-[#f5c518]">
+                  {t.zzzTitle}
+                </h3>
+                <p className="text-xs text-zinc-400 leading-relaxed max-w-[550px]">
+                  {t.zzzDesc}
+                </p>
+              </div>
+              
+              {/* Action Indicator (No border to avoid feeling like a separate button) */}
+              <div className="relative z-10 shrink-0 flex items-center gap-1 font-mono text-[11px] font-bold text-[#f5c518] tracking-wider transition-all duration-300 group-hover:translate-x-1.5">
+                {t.zzzEnter}
+              </div>
+            </a>
 
-        <span className="text-[10px] font-black font-mono text-yellow-500/60 tracking-[0.8em] mb-[-10px] block drop-shadow-[0_0_8px_rgba(234,179,8,0.3)]">SYSTEM.ROOT.ACCESS</span>
+            {/* Locked Card */}
+            <div 
+              className="group relative border border-zinc-900 border-l-[3px] border-l-zinc-700 bg-[#0a0a0c]/40 backdrop-blur-sm rounded-2xl p-7 flex items-center justify-between gap-6 overflow-hidden select-none min-h-[120px]"
+            >
+              {/* Grid background inside card */}
+              <div className="absolute inset-0 opacity-[0.03] pointer-events-none" style={{ backgroundImage: 'repeating-linear-gradient(45deg, #fff 0px, #fff 1px, transparent 1px, transparent 10px)' }} />
+              
+              {/* Content */}
+              <div className="relative z-10 flex-1 flex flex-col gap-1 opacity-40">
+                <h3 className="text-base font-black text-zinc-400 tracking-wide">
+                  {t.soonTitle}
+                </h3>
+                <p className="text-xs text-zinc-500 leading-relaxed">
+                  {t.soonDesc}
+                </p>
+              </div>
+              
+              {/* Restricted indicator */}
+              <div className="relative z-10 shrink-0 font-mono text-[10px] font-bold text-zinc-600 bg-zinc-900/50 border border-zinc-800 rounded-xl px-4 py-2 tracking-widest cursor-default">
+                {t.soonBadge}
+              </div>
 
-        {/* Título */}
-        <h1 className="text-4xl xs:text-5xl sm:text-6xl md:text-8xl font-display font-black italic text-transparent bg-clip-text bg-gradient-to-b from-yellow-300 via-yellow-400 to-yellow-600 drop-shadow-[0_0_20px_rgba(234,179,8,0.3)] mb-4 sm:mb-6 tracking-tighter pr-2 sm:pr-4 leading-tight">
-          CODICEZERO
-        </h1>
-
-        {/* Subtítulo decorativo */}
-        <div className="flex items-center gap-3 mb-8">
-          <div className="h-[2px] w-12 bg-gradient-to-l from-yellow-500 to-transparent"></div>
-          <div className="h-1.5 w-24 bg-yellow-400 rounded-full shadow-[0_0_15px_rgba(250,204,21,0.8)]"></div>
-          <div className="h-[2px] w-12 bg-gradient-to-r from-yellow-500 to-transparent"></div>
-        </div>
-
-        <p className="text-lg xs:text-xl md:text-2xl text-gray-100 font-bold mb-4 drop-shadow-md">
-          {t.subtitle}
-        </p>
-
-        <p className="text-gray-400 text-sm md:text-base leading-relaxed mb-10 max-w-2xl mx-auto font-medium">
-          {t.desc.split('Zenless Zone Zero')[0]}
-          <strong className="text-gray-200">Zenless Zone Zero</strong>
-          {t.desc.split('Zenless Zone Zero')[1]}
-        </p>
-
-        {/* Barra de Estado (Premium Glassmorphism) */}
-        <div className="flex flex-wrap justify-center gap-6 mb-12 font-mono text-xs font-bold text-gray-400 py-3 px-6 w-full max-w-lg bg-black/30 backdrop-blur-md rounded-full border border-white/10 shadow-[inset_0_1px_1px_rgba(255,255,255,0.05)]">
-          <div className="flex items-center gap-2">
-            <div className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500 shadow-[0_0_8px_rgba(34,197,94,0.8)]"></span>
+              {/* Diagonal animated ribbon */}
+              <div className="absolute top-0 right-0 w-24 h-24 overflow-hidden pointer-events-none z-20">
+                <div className="absolute top-4 -right-8 w-28 py-1 text-[8px] font-black text-center text-zinc-500 uppercase tracking-widest rotate-45 border-y border-zinc-800 shadow-sm ribbon-shimmer-locked">
+                  {t.soonRibbon}
+                </div>
+              </div>
             </div>
-            <span className="tracking-widest">{t.database}</span>
-          </div>
-          <div className="flex items-center gap-2">
-            <div className="w-2 h-2 bg-yellow-500 rounded-full shadow-[0_0_8px_rgba(234,179,8,0.8)]"></div>
-            <span className="tracking-widest">{t.gameVer}{latestVersion.toFixed(1)}</span>
-          </div>
-          <div className="flex items-center gap-2">
-            <div className="w-2 h-2 bg-cyan-400 rounded-full shadow-[0_0_8px_rgba(34,211,238,0.8)]"></div>
-            <span className="tracking-widest">{t.agents}{agentCount}</span>
+
           </div>
         </div>
 
-        {/* CARTA DEL CREADOR (EGO) - Premium */}
-        <div className="mb-10 w-full max-w-[280px] xs:max-w-xs sm:max-w-sm relative z-10">
-          <div className="relative bg-[#0f0f12]/80 backdrop-blur-md border border-white/5 rounded-2xl p-4 flex items-center gap-4 overflow-hidden shadow-[0_10px_30px_rgba(0,0,0,0.5)]">
-
-            {/* Premium Glow Effect */}
-            <div className="absolute top-0 right-0 w-32 h-32 bg-yellow-500/5 rounded-full blur-2xl pointer-events-none"></div>
-
-            {/* Avatar */}
-            <div className="relative w-16 h-16 rounded-full border-2 border-[#151518] ring-2 ring-yellow-500/30 overflow-hidden shrink-0 bg-black">
+        {/* ABOUT */}
+        <div className="about border-t border-zinc-800/80 pt-6 flex flex-col sm:flex-row items-start justify-between gap-6">
+          
+          <div className="about-left flex items-center gap-4 shrink-0">
+            <div className="relative w-10 h-10 rounded-full border border-zinc-800 ring-2 ring-yellow-500/10 overflow-hidden bg-zinc-900 shadow-md">
               <Image
-                src="/CodiceZero/IconoEgo.jpg"
+                src="/CodiceZero/Landingpage/icono.webp"
                 alt="Ego"
                 fill
                 className="object-cover"
               />
             </div>
-
-            {/* Info */}
-            <div className="flex flex-col justify-center items-start gap-1 relative z-10 w-full">
-              <span className="text-[9px] font-black uppercase tracking-[0.2em] text-yellow-500/80 leading-none">{t.projectLeader}</span>
-              <div className="flex items-center justify-between w-full">
-                <h3 className="text-xl font-bold text-gray-100 leading-tight drop-shadow-sm">Ego</h3>
-                <div className="relative flex h-1.5 w-1.5">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-                  <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-green-500" title="Online"></span>
-                </div>
-              </div>
-              <p className="text-[11px] text-gray-400 italic leading-snug mt-1 border-t border-white/5 pt-1 w-full">{t.slogan}</p>
+            <div className="flex flex-col">
+              <span className="text-sm font-bold text-zinc-100 leading-none">Ego</span>
+              <span className="text-[10px] text-zinc-500 mt-1">{t.creatorRole}</span>
             </div>
           </div>
-        </div>
-
-        {/* Redes Sociales */}
-        <div className="flex items-center gap-8 mb-8">
-          {socialNetworks.map((social) => (
-            <a
-              key={social.name}
-              href={social.link}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group relative w-12 h-12 transition-all hover:scale-110 duration-300 flex items-center justify-center bg-white/[0.02] border border-white/5 rounded-xl hover:bg-white/[0.05] hover:border-white/20 hover:shadow-[0_0_20px_rgba(255,255,255,0.05)]"
-              title={social.name}
+          
+          <div className="about-right text-left sm:text-right flex flex-col items-start sm:items-end gap-1.5 max-w-[400px]">
+            <p className="text-xs text-zinc-400 leading-relaxed">
+              {t.creatorBio}
+            </p>
+            <Link 
+              href="#" 
+              className="font-mono text-[11px] font-bold text-[#f5c518] hover:text-yellow-400 transition-colors uppercase tracking-widest mt-0.5"
             >
-              {social.isComponent ? (
-                <social.icon className={`w-5 h-5 transition-colors duration-300 text-gray-400 group-hover:text-white ${social.customClass?.replace('text-gray-300 group-hover:text-cyan-400', '')}`} />
-              ) : (
-                <div className={`relative w-6 h-6 ${social.customClass || ""}`}>
-                  <Image
-                    src={social.icon}
-                    alt={social.name}
-                    fill
-                    className="object-contain filter opacity-70 group-hover:opacity-100 group-hover:brightness-125 transition-all"
-                  />
-                </div>
-              )}
-            </a>
-          ))}
+              {t.seeMore}
+            </Link>
+          </div>
+          
         </div>
-      </main>
-    </div>
 
+        {/* FOOTER */}
+        <footer className="w-full text-center text-[10px] font-mono text-zinc-700 pt-4 select-none">
+          © 2025 CodiceZero
+        </footer>
+
+      </div>
+
+    </div>
   );
 }

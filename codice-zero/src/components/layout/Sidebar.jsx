@@ -49,6 +49,10 @@ export default function Sidebar({ isExpanded, isMobile, toggleDrawer }) {
     }
   };
 
+  const getHref = (path) => {
+    return language === 'es' ? path : `/${language}${path}`;
+  };
+
   return (
     <aside
       className={`h-screen flex flex-col overflow-hidden text-white p-4 transition-transform duration-300 ease-in-out will-change-transform ${isMobile
@@ -57,7 +61,7 @@ export default function Sidebar({ isExpanded, isMobile, toggleDrawer }) {
         }`}
     >
       {/* Logo CZ y Botón Cerrar Móvil */}
-      <Link href={`/${language}`} className="flex-shrink-0 flex items-center justify-center h-24 w-full relative group bg-transparent">
+      <Link href={getHref('/')} className="flex-shrink-0 flex items-center justify-center h-24 w-full relative group bg-transparent">
 
         <div className="flex flex-col items-center gap-1 transition-transform duration-300 group-hover:scale-105">
           {/* Imagen del Logo con Glow */}
@@ -98,7 +102,7 @@ export default function Sidebar({ isExpanded, isMobile, toggleDrawer }) {
         <ul className="space-y-3">
           {/* Item 1: Inicio */}
           <li>
-            <Link href={`/${language}`} onClick={handleLinkClick} className={`group relative flex items-center h-12 py-2 px-3 rounded-xl transition-all duration-300 font-medium ${activeItem === -1 ? 'bg-yellow-500/10 shadow-[0_0_15px_rgba(234,179,8,0.1)] border border-yellow-500/20 text-yellow-500' : 'text-gray-400 hover:bg-white/5 border border-transparent hover:border-white/10 hover:text-gray-100 hover:shadow-[0_4px_10px_rgba(0,0,0,0.5)]'}`}>
+            <Link href={getHref('/')} onClick={handleLinkClick} className={`group relative flex items-center h-12 py-2 px-3 rounded-xl transition-all duration-300 font-medium ${activeItem === -1 ? 'bg-yellow-500/10 shadow-[0_0_15px_rgba(234,179,8,0.1)] border border-yellow-500/20 text-yellow-500' : 'text-gray-400 hover:bg-white/5 border border-transparent hover:border-white/10 hover:text-gray-100 hover:shadow-[0_4px_10px_rgba(0,0,0,0.5)]'}`}>
               {activeItem === -1 && <div className="absolute left-0 top-1/4 bottom-1/4 w-[3px] bg-gradient-to-b from-yellow-300 to-yellow-500 rounded-r-full shadow-[0_0_10px_rgba(234,179,8,0.5)]"></div>}
               <Home size={26} className={`transition-all duration-300 ml-1 ${activeItem === -1 ? 'drop-shadow-[0_0_8px_rgba(234,179,8,0.5)] text-yellow-400' : 'opacity-70 group-hover:opacity-100 group-hover:drop-shadow-md'}`} />
               <span className={`ml-4 tracking-wide`}>{t.inicio}</span>
@@ -107,7 +111,7 @@ export default function Sidebar({ isExpanded, isMobile, toggleDrawer }) {
 
           {/* Item 2: Agentes */}
           <li>
-            <Link href={`/${language}/agentes`} onClick={handleLinkClick} className={`group relative flex items-center h-12 py-2 px-3 rounded-xl transition-all duration-300 font-medium ${activeItem === 0 ? 'bg-yellow-500/10 shadow-[0_0_15px_rgba(234,179,8,0.1)] border border-yellow-500/20 text-yellow-500' : 'text-gray-400 hover:bg-white/5 border border-transparent hover:border-white/10 hover:text-gray-100 hover:shadow-[0_4px_10px_rgba(0,0,0,0.5)]'}`}>
+            <Link href={getHref('/agentes')} onClick={handleLinkClick} className={`group relative flex items-center h-12 py-2 px-3 rounded-xl transition-all duration-300 font-medium ${activeItem === 0 ? 'bg-yellow-500/10 shadow-[0_0_15px_rgba(234,179,8,0.1)] border border-yellow-500/20 text-yellow-500' : 'text-gray-400 hover:bg-white/5 border border-transparent hover:border-white/10 hover:text-gray-100 hover:shadow-[0_4px_10px_rgba(0,0,0,0.5)]'}`}>
               {activeItem === 0 && <div className="absolute left-0 top-1/4 bottom-1/4 w-[3px] bg-gradient-to-b from-yellow-300 to-yellow-500 rounded-r-full shadow-[0_0_10px_rgba(234,179,8,0.5)]"></div>}
               <Image src="/CodiceZero/Agentes/Icon_Agents.webp" alt="Icono Agentes" width={26} height={26} className={`transition-all duration-300 object-contain ml-1 ${activeItem === 0 ? 'drop-shadow-[0_0_8px_rgba(234,179,8,0.5)] saturate-200' : 'opacity-70 group-hover:opacity-100 group-hover:saturate-200 filter group-hover:drop-shadow-md'}`} />
               <span className={`ml-4 tracking-wide`}>{t.agentes}</span>
@@ -116,7 +120,7 @@ export default function Sidebar({ isExpanded, isMobile, toggleDrawer }) {
 
           {/* Item 3: Armas */}
           <li>
-            <Link href={`/${language}/armas`} onClick={handleLinkClick} className={`group relative flex items-center h-12 py-2 px-3 rounded-xl transition-all duration-300 font-medium ${activeItem === 1 ? 'bg-yellow-500/10 shadow-[0_0_15px_rgba(234,179,8,0.1)] border border-yellow-500/20 text-yellow-500' : 'text-gray-400 hover:bg-white/5 border border-transparent hover:border-white/10 hover:text-gray-100 hover:shadow-[0_4px_10px_rgba(0,0,0,0.5)]'}`}>
+            <Link href={getHref('/armas')} onClick={handleLinkClick} className={`group relative flex items-center h-12 py-2 px-3 rounded-xl transition-all duration-300 font-medium ${activeItem === 1 ? 'bg-yellow-500/10 shadow-[0_0_15px_rgba(234,179,8,0.1)] border border-yellow-500/20 text-yellow-500' : 'text-gray-400 hover:bg-white/5 border border-transparent hover:border-white/10 hover:text-gray-100 hover:shadow-[0_4px_10px_rgba(0,0,0,0.5)]'}`}>
               {activeItem === 1 && <div className="absolute left-0 top-1/4 bottom-1/4 w-[3px] bg-gradient-to-b from-yellow-300 to-yellow-500 rounded-r-full shadow-[0_0_10px_rgba(234,179,8,0.5)]"></div>}
               <Image src="/CodiceZero/Armas/Icon_Storage_W-Engine.webp" alt="Icono Armas" width={26} height={26} className={`transition-all duration-300 object-contain ml-1 ${activeItem === 1 ? 'drop-shadow-[0_0_8px_rgba(234,179,8,0.5)] saturate-200' : 'opacity-70 group-hover:opacity-100 group-hover:saturate-200 filter group-hover:drop-shadow-md'}`} />
               <span className={`ml-4 tracking-wide`}>{t.armas}</span>
@@ -125,7 +129,7 @@ export default function Sidebar({ isExpanded, isMobile, toggleDrawer }) {
 
           {/* Item 4: Discos */}
           <li>
-            <Link href={`/${language}/discos`} onClick={handleLinkClick} className={`group relative flex items-center h-12 py-2 px-3 rounded-xl transition-all duration-300 font-medium ${activeItem === 2 ? 'bg-yellow-500/10 shadow-[0_0_15px_rgba(234,179,8,0.1)] border border-yellow-500/20 text-yellow-500' : 'text-gray-400 hover:bg-white/5 border border-transparent hover:border-white/10 hover:text-gray-100 hover:shadow-[0_4px_10px_rgba(0,0,0,0.5)]'}`}>
+            <Link href={getHref('/discos')} onClick={handleLinkClick} className={`group relative flex items-center h-12 py-2 px-3 rounded-xl transition-all duration-300 font-medium ${activeItem === 2 ? 'bg-yellow-500/10 shadow-[0_0_15px_rgba(234,179,8,0.1)] border border-yellow-500/20 text-yellow-500' : 'text-gray-400 hover:bg-white/5 border border-transparent hover:border-white/10 hover:text-gray-100 hover:shadow-[0_4px_10px_rgba(0,0,0,0.5)]'}`}>
               {activeItem === 2 && <div className="absolute left-0 top-1/4 bottom-1/4 w-[3px] bg-gradient-to-b from-yellow-300 to-yellow-500 rounded-r-full shadow-[0_0_10px_rgba(234,179,8,0.5)]"></div>}
               <Image src="/CodiceZero/Discos/Icon_Storage_Drive_Disc.webp" alt="Icono Discos" width={26} height={26} className={`transition-all duration-300 object-contain ml-1 ${activeItem === 2 ? 'drop-shadow-[0_0_8px_rgba(234,179,8,0.5)] saturate-200' : 'opacity-70 group-hover:opacity-100 group-hover:saturate-200 filter group-hover:drop-shadow-md'}`} />
               <span className={`ml-4 tracking-wide`}>{t.discos}</span>
@@ -134,27 +138,10 @@ export default function Sidebar({ isExpanded, isMobile, toggleDrawer }) {
 
           {/* Item 5: Tier List */}
           <li>
-            <Link href={`/${language}/tierlist`} onClick={handleLinkClick} className={`group relative flex items-center h-12 py-2 px-3 rounded-xl transition-all duration-300 font-medium ${activeItem === 3 ? 'bg-yellow-500/10 shadow-[0_0_15px_rgba(234,179,8,0.1)] border border-yellow-500/20 text-yellow-500' : 'text-gray-400 hover:bg-white/5 border border-transparent hover:border-white/10 hover:text-gray-100 hover:shadow-[0_4px_10px_rgba(0,0,0,0.5)]'}`}>
+            <Link href={getHref('/tierlist')} onClick={handleLinkClick} className={`group relative flex items-center h-12 py-2 px-3 rounded-xl transition-all duration-300 font-medium ${activeItem === 3 ? 'bg-yellow-500/10 shadow-[0_0_15px_rgba(234,179,8,0.1)] border border-yellow-500/20 text-yellow-500' : 'text-gray-400 hover:bg-white/5 border border-transparent hover:border-white/10 hover:text-gray-100 hover:shadow-[0_4px_10px_rgba(0,0,0,0.5)]'}`}>
               {activeItem === 3 && <div className="absolute left-0 top-1/4 bottom-1/4 w-[3px] bg-gradient-to-b from-yellow-300 to-yellow-500 rounded-r-full shadow-[0_0_10px_rgba(234,179,8,0.5)]"></div>}
               <List size={26} className={`transition-all duration-300 ml-1 ${activeItem === 3 ? 'drop-shadow-[0_0_8px_rgba(234,179,8,0.5)] text-yellow-400' : 'opacity-70 group-hover:opacity-100 group-hover:drop-shadow-md'}`} />
               <span className={`ml-4 tracking-wide`}>{t.tierlist}</span>
-            </Link>
-          </li>
-
-          {/* Item 6: Diferencias */}
-          <li>
-            <Link href={`/${language}/diff`} onClick={handleLinkClick} className={`group relative flex items-center h-12 py-2 px-3 rounded-xl transition-all duration-300 font-medium ${activeItem === 4 ? 'bg-yellow-500/10 shadow-[0_0_15px_rgba(234,179,8,0.1)] border border-yellow-500/20 text-yellow-500' : 'text-gray-400 hover:bg-white/5 border border-transparent hover:border-white/10 hover:text-gray-100 hover:shadow-[0_4px_10px_rgba(0,0,0,0.5)]'}`}>
-              {activeItem === 4 && <div className="absolute left-0 top-1/4 bottom-1/4 w-[3px] bg-gradient-to-b from-yellow-300 to-yellow-500 rounded-r-full shadow-[0_0_10px_rgba(234,179,8,0.5)]"></div>}
-              <Scale size={26} className={`transition-all duration-300 ml-1 ${activeItem === 4 ? 'drop-shadow-[0_0_8px_rgba(234,179,8,0.5)] text-yellow-400' : 'opacity-70 group-hover:opacity-100 group-hover:drop-shadow-md'}`} />
-              <span className={`ml-4 tracking-wide`}>{t.diff}</span>
-            </Link>
-          </li>
-          {/* Item 7: Novedades Beta */}
-          <li>
-            <Link href={`/${language}/beta`} onClick={handleLinkClick} className={`group relative flex items-center h-12 py-2 px-3 rounded-xl transition-all duration-300 font-medium ${activeItem === 5 ? 'bg-red-500/10 shadow-[0_0_15px_rgba(239,68,68,0.1)] border border-red-500/20 text-red-400' : 'text-gray-400 hover:bg-white/5 border border-transparent hover:border-white/10 hover:text-gray-100 hover:shadow-[0_4px_10px_rgba(0,0,0,0.5)]'}`}>
-              {activeItem === 5 && <div className="absolute left-0 top-1/4 bottom-1/4 w-[3px] bg-gradient-to-b from-red-400 to-red-600 rounded-r-full shadow-[0_0_10px_rgba(239,68,68,0.5)]"></div>}
-              <TriangleAlert size={26} className={`transition-all duration-300 ml-1 ${activeItem === 5 ? 'drop-shadow-[0_0_8px_rgba(239,68,68,0.5)] text-red-500' : 'opacity-70 group-hover:opacity-100 group-hover:drop-shadow-md group-hover:text-red-400'}`} />
-              <span className={`ml-4 tracking-wide`}>{t.beta}</span>
             </Link>
           </li>
         </ul>

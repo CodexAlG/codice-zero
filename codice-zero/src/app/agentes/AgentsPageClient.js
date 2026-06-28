@@ -234,7 +234,7 @@ export default function AgentsPageClient() {
                         minColumnWidth={140}
                         gap={16}
                         renderItem={(agent, index) => (
-                            <Link href={`/${language}/agentes/${agent.id}`} className="block">
+                            <Link href={language === 'es' ? `/agentes/${agent.id}` : `/${language}/agentes/${agent.id}`} className="block">
                                 <AgentCard agent={agent} priority={index < 6} />
                             </Link>
                         )}

@@ -214,7 +214,7 @@ export default function WeaponsPageClient({ weapons: initialWeapons }) {
                         minColumnWidth={140}
                         gap={16}
                         renderItem={(weapon, index) => (
-                            <Link key={weapon.id} href={`/${language}/armas/${weapon.id}`} className="block">
+                            <Link key={weapon.id} href={language === 'es' ? `/armas/${weapon.id}` : `/${language}/armas/${weapon.id}`} className="block">
                                 <WeaponCard weapon={weapon} priority={index < 6} />
                             </Link>
                         )}

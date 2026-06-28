@@ -64,13 +64,16 @@ export function LanguageProvider({ children }) {
   const [hasApprovedWarning, setHasApprovedWarning] = useState(false);
   const [isReloading, setIsReloading] = useState(false);
 
-  // Load language preference from localStorage on mount
+  // Load language preference from URL pathname on mount or change
   useEffect(() => {
-    const savedLang = localStorage.getItem('app_language');
-    if (savedLang) {
-      setLanguage(savedLang);
+    if (pathname?.startsWith('/en/') || pathname === '/en') {
+      setLanguage('en');
+      localStorage.setItem('app_language', 'en');
+    } else {
+      setLanguage('es');
+      localStorage.setItem('app_language', 'es');
     }
-  }, []);
+  }, [pathname]);
 
   const toggleLanguage = () => {
     if (language === 'es') {
@@ -83,11 +86,8 @@ export function LanguageProvider({ children }) {
       localStorage.setItem('app_language', 'en');
       setIsReloading(true);
       setTimeout(() => {
-        if (pathname.startsWith('/es')) {
-          window.location.href = pathname.replace('/es', '/en');
-        } else {
-          window.location.href = '/en';
-        }
+        const redirectUrl = pathname === '/' ? '/en' : `/en${pathname}`;
+        window.location.href = redirectUrl;
       }, 1200);
     } else {
       // Volver a Español
@@ -95,11 +95,8 @@ export function LanguageProvider({ children }) {
       localStorage.setItem('app_language', 'es');
       setIsReloading(true);
       setTimeout(() => {
-        if (pathname.startsWith('/en')) {
-          window.location.href = pathname.replace('/en', '/es');
-        } else {
-          window.location.href = '/es';
-        }
+        const redirectUrl = pathname === '/en' ? '/' : pathname.replace(/^\/en/, '');
+        window.location.href = redirectUrl || '/';
       }, 1200);
     }
   };
@@ -112,11 +109,8 @@ export function LanguageProvider({ children }) {
     
     setIsReloading(true);
     setTimeout(() => {
-      if (pathname.startsWith('/es')) {
-        window.location.href = pathname.replace('/es', '/en');
-      } else {
-        window.location.href = '/en';
-      }
+      const redirectUrl = pathname === '/' ? '/en' : `/en${pathname}`;
+      window.location.href = redirectUrl;
     }, 1200);
   };
 
