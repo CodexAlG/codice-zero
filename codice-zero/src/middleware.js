@@ -14,13 +14,19 @@ export function middleware(request) {
     return NextResponse.next();
   }
 
-  // 2. Detectar si estamos en el subdominio de la wiki (zzz.codicezero.cc o zzz.localhost)
+  // 2. Detectar si estamos en el subdominio de la wiki (zzz.codicezero.cc) o enlaces (links.codicezero.cc)
   const isWikiSubdomain = hostname.startsWith('zzz.') || hostname.includes('zzz.localhost');
+  const isLinksSubdomain = hostname.startsWith('links.') || hostname.includes('links.localhost');
 
   if (isWikiSubdomain) {
     // Si estamos en la raíz del subdominio de la wiki, reescribir internamente a /wiki
     if (pathname === '/') {
       return NextResponse.rewrite(new URL('/wiki', request.url));
+    }
+  } else if (isLinksSubdomain) {
+    // Si estamos en la raíz del subdominio de enlaces, reescribir internamente a /links
+    if (pathname === '/') {
+      return NextResponse.rewrite(new URL('/links', request.url));
     }
   } else {
     // Si estamos en el dominio principal (codicezero.cc) y NO es la raíz ni /acerca ni /links, redirigir al subdominio de la wiki
