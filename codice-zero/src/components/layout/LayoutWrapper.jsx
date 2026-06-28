@@ -27,7 +27,7 @@ export default function LayoutWrapper({ children }) {
       const hostname = window.location.hostname;
       const isWikiSubdomain = hostname.startsWith("zzz.") || hostname.includes("zzz.localhost");
       const cleanPath = pathname?.replace(/\/$/, "") || "";
-      const isRootPath = cleanPath === "" || cleanPath === "/es" || cleanPath === "/en" || cleanPath === "/acerca";
+      const isRootPath = cleanPath === "" || cleanPath === "/es" || cleanPath === "/en" || cleanPath === "/acerca" || cleanPath === "/links";
       setIsLandingPage(isRootPath && !isWikiSubdomain);
     }
   }, [pathname]);

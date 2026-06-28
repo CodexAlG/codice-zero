@@ -23,8 +23,8 @@ export function middleware(request) {
       return NextResponse.rewrite(new URL('/wiki', request.url));
     }
   } else {
-    // Si estamos en el dominio principal (codicezero.cc) y NO es la raíz ni /acerca, redirigir al subdominio de la wiki
-    if (pathname !== '/' && pathname !== '/acerca') {
+    // Si estamos en el dominio principal (codicezero.cc) y NO es la raíz ni /acerca ni /links, redirigir al subdominio de la wiki
+    if (pathname !== '/' && pathname !== '/acerca' && pathname !== '/links') {
       const targetUrl = new URL(pathname, `https://zzz.codicezero.cc`);
       targetUrl.search = request.nextUrl.search;
       return NextResponse.redirect(targetUrl);
