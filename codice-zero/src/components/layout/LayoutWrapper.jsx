@@ -10,16 +10,27 @@ import UpdateNotifier from "../ui/UpdateNotifier";
 export default function LayoutWrapper({ children }) {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [navbarVisible, setNavbarVisible] = useState(true);
+  const [mounted, setMounted] = useState(false);
+  const [isLandingPage, setIsLandingPage] = useState(false);
   const mainRef = useRef(null);
   const lastScrollTopRef = useRef(0);
   const pathname = usePathname();
 
   const toggleDrawer = () => setIsDrawerOpen(prev => !prev);
 
-  // Verificar si estamos en la ruta de detalles de materiales o la Landing Page
+  // Verificar si estamos en la ruta de detalles de materiales
   const isMaterialDetail = pathname?.startsWith("/materiales");
-  const cleanPath = pathname?.replace(/\/$/, "") || "";
-  const isLandingPage = cleanPath === "" || cleanPath === "/es" || cleanPath === "/en";
+
+  useEffect(() => {
+    setMounted(true);
+    if (typeof window !== "undefined") {
+      const hostname = window.location.hostname;
+      const isWikiSubdomain = hostname.startsWith("zzz.") || hostname.includes("zzz.localhost");
+      const cleanPath = pathname?.replace(/\/$/, "") || "";
+      const isRootPath = cleanPath === "" || cleanPath === "/es" || cleanPath === "/en";
+      setIsLandingPage(isRootPath && !isWikiSubdomain);
+    }
+  }, [pathname]);
 
   // Reset navbar visibility and Scroll to Top when changing routes
   useEffect(() => {
@@ -53,6 +64,14 @@ export default function LayoutWrapper({ children }) {
       }
     };
   }, [pathname]);
+
+  if (!mounted) {
+    return (
+      <div className="min-h-screen w-full bg-[#09090b] text-white">
+        {children}
+      </div>
+    );
+  }
 
   if (isMaterialDetail || isLandingPage) {
     return (
