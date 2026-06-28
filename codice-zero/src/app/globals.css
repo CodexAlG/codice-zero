@@ -130,31 +130,36 @@ body {
   animation: ribbon-shimmer 3s infinite linear;
 }
 
-@keyframes scanline {
+@keyframes typing {
+  from { width: 0 }
+  to { width: 28ch }
+}
+
+@keyframes blink-caret {
+  from, to { border-color: transparent }
+  50% { border-color: #f5c518 }
+}
+
+.typewriter-text {
+  display: inline-block;
+  overflow: hidden;
+  border-right: 2px solid #f5c518;
+  white-space: nowrap;
+  width: 0;
+  animation: 
+    typing 2.5s steps(28, end) forwards,
+    blink-caret 0.75s step-end infinite;
+}
+
+@keyframes scanline-sweep {
   0% {
-    transform: translateY(-20vh) rotate(-5deg);
-    opacity: 0;
-  }
-  10% {
-    opacity: 0.6;
-  }
-  90% {
-    opacity: 0.6;
+    top: -120px;
   }
   100% {
-    transform: translateY(120vh) rotate(-5deg);
-    opacity: 0;
+    top: 100vh;
   }
 }
 
-.animate-scan {
-  position: absolute;
-  left: -10%;
-  right: -10%;
-  height: 2px;
-  background: linear-gradient(90deg, transparent, rgba(245, 197, 24, 0.45) 50%, transparent);
-  box-shadow: 0 0 15px 1px rgba(245, 197, 24, 0.5);
-  animation: scanline 8s cubic-bezier(0.4, 0, 0.2, 1) infinite;
-  pointer-events: none;
-  z-index: -10;
+.animate-scanline {
+  animation: scanline-sweep 8s linear infinite;
 }

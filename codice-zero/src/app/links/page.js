@@ -31,7 +31,7 @@ export default function LinktreePage() {
   ];
 
   return (
-    <div className="relative min-h-screen w-full flex flex-col items-center justify-between text-white font-sans overflow-hidden py-10 px-6 landing-bg selection:bg-yellow-500/20 selection:text-yellow-200">
+    <div className="relative min-h-screen w-full flex flex-col items-center justify-start md:justify-center text-white font-sans overflow-hidden py-8 md:py-16 px-4 md:px-6 landing-bg selection:bg-yellow-500/20 selection:text-yellow-200">
       
       {/* 1. BACKGROUND GIF & OVERLAYS */}
       <div className="absolute inset-0 -z-20 w-full h-full select-none pointer-events-none">
@@ -42,17 +42,19 @@ export default function LinktreePage() {
         />
       </div>
 
-      {/* Animating scan line */}
-      <div className="animate-scan" />
+      {/* CRT Scanline overlay covering the screen */}
+      <div className="absolute inset-0 w-full h-full pointer-events-none -z-10 overflow-hidden">
+        <div className="absolute left-0 w-full h-32 bg-gradient-to-b from-transparent to-yellow-500/[0.012] border-b border-yellow-500/10 animate-scanline" />
+      </div>
 
       {/* Dark overlay with backdrop-blur */}
       <div className="absolute inset-0 -z-10 bg-black/50 backdrop-blur-[1px] select-none pointer-events-none" />
 
       {/* 2. MAIN CONTAINER */}
-      <div className="w-full max-w-[500px] flex flex-col items-center gap-6 my-auto relative z-10">
+      <div className="w-full max-w-[500px] flex flex-col items-center gap-5 md:gap-6 my-6 md:my-auto relative z-10">
         
         {/* PROFILE HEADER */}
-        <div className="flex flex-col items-center text-center gap-2 mb-2">
+        <div className="flex flex-col items-center text-center gap-2 mb-1">
           <div className="relative w-20 h-20 rounded-full border border-zinc-800 overflow-hidden bg-zinc-900 shadow-xl select-none">
             <Image
               src="/CodiceZero/Landingpage/Icono.webp"
@@ -61,11 +63,13 @@ export default function LinktreePage() {
               className="object-cover"
             />
           </div>
-          <div className="flex flex-col gap-0.5">
+          <div className="flex flex-col items-center gap-0.5">
             <h1 className="text-xl font-black tracking-tight text-white">Ego</h1>
-            <p className="font-mono text-[9px] font-bold uppercase tracking-[0.2em] text-[#f5c518]">
-              Desarrollador & Casual Gamer
-            </p>
+            <div className="h-5 flex items-center justify-center">
+              <p className="font-mono text-[9px] font-bold uppercase tracking-[0.2em] text-[#f5c518] typewriter-text">
+                Desarrollador & Casual Gamer
+              </p>
+            </div>
           </div>
         </div>
 
@@ -100,7 +104,7 @@ export default function LinktreePage() {
       </div>
 
       {/* 3. FOOTER */}
-      <footer className="w-full text-center text-[9px] font-mono text-zinc-700 select-none tracking-widest mt-6 relative z-10">
+      <footer className="w-full text-center text-[9px] font-mono text-zinc-700 select-none tracking-widest mt-4 relative z-10">
         © 2026 CODICEZERO
       </footer>
 
