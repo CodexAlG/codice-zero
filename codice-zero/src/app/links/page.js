@@ -5,28 +5,36 @@ import Link from "next/link";
 export default function LinktreePage() {
   const links = [
     {
-      label: "💻 CodiceZero | Mi Base de Proyectos",
-      url: "/"
+      title: "💻 CodiceZero | Mi Base de Proyectos",
+      desc: "Hub principal y registro de todos mis proyectos digitales.",
+      url: "/",
+      action: "ACCEDER —"
     },
     {
-      label: "📁 Wiki Zenless Zone Zero (ES)",
-      url: "https://zzz.codicezero.cc"
+      title: "📁 Wiki Zenless Zone Zero (ES)",
+      desc: "La referencia estratégica en español. Builds, agentes, armas y más.",
+      url: "https://zzz.codicezero.cc",
+      action: "WIKI —"
     },
     {
-      label: "👾 Ego System | Servidor de Discord",
-      url: "https://discord.gg/RBzdz2Bn4u"
+      title: "👾 Wiki ZZZ | Servidor de Discord",
+      desc: "Únete a la comunidad de la wiki para debatir, compartir y recibir soporte.",
+      url: "https://discord.gg/RBzdz2Bn4u",
+      action: "UNIRSE —"
     },
     {
-      label: "📺 Un poco de Ego | Canal de YouTube",
-      url: "https://www.youtube.com/@thisego9"
+      title: "📺 Un poco de Ego | Canal de YouTube",
+      desc: "Análisis, guías de personajes y contenido de videojuegos.",
+      url: "https://www.youtube.com/@thisego9",
+      action: "VER —"
     }
   ];
 
   return (
-    <div className="relative min-h-screen w-full flex flex-col items-center justify-between text-white font-sans overflow-hidden py-16 px-6">
+    <div className="relative min-h-screen w-full flex flex-col items-center justify-between text-white font-sans overflow-hidden py-12 md:py-16 px-6 landing-bg selection:bg-yellow-500/20 selection:text-yellow-200">
       
-      {/* 1. BACKGROUND VIDEO & OVERLAYS */}
-      <div className="absolute inset-0 -z-20 w-full h-full select-none pointer-events-none">
+      {/* 1. BACKGROUND GIF & OVERLAYS */}
+      <div className="absolute inset-0 -z-20 w-full h-full select-none pointer-events-none opacity-40">
         <img
           src="/CodiceZero/Landingpage/e82f64a8321ecc54607a1685b09918cb_7421573060994890032.gif"
           alt="Background GIF"
@@ -35,30 +43,30 @@ export default function LinktreePage() {
       </div>
 
       {/* Dark overlay with backdrop-blur */}
-      <div className="absolute inset-0 -z-10 bg-black/65 backdrop-blur-sm select-none pointer-events-none" />
+      <div className="absolute inset-0 -z-10 bg-black/45 backdrop-blur-[2px] select-none pointer-events-none" />
 
       {/* 2. MAIN CONTAINER */}
-      <div className="w-full max-w-[400px] flex flex-col items-center gap-8 my-auto relative z-10">
+      <div className="w-full max-w-[720px] flex flex-col items-center gap-8 my-auto relative z-10">
         
         {/* PROFILE HEADER */}
-        <div className="flex flex-col items-center text-center gap-3">
-          <div className="relative w-24 h-24 rounded-full border border-white/20 overflow-hidden bg-zinc-900 shadow-xl select-none">
+        <div className="flex flex-col items-center text-center gap-3 mb-4">
+          <div className="relative w-24 h-24 rounded-full border-2 border-zinc-800 overflow-hidden bg-zinc-900 shadow-xl select-none">
             <Image
-              src="/CodiceZero/IconoEgo.jpg"
+              src="/CodiceZero/Landingpage/Icono.webp"
               alt="Ego Avatar"
               fill
               className="object-cover"
             />
           </div>
           <div className="flex flex-col gap-1">
-            <h1 className="text-2xl font-bold tracking-tight text-white">Ego</h1>
-            <p className="text-sm text-zinc-400 font-medium tracking-wide">
+            <h1 className="text-2xl font-black tracking-tight text-white">Ego</h1>
+            <p className="font-mono text-[9px] font-bold uppercase tracking-[0.2em] text-[#f5c518]">
               Desarrollador & Casual Gamer
             </p>
           </div>
         </div>
 
-        {/* BUTTON LINKS */}
+        {/* BUTTON LINKS (CARD FORMAT IN WIDE RECTANGLES) */}
         <nav className="w-full flex flex-col gap-4">
           {links.map((link, index) => (
             <a
@@ -66,9 +74,22 @@ export default function LinktreePage() {
               href={link.url}
               target={link.url.startsWith("http") ? "_blank" : "_self"}
               rel="noopener noreferrer"
-              className="w-full text-center py-4 px-6 rounded-2xl bg-white/10 hover:bg-white/20 border border-white/5 backdrop-blur-md font-medium text-[14px] md:text-[15px] transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] select-none shadow-md"
+              className="group w-full flex items-center justify-between border border-zinc-800/80 bg-[#0e0e11]/60 backdrop-blur-sm rounded-2xl p-6 transition-all duration-300 hover:border-[#f5c518]/30 hover:scale-[1.01] active:scale-[0.99] select-none shadow-md text-left gap-6"
             >
-              {link.label}
+              {/* Content */}
+              <div className="flex flex-col gap-1.5">
+                <h3 className="text-sm md:text-base font-black text-white group-hover:text-[#f5c518] transition-colors duration-300">
+                  {link.title}
+                </h3>
+                <p className="text-xs text-zinc-400 leading-relaxed max-w-[480px]">
+                  {link.desc}
+                </p>
+              </div>
+
+              {/* Action indicator */}
+              <div className="shrink-0 font-mono text-[10px] font-bold text-[#f5c518] tracking-wider transition-all duration-300 group-hover:translate-x-1">
+                {link.action}
+              </div>
             </a>
           ))}
         </nav>
@@ -76,7 +97,7 @@ export default function LinktreePage() {
       </div>
 
       {/* 3. FOOTER */}
-      <footer className="w-full text-center text-[10px] font-mono text-zinc-500 select-none tracking-widest mt-8 relative z-10">
+      <footer className="w-full text-center text-[10px] font-mono text-zinc-700 select-none tracking-widest mt-8 relative z-10">
         © 2026 CODICEZERO
       </footer>
 
