@@ -7,7 +7,7 @@ export default function LinktreePage() {
     {
       title: "💻 CodiceZero | Mi Base de Proyectos",
       desc: "Hub principal y registro de todos mis proyectos digitales.",
-      url: "/",
+      url: "https://www.codicezero.cc",
       action: "ACCEDER —"
     },
     {
@@ -41,6 +41,9 @@ export default function LinktreePage() {
           className="w-full h-full object-cover"
         />
       </div>
+
+      {/* Animating scan line */}
+      <div className="animate-scan" />
 
       {/* Dark overlay with backdrop-blur */}
       <div className="absolute inset-0 -z-10 bg-black/50 backdrop-blur-[1px] select-none pointer-events-none" />

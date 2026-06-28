@@ -129,3 +129,32 @@ body {
   background-size: 200% auto;
   animation: ribbon-shimmer 3s infinite linear;
 }
+
+@keyframes scanline {
+  0% {
+    transform: translateY(-20vh) rotate(-5deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.6;
+  }
+  90% {
+    opacity: 0.6;
+  }
+  100% {
+    transform: translateY(120vh) rotate(-5deg);
+    opacity: 0;
+  }
+}
+
+.animate-scan {
+  position: absolute;
+  left: -10%;
+  right: -10%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(245, 197, 24, 0.45) 50%, transparent);
+  box-shadow: 0 0 15px 1px rgba(245, 197, 24, 0.5);
+  animation: scanline 8s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  pointer-events: none;
+  z-index: -10;
+}
