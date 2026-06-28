@@ -47,11 +47,30 @@ export default function AcercaHub() {
     },
   ];
 
+  const faqs = [
+    {
+      title: "¿Qué es CodiceZero?",
+      text: "Es mi base central de proyectos. Todo esto empezó simplemente como un hobby para hacer una base de datos de Zenless Zone Zero en español. Pero como el proyecto fue creciendo, separé la wiki en su propio espacio y dejé este dominio para juntar todo lo que hago: herramientas para juegos, contenido y proyectos a futuro."
+    },
+    {
+      title: "¿De dónde salió el nombre?",
+      text: '"Códice" porque al final del día es eso: un archivo o registro donde voy guardando información, guías y herramientas. Y el "Zero", es un guiño a Zenless Zone Zero, que fue el juego que me motivó a empezar.'
+    },
+    {
+      title: "¿Por qué crear una página desde cero?",
+      text: "Principalmente porque estaba harto de las wikis corporativas atascadas de publicidad invasiva y diseños pesados. Quería hacer algo rápido, limpio y al grano para la comunidad, hecho por alguien que realmente juega."
+    },
+    {
+      title: "¿Qué más voy a encontrar aquí?",
+      text: "Por ahora el enfoque principal es mantener la wiki de ZZZ actualizada, pero la idea es integrar mis otras redes, compartir herramientas nuevas e incluso armar una sección de vlog para la comunidad."
+    }
+  ];
+
   return (
-    <div className="min-h-screen w-full flex flex-col items-center justify-center text-white font-sans selection:bg-yellow-500/30 selection:text-yellow-200 landing-bg py-8 md:py-16 overflow-y-auto px-6">
+    <div className="min-h-screen w-full flex flex-col items-center justify-center text-white font-sans selection:bg-yellow-500/20 selection:text-yellow-200 landing-bg py-8 md:py-16 overflow-y-auto px-6">
       
       {/* Container */}
-      <div className="w-full max-w-[760px] flex flex-col gap-8 relative z-10">
+      <div className="w-full max-w-[800px] flex flex-col gap-10 relative z-10">
         
         {/* HEADER */}
         <header className="w-full flex items-center justify-between">
@@ -62,72 +81,68 @@ export default function AcercaHub() {
             <ArrowLeft size={12} className="transition-transform group-hover:-translate-x-1" />
             Volver al Hub
           </Link>
-          <div className="logo font-mono text-[11px] font-black uppercase tracking-[0.25em] text-[#f5c518] drop-shadow-[0_0_8px_rgba(245,197,24,0.15)]">
+          <div className="logo font-mono text-[11px] font-black uppercase tracking-[0.25em] text-[#f5c518]">
             codicezero.cc
           </div>
         </header>
 
-        {/* PROFILE CARD */}
-        <div className="border border-zinc-800 bg-[#0c0c0e]/80 backdrop-blur-md rounded-3xl p-8 flex flex-col sm:flex-row items-center sm:items-start gap-6 relative overflow-hidden">
-          {/* Background mesh decoration */}
-          <div className="absolute inset-0 opacity-[0.02] pointer-events-none" style={{ backgroundImage: 'repeating-linear-gradient(45deg, #fff 0px, #fff 1px, transparent 1px, transparent 10px)' }} />
-
-          {/* Profile Photo */}
-          <div className="relative w-24 h-24 rounded-full border-2 border-[#f5c518]/30 ring-4 ring-[#f5c518]/5 overflow-hidden bg-zinc-900 shrink-0 shadow-lg select-none">
-            <Image
-              src="/CodiceZero/IconoEgo.jpg"
-              alt="Ego"
-              fill
-              className="object-cover"
-            />
+        {/* SECTION 1: FAQ (GRID DE TARJETAS SUPERIOR) */}
+        <section className="flex flex-col gap-6">
+          <h2 className="text-xl font-black italic tracking-wide text-white border-l-2 border-[#f5c518] pl-3 uppercase">
+            Preguntas Frecuentes
+          </h2>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {faqs.map((faq, index) => (
+              <div 
+                key={index} 
+                className="border border-zinc-800/80 bg-[#0e0e11]/50 backdrop-blur-sm rounded-2xl p-6 transition-all duration-300 hover:border-zinc-700/80"
+              >
+                <h4 className="text-sm font-bold text-[#f5c518] tracking-wide mb-2.5">
+                  {faq.title}
+                </h4>
+                <p className="text-xs text-zinc-400 leading-relaxed">
+                  {faq.text}
+                </p>
+              </div>
+            ))}
           </div>
+        </section>
 
-          {/* Basic Info */}
-          <div className="flex-1 flex flex-col items-center sm:items-start text-center sm:text-left gap-2">
-            <div className="flex items-center gap-2">
-              <h2 className="text-3xl font-black tracking-tight text-white">Ego</h2>
-              <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse mt-1" />
+        {/* SECTION 2: PERFIL (FIRMA / TARJETA INFERIOR) */}
+        <section className="flex flex-col gap-4 border-t border-zinc-800/60 pt-8">
+          <div className="border border-zinc-800 bg-[#0e0e11]/60 backdrop-blur-md rounded-3xl p-6 flex flex-col sm:flex-row items-center sm:items-start gap-5 relative overflow-hidden transition-all duration-300 hover:border-zinc-700/80">
+            {/* Grid decoration */}
+            <div className="absolute inset-0 opacity-[0.01] pointer-events-none" style={{ backgroundImage: 'repeating-linear-gradient(45deg, #fff 0px, #fff 1px, transparent 1px, transparent 10px)' }} />
+
+            {/* Profile Avatar */}
+            <div className="relative w-20 h-20 rounded-full border border-zinc-800 ring-2 ring-yellow-500/5 overflow-hidden bg-zinc-900 shrink-0 shadow-md select-none">
+              <Image
+                src="/CodiceZero/Landingpage/Icono.webp"
+                alt="Ego"
+                fill
+                className="object-cover"
+              />
             </div>
-            <p className="font-mono text-[10px] font-bold uppercase tracking-[0.2em] text-[#f5c518]">
-              Desarrollador & Casual Gamer
-            </p>
-            <p className="text-sm text-zinc-400 leading-relaxed mt-2">
-              "CodiceZero es el lugar donde el desarrollo de software y la pasión por los videojuegos se unen."
-            </p>
+
+            {/* Description content */}
+            <div className="flex-1 flex flex-col items-center sm:items-start text-center sm:text-left gap-1 z-10">
+              <div className="flex items-center gap-2">
+                <h3 className="text-xl font-black tracking-tight text-white">Ego</h3>
+                <span className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse mt-0.5" />
+              </div>
+              <p className="font-mono text-[9px] font-bold uppercase tracking-[0.2em] text-[#f5c518] mb-2">
+                Desarrollador & Casual Gamer
+              </p>
+              <p className="text-xs text-zinc-400 leading-relaxed">
+                En la comunidad probablemente me conozcas por analizar y filtrar información de ZZZ, o por el contenido de YouTube y Discord. Simplemente soy alguien que disfruta jugar y armar herramientas en su tiempo libre para sacarle más provecho a los juegos.
+              </p>
+            </div>
           </div>
-        </div>
-
-        {/* PHILOSOPHY CARD */}
-        <div className="border border-zinc-800 bg-[#0c0c0e]/60 backdrop-blur-sm rounded-3xl p-8 flex flex-col gap-6">
-          <div className="flex flex-col gap-4 text-zinc-300 text-sm md:text-base leading-relaxed">
-            <h3 className="text-lg font-bold text-white tracking-wide border-b border-zinc-800 pb-2">
-              Sobre Mí & Mi Filosofía
-            </h3>
-            
-            <p>
-              No me defino a través de datos rígidos o un currículum convencional. Me veo simplemente como un <strong>desarrollador de software y un jugador casual</strong> que disfruta de crear soluciones y herramientas digitales en su tiempo libre.
-            </p>
-            
-            <p>
-              Diseño y construyo estas páginas web como un laboratorio técnico personal. Es mi espacio ideal para experimentar con arquitecturas modernas (como Next.js, enrutamiento por subdominios y bases de datos dinámicas en tiempo real) y perfeccionar mis habilidades de desarrollo de manera totalmente práctica.
-            </p>
-
-            <h3 className="text-lg font-bold text-white tracking-wide border-b border-zinc-800 pb-2 mt-4">
-              ¿Por qué creé CodiceZero?
-            </h3>
-
-            <p>
-              CodiceZero nació de una motivación sencilla: quería crear una fuente estratégica y base de datos definitiva de Zenless Zone Zero en español. El objetivo era ofrecer una alternativa moderna, rápida y limpia, totalmente libre de la molesta publicidad invasiva o diseños sobrecargados de las wikis corporativas comunes.
-            </p>
-            
-            <p>
-              Este proyecto es impulsado puramente por amor al código y a la comunidad. No busca ganancias financieras ni notoriedad comercial; es simplemente la recompensa personal de ver una herramienta bien diseñada que sea de utilidad real para la aventura de otros jugadores en Nueva Eridu.
-            </p>
-          </div>
-        </div>
+        </section>
 
         {/* SOCIAL & FOOTER */}
-        <div className="flex flex-col items-center gap-6 border-t border-zinc-800/60 pt-6">
+        <div className="flex flex-col items-center gap-6 border-t border-zinc-800/40 pt-6">
           
           {/* Networks */}
           <div className="flex items-center gap-6">
@@ -137,19 +152,19 @@ export default function AcercaHub() {
                 href={social.link}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group relative w-9 h-9 transition-transform hover:scale-110 duration-300 flex items-center justify-center"
+                className="group relative w-9 h-9 transition-transform hover:scale-105 duration-300 flex items-center justify-center"
                 title={social.name}
               >
-                <div className="absolute inset-0 bg-yellow-400/0 group-hover:bg-[#f5c518]/15 blur-xl rounded-full transition-all duration-300" />
+                <div className="absolute inset-0 bg-yellow-400/0 group-hover:bg-[#f5c518]/10 blur-lg rounded-full transition-all duration-300" />
                 {social.isComponent ? (
                   <social.icon className={`w-5 h-5 transition-colors duration-300 ${social.customClass}`} />
                 ) : (
                   <Image
                     src={social.icon}
                     alt={social.name}
-                    width={20}
-                    height={20}
-                    className={`object-contain drop-shadow-md filter group-hover:brightness-125 ${social.customClass || ""}`}
+                    width={18}
+                    height={18}
+                    className={`object-contain filter group-hover:brightness-125 ${social.customClass || ""}`}
                   />
                 )}
               </a>
