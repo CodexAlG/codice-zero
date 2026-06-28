@@ -31,7 +31,7 @@ export default function LinktreePage() {
   ];
 
   return (
-    <div className="relative h-[100dvh] w-full flex flex-col items-center justify-between text-white font-sans overflow-hidden py-8 px-4 sm:px-6 landing-bg selection:bg-yellow-500/20 selection:text-yellow-200">
+    <div className="relative h-[100dvh] w-full flex flex-col items-center justify-center text-white font-sans overflow-hidden py-6 px-4 sm:px-6 landing-bg selection:bg-yellow-500/20 selection:text-yellow-200">
       
       {/* 1. BACKGROUND GIF & OVERLAYS */}
       <div className="absolute inset-0 -z-30 w-full h-full select-none pointer-events-none">
@@ -50,56 +50,62 @@ export default function LinktreePage() {
         <div className="absolute left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-[#f5c518]/30 to-transparent shadow-[0_0_12px_#f5c518] opacity-35 animate-scanline" />
       </div>
 
-      {/* 2. PROFILE HEADER (Top) */}
-      <div className="flex flex-col items-center text-center gap-2 mt-4 select-none z-10">
-        <div className="relative w-20 h-20 rounded-full border border-zinc-800 overflow-hidden bg-zinc-900 shadow-xl">
-          <Image
-            src="/CodiceZero/Landingpage/Icono.webp"
-            alt="Ego Avatar"
-            fill
-            className="object-cover"
-          />
-        </div>
-        <div className="flex flex-col items-center gap-0.5">
-          <h1 className="text-xl font-black tracking-tight text-white">Ego</h1>
-          <div className="h-5 flex items-center justify-center">
-            <p className="font-mono text-[9px] font-bold uppercase tracking-[0.2em] text-[#f5c518] typewriter-text">
-              Desarrollador & Casual Gamer
-            </p>
+      {/* 2. MAIN CENTERED CONTAINER */}
+      <div className="w-full max-w-[480px] flex flex-col items-center gap-5 sm:gap-6 z-10 mb-8">
+        
+        {/* PROFILE HEADER */}
+        <div className="flex flex-col items-center text-center gap-2 select-none">
+          <div className="relative w-20 h-20 rounded-full border border-zinc-800 overflow-hidden bg-zinc-900 shadow-xl">
+            <Image
+              src="/CodiceZero/Landingpage/Icono.webp"
+              alt="Ego Avatar"
+              fill
+              className="object-cover"
+            />
           </div>
-        </div>
-      </div>
-
-      {/* 3. BUTTON LINKS (Middle - Centered, Compact Rectangular Cards) */}
-      <nav className="w-full max-w-[480px] flex flex-col gap-3 my-auto z-10">
-        {links.map((link, index) => (
-          <a
-            key={index}
-            href={link.url}
-            target={link.url.startsWith("http") ? "_blank" : "_self"}
-            rel="noopener noreferrer"
-            className="group w-full flex items-center justify-between border border-zinc-800/80 bg-[#0e0e11]/60 backdrop-blur-sm rounded-2xl p-4 sm:p-5 transition-all duration-300 hover:border-[#f5c518]/30 hover:scale-[1.01] active:scale-[0.99] select-none shadow-md text-left gap-4"
-          >
-            {/* Content */}
-            <div className="flex flex-col gap-1">
-              <h3 className="text-sm font-black text-white group-hover:text-[#f5c518] transition-colors duration-300">
-                {link.title}
-              </h3>
-              <p className="text-xs text-zinc-400 leading-normal max-w-[320px]">
-                {link.desc}
+          <div className="flex flex-col items-center gap-0.5">
+            <h1 className="text-xl font-black tracking-tight text-white">Ego</h1>
+            <div className="h-5 flex items-center justify-center">
+              {/* Removed tracking-wide to ensure character-by-character typewriter works flawlessly without cuts */}
+              <p className="font-mono text-[9px] font-bold uppercase text-[#f5c518] typewriter-text">
+                Desarrollador & Casual Gamer
               </p>
             </div>
+          </div>
+        </div>
 
-            {/* Action indicator */}
-            <div className="shrink-0 font-mono text-[9px] font-bold text-[#f5c518] tracking-wider transition-all duration-300 group-hover:translate-x-0.5">
-              {link.action}
-            </div>
-          </a>
-        ))}
-      </nav>
+        {/* BUTTON LINKS (COMPACT RECTANGULAR CARDS) */}
+        <nav className="w-full flex flex-col gap-3">
+          {links.map((link, index) => (
+            <a
+              key={index}
+              href={link.url}
+              target={link.url.startsWith("http") ? "_blank" : "_self"}
+              rel="noopener noreferrer"
+              className="group w-full flex items-center justify-between border border-zinc-800/80 bg-[#0e0e11]/60 backdrop-blur-sm rounded-2xl p-4 sm:p-5 transition-all duration-300 hover:border-[#f5c518]/30 hover:scale-[1.01] active:scale-[0.99] select-none shadow-md text-left gap-4"
+            >
+              {/* Content */}
+              <div className="flex flex-col gap-1">
+                <h3 className="text-sm font-black text-white group-hover:text-[#f5c518] transition-colors duration-300">
+                  {link.title}
+                </h3>
+                <p className="text-xs text-zinc-400 leading-normal max-w-[320px]">
+                  {link.desc}
+                </p>
+              </div>
 
-      {/* 4. FOOTER (Bottom) */}
-      <footer className="w-full text-center text-[9px] font-mono text-zinc-700 select-none tracking-widest mb-4 z-10">
+              {/* Action indicator */}
+              <div className="shrink-0 font-mono text-[9px] font-bold text-[#f5c518] tracking-wider transition-all duration-300 group-hover:translate-x-0.5">
+                {link.action}
+              </div>
+            </a>
+          ))}
+        </nav>
+
+      </div>
+
+      {/* 3. ABSOLUTE FOOTER (Anchored at bottom, never causes scroll) */}
+      <footer className="absolute bottom-4 left-0 right-0 w-full text-center text-[9px] font-mono text-zinc-700 select-none tracking-widest z-10">
         © 2026 CODICEZERO
       </footer>
 
