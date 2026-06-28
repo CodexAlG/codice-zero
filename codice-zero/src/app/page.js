@@ -159,7 +159,9 @@ export default function Home() {
               {t.creatorBio}
             </p>
             <Link 
-              href="#" 
+              href="/sobre-mi" 
+              target="_blank"
+              rel="noopener noreferrer"
               className="font-mono text-[11px] font-bold text-[#f5c518] hover:text-yellow-400 transition-colors uppercase tracking-widest mt-0.5"
             >
               {t.seeMore}

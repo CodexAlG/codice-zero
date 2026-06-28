@@ -12,7 +12,7 @@ export default function AboutMePage() {
             <div className="max-w-7xl mx-auto relative z-10 pt-8">
                 <SectionTitle
                     title="Sobre Mí"
-                    subtitle="El desarrollador detrás de Codice Zero"
+                    subtitle="La filosofía detrás del desarrollo de CodiceZero"
                 />
 
                 <div className="flex flex-col md:flex-row gap-8 lg:gap-12 mt-16">
@@ -34,25 +34,25 @@ export default function AboutMePage() {
 
                             <h2 className="text-3xl font-display font-black italic text-white mb-1 relative z-10">Ego</h2>
                             <p className="text-yellow-400 font-bold text-xs uppercase tracking-widest mb-6 border-b border-yellow-500/30 pb-4 w-full relative z-10">
-                                Developer & Proxy
+                                Developer & Casual Gamer
                             </p>
 
                             <div className="w-full space-y-3 text-left relative z-10">
                                 <div className="flex items-center gap-3 text-sm text-gray-300">
-                                    <span className="text-yellow-500">📍</span>
-                                    <span>México, 22 Años</span>
-                                </div>
-                                <div className="flex items-center gap-3 text-sm text-gray-300">
-                                    <span className="text-yellow-500">🎓</span>
-                                    <span>Ing. Sistemas Computacionales</span>
-                                </div>
-                                <div className="flex items-center gap-3 text-sm text-gray-300">
                                     <span className="text-yellow-500">💻</span>
-                                    <span>Full Stack Dev</span>
+                                    <span>Desarrollador de Software</span>
                                 </div>
                                 <div className="flex items-center gap-3 text-sm text-gray-300">
                                     <span className="text-yellow-500">🎮</span>
-                                    <span>Proxy Día 1</span>
+                                    <span>Jugador Casual</span>
+                                </div>
+                                <div className="flex items-center gap-3 text-sm text-gray-300">
+                                    <span className="text-yellow-500">🚀</span>
+                                    <span>Creador de Proyectos</span>
+                                </div>
+                                <div className="flex items-center gap-3 text-sm text-gray-300">
+                                    <span className="text-yellow-500">⚔️</span>
+                                    <span>Proxy del Vacío</span>
                                 </div>
                             </div>
 
@@ -91,7 +91,7 @@ export default function AboutMePage() {
                                     href="https://ko-fi.com/codicezero"
                                     target="_blank"
                                     className="p-3 bg-[#FF5E5B]/10 text-[#FF5E5B] rounded-xl hover:bg-[#FF5E5B] hover:text-white transition-all duration-300 hover:scale-110"
-                                    title="Ko-si"
+                                    title="Ko-fi"
                                 >
                                     <Coffee size={20} />
                                 </Link>
@@ -112,18 +112,15 @@ export default function AboutMePage() {
 
                             <h3 className="text-3xl font-display font-black italic text-white mb-8 flex items-center gap-4 relative z-10 drop-shadow-md">
                                 <div className="w-2 h-10 bg-gradient-to-b from-yellow-300 to-yellow-600 rounded-full shadow-[0_0_15px_rgba(234,179,8,0.5)]"></div>
-                                Pasión por Crear
+                                Desarrollo & Gaming
                             </h3>
 
                             <div className="space-y-6 text-gray-300 leading-relaxed text-lg relative z-10">
                                 <p>
-                                    Mi camino en la tecnología comenzó estudiando <strong className="text-yellow-400 font-bold drop-shadow-[0_0_8px_rgba(254,240,138,0.3)]">Ingeniería en Sistemas Computacionales</strong>,
-                                    donde descubrí que programar no es solo escribir código, sino una forma de arte para solucionar problemas y crear experiencias.
+                                    Mi enfoque en la tecnología no es el convencional. Me considero un <strong className="text-yellow-400 font-bold drop-shadow-[0_0_8px_rgba(254,240,138,0.3)]">desarrollador de software y un videojugador casual</strong>. Para mí, la programación es la herramienta perfecta para dar vida a ideas y resolver necesidades reales dentro de las comunidades de los juegos que disfruto.
                                 </p>
                                 <p>
-                                    Soy una persona que cuando encuentra algo que ama, se entrega por completo.
-                                    Esa dedicación, a veces obsesiva, es la que me permite pasar horas puliendo cada detalle de este proyecto,
-                                    asegurándome de que sea algo de lo que pueda sentirme orgulloso.
+                                    En lugar de enfocarme únicamente en lo teórico, utilizo la creación de estos sitios web como un laboratorio personal para experimentar con nuevas tecnologías, implementar patrones de desarrollo modernos (como integraciones de APIs dinámicas y renderizado de alto rendimiento) y mantenerme al día con la vanguardia del software de una manera práctica y divertida.
                                 </p>
                             </div>
                         </div>
@@ -136,11 +133,10 @@ export default function AboutMePage() {
                                     <div className="p-2 bg-yellow-500/10 rounded-xl border border-yellow-500/30 group-hover:bg-yellow-500/20 transition-colors">
                                         <Coffee size={20} className="text-yellow-400 drop-shadow-[0_0_8px_rgba(250,204,21,0.5)]" />
                                     </div>
-                                    Por Amor al Arte
+                                    El Origen de CodiceZero
                                 </h3>
                                 <p className="text-sm md:text-base text-gray-400 leading-relaxed relative z-10">
-                                    Codice Zero nació de un capricho personal, no por dinero ni reconocimiento.
-                                    No gano nada con esto más que la satisfacción personal y la motivación de aprender nuevas tecnologías mientras aporto algo a la comunidad.
+                                    CodiceZero nació de una necesidad clara: quería crear una fuente de información estratégica para Zenless Zone Zero en español que fuera visualmente espectacular, extremadamente rápida y libre del desorden y la publicidad invasiva que plagan las wikis comerciales tradicionales.
                                 </p>
                             </div>
 
@@ -151,11 +147,10 @@ export default function AboutMePage() {
                                         <Image src="/CodiceZero/Agentes/Icon_Agents.webp"
                                             alt="Icon" width={20} height={20} className="brightness-200 drop-shadow-[0_0_8px_rgba(34,211,238,0.5)]" />
                                     </div>
-                                    Jugador Dedicado
+                                    Por Amor al Código
                                 </h3>
                                 <p className="text-sm md:text-base text-gray-400 leading-relaxed relative z-10">
-                                    Juego ZZZ desde el día 1 sin falta. No me considero un "gurú", pero entiendo las mecánicas a profundidad
-                                    y me apasiona traducir ese conocimiento en herramientas útiles para otros jugadores.
+                                    Este proyecto no persigue fines de lucro ni reconocimiento comercial. Está motivado puramente por la satisfacción personal de estructurar datos complejos (como hojas de cálculo automatizadas para armas y agentes) y compartirlos de manera libre y abierta con la comunidad hispana.
                                 </p>
                             </div>
                         </div>
@@ -164,8 +159,7 @@ export default function AboutMePage() {
                         <div className="bg-black/40 backdrop-blur-md border border-white/5 border-l-[6px] border-l-yellow-500 p-8 rounded-r-3xl rounded-l-md mt-4 shadow-[0_15px_40px_rgba(0,0,0,0.5)] relative overflow-hidden">
                             <div className="absolute right-0 top-0 bottom-0 w-1/2 bg-gradient-to-l from-yellow-500/5 to-transparent pointer-events-none"></div>
                             <p className="text-xl md:text-2xl text-gray-200 font-display italic font-bold leading-relaxed relative z-10">
-                                "Orgullosamente mexicano, programador de corazón y Proxy por elección.
-                                Si esta página te ayuda al menos un poco en tu viaje por Nueva Eridu, entonces todo el esfuerzo ha valido la pena."
+                                "CodiceZero es el espacio donde el desarrollo de software y la pasión por los videojuegos se encuentran. Si estas herramientas facilitan tu viaje por Nueva Eridu, entonces cada línea de código escrita ha cumplido su propósito."
                             </p>
                         </div>
 
