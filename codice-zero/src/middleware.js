@@ -2,6 +2,7 @@ import { NextResponse } from 'next/server';
 
 export function middleware(request) {
   const { pathname } = request.nextUrl;
+  const hostname = request.headers.get('host') || '';
 
   // 1. Omitir rutas de API, Next.js estáticos, imágenes, etc.
   if (
@@ -13,9 +14,28 @@ export function middleware(request) {
     return NextResponse.next();
   }
 
-  // 2. Si empieza por /es, hacer un redireccionamiento limpio (301) para quitarlo de la URL del navegador
-  if (pathname.startsWith('/es/') || pathname === '/es') {
-    const cleanPath = pathname === '/es' ? '/' : pathname.replace(/^\/es/, '');
+  // 2. Detectar si estamos en el subdominio de la wiki (zzz.codicezero.cc o zzz.localhost)
+  const isWikiSubdomain = hostname.startsWith('zzz.') || hostname.includes('zzz.localhost');
+
+  if (isWikiSubdomain) {
+    // Si estamos en la raíz del subdominio de la wiki, reescribir internamente a /wiki
+    if (pathname === '/') {
+      return NextResponse.rewrite(new URL('/wiki', request.url));
+    }
+  } else {
+    // Si estamos en el dominio principal (codicezero.cc) y NO es la raíz, redirigir al subdominio de la wiki
+    if (pathname !== '/') {
+      const targetUrl = new URL(pathname, `https://zzz.codicezero.cc`);
+      targetUrl.search = request.nextUrl.search;
+      return NextResponse.redirect(targetUrl);
+    }
+  }
+
+  // 3. Si empieza por /es o /en en la URL del navegador, hacer un redireccionamiento limpio (301) para quitarlo
+  if (pathname.startsWith('/es/') || pathname === '/es' || pathname.startsWith('/en/') || pathname === '/en') {
+    const cleanPath = (pathname === '/es' || pathname === '/en') 
+      ? '/' 
+      : pathname.replace(/^\/(es|en)/, '');
     const url = new URL(cleanPath, request.url);
     url.search = request.nextUrl.search;
     return NextResponse.redirect(url);

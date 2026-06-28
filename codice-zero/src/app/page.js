@@ -142,7 +142,7 @@ export default function Home() {
           <div className="about-left flex items-center gap-4 shrink-0">
             <div className="relative w-10 h-10 rounded-full border border-zinc-800 ring-2 ring-yellow-500/10 overflow-hidden bg-zinc-900 shadow-md">
               <Image
-                src="/CodiceZero/Landingpage/icono.webp"
+                src="/CodiceZero/Landingpage/Icono.webp"
                 alt="Ego"
                 fill
                 className="object-cover"
