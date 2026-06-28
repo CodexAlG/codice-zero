@@ -67,7 +67,7 @@ export default function AcercaHub() {
   ];
 
   return (
-    <div className="min-h-screen w-full flex flex-col items-center justify-center text-white font-sans selection:bg-yellow-500/20 selection:text-yellow-200 acerca-bg py-10 md:py-16 overflow-y-auto px-6">
+    <div className="min-h-screen w-full flex flex-col items-center justify-center text-white font-sans selection:bg-yellow-500/20 selection:text-yellow-200 landing-bg py-10 md:py-16 overflow-y-auto px-6">
       
       {/* Container */}
       <div className="w-full max-w-[900px] flex flex-col gap-10 relative z-10">
@@ -115,7 +115,7 @@ export default function AcercaHub() {
             {/* Profile Avatar */}
             <div className="relative w-20 h-20 rounded-full border border-zinc-800 ring-2 ring-yellow-500/5 overflow-hidden bg-zinc-900 shrink-0 shadow-md select-none">
               <Image
-                src="/CodiceZero/IconoEgo.jpg"
+                src="/CodiceZero/Landingpage/Icono.webp"
                 alt="Ego"
                 fill
                 className="object-cover"
