@@ -110,7 +110,7 @@ export default function WikiHome() {
             {/* Avatar */}
             <div className="relative w-16 h-16 rounded-full border-2 border-yellow-500/20 group-hover:border-yellow-500/50 transition-colors overflow-hidden shrink-0 shadow-lg">
               <Image
-                src="/CodiceZero/IconoEgo.jpg"
+                src="/CodiceZero/Landingpage/Icono.webp"
                 alt="Ego"
                 fill
                 className="object-cover"
