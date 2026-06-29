@@ -302,7 +302,7 @@ export default function AgentDetailPage() {
 
                     {/* Contenido Potencial - Solo visible si Nivel > 0 */}
                     {potentialLevel > 0 ? (
-                        <div className="md:col-span-1 min-h-[500px] flex items-stretch">
+                        <div className="md:col-span-1 flex items-stretch">
                             <div className="bg-black/40 backdrop-blur-md border border-white/5 rounded-2xl p-6 relative overflow-hidden animate-fadeIn shadow-[0_10px_30px_rgba(0,0,0,0.5)] group/pot w-full">
                                 {/* Premium Glow sobre la tarjeta */}
                                 <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover/pot:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
