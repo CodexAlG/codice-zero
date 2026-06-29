@@ -31,6 +31,7 @@ export default function AgentDetailPage() {
     const getAgentFullImage = (agent) => {
         if (!agent) return "";
         const imageMap = {
+            57: "/CodiceZero/Agentes/Sigrid.webp",
             56: "/CodiceZero/Agentes/Agent_Remielle_Dan_Portrait.webp",
             55: "/CodiceZero/Agentes/Agent_Norma_Hollowell_Portrait.webp",
             54: "/CodiceZero/Agentes/Agent_Velina_Airgid_Portrait.webp",
